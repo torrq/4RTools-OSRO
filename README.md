@@ -1,7 +1,7 @@
-# 4RTools-tq
+# 4RTools-OSRO
 
 ## Overview
-4RTools-tq is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with OsRO MR.
+4RTools-OSRO is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with OsRO MR.
 
 ## Key Changes
 - **Language & Adaptation:** Re-translated back into English and adjusted to align with OsRO MR's status set.
@@ -34,4 +34,4 @@ The latest release can be downloaded here: [4RTools-tq v3.1.3](https://github.co
 ![IGBpfXuDSS](https://github.com/user-attachments/assets/0a7a8d1d-a0d3-42ea-a036-9f0f6f3af396)
 
 ## Known Issues
-- Macro Songs reset buttons won't reset the form (will fix soon)
+- Force Element (Fire) isn't in autobuffs on HR. Couldn't get it to work yet.
