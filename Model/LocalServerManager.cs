@@ -40,16 +40,23 @@ namespace _4RTools.Model
 
         private static void EnsureServersFileExists()
         {
-            string defaultJson = JsonConvert.SerializeObject(new List<dynamic>
-            {
-                new
+            dynamic server = AppConfig.ServerMode == 0
+                ? new
                 {
                     name = "OsRO Midrate",
                     hpAddress = "00E8F434",
                     nameAddress = "00E91C00",
                     mapAddress = "00E8ABD4"
                 }
-            }, Formatting.Indented);
+                : new
+                {
+                    name = "OSRO",
+                    hpAddress = "010DCE10",
+                    nameAddress = "010DF5D8",
+                    mapAddress = "010D856C"
+                };
+
+            string defaultJson = JsonConvert.SerializeObject(new List<dynamic> { server }, Formatting.Indented);
 
             try
             {
@@ -75,6 +82,7 @@ namespace _4RTools.Model
                 throw;
             }
         }
+
 
         private static void EnsureCitiesFileExists()
         {

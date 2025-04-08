@@ -14,8 +14,11 @@ namespace _4RTools.Utils
         public static string Version = "v1.0.0";
 
         // ServerMode: 0 = MR (Mid Rate), 1 = HR (High Rate)
-        public static int ServerMode = 0; // Default to MR
+        public static int ServerMode = 1; // Default to MR
         public static bool DebugMode = true;
+
+        public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
+        public static string NotifyIconTitle => $"{Name} ({(ServerMode == 0 ? "MR" : "HR")})";
 
         // Delay defaults in milliseconds
         public static int AutoPotDefaultDelay = 101; // Autopot Tab

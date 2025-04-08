@@ -23,7 +23,7 @@ namespace _4RTools.Forms
 
             InitializeComponent();
 
-            this.Text = AppConfig.Name + " - " + AppConfig.Version; // Window title
+            this.Text = AppConfig.WindowTitle;
 
             LocalServerManager.Initialize(); // Will log errors if they occur
             clients.AddRange(LocalServerManager.GetLocalClients()); //Load Local Servers First
