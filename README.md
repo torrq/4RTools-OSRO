@@ -15,10 +15,6 @@
   - Updated NuGet packages.
   - Upgraded .NET framework from v4.7.2 to v4.8.1 to reduce build warnings.
 
-## Download & Installation
-
-The latest release can be downloaded here: [4RTools-tq v3.1.3](https://github.com/torrq/4RTools-tq/releases/tag/v3.1.3).
-
 ### Installation Steps
 1. Download the `.zip` file from the release page.
 2. Extract the contents to a folder of your choice.
