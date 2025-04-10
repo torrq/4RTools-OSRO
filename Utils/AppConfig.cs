@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace _4RTools.Utils
 {
@@ -14,20 +15,24 @@ namespace _4RTools.Utils
         public static string Version = "v1.0.0";
 
         // ServerMode: 0 = MR (Mid Rate), 1 = HR (High Rate)
-        public static int ServerMode = 1; // Default to MR
+        public static int ServerMode = 0; // Default to MR
         public static bool DebugMode = true;
 
         public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
         public static string NotifyIconTitle => $"{Name} ({(ServerMode == 0 ? "MR" : "HR")})";
 
         // Delay defaults in milliseconds
-        public static int AutoPotDefaultDelay = 101; // Autopot Tab
-        public static int YggDefaultDelay = 102; // Yggdrasil tab
-        public static int SkillSpammerDefaultDelay = 103; // Skill Spammer tab
-        public static int AutoBuffSkillsDefaultDelay = 104; // Autobuff Skills tab
-        public static int AutoBuffItemsDefaultDelay = 105; // Autobuff Items tab
-        public static int ATKDEFSpammerDefaultDelay = 11; // ATK x DEF tab, spammer
-        public static int ATKDEFSwitchDefaultDelay = 51; // ATK x DEF tab, switch
-        public static int MacroDefaultDelay = 52; // default for Macro Song + Switch tabs
+        public static int AutoPotDefaultDelay = 100; // Autopot Tab
+        public static int YggDefaultDelay = 100; // Yggdrasil tab
+        public static int SkillSpammerDefaultDelay = 100; // Skill Spammer tab
+        public static int AutoBuffSkillsDefaultDelay = 100; // Autobuff Skills tab
+        public static int AutoBuffItemsDefaultDelay = 100; // Autobuff Items tab
+        public static int ATKDEFSpammerDefaultDelay = 100; // ATK x DEF tab, spammer
+        public static int ATKDEFSwitchDefaultDelay = 100; // ATK x DEF tab, switch
+        public static int MacroDefaultDelay = 100; // default for Macro Song + Switch tabs
+        public static int DefaultMinimumDelay = 50; // Default minimum delay for all tabs
+
+        public static Color DefaultButtonBackColor = Color.White;
+        public static Color ResetButtonBackColor = Color.LightSkyBlue;
     }
 }

@@ -29,6 +29,10 @@ namespace _4RTools.Forms
             skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, Buff.GetPadawanSkills()));
 
             new BuffRenderer(skillContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffSkill.ActionName, subject).DoRender();
+
+            string[] resetButtonNames = { "btnResetAutobuff" };
+            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+
             subject.Attach(this);
 
         }

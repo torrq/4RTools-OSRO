@@ -30,7 +30,7 @@ namespace _4RTools.Model
         public Key Trigger { get; set; }
         public Key DaggerKey { get; set; }
         public Key InstrumentKey { get; set; }
-        public int Delay { get; set; } = 50;
+        public int Delay { get; set; } = AppConfig.MacroDefaultDelay;
         public Dictionary<string, MacroKey> macroEntries { get; set; } = new Dictionary<string, MacroKey>();
 
         public ChainConfig() { }

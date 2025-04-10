@@ -126,7 +126,7 @@
             this.btnResetAutobuff.Size = new System.Drawing.Size(60, 23);
             this.btnResetAutobuff.TabIndex = 299;
             this.btnResetAutobuff.Text = "Reset\r\n";
-            this.toolTip2.SetToolTip(this.btnResetAutobuff, "Remove todos os atalhos");
+            this.toolTip2.SetToolTip(this.btnResetAutobuff, "Reset all values in this tab to default");
             this.btnResetAutobuff.UseVisualStyleBackColor = false;
             this.btnResetAutobuff.Click += new System.EventHandler(this.btnResetAutobuff_Click);
             // 

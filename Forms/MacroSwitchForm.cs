@@ -1,22 +1,49 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Collections.Generic;
+using System.Windows.Input;
+using System.Text.RegularExpressions;
 using _4RTools.Model;
 using _4RTools.Utils;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace _4RTools.Forms
 {
     public partial class MacroSwitchForm : Form, IObserver
     {
-        public static int TOTAL_MACRO_LANES = 10;
+        public static int TOTAL_MACRO_LANES = 5;
 
         public MacroSwitchForm(Subject subject)
         {
             subject.Attach(this);
             InitializeComponent();
+            SetMinimumDelays();
             ConfigureMacroLanes();
+        }
+
+        private void SetMinimumDelays()
+        {
+            // Get the minimum delay value from your AppConfig
+            decimal minimumDelayValue = AppConfig.DefaultMinimumDelay;
+
+            // Iterate through all controls on the form recursively
+            foreach (Control control in GetAllControls(this))
+            {
+                // Check if the control is a NumericUpDown and its name indicates it's a delay input
+                if (control is NumericUpDown delayInput && delayInput.Name.Contains("delay"))
+                {
+                    delayInput.Minimum = minimumDelayValue;
+                }
+            }
+        }
+
+        // --- Add this recursive helper to get all controls ---
+        // (Or use FormUtils.GetAll if it can be adapted for this)
+        private IEnumerable<Control> GetAllControls(Control container)
+        {
+            var controls = container.Controls.Cast<Control>();
+            return controls.SelectMany(ctrl => GetAllControls(ctrl))
+                                  .Concat(controls);
         }
 
         public void Update(ISubject subject)
@@ -44,33 +71,100 @@ namespace _4RTools.Forms
                 if (exist == null)
                 {
                     ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Add(new ChainConfig(id, Key.None));
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
+                    exist = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == id);
                 }
-                ChainConfig chainConfig = new ChainConfig(ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs[id - 1]);
-                FormUtils.ResetForm(group);
+                ChainConfig chainConfig = exist;
 
-                List<string> names = new List<string>(chainConfig.macroEntries.Keys);
-                foreach (string cbName in names)
+                // Keep track of which control keys were loaded from the profile
+                var loadedControlNames = new HashSet<string>();
+
+                // 1: Load existing entries
+                foreach (var entry in chainConfig.macroEntries)
                 {
-                    Control[] controls = group.Controls.Find(cbName, true); // Keys
-                    if (controls.Length > 0)
-                    {
-                        TextBox textBox = (TextBox)controls[0];
-                        textBox.Text = chainConfig.macroEntries[cbName].Key.ToString();
-                    }
+                    string cbName = entry.Key;
+                    // Only add if the key is not None? Or always add? Let's add always for now.
+                    loadedControlNames.Add(cbName); // Mark this control name as having loaded data
 
-                    Control[] d = group.Controls.Find($"{cbName}delay", true); // Delays
-                    if (d.Length > 0)
+                    MacroKey macroKey = entry.Value;
+
+                    Control[] keyControls = group.Controls.Find(cbName, true);
+                    Control[] delayControls = group.Controls.Find($"{cbName}delay", true);
+
+                    if (keyControls.Length > 0 && keyControls[0] is TextBox textBox)
                     {
-                        NumericUpDown delayInput = (NumericUpDown)d[0];
-                        delayInput.Value = chainConfig.macroEntries[cbName].Delay;
+                        if (delayControls.Length > 0 && delayControls[0] is NumericUpDown delayInput)
+                        {
+                            // Detach handlers before setting values
+                            textBox.TextChanged -= this.OnTextChange;
+                            delayInput.ValueChanged -= this.OnDelayChange;
+
+                            // Set values from loaded config
+                            textBox.Text = macroKey.Key.ToString();
+                            int delayValue = Math.Max((int)delayInput.Minimum, Math.Min((int)delayInput.Maximum, macroKey.Delay));
+                            // Ensure value is set even if it's the same, to overwrite previous state
+                            if (delayInput.Value != delayValue)
+                            {
+                                delayInput.Value = delayValue;
+                            }
+                            else
+                            {
+                                // If the value is the same, force refresh just in case? Optional.
+                                // delayInput.Value = delayValue + 1; 
+                                // delayInput.Value = delayValue;
+                            }
+
+
+                            // Reattach handlers
+                            textBox.TextChanged += this.OnTextChange;
+                            delayInput.ValueChanged += this.OnDelayChange;
+                        }
+                    }
+                }
+
+                // 2: Reset controls that were NOT loaded (missing entries)
+                // Iterate through specific controls we expect (TextBoxes for keys)
+                foreach (Control control in group.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        // Check if this textbox's name was NOT in the set of loaded keys
+                        if (!loadedControlNames.Contains(textBox.Name))
+                        {
+                            textBox.TextChanged -= this.OnTextChange;
+
+                            // Reset to default Key.None if not already set
+                            if (textBox.Text != Key.None.ToString())
+                            {
+                                textBox.Text = Key.None.ToString();
+                            }
+
+                            textBox.TextChanged += this.OnTextChange;
+
+                            // Also find and reset the corresponding delay NUD
+                            Control[] delayControls = group.Controls.Find($"{textBox.Name}delay", true);
+                            if (delayControls.Length > 0 && delayControls[0] is NumericUpDown delayInput)
+                            {
+                                delayInput.ValueChanged -= this.OnDelayChange;
+
+                                // Reset to default delay (use AppConfig or the designer value)
+                                // Ensure we set it even if it visually seems correct already
+                                decimal defaultDelay = AppConfig.MacroDefaultDelay; // Or read from delayInput.Value if designer default is preferred
+                                if (delayInput.Value != defaultDelay)
+                                {
+                                    delayInput.Value = defaultDelay;
+                                }
+
+                                delayInput.ValueChanged += this.OnDelayChange;
+                            }
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                var exc = ex;
-            };
+                // Log error
+                DebugLogger.Error($"Error in UpdatePanelData for ID {id}: {ex.ToString()}");
+            }
         }
 
         private void OnTextChange(object sender, EventArgs e)
@@ -80,37 +174,54 @@ namespace _4RTools.Forms
             GroupBox group = (GroupBox)this.Controls.Find("chainGroup" + chainID, true)[0];
             ChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == chainID);
 
-            Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
+            Key key = Key.None;
+            Enum.TryParse(textBox.Text.ToString(), out key);
             NumericUpDown delayInput = (NumericUpDown)group.Controls.Find($"{textBox.Name}delay", true)[0];
-            chainConfig.macroEntries[textBox.Name] = new MacroKey(key, decimal.ToInt16(delayInput.Value));
 
+            if (!chainConfig.macroEntries.ContainsKey(textBox.Name))
+            {
+                // Create new entry: Use the default delay from AppConfig initially
+                chainConfig.macroEntries[textBox.Name] = new MacroKey(key, AppConfig.MacroDefaultDelay);
+
+                // If a valid key was just entered, immediately update the delay 
+                // in the new entry from the associated NumericUpDown control.
+                if (key != Key.None)
+                {
+                    chainConfig.macroEntries[textBox.Name].Delay = decimal.ToInt16(delayInput.Value);
+                }
+            }
+            else // Update existing entry
+            {
+                // --- Reverted Change ---
+                // Only update the Key property of the existing entry.
+                chainConfig.macroEntries[textBox.Name].Key = key;
+            }
+
+            // Update Trigger key if this is the first input
             bool isFirstInput = Regex.IsMatch(textBox.Name, $"in1mac{chainID}");
             if (isFirstInput) { chainConfig.Trigger = key; }
 
+            // Save configuration
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
         }
 
         private void OnDelayChange(object sender, EventArgs e)
         {
-
             NumericUpDown delayInput = (NumericUpDown)sender;
             int chainID = Int16.Parse(delayInput.Parent.Name.Split(new[] { "chainGroup" }, StringSplitOptions.None)[1]);
             ChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == chainID);
 
             String cbName = delayInput.Name.Split(new[] { "delay" }, StringSplitOptions.None)[0];
-            try
+            if (!chainConfig.macroEntries.ContainsKey(cbName))
             {
-                if(chainConfig.macroEntries.ContainsKey(cbName))
-                {
-                    chainConfig.macroEntries[cbName].Delay = decimal.ToInt16(delayInput.Value);
+                chainConfig.macroEntries[cbName] = new MacroKey(Key.None, decimal.ToInt16(delayInput.Value));
+            }
+            else
+            {
+                chainConfig.macroEntries[cbName].Delay = decimal.ToInt16(delayInput.Value);
+            }
 
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
-                }
-            }
-            catch (Exception ex)
-            {
-                var exception = ex;
-            }
+            ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
         }
 
         private void UpdateUi()

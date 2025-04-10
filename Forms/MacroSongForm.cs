@@ -14,6 +14,8 @@ namespace _4RTools.Forms
         {
             subject.Attach(this);
             InitializeComponent();
+            string[] resetButtonNames = { "btnResMac1", "btnResMac2", "btnResMac3", "btnResMac4" };
+            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
             ConfigureMacroLanes();
         }
 
@@ -592,6 +594,19 @@ namespace _4RTools.Forms
 
         }
 
+        private void btnResMac3_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void panelMacro2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnResMac1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

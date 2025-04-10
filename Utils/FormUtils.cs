@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -10,6 +11,23 @@ namespace _4RTools.Utils
 {
     public class FormUtils
     {
+        public static void ApplyColorToButtons(Control parentControl, string[] buttonNames, Color color)
+        {
+            if (buttonNames == null || buttonNames.Length == 0) return;
+
+            foreach (string buttonName in buttonNames)
+            {
+                // Search recursively within the parentControl for a control with the specified name
+                Control[] foundControls = parentControl.Controls.Find(buttonName, true);
+
+                if (foundControls.Length > 0 && foundControls[0] is Button button)
+                {
+                    button.BackColor = color;
+                }
+                // Log if a button name wasn't found
+                else { DebugLogger.Warning($"Button '{buttonName}' not found in {parentControl.Name}."); }
+            }
+        }
 
         public static void OnKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
