@@ -21,9 +21,26 @@ namespace _4RTools.Forms
             FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
             FormUtils.SetNumericUpDownMinimumDelays(this);
             ConfigureMacroLanes();
+            AddCommonResetButtonTooltip();
         }
 
+        private void AddCommonResetButtonTooltip()
+        {
+            ToolTip tooltip = new ToolTip();
+            string tooltipText = "Reset this macro row to default values";
+            int totalResetButtons = TOTAL_MACRO_LANES;
 
+            for (int i = 1; i <= totalResetButtons; i++)
+            {
+                string buttonName = $"btnResMac{i}";
+                Control[] foundControls = this.Controls.Find(buttonName, true);
+
+                if (foundControls.Length > 0 && foundControls[0] is Button resetButton)
+                {
+                    tooltip.SetToolTip(resetButton, tooltipText);
+                }
+            }
+        }
 
         public void Update(ISubject subject)
         {
