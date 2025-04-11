@@ -1,10 +1,10 @@
 # 4RTools-OSRO
 
 ## Overview
-4RTools-OSRO is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with OsRO MR.
+4RTools-OSRO is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with OsRO MR/HR.
 
 ## Key Changes
-- **Language & Adaptation:** Re-translated back into English and adjusted to align with OsRO MR's status set.
+- **Language & Adaptation:** Re-translated back into English and adjusted to align with OsRO's status set.
 - **Weight-Based Auto-Disable:** Added a setting to disable 4RTools when overweight (at 50% or 90%) and trigger an Alt-# macro.
 - **Expanded Skill Support:** Included Padawan (Jedi/Sith) skills along with corresponding skill icons.
 - **Pre-Renewal Focus:** Removed most Renewal skills to maintain compatibility.
@@ -13,7 +13,7 @@
 - **Miscellaneous Improvements:**
   - Various UI tweaks.
   - Updated NuGet packages.
-  - Upgraded .NET framework from v4.7.2 to v4.8.1 to reduce build warnings.
+  - Upgraded .NET framework from v4.7.2 to v4.8.1.
 
 ### Installation Steps
 1. Download the `.zip` file from the release page.
