@@ -17,34 +17,13 @@ namespace _4RTools.Forms
         {
             subject.Attach(this);
             InitializeComponent();
-            SetMinimumDelays();
+            string[] resetButtonNames = { "btnResMac1", "btnResMac2", "btnResMac3", "btnResMac4", "btnResMac5" };
+            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+            FormUtils.SetNumericUpDownMinimumDelays(this);
             ConfigureMacroLanes();
         }
 
-        private void SetMinimumDelays()
-        {
-            // Get the minimum delay value from your AppConfig
-            decimal minimumDelayValue = AppConfig.DefaultMinimumDelay;
 
-            // Iterate through all controls on the form recursively
-            foreach (Control control in GetAllControls(this))
-            {
-                // Check if the control is a NumericUpDown and its name indicates it's a delay input
-                if (control is NumericUpDown delayInput && delayInput.Name.Contains("delay"))
-                {
-                    delayInput.Minimum = minimumDelayValue;
-                }
-            }
-        }
-
-        // --- Add this recursive helper to get all controls ---
-        // (Or use FormUtils.GetAll if it can be adapted for this)
-        private IEnumerable<Control> GetAllControls(Control container)
-        {
-            var controls = container.Controls.Cast<Control>();
-            return controls.SelectMany(ctrl => GetAllControls(ctrl))
-                                  .Concat(controls);
-        }
 
         public void Update(ISubject subject)
         {

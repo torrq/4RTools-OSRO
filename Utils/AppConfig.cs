@@ -33,6 +33,6 @@ namespace _4RTools.Utils
         public static int DefaultMinimumDelay = 50; // Default minimum delay for all tabs
 
         public static Color DefaultButtonBackColor = Color.White;
-        public static Color ResetButtonBackColor = Color.LightSkyBlue;
+        public static Color ResetButtonBackColor = Color.FromArgb(245, 210, 230);
     }
 }

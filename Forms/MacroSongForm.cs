@@ -9,13 +9,14 @@ namespace _4RTools.Forms
 {
     public partial class MacroSongForm : Form, IObserver
     {
-        public static int TOTAL_MACRO_LANES_FOR_SONGS = 8;
+        public static int TOTAL_MACRO_LANES_FOR_SONGS = 4;
         public MacroSongForm(Subject subject)
         {
             subject.Attach(this);
             InitializeComponent();
             string[] resetButtonNames = { "btnResMac1", "btnResMac2", "btnResMac3", "btnResMac4" };
             FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+            FormUtils.SetNumericUpDownMinimumDelays(this);
             ConfigureMacroLanes();
         }
 

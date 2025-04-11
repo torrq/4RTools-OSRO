@@ -135,8 +135,8 @@ namespace _4RTools.Utils
             var controls = control.Controls.Cast<Control>();
 
             return controls.SelectMany(ctrl => GetAll(ctrl, type))
-                                      .Concat(controls)
-                                      .Where(c => c.GetType() == type);
+                                 .Concat(controls)
+                                 .Where(c => c.GetType() == type);
         }
 
         private static void resetForm(Control control)
@@ -219,16 +219,37 @@ namespace _4RTools.Utils
             resetForm(group);
         }
 
-       
+        public static void SetNumericUpDownMinimumDelays(Form form)
+        {
+            decimal minimumDelayValue = AppConfig.DefaultMinimumDelay;
+
+            // Iterate through all controls on the form recursively
+            foreach (Control control in GetAllControls(form))
+            {
+                // Check if the control is a NumericUpDown and its name indicates it's a delay input
+                if (control is NumericUpDown delayInput && delayInput.Name.Contains("delay"))
+                {
+                    delayInput.Minimum = minimumDelayValue;
+                }
+            }
+        }
+
+        // Moved GetAllControls to FormUtils
+        private static IEnumerable<Control> GetAllControls(Control container)
+        {
+            var controls = container.Controls.Cast<Control>();
+            return controls.SelectMany(ctrl => GetAllControls(ctrl))
+                                 .Concat(controls);
+        }
     }
     public static class EnumExtensions
     {
         public static string ToDescriptionString(this EffectStatusIDs val)
         {
             DescriptionAttribute[] attributes = (DescriptionAttribute[])val
-               .GetType()
-               .GetField(val.ToString())
-               .GetCustomAttributes(typeof(DescriptionAttribute), false);
+                .GetType()
+                .GetField(val.ToString())
+                .GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0 ? attributes[0].Description : string.Empty;
         }
         public static string GetDescription(this Enum value)
@@ -241,8 +262,8 @@ namespace _4RTools.Utils
                 if (field != null)
                 {
                     DescriptionAttribute attr =
-                           Attribute.GetCustomAttribute(field,
-                             typeof(DescriptionAttribute)) as DescriptionAttribute;
+                            Attribute.GetCustomAttribute(field,
+                                                            typeof(DescriptionAttribute)) as DescriptionAttribute;
                     if (attr != null)
                     {
                         return attr.Description;
@@ -256,11 +277,11 @@ namespace _4RTools.Utils
         {
 
             EffectStatusIDs t = Enum.GetValues(typeof(EffectStatusIDs))
-                .Cast<EffectStatusIDs>()
-                .FirstOrDefault(v => v.GetDescription() == val);
+                    .Cast<EffectStatusIDs>()
+                    .FirstOrDefault(v => v.GetDescription() == val);
             return t;
         }
 
-        
+
     }
 }

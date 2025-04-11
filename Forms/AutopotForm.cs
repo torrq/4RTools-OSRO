@@ -14,6 +14,7 @@ namespace _4RTools.Forms
         public AutopotForm(Subject subject, bool isYgg)
         {
             InitializeComponent();
+            
             if (isYgg)
             {
                 this.picBoxHP.Image = Resources._4RTools.ETCResource.Ygg;
@@ -21,6 +22,7 @@ namespace _4RTools.Forms
                 this.chkStopWitchFC.Hide();
             }
             subject.Attach(this);
+
             this.isYgg = isYgg;
         }
 
@@ -58,8 +60,6 @@ namespace _4RTools.Forms
             txtSPKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             txtSPKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
             txtSPKey.TextChanged += new EventHandler(this.OnSpTextChange);
-
-
         }
 
         private void OnHpTextChange(object sender, EventArgs e)
