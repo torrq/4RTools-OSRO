@@ -30,9 +30,10 @@ namespace _4RTools.Utils
         public static int ATKDEFSpammerDefaultDelay = 100; // ATK x DEF tab, spammer
         public static int ATKDEFSwitchDefaultDelay = 100; // ATK x DEF tab, switch
         public static int MacroDefaultDelay = 100; // default for Macro Song + Switch tabs
-        public static int DefaultMinimumDelay = 50; // Default minimum delay for all tabs
+        public static int DefaultMinimumDelay = 15; // Default minimum delay for all tabs
 
         public static Color DefaultButtonBackColor = Color.White;
         public static Color ResetButtonBackColor = Color.FromArgb(245, 210, 230);
+        public static Color AccentBackColor = Color.FromArgb(238, 248, 255);
     }
 }

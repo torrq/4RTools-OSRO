@@ -88,7 +88,7 @@ namespace _4RTools.Forms
             if (!(sender is TabControl tabControl)) return;
 
             // Background color for all tabs
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(238, 248, 255)), e.Bounds); // #EEF8FF
+            e.Graphics.FillRectangle(new SolidBrush(AppConfig.AccentBackColor), e.Bounds);
 
             // Check if this is the selected (active) tab
             bool isActiveTab = (e.Index == tabControl.SelectedIndex);
@@ -125,7 +125,7 @@ namespace _4RTools.Forms
         {
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl.DrawItem += TabControlAutopot_DrawItem;
-            tabControl.BackColor = Color.FromArgb(238, 248, 255);
+            tabControl.BackColor = AppConfig.AccentBackColor;
             tabControl.ForeColor = Color.Black;
 
             // Ensure a flat modern look

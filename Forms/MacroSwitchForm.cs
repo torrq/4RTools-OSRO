@@ -88,7 +88,7 @@ namespace _4RTools.Forms
                             else
                             {
                                 // If the value is the same, force refresh just in case? Optional.
-                                // delayInput.Value = delayValue + 1; 
+                                // delayInput.Value = delayValue + 1;
                                 // delayInput.Value = delayValue;
                             }
 
@@ -162,7 +162,7 @@ namespace _4RTools.Forms
                 // Create new entry: Use the default delay from AppConfig initially
                 chainConfig.macroEntries[textBox.Name] = new MacroKey(key, AppConfig.MacroDefaultDelay);
 
-                // If a valid key was just entered, immediately update the delay 
+                // If a valid key was just entered, immediately update the delay
                 // in the new entry from the associated NumericUpDown control.
                 if (key != Key.None)
                 {
@@ -237,9 +237,52 @@ namespace _4RTools.Forms
                     {
                         delayInput.ValueChanged += new System.EventHandler(this.OnDelayChange);
                     }
+
+                    if (control is Button resetButton)
+                    {
+                        resetButton.Click += new EventHandler(this.OnReset);
+                    }
                 }
             }
             catch { }
+        }
+
+        private void OnReset(object sender, EventArgs e)
+        {
+            Button resetButton = (Button)sender;
+            int btnResetID = Int16.Parse(resetButton.Name.Split(new[] { "btnResMac" }, StringSplitOptions.None)[1]);
+
+            Macro macroSwitch = ProfileSingleton.GetCurrent().MacroSwitch;
+            ChainConfig chainConfig = macroSwitch.ChainConfigs.Find(config => config.id == btnResetID);
+
+            if (chainConfig != null)
+            {
+                // Reset all chain config properties
+                chainConfig.Trigger = Key.None;
+                chainConfig.Delay = AppConfig.MacroDefaultDelay; // Assuming there's a default delay constant
+                chainConfig.macroEntries.Clear();
+
+                // Update the UI
+                GroupBox panel = (GroupBox)this.Controls.Find("chainGroup" + btnResetID, true)[0];
+                if (panel != null)
+                {
+                    // Reset all text boxes and numeric up downs
+                    foreach (Control c in panel.Controls)
+                    {
+                        if (c is TextBox textBox)
+                        {
+                            textBox.Text = Key.None.ToString();
+                        }
+                        else if (c is NumericUpDown numericUpDown)
+                        {
+                            numericUpDown.Value = AppConfig.MacroDefaultDelay;
+                        }
+                    }
+                }
+
+                // Save the changes
+                ProfileSingleton.SetConfiguration(macroSwitch);
+            }
         }
     }
 }

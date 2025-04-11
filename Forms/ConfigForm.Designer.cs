@@ -94,6 +94,7 @@ namespace _4RTools.Forms
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Settings";
+            this.groupSettings.Enter += new System.EventHandler(this.groupSettings_Enter);
             // 
             // chkSoundEnabled
             // 

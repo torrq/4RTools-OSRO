@@ -226,5 +226,9 @@ namespace _4RTools.Forms
             }
         }
 
+        private void groupSettings_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
