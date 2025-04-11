@@ -22,7 +22,7 @@
 ### Installation Steps
 1. Download the `.zip` file from the release page.
 2. Extract the contents to a folder of your choice.
-3. Run `4RTools-tq.exe` as Administrator.
+3. Run `4RTools-OSRO.exe` as Administrator.
 4. Configure your settings according to your needs.
 5. Ensure your game client is running before enabling macros.
 
