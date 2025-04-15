@@ -175,7 +175,6 @@ namespace _4RTools.Forms
 
         protected override void OnClosed(EventArgs e)
         {
-            DebugLogger.Info("here");
             ShutdownApplication();
             base.OnClosed(e);
         }
@@ -184,6 +183,7 @@ namespace _4RTools.Forms
         {
             KeyboardHook.Disable();
             subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
+            DebugLogger.Shutdown();
             Environment.Exit(0);
         }
 

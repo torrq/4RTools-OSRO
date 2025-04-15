@@ -19,10 +19,11 @@ namespace _4RTools.Utils
 
         private static readonly bool _debugMode;
 
-        private static string _lastMessage = null;
-        private static LogLevel _lastLogLevel = LogLevel.INFO;
-        private static int _duplicateCount = 0;
-        private static DateTime _lastMessageTime = DateTime.MinValue;
+        private static string _lastInfoMessage = null;
+        private static string _lastQueuedMessage = null;
+        private static LogLevel _lastQueuedLogLevel = LogLevel.INFO;
+        private static int _queuedDuplicateCount = 0;
+        private static DateTime _lastQueuedMessageTime = DateTime.MinValue;
 
         public enum LogLevel
         {
@@ -98,36 +99,65 @@ namespace _4RTools.Utils
                 {
                     DateTime now = DateTime.Now;
 
-                    if (message == _lastMessage && level == _lastLogLevel)
+                    if (level == LogLevel.INFO)
                     {
-                        _duplicateCount++;
-                        return;
+                        // Direct write for INFO
+                        if (message != _lastInfoMessage)
+                        {
+                            string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [INFO] {message}";
+                            Console.WriteLine(formattedMessage);
+                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                            {
+                                writer.WriteLine(formattedMessage);
+                            }
+                            _lastInfoMessage = message;
+                        }
                     }
                     else
                     {
-                        if (_lastMessage != null && _debugMode)
+                        // Queue other levels
+                        if (message == _lastQueuedMessage && level == _lastQueuedLogLevel)
                         {
-                            var entry = new LogEntry
+                            _queuedDuplicateCount++;
+                            return;
+                        }
+                        else
+                        {
+                            if (_lastQueuedMessage != null && _debugMode)
                             {
-                                Message = _lastMessage,
-                                Level = _lastLogLevel,
-                                Timestamp = _lastMessageTime,
-                                RepeatCount = _duplicateCount
+                                var entry = new LogEntry
+                                {
+                                    Message = _lastQueuedMessage,
+                                    Level = _lastQueuedLogLevel,
+                                    Timestamp = _lastQueuedMessageTime,
+                                    RepeatCount = _queuedDuplicateCount
+                                };
+
+                                Console.WriteLine(entry.FormatMessage());
+                                _messageQueue.Enqueue(entry);
+                            }
+
+                            _lastQueuedMessage = message;
+                            _lastQueuedLogLevel = level;
+                            _lastQueuedMessageTime = now;
+                            _queuedDuplicateCount = 0;
+
+                            var newEntry = new LogEntry
+                            {
+                                Message = message,
+                                Level = level,
+                                Timestamp = now,
+                                RepeatCount = 0
                             };
 
-                            Console.WriteLine(entry.FormatMessage());
-                            _messageQueue.Enqueue(entry);
+                            Console.WriteLine(newEntry.FormatMessage());
+                            _messageQueue.Enqueue(newEntry);
                         }
-
-                        _lastMessage = message;
-                        _lastLogLevel = level;
-                        _lastMessageTime = now;
-                        _duplicateCount = 0;
                     }
-                }
 
-                if (!_debugMode && level == LogLevel.ERROR)
-                    Console.WriteLine($"[ERROR] {message}");
+                    if (!_debugMode && level == LogLevel.ERROR)
+                        Console.WriteLine($"[ERROR] {message}");
+                }
             }
             catch (Exception ex)
             {
@@ -198,14 +228,14 @@ namespace _4RTools.Utils
 
                 lock (_logLock)
                 {
-                    if (_lastMessage != null)
+                    if (_lastQueuedMessage != null)
                     {
                         var entry = new LogEntry
                         {
-                            Message = _lastMessage,
-                            Level = _lastLogLevel,
-                            Timestamp = _lastMessageTime,
-                            RepeatCount = _duplicateCount
+                            Message = _lastQueuedMessage,
+                            Level = _lastQueuedLogLevel,
+                            Timestamp = _lastQueuedMessageTime,
+                            RepeatCount = _queuedDuplicateCount
                         };
 
                         Console.WriteLine(entry.FormatMessage());

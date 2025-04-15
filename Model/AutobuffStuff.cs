@@ -8,7 +8,6 @@ using _4RTools.Utils;
 
 namespace _4RTools.Model
 {
-
     public class AutoBuffStuff : IAction
     {
         public static string ACTION_NAME_AUTOBUFFSTUFF = "AutobuffStuff";
@@ -55,15 +54,24 @@ namespace _4RTools.Model
 
                 if (!prefs.StopBuffsCity || this.CityList.Contains(currentMap) == false)
                 {
+                    // Collect initial statuses
+                    var statusList = new List<(int index, uint statusId)>();
                     List<EffectStatusIDs> buffs = new List<EffectStatusIDs>();
                     Dictionary<EffectStatusIDs, Key> bmClone = new Dictionary<EffectStatusIDs, Key>(this.buffMapping);
+
                     for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                     {
                         uint currentStatus = c.CurrentBuffStatusCode(i);
+                        statusList.Add((i, currentStatus));
+                    }
 
+                    // Log initial statuses
+                    StatusIdLogger.LogAllStatuses(statusList);
+
+                    // Process buffs
+                    foreach (var (i, currentStatus) in statusList)
+                    {
                         if (currentStatus == uint.MaxValue) { continue; }
-
-                        StatusIdLogger.LogStatusId(i, currentStatus);
 
                         buffs.Add((EffectStatusIDs)currentStatus);
                         EffectStatusIDs status = (EffectStatusIDs)currentStatus;
@@ -76,7 +84,7 @@ namespace _4RTools.Model
                             }
                         }
 
-                        if (buffMapping.ContainsKey(status)) //CHECK IF STATUS EXISTS IN STATUS LIST AND DO ACTION
+                        if (buffMapping.ContainsKey(status))
                         {
                             bmClone.Remove(status);
                         }
@@ -84,6 +92,7 @@ namespace _4RTools.Model
                         if (status == EffectStatusIDs.QUAGMIRE) foundQuag = true;
                         if (status == EffectStatusIDs.DECREASE_AGI) foundDecreaseAgi = true;
                     }
+
                     buffs.Clear();
                     foreach (var item in bmClone)
                     {
@@ -101,10 +110,18 @@ namespace _4RTools.Model
                             Thread.Sleep(Delay);
                         }
                     }
+
+                    // Collect and log statuses again after autobuff actions
+                    statusList.Clear();
+                    for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                    {
+                        uint currentStatus = c.CurrentBuffStatusCode(i);
+                        statusList.Add((i, currentStatus));
+                    }
+                    StatusIdLogger.LogAllStatuses(statusList);
                 }
                 Thread.Sleep(300);
                 return 0;
-
             });
 
             return autobuffItemThread;
@@ -122,6 +139,7 @@ namespace _4RTools.Model
                 buffMapping.Add(status, key);
             }
         }
+
         public void ClearKeyMapping()
         {
             buffMapping.Clear();
@@ -141,6 +159,7 @@ namespace _4RTools.Model
         {
             return this.ActionName;
         }
+
         private void UseAutobuff(Key key)
         {
             if ((key != Key.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))

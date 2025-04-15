@@ -19,7 +19,7 @@ namespace _4RTools.Utils
 
         // DebugMode=true will output to DebugLogFilePath with extra information
         public static bool DebugMode = true;
-        public static string DebugLogFilePath = "4rtools_debug.txt";
+        public static string DebugLogFilePath = "4rtools_debug.log";
 
         // Delay defaults in milliseconds
         public static int AutoPotDefaultDelay = 100; // Autopot Tab

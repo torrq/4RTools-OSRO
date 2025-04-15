@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Timers;
 using System.Reflection;
 using System.ComponentModel;
 using _4RTools.Utils;
@@ -9,19 +8,11 @@ using _4RTools.Utils;
 public static class StatusIdLogger
 {
     private static Dictionary<uint, string> knownStatusIds = null;
-    private static readonly HashSet<uint> reportedNewStatusIds = new HashSet<uint>();
-    private static readonly HashSet<uint> currentKnownStatuses = new HashSet<uint>();
-    private static readonly HashSet<uint> currentUnknownStatuses = new HashSet<uint>();
-    private static readonly Timer logTimer;
-    private static readonly int logIntervalMs = 1000; // 1 second interval
+    private static string lastStatusesLog = null;
 
     static StatusIdLogger()
     {
         InitializeStatusDictionaries();
-        logTimer = new Timer(logIntervalMs);
-        logTimer.Elapsed += LogStatuses;
-        logTimer.AutoReset = true;
-        logTimer.Start();
     }
 
     private static void InitializeStatusDictionaries()
@@ -39,56 +30,46 @@ public static class StatusIdLogger
         }
     }
 
-    public static void LogStatusId(int index, uint statusId)
+    public static void LogAllStatuses(IEnumerable<(int index, uint statusId)> statuses)
     {
         if (knownStatusIds == null)
             InitializeStatusDictionaries();
 
-        if (knownStatusIds.TryGetValue(statusId, out string statusName))
+        var unknownStatuses = new List<uint>();
+        var knownStatuses = new List<uint>();
+
+        foreach (var (index, statusId) in statuses)
         {
-            currentKnownStatuses.Add(statusId);
+            if (statusId != uint.MaxValue)
+            {
+                if (knownStatusIds.ContainsKey(statusId))
+                {
+                    knownStatuses.Add(statusId);
+                }
+                else
+                {
+                    unknownStatuses.Add(statusId);
+                }
+            }
+        }
+
+        string currentLog;
+        if (unknownStatuses.Any() || knownStatuses.Any())
+        {
+            var unknownLog = unknownStatuses.OrderBy(id => id).Select(id => $"{id}:*UNKNOWN*");
+            var knownLog = knownStatuses.OrderBy(id => id).Select(id => $"{id}:{knownStatusIds[id]}");
+            var allStatuses = unknownLog.Concat(knownLog);
+            currentLog = $"[ Statuses ] {string.Join(" ", allStatuses)}";
         }
         else
         {
-            if (!reportedNewStatusIds.Contains(statusId))
-            {
-                reportedNewStatusIds.Add(statusId);
-            }
-            currentUnknownStatuses.Add(statusId);
+            currentLog = "[ Statuses ] None";
+        }
+
+        if (currentLog != lastStatusesLog)
+        {
+            DebugLogger.Info(currentLog);
+            lastStatusesLog = currentLog;
         }
     }
-
-    private static string lastKnownStatusesLog = null;
-    private static string lastUnknownStatusesLog = null;
-
-    private static void LogStatuses(object sender, ElapsedEventArgs e)
-    {
-        if (currentKnownStatuses.Any())
-        {
-            // Sort the known statuses by ID number before joining them
-            string currentLog = $"Known Statuses: {string.Join(" ", currentKnownStatuses.OrderBy(id => id).Select(id => $"{id}:{knownStatusIds[id]}"))}";
-
-            if (currentLog != lastKnownStatusesLog)
-            {
-                DebugLogger.Info(currentLog);
-                lastKnownStatusesLog = currentLog;
-            }
-        }
-
-        if (currentUnknownStatuses.Any())
-        {
-            // Sort the unknown statuses numerically as well
-            string currentLog = $"Unknown Statuses: {string.Join(", ", currentUnknownStatuses.OrderBy(id => id))}";
-
-            if (currentLog != lastUnknownStatusesLog)
-            {
-                DebugLogger.Info(currentLog);
-                lastUnknownStatusesLog = currentLog;
-            }
-        }
-
-        currentKnownStatuses.Clear();
-        currentUnknownStatuses.Clear();
-    }
-
 }
