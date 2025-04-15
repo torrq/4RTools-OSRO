@@ -30,8 +30,8 @@
 
 ## Screenshots
 
-![6F8UU103zb](https://github.com/user-attachments/assets/3ac0ea1e-54f4-4486-a816-9c41e37bb140)
-![IGBpfXuDSS](https://github.com/user-attachments/assets/0a7a8d1d-a0d3-42ea-a036-9f0f6f3af396)
+![4rt_screens_1](https://github.com/user-attachments/assets/2cabbec4-1072-4dbf-b4bb-8681663394ee)
+![4rt_screens_2](https://github.com/user-attachments/assets/4c7493a5-8ca7-441f-88e7-c1bf3b73e9f1)
 
 ## Known Issues
 - Force Element (Fire) isn't in autobuffs on HR. Couldn't get it to work yet.
