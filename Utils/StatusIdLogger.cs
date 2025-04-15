@@ -53,23 +53,18 @@ public static class StatusIdLogger
             }
         }
 
-        string currentLog;
         if (unknownStatuses.Any() || knownStatuses.Any())
         {
-            var unknownLog = unknownStatuses.OrderBy(id => id).Select(id => $"{id}:*UNKNOWN*");
+            var unknownLog = unknownStatuses.OrderBy(id => id).Select(id => $"{id}:**UNKNOWN**");
             var knownLog = knownStatuses.OrderBy(id => id).Select(id => $"{id}:{knownStatusIds[id]}");
             var allStatuses = unknownLog.Concat(knownLog);
-            currentLog = $"[ Statuses ] {string.Join(" ", allStatuses)}";
-        }
-        else
-        {
-            currentLog = "[ Statuses ] None";
-        }
+            string currentLog = $"{string.Join(" ", allStatuses)}";
 
-        if (currentLog != lastStatusesLog)
-        {
-            DebugLogger.Info(currentLog);
-            lastStatusesLog = currentLog;
+            if (currentLog != lastStatusesLog)
+            {
+                DebugLogger.Status(currentLog);
+                lastStatusesLog = currentLog;
+            }
         }
     }
 }

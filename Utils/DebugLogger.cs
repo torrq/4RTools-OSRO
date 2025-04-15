@@ -20,6 +20,7 @@ namespace _4RTools.Utils
         private static readonly bool _debugMode;
 
         private static string _lastInfoMessage = null;
+        private static string _lastStatusMessage = null;
         private static string _lastQueuedMessage = null;
         private static LogLevel _lastQueuedLogLevel = LogLevel.INFO;
         private static int _queuedDuplicateCount = 0;
@@ -30,7 +31,8 @@ namespace _4RTools.Utils
             INFO,
             WARNING,
             ERROR,
-            DEBUG
+            DEBUG,
+            STATUS
         }
 
         private class LogEntry
@@ -113,6 +115,20 @@ namespace _4RTools.Utils
                             _lastInfoMessage = message;
                         }
                     }
+                    else if (level == LogLevel.STATUS)
+                    {
+                        // Direct write for STATUS
+                        if (message != _lastStatusMessage)
+                        {
+                            string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [STATUS] {message}";
+                            Console.WriteLine(formattedMessage);
+                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                            {
+                                writer.WriteLine(formattedMessage);
+                            }
+                            _lastStatusMessage = message;
+                        }
+                    }
                     else
                     {
                         // Queue other levels
@@ -166,6 +182,7 @@ namespace _4RTools.Utils
         }
 
         public static void Info(string message) => Log(LogLevel.INFO, message);
+        public static void Status(string message) => Log(LogLevel.STATUS, message);
         public static void Warning(string message) => Log(LogLevel.WARNING, message);
         public static void Error(string message) => Log(LogLevel.ERROR, message);
         public static void Error(Exception ex, string context = "")
