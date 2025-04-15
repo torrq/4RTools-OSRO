@@ -52,23 +52,21 @@ namespace _4RTools.Model
                 string currentMap = c.ReadCurrentMap();
                 UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
 
+                // Collect and log statuses always
+                var statusList = new List<(int index, uint statusId)>();
+                for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                {
+                    uint currentStatus = c.CurrentBuffStatusCode(i);
+                    statusList.Add((i, currentStatus));
+                }
+                StatusIdLogger.LogAllStatuses(statusList);
+
                 if (!prefs.StopBuffsCity || this.CityList.Contains(currentMap) == false)
                 {
-                    // Collect initial statuses
-                    var statusList = new List<(int index, uint statusId)>();
+                    // Process buffs
                     List<EffectStatusIDs> buffs = new List<EffectStatusIDs>();
                     Dictionary<EffectStatusIDs, Key> bmClone = new Dictionary<EffectStatusIDs, Key>(this.buffMapping);
 
-                    for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
-                    {
-                        uint currentStatus = c.CurrentBuffStatusCode(i);
-                        statusList.Add((i, currentStatus));
-                    }
-
-                    // Log initial statuses
-                    StatusIdLogger.LogAllStatuses(statusList);
-
-                    // Process buffs
                     foreach (var (i, currentStatus) in statusList)
                     {
                         if (currentStatus == uint.MaxValue) { continue; }
@@ -120,6 +118,7 @@ namespace _4RTools.Model
                     }
                     StatusIdLogger.LogAllStatuses(statusList);
                 }
+
                 Thread.Sleep(300);
                 return 0;
             });
