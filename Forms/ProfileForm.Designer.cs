@@ -73,7 +73,7 @@
             // 
             // btnRemoveProfile
             // 
-            this.btnRemoveProfile.BackColor = System.Drawing.Color.White;
+            this.btnRemoveProfile.BackColor = System.Drawing.Color.Pink;
             this.btnRemoveProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);

@@ -525,7 +525,7 @@
             this.in1SwitchDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in1SwitchDelay.Location = new System.Drawing.Point(101, 88);
             this.in1SwitchDelay.Maximum = new decimal(new int[] {
-            500,
+            5000,
             0,
             0,
             0});
@@ -901,7 +901,7 @@
             this.in2SwitchDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in2SwitchDelay.Location = new System.Drawing.Point(101, 88);
             this.in2SwitchDelay.Maximum = new decimal(new int[] {
-            500,
+            5000,
             0,
             0,
             0});

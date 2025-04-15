@@ -74,9 +74,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(237, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 17);
+            this.label2.Size = new System.Drawing.Size(25, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "sec";
+            this.label2.Text = "ms";
             // 
             // txtSkillTimerKey1
             // 
@@ -128,9 +128,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(237, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 17);
+            this.label1.Size = new System.Drawing.Size(25, 17);
             this.label1.TabIndex = 38;
-            this.label1.Text = "sec";
+            this.label1.Text = "ms";
             // 
             // txtSkillTimerKey2
             // 
@@ -182,9 +182,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(237, 116);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 17);
+            this.label5.Size = new System.Drawing.Size(25, 17);
             this.label5.TabIndex = 48;
-            this.label5.Text = "sec";
+            this.label5.Text = "ms";
             // 
             // txtSkillTimerKey4
             // 
@@ -236,9 +236,9 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(237, 82);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 17);
+            this.label8.Size = new System.Drawing.Size(25, 17);
             this.label8.TabIndex = 43;
-            this.label8.Text = "sec";
+            this.label8.Text = "ms";
             // 
             // txtSkillTimerKey3
             // 

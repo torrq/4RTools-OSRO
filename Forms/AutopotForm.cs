@@ -14,7 +14,9 @@ namespace _4RTools.Forms
         public AutopotForm(Subject subject, bool isYgg)
         {
             InitializeComponent();
-            
+
+            FormUtils.SetNumericUpDownMinimumDelays(this);
+
             if (isYgg)
             {
                 this.picBoxHP.Image = Resources._4RTools.ETCResource.Ygg;
@@ -49,7 +51,7 @@ namespace _4RTools.Forms
             this.txtSPKey.Text = this.autopot.SPKey.ToString();
             this.txtHPpct.Text = this.autopot.HPPercent.ToString();
             this.txtSPpct.Text = this.autopot.SPPercent.ToString();
-            this.txtAutopotDelay.Text = this.autopot.Delay.ToString();
+            this.numAutopotDelay.Text = this.autopot.Delay.ToString();
             this.chkStopWitchFC.Checked = this.autopot.StopWitchFC;
             RadioButton rdHealFirst = (RadioButton)this.Controls[ProfileSingleton.GetCurrent().Autopot.FirstHeal];
             if (rdHealFirst != null) { rdHealFirst.Checked = true; };
@@ -78,11 +80,11 @@ namespace _4RTools.Forms
             this.ActiveControl = null;
         }
 
-        private void TxtAutopotDelayTextChanged(object sender, EventArgs e)
+        private void NumAutopotDelayTextChanged(object sender, EventArgs e)
         {
             try
             {
-                this.autopot.Delay = Int16.Parse(this.txtAutopotDelay.Text);
+                this.autopot.Delay = Int16.Parse(this.numAutopotDelay.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
             catch (Exception ex)

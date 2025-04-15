@@ -14,6 +14,7 @@ namespace _4RTools.Forms
         public StuffAutoBuffForm(Subject subject)
         {
             InitializeComponent();
+
             stuffContainers.Add(new BuffContainer(this.PotionsGP, Buff.GetPotionsBuffs()));
             stuffContainers.Add(new BuffContainer(this.ElementalsGP, Buff.GetElementalsBuffs()));
             stuffContainers.Add(new BuffContainer(this.BoxesGP, Buff.GetBoxesBuffs()));
@@ -23,8 +24,8 @@ namespace _4RTools.Forms
 
             new BuffRenderer(stuffContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffStuff.ActionName, subject).DoRender();
 
-            string[] resetButtonNames = { "btnResetAutobuff" };
-            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+            FormUtils.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
+            //FormUtils.SetNumericUpDownMinimumDelays(this);
 
             subject.Attach(this);
         }
@@ -64,9 +65,5 @@ namespace _4RTools.Forms
             catch { }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

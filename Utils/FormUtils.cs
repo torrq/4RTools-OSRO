@@ -36,8 +36,6 @@ namespace _4RTools.Utils
                 TextBox textBox = (TextBox)sender;
                 Key thisk;
 
-                DebugLogger.Info("KEY: " + e.KeyCode.ToString());
-
                 // Handle special cases for keys like OemPlus, OemTilde, and OemComma
                 if (e.KeyCode == Keys.Oemplus)
                 {
@@ -141,7 +139,6 @@ namespace _4RTools.Utils
 
         private static void resetForm(Control control)
         {
-
             IEnumerable<Control> texts = GetAll(control, typeof(TextBox));
             IEnumerable<Control> checks = GetAll(control, typeof(CheckBox));
             IEnumerable<Control> combos = GetAll(control, typeof(ComboBox));
@@ -170,7 +167,10 @@ namespace _4RTools.Utils
             foreach (Control n in numericUpDown)
             {
                 NumericUpDown numeric = (NumericUpDown)n;
-                numeric.Value = 0;
+
+                // Safe reset: avoid out-of-range exception
+                decimal safeValue = Math.Max(numeric.Minimum, 0);
+                numeric.Value = safeValue;
             }
         }
 
@@ -196,7 +196,7 @@ namespace _4RTools.Utils
 
         public static void ResetCheckboxForm(Form form)
         {
-            resetCheckboxForm(form);
+            resetCheckboxForm((Control)form);
         }
 
         public static void ResetForm(Form form)
@@ -209,32 +209,33 @@ namespace _4RTools.Utils
             resetForm(form);
         }
 
-        public static void ResetForm(Panel panel)
-        {
-            resetForm(panel);
-        }
-
         public static void ResetForm(GroupBox group)
         {
             resetForm(group);
         }
 
-        public static void SetNumericUpDownMinimumDelays(Form form)
+        public static void SetNumericUpDownMinimumDelays(Form form, decimal? overrideMinimumDelay = null)
         {
-            decimal minimumDelayValue = AppConfig.DefaultMinimumDelay;
+            // Use the override if provided, otherwise fall back to default config
+            decimal minimumDelayValue = overrideMinimumDelay ?? AppConfig.DefaultMinimumDelay;
 
             // Iterate through all controls on the form recursively
             foreach (Control control in GetAllControls(form))
             {
                 // Check if the control is a NumericUpDown and its name indicates it's a delay input
-                if (control is NumericUpDown delayInput && delayInput.Name.Contains("delay"))
+                if (control is NumericUpDown delayInput && delayInput.Name.ToLower().Contains("delay"))
                 {
-                    delayInput.Minimum = minimumDelayValue;
+                     delayInput.Minimum = minimumDelayValue;
+
+                    // Fix: Ensure value respects new minimum
+                    if (delayInput.Value < delayInput.Minimum)
+                    {
+                        delayInput.Value = delayInput.Minimum;
+                    }
                 }
             }
         }
 
-        // Moved GetAllControls to FormUtils
         private static IEnumerable<Control> GetAllControls(Control container)
         {
             var controls = container.Controls.Cast<Control>();

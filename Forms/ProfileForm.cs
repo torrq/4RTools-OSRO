@@ -1,6 +1,7 @@
 ﻿using System;
 using _4RTools.Model;
 using System.Windows.Forms;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
@@ -16,6 +17,10 @@ namespace _4RTools.Forms
             {
                 if (profile != "Default") { this.lbProfilesList.Items.Add(profile); };
             }
+
+            FormUtils.ApplyColorToButtons(this, new[] { "btnSave" }, AppConfig.CreateButtonBackColor);
+            FormUtils.ApplyColorToButtons(this, new[] { "btnRemoveProfile" }, AppConfig.RemoveButtonBackColor);
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)

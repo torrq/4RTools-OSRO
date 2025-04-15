@@ -32,7 +32,7 @@
             this.txtHPpct = new System.Windows.Forms.NumericUpDown();
             this.labelSP = new System.Windows.Forms.Label();
             this.labelHP = new System.Windows.Forms.Label();
-            this.txtAutopotDelay = new System.Windows.Forms.TextBox();
+            this.numAutopotDelay = new System.Windows.Forms.NumericUpDown();
             this.picBoxSP = new System.Windows.Forms.PictureBox();
             this.picBoxHP = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +47,7 @@
             this.firstSP = new System.Windows.Forms.RadioButton();
             this.chkStopWitchFC = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtHPpct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAutopotDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSPpct)).BeginInit();
@@ -82,15 +83,25 @@
             this.labelHP.TabIndex = 37;
             this.labelHP.Text = "%";
             // 
-            // txtAutopotDelay
+            // numAutopotDelay
             // 
-            this.txtAutopotDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutopotDelay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutopotDelay.Location = new System.Drawing.Point(231, 122);
-            this.txtAutopotDelay.Name = "txtAutopotDelay";
-            this.txtAutopotDelay.Size = new System.Drawing.Size(44, 23);
-            this.txtAutopotDelay.TabIndex = 36;
-            this.txtAutopotDelay.TextChanged += new System.EventHandler(this.TxtAutopotDelayTextChanged);
+            this.numAutopotDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numAutopotDelay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numAutopotDelay.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numAutopotDelay.Location = new System.Drawing.Point(222, 122);
+            this.numAutopotDelay.Maximum = new decimal(new int[] {
+            32767,
+            0,
+            0,
+            0});
+            this.numAutopotDelay.Name = "numAutopotDelay";
+            this.numAutopotDelay.Size = new System.Drawing.Size(48, 23);
+            this.numAutopotDelay.TabIndex = 36;
+            this.numAutopotDelay.ValueChanged += new System.EventHandler(this.NumAutopotDelayTextChanged);
             // 
             // picBoxSP
             // 
@@ -118,7 +129,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(188, 126);
+            this.label2.Location = new System.Drawing.Point(180, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 41;
@@ -250,7 +261,7 @@
             this.Controls.Add(this.txtHPpct);
             this.Controls.Add(this.labelSP);
             this.Controls.Add(this.labelHP);
-            this.Controls.Add(this.txtAutopotDelay);
+            this.Controls.Add(this.numAutopotDelay);
             this.Controls.Add(this.picBoxSP);
             this.Controls.Add(this.picBoxHP);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -260,6 +271,7 @@
             this.Text = "AutopotForm";
             this.Load += new System.EventHandler(this.AutopotForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtHPpct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAutopotDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSPpct)).EndInit();
@@ -272,7 +284,6 @@
         private System.Windows.Forms.NumericUpDown txtHPpct;
         private System.Windows.Forms.Label labelSP;
         private System.Windows.Forms.Label labelHP;
-        private System.Windows.Forms.TextBox txtAutopotDelay;
         private System.Windows.Forms.PictureBox picBoxSP;
         private System.Windows.Forms.PictureBox picBoxHP;
         private System.Windows.Forms.Label label2;
@@ -286,5 +297,6 @@
         private System.Windows.Forms.RadioButton firstHP;
         private System.Windows.Forms.RadioButton firstSP;
         private System.Windows.Forms.CheckBox chkStopWitchFC;
+        private System.Windows.Forms.NumericUpDown numAutopotDelay;
     }
 }

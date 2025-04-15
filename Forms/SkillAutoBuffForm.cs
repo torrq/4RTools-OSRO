@@ -30,8 +30,8 @@ namespace _4RTools.Forms
 
             new BuffRenderer(skillContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffSkill.ActionName, subject).DoRender();
 
-            string[] resetButtonNames = { "btnResetAutobuff" };
-            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+            FormUtils.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
+            //FormUtils.SetNumericUpDownMinimumDelays(this);
 
             subject.Attach(this);
 

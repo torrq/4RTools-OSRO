@@ -152,7 +152,6 @@
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 300;
             this.label5.Text = "Delay (ms)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // StuffAutoBuffForm
             // 

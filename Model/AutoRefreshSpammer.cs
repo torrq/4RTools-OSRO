@@ -64,7 +64,7 @@ namespace _4RTools.Model
                     Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), rKey.ToString()), 0);
                 }
             }
-            Thread.Sleep(delay * 1000);
+            Thread.Sleep(delay);
             return 0;
         }
 

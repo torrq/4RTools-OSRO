@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using _4RTools.Utils; // Assuming this is the namespace for DebugLogger
+using _4RTools.Utils;
 
 namespace _4RTools.Model
 {
@@ -130,7 +130,7 @@ namespace _4RTools.Model
             catch (Exception ex)
             {
                 DebugLogger.Error(ex, "Error reading servers.json");
-                return string.Empty; // Fallback to empty string
+                return string.Empty;
             }
         }
 
@@ -164,7 +164,7 @@ namespace _4RTools.Model
             catch (Exception ex)
             {
                 DebugLogger.Error(ex, "Error reading cities.json");
-                return string.Empty; // Fallback to empty string
+                return string.Empty;
             }
         }
 

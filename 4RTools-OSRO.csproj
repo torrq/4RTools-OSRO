@@ -217,6 +217,12 @@
     <Compile Include="Forms\MacroSongForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\Container.en.resx">
+      <DependentUpon>Container.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Container.fil.resx">
+      <DependentUpon>Container.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Container.resx">
       <DependentUpon>Container.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -338,6 +344,7 @@
     <Compile Include="Model\AutoRefreshSpammer.cs" />
     <Compile Include="Model\Buff.cs" />
     <Compile Include="Model\BuffContainer.cs" />
+    <Compile Include="Model\ConfigManager.cs" />
     <Compile Include="Model\DebuffRenderer.cs" />
     <Compile Include="Model\BuffRenderer.cs" />
     <Compile Include="Model\Custom.cs" />
@@ -374,6 +381,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\LanguageManager.cs" />
     <Compile Include="Utils\DebugLogger.cs" />
     <Compile Include="Utils\EffectStatusIDs.cs" />
     <Compile Include="Utils\AppConfig.cs" />

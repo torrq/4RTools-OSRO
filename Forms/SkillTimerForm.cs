@@ -13,8 +13,9 @@ namespace _4RTools.Forms
         public SkillTimerForm(Subject subject)
         {
             InitializeComponent();
+            //FormUtils.SetNumericUpDownMinimumDelays(this);
             subject.Attach(this);
-            configureTimerLanes();
+            ConfigureTimerLanes();
         }
 
         public void Update(ISubject subject)
@@ -22,8 +23,8 @@ namespace _4RTools.Forms
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
-                    validate();
-                    updateUi();
+                    FormValidate();
+                    UpdateUI();
                     break;
                 case MessageCode.TURN_ON:
                     ProfileSingleton.GetCurrent().AutoRefreshSpammer.Start();
@@ -34,15 +35,15 @@ namespace _4RTools.Forms
             }
         }
 
-        private void validate()
+        private void FormValidate()
         {
             for (int i = 1; i <= TOTAL_SKILL_TIMER; i++)
             {
-                validateAllSkillTimer(i);
+                ValidateAllSkillTimer(i);
             }
         }
 
-        private void updateUi()
+        private void UpdateUI()
         {
             for (int i = 1; i <= TOTAL_SKILL_TIMER; i++)
             {
@@ -50,15 +51,15 @@ namespace _4RTools.Forms
             }
         }
 
-        private void configureTimerLanes()
+        private void ConfigureTimerLanes()
         {
             for (int i = 1; i <= TOTAL_SKILL_TIMER; i++)
             {
-                initializeLane(i);
+                InitializeLane(i);
             }
         }
 
-        private void validateAllSkillTimer(int id)
+        private void ValidateAllSkillTimer(int id)
         {
             try
             {
@@ -66,7 +67,7 @@ namespace _4RTools.Forms
 
                 if (!Spammers.skillTimer.ContainsKey(id))
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, 5));
+                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
 
                     Control[] c = this.Controls.Find("txtSkillTimerKey" + id, true);
                     if (c.Length > 0)
@@ -92,7 +93,7 @@ namespace _4RTools.Forms
             }
         }
 
-        private void initializeLane(int id)
+        private void InitializeLane(int id)
         {
             try
             {
@@ -100,10 +101,10 @@ namespace _4RTools.Forms
                 TextBox textBox = (TextBox)this.Controls.Find("txtSkillTimerKey" + id, true)[0];
                 textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
                 textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-                textBox.TextChanged += new EventHandler(this.onTextChange);
+                textBox.TextChanged += new EventHandler(this.OnTextChange);
 
                 NumericUpDown txtAutoRefreshDelay = (NumericUpDown)this.Controls.Find("txtAutoRefreshDelay" + id, true)[0];
-                txtAutoRefreshDelay.ValueChanged += new EventHandler(this.txtAutoRefreshDelayTextChanged);
+                txtAutoRefreshDelay.ValueChanged += new EventHandler(this.TxtAutoRefreshDelayTextChanged);
 
             }
             catch { }
@@ -139,7 +140,7 @@ namespace _4RTools.Forms
             }
         }
 
-        private void onTextChange(object sender, EventArgs e)
+        private void OnTextChange(object sender, EventArgs e)
         {
             try
             {
@@ -156,7 +157,7 @@ namespace _4RTools.Forms
                 }
                 else
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, 5));
+                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutoRefreshSpammer);
@@ -168,7 +169,7 @@ namespace _4RTools.Forms
         }
 
 
-        private void txtAutoRefreshDelayTextChanged(object sender, EventArgs e)
+        private void TxtAutoRefreshDelayTextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -185,7 +186,7 @@ namespace _4RTools.Forms
                 }
                 else
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, 5));
+                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutoRefreshSpammer);

@@ -6,6 +6,7 @@ using System.IO;
 using _4RTools.Model;
 using _4RTools.Utils;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace _4RTools.Forms
 {
@@ -19,9 +20,17 @@ namespace _4RTools.Forms
 
         public Container()
         {
+            ConfigManager.Initialize();
+            ConfigManager.SaveConfig();
+            string lang = ConfigManager.GetConfig().Language ?? "en";
+
+            DebugLogger.Info("Language: " + lang);
+
             this.subject.Attach(this);
 
             InitializeComponent();
+
+            LanguageManager.ChangeLanguage(lang, this);
 
             this.Text = AppConfig.WindowTitle;
 
@@ -166,6 +175,7 @@ namespace _4RTools.Forms
 
         protected override void OnClosed(EventArgs e)
         {
+            DebugLogger.Info("here");
             ShutdownApplication();
             base.OnClosed(e);
         }

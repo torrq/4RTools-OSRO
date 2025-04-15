@@ -16,6 +16,7 @@ namespace _4RTools.Forms
         {
             subject.Attach(this);
             InitializeComponent();
+            FormUtils.SetNumericUpDownMinimumDelays(this);
         }
 
         public void Update(ISubject subject)

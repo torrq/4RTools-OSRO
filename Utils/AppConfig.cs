@@ -16,10 +16,10 @@ namespace _4RTools.Utils
 
         // ServerMode: 0 = MR (Mid Rate), 1 = HR (High Rate)
         public static int ServerMode = 0; // Default to MR
-        public static bool DebugMode = true;
 
-        public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
-        public static string NotifyIconTitle => $"{Name} ({(ServerMode == 0 ? "MR" : "HR")})";
+        // DebugMode=true will output to DebugLogFilePath with extra information
+        public static bool DebugMode = true;
+        public static string DebugLogFilePath = "4rtools_debug.txt";
 
         // Delay defaults in milliseconds
         public static int AutoPotDefaultDelay = 100; // Autopot Tab
@@ -30,10 +30,17 @@ namespace _4RTools.Utils
         public static int ATKDEFSpammerDefaultDelay = 100; // ATK x DEF tab, spammer
         public static int ATKDEFSwitchDefaultDelay = 100; // ATK x DEF tab, switch
         public static int MacroDefaultDelay = 100; // default for Macro Song + Switch tabs
-        public static int DefaultMinimumDelay = 15; // Default minimum delay for all tabs
+        public static int SkillTimerDefaultDelay = 1000; // Skill Timer tab
+        public static decimal DefaultMinimumDelay = 15; // Default minimum delay for all tabs
 
+        // Default colors
         public static Color DefaultButtonBackColor = Color.White;
         public static Color ResetButtonBackColor = Color.FromArgb(245, 210, 230);
+        public static Color RemoveButtonBackColor = Color.Pink;
+        public static Color CreateButtonBackColor = Color.FromArgb(155, 221, 249);
         public static Color AccentBackColor = Color.FromArgb(238, 248, 255);
+
+        public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
+        public static string NotifyIconTitle => $"{Name} ({(ServerMode == 0 ? "MR" : "HR")})";
     }
 }

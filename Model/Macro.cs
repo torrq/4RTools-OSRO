@@ -120,8 +120,8 @@ namespace _4RTools.Model
                             }
 
                             Keys thisk = (Keys)Enum.Parse(typeof(Keys), macroKey.Key.ToString());
-                            Thread.Sleep(macroKey.Delay);
                             Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                            Thread.Sleep(macroKey.Delay); // Delay after key rather than before
 
                             if (chainConfig.DaggerKey != Key.None)
                             {

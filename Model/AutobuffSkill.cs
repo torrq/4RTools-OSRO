@@ -22,6 +22,7 @@ namespace _4RTools.Model
             get => _delay <= 0 ? AppConfig.AutoBuffSkillsDefaultDelay : _delay;
             set => _delay = value;
         }
+
         public List<String> CityList { get; set; }
 
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
@@ -146,17 +147,17 @@ namespace _4RTools.Model
             UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (status == EffectStatusIDs.WEIGHT50 && prefs.OverweightMode == "overweight50")
             {
-                SendOverweightMacro(c, "50");
                 var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
                 frmToggleApplication.toggleStatus();
                 DebugLogger.Info("Overweight 50%, disable now");
+                SendOverweightMacro(c, "50");
             }
             else if (status == EffectStatusIDs.WEIGHT90 && prefs.OverweightMode == "overweight90")
             {
-                SendOverweightMacro(c, "90");
                 DebugLogger.Info("Overweight 90%, disable now");
                 var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
                 frmToggleApplication.toggleStatus();
+                SendOverweightMacro(c, "90");
             }
         }
 
@@ -169,10 +170,8 @@ namespace _4RTools.Model
                 IntPtr handle = ClientSingleton.GetClient().Process.MainWindowHandle;
                 SetForegroundWindow(handle);
 
-                // Wait 1 second before starting
                 Thread.Sleep(1000);
 
-                // Send the key combination the specified number of times
                 string keyToSend = "%" + ToSendKeysFormat(prefs.OverweightKey);
                 for (int i = 0; i < times; i++)
                 {

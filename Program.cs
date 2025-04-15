@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using _4RTools.Utils;
 
 namespace _4RTools
 {
@@ -25,7 +26,7 @@ namespace _4RTools
                                     MessageBoxIcon.Error);
                 }
             }
-
+            DebugLogger.Shutdown();
             // Ensure proper cleanup after exiting
             Application.Exit();
         }

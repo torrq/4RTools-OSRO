@@ -52,9 +52,15 @@ namespace _4RTools.Forms
             this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.cmbLanguage = new System.Windows.Forms.ComboBox();
+            this.btnChangeLanguage = new System.Windows.Forms.Button();
+            this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkDebugMode = new System.Windows.Forms.CheckBox();
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
+            this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,10 +96,10 @@ namespace _4RTools.Forms
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
-            this.groupSettings.Size = new System.Drawing.Size(300, 400);
+            this.groupSettings.Size = new System.Drawing.Size(300, 287);
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
-            this.groupSettings.Text = "Settings";
+            this.groupSettings.Text = "Profile Settings";
             this.groupSettings.Enter += new System.EventHandler(this.groupSettings_Enter);
             // 
             // chkSoundEnabled
@@ -101,7 +107,7 @@ namespace _4RTools.Forms
             this.chkSoundEnabled.AutoSize = true;
             this.chkSoundEnabled.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkSoundEnabled.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSoundEnabled.Location = new System.Drawing.Point(13, 74);
+            this.chkSoundEnabled.Location = new System.Drawing.Point(13, 68);
             this.chkSoundEnabled.Name = "chkSoundEnabled";
             this.chkSoundEnabled.Size = new System.Drawing.Size(121, 21);
             this.chkSoundEnabled.TabIndex = 317;
@@ -116,9 +122,9 @@ namespace _4RTools.Forms
             this.groupOverweight.Controls.Add(this.overweightKey);
             this.groupOverweight.Controls.Add(this.overweightOff);
             this.groupOverweight.Controls.Add(this.overweight90);
-            this.groupOverweight.Location = new System.Drawing.Point(10, 282);
+            this.groupOverweight.Location = new System.Drawing.Point(6, 172);
             this.groupOverweight.Name = "groupOverweight";
-            this.groupOverweight.Size = new System.Drawing.Size(281, 109);
+            this.groupOverweight.Size = new System.Drawing.Size(288, 109);
             this.groupOverweight.TabIndex = 316;
             this.groupOverweight.TabStop = false;
             this.groupOverweight.Text = "Turn off when overweight";
@@ -192,7 +198,7 @@ namespace _4RTools.Forms
             // 
             this.ammo2textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ammo2textBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ammo2textBox.Location = new System.Drawing.Point(243, 121);
+            this.ammo2textBox.Location = new System.Drawing.Point(243, 107);
             this.ammo2textBox.Name = "ammo2textBox";
             this.ammo2textBox.Size = new System.Drawing.Size(45, 25);
             this.ammo2textBox.TabIndex = 309;
@@ -201,7 +207,7 @@ namespace _4RTools.Forms
             // 
             this.ammo1textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ammo1textBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ammo1textBox.Location = new System.Drawing.Point(192, 121);
+            this.ammo1textBox.Location = new System.Drawing.Point(192, 107);
             this.ammo1textBox.Name = "ammo1textBox";
             this.ammo1textBox.Size = new System.Drawing.Size(45, 25);
             this.ammo1textBox.TabIndex = 308;
@@ -211,7 +217,7 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox.AutoSize = true;
             this.switchAmmoCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.switchAmmoCheckBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchAmmoCheckBox.Location = new System.Drawing.Point(13, 121);
+            this.switchAmmoCheckBox.Location = new System.Drawing.Point(13, 107);
             this.switchAmmoCheckBox.Name = "switchAmmoCheckBox";
             this.switchAmmoCheckBox.Size = new System.Drawing.Size(162, 21);
             this.switchAmmoCheckBox.TabIndex = 307;
@@ -232,6 +238,68 @@ namespace _4RTools.Forms
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
             this.chkStopBuffsOnCity.CheckedChanged += new System.EventHandler(this.ChkStopBuffsOnCity_CheckedChanged);
             // 
+            // cmbLanguage
+            // 
+            this.cmbLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLanguage.FormattingEnabled = true;
+            this.cmbLanguage.Location = new System.Drawing.Point(156, 37);
+            this.cmbLanguage.Name = "cmbLanguage";
+            this.cmbLanguage.Size = new System.Drawing.Size(80, 23);
+            this.cmbLanguage.TabIndex = 318;
+            this.cmbLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnChangeLanguage
+            // 
+            this.btnChangeLanguage.BackColor = System.Drawing.Color.White;
+            this.btnChangeLanguage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangeLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeLanguage.Location = new System.Drawing.Point(48, 36);
+            this.btnChangeLanguage.Name = "btnChangeLanguage";
+            this.btnChangeLanguage.Size = new System.Drawing.Size(100, 25);
+            this.btnChangeLanguage.TabIndex = 319;
+            this.btnChangeLanguage.Text = "Set Language";
+            this.btnChangeLanguage.UseVisualStyleBackColor = false;
+            this.btnChangeLanguage.Click += new System.EventHandler(this.btnChangeLanguage_Click);
+            // 
+            // groupGlobalSettings
+            // 
+            this.groupGlobalSettings.Controls.Add(this.label3);
+            this.groupGlobalSettings.Controls.Add(this.chkDebugMode);
+            this.groupGlobalSettings.Controls.Add(this.btnChangeLanguage);
+            this.groupGlobalSettings.Controls.Add(this.cmbLanguage);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 313);
+            this.groupGlobalSettings.Name = "groupGlobalSettings";
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 107);
+            this.groupGlobalSettings.TabIndex = 318;
+            this.groupGlobalSettings.TabStop = false;
+            this.groupGlobalSettings.Text = "Global Settings";
+            this.groupGlobalSettings.Enter += new System.EventHandler(this.groupGlobalSettings_Enter);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkRed;
+            this.label3.Location = new System.Drawing.Point(221, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 321;
+            this.label3.Text = "requires restart";
+            // 
+            // chkDebugMode
+            // 
+            this.chkDebugMode.AutoSize = true;
+            this.chkDebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkDebugMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDebugMode.Location = new System.Drawing.Point(98, 71);
+            this.chkDebugMode.Name = "chkDebugMode";
+            this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
+            this.chkDebugMode.TabIndex = 320;
+            this.chkDebugMode.Text = "Debug Mode";
+            this.chkDebugMode.UseVisualStyleBackColor = true;
+            this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            // 
             // clientDTOBindingSource
             // 
             this.clientDTOBindingSource.DataSource = typeof(_4RTools.Model.ClientDTO);
@@ -242,6 +310,7 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(630, 440);
+            this.Controls.Add(this.groupGlobalSettings);
             this.Controls.Add(this.groupSettings);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.skillsListBox);
@@ -253,6 +322,8 @@ namespace _4RTools.Forms
             this.groupSettings.PerformLayout();
             this.groupOverweight.ResumeLayout(false);
             this.groupOverweight.PerformLayout();
+            this.groupGlobalSettings.ResumeLayout(false);
+            this.groupGlobalSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -282,5 +353,10 @@ namespace _4RTools.Forms
         private GroupBox groupOverweight;
         private Label label1;
         private CheckBox chkSoundEnabled;
+        private ComboBox cmbLanguage;
+        private Button btnChangeLanguage;
+        private GroupBox groupGlobalSettings;
+        private CheckBox chkDebugMode;
+        private Label label3;
     }
 }
