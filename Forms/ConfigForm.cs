@@ -261,6 +261,12 @@ namespace _4RTools.Forms
                 string cultureCode = selectedLang.Key;
 
                 Config cfg = ConfigManager.GetConfig();
+                if (cfg.Language == cultureCode)
+                {
+                    MessageBox.Show("You are already using this language.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 cfg.Language = cultureCode;
                 ConfigManager.SaveConfig();
 

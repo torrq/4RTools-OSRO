@@ -259,6 +259,7 @@ namespace _4RTools.Forms
             this.btnChangeLanguage.Size = new System.Drawing.Size(100, 25);
             this.btnChangeLanguage.TabIndex = 319;
             this.btnChangeLanguage.Text = "Set Language";
+            this.toolTip1.SetToolTip(this.btnChangeLanguage, "Changes application language");
             this.btnChangeLanguage.UseVisualStyleBackColor = false;
             this.btnChangeLanguage.Click += new System.EventHandler(this.btnChangeLanguage_Click);
             // 
@@ -274,6 +275,7 @@ namespace _4RTools.Forms
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
+            this.toolTip1.SetToolTip(this.groupGlobalSettings, "W");
             this.groupGlobalSettings.Enter += new System.EventHandler(this.groupGlobalSettings_Enter);
             // 
             // label3
@@ -297,6 +299,7 @@ namespace _4RTools.Forms
             this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
             this.chkDebugMode.TabIndex = 320;
             this.chkDebugMode.Text = "Debug Mode";
+            this.toolTip1.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
             this.chkDebugMode.UseVisualStyleBackColor = true;
             this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
             // 
