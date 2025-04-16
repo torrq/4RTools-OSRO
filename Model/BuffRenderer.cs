@@ -16,11 +16,11 @@ namespace _4RTools.Model
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
-        private readonly String _typeAutoBuff;
+        private readonly string _typeAutoBuff;
         private readonly Subject _subject;
         string OldText = string.Empty;
 
-        public BuffRenderer(List<BuffContainer> containers, ToolTip toolTip, String autoBuff, Subject subject)
+        public BuffRenderer(List<BuffContainer> containers, ToolTip toolTip, string autoBuff, Subject subject)
         {
             this._containers = containers;
             this._toolTip = toolTip;
@@ -89,11 +89,11 @@ namespace _4RTools.Model
                 }
 
                 TextBox txtBox = (TextBox)sender;
-                bool textChanged = this.OldText != String.Empty && this.OldText != txtBox.Text.ToString();
-                if ((txtBox.Text.ToString() != String.Empty) && textChanged)
+                bool textChanged = this.OldText != string.Empty && this.OldText != txtBox.Text.ToString();
+                if ((txtBox.Text.ToString() != string.Empty) && textChanged)
                 {
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
-                    EffectStatusIDs statusID = (EffectStatusIDs)Int16.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
+                    EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
 
                     if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
                     {

@@ -183,7 +183,7 @@ namespace _4RTools.Forms
             try
             {
                 TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != String.Empty)
+                if (txtBox.Text.ToString() != string.Empty)
                 {
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
                     ProfileSingleton.GetCurrent().UserPreferences.Ammo1Key = key;
@@ -198,7 +198,7 @@ namespace _4RTools.Forms
             try
             {
                 TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != String.Empty)
+                if (txtBox.Text.ToString() != string.Empty)
                 {
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
                     ProfileSingleton.GetCurrent().UserPreferences.Ammo2Key = key;
@@ -218,7 +218,7 @@ namespace _4RTools.Forms
             try
             {
                 TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != String.Empty)
+                if (txtBox.Text.ToString() != string.Empty)
                 {
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
                     ProfileSingleton.GetCurrent().UserPreferences.OverweightKey = key;

@@ -42,7 +42,7 @@ namespace _4RTools.Model
         public string ActionName { get; set; }
         private _4RThread thread;
 
-        public List<String> CityList { get; set; }
+        public List<string> CityList { get; set; }
 
         public Autopot() { }
         public Autopot(string actionName)

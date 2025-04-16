@@ -13,7 +13,7 @@ namespace _4RTools.Model
         private string ACTION_NAME = "AutoRefreshSpammer";
 
         public Dictionary<int, MacroKey> skillTimer = new Dictionary<int, MacroKey>();
-        public List<String> CityList { get; set; }
+        public List<string> CityList { get; set; }
 
         private _4RThread thread1;
         private _4RThread thread2;

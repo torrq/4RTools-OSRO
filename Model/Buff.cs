@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using _4RTools.Utils;
 
@@ -7,7 +6,7 @@ namespace _4RTools.Model
 {
     internal class Buff
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
         public EffectStatusIDs EffectStatusID { get; set; }
         public Bitmap Icon { get; set; }
 

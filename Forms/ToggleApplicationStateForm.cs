@@ -87,7 +87,7 @@ namespace _4RTools.Forms
                 this.notifyIconTray.Icon = Resources._4RTools.ETCResource.icon4rtools_off;
                 this.subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
                 this.lblStatusToggle.Text = "Press the key to start!";
-                this.lblStatusToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+                this.lblStatusToggle.ForeColor = Color.FromArgb(120, 120, 120);
                 if (prefs.SoundEnabled)
                 {
                     new SoundPlayer(Resources._4RTools.ETCResource.Speech_Off).Play();
@@ -103,7 +103,7 @@ namespace _4RTools.Forms
                     this.notifyIconTray.Icon = Resources._4RTools.ETCResource.icon4rtools_on;
                     this.subject.Notify(new Utils.Message(MessageCode.TURN_ON, null));
                     this.lblStatusToggle.Text = "Press the key to stop!";
-                    this.lblStatusToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+                    this.lblStatusToggle.ForeColor = Color.FromArgb(120, 120, 120);
                     if (prefs.SoundEnabled)
                     {
                         new SoundPlayer(Resources._4RTools.ETCResource.Speech_On).Play();
@@ -129,7 +129,7 @@ namespace _4RTools.Forms
                 this.btnStatusToggle.Text = "OFF";
                 this.subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
                 this.lblStatusToggle.Text = "Press the key to start!";
-                this.lblStatusToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(155)))), ((int)(((byte)(164)))));
+                this.lblStatusToggle.ForeColor = Color.FromArgb(148, 155, 164);
                 if (prefs.SoundEnabled)
                 {
                     new SoundPlayer(Resources._4RTools.ETCResource.Speech_Off).Play();

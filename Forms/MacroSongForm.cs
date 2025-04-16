@@ -158,7 +158,7 @@ namespace _4RTools.Forms
         {
             Macro SongMacro = ProfileSingleton.GetCurrent().SongMacro;
             NumericUpDown delayInput = (NumericUpDown)sender;
-            int macroID = Int16.Parse(delayInput.Name.Split(new[] { "delayMac" }, StringSplitOptions.None)[1]);
+            int macroID = short.Parse(delayInput.Name.Split(new[] { "delayMac" }, StringSplitOptions.None)[1]);
             ChainConfig chainConfig = SongMacro.ChainConfigs.Find(songMacro => songMacro.id == macroID);
 
             chainConfig.Delay = decimal.ToInt16(delayInput.Value);
@@ -174,7 +174,7 @@ namespace _4RTools.Forms
         private void OnReset(object sender, EventArgs e)
         {
             Button resetButton = (Button)sender;
-            int btnResetID = Int16.Parse(resetButton.Name.Split(new[] { "btnResMac" }, StringSplitOptions.None)[1]);
+            int btnResetID = short.Parse(resetButton.Name.Split(new[] { "btnResMac" }, StringSplitOptions.None)[1]);
 
             Macro songMacro = ProfileSingleton.GetCurrent().SongMacro;
             ChainConfig chainConfig = songMacro.ChainConfigs.Find(config => config.id == btnResetID);

@@ -165,7 +165,7 @@ namespace _4RTools.Forms
         private void OnTextChange(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            int chainID = Int16.Parse(textBox.Parent.Name.Split(new[] { "chainGroup" }, StringSplitOptions.None)[1]);
+            int chainID = short.Parse(textBox.Parent.Name.Split(new[] { "chainGroup" }, StringSplitOptions.None)[1]);
             GroupBox group = (GroupBox)this.Controls.Find("chainGroup" + chainID, true)[0];
             ChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == chainID);
 
@@ -203,10 +203,10 @@ namespace _4RTools.Forms
         private void OnDelayChange(object sender, EventArgs e)
         {
             NumericUpDown delayInput = (NumericUpDown)sender;
-            int chainID = Int16.Parse(delayInput.Parent.Name.Split(new[] { "chainGroup" }, StringSplitOptions.None)[1]);
+            int chainID = short.Parse(delayInput.Parent.Name.Split(new[] { "chainGroup" }, StringSplitOptions.None)[1]);
             ChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == chainID);
 
-            String cbName = delayInput.Name.Split(new[] { "delay" }, StringSplitOptions.None)[0];
+            string cbName = delayInput.Name.Split(new[] { "delay" }, StringSplitOptions.None)[0];
             if (!chainConfig.macroEntries.ContainsKey(cbName))
             {
                 chainConfig.macroEntries[cbName] = new MacroKey(Key.None, decimal.ToInt16(delayInput.Value));
@@ -266,7 +266,7 @@ namespace _4RTools.Forms
         private void OnReset(object sender, EventArgs e)
         {
             Button resetButton = (Button)sender;
-            int btnResetID = Int16.Parse(resetButton.Name.Split(new[] { "btnResMac" }, StringSplitOptions.None)[1]);
+            int btnResetID = short.Parse(resetButton.Name.Split(new[] { "btnResMac" }, StringSplitOptions.None)[1]);
 
             Macro macroSwitch = ProfileSingleton.GetCurrent().MacroSwitch;
             ChainConfig chainConfig = macroSwitch.ChainConfigs.Find(config => config.id == btnResetID);

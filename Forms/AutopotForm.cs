@@ -85,7 +85,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                this.autopot.Delay = Int16.Parse(this.numAutopotDelay.Text);
+                this.autopot.Delay = short.Parse(this.numAutopotDelay.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
             catch (Exception ex)
@@ -99,7 +99,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                this.autopot.HPPercent = Int16.Parse(this.txtHPpct.Text);
+                this.autopot.HPPercent = short.Parse(this.txtHPpct.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
             catch (Exception ex)
@@ -120,7 +120,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                this.autopot.SPPercent = Int16.Parse(this.txtSPpct.Text);
+                this.autopot.SPPercent = short.Parse(this.txtSPpct.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
             catch (Exception)

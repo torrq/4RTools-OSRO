@@ -163,7 +163,7 @@ namespace _4RTools.Model
             UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (prefs.SwitchAmmo)
             {
-                if (prefs.Ammo1Key.ToString() != String.Empty && prefs.Ammo2Key.ToString() != String.Empty)
+                if (prefs.Ammo1Key.ToString() != string.Empty && prefs.Ammo2Key.ToString() != string.Empty)
                 {
                     if (ammo == false)
                     {

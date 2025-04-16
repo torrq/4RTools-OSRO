@@ -196,7 +196,7 @@ namespace _4RTools.Utils
 
         public static void ResetCheckboxForm(Form form)
         {
-            resetCheckboxForm((Control)form);
+            resetCheckboxForm(form);
         }
 
         public static void ResetForm(Form form)
@@ -274,7 +274,7 @@ namespace _4RTools.Utils
             return null;
         }
 
-        public static EffectStatusIDs ToEffectStatusId(this String val)
+        public static EffectStatusIDs ToEffectStatusId(this string val)
         {
 
             EffectStatusIDs t = Enum.GetValues(typeof(EffectStatusIDs))

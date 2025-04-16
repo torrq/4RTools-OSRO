@@ -20,7 +20,7 @@ namespace _4RTools.Model
             set => _delay = value;
         }
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
-        public List<String> CityList { get; set; }
+        public List<string> CityList { get; set; }
 
         public AutoBuffStuff(string actionName)
         {

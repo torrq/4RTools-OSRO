@@ -96,7 +96,7 @@ namespace _4RTools.Utils
                 {
                     using (Process curProcess = Process.GetCurrentProcess())
                     using (ProcessModule curModule = curProcess.MainModule)
-                        hHook = SetWindowsHookEx((int)Constants.WH_KEYBOARD_LL, hookproc, GetModuleHandle(curModule.ModuleName), 0);
+                        hHook = SetWindowsHookEx(Constants.WH_KEYBOARD_LL, hookproc, GetModuleHandle(curModule.ModuleName), 0);
                     Enabled = true;
                     return true;
                 }
