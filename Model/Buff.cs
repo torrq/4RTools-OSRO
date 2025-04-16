@@ -334,7 +334,7 @@ namespace _4RTools.Model
                 new Buff("Assumptio",  EffectStatusIDs.ASSUMPTIO, Resources._4RTools.Icons.assumptio),
                 new Buff("Flee Scroll / Spray of Flowers",  EffectStatusIDs.FLEE_SCROLL, Resources._4RTools.Icons.flee_scroll),
                 new Buff("Accuracy Scroll",  EffectStatusIDs.ACCURACY_SCROLL, Resources._4RTools.Icons.accuracy_Scroll),
-                
+
             };
 
             return skills;

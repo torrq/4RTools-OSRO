@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Threading;
-using System.Windows.Input;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using _4RTools.Utils;
-using _4RTools.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+using System.Windows.Input;
+using _4RTools.Forms;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {
@@ -83,59 +83,59 @@ namespace _4RTools.Model
                 string currentMap = c.ReadCurrentMap();
                 UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
 
-                    if (!prefs.StopBuffsCity || !this.CityList.Contains(currentMap))
+                if (!prefs.StopBuffsCity || !this.CityList.Contains(currentMap))
+                {
+                    List<EffectStatusIDs> currentBuffs = new List<EffectStatusIDs>();
+                    Dictionary<EffectStatusIDs, Key> buffsToApply = new Dictionary<EffectStatusIDs, Key>(this.buffMapping);
+
+                    for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                     {
-                        List<EffectStatusIDs> currentBuffs = new List<EffectStatusIDs>();
-                        Dictionary<EffectStatusIDs, Key> buffsToApply = new Dictionary<EffectStatusIDs, Key>(this.buffMapping);
+                        uint currentStatusValue = c.CurrentBuffStatusCode(i);
 
-                        for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                        if (currentStatusValue == uint.MaxValue) { continue; }
+
+                        EffectStatusIDs status = (EffectStatusIDs)currentStatusValue;
+                        currentBuffs.Add(status);
+
+                        HandleOverweightStatus(c, status);
+
+                        if (status == EffectStatusIDs.OVERTHRUSTMAX && buffsToApply.ContainsKey(EffectStatusIDs.OVERTHRUST))
                         {
-                            uint currentStatusValue = c.CurrentBuffStatusCode(i);
-
-                            if (currentStatusValue == uint.MaxValue) { continue; }
-
-                            EffectStatusIDs status = (EffectStatusIDs)currentStatusValue;
-                            currentBuffs.Add(status);
-
-                            HandleOverweightStatus(c, status);
-
-                            if (status == EffectStatusIDs.OVERTHRUSTMAX && buffsToApply.ContainsKey(EffectStatusIDs.OVERTHRUST))
-                            {
-                                buffsToApply.Remove(EffectStatusIDs.OVERTHRUST);
-                            }
-
-                            if (buffMapping.ContainsKey(status)) //CHECK IF STATUS EXISTS IN STATUS LIST AND DO ACTION
-                            {
-                                buffsToApply.Remove(status);
-                            }
-
-                            if (status == EffectStatusIDs.QUAGMIRE) foundQuag = true;
-                            if (status == EffectStatusIDs.DECREASE_AGI) foundDecreaseAgi = true;
+                            buffsToApply.Remove(EffectStatusIDs.OVERTHRUST);
                         }
 
-                        if (!currentBuffs.Contains(EffectStatusIDs.RIDDING))
+                        if (buffMapping.ContainsKey(status)) //CHECK IF STATUS EXISTS IN STATUS LIST AND DO ACTION
                         {
-                            foreach (var buffToApply in buffsToApply)
-                            {
-                                if (ShouldSkipBuffDueToQuag(foundQuag, buffToApply.Key))
-                                {
-                                    continue; // Use continue instead of break to check other buffs
-                                }
-
-                                if (ShouldSkipBuffDueToDecreaseAgi(foundDecreaseAgi, buffToApply.Key))
-                                {
-                                    continue; // Use continue instead of break to check other buffs
-                                }
-
-                                if (c.ReadCurrentHp() >= Constants.MINIMUM_HP_TO_RECOVER)
-                                {
-                                    this.UseAutobuff(buffToApply.Value);
-                                    Thread.Sleep(Delay);
-                                }
-                            }
+                            buffsToApply.Remove(status);
                         }
-                        currentBuffs.Clear();
+
+                        if (status == EffectStatusIDs.QUAGMIRE) foundQuag = true;
+                        if (status == EffectStatusIDs.DECREASE_AGI) foundDecreaseAgi = true;
                     }
+
+                    if (!currentBuffs.Contains(EffectStatusIDs.RIDDING))
+                    {
+                        foreach (var buffToApply in buffsToApply)
+                        {
+                            if (ShouldSkipBuffDueToQuag(foundQuag, buffToApply.Key))
+                            {
+                                continue; // Use continue instead of break to check other buffs
+                            }
+
+                            if (ShouldSkipBuffDueToDecreaseAgi(foundDecreaseAgi, buffToApply.Key))
+                            {
+                                continue; // Use continue instead of break to check other buffs
+                            }
+
+                            if (c.ReadCurrentHp() >= Constants.MINIMUM_HP_TO_RECOVER)
+                            {
+                                this.UseAutobuff(buffToApply.Value);
+                                Thread.Sleep(Delay);
+                            }
+                        }
+                    }
+                    currentBuffs.Clear();
+                }
                 Thread.Sleep(300);
                 return 0;
             });
@@ -197,7 +197,7 @@ namespace _4RTools.Model
         {
             return foundDecreaseAgi && (buffKey == EffectStatusIDs.TWOHANDQUICKEN || buffKey == EffectStatusIDs.ADRENALINE || buffKey == EffectStatusIDs.ADRENALINE2 || buffKey == EffectStatusIDs.ONEHANDQUICKEN || buffKey == EffectStatusIDs.SPEARQUICKEN);
         }
-     
+
         public void AddKeyToBuff(EffectStatusIDs status, Key key)
         {
             if (buffMapping.ContainsKey(status))

@@ -1,12 +1,11 @@
 ﻿using System;
-using _4RTools.Model;
-using System.Windows.Forms;
-using _4RTools.Utils;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Markup;
+using _4RTools.Model;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
@@ -85,9 +84,11 @@ namespace _4RTools.Forms
                 this.overweightKey.Text = prefs.OverweightKey.ToString();
 
                 RadioButton rdOverweightMode = (RadioButton)this.groupOverweight.Controls[ProfileSingleton.GetCurrent().UserPreferences.OverweightMode.ToString()];
-                if (rdOverweightMode != null) { 
+                if (rdOverweightMode != null)
+                {
                     rdOverweightMode.Checked = true;
-                };
+                }
+                ;
 
             }
             catch (Exception)

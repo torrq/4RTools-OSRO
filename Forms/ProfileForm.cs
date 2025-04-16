@@ -1,11 +1,11 @@
 ﻿using System;
-using _4RTools.Model;
 using System.Windows.Forms;
+using _4RTools.Model;
 using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
-    public partial class ProfileForm: Form
+    public partial class ProfileForm : Form
     {
         private Container container;
         public ProfileForm(Container container)
@@ -15,7 +15,8 @@ namespace _4RTools.Forms
 
             foreach (string profile in Profile.ListAll())
             {
-                if (profile != "Default") { this.lbProfilesList.Items.Add(profile); };
+                if (profile != "Default") { this.lbProfilesList.Items.Add(profile); }
+                ;
             }
 
             FormUtils.ApplyColorToButtons(this, new[] { "btnSave" }, AppConfig.CreateButtonBackColor);
@@ -46,7 +47,8 @@ namespace _4RTools.Forms
             if (selectedProfile == "Default")
             {
                 MessageBox.Show("Cannot delete a Default profile!");
-            } else
+            }
+            else
             {
                 ProfileSingleton.Delete(selectedProfile);
                 this.lbProfilesList.Items.Remove(selectedProfile);

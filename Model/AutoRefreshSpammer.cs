@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Threading;
-using System.Windows.Input;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using _4RTools.Utils;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+using System.Windows.Input;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {

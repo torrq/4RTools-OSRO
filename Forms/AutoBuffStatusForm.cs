@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Collections.Generic;
-using _4RTools.Utils;
 using _4RTools.Model;
-using System.Linq;
-using System.Windows.Media.Effects;
+using _4RTools.Utils;
 namespace _4RTools.Forms
 {
     public partial class AutoBuffStatusForm : Form, IObserver

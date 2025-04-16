@@ -333,7 +333,7 @@ namespace _4RTools.Utils
         [Description("Research Report")]
         RESEARCHREPORT = 1248,
         [Description("Kaite")]
-        KAITE = 1402,                                                     
+        KAITE = 1402,
         BOX_OF_STORMS = 1405,
 
         //PADAWAN FOR HIGHRATE

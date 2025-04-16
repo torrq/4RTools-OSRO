@@ -1,11 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
-using _4RTools.Utils;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
+using _4RTools.Utils;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace _4RTools.Model
 {
@@ -193,7 +192,7 @@ namespace _4RTools.Model
                     return true;
                 }
             }
-            
+
             return false;
         }
     }

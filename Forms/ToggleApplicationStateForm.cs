@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
-using _4RTools.Utils;
-using _4RTools.Model;
 using System.Media;
-using _4RTools.Properties;
+using System.Windows.Forms;
+using _4RTools.Model;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {

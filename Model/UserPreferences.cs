@@ -1,8 +1,8 @@
-﻿using _4RTools.Utils;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Input;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {

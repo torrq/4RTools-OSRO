@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Input;
-using Newtonsoft.Json;
 using System.Threading;
-using _4RTools.Utils;
 using System.Windows.Forms;
+using System.Windows.Input;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {
@@ -69,7 +69,7 @@ namespace _4RTools.Model
         public Macro(string macroname, int macroLanes)
         {
             this.ActionName = macroname;
-            for(int i = 1; i <= macroLanes; i++)
+            for (int i = 1; i <= macroLanes; i++)
             {
                 ChainConfigs.Add(new ChainConfig(i, Key.None));
 

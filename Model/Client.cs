@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Net;
-using System.Net.Mail;
 
 namespace _4RTools.Model
 {
@@ -29,7 +26,7 @@ namespace _4RTools.Model
 
         public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress)
         {
-            this.Name= name;
+            this.Name = name;
             this.Description = description;
             this.HPAddress = hpAddress;
             this.NameAddress = nameAddress;
@@ -46,7 +43,7 @@ namespace _4RTools.Model
     public sealed class ClientListSingleton
     {
         private static List<Client> Clients = new List<Client>();
-        
+
         public static void AddClient(Client c)
         {
             Clients.Add(c);
@@ -147,9 +144,9 @@ namespace _4RTools.Model
                         this.CurrentMapAddress = 0;
                         this.StatusBufferAddress = 0;
                     }
-                   
+
                     //Do not block spammer for non supported Versions
-                       
+
                 }
             }
         }
@@ -158,14 +155,14 @@ namespace _4RTools.Model
         {
             byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 40u, out _num);
             List<byte> buffer = new List<byte>(); //Need a list with dynamic size 
-            for (int i =0;i < bytes.Length;i++)
+            for (int i = 0; i < bytes.Length; i++)
             {
                 if (bytes[i] == 0) break; //Check Nullability based ON ASCII Table
 
                 buffer.Add(bytes[i]); //Add only bytes needed
             }
 
-           return Encoding.Default.GetString(buffer.ToArray());
+            return Encoding.Default.GetString(buffer.ToArray());
 
         }
 
@@ -230,8 +227,8 @@ namespace _4RTools.Model
 
         public Client GetClientByProcess(string processName)
         {
-       
-            foreach(Client c in ClientListSingleton.GetAll())
+
+            foreach (Client c in ClientListSingleton.GetAll())
             {
                 if (c.ProcessName == processName)
                 {
@@ -241,7 +238,7 @@ namespace _4RTools.Model
             }
             return null;
         }
-    
+
         public static Client FromDTO(ClientDTO dto)
         {
             return ClientListSingleton.GetAll()

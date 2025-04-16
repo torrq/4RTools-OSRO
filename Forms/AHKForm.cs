@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using _4RTools.Utils;
-using _4RTools.Model;
 using System.Windows.Input;
-using System.Web;
-using System.Diagnostics.Tracing;
+using _4RTools.Model;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
@@ -43,9 +41,10 @@ namespace _4RTools.Forms
             SetLegendDefaultValues();
             this.ahk = ProfileSingleton.GetCurrent().AHK;
             InitializeCheckAsThreeState();
-            
+
             RadioButton rdAhkMode = (RadioButton)this.groupAhkConfig.Controls[ProfileSingleton.GetCurrent().AHK.AHKMode];
-            if (rdAhkMode != null) { rdAhkMode.Checked = true; };
+            if (rdAhkMode != null) { rdAhkMode.Checked = true; }
+            ;
             this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().AHK.AhkDelay.ToString();
             this.chkNoShift.Checked = ProfileSingleton.GetCurrent().AHK.NoShift;
             this.chkMouseFlick.Checked = ProfileSingleton.GetCurrent().AHK.MouseFlick;
@@ -126,7 +125,8 @@ namespace _4RTools.Forms
                     if ((check.Name.Split(new[] { "chk" }, StringSplitOptions.None).Length == 2))
                     {
                         check.ThreeState = true;
-                    };
+                    }
+                    ;
 
                     if (check.Enabled)
                         check.CheckStateChanged += OnCheckChange;
@@ -175,7 +175,8 @@ namespace _4RTools.Forms
             {
                 this.chkMouseFlick.Enabled = false;
                 this.chkNoShift.Enabled = false;
-            } else
+            }
+            else
             {
                 this.chkMouseFlick.Enabled = true;
                 this.chkNoShift.Enabled = true;

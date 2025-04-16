@@ -1,16 +1,11 @@
-﻿using _4RTools.Forms;
-using _4RTools.Utils;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 namespace _4RTools.Model
 {
     public class DebuffsRecovery : IAction

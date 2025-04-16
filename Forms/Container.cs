@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.IO;
 using _4RTools.Model;
 using _4RTools.Utils;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace _4RTools.Forms
 {
@@ -208,7 +206,8 @@ namespace _4RTools.Forms
             {
                 try
                 {
-                    if (currentProfile != null) {
+                    if (currentProfile != null)
+                    {
                         this.frmToggleApplication.TurnOFF();
                     }
                     ProfileSingleton.ClearProfile(this.profileCB.Text);

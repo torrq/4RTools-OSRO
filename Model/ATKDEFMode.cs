@@ -1,12 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
-using _4RTools.Utils;
-using System.Threading;
-using System.Drawing;
-using System.Windows.Input;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
+using System.Windows.Input;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {
@@ -107,7 +106,7 @@ namespace _4RTools.Model
 
         private int AHKThreadExecution(Client roClient)
         {
-        foreach (EquipConfig equipConfig in this.EquipConfigs)
+            foreach (EquipConfig equipConfig in this.EquipConfigs)
             {
                 bool equipAtkItems = false;
                 bool equipDefItems = false;

@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms;
-using System;
+﻿using System;
+using System.Windows.Forms;
 using System.Windows.Input;
 using _4RTools.Model;
 using _4RTools.Utils;
@@ -54,7 +54,8 @@ namespace _4RTools.Forms
             this.numAutopotDelay.Text = this.autopot.Delay.ToString();
             this.chkStopWitchFC.Checked = this.autopot.StopWitchFC;
             RadioButton rdHealFirst = (RadioButton)this.Controls[ProfileSingleton.GetCurrent().Autopot.FirstHeal];
-            if (rdHealFirst != null) { rdHealFirst.Checked = true; };
+            if (rdHealFirst != null) { rdHealFirst.Checked = true; }
+            ;
 
             txtHpKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             txtHpKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
@@ -91,7 +92,7 @@ namespace _4RTools.Forms
             {
                 var exception = ex;
             }
-        
+
         }
 
         private void TxtHPpctTextChanged(object sender, EventArgs e)

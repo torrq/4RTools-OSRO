@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Threading;
-using System.Windows.Input;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+using System.Windows.Input;
 using _4RTools.Utils;
 using Newtonsoft.Json;
-using System.Runtime.InteropServices;
 
 namespace _4RTools.Model
 {
@@ -144,7 +144,7 @@ namespace _4RTools.Model
 
         private void AHKSynchronous(Client roClient, KeyConfig config, Keys thisk)
         {
-            
+
             Func<int, int> send_click;
             //bool ammo = false;
             send_click = (evt) =>

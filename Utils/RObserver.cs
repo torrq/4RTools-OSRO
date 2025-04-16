@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace _4RTools.Utils
 {
@@ -15,7 +14,8 @@ namespace _4RTools.Utils
         void Notify(Message message);
     }
 
-    public enum MessageCode { 
+    public enum MessageCode
+    {
         PROCESS_CHANGED,
         PROFILE_CHANGED,
         PROFILE_INPUT_CHANGE,

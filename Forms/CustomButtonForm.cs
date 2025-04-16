@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using _4RTools.Utils;
-using _4RTools.Model;
 using System.Windows.Input;
+using _4RTools.Model;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
@@ -41,7 +41,7 @@ namespace _4RTools.Forms
 
         private void InitializeApplicationForm()
         {
-            this.custom = ProfileSingleton.GetCurrent().Custom; 
+            this.custom = ProfileSingleton.GetCurrent().Custom;
             this.txtTransferKey.Text = custom.tiMode.ToString();
 
             this.txtTransferKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);

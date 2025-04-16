@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using _4RTools.Utils;
-using System.Drawing;
-using System.Windows.Input;
 
 namespace _4RTools.Model
 {

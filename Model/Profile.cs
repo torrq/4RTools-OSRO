@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using _4RTools.Utils;
-using _4RTools.Forms;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System;
+using _4RTools.Forms;
+using _4RTools.Utils;
+using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {

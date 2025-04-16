@@ -225,7 +225,7 @@ namespace _4RTools.Utils
                 // Check if the control is a NumericUpDown and its name indicates it's a delay input
                 if (control is NumericUpDown delayInput && delayInput.Name.ToLower().Contains("delay"))
                 {
-                     delayInput.Minimum = minimumDelayValue;
+                    delayInput.Minimum = minimumDelayValue;
 
                     // Fix: Ensure value respects new minimum
                     if (delayInput.Value < delayInput.Minimum)

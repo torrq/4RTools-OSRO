@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Windows.Input;
 using _4RTools.Model;
 using _4RTools.Utils;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Windows.Input;
 
 namespace _4RTools.Forms
 {
@@ -39,9 +39,9 @@ namespace _4RTools.Forms
             }
         }
 
-        public void Update(ISubject subject) 
-        { 
-            switch((subject as Subject).Message.Code)
+        public void Update(ISubject subject)
+        {
+            switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
                     UpdateUI();
@@ -108,7 +108,8 @@ namespace _4RTools.Forms
                     NumericUpDown delayInput = (NumericUpDown)d[0];
                     delayInput.Value = chainConfig.Delay;
                 }
-            } catch { }
+            }
+            catch { }
         }
 
         private void OnTextChange(object sender, EventArgs e)
@@ -117,7 +118,7 @@ namespace _4RTools.Forms
             TextBox textBox = (TextBox)sender;
             Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
 
-            if(textBox.Tag != null)
+            if (textBox.Tag != null)
             {
                 //Could be Trigger, Dagger or Instrument input
                 string[] inputTag = textBox.Tag.ToString().Split(new[] { ":" }, StringSplitOptions.None);
@@ -131,7 +132,7 @@ namespace _4RTools.Forms
                         chainConfig.DaggerKey = key;
                         break;
                     case "Instrument":
-                        chainConfig.InstrumentKey= key;
+                        chainConfig.InstrumentKey = key;
                         break;
                     case "Trigger":
                         chainConfig.Trigger = key;
@@ -142,7 +143,7 @@ namespace _4RTools.Forms
             {
                 int macroID = short.Parse(textBox.Name.Split(new[] { "mac" }, StringSplitOptions.None)[1]);
                 ChainConfig chainConfig = SongMacro.ChainConfigs.Find(songMacro => songMacro.id == macroID);
-                if(chainConfig == null)
+                if (chainConfig == null)
                 {
                     SongMacro.ChainConfigs.Add(new ChainConfig(macroID, Key.None));
                     chainConfig = SongMacro.ChainConfigs.Find(songMacro => songMacro.id == macroID);
@@ -251,7 +252,8 @@ namespace _4RTools.Forms
                         numericUpDown.ValueChanged += new EventHandler(this.OnDelayChange);
                     }
                 }
-            } catch { }
+            }
+            catch { }
         }
 
         private void InTriggerMacro1_TextChanged(object sender, EventArgs e)

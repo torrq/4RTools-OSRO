@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Windows.Forms;
-using _4RTools.Utils;
-using _4RTools.Model;
-using System.Windows.Input;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Windows.Input;
+using _4RTools.Model;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
     public partial class SkillAutoBuffForm : Form, IObserver
     {
 
-        private List<BuffContainer> skillContainers =  new List<BuffContainer>();
+        private List<BuffContainer> skillContainers = new List<BuffContainer>();
 
         public SkillAutoBuffForm(Subject subject)
         {

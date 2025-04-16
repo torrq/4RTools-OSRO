@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Windows.Input;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Windows.Input;
 using _4RTools.Model;
 using _4RTools.Utils;
-using System.Linq;
 
 namespace _4RTools.Forms
 {
