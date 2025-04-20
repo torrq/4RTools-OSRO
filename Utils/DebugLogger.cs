@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using _4RTools.Model;
 
@@ -11,19 +10,20 @@ namespace _4RTools.Utils
     {
         private static readonly object _logLock = new object();
         private static readonly string _logFilePath = AppConfig.DebugLogFilePath;
-        private static readonly System.Timers.Timer _flushTimer;
-        private static readonly Queue<LogEntry> _messageQueue = new Queue<LogEntry>();
-        private static bool _isInitialized = false;
-        private static readonly int _flushIntervalMs = 1000;
-
         private static readonly bool _debugMode;
+        private static bool _isInitialized = false;
+        private static bool _initializationLogged = false;
 
+        // Deduplication for INFO and STATUS
         private static string _lastInfoMessage = null;
         private static string _lastStatusMessage = null;
+
+        // Deduplication for queued messages (WARNING, ERROR, DEBUG)
         private static string _lastQueuedMessage = null;
         private static LogLevel _lastQueuedLogLevel = LogLevel.INFO;
+        private static DateTime _lastQueuedTimestamp = DateTime.MinValue;
         private static int _queuedDuplicateCount = 0;
-        private static DateTime _lastQueuedMessageTime = DateTime.MinValue;
+        private static readonly Queue<LogEntry> _messageQueue = new Queue<LogEntry>();
 
         public enum LogLevel
         {
@@ -57,31 +57,34 @@ namespace _4RTools.Utils
                 if (!_debugMode)
                     return;
 
-                if (!File.Exists(_logFilePath))
+                lock (_logLock)
                 {
-                    using (StreamWriter writer = new StreamWriter(_logFilePath, false, Encoding.UTF8))
+                    if (!File.Exists(_logFilePath))
                     {
-                        writer.WriteLine($"=== 4RTOOLS DEBUG LOG === Started on {DateTime.Now} ===");
-                        writer.WriteLine("============================================");
+                        using (StreamWriter writer = new StreamWriter(_logFilePath, false, Encoding.UTF8))
+                        {
+                            writer.WriteLine($"=== 4RTOOLS DEBUG LOG === Started on {DateTime.Now} ===");
+                            writer.WriteLine("============================================");
+                        }
+                    }
+                    else
+                    {
+                        using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                        {
+                            writer.WriteLine();
+                            writer.WriteLine($"=== NEW SESSION STARTED {DateTime.Now} ===");
+                            writer.WriteLine("============================================");
+                        }
+                    }
+
+                    _isInitialized = true;
+
+                    if (!_initializationLogged)
+                    {
+                        Info("DebugLogger initialized successfully");
+                        _initializationLogged = true;
                     }
                 }
-                else
-                {
-                    using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                    {
-                        writer.WriteLine();
-                        writer.WriteLine($"=== NEW SESSION STARTED {DateTime.Now} ===");
-                        writer.WriteLine("============================================");
-                    }
-                }
-
-                _flushTimer = new System.Timers.Timer(_flushIntervalMs);
-                _flushTimer.Elapsed += (s, e) => FlushQueue();
-                _flushTimer.AutoReset = true;
-                _flushTimer.Start();
-
-                _isInitialized = true;
-                Info("DebugLogger initialized successfully");
             }
             catch (Exception ex)
             {
@@ -91,11 +94,11 @@ namespace _4RTools.Utils
 
         public static void Log(LogLevel level, string message)
         {
+            if (!_debugMode && level != LogLevel.ERROR)
+                return;
+
             try
             {
-                if (!_debugMode && level != LogLevel.ERROR)
-                    return;
-
                 lock (_logLock)
                 {
                     DateTime now = DateTime.Now;
@@ -107,9 +110,12 @@ namespace _4RTools.Utils
                         {
                             string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [INFO] {message}";
                             Console.WriteLine(formattedMessage);
-                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                            if (_isInitialized && _debugMode)
                             {
-                                writer.WriteLine(formattedMessage);
+                                using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                                {
+                                    writer.WriteLine(formattedMessage);
+                                }
                             }
                             _lastInfoMessage = message;
                         }
@@ -121,57 +127,60 @@ namespace _4RTools.Utils
                         {
                             string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [STATUS] {message}";
                             Console.WriteLine(formattedMessage);
-                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                            if (_isInitialized && _debugMode)
                             {
-                                writer.WriteLine(formattedMessage);
+                                using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                                {
+                                    writer.WriteLine(formattedMessage);
+                                }
                             }
                             _lastStatusMessage = message;
                         }
                     }
                     else
                     {
-                        // Queue other levels
+                        // Queue other levels (WARNING, ERROR, DEBUG)
                         if (message == _lastQueuedMessage && level == _lastQueuedLogLevel)
                         {
                             _queuedDuplicateCount++;
                             return;
                         }
-                        else
+
+                        // Log previous queued message if it exists
+                        if (_lastQueuedMessage != null && _isInitialized && _debugMode)
                         {
-                            if (_lastQueuedMessage != null && _debugMode)
+                            var entry = new LogEntry
                             {
-                                var entry = new LogEntry
-                                {
-                                    Message = _lastQueuedMessage,
-                                    Level = _lastQueuedLogLevel,
-                                    Timestamp = _lastQueuedMessageTime,
-                                    RepeatCount = _queuedDuplicateCount
-                                };
-
-                                Console.WriteLine(entry.FormatMessage());
-                                _messageQueue.Enqueue(entry);
-                            }
-
-                            _lastQueuedMessage = message;
-                            _lastQueuedLogLevel = level;
-                            _lastQueuedMessageTime = now;
-                            _queuedDuplicateCount = 0;
-
-                            var newEntry = new LogEntry
-                            {
-                                Message = message,
-                                Level = level,
-                                Timestamp = now,
-                                RepeatCount = 0
+                                Message = _lastQueuedMessage,
+                                Level = _lastQueuedLogLevel,
+                                Timestamp = _lastQueuedTimestamp,
+                                RepeatCount = _queuedDuplicateCount
                             };
-
-                            Console.WriteLine(newEntry.FormatMessage());
-                            _messageQueue.Enqueue(newEntry);
+                            string formattedMessage = entry.FormatMessage();
+                            Console.WriteLine(formattedMessage);
+                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                            {
+                                writer.WriteLine(formattedMessage);
+                            }
+                            _messageQueue.Enqueue(entry);
                         }
-                    }
 
-                    if (!_debugMode && level == LogLevel.ERROR)
-                        Console.WriteLine($"[ERROR] {message}");
+                        // Update deduplication state and enqueue new message
+                        _lastQueuedMessage = message;
+                        _lastQueuedLogLevel = level;
+                        _lastQueuedTimestamp = now;
+                        _queuedDuplicateCount = 0;
+
+                        // Enqueue new message without logging immediately
+                        var newEntry = new LogEntry
+                        {
+                            Message = message,
+                            Level = level,
+                            Timestamp = now,
+                            RepeatCount = 0
+                        };
+                        _messageQueue.Enqueue(newEntry);
+                    }
                 }
             }
             catch (Exception ex)
@@ -201,38 +210,6 @@ namespace _4RTools.Utils
             Log(LogLevel.DEBUG, $"Memory {description}: Address={address.ToInt64():X8}, Value={value}");
         }
 
-        private static void FlushQueue()
-        {
-            if (!_isInitialized || !_debugMode)
-                return;
-
-            try
-            {
-                List<LogEntry> messagesToWrite;
-
-                lock (_logLock)
-                {
-                    if (_messageQueue.Count == 0)
-                        return;
-
-                    messagesToWrite = _messageQueue.ToList();
-                    _messageQueue.Clear();
-                }
-
-                using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                {
-                    foreach (var entry in messagesToWrite)
-                    {
-                        writer.WriteLine(entry.FormatMessage());
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error flushing log queue: {ex.Message}");
-            }
-        }
-
         public static void Shutdown()
         {
             if (!_isInitialized || !_debugMode)
@@ -240,30 +217,45 @@ namespace _4RTools.Utils
 
             try
             {
-                _flushTimer.Stop();
-
                 lock (_logLock)
                 {
+                    // Log any pending deduplicated message
                     if (_lastQueuedMessage != null)
                     {
                         var entry = new LogEntry
                         {
                             Message = _lastQueuedMessage,
                             Level = _lastQueuedLogLevel,
-                            Timestamp = _lastQueuedMessageTime,
+                            Timestamp = _lastQueuedTimestamp,
                             RepeatCount = _queuedDuplicateCount
                         };
-
-                        Console.WriteLine(entry.FormatMessage());
-                        _messageQueue.Enqueue(entry);
+                        string formattedMessage = entry.FormatMessage();
+                        Console.WriteLine(formattedMessage);
+                        using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                        {
+                            writer.WriteLine(formattedMessage);
+                        }
                     }
-                }
 
-                FlushQueue();
+                    // Clear queue without re-logging
+                    _messageQueue.Clear();
 
-                using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                {
-                    writer.WriteLine($"=== SESSION ENDED {DateTime.Now} ===");
+                    // Log shutdown message
+                    string shutdownMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [INFO] Shutting down logger...";
+                    Console.WriteLine(shutdownMessage);
+                    using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                    {
+                        writer.WriteLine(shutdownMessage);
+                        writer.WriteLine($"=== SESSION ENDED {DateTime.Now} ===");
+                    }
+
+                    // Reset deduplication state
+                    _lastInfoMessage = null;
+                    _lastStatusMessage = null;
+                    _lastQueuedMessage = null;
+                    _lastQueuedLogLevel = LogLevel.INFO;
+                    _lastQueuedTimestamp = DateTime.MinValue;
+                    _queuedDuplicateCount = 0;
                 }
             }
             catch (Exception ex)

@@ -46,10 +46,14 @@ namespace _4RTools.Utils
     {
         public Message Message { get; set; } = new Message();
         private readonly List<IObserver> _observers = new List<IObserver>();
+        
         public void Attach(IObserver observer)
         {
-            DebugLogger.Debug("Subject: Attached an observer.");
-            this._observers.Add(observer);
+            if (!_observers.Contains(observer))
+            {
+                _observers.Add(observer);
+                DebugLogger.Debug($"Subject: Attached an observer.");
+            }
         }
 
         public void Detach(IObserver observer)

@@ -12,23 +12,24 @@ namespace _4RTools
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (Forms.Container app = new Forms.Container()) // Ensure proper disposal
+            try
             {
-                try
+                using (Forms.Container app = new Forms.Container())
                 {
                     Application.Run(app);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An unexpected error occurred: " + ex.Message,
-                                    "Application Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-                }
             }
-            DebugLogger.Shutdown();
-            // Ensure proper cleanup after exiting
-            Application.Exit();
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unhandled exception:\n" + ex.ToString());
+                MessageBox.Show("An unexpected error occurred. Please check the logs.", "Application Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DebugLogger.Shutdown();
+                Application.Exit();
+            }
         }
     }
 }

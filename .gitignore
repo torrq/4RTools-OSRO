@@ -403,3 +403,5 @@ OldVersions/
 .idea/4RTools-RagTools.iml
 .idea/misc.xml
 .idea/.gitignore
+*.zip
+*.7z

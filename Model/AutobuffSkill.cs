@@ -161,7 +161,7 @@ namespace _4RTools.Model
             }
         }
 
-        private void SendOverweightMacro(Client c, string percentage, int times = 6, int intervalMs = 10000)
+        private void SendOverweightMacro(Client c, string percentage, int times = 2, int intervalMs = 5000)
         {
             UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (!string.IsNullOrEmpty(prefs.OverweightKey.ToString()) && prefs.OverweightKey.ToString() != "None")

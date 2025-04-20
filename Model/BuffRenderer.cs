@@ -11,8 +11,8 @@ namespace _4RTools.Model
     {
 
         private readonly int BUFFS_PER_ROW = 5;
-        private readonly int DISTANCE_BETWEEN_CONTAINERS = 10;
-        private readonly int DISTANCE_BETWEEN_ROWS = 30;
+        private readonly int DISTANCE_BETWEEN_CONTAINERS = 2;
+        private readonly int DISTANCE_BETWEEN_ROWS = 27;
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;

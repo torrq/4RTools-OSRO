@@ -262,9 +262,7 @@ namespace _4RTools.Utils
                 FieldInfo field = type.GetField(name);
                 if (field != null)
                 {
-                    DescriptionAttribute attr =
-                            Attribute.GetCustomAttribute(field,
-                                                            typeof(DescriptionAttribute)) as DescriptionAttribute;
+                    DescriptionAttribute attr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
                     if (attr != null)
                     {
                         return attr.Description;
