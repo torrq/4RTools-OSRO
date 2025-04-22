@@ -66,11 +66,22 @@ namespace _4RTools.Utils
         ASPDPOTIONINFINITY = 40,
         [Description("Speed Potion")]
         SPEED_POT = 41,
-        STRIPWEAPON = 51,
-        STRIPSHIELD = 52,
-        STRIPARMOR = 53,
-        STRIPHELM = 54,
+        [Description("Strip Weapon")]
+        STRIPWEAPON = 50,
+        [Description("Strip Shield")]
+        STRIPSHIELD = 51,
+        [Description("Strip Armor")]
+        STRIPARMOR = 52,
+        [Description("Strip Helm")]
+        STRIPHELM = 53,
+        [Description("Chemical Protection Weapon")]
+        PROTECTWEAPON = 54,
+        [Description("Chemical Protection Shield")]
+        PROTECTSHIELD = 55,
+        [Description("Chemical Protection Armor")]
         PROTECTARMOR = 56,
+        [Description("Chemical Protection Helm")]
+        PROTECTHELM = 57,
         [Description("Autoguard")]
         AUTOGUARD = 58,
         [Description("Reflect Shield")]
@@ -217,8 +228,8 @@ namespace _4RTools.Utils
         MENTAL_POTION = 298,
         SPELLBREAKER = 300,
         TARGET_BLOOD = 301,
-        GHOSTRING = 302,
-        ANGELING = 302,
+//        GHOSTRING = 302,
+//        ANGELING = 302,
         CASH_PLUSECLASSXP = 312,
         [Description("Enchant Blade")]
         ENCHANT_BLADE = 316,

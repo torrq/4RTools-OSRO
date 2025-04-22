@@ -47,16 +47,16 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox = new System.Windows.Forms.CheckBox();
             this.chkStopBuffsOnCity = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnChangeLanguage = new System.Windows.Forms.Button();
+            this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkDebugMode = new System.Windows.Forms.CheckBox();
+            this.cmbLanguage = new System.Windows.Forms.ComboBox();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbLanguage = new System.Windows.Forms.ComboBox();
-            this.btnChangeLanguage = new System.Windows.Forms.Button();
-            this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chkDebugMode = new System.Windows.Forms.CheckBox();
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
@@ -134,11 +134,11 @@ namespace _4RTools.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(122, 78);
+            this.label1.Location = new System.Drawing.Point(120, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.Size = new System.Drawing.Size(100, 17);
             this.label1.TabIndex = 316;
-            this.label1.Text = "Also send ALT -";
+            this.label1.Text = "Then send Alt +";
             // 
             // overweight50
             // 
@@ -238,16 +238,6 @@ namespace _4RTools.Forms
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
             this.chkStopBuffsOnCity.CheckedChanged += new System.EventHandler(this.ChkStopBuffsOnCity_CheckedChanged);
             // 
-            // cmbLanguage
-            // 
-            this.cmbLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLanguage.FormattingEnabled = true;
-            this.cmbLanguage.Location = new System.Drawing.Point(156, 37);
-            this.cmbLanguage.Name = "cmbLanguage";
-            this.cmbLanguage.Size = new System.Drawing.Size(80, 23);
-            this.cmbLanguage.TabIndex = 318;
-            this.cmbLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // btnChangeLanguage
             // 
             this.btnChangeLanguage.BackColor = System.Drawing.Color.White;
@@ -302,6 +292,16 @@ namespace _4RTools.Forms
             this.toolTip1.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
             this.chkDebugMode.UseVisualStyleBackColor = true;
             this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            // 
+            // cmbLanguage
+            // 
+            this.cmbLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLanguage.FormattingEnabled = true;
+            this.cmbLanguage.Location = new System.Drawing.Point(156, 37);
+            this.cmbLanguage.Name = "cmbLanguage";
+            this.cmbLanguage.Size = new System.Drawing.Size(80, 23);
+            this.cmbLanguage.TabIndex = 318;
+            this.cmbLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // clientDTOBindingSource
             // 
