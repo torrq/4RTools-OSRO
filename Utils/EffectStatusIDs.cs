@@ -7,7 +7,6 @@ namespace _4RTools.Utils
     [Flags]
     public enum EffectStatusIDs : uint
     {
-        //Status
         [Description("Provoke")]
         PROVOKE = 0,
         [Description("Endure")]
@@ -30,6 +29,8 @@ namespace _4RTools.Utils
         BLESSING = 10,
         [Description("Increase AGI")]
         INC_AGI = 12,
+        [Description("Decrease AGI")]
+        DECREASE_AGI = 13,
         [Description("Impositio Manus")]
         IMPOSITIO = 15,
         [Description("Aspersio")]
@@ -56,7 +57,10 @@ namespace _4RTools.Utils
         ENERGYCOAT = 31,
         [Description("Hallucination")]
         HALLUCINATION = 34,
-        //POTIONS
+        [Description("50% Weight")]
+        WEIGHT50 = 35,
+        [Description("90% Weight")]
+        WEIGHT90 = 36,
         [Description("Concentration Potion")]
         CONCENTRATION_POTION = 37,
         [Description("Awakening Potion")]
@@ -136,6 +140,8 @@ namespace _4RTools.Utils
         CARTBOOST = 118,
         [Description("Reject Sword")]
         SWORDREJECT = 120,
+        [Description("Bleeding")]
+        BLEEDING = 124,
         [Description("Mind Breaker")]
         MINDBREAKER = 126,
         [Description("Memorize")]
@@ -154,6 +160,7 @@ namespace _4RTools.Utils
         ADRENALINE2 = 147,
         [Description("Elemental Converter (Ghost)")]
         PROPERTYTELEKINESIS = 148,
+        [Description("Soul Link")]
         SOULLINK = 149,
         // Resentment Box is also:
         // - Tasty Pink Ration (10 min)
@@ -206,7 +213,6 @@ namespace _4RTools.Utils
         ADJUSTMENT = 209,
         [Description("Accuracy")]
         ACCURACY = 210,
-        //FOODS
         FOOD_STR = 241,
         FOOD_AGI = 242,
         FOOD_VIT = 243,
@@ -215,12 +221,19 @@ namespace _4RTools.Utils
         FOOD_LUK = 246,
         // Flee Scroll is also:
         // -- Spray of Flowers (flee +10, 5 mins) 
+        [Description("Flee Scroll / Spray of Flowers")]
         FLEE_SCROLL = 247,
+        [Description("Accuracy Scroll")]
         ACCURACY_SCROLL = 248,
         [Description("Field Manual 100%")]
         FIELD_MANUAL = 250,
         CASH_RECEIVEITEM = 252,
         FOOD_VIT_CASH = 273,
+        [Description("Slow Cast")]
+        SLOW_CAST = 282,
+        [Description("Critical Wound")]
+        CRITICALWOUND = 286,
+        [Description("Box of Thunder")]
         BOX_OF_THUNDER = 289,
         REGENERATION_POTION = 292,
         CRITICALPERCENT = 295,
@@ -228,8 +241,6 @@ namespace _4RTools.Utils
         MENTAL_POTION = 298,
         SPELLBREAKER = 300,
         TARGET_BLOOD = 301,
-//        GHOSTRING = 302,
-//        ANGELING = 302,
         CASH_PLUSECLASSXP = 312,
         [Description("Enchant Blade")]
         ENCHANT_BLADE = 316,
@@ -243,6 +254,8 @@ namespace _4RTools.Utils
         [Description("Lauda Ramus")]
         LAUDA_RAMUS = 332,
         HALLUCINATIONWALK = 334,
+        [Description("Frozen")]
+        FREEZING = 351,
         [Description("Fear Breeze")]
         FEARBREEZE = 352,
         [Description("Recognized Spell")]
@@ -250,8 +263,8 @@ namespace _4RTools.Utils
         ACCELERATION = 361,
         TAO_GUNKA = 368,
         ABELHA = 369,
-        SR_ORCS = 371,
         ORC_HEROI = 370,
+        SR_ORCS = 371,
         OVERHEAT = 373,
         [Description("Vanguard Force")]
         FORCEOFVANGUARD = 391,
@@ -268,6 +281,8 @@ namespace _4RTools.Utils
         GENTLETOUCH_CHANGE = 426,
         [Description("Gentle Touch-Revitalize")]
         GENTLETOUCH_REVITALIZE = 427,
+        [Description("Deep Sleep")]
+        DEEP_SLEEP = 435,
         [Description("Dances with Wargs")]
         DANCE_WITH_WUG = 441,
         [Description("Windmill Rush")]
@@ -276,6 +291,8 @@ namespace _4RTools.Utils
         MOONLIT_SERENADE = 447,
         [Description("Cart Boost")]
         GN_CARTBOOST = 461,
+        [Description("Mandragora")]
+        MANDRAGORA = 470,
         [Description("HP Increase Potion(Large)")]
         HP_INCREASE_POTION_LARGE = 480,
         SP_INCREASE_POTION_LARGE = 481,
@@ -295,12 +312,12 @@ namespace _4RTools.Utils
         RIDDING = 613,
         OVERLAPEXPUP = 618,
         MONSTER_TRANSFORM = 621,
+        [Description("Sitting")]
         SIT = 622,
         [Description("16th Night")]
         IZAYOI = 652,
+        [Description("Combat Pill")]
         COMBAT_PILL = 662,
-        RWC_2011_SCROLL = 664,
-        //RED_BOOSTER = 664,
         [Description("Arrow Equipped")]
         ARROW_ON = 695,
         [Description("Frigg's Song")]
@@ -311,43 +328,26 @@ namespace _4RTools.Utils
         UNLIMIT = 722,
         [Description("Eternal Chain")]
         E_CHAIN = 753,
-        LIMIT_POWER_BOOSTER = 867,
 
-        //Elemental Potions
-        [Description("Coldproof Potion / Cold Skin (HR)")]
-        RESIST_PROPERTY_WATER = 908,
-        [Description("Earthproof Potion")]
-        RESIST_PROPERTY_GROUND = 909,
-        [Description("Fireproof Potion")]
-        RESIST_PROPERTY_FIRE = 910,
-        [Description("Thunderproof Potion")]
-        RESIST_PROPERTY_WIND = 911,
-        [Description("Infinity Drink")]
-        INFINITY_DRINK = 1065,
-        [Description("Basílica")]
-        BASILICA = 1122,
-        LUX_AMINA = 1154,
-        [Description("Powerful Faith")]
-        POWERFUL_FAITH = 1160,
-        [Description("Firm Faith")]
-        FIRM_FAITH = 1162,
-        REF_T_POTION = 1169,
-        RED_HERB_ACTIVATOR = 1170,
-        BLUE_HERB_ACTIVATOR = 1171,
-        [Description("Shield Spell")]
-        SHIELDSPELL = 1316,
-        CASH_PLUSEXP = 1400,
-        SPIRIT = 1401,
-        MISTY_FROST = 1141,
-        [Description("Solar, Lunar and Stellar Miracle")]
-        MIRACLE = 2113,
-        [Description("Research Report")]
-        RESEARCHREPORT = 1248,
-        [Description("Kaite")]
-        KAITE = 1402,
-        BOX_OF_STORMS = 1405,
+        // Main Debuffs
+        [Description("Stun")]
+        STUN = 877,
+        [Description("Burning")]
+        BURNING = 881,
+        [Description("Poison")]
+        POISON = 883,
+        [Description("Curse")]
+        CURSE = 884,
+        [Description("Silence")]
+        SILENCE = 885,
+        [Description("Confusion")]
+        CONFUSION = 886,
+        [Description("Blind")]
+        BLIND = 887,
+        [Description("Fear")]
+        FEAR = 891,
 
-        //PADAWAN FOR HIGHRATE
+        // Padawan for Highrate
         //
         [Description("Force Sacrifice")]
         HR_FORCESACRIFICE = 900,
@@ -366,7 +366,43 @@ namespace _4RTools.Utils
         //HR_COLDSKIN = 908, // dupe of 908:RESIST_PROPERTY_WATER
         //HR_SABERTHRUST = 105, // dupe of 105:LKCONCENTRATION
 
-        //PADAWAN FOR MIDRATE
+        // Elemental Potions
+        [Description("Coldproof Potion / Cold Skin (HR)")]
+        RESIST_PROPERTY_WATER = 908,
+        [Description("Earthproof Potion")]
+        RESIST_PROPERTY_GROUND = 909,
+        [Description("Fireproof Potion")]
+        RESIST_PROPERTY_FIRE = 910,
+        [Description("Thunderproof Potion")]
+        RESIST_PROPERTY_WIND = 911,
+
+        [Description("Infinity Drink")]
+        INFINITY_DRINK = 1065,
+        [Description("Basílica")]
+        BASILICA = 1122,
+        MISTY_FROST = 1141,
+        LUX_AMINA = 1154,
+        [Description("Powerful Faith")]
+        POWERFUL_FAITH = 1160,
+        [Description("Firm Faith")]
+        FIRM_FAITH = 1162,
+        REF_T_POTION = 1169,
+        RED_HERB_ACTIVATOR = 1170,
+        BLUE_HERB_ACTIVATOR = 1171,
+        [Description("Research Report")]
+        RESEARCHREPORT = 1248,
+        [Description("Shield Spell")]
+        SHIELDSPELL = 1316,
+        CASH_PLUSEXP = 1400,
+        SPIRIT = 1401,
+        [Description("Kaite")]
+        KAITE = 1402,
+        [Description("Box of Storms")]
+        BOX_OF_STORMS = 1405,
+        [Description("Hallucination")]
+        HALLUCINATION_DEBUFF = 1416,
+
+        // Padawan for Midrate
         //
         [Description("Force Element (Earth)")]
         ELEMENT_EARTH = 1423,
@@ -382,7 +418,7 @@ namespace _4RTools.Utils
         ELEMENT_SHADOW = 1428,
         [Description("Force Element (Holy)")]
         ELEMENT_HOLY = 1429,
-        //SITH
+        // Sith
         [Description("Saber Parry")]
         SABERPARRY = 1430,
         [Description("Force Concentration")]
@@ -393,19 +429,22 @@ namespace _4RTools.Utils
         COLDSKIN = 1439,
         [Description("Force Projection")]
         PROJECTION = 1441,
-        //JEDI
-        [Description("Force Levitate")]
-        FORCELEVITATE = 1435,
-        [Description("Jedi Frenzy")]
-        JEDIFRENZY = 1433,
-        [Description("Jedi Stealth")]
-        JEDISTEALTH = 1437,
-        [Description("Force Sacrifice")]
-        FORCESACRIFICE = 1434,
+        // Jedi
         [Description("Force Persuasion")]
         FORCEPERSUASION = 1431,
+        [Description("Jedi Frenzy")]
+        JEDIFRENZY = 1433,
+        [Description("Force Sacrifice")]
+        FORCESACRIFICE = 1434,
+        [Description("Force Levitate")]
+        FORCELEVITATE = 1435,
+        [Description("Jedi Stealth")]
+        JEDISTEALTH = 1437,
 
+        // MISC
+        [Description("Greed Parry")]
         GREED_PARRY = 1442,
+        [Description("Halo Halo")]
         HALOHALO = 2011,
         STR_Biscuit_Stick = 2035,
         VIT_Biscuit_Stick = 2036,
@@ -417,28 +456,8 @@ namespace _4RTools.Utils
         FUSION = 2063,
         BOVINE = 2068,
         DRAGON = 2069,
-
-        // DEBUFFS
-        DECREASE_AGI = 13,
-        [Description("50% Weight")]
-        WEIGHT50 = 35,
-        [Description("90% Weight")]
-        WEIGHT90 = 36,
-        BLEEDING = 124,
-        SLOW_CAST = 282,
-        CRITICALWOUND = 286,
-        FREEZING = 351,
-        DEEP_SLEEP = 435,
-        MANDRAGORA = 470,
-        STUN = 877,
-        BURNING = 881,
-        POISON = 883,
-        CURSE = 884,
-        SILENCE = 885,
-        CONFUSION = 886,
-        BLIND = 887,
-        FEAR = 891,
-        HALLUCINATION_DEBUFF = 1416,
+        [Description("Solar, Lunar and Stellar Miracle")]
+        MIRACLE = 2113,
     }
 
 }
