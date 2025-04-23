@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using _4RTools.Model;
 using _4RTools.Utils;
@@ -20,15 +23,31 @@ namespace _4RTools.Forms
         {
             ConfigManager.Initialize();
             ConfigManager.SaveConfig();
-            string lang = ConfigManager.GetConfig().Language ?? "en";
-
-            DebugLogger.Info("Language: " + lang);
 
             this.subject.Attach(this);
 
+            DebugLogger.Info($"Container form constructor started. CurrentUICulture: {Thread.CurrentThread.CurrentUICulture.Name}");
             InitializeComponent();
+            DebugLogger.Info($"Container form initialized. CurrentUICulture: {Thread.CurrentThread.CurrentUICulture.Name}");
 
-            LanguageManager.ChangeLanguage(lang, this);
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(Container));
+
+            DebugLogger.Info($"Attempting to load resources for culture: {CultureInfo.CurrentUICulture.Name}");
+
+            foreach (Control control in this.Controls)
+            {
+                string localizedText = resources.GetString($"{control.Name}.Text", CultureInfo.CurrentUICulture);
+                DebugLogger.Info($"Control: {control.Name}, Requested Text for '{CultureInfo.CurrentUICulture.Name}': {localizedText}");
+                if (!string.IsNullOrEmpty(localizedText))
+                {
+                    control.Text = localizedText;
+                    DebugLogger.Info($"Control: {control.Name}, Text set to: {control.Text}");
+                }
+            }
+
+            DebugLogger.Info("Finished attempting to load and apply resources in Container constructor.");
+
+
 
             this.Text = AppConfig.WindowTitle;
 

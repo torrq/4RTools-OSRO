@@ -7,7 +7,6 @@ namespace _4RTools.Model
 {
     public class Config
     {
-        public string Language { get; set; } = "en";
         public bool DebugMode { get; set; } = false;
     }
 
@@ -76,10 +75,5 @@ namespace _4RTools.Model
             }
         }
 
-        public static void SetLanguage(string languageCode)
-        {
-            GetConfig().Language = languageCode;
-            SaveConfig();
-        }
     }
 }

@@ -217,12 +217,6 @@
     <Compile Include="Forms\MacroSongForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Container.en.resx">
-      <DependentUpon>Container.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Container.fil.resx">
-      <DependentUpon>Container.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Container.resx">
       <DependentUpon>Container.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -381,7 +375,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\LanguageManager.cs" />
     <Compile Include="Utils\DebugLogger.cs" />
     <Compile Include="Utils\EffectStatusIDs.cs" />
     <Compile Include="Utils\AppConfig.cs" />

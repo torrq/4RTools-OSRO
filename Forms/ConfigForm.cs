@@ -16,7 +16,6 @@ namespace _4RTools.Forms
             Config cfg = ConfigManager.GetConfig();
 
             InitializeComponent();
-            InitializeLanguageDropdown();
 
             chkDebugMode.Checked = cfg.DebugMode;
 
@@ -44,8 +43,6 @@ namespace _4RTools.Forms
             toolTip4.SetToolTip(ammo2textBox, "ammo 2 shortcut");
             toolTip5.SetToolTip(overweightKey, "Alt-# macro to send when overweight");
             toolTip6.SetToolTip(chkStopBuffsOnCity, "When in a city (defined in " + cityName + "), pause temporarily");
-
-            FormUtils.ApplyColorToButtons(this, new[] { "btnChangeLanguage" }, AppConfig.ResetButtonBackColor);
 
             subject.Attach(this);
         }
@@ -94,16 +91,6 @@ namespace _4RTools.Forms
             catch (Exception)
             {
             }
-        }
-
-        private void InitializeLanguageDropdown()
-        {
-            cmbLanguage.DisplayMember = "Value";
-            cmbLanguage.ValueMember = "Key";
-            cmbLanguage.DataSource = LanguageManager.GetSupportedLanguages();
-
-            string currentLang = ConfigManager.GetConfig().Language;
-            cmbLanguage.SelectedValue = currentLang;
         }
 
         private void SkillsListBox_MouseLeave(object sender, EventArgs e)
@@ -253,27 +240,6 @@ namespace _4RTools.Forms
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnChangeLanguage_Click(object sender, EventArgs e)
-        {
-            if (cmbLanguage.SelectedItem is KeyValuePair<string, string> selectedLang)
-            {
-                string cultureCode = selectedLang.Key;
-
-                Config cfg = ConfigManager.GetConfig();
-                if (cfg.Language == cultureCode)
-                {
-                    MessageBox.Show("You are already using this language.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                cfg.Language = cultureCode;
-                ConfigManager.SaveConfig();
-
-                MessageBox.Show("The application will now restart to apply the language change.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Restart();
-            }
         }
 
         private void chkDebugMode_CheckedChanged(object sender, EventArgs e)

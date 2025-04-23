@@ -47,11 +47,9 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox = new System.Windows.Forms.CheckBox();
             this.chkStopBuffsOnCity = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnChangeLanguage = new System.Windows.Forms.Button();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkDebugMode = new System.Windows.Forms.CheckBox();
-            this.cmbLanguage = new System.Windows.Forms.ComboBox();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
@@ -238,27 +236,10 @@ namespace _4RTools.Forms
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
             this.chkStopBuffsOnCity.CheckedChanged += new System.EventHandler(this.ChkStopBuffsOnCity_CheckedChanged);
             // 
-            // btnChangeLanguage
-            // 
-            this.btnChangeLanguage.BackColor = System.Drawing.Color.White;
-            this.btnChangeLanguage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChangeLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangeLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeLanguage.Location = new System.Drawing.Point(48, 36);
-            this.btnChangeLanguage.Name = "btnChangeLanguage";
-            this.btnChangeLanguage.Size = new System.Drawing.Size(100, 25);
-            this.btnChangeLanguage.TabIndex = 319;
-            this.btnChangeLanguage.Text = "Set Language";
-            this.toolTip1.SetToolTip(this.btnChangeLanguage, "Changes application language");
-            this.btnChangeLanguage.UseVisualStyleBackColor = false;
-            this.btnChangeLanguage.Click += new System.EventHandler(this.btnChangeLanguage_Click);
-            // 
             // groupGlobalSettings
             // 
             this.groupGlobalSettings.Controls.Add(this.label3);
             this.groupGlobalSettings.Controls.Add(this.chkDebugMode);
-            this.groupGlobalSettings.Controls.Add(this.btnChangeLanguage);
-            this.groupGlobalSettings.Controls.Add(this.cmbLanguage);
             this.groupGlobalSettings.Location = new System.Drawing.Point(309, 313);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
             this.groupGlobalSettings.Size = new System.Drawing.Size(300, 107);
@@ -284,7 +265,7 @@ namespace _4RTools.Forms
             this.chkDebugMode.AutoSize = true;
             this.chkDebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkDebugMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDebugMode.Location = new System.Drawing.Point(98, 71);
+            this.chkDebugMode.Location = new System.Drawing.Point(98, 48);
             this.chkDebugMode.Name = "chkDebugMode";
             this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
             this.chkDebugMode.TabIndex = 320;
@@ -292,16 +273,6 @@ namespace _4RTools.Forms
             this.toolTip1.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
             this.chkDebugMode.UseVisualStyleBackColor = true;
             this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
-            // 
-            // cmbLanguage
-            // 
-            this.cmbLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLanguage.FormattingEnabled = true;
-            this.cmbLanguage.Location = new System.Drawing.Point(156, 37);
-            this.cmbLanguage.Name = "cmbLanguage";
-            this.cmbLanguage.Size = new System.Drawing.Size(80, 23);
-            this.cmbLanguage.TabIndex = 318;
-            this.cmbLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // clientDTOBindingSource
             // 
@@ -356,8 +327,6 @@ namespace _4RTools.Forms
         private GroupBox groupOverweight;
         private Label label1;
         private CheckBox chkSoundEnabled;
-        private ComboBox cmbLanguage;
-        private Button btnChangeLanguage;
         private GroupBox groupGlobalSettings;
         private CheckBox chkDebugMode;
         private Label label3;
