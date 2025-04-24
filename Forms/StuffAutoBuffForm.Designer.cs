@@ -1,6 +1,6 @@
 ﻿namespace _4RTools.Forms
 {
-    partial class StuffAutoBuffForm
+    partial class ItemAutoBuffForm
     {
         /// <summary>
         /// Required designer variable.
@@ -153,7 +153,7 @@
             this.label5.TabIndex = 300;
             this.label5.Text = "Delay (ms)";
             // 
-            // StuffAutoBuffForm
+            // ItemAutoBuffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,7 +171,7 @@
             this.Controls.Add(this.FoodsGP);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StuffAutoBuffForm";
+            this.Name = "ItemAutoBuffForm";
             this.Text = "AutobuffSkillForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).EndInit();
             this.ResumeLayout(false);

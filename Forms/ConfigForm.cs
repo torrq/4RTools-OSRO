@@ -13,7 +13,7 @@ namespace _4RTools.Forms
     {
         public ConfigForm(Subject subject)
         {
-            Config cfg = ConfigManager.GetConfig();
+            Config cfg = ConfigGlobal.GetConfig();
 
             InitializeComponent();
 
@@ -35,7 +35,7 @@ namespace _4RTools.Forms
             this.skillsListBox.DragOver += new DragEventHandler(this.SkillsListBox_DragOver);
             this.skillsListBox.DragDrop += new DragEventHandler(this.SkillsListBox_DragDrop);
 
-            string cityName = _4RTools.Model.LocalServerManager.GetCitiesFile();
+            string cityName = _4RTools.Model.Server.GetCitiesFile();
 
             toolTip1.SetToolTip(switchAmmoCheckBox, "Switch between ammunition");
             toolTip2.SetToolTip(chkSoundEnabled, "Play sounds when toggling on and off");
@@ -61,7 +61,7 @@ namespace _4RTools.Forms
 
         public void UpdateUI(ISubject subject)
         {
-            UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             try
             {
                 AutoBuffSkill currentBuffs = (AutoBuffSkill)(subject as Subject).Message.Data ?? ProfileSingleton.GetCurrent().AutobuffSkill;
@@ -244,13 +244,13 @@ namespace _4RTools.Forms
 
         private void chkDebugMode_CheckedChanged(object sender, EventArgs e)
         {
-            Config cfg = ConfigManager.GetConfig();
+            Config cfg = ConfigGlobal.GetConfig();
             bool newValue = chkDebugMode.Checked;
 
             if (cfg.DebugMode != newValue)
             {
                 cfg.DebugMode = newValue;
-                ConfigManager.SaveConfig();
+                ConfigGlobal.SaveConfig();
 
                 MessageBox.Show("Restart required to apply debug mode change.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Restart();

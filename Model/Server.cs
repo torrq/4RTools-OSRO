@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {
-    internal class LocalServerManager
+    internal class Server
     {
         private static readonly string ServersFile = "servers.json";
         private static readonly string CitiesFile = "cities.json";

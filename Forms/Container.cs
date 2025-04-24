@@ -21,38 +21,17 @@ namespace _4RTools.Forms
 
         public Container()
         {
-            ConfigManager.Initialize();
-            ConfigManager.SaveConfig();
+            ConfigGlobal.Initialize();
+            ConfigGlobal.SaveConfig();
 
             this.subject.Attach(this);
 
-            DebugLogger.Info($"Container form constructor started. CurrentUICulture: {Thread.CurrentThread.CurrentUICulture.Name}");
             InitializeComponent();
-            DebugLogger.Info($"Container form initialized. CurrentUICulture: {Thread.CurrentThread.CurrentUICulture.Name}");
-
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(Container));
-
-            DebugLogger.Info($"Attempting to load resources for culture: {CultureInfo.CurrentUICulture.Name}");
-
-            foreach (Control control in this.Controls)
-            {
-                string localizedText = resources.GetString($"{control.Name}.Text", CultureInfo.CurrentUICulture);
-                DebugLogger.Info($"Control: {control.Name}, Requested Text for '{CultureInfo.CurrentUICulture.Name}': {localizedText}");
-                if (!string.IsNullOrEmpty(localizedText))
-                {
-                    control.Text = localizedText;
-                    DebugLogger.Info($"Control: {control.Name}, Text set to: {control.Text}");
-                }
-            }
-
-            DebugLogger.Info("Finished attempting to load and apply resources in Container constructor.");
-
-
 
             this.Text = AppConfig.WindowTitle;
 
-            LocalServerManager.Initialize(); // Will log errors if they occur
-            clients.AddRange(LocalServerManager.GetLocalClients()); //Load Local Servers First
+            Server.Initialize(); // Will log errors if they occur
+            clients.AddRange(Server.GetLocalClients()); //Load Local Servers First
 
             LoadServers(clients);
 
@@ -69,7 +48,7 @@ namespace _4RTools.Forms
             SetAHKWindow();
             SetAutoBuffStatusWindow();
             SetProfileWindow();
-            SetAutobuffStuffWindow();
+            SetAutobuffItemWindow();
             SetAutobuffSkillWindow();
             SetSongMacroWindow();
             SetATKDEFWindow();
@@ -380,16 +359,16 @@ namespace _4RTools.Forms
             Addform(this.tabPageProfiles, frm);
         }
 
-        public void SetAutobuffStuffWindow()
+        public void SetAutobuffItemWindow()
         {
-            StuffAutoBuffForm frm = new StuffAutoBuffForm(subject)
+            ItemAutoBuffForm frm = new ItemAutoBuffForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),
                 MdiParent = this
             };
             frm.Show();
-            Addform(this.tabPageAutobuffStuff, frm);
+            Addform(this.tabPageAutobuffItem, frm);
         }
 
         public void SetAutobuffSkillWindow()

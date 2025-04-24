@@ -160,7 +160,7 @@ namespace _4RTools.Model
 
         private void AutoSwitchAmmo(Client roClient, ref bool ammo)
         {
-            UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (prefs.SwitchAmmo)
             {
                 if (prefs.Ammo1Key.ToString() != string.Empty && prefs.Ammo2Key.ToString() != string.Empty)

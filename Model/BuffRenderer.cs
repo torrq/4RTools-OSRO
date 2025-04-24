@@ -95,18 +95,18 @@ namespace _4RTools.Model
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
                     EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
 
-                    if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
+                    if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffItem.ActionName)
                     {
-                        var _autoBuffSkill = ProfileSingleton.GetCurrent().AutobuffSkill;
-                        _autoBuffSkill.AddKeyToBuff(statusID, key);
-                        ProfileSingleton.SetConfiguration(_autoBuffSkill);
-                        _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_SKILL, _autoBuffSkill));
+                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem;
+                        _autoBuffItem.AddKeyToBuff(statusID, key);
+                        ProfileSingleton.SetConfiguration(_autoBuffItem);
+                        _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_SKILL, _autoBuffItem));
                     }
                     else
                     {
-                        var _autoBuffStuff = ProfileSingleton.GetCurrent().AutobuffStuff;
-                        _autoBuffStuff.AddKeyToBuff(statusID, key);
-                        ProfileSingleton.SetConfiguration(_autoBuffStuff);
+                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem;
+                        _autoBuffItem.AddKeyToBuff(statusID, key);
+                        ProfileSingleton.SetConfiguration(_autoBuffItem);
                     }
                 }
 

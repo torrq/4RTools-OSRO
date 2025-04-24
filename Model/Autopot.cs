@@ -74,7 +74,7 @@ namespace _4RTools.Model
                     _4RThread.Stop(this.thread);
                 }
                 int hpPotCount = 0;
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = LocalServerManager.GetCityList();
+                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = new _4RThread(_ => AutopotThreadExecution(roClient, hpPotCount));
                 _4RThread.Start(this.thread);
             }

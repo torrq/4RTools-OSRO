@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {
-    public class AutoBuffStuff : IAction
+    public class AutoBuffItem : IAction
     {
-        public static string ACTION_NAME_AUTOBUFFSTUFF = "AutobuffStuff";
+        public static string ACTION_NAME_AUTOBUFFITEM = "AutobuffItem";
         public string ActionName { get; set; }
         private _4RThread thread;
         private int _delay = AppConfig.AutoBuffItemsDefaultDelay;
@@ -22,7 +22,7 @@ namespace _4RTools.Model
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
         public List<string> CityList { get; set; }
 
-        public AutoBuffStuff(string actionName)
+        public AutoBuffItem(string actionName)
         {
             this.ActionName = actionName;
         }
@@ -37,7 +37,7 @@ namespace _4RTools.Model
                 {
                     _4RThread.Stop(this.thread);
                 }
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = LocalServerManager.GetCityList();
+                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = AutoBuffThread(roClient);
                 _4RThread.Start(this.thread);
             }
@@ -50,7 +50,7 @@ namespace _4RTools.Model
                 bool foundQuag = false;
                 bool foundDecreaseAgi = false;
                 string currentMap = c.ReadCurrentMap();
-                UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+                ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
 
                 // Collect and log statuses always
                 var statusList = new List<(int index, uint statusId)>();

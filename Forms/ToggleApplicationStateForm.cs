@@ -78,7 +78,7 @@ namespace _4RTools.Forms
 
         public bool toggleStatus()
         {
-            UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             bool isOn = this.btnStatusToggle.Text == "ON";
             if (isOn)
             {
@@ -121,7 +121,7 @@ namespace _4RTools.Forms
 
         public bool TurnOFF()
         {
-            UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             bool isOn = this.btnStatusToggle.Text == "ON";
             if (isOn)
             {

@@ -30,7 +30,7 @@ namespace _4RTools.Model
                 ValidadeThreads(this.thread3);
                 ValidadeThreads(this.thread4);
 
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = LocalServerManager.GetCityList();
+                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
 
                 this.thread1 = new _4RThread((_) => AutoRefreshThreadExecution(roClient, skillTimer[1].Delay, skillTimer[1].Key));
                 this.thread2 = new _4RThread((_) => AutoRefreshThreadExecution(roClient, skillTimer[2].Delay, skillTimer[2].Key));

@@ -36,7 +36,7 @@ namespace _4RTools.Forms
             this.tabPageSpammer = new System.Windows.Forms.TabPage();
             this.tabPageDebuffs = new System.Windows.Forms.TabPage();
             this.tabPageAutobuffSkill = new System.Windows.Forms.TabPage();
-            this.tabPageAutobuffStuff = new System.Windows.Forms.TabPage();
+            this.tabPageAutobuffItem = new System.Windows.Forms.TabPage();
             this.atkDef = new System.Windows.Forms.TabPage();
             this.tabPageMacroSongs = new System.Windows.Forms.TabPage();
             this.tabMacroSwitch = new System.Windows.Forms.TabPage();
@@ -66,7 +66,7 @@ namespace _4RTools.Forms
             atkDefMode.Controls.Add(this.tabPageSpammer);
             atkDefMode.Controls.Add(this.tabPageDebuffs);
             atkDefMode.Controls.Add(this.tabPageAutobuffSkill);
-            atkDefMode.Controls.Add(this.tabPageAutobuffStuff);
+            atkDefMode.Controls.Add(this.tabPageAutobuffItem);
             atkDefMode.Controls.Add(this.atkDef);
             atkDefMode.Controls.Add(this.tabPageMacroSongs);
             atkDefMode.Controls.Add(this.tabMacroSwitch);
@@ -106,14 +106,14 @@ namespace _4RTools.Forms
             this.tabPageAutobuffSkill.TabIndex = 3;
             this.tabPageAutobuffSkill.Text = "Autobuff Skills";
             // 
-            // tabPageAutobuffStuff
+            // tabPageAutobuffItem
             // 
-            this.tabPageAutobuffStuff.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAutobuffStuff.Name = "tabPageAutobuffStuff";
-            this.tabPageAutobuffStuff.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAutobuffStuff.Size = new System.Drawing.Size(629, 449);
-            this.tabPageAutobuffStuff.TabIndex = 4;
-            this.tabPageAutobuffStuff.Text = "Autobuff Items";
+            this.tabPageAutobuffItem.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAutobuffItem.Name = "tabPageAutobuffItem";
+            this.tabPageAutobuffItem.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAutobuffItem.Size = new System.Drawing.Size(629, 449);
+            this.tabPageAutobuffItem.TabIndex = 4;
+            this.tabPageAutobuffItem.Text = "Autobuff Items";
             // 
             // atkDef
             // 
@@ -347,7 +347,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCharacterName;
         private System.Windows.Forms.Label characterName;
-        private TabPage tabPageAutobuffStuff;
+        private TabPage tabPageAutobuffItem;
         private TabPage tabPageMacroSongs;
         private TabPage atkDef;
         private TabControl tabControlAutopot;

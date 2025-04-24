@@ -45,7 +45,7 @@ namespace _4RTools.Model
                 {
                     _4RThread.Stop(this.thread);
                 }
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = LocalServerManager.GetCityList();
+                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = AutoBuffThread(roClient);
                 _4RThread.Start(this.thread);
             }
@@ -81,7 +81,7 @@ namespace _4RTools.Model
                 bool foundQuag = false;
                 bool foundDecreaseAgi = false;
                 string currentMap = c.ReadCurrentMap();
-                UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+                ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
 
                 if (!prefs.StopBuffsCity || !this.CityList.Contains(currentMap))
                 {
@@ -144,7 +144,7 @@ namespace _4RTools.Model
         }
         private void HandleOverweightStatus(Client c, EffectStatusIDs status)
         {
-            UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (status == EffectStatusIDs.WEIGHT50 && prefs.OverweightMode == "overweight50")
             {
                 var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
@@ -163,7 +163,7 @@ namespace _4RTools.Model
 
         private void SendOverweightMacro(Client c, string percentage, int times = 2, int intervalMs = 5000)
         {
-            UserPreferences prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (!string.IsNullOrEmpty(prefs.OverweightKey.ToString()) && prefs.OverweightKey.ToString() != "None")
             {
                 // Set focus to the RO window

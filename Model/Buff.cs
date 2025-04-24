@@ -247,7 +247,6 @@ namespace _4RTools.Model
             return skills;
         }
 
-        //--------------------- STUFFS ------------------------------
         //--------------------- Potions ------------------------------
         public static List<Buff> GetPotionsBuffs()
         {

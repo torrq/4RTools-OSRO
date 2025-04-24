@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace _4RTools.Model
 {
-    public class UserPreferences : IAction
+    public class ConfigProfile : IAction
     {
         private readonly string ACTION_NAME = "UserPreferences";
         public string ToggleStateKey { get; set; } = Keys.End.ToString();
@@ -19,7 +19,7 @@ namespace _4RTools.Model
         public Key Ammo1Key { get; set; }
         public Key Ammo2Key { get; set; }
 
-        public UserPreferences()
+        public ConfigProfile()
         {
         }
 

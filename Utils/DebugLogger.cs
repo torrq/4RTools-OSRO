@@ -52,7 +52,7 @@ namespace _4RTools.Utils
         {
             try
             {
-                _debugMode = ConfigManager.GetConfig().DebugMode;
+                _debugMode = ConfigGlobal.GetConfig().DebugMode;
 
                 if (!_debugMode)
                     return;

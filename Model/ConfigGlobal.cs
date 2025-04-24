@@ -10,7 +10,7 @@ namespace _4RTools.Model
         public bool DebugMode { get; set; } = false;
     }
 
-    internal class ConfigManager
+    internal class ConfigGlobal
     {
         private static readonly string ConfigFile = "config.json";
         private static Config config;

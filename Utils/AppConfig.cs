@@ -25,9 +25,9 @@ namespace _4RTools.Utils
         public static int SkillSpammerDefaultDelay = 50; // Skill Spammer tab
         public static int AutoBuffSkillsDefaultDelay = 50; // Autobuff Skills tab
         public static int AutoBuffItemsDefaultDelay = 50; // Autobuff Items tab
-        public static int ATKDEFSpammerDefaultDelay = 50; // ATK x DEF tab, spammer
-        public static int ATKDEFSwitchDefaultDelay = 50; // ATK x DEF tab, switch
-        public static int MacroDefaultDelay = 50; // default for Macro Song + Switch tabs
+        public static int ATKDEFSpammerDefaultDelay = 100; // ATK x DEF tab, spammer
+        public static int ATKDEFSwitchDefaultDelay = 100; // ATK x DEF tab, switch
+        public static int MacroDefaultDelay = 100; // default for Macro Song + Switch tabs
         public static int SkillTimerDefaultDelay = 1000; // Skill Timer tab
         public static decimal DefaultMinimumDelay = 10; // Default minimum delay for all tabs
 
