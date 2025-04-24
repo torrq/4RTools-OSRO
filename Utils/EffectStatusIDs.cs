@@ -254,7 +254,7 @@ namespace _4RTools.Utils
         [Description("Lauda Ramus")]
         LAUDA_RAMUS = 332,
         HALLUCINATIONWALK = 334,
-        [Description("Frozen")]
+        [Description("Freezing")]
         FREEZING = 351,
         [Description("Fear Breeze")]
         FEARBREEZE = 352,
@@ -330,6 +330,8 @@ namespace _4RTools.Utils
         E_CHAIN = 753,
 
         // Main Debuffs
+        [Description("Frozen")]
+        FROZEN = 876,
         [Description("Stun")]
         STUN = 877,
         [Description("Burning")]

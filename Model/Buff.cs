@@ -357,6 +357,7 @@ namespace _4RTools.Model
             {
                 new Buff("Critical Wound", EffectStatusIDs.CRITICALWOUND, Resources._4RTools.Icons.critical_wound),
                 new Buff("Freezing", EffectStatusIDs.FREEZING, Resources._4RTools.Icons.freezing),
+                new Buff("Frozen", EffectStatusIDs.FROZEN, Resources._4RTools.Icons.frozen),
                 new Buff("Curse", EffectStatusIDs.CURSE, Resources._4RTools.Icons.curse),
                 new Buff("Bleeding", EffectStatusIDs.BLEEDING, Resources._4RTools.Icons.bleeding),
                 new Buff("Silence", EffectStatusIDs.SILENCE, Resources._4RTools.Icons.silence),

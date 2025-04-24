@@ -656,6 +656,9 @@
   <data name="weight90" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\images\icon\debuff\weight90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="frozen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\images\icon\debuff\frozen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="mindbreaker" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\images\mindbreaker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
