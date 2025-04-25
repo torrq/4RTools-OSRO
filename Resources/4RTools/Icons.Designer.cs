@@ -1623,6 +1623,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sleep {
+            get {
+                object obj = ResourceManager.GetObject("sleep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap slow_cast {
             get {
                 object obj = ResourceManager.GetObject("slow_cast", resourceCulture);
@@ -1726,6 +1736,26 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap star_comfort {
             get {
                 object obj = ResourceManager.GetObject("star_comfort", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stonecurse1 {
+            get {
+                object obj = ResourceManager.GetObject("stonecurse1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stonecurse2 {
+            get {
+                object obj = ResourceManager.GetObject("stonecurse2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

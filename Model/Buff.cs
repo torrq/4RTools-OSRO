@@ -355,21 +355,24 @@ namespace _4RTools.Model
         {
             List<Buff> skills = new List<Buff>
             {
+                new Buff("Bleeding", EffectStatusIDs.BLEEDING, Resources._4RTools.Icons.bleeding),
+                new Buff("Burning", EffectStatusIDs.BURNING, Resources._4RTools.Icons.burning),
+                new Buff("Chaos / Confusion", EffectStatusIDs.CONFUSION, Resources._4RTools.Icons.chaos),
                 new Buff("Critical Wound", EffectStatusIDs.CRITICALWOUND, Resources._4RTools.Icons.critical_wound),
+                new Buff("Curse", EffectStatusIDs.CURSE, Resources._4RTools.Icons.curse),
+                new Buff("Decrease AGI", EffectStatusIDs.DECREASE_AGI, Resources._4RTools.Icons.decrease_agi),
                 new Buff("Freezing", EffectStatusIDs.FREEZING, Resources._4RTools.Icons.freezing),
                 new Buff("Frozen", EffectStatusIDs.FROZEN, Resources._4RTools.Icons.frozen),
-                new Buff("Curse", EffectStatusIDs.CURSE, Resources._4RTools.Icons.curse),
-                new Buff("Bleeding", EffectStatusIDs.BLEEDING, Resources._4RTools.Icons.bleeding),
-                new Buff("Silence", EffectStatusIDs.SILENCE, Resources._4RTools.Icons.silence),
-                new Buff("Decrease AGI", EffectStatusIDs.DECREASE_AGI, Resources._4RTools.Icons.decrease_agi),
-                new Buff("Confusion", EffectStatusIDs.CONFUSION, Resources._4RTools.Icons.chaos),
-                new Buff("Stun", EffectStatusIDs.STUN, Resources._4RTools.Icons.stun),
-                new Buff("Sleep", EffectStatusIDs.DEEP_SLEEP, Resources._4RTools.Icons.deep_sleep),
+                new Buff("Hallucination", EffectStatusIDs.HALLUCINATION_DEBUFF, Resources._4RTools.Icons.hallucination),
                 new Buff("Poison", EffectStatusIDs.POISON, Resources._4RTools.Icons.poison_status),
+                new Buff("Silence", EffectStatusIDs.SILENCE, Resources._4RTools.Icons.silence),
                 new Buff("Sit", EffectStatusIDs.SIT, Resources._4RTools.Icons.sit),
-                new Buff("Burning", EffectStatusIDs.BURNING, Resources._4RTools.Icons.burning),
+                new Buff("Deep Sleep", EffectStatusIDs.DEEP_SLEEP, Resources._4RTools.Icons.deep_sleep),
+                new Buff("Sleep", EffectStatusIDs.SLEEP, Resources._4RTools.Icons.sleep),
                 new Buff("Slow Cast", EffectStatusIDs.SLOW_CAST, Resources._4RTools.Icons.slow_cast),
-                new Buff("Hallucination", EffectStatusIDs.HALLUCINATION_DEBUFF, Resources._4RTools.Icons.hallucination)
+                new Buff("Stone Curse (initial stage)", EffectStatusIDs.STONE, Resources._4RTools.Icons.stonecurse1),
+                new Buff("Stone Curse (petrified)", EffectStatusIDs.STONEWAIT, Resources._4RTools.Icons.stonecurse2),
+                new Buff("Stun", EffectStatusIDs.STUN, Resources._4RTools.Icons.stun),
             };
 
             return skills;

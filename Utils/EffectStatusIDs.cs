@@ -330,10 +330,16 @@ namespace _4RTools.Utils
         E_CHAIN = 753,
 
         // Main Debuffs
+        [Description("Stone Curse (petrified)")]
+        STONEWAIT = 875,
         [Description("Frozen")]
         FROZEN = 876,
         [Description("Stun")]
         STUN = 877,
+        [Description("Sleep")]
+        SLEEP = 878,
+        [Description("Stone Curse (initial stage)")]
+        STONE = 880,
         [Description("Burning")]
         BURNING = 881,
         [Description("Poison")]
