@@ -83,9 +83,9 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap accuracy_Scroll {
+        internal static System.Drawing.Bitmap accuracy_scroll {
             get {
-                object obj = ResourceManager.GetObject("accuracy_Scroll", resourceCulture);
+                object obj = ResourceManager.GetObject("accuracy_scroll", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,29 +123,9 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap al_blessing {
-            get {
-                object obj = ResourceManager.GetObject("al_blessing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap al_blessing1 {
             get {
                 object obj = ResourceManager.GetObject("al_blessing1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap al_incagi {
-            get {
-                object obj = ResourceManager.GetObject("al_incagi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,16 +203,6 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap autoshadowspell {
-            get {
-                object obj = ResourceManager.GetObject("autoshadowspell", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap awakening_potion {
             get {
                 object obj = ResourceManager.GetObject("awakening_potion", resourceCulture);
@@ -276,6 +246,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap boxofstorms {
             get {
                 object obj = ResourceManager.GetObject("boxofstorms", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boxofthunder {
+            get {
+                object obj = ResourceManager.GetObject("boxofthunder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,16 +396,6 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap coldskin {
             get {
                 object obj = ResourceManager.GetObject("coldskin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap combat_manual {
-            get {
-                object obj = ResourceManager.GetObject("combat_manual", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -603,9 +573,9 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap earhproof {
+        internal static System.Drawing.Bitmap earthproof {
             get {
-                object obj = ResourceManager.GetObject("earhproof", resourceCulture);
+                object obj = ResourceManager.GetObject("earthproof", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -943,16 +913,6 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hom_avoid {
-            get {
-                object obj = ResourceManager.GetObject("hom_avoid", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap hood {
             get {
                 object obj = ResourceManager.GetObject("hood", resourceCulture);
@@ -1193,16 +1153,6 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lutie_pancake {
-            get {
-                object obj = ResourceManager.GetObject("lutie_pancake", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap madnesscancel {
             get {
                 object obj = ResourceManager.GetObject("madnesscancel", resourceCulture);
@@ -1263,29 +1213,9 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mob_transform {
-            get {
-                object obj = ResourceManager.GetObject("mob_transform", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap moon_comfort {
             get {
                 object obj = ResourceManager.GetObject("moon_comfort", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap moonlight_serenade {
-            get {
-                object obj = ResourceManager.GetObject("moonlight_serenade", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1326,66 +1256,6 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap onehand {
             get {
                 object obj = ResourceManager.GetObject("onehand", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap perg_abelha {
-            get {
-                object obj = ResourceManager.GetObject("perg_abelha", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap perg_angeling {
-            get {
-                object obj = ResourceManager.GetObject("perg_angeling", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap perg_ghostring {
-            get {
-                object obj = ResourceManager.GetObject("perg_ghostring", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap perg_orcheroi {
-            get {
-                object obj = ResourceManager.GetObject("perg_orcheroi", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap perg_senhororc {
-            get {
-                object obj = ResourceManager.GetObject("perg_senhororc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap perg_taogunka {
-            get {
-                object obj = ResourceManager.GetObject("perg_taogunka", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1443,16 +1313,6 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap powerful_faith {
-            get {
-                object obj = ResourceManager.GetObject("powerful_faith", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap pr_gloria {
             get {
                 object obj = ResourceManager.GetObject("pr_gloria", resourceCulture);
@@ -1493,39 +1353,9 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap recognized_spell {
-            get {
-                object obj = ResourceManager.GetObject("recognized_spell", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap resentment {
             get {
                 object obj = ResourceManager.GetObject("resentment", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rising_dragon {
-            get {
-                object obj = ResourceManager.GetObject("rising_dragon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap run {
-            get {
-                object obj = ResourceManager.GetObject("run", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1683,16 +1513,6 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap speed {
-            get {
-                object obj = ResourceManager.GetObject("speed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap speedpotion {
             get {
                 object obj = ResourceManager.GetObject("speedpotion", resourceCulture);
@@ -1756,26 +1576,6 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap strfood {
             get {
                 object obj = ResourceManager.GetObject("strfood", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap strfood1 {
-            get {
-                object obj = ResourceManager.GetObject("strfood1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap strfood2 {
-            get {
-                object obj = ResourceManager.GetObject("strfood2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

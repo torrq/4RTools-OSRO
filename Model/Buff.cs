@@ -274,7 +274,7 @@ namespace _4RTools.Model
                 new Buff("Fireproof Potion", EffectStatusIDs.RESIST_PROPERTY_FIRE, Resources._4RTools.Icons.fireproof),
                 new Buff("Coldproof Potion", EffectStatusIDs.RESIST_PROPERTY_WATER, Resources._4RTools.Icons.coldproof),
                 new Buff("Thunderproof Potion", EffectStatusIDs.RESIST_PROPERTY_WIND, Resources._4RTools.Icons.thunderproof),
-                new Buff("Earthproof Potion", EffectStatusIDs.RESIST_PROPERTY_GROUND, Resources._4RTools.Icons.earhproof),
+                new Buff("Earthproof Potion", EffectStatusIDs.RESIST_PROPERTY_GROUND, Resources._4RTools.Icons.earthproof),
             };
 
             return skills;
@@ -307,7 +307,7 @@ namespace _4RTools.Model
                 new Buff("Box of Resentment / Tasty Pink Ration / Chewy Ricecake", EffectStatusIDs.RESENTMENT_BOX, Resources._4RTools.Icons.resentment),
                 new Buff("Box of Sunlight", EffectStatusIDs.SUNLIGHT_BOX, Resources._4RTools.Icons.sunbox),
                 new Buff("Box of Gloom", EffectStatusIDs.CONCENTRATION, Resources._4RTools.Icons.gloom),
-                new Buff("Box of Thunder", EffectStatusIDs.BOX_OF_THUNDER, Resources._4RTools.Icons.speed),
+                new Buff("Box of Thunder", EffectStatusIDs.BOX_OF_THUNDER, Resources._4RTools.Icons.boxofthunder),
                 new Buff("Speed Potion", EffectStatusIDs.SPEED_POT, Resources._4RTools.Icons.speedpotion),
                 new Buff("Anodyne", EffectStatusIDs.ENDURE, Resources._4RTools.Icons.anodyne),
                 new Buff("Aloe Vera", EffectStatusIDs.PROVOKE, Resources._4RTools.Icons.aloevera),
@@ -331,7 +331,7 @@ namespace _4RTools.Model
                 new Buff("Link Scroll", EffectStatusIDs.SOULLINK, Resources._4RTools.Icons.sl_soullinker),
                 new Buff("Assumptio",  EffectStatusIDs.ASSUMPTIO, Resources._4RTools.Icons.assumptio),
                 new Buff("Flee Scroll / Spray of Flowers",  EffectStatusIDs.FLEE_SCROLL, Resources._4RTools.Icons.flee_scroll),
-                new Buff("Accuracy Scroll",  EffectStatusIDs.ACCURACY_SCROLL, Resources._4RTools.Icons.accuracy_Scroll),
+                new Buff("Accuracy Scroll",  EffectStatusIDs.ACCURACY_SCROLL, Resources._4RTools.Icons.accuracy_scroll),
 
             };
 
