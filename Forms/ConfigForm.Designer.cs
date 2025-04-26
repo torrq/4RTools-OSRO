@@ -46,15 +46,16 @@ namespace _4RTools.Forms
             this.ammo1textBox = new System.Windows.Forms.TextBox();
             this.switchAmmoCheckBox = new System.Windows.Forms.CheckBox();
             this.chkStopBuffsOnCity = new System.Windows.Forms.CheckBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipDebugMode = new System.Windows.Forms.ToolTip(this.components);
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkDebugMode = new System.Windows.Forms.CheckBox();
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipchkSoundEnabled = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAmmo1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAmmo2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipOverweightKey = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
@@ -246,7 +247,6 @@ namespace _4RTools.Forms
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
-            this.toolTip1.SetToolTip(this.groupGlobalSettings, "W");
             this.groupGlobalSettings.Enter += new System.EventHandler(this.groupGlobalSettings_Enter);
             // 
             // label3
@@ -254,11 +254,14 @@ namespace _4RTools.Forms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.label3.Location = new System.Drawing.Point(221, 91);
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.Location = new System.Drawing.Point(200, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 321;
-            this.label3.Text = "requires restart";
+            this.label3.Text = "requires app restart";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.toolTipReqRestart.SetToolTip(this.label3, "All global setting changes require restarting the app");
             // 
             // chkDebugMode
             // 
@@ -270,9 +273,17 @@ namespace _4RTools.Forms
             this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
             this.chkDebugMode.TabIndex = 320;
             this.chkDebugMode.Text = "Debug Mode";
-            this.toolTip1.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
+            this.toolTipDebugMode.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
             this.chkDebugMode.UseVisualStyleBackColor = true;
             this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            // 
+            // toolTipAmmo1
+            // 
+            this.toolTipAmmo1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip3_Popup);
+            // 
+            // toolTipOverweightKey
+            // 
+            this.toolTipOverweightKey.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip5_Popup);
             // 
             // clientDTOBindingSource
             // 
@@ -314,12 +325,12 @@ namespace _4RTools.Forms
         private TextBox ammo2textBox;
         private TextBox ammo1textBox;
         private CheckBox switchAmmoCheckBox;
-        private ToolTip toolTip1;
-        private ToolTip toolTip2;
-        private ToolTip toolTip3;
-        private ToolTip toolTip4;
-        private ToolTip toolTip5;
-        private ToolTip toolTip6;
+        private ToolTip toolTipDebugMode;
+        private ToolTip toolTipchkSoundEnabled;
+        private ToolTip toolTipAmmo1;
+        private ToolTip toolTipAmmo2;
+        private ToolTip toolTipOverweightKey;
+        private ToolTip toolTipchkStopBuffsOnCity;
         private TextBox overweightKey;
         private RadioButton overweight90;
         private RadioButton overweight50;
@@ -330,5 +341,6 @@ namespace _4RTools.Forms
         private GroupBox groupGlobalSettings;
         private CheckBox chkDebugMode;
         private Label label3;
+        private ToolTip toolTipReqRestart;
     }
 }

@@ -283,6 +283,8 @@ namespace _4RTools.Utils
         GENTLETOUCH_REVITALIZE = 427,
         [Description("Deep Sleep")]
         DEEP_SLEEP = 435,
+        [Description("Venom Splasher")]
+        VENOM_SPLASHER = 440,
         [Description("Dances with Wargs")]
         DANCE_WITH_WUG = 441,
         [Description("Windmill Rush")]

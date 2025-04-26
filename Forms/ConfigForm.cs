@@ -37,12 +37,12 @@ namespace _4RTools.Forms
 
             string cityName = _4RTools.Model.Server.GetCitiesFile();
 
-            toolTip1.SetToolTip(switchAmmoCheckBox, "Switch between ammunition");
-            toolTip2.SetToolTip(chkSoundEnabled, "Play sounds when toggling on and off");
-            toolTip3.SetToolTip(ammo1textBox, "ammo 1 shortcut");
-            toolTip4.SetToolTip(ammo2textBox, "ammo 2 shortcut");
-            toolTip5.SetToolTip(overweightKey, "Alt-# macro to send when overweight");
-            toolTip6.SetToolTip(chkStopBuffsOnCity, "When in a city (defined in " + cityName + "), pause temporarily");
+            toolTipDebugMode.SetToolTip(switchAmmoCheckBox, "Switch between ammunition");
+            toolTipchkSoundEnabled.SetToolTip(chkSoundEnabled, "Play sounds when toggling on and off");
+            toolTipAmmo1.SetToolTip(ammo1textBox, "ammo 1 shortcut");
+            toolTipAmmo2.SetToolTip(ammo2textBox, "ammo 2 shortcut");
+            toolTipOverweightKey.SetToolTip(overweightKey, "Alt-# macro to send when overweight");
+            toolTipchkStopBuffsOnCity.SetToolTip(chkStopBuffsOnCity, "When in a city (defined in " + cityName + "), pause temporarily");
 
             subject.Attach(this);
         }
@@ -258,6 +258,16 @@ namespace _4RTools.Forms
         }
 
         private void groupGlobalSettings_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip5_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void toolTip3_Popup(object sender, PopupEventArgs e)
         {
 
         }
