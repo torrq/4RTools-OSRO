@@ -9,7 +9,6 @@ namespace _4RTools.Model
 {
     internal class BuffRenderer
     {
-
         private readonly int BUFFS_PER_ROW = 5;
         private readonly int DISTANCE_BETWEEN_CONTAINERS = 2;
         private readonly int DISTANCE_BETWEEN_ROWS = 27;
@@ -26,6 +25,14 @@ namespace _4RTools.Model
             this._toolTip = toolTip;
             this._typeAutoBuff = autoBuff;
             this._subject = subject;
+            ConfigureToolTipDelays();
+        }
+
+        private void ConfigureToolTipDelays()
+        {
+            this._toolTip.InitialDelay = 50;    // Time before tooltip appears (ms)
+            this._toolTip.AutoPopDelay = 5000;  // Time tooltip stays visible (ms)
+            this._toolTip.ReshowDelay = 50;     // Time before subsequent tooltips appear (ms)
         }
 
         public void DoRender()
@@ -38,7 +45,6 @@ namespace _4RTools.Model
 
                 if (i > 0)
                 {
-                    //If not first container to be rendered, get last container height and append 70
                     bk.Container.Location = new Point(_containers[i - 1].Container.Location.X, _containers[i - 1].Container.Location.Y + _containers[i - 1].Container.Height + DISTANCE_BETWEEN_CONTAINERS);
                 }
 
@@ -71,7 +77,6 @@ namespace _4RTools.Model
 
                     if (colCount == BUFFS_PER_ROW)
                     {
-                        //5 Buffs per row
                         colCount = 0;
                         lastLocation = new Point(bk.Container.Location.X, lastLocation.Y + DISTANCE_BETWEEN_ROWS);
                     }
@@ -109,7 +114,6 @@ namespace _4RTools.Model
                         ProfileSingleton.SetConfiguration(_autoBuffItem);
                     }
                 }
-
             }
             catch { }
         }
