@@ -10,7 +10,7 @@ namespace _4RTools.Utils
         public static string GithubLink = "";
         public static string DiscordLink = "";
         public static string _4RLatestVersionURL = "";
-        public static string Version = "v1.0.2";
+        public static string Version = "v1.0.3";
 
         // ServerMode: 0 = MR (Mid Rate), 1 = HR (High Rate)
         public static int ServerMode = 0; // Default to MR

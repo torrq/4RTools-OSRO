@@ -1,6 +1,6 @@
 ﻿namespace _4RTools.Forms
 {
-    partial class ItemAutoBuffForm
+    partial class AutobuffItemForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,17 +42,16 @@
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // toolTip1
-            //
+            // 
             this.toolTip1.AutomaticDelay = 10;
             this.toolTip1.AutoPopDelay = 5000;
             this.toolTip1.InitialDelay = 10;
             this.toolTip1.ReshowDelay = 2;
-            //
+            // 
             // FoodsGP
-            //
-            this.FoodsGP.AutoSize = false; // Changed to false
+            // 
             this.FoodsGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FoodsGP.Location = new System.Drawing.Point(12, 150);
             this.FoodsGP.Name = "FoodsGP";
@@ -60,10 +59,9 @@
             this.FoodsGP.TabIndex = 293;
             this.FoodsGP.TabStop = false;
             this.FoodsGP.Text = "Foods";
-            //
+            // 
             // PotionsGP
-            //
-            this.PotionsGP.AutoSize = false; // Changed to false
+            // 
             this.PotionsGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PotionsGP.Location = new System.Drawing.Point(12, 40);
             this.PotionsGP.Name = "PotionsGP";
@@ -71,10 +69,9 @@
             this.PotionsGP.TabIndex = 294;
             this.PotionsGP.TabStop = false;
             this.PotionsGP.Text = "ASPD Potions";
-            //
+            // 
             // BoxesGP
-            //
-            this.BoxesGP.AutoSize = false; // Changed to false
+            // 
             this.BoxesGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BoxesGP.Location = new System.Drawing.Point(12, 113);
             this.BoxesGP.Name = "BoxesGP";
@@ -82,10 +79,9 @@
             this.BoxesGP.TabIndex = 295;
             this.BoxesGP.TabStop = false;
             this.BoxesGP.Text = "Boxes / Speed / Status";
-            //
+            // 
             // ElementalsGP
-            //
-            this.ElementalsGP.AutoSize = false; // Changed to false
+            // 
             this.ElementalsGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ElementalsGP.Location = new System.Drawing.Point(12, 75);
             this.ElementalsGP.Name = "ElementalsGP";
@@ -93,10 +89,9 @@
             this.ElementalsGP.TabIndex = 296;
             this.ElementalsGP.TabStop = false;
             this.ElementalsGP.Text = "Elementals";
-            //
+            // 
             // ScrollBuffsGP
-            //
-            this.ScrollBuffsGP.AutoSize = false; // Changed to false
+            // 
             this.ScrollBuffsGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ScrollBuffsGP.Location = new System.Drawing.Point(12, 189);
             this.ScrollBuffsGP.Name = "ScrollBuffsGP";
@@ -104,10 +99,9 @@
             this.ScrollBuffsGP.TabIndex = 297;
             this.ScrollBuffsGP.TabStop = false;
             this.ScrollBuffsGP.Text = "Scrolls";
-            //
+            // 
             // EtcGP
-            //
-            this.EtcGP.AutoSize = false;  // Changed to false
+            // 
             this.EtcGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EtcGP.Location = new System.Drawing.Point(12, 228);
             this.EtcGP.Name = "EtcGP";
@@ -115,9 +109,9 @@
             this.EtcGP.TabIndex = 298;
             this.EtcGP.TabStop = false;
             this.EtcGP.Text = "Exp Boost";
-            //
+            // 
             // btnResetAutobuff
-            //
+            // 
             this.btnResetAutobuff.BackColor = System.Drawing.Color.White;
             this.btnResetAutobuff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetAutobuff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -129,9 +123,9 @@
             this.toolTip2.SetToolTip(this.btnResetAutobuff, "Reset all values in this tab to default");
             this.btnResetAutobuff.UseVisualStyleBackColor = false;
             this.btnResetAutobuff.Click += new System.EventHandler(this.btnResetAutobuff_Click);
-            //
+            // 
             // numericDelay
-            //
+            // 
             this.numericDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numericDelay.Location = new System.Drawing.Point(469, 12);
             this.numericDelay.Maximum = new decimal(new int[] {
@@ -143,18 +137,18 @@
             this.numericDelay.Size = new System.Drawing.Size(60, 22);
             this.numericDelay.TabIndex = 302;
             this.numericDelay.ValueChanged += new System.EventHandler(this.numericDelay_TextChanged);
-            //
+            // 
             // label5
-            //
+            // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(409, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 300;
             this.label5.Text = "Delay (ms)";
-            //
-            // ItemAutoBuffForm
-            //
+            // 
+            // AutobuffItemForm
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
@@ -171,8 +165,8 @@
             this.Controls.Add(this.FoodsGP);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ItemAutoBuffForm";
-            this.Text = "AutobuffSkillForm";
+            this.Name = "AutobuffItemForm";
+            this.Text = "AutobuffItemForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

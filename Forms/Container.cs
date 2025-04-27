@@ -361,7 +361,7 @@ namespace _4RTools.Forms
 
         public void SetAutobuffItemWindow()
         {
-            ItemAutoBuffForm frm = new ItemAutoBuffForm(subject)
+            AutobuffItemForm frm = new AutobuffItemForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),
@@ -373,7 +373,7 @@ namespace _4RTools.Forms
 
         public void SetAutobuffSkillWindow()
         {
-            SkillAutoBuffForm frm = new SkillAutoBuffForm(subject)
+            AutobuffSkillForm frm = new AutobuffSkillForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),

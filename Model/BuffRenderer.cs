@@ -10,7 +10,7 @@ namespace _4RTools.Model
     internal class BuffRenderer
     {
         private readonly int BUFFS_PER_ROW = 6;
-        private readonly int DISTANCE_BETWEEN_CONTAINERS = 6;
+        private readonly int DISTANCE_BETWEEN_CONTAINERS = 2;
         private readonly int DISTANCE_BETWEEN_ROWS = 28;
         private readonly int ICON_TEXT_SPACING = 27;
         private readonly int ICON_SPACING = 93;
@@ -101,38 +101,40 @@ namespace _4RTools.Model
         {
             try
             {
-                if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
-                {
-                    var _autoBuff = ProfileSingleton.GetCurrent().AutobuffSkill;
-                }
-
-                TextBox txtBox = (TextBox)sender;
+                // Get the textbox and check if text actually changed and is not empty
+                TextBox txtBox = (TextBox)sender;
                 bool textChanged = this.OldText != string.Empty && this.OldText != txtBox.Text.ToString();
+
                 if ((txtBox.Text.ToString() != string.Empty) && textChanged)
                 {
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
                     EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
 
-                    if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffItem.ActionName)
+                    // Correctly distinguish between Skill and Item/Stuff and save to the correct profile section
+                    if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
                     {
-                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem;
-                        _autoBuffItem.AddKeyToBuff(statusID, key);
-                        ProfileSingleton.SetConfiguration(_autoBuffItem);
-                        _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_SKILL, _autoBuffItem));
+                        var _autoBuffSkill = ProfileSingleton.GetCurrent().AutobuffSkill;
+                        _autoBuffSkill.AddKeyToBuff(statusID, key);
+                        ProfileSingleton.SetConfiguration(_autoBuffSkill);
+                        // Ensure correct notification is sent if needed
+                        _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_SKILL, _autoBuffSkill));
                     }
-                    else
-                    {
-                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem;
-                        _autoBuffItem.AddKeyToBuff(statusID, key);
+                    else // Assumed to be AutobuffItem/Stuff based on context
+                    {
+                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem; // Correct variable name
+                        _autoBuffItem.AddKeyToBuff(statusID, key);
                         ProfileSingleton.SetConfiguration(_autoBuffItem);
-                    }
+                        // Send a notification specific to item/stuff if needed, or none if not required
+                        // Example: _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_ITEM, _autoBuffItem));
+                    }
                 }
             }
-            catch { }
-        }
+            catch { } // Consider logging the exception here for debugging saves
+        }
 
         public static void DoUpdate(Dictionary<EffectStatusIDs, Key> autobuffDict, Control control)
         {
+            if (control == null || autobuffDict == null) return;
             FormUtils.ResetForm(control);
             foreach (EffectStatusIDs effect in autobuffDict.Keys)
             {

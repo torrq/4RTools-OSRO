@@ -7,16 +7,29 @@ using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
-    public partial class SkillAutoBuffForm : Form, IObserver
+    public partial class AutobuffSkillForm : Form, IObserver
     {
 
         private List<BuffContainer> skillContainers = new List<BuffContainer>();
+        private Subject _subject; // Store the subject
 
-        public SkillAutoBuffForm(Subject subject)
+        public AutobuffSkillForm(Subject subject)
         {
             this.KeyPreview = true;
             InitializeComponent();
+            _subject = subject; // Store the subject
+            InitializeSkillContainers(); //Extract this method
 
+            RenderSkillBuffs();
+
+            FormUtils.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
+            //FormUtils.SetNumericUpDownMinimumDelays(this);
+
+            subject.Attach(this);
+
+        }
+        private void InitializeSkillContainers()
+        {
             skillContainers.Add(new BuffContainer(this.ArcherSkillsGP, Buff.GetArcherSkills()));
             skillContainers.Add(new BuffContainer(this.SwordmanSkillGP, Buff.GetSwordmanSkill()));
             skillContainers.Add(new BuffContainer(this.MageSkillGP, Buff.GetMageSkills()));
@@ -27,29 +40,37 @@ namespace _4RTools.Forms
             skillContainers.Add(new BuffContainer(this.NinjaSkillsGP, Buff.GetNinjaSkills()));
             skillContainers.Add(new BuffContainer(this.GunsSkillsGP, Buff.GetGunsSkills()));
             skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, Buff.GetPadawanSkills()));
+        }
 
-            new BuffRenderer(skillContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffSkill.ActionName, subject).DoRender();
-
-            FormUtils.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
-            //FormUtils.SetNumericUpDownMinimumDelays(this);
-
-            subject.Attach(this);
-
+        private void RenderSkillBuffs()
+        {
+            new BuffRenderer(skillContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffSkill.ActionName, _subject).DoRender();
         }
 
         public void Update(ISubject subject)
         {
+            if (subject == null) return;
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
-                    BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Key>(ProfileSingleton.GetCurrent().AutobuffSkill.buffMapping), this);
-                    this.numericDelay.Value = ProfileSingleton.GetCurrent().AutobuffSkill.Delay;
+                    if (ProfileSingleton.GetCurrent()?.AutobuffSkill != null)
+                    {
+                        BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Key>(ProfileSingleton.GetCurrent().AutobuffSkill.buffMapping), this);
+                        this.numericDelay.Value = ProfileSingleton.GetCurrent().AutobuffSkill.Delay;
+                    }
+                    else
+                    {
+                        // Consider what should happen if AutobuffSkill is null.  For now, clear the form.
+                        FormUtils.ResetForm(this);
+                    }
                     break;
                 case MessageCode.TURN_OFF:
-                    ProfileSingleton.GetCurrent().AutobuffSkill.Stop();
+                    if (ProfileSingleton.GetCurrent()?.AutobuffSkill != null)
+                        ProfileSingleton.GetCurrent().AutobuffSkill.Stop();
                     break;
                 case MessageCode.TURN_ON:
-                    ProfileSingleton.GetCurrent().AutobuffSkill.Start();
+                    if (ProfileSingleton.GetCurrent()?.AutobuffSkill != null)
+                        ProfileSingleton.GetCurrent().AutobuffSkill.Start();
                     break;
             }
         }

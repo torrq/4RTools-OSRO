@@ -7,11 +7,11 @@ using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
-    public partial class ItemAutoBuffForm : Form, IObserver
+    public partial class AutobuffItemForm : Form, IObserver
     {
         private List<BuffContainer> itemContainers = new List<BuffContainer>();
 
-        public ItemAutoBuffForm(Subject subject)
+        public AutobuffItemForm(Subject subject)
         {
             InitializeComponent();
 
