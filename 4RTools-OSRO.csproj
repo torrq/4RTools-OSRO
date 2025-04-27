@@ -286,7 +286,7 @@
       <DependentUpon>AutoBuffStatusForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\StuffAutoBuffForm.cs">
+    <Compile Include="Forms\ItemAutoBuffForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Forms\SkillTimerForm.resx">
@@ -297,8 +297,8 @@
       <DependentUpon>CustomButtonForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\StuffAutoBuffForm.Designer.cs">
-      <DependentUpon>StuffAutoBuffForm.cs</DependentUpon>
+    <Compile Include="Forms\ItemAutoBuffForm.Designer.cs">
+      <DependentUpon>ItemAutoBuffForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
     <Compile Include="Forms\Container.cs">
@@ -322,8 +322,8 @@
       <DependentUpon>AutoBuffStatusForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StuffAutoBuffForm.resx">
-      <DependentUpon>StuffAutoBuffForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ItemAutoBuffForm.resx">
+      <DependentUpon>ItemAutoBuffForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Forms\ToggleApplicationStateForm.Designer.cs">

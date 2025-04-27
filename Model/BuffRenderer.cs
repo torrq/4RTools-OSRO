@@ -9,9 +9,14 @@ namespace _4RTools.Model
 {
     internal class BuffRenderer
     {
-        private readonly int BUFFS_PER_ROW = 5;
-        private readonly int DISTANCE_BETWEEN_CONTAINERS = 2;
-        private readonly int DISTANCE_BETWEEN_ROWS = 27;
+        private readonly int BUFFS_PER_ROW = 6;
+        private readonly int DISTANCE_BETWEEN_CONTAINERS = 6;
+        private readonly int DISTANCE_BETWEEN_ROWS = 28;
+        private readonly int ICON_TEXT_SPACING = 27;
+        private readonly int ICON_SPACING = 93;
+        private readonly Size TEXTBOX_SIZE = new Size(60, 20);
+        private const int TEXTBOX_VERTICAL_ADJUSTMENT = 2;
+        private const int GROUPBOX_HEIGHT = 30;
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
@@ -30,9 +35,9 @@ namespace _4RTools.Model
 
         private void ConfigureToolTipDelays()
         {
-            this._toolTip.InitialDelay = 50;    // Time before tooltip appears (ms)
-            this._toolTip.AutoPopDelay = 5000;  // Time tooltip stays visible (ms)
-            this._toolTip.ReshowDelay = 50;     // Time before subsequent tooltips appear (ms)
+            this._toolTip.InitialDelay = 50;
+            this._toolTip.AutoPopDelay = 5000;
+            this._toolTip.ReshowDelay = 50;
         }
 
         public void DoRender()
@@ -42,6 +47,8 @@ namespace _4RTools.Model
                 BuffContainer bk = _containers[i];
                 Point lastLocation = new Point(bk.Container.Location.X, 20);
                 int colCount = 0;
+                int maxRowHeight = 0;
+                int lastElementY = 0;
 
                 if (i > 0)
                 {
@@ -55,7 +62,7 @@ namespace _4RTools.Model
 
                     pb.Image = skill.Icon;
                     pb.BackgroundImageLayout = ImageLayout.Center;
-                    pb.Location = new Point(lastLocation.X + (colCount * 100), lastLocation.Y);
+                    pb.Location = new Point(lastLocation.X + (colCount * ICON_SPACING), lastLocation.Y);
                     pb.Name = "pbox" + ((int)skill.EffectStatusID);
                     pb.Size = new Size(26, 26);
                     _toolTip.SetToolTip(pb, skill.Name);
@@ -64,23 +71,29 @@ namespace _4RTools.Model
                     textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
                     textBox.GotFocus += new EventHandler(TextBox_GotFocus);
                     textBox.TextChanged += new EventHandler(OnTextChange);
-                    textBox.Size = new Size(55, 20);
+                    textBox.Size = TEXTBOX_SIZE;
                     textBox.Tag = ((int)skill.EffectStatusID);
                     textBox.Name = "in" + ((int)skill.EffectStatusID);
-                    textBox.Location = new Point(pb.Location.X + 35, pb.Location.Y + 3);
+                    textBox.Location = new Point(pb.Location.X + ICON_TEXT_SPACING, pb.Location.Y + 3 - TEXTBOX_VERTICAL_ADJUSTMENT);
                     textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
                     bk.Container.Controls.Add(textBox);
                     bk.Container.Controls.Add(pb);
 
                     colCount++;
+                    maxRowHeight = Math.Max(maxRowHeight, pb.Height + textBox.Height);
+                    lastElementY = Math.Max(lastElementY, pb.Location.Y + pb.Height);
 
                     if (colCount == BUFFS_PER_ROW)
                     {
                         colCount = 0;
                         lastLocation = new Point(bk.Container.Location.X, lastLocation.Y + DISTANCE_BETWEEN_ROWS);
+                        maxRowHeight = 0;
                     }
                 }
+                // Set the height of the GroupBox.  Calculate based on content.
+                int desiredHeight = lastElementY + 10;
+                bk.Container.Height = desiredHeight;
             }
         }
 
