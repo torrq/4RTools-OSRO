@@ -300,7 +300,7 @@ namespace _4RTools.Forms
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::_4RTools.Resources._4RTools.Icons.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(203, 29);
+            this.btnRefresh.Location = new System.Drawing.Point(204, 29);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(24, 24);
             this.btnRefresh.TabIndex = 5;

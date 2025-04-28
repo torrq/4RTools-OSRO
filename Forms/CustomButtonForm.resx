@@ -120,15 +120,4 @@
   <metadata name="tooltipTransferKey.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADYSURBVEhLtZXhEYMgDEaZoOcITOAGHcoNugGjMVJK
-        Gq0UPpqA8uPdeWB8IRFwjmgucPBOvg+PZ826+URIxAQV8BjPeRirCiS4/GiLUMU3Beu2JFDGGhyz/BeM
-        f/zglDQEPWVpIeWqBNJQFJDDGVpW6JFAyz5+MpOVapKABFpQjyAiAXqxxFoiGhXYGRS8dtDcL0OCswd4
-        PgcI9NraBbDJ+iazC+Bvatlo1h6AjSaZTTwqRHD9sDvKCAXXJByjHNc5feXquHBypPEsQiviMZ4zXpmz
-        gIO3Qe4NHkF3RI/kUB4AAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

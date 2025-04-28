@@ -52,11 +52,11 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::_4RTools.Resources._4RTools.Icons.add;
             this.btnSave.Location = new System.Drawing.Point(496, 27);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(78, 26);
+            this.btnSave.Size = new System.Drawing.Size(48, 26);
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Create";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -77,11 +77,11 @@
             this.btnRemoveProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnRemoveProfile.Image = global::_4RTools.Resources._4RTools.Icons.delete;
             this.btnRemoveProfile.Location = new System.Drawing.Point(496, 400);
             this.btnRemoveProfile.Name = "btnRemoveProfile";
-            this.btnRemoveProfile.Size = new System.Drawing.Size(78, 26);
+            this.btnRemoveProfile.Size = new System.Drawing.Size(48, 26);
             this.btnRemoveProfile.TabIndex = 3;
-            this.btnRemoveProfile.Text = "Remove Selected Profile";
             this.btnRemoveProfile.UseVisualStyleBackColor = false;
             this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
             // 

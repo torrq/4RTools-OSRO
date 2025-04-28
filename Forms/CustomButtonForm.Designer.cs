@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomButtonForm));
             this.txtTransferKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tooltipTransferKey = new System.Windows.Forms.ToolTip(this.components);
@@ -41,7 +40,7 @@
             // 
             this.txtTransferKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTransferKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTransferKey.Location = new System.Drawing.Point(99, 7);
+            this.txtTransferKey.Location = new System.Drawing.Point(104, 7);
             this.txtTransferKey.Name = "txtTransferKey";
             this.txtTransferKey.Size = new System.Drawing.Size(65, 25);
             this.txtTransferKey.TabIndex = 11;
@@ -51,10 +50,10 @@
             // 
             this.label1.Cursor = System.Windows.Forms.Cursors.Help;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 5);
+            this.label1.Location = new System.Drawing.Point(46, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 27);
+            this.label1.Size = new System.Drawing.Size(58, 27);
             this.label1.TabIndex = 13;
             this.label1.Text = "Transfer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,8 +62,8 @@
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Help;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(173, 7);
+            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.info;
+            this.pictureBox2.Location = new System.Drawing.Point(175, 8);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
