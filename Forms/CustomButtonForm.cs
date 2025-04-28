@@ -16,8 +16,8 @@ namespace _4RTools.Forms
             InitializeComponent();
             string toolTipText = "Simulates Alt+Right Click for quick item transfer between storage and inventory";
 
-            toolTip1.SetToolTip(label1, toolTipText);
-            toolTip1.SetToolTip(pictureBox2, toolTipText);
+            tooltipTransferKey.SetToolTip(label1, toolTipText);
+            tooltipTransferKey.SetToolTip(pictureBox2, toolTipText);
 
             subject.Attach(this);
         }

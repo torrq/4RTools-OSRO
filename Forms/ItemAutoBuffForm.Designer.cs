@@ -37,7 +37,7 @@
             this.ScrollBuffsGP = new System.Windows.Forms.GroupBox();
             this.EtcGP = new System.Windows.Forms.GroupBox();
             this.btnResetAutobuff = new System.Windows.Forms.Button();
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipDelayReset = new System.Windows.Forms.ToolTip(this.components);
             this.numericDelay = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).BeginInit();
@@ -120,9 +120,13 @@
             this.btnResetAutobuff.Size = new System.Drawing.Size(60, 23);
             this.btnResetAutobuff.TabIndex = 299;
             this.btnResetAutobuff.Text = "Reset\r\n";
-            this.toolTip2.SetToolTip(this.btnResetAutobuff, "Reset all values in this tab to default");
+            this.toolTipDelayReset.SetToolTip(this.btnResetAutobuff, "Reset all values in this tab to default");
             this.btnResetAutobuff.UseVisualStyleBackColor = false;
             this.btnResetAutobuff.Click += new System.EventHandler(this.btnResetAutobuff_Click);
+            // 
+            // toolTipDelayReset
+            // 
+            this.toolTipDelayReset.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipDelayReset_Popup);
             // 
             // numericDelay
             // 
@@ -192,7 +196,7 @@
         private System.Windows.Forms.GroupBox ScrollBuffsGP;
         private System.Windows.Forms.GroupBox EtcGP;
         private System.Windows.Forms.Button btnResetAutobuff;
-        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTipDelayReset;
         private System.Windows.Forms.NumericUpDown numericDelay;
         private System.Windows.Forms.Label label5;
     }

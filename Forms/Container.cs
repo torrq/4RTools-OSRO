@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
-using System.Threading;
 using System.Windows.Forms;
 using _4RTools.Model;
 using _4RTools.Utils;

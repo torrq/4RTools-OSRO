@@ -142,7 +142,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.keyMapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelMacro1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -187,7 +186,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.delayMac4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.keyMapBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMacro1
@@ -1436,7 +1434,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.delayMac4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.keyMapBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1458,7 +1455,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.BindingSource keyMapBindingSource;
         private System.Windows.Forms.NumericUpDown delayMac1;
         private System.Windows.Forms.NumericUpDown delayMac2;
         private System.Windows.Forms.NumericUpDown delayMac3;

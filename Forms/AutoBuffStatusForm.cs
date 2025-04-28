@@ -15,7 +15,7 @@ namespace _4RTools.Forms
             InitializeComponent();
             debuffContainers.Add(new BuffContainer(this.DebuffsGP, Buff.GetDebuffs()));
             debuffContainers.Add(new BuffContainer(this.WeightDebuffsGP, Buff.GetWeightDebuffs()));
-            new DebuffRenderer(debuffContainers, toolTip1).DoRender();
+            new DebuffRenderer(debuffContainers, toolTipPanacea).DoRender();
             this.txtStatusKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             this.txtStatusKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
             this.txtStatusKey.TextChanged += new EventHandler(OnStatusKeyChange);

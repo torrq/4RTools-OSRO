@@ -44,7 +44,7 @@
             this.PadawanSkillsGP = new System.Windows.Forms.GroupBox();
             this.btnResetAutobuff = new System.Windows.Forms.Button();
             this.numericDelay = new System.Windows.Forms.NumericUpDown();
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipDelayReset = new System.Windows.Forms.ToolTip(this.components);
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).BeginInit();
@@ -171,7 +171,7 @@
             this.btnResetAutobuff.Size = new System.Drawing.Size(60, 23);
             this.btnResetAutobuff.TabIndex = 299;
             this.btnResetAutobuff.Text = "Reset\r\n";
-            this.toolTip2.SetToolTip(this.btnResetAutobuff, "Reset all values in this tab to default");
+            this.toolTipDelayReset.SetToolTip(this.btnResetAutobuff, "Reset all values in this tab to default");
             this.btnResetAutobuff.UseVisualStyleBackColor = false;
             this.btnResetAutobuff.Click += new System.EventHandler(this.btnResetAutobuff_Click);
             // 
@@ -255,7 +255,7 @@
         private System.Windows.Forms.GroupBox PadawanSkillsGP;
         private System.Windows.Forms.Button btnResetAutobuff;
         private System.Windows.Forms.NumericUpDown numericDelay;
-        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTipDelayReset;
         private System.Windows.Forms.Label label5;
     }
 }

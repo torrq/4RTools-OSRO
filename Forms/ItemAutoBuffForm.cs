@@ -65,5 +65,9 @@ namespace _4RTools.Forms
             catch { }
         }
 
+        private void toolTipDelayReset_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
 }

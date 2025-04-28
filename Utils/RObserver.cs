@@ -46,7 +46,7 @@ namespace _4RTools.Utils
     {
         public Message Message { get; set; } = new Message();
         private readonly List<IObserver> _observers = new List<IObserver>();
-        
+
         public void Attach(IObserver observer)
         {
             if (!_observers.Contains(observer))

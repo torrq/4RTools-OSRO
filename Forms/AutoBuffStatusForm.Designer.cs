@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutoBuffStatusForm));
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipPanacea = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DebuffsGP = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,12 +39,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // toolTip1
+            // toolTipPanacea
             // 
-            this.toolTip1.AutomaticDelay = 10;
-            this.toolTip1.AutoPopDelay = 5000;
-            this.toolTip1.InitialDelay = 10;
-            this.toolTip1.ReshowDelay = 2;
+            this.toolTipPanacea.AutomaticDelay = 10;
+            this.toolTipPanacea.AutoPopDelay = 5000;
+            this.toolTipPanacea.InitialDelay = 10;
+            this.toolTipPanacea.ReshowDelay = 2;
             // 
             // pictureBox1
             // 
@@ -55,7 +55,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 296;
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Panacea");
+            this.toolTipPanacea.SetToolTip(this.pictureBox1, "Panacea");
             // 
             // DebuffsGP
             // 
@@ -121,7 +121,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTipPanacea;
         private System.Windows.Forms.GroupBox DebuffsGP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
