@@ -50,6 +50,7 @@ namespace _4RTools.Model
                 throw new Exception("There was a problem loading the profile. Delete the Profiles folder and try again.");
             }
         }
+
         public static void ClearProfile(string profileName)
         {
             if (profileName != profile.Name)
@@ -57,7 +58,6 @@ namespace _4RTools.Model
                 profile = new Profile(profileName);
             }
         }
-
 
         public static void Create(string profileName)
         {
@@ -73,7 +73,6 @@ namespace _4RTools.Model
                 Profile profile = new Profile(profileName);
                 string output = JsonConvert.SerializeObject(profile, Formatting.Indented);
                 File.WriteAllText(jsonFileName, output);
-
             }
 
             ProfileSingleton.Load(profileName);
@@ -86,6 +85,42 @@ namespace _4RTools.Model
                 if (profileName != "Default") { File.Delete(AppConfig.ProfileFolder + profileName + ".json"); }
             }
             catch { }
+        }
+
+        public static void Rename(string oldProfileName, string newProfileName)
+        {
+            try
+            {
+                if (oldProfileName == "Default")
+                {
+                    throw new Exception("Cannot rename the Default profile!");
+                }
+
+                string oldFilePath = AppConfig.ProfileFolder + oldProfileName + ".json";
+                string newFilePath = AppConfig.ProfileFolder + newProfileName + ".json";
+
+                if (!File.Exists(oldFilePath))
+                {
+                    throw new Exception("Profile file does not exist!");
+                }
+                if (File.Exists(newFilePath))
+                {
+                    throw new Exception("A profile with the new name already exists!");
+                }
+
+                // Rename the file
+                File.Move(oldFilePath, newFilePath);
+
+                // Update the current profile if it was the one renamed
+                if (profile.Name == oldProfileName)
+                {
+                    profile.Name = newProfileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to rename profile: {ex.Message}");
+            }
         }
 
         public static void SetConfiguration(IAction action)
@@ -121,7 +156,6 @@ namespace _4RTools.Model
         public DebuffsRecovery WeightDebuffsRecovery { get; set; }
         public Macro SongMacro { get; set; }
         public Macro MacroSwitch { get; set; }
-
         public Custom Custom { get; set; }
         public ATKDEFMode AtkDefMode { get; set; }
 

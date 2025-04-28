@@ -41,7 +41,7 @@ namespace _4RTools.Forms
             toolTipchkSoundEnabled.SetToolTip(chkSoundEnabled, "Play sounds when toggling on and off");
             toolTipAmmo1.SetToolTip(ammo1textBox, "ammo 1 shortcut");
             toolTipAmmo2.SetToolTip(ammo2textBox, "ammo 2 shortcut");
-            toolTipOverweightKey.SetToolTip(overweightKey, "Alt-# macro to send when overweight");
+            toolTipOverweightKey.SetToolTip(overweightKey, "Alt-# macro to send when overweight. Tip: set this to your @aaoff macro in RO!");
             toolTipchkStopBuffsOnCity.SetToolTip(chkStopBuffsOnCity, "When in a city (defined in " + cityName + "), pause temporarily");
 
             subject.Attach(this);

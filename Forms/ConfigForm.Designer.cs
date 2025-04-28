@@ -135,11 +135,11 @@ namespace _4RTools.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(120, 78);
+            this.label1.Location = new System.Drawing.Point(120, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 17);
+            this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 316;
-            this.label1.Text = "Then send Alt +";
+            this.label1.Text = ".. also send Alt -";
             // 
             // overweight50
             // 
@@ -161,7 +161,7 @@ namespace _4RTools.Forms
             // 
             this.overweightKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.overweightKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightKey.Location = new System.Drawing.Point(220, 76);
+            this.overweightKey.Location = new System.Drawing.Point(222, 76);
             this.overweightKey.Name = "overweightKey";
             this.overweightKey.Size = new System.Drawing.Size(55, 25);
             this.overweightKey.TabIndex = 311;

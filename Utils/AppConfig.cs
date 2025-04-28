@@ -35,7 +35,8 @@ namespace _4RTools.Utils
         public static Color DefaultButtonBackColor = Color.White;
         public static Color ResetButtonBackColor = Color.FromArgb(245, 210, 230);
         public static Color RemoveButtonBackColor = Color.Pink;
-        public static Color CreateButtonBackColor = Color.FromArgb(155, 221, 249);
+        public static Color CreateButtonBackColor = Color.FromArgb(190, 249, 155);
+        public static Color RenameButtonBackColor = Color.FromArgb(190, 249, 155);
         public static Color AccentBackColor = Color.FromArgb(238, 248, 255);
 
         public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
