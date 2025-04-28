@@ -47,15 +47,17 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox = new System.Windows.Forms.CheckBox();
             this.chkStopBuffsOnCity = new System.Windows.Forms.CheckBox();
             this.toolTipDebugMode = new System.Windows.Forms.ToolTip(this.components);
+            this.chkDebugMode = new System.Windows.Forms.CheckBox();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkDebugMode = new System.Windows.Forms.CheckBox();
             this.toolTipchkSoundEnabled = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAmmo1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAmmo2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipOverweightKey = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipWeight50 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
@@ -141,16 +143,17 @@ namespace _4RTools.Forms
             // 
             // overweight50
             // 
-            this.overweight50.AutoSize = true;
             this.overweight50.Cursor = System.Windows.Forms.Cursors.Hand;
             this.overweight50.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweight50.ForeColor = System.Drawing.Color.Crimson;
-            this.overweight50.Location = new System.Drawing.Point(38, 43);
+            this.overweight50.Image = global::_4RTools.Resources._4RTools.Icons.weight50;
+            this.overweight50.Location = new System.Drawing.Point(166, 30);
             this.overweight50.Name = "overweight50";
-            this.overweight50.Size = new System.Drawing.Size(95, 21);
+            this.overweight50.Size = new System.Drawing.Size(54, 40);
             this.overweight50.TabIndex = 313;
             this.overweight50.TabStop = true;
-            this.overweight50.Text = "50% Weight";
+            this.overweight50.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipWeight50.SetToolTip(this.overweight50, "Auto-disable when weight is over 50%");
             this.overweight50.UseVisualStyleBackColor = true;
             this.overweight50.CheckedChanged += new System.EventHandler(this.OverweightMode_CheckedChanged);
             // 
@@ -168,10 +171,10 @@ namespace _4RTools.Forms
             // 
             this.overweightOff.AutoSize = true;
             this.overweightOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.overweightOff.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightOff.Location = new System.Drawing.Point(38, 21);
+            this.overweightOff.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overweightOff.Location = new System.Drawing.Point(45, 40);
             this.overweightOff.Name = "overweightOff";
-            this.overweightOff.Size = new System.Drawing.Size(73, 21);
+            this.overweightOff.Size = new System.Drawing.Size(77, 21);
             this.overweightOff.TabIndex = 315;
             this.overweightOff.TabStop = true;
             this.overweightOff.Text = "Disabled";
@@ -180,16 +183,16 @@ namespace _4RTools.Forms
             // 
             // overweight90
             // 
-            this.overweight90.AutoSize = true;
             this.overweight90.Cursor = System.Windows.Forms.Cursors.Hand;
             this.overweight90.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweight90.ForeColor = System.Drawing.Color.Crimson;
-            this.overweight90.Location = new System.Drawing.Point(141, 43);
+            this.overweight90.Image = global::_4RTools.Resources._4RTools.Icons.weight90;
+            this.overweight90.Location = new System.Drawing.Point(228, 30);
             this.overweight90.Name = "overweight90";
-            this.overweight90.Size = new System.Drawing.Size(95, 21);
+            this.overweight90.Size = new System.Drawing.Size(54, 40);
             this.overweight90.TabIndex = 314;
             this.overweight90.TabStop = true;
-            this.overweight90.Text = "90% Weight";
+            this.toolTipWeight90.SetToolTip(this.overweight90, "Auto-disable when weight is over 90%");
             this.overweight90.UseVisualStyleBackColor = true;
             this.overweight90.CheckedChanged += new System.EventHandler(this.OverweightMode_CheckedChanged);
             // 
@@ -237,6 +240,20 @@ namespace _4RTools.Forms
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
             this.chkStopBuffsOnCity.CheckedChanged += new System.EventHandler(this.ChkStopBuffsOnCity_CheckedChanged);
             // 
+            // chkDebugMode
+            // 
+            this.chkDebugMode.AutoSize = true;
+            this.chkDebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkDebugMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDebugMode.Location = new System.Drawing.Point(98, 48);
+            this.chkDebugMode.Name = "chkDebugMode";
+            this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
+            this.chkDebugMode.TabIndex = 320;
+            this.chkDebugMode.Text = "Debug Mode";
+            this.toolTipDebugMode.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
+            this.chkDebugMode.UseVisualStyleBackColor = true;
+            this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            // 
             // groupGlobalSettings
             // 
             this.groupGlobalSettings.Controls.Add(this.label3);
@@ -263,20 +280,6 @@ namespace _4RTools.Forms
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.toolTipReqRestart.SetToolTip(this.label3, "All global setting changes require restarting the app");
             // 
-            // chkDebugMode
-            // 
-            this.chkDebugMode.AutoSize = true;
-            this.chkDebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkDebugMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDebugMode.Location = new System.Drawing.Point(98, 48);
-            this.chkDebugMode.Name = "chkDebugMode";
-            this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
-            this.chkDebugMode.TabIndex = 320;
-            this.chkDebugMode.Text = "Debug Mode";
-            this.toolTipDebugMode.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
-            this.chkDebugMode.UseVisualStyleBackColor = true;
-            this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
-            // 
             // toolTipAmmo1
             // 
             this.toolTipAmmo1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip3_Popup);
@@ -284,6 +287,10 @@ namespace _4RTools.Forms
             // toolTipOverweightKey
             // 
             this.toolTipOverweightKey.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip5_Popup);
+            // 
+            // toolTipWeight90
+            // 
+            this.toolTipWeight90.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipWeight90_Popup);
             // 
             // clientDTOBindingSource
             // 
@@ -342,5 +349,7 @@ namespace _4RTools.Forms
         private CheckBox chkDebugMode;
         private Label label3;
         private ToolTip toolTipReqRestart;
+        private ToolTip toolTipWeight50;
+        private ToolTip toolTipWeight90;
     }
 }

@@ -271,5 +271,10 @@ namespace _4RTools.Forms
         {
 
         }
+
+        private void toolTipWeight90_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
 }

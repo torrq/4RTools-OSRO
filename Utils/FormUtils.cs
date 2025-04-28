@@ -227,7 +227,6 @@ namespace _4RTools.Utils
                 {
                     delayInput.Minimum = minimumDelayValue;
 
-                    // Fix: Ensure value respects new minimum
                     if (delayInput.Value < delayInput.Minimum)
                     {
                         delayInput.Value = delayInput.Minimum;

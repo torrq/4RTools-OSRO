@@ -88,7 +88,7 @@
             this.numAutopotDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numAutopotDelay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numAutopotDelay.Increment = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
