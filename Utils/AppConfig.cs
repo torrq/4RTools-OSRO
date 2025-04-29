@@ -36,8 +36,13 @@ namespace _4RTools.Utils
         public static Color ResetButtonBackColor = Color.FromArgb(245, 210, 230);
         public static Color RemoveButtonBackColor = Color.Pink;
         public static Color CreateButtonBackColor = Color.FromArgb(190, 249, 155);
-        public static Color RenameButtonBackColor = Color.FromArgb(190, 249, 155);
+        public static Color RenameButtonBackColor = Color.FromArgb(249, 255, 175);
+        public static Color CopyButtonBackColor = Color.FromArgb(249, 255, 175);
         public static Color AccentBackColor = Color.FromArgb(238, 248, 255);
+
+        // Profile button border darkness
+        public static int ProfileButtonBorderDarkenAmount = 60;
+
 
         public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
         public static string NotifyIconTitle => $"{Name} ({(ServerMode == 0 ? "MR" : "HR")})";

@@ -139,6 +139,45 @@ namespace _4RTools.Model
         {
             return profile;
         }
+
+        public static void Copy(string sourceProfileName, string destinationProfileName)
+        {
+            if (string.IsNullOrWhiteSpace(destinationProfileName) || destinationProfileName.Equals("Default", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Invalid new profile name.");
+            }
+            if (string.IsNullOrWhiteSpace(sourceProfileName))
+            {
+                throw new ArgumentException("Source profile name cannot be empty.");
+            }
+
+            string sourceFilePath = AppConfig.ProfileFolder + sourceProfileName + ".json";
+            string destinationFilePath = AppConfig.ProfileFolder + destinationProfileName + ".json";
+
+            if (!File.Exists(sourceFilePath))
+            {
+                throw new FileNotFoundException($"Source profile '{sourceProfileName}' not found.");
+            }
+
+            if (File.Exists(destinationFilePath))
+            {
+                throw new ArgumentException($"A profile named '{destinationProfileName}' already exists.");
+            }
+
+            try
+            {
+                if (!Directory.Exists(AppConfig.ProfileFolder))
+                {
+                    Directory.CreateDirectory(AppConfig.ProfileFolder);
+                }
+
+                File.Copy(sourceFilePath, destinationFilePath);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error copying profile file: {ex.Message}", ex);
+            }
+        }
     }
 
     public class Profile

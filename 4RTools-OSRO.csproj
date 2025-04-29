@@ -327,7 +327,7 @@
       <DependentUpon>ProfileForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\ToggleApplicationStateForm.cs">
+    <Compile Include="Forms\ToggleStatusForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Forms\AutoBuffStatusForm.resx">
@@ -338,8 +338,8 @@
       <DependentUpon>ItemAutoBuffForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\ToggleApplicationStateForm.Designer.cs">
-      <DependentUpon>ToggleApplicationStateForm.cs</DependentUpon>
+    <Compile Include="Forms\ToggleStatusForm.Designer.cs">
+      <DependentUpon>ToggleStatusForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
     <Compile Include="Model\AHK.cs" />
@@ -398,8 +398,8 @@
     <Compile Include="Utils\RObserver.cs" />
     <Compile Include="Utils\StatusIdLogger.cs" />
     <Compile Include="Utils\_4RThread.cs" />
-    <EmbeddedResource Include="Forms\ToggleApplicationStateForm.resx">
-      <DependentUpon>ToggleApplicationStateForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ToggleStatusForm.resx">
+      <DependentUpon>ToggleStatusForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

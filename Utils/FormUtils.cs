@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
+using _4RTools.Model; // Assuming Model is needed for EffectStatusIDs or other types
+using _4RTools.Utils; // Ensure AppConfig is accessible
 
 namespace _4RTools.Utils
 {
@@ -15,16 +17,22 @@ namespace _4RTools.Utils
         {
             if (buttonNames == null || buttonNames.Length == 0) return;
 
+            int darkenAmount = AppConfig.ProfileButtonBorderDarkenAmount; // Get darkness amount from AppConfig
+
             foreach (string buttonName in buttonNames)
             {
-                // Search recursively within the parentControl for a control with the specified name
                 Control[] foundControls = parentControl.Controls.Find(buttonName, true);
 
                 if (foundControls.Length > 0 && foundControls[0] is Button button)
                 {
                     button.BackColor = color;
+
+                    // Calculate and apply darker border color
+                    Color borderColor = DarkenColor(color, darkenAmount);
+                    button.FlatAppearance.BorderColor = borderColor;
+                    button.FlatAppearance.BorderSize = 1; // Ensure border is visible
+
                 }
-                // Log if a button name wasn't found
                 else { DebugLogger.Warning($"Button '{buttonName}' not found in {parentControl.Name}."); }
             }
         }
@@ -36,7 +44,6 @@ namespace _4RTools.Utils
                 TextBox textBox = (TextBox)sender;
                 Key thisk;
 
-                // Handle special cases for keys like OemPlus, OemTilde, and OemComma
                 if (e.KeyCode == Keys.Oemplus)
                 {
                     thisk = Key.OemPlus;
@@ -49,7 +56,6 @@ namespace _4RTools.Utils
                 {
                     thisk = Key.OemComma;
                 }
-                // Handle numeric keys (D0-D9) explicitly
                 else if (e.KeyCode == Keys.D0)
                 {
                     thisk = Key.D0;
@@ -92,11 +98,9 @@ namespace _4RTools.Utils
                 }
                 else
                 {
-                    // Default case for other keys
                     thisk = (Key)Enum.Parse(typeof(Key), e.KeyCode.ToString());
                 }
 
-                // Handle specific actions based on the key
                 switch (thisk)
                 {
                     case Key.Escape:
@@ -168,7 +172,6 @@ namespace _4RTools.Utils
             {
                 NumericUpDown numeric = (NumericUpDown)n;
 
-                // Safe reset: avoid out-of-range exception
                 decimal safeValue = Math.Max(numeric.Minimum, 0);
                 numeric.Value = safeValue;
             }
@@ -216,13 +219,10 @@ namespace _4RTools.Utils
 
         public static void SetNumericUpDownMinimumDelays(Form form, decimal? overrideMinimumDelay = null)
         {
-            // Use the override if provided, otherwise fall back to default config
             decimal minimumDelayValue = overrideMinimumDelay ?? AppConfig.DefaultMinimumDelay;
 
-            // Iterate through all controls on the form recursively
             foreach (Control control in GetAllControls(form))
             {
-                // Check if the control is a NumericUpDown and its name indicates it's a delay input
                 if (control is NumericUpDown delayInput && delayInput.Name.ToLower().Contains("delay"))
                 {
                     delayInput.Minimum = minimumDelayValue;
@@ -240,6 +240,15 @@ namespace _4RTools.Utils
             var controls = container.Controls.Cast<Control>();
             return controls.SelectMany(ctrl => GetAllControls(ctrl))
                                  .Concat(controls);
+        }
+
+        // Helper method to darken a color
+        private static Color DarkenColor(Color color, int amount)
+        {
+            int r = Math.Max(0, color.R - amount);
+            int g = Math.Max(0, color.G - amount);
+            int b = Math.Max(0, color.B - amount);
+            return Color.FromArgb(r, g, b);
         }
     }
     public static class EnumExtensions

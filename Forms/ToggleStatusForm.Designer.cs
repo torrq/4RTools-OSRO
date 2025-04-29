@@ -8,6 +8,8 @@ namespace _4RTools.Forms
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.ToolTip toolTipStatusToggle;
+
 
         /// <summary>
         /// Clean up any resources being used.
@@ -37,6 +39,7 @@ namespace _4RTools.Forms
             this.lblStatusToggle = new System.Windows.Forms.Label();
             this.btnStatusToggle = new System.Windows.Forms.Button();
             this.notifyIconTray = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolTipStatusToggle = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,25 +81,28 @@ namespace _4RTools.Forms
             // 
             // btnStatusToggle
             // 
-            this.btnStatusToggle.BackColor = System.Drawing.Color.Red;
+            this.btnStatusToggle.BackColor = System.Drawing.Color.Transparent;
             this.btnStatusToggle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStatusToggle.FlatAppearance.BorderSize = 0;
+            this.btnStatusToggle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnStatusToggle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnStatusToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatusToggle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatusToggle.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnStatusToggle.Location = new System.Drawing.Point(18, 28);
+            this.btnStatusToggle.Image = global::_4RTools.Resources._4RTools.Icons.toggle_off;
+            this.btnStatusToggle.Location = new System.Drawing.Point(18, 22);
             this.btnStatusToggle.Margin = new System.Windows.Forms.Padding(0);
             this.btnStatusToggle.Name = "btnStatusToggle";
-            this.btnStatusToggle.Size = new System.Drawing.Size(68, 33);
+            this.btnStatusToggle.Size = new System.Drawing.Size(68, 48);
             this.btnStatusToggle.TabIndex = 21;
-            this.btnStatusToggle.Text = "OFF";
+            this.toolTipStatusToggle.SetToolTip(this.btnStatusToggle, "Toggle application state ON/OFF");
             this.btnStatusToggle.UseVisualStyleBackColor = false;
             this.btnStatusToggle.Click += new System.EventHandler(this.btnToggleStatusHandler);
             // 
             // notifyIconTray
             // 
             this.notifyIconTray.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconTray.Icon")));
-            this.notifyIconTray.Text = AppConfig.NotifyIconTitle;
+            this.notifyIconTray.Text = "4RTools-OSRO (MR)";
             this.notifyIconTray.Visible = true;
             this.notifyIconTray.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconDoubleClick);
             // 

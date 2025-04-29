@@ -20,6 +20,7 @@ namespace _4RTools.Forms
             }
 
             FormUtils.ApplyColorToButtons(this, new[] { "btnSave" }, AppConfig.CreateButtonBackColor);
+            FormUtils.ApplyColorToButtons(this, new[] { "btnCopyProfile" }, AppConfig.CopyButtonBackColor);
             FormUtils.ApplyColorToButtons(this, new[] { "btnRemoveProfile" }, AppConfig.RemoveButtonBackColor);
             FormUtils.ApplyColorToButtons(this, new[] { "btnRenameProfile" }, AppConfig.RenameButtonBackColor);
         }
@@ -37,8 +38,6 @@ namespace _4RTools.Forms
             }
 
             // Check maximum length (Windows 7 path limit: 260 characters, accounting for directory and .json extension)
-            // Assuming a conservative directory path length (e.g., "C:\Users\<User>\AppData\<App>\Profiles\")
-            // Let's assume 100 characters for the directory path, leaving 160 for the file name including ".json"
             const int maxFileNameLength = 160 - 5; // 160 minus ".json" (5 chars) = 155
             if (profileName.Length > maxFileNameLength)
             {
@@ -70,6 +69,26 @@ namespace _4RTools.Forms
             return profileName;
         }
 
+        private string GenerateUniqueProfileName(string baseName)
+        {
+            // If the base name doesn't exist, use it directly
+            if (!Profile.ListAll().Contains(baseName))
+            {
+                return baseName;
+            }
+
+            // Try appending " (number)" until a unique name is found
+            int counter = 1;
+            string newName;
+            do
+            {
+                newName = $"{baseName} ({counter})";
+                counter++;
+            } while (Profile.ListAll().Contains(newName));
+
+            return newName;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             string newProfileName = DialogInput.ShowDialog("Enter new profile name:", "Create Profile", "");
@@ -81,6 +100,41 @@ namespace _4RTools.Forms
             ProfileSingleton.Create(newProfileName);
             this.lbProfilesList.Items.Add(newProfileName);
             this.container.RefreshProfileList();
+        }
+
+        private void btnCopyProfile_Click(object sender, EventArgs e)
+        {
+            if (this.lbProfilesList.SelectedItem == null)
+            {
+                MessageBox.Show("No profile found! To copy a profile, first select an option from the Profile list.");
+                return;
+            }
+
+            string selectedProfile = this.lbProfilesList.SelectedItem.ToString();
+            if (selectedProfile == "Default")
+            {
+                MessageBox.Show("Cannot copy the Default profile!");
+                return;
+            }
+
+            // Generate a unique name for the copied profile
+            string suggestedName = GenerateUniqueProfileName(selectedProfile);
+            string newProfileName = DialogInput.ShowDialog("Enter name for the copied profile:", "Copy Profile", suggestedName);
+            if (newProfileName == null) { return; }
+
+            newProfileName = ValidateProfileName(newProfileName);
+            if (newProfileName == null) { return; }
+
+            try
+            {
+                ProfileSingleton.Copy(selectedProfile, newProfileName);
+                this.lbProfilesList.Items.Add(newProfileName);
+                this.container.RefreshProfileList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error copying profile: {ex.Message}");
+            }
         }
 
         private void btnRemoveProfile_Click(object sender, EventArgs e)

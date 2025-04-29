@@ -142,22 +142,40 @@ namespace _4RTools.Model
 
             return autobuffItemThread;
         }
+
         private void HandleOverweightStatus(Client c, EffectStatusIDs status)
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (status == EffectStatusIDs.WEIGHT50 && prefs.OverweightMode == "overweight50")
             {
+                // Corrected type cast to ToggleApplicationStateForm
                 var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
-                frmToggleApplication.toggleStatus();
-                DebugLogger.Info("Overweight 50%, disable now");
-                SendOverweightMacro(c, "50");
+                if (frmToggleApplication != null)
+                {
+                    frmToggleApplication.toggleStatus();
+                    DebugLogger.Info("Overweight 50%, disable now");
+                    SendOverweightMacro(c, "50");
+                }
+                else
+                {
+                    DebugLogger.Error("HandleOverweightStatus: Could not find 'ToggleApplicationStateForm' to toggle status.");
+                }
+
             }
             else if (status == EffectStatusIDs.WEIGHT90 && prefs.OverweightMode == "overweight90")
             {
                 DebugLogger.Info("Overweight 90%, disable now");
+                // Corrected type cast to ToggleApplicationStateForm
                 var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
-                frmToggleApplication.toggleStatus();
-                SendOverweightMacro(c, "90");
+                if (frmToggleApplication != null)
+                {
+                    frmToggleApplication.toggleStatus();
+                    SendOverweightMacro(c, "90");
+                }
+                else
+                {
+                    DebugLogger.Error("HandleOverweightStatus: Could not find 'ToggleApplicationStateForm' to toggle status.");
+                }
             }
         }
 
