@@ -49,7 +49,6 @@ namespace _4RTools.Forms
             this.toolTipDebugMode = new System.Windows.Forms.ToolTip(this.components);
             this.chkDebugMode = new System.Windows.Forms.CheckBox();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.toolTipchkSoundEnabled = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAmmo1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAmmo2 = new System.Windows.Forms.ToolTip(this.components);
@@ -97,7 +96,7 @@ namespace _4RTools.Forms
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
-            this.groupSettings.Size = new System.Drawing.Size(300, 287);
+            this.groupSettings.Size = new System.Drawing.Size(300, 341);
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Profile Settings";
@@ -110,9 +109,9 @@ namespace _4RTools.Forms
             this.chkSoundEnabled.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSoundEnabled.Location = new System.Drawing.Point(13, 68);
             this.chkSoundEnabled.Name = "chkSoundEnabled";
-            this.chkSoundEnabled.Size = new System.Drawing.Size(121, 21);
+            this.chkSoundEnabled.Size = new System.Drawing.Size(89, 21);
             this.chkSoundEnabled.TabIndex = 317;
-            this.chkSoundEnabled.Text = "Sounds Enabled";
+            this.chkSoundEnabled.Text = "Sounds on";
             this.chkSoundEnabled.UseVisualStyleBackColor = true;
             this.chkSoundEnabled.CheckedChanged += new System.EventHandler(this.ChkSoundEnabled_CheckedChanged);
             // 
@@ -123,7 +122,7 @@ namespace _4RTools.Forms
             this.groupOverweight.Controls.Add(this.overweightKey);
             this.groupOverweight.Controls.Add(this.overweightOff);
             this.groupOverweight.Controls.Add(this.overweight90);
-            this.groupOverweight.Location = new System.Drawing.Point(6, 172);
+            this.groupOverweight.Location = new System.Drawing.Point(6, 226);
             this.groupOverweight.Name = "groupOverweight";
             this.groupOverweight.Size = new System.Drawing.Size(288, 109);
             this.groupOverweight.TabIndex = 316;
@@ -221,9 +220,9 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.switchAmmoCheckBox.Location = new System.Drawing.Point(13, 107);
             this.switchAmmoCheckBox.Name = "switchAmmoCheckBox";
-            this.switchAmmoCheckBox.Size = new System.Drawing.Size(162, 21);
+            this.switchAmmoCheckBox.Size = new System.Drawing.Size(160, 21);
             this.switchAmmoCheckBox.TabIndex = 307;
-            this.switchAmmoCheckBox.Text = "Automatic Ammo Swap";
+            this.switchAmmoCheckBox.Text = "Automatic ammo swap";
             this.switchAmmoCheckBox.UseVisualStyleBackColor = true;
             this.switchAmmoCheckBox.CheckedChanged += new System.EventHandler(this.SwitchAmmoCheckBox_CheckedChanged);
             // 
@@ -234,9 +233,9 @@ namespace _4RTools.Forms
             this.chkStopBuffsOnCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkStopBuffsOnCity.Location = new System.Drawing.Point(13, 27);
             this.chkStopBuffsOnCity.Name = "chkStopBuffsOnCity";
-            this.chkStopBuffsOnCity.Size = new System.Drawing.Size(266, 21);
+            this.chkStopBuffsOnCity.Size = new System.Drawing.Size(141, 21);
             this.chkStopBuffsOnCity.TabIndex = 0;
-            this.chkStopBuffsOnCity.Text = "Pause autopot, buffs && skill timer in town";
+            this.chkStopBuffsOnCity.Text = "Pause when in town";
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
             this.chkStopBuffsOnCity.CheckedChanged += new System.EventHandler(this.ChkStopBuffsOnCity_CheckedChanged);
             // 
@@ -245,7 +244,7 @@ namespace _4RTools.Forms
             this.chkDebugMode.AutoSize = true;
             this.chkDebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkDebugMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDebugMode.Location = new System.Drawing.Point(98, 48);
+            this.chkDebugMode.Location = new System.Drawing.Point(94, 21);
             this.chkDebugMode.Name = "chkDebugMode";
             this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
             this.chkDebugMode.TabIndex = 320;
@@ -256,29 +255,14 @@ namespace _4RTools.Forms
             // 
             // groupGlobalSettings
             // 
-            this.groupGlobalSettings.Controls.Add(this.label3);
             this.groupGlobalSettings.Controls.Add(this.chkDebugMode);
-            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 313);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 367);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
-            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 107);
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 53);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
             this.groupGlobalSettings.Enter += new System.EventHandler(this.groupGlobalSettings_Enter);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Location = new System.Drawing.Point(200, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
-            this.label3.TabIndex = 321;
-            this.label3.Text = "requires app restart";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.toolTipReqRestart.SetToolTip(this.label3, "All global setting changes require restarting the app");
             // 
             // toolTipAmmo1
             // 
@@ -347,7 +331,6 @@ namespace _4RTools.Forms
         private CheckBox chkSoundEnabled;
         private GroupBox groupGlobalSettings;
         private CheckBox chkDebugMode;
-        private Label label3;
         private ToolTip toolTipReqRestart;
         private ToolTip toolTipWeight50;
         private ToolTip toolTipWeight90;

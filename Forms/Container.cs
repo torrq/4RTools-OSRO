@@ -323,7 +323,7 @@ namespace _4RTools.Forms
 
         public void SetCustomButtonsWindow()
         {
-            CustomButtonForm form = new CustomButtonForm(subject)
+            TransferButtonForm form = new TransferButtonForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(445, 220),

@@ -6,12 +6,12 @@ using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
-    public partial class CustomButtonForm : Form, IObserver
+    public partial class TransferButtonForm : Form, IObserver
     {
 
         private Custom custom;
 
-        public CustomButtonForm(Subject subject)
+        public TransferButtonForm(Subject subject)
         {
             InitializeComponent();
             string toolTipText = "Simulates Alt+Right Click for quick item transfer between storage and inventory";
