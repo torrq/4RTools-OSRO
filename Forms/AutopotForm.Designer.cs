@@ -1,4 +1,6 @@
-﻿namespace _4RTools.Forms
+﻿using _4RTools.Utils;
+
+namespace _4RTools.Forms
 {
     partial class AutopotForm
     {
@@ -245,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.BackColor = AppConfig.AccentBackColor;
             this.ClientSize = new System.Drawing.Size(300, 150);
             this.Controls.Add(this.chkStopWitchFC);
             this.Controls.Add(this.firstSP);

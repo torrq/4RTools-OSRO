@@ -15,9 +15,7 @@ namespace _4RTools.Model
         public string Description { get; set; }
         public string HPAddress { get; set; }
         public string NameAddress { get; set; }
-
         public string MapAddress { get; set; }
-
         public int HPAddressPointer { get; set; }
         public int NameAddressPointer { get; set; }
         public int MapAddressPointer { get; set; }

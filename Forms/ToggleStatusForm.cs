@@ -3,8 +3,8 @@ using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
 using _4RTools.Model;
-using _4RTools.Utils;
 using _4RTools.Resources._4RTools;
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {

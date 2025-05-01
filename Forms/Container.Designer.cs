@@ -82,7 +82,7 @@ namespace _4RTools.Forms
             // 
             // tabPageSpammer
             // 
-            this.tabPageSpammer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.tabPageSpammer.BackColor = AppConfig.AccentBackColor;
             this.tabPageSpammer.Location = new System.Drawing.Point(4, 22);
             this.tabPageSpammer.Name = "tabPageSpammer";
             this.tabPageSpammer.Padding = new System.Windows.Forms.Padding(3);
@@ -245,7 +245,7 @@ namespace _4RTools.Forms
             // 
             // tabPageAutopot
             // 
-            this.tabPageAutopot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.tabPageAutopot.BackColor = AppConfig.AccentBackColor;
             this.tabPageAutopot.Location = new System.Drawing.Point(4, 22);
             this.tabPageAutopot.Name = "tabPageAutopot";
             this.tabPageAutopot.Padding = new System.Windows.Forms.Padding(3);
@@ -255,7 +255,7 @@ namespace _4RTools.Forms
             // 
             // tabPageYggAutopot
             // 
-            this.tabPageYggAutopot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.tabPageYggAutopot.BackColor = AppConfig.AccentBackColor;
             this.tabPageYggAutopot.Location = new System.Drawing.Point(4, 22);
             this.tabPageYggAutopot.Name = "tabPageYggAutopot";
             this.tabPageYggAutopot.Padding = new System.Windows.Forms.Padding(3);
@@ -265,7 +265,7 @@ namespace _4RTools.Forms
             // 
             // tabPageSkillTimer
             // 
-            this.tabPageSkillTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.tabPageSkillTimer.BackColor = AppConfig.AccentBackColor;
             this.tabPageSkillTimer.Location = new System.Drawing.Point(4, 22);
             this.tabPageSkillTimer.Name = "tabPageSkillTimer";
             this.tabPageSkillTimer.Padding = new System.Windows.Forms.Padding(3);

@@ -159,7 +159,7 @@ namespace _4RTools.Forms
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.BackColor = AppConfig.AccentBackColor;
             this.ClientSize = new System.Drawing.Size(630, 440);
             this.Controls.Add(this.lbProfilesList);
             this.Controls.Add(this.lblProfilesList);

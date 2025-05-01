@@ -6,8 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
-using _4RTools.Model; // Assuming Model is needed for EffectStatusIDs or other types
-using _4RTools.Utils; // Ensure AppConfig is accessible
 
 namespace _4RTools.Utils
 {
