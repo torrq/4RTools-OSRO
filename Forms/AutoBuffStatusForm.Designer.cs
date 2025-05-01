@@ -35,8 +35,7 @@ namespace _4RTools.Forms
             this.toolTipPanacea = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DebuffsGP = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtStatusKey = new System.Windows.Forms.TextBox();
+            this.txtPanaceaKey = new System.Windows.Forms.TextBox();
             this.WeightDebuffsGP = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +50,7 @@ namespace _4RTools.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(266, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(295, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,23 +69,14 @@ namespace _4RTools.Forms
             this.DebuffsGP.TabStop = false;
             this.DebuffsGP.Text = "Debuffs";
             // 
-            // label1
+            // txtPanaceaKey
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(293, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 297;
-            this.label1.Text = "Status";
-            // 
-            // txtStatusKey
-            // 
-            this.txtStatusKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStatusKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatusKey.Location = new System.Drawing.Point(335, 12);
-            this.txtStatusKey.Name = "txtStatusKey";
-            this.txtStatusKey.Size = new System.Drawing.Size(45, 25);
-            this.txtStatusKey.TabIndex = 295;
+            this.txtPanaceaKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPanaceaKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPanaceaKey.Location = new System.Drawing.Point(325, 12);
+            this.txtPanaceaKey.Name = "txtPanaceaKey";
+            this.txtPanaceaKey.Size = new System.Drawing.Size(45, 25);
+            this.txtPanaceaKey.TabIndex = 295;
             // 
             // WeightDebuffsGP
             // 
@@ -104,12 +94,11 @@ namespace _4RTools.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(635, 248);
             this.Controls.Add(this.WeightDebuffsGP);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtStatusKey);
+            this.Controls.Add(this.txtPanaceaKey);
             this.Controls.Add(this.DebuffsGP);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -125,9 +114,8 @@ namespace _4RTools.Forms
         #endregion
         private System.Windows.Forms.ToolTip toolTipPanacea;
         private System.Windows.Forms.GroupBox DebuffsGP;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtStatusKey;
+        private System.Windows.Forms.TextBox txtPanaceaKey;
         private System.Windows.Forms.GroupBox WeightDebuffsGP;
     }
 }

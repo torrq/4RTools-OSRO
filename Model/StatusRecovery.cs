@@ -10,7 +10,7 @@ namespace _4RTools.Model
 {
     public class StatusRecovery : IAction
     {
-        public static string ACTION_NAME_STATUS_AUTOBUFF = "StatusAutoBuff";
+        public static string ACTION_NAME_PANACEA_AUTOBUFF = "PanaceaAutoBuff";
 
         private _4RThread thread;
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
@@ -18,7 +18,7 @@ namespace _4RTools.Model
 
         public string GetActionName()
         {
-            return ACTION_NAME_STATUS_AUTOBUFF;
+            return ACTION_NAME_PANACEA_AUTOBUFF;
         }
 
         public _4RThread RestoreStatusThread(Client c)

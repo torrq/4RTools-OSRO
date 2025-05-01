@@ -34,7 +34,7 @@ namespace _4RTools.Model
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-        private const string ACTION_NAME = "AHK20";
+        private const string ACTION_NAME = "AHK";
         private _4RThread thread;
         public const string COMPATIBILITY = "ahkCompatibility";
         public const string SPEED_BOOST = "ahkSpeedBoost";
@@ -140,21 +140,6 @@ namespace _4RTools.Model
                     Thread.Sleep(this.AhkDelay);
                 }
             }
-        }
-
-        private void AHKSynchronous(Client roClient, KeyConfig config, Keys thisk)
-        {
-
-            Func<int, int> send_click;
-            //bool ammo = false;
-            send_click = (evt) =>
-            {
-                SendMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, IntPtr.Zero, IntPtr.Zero);
-                Thread.Sleep(1);
-                SendMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
-                return 0;
-            };
-
         }
 
         private void AHKSpeedBoost(Client roClient, KeyConfig config, Keys thisk)

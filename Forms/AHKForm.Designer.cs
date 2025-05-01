@@ -87,7 +87,6 @@ namespace _4RTools.Forms
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
-            this.ahkSynchronous = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbDeactivated = new System.Windows.Forms.CheckBox();
             this.cbWithNoClick = new System.Windows.Forms.CheckBox();
@@ -798,13 +797,6 @@ namespace _4RTools.Forms
             this.pbUpAndDownArrow.TabIndex = 35;
             this.pbUpAndDownArrow.TabStop = false;
             // 
-            // ahkSynchronous
-            // 
-            this.ahkSynchronous.Location = new System.Drawing.Point(0, 0);
-            this.ahkSynchronous.Name = "ahkSynchronous";
-            this.ahkSynchronous.Size = new System.Drawing.Size(104, 24);
-            this.ahkSynchronous.TabIndex = 0;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cbDeactivated);
@@ -998,7 +990,6 @@ namespace _4RTools.Forms
         private CheckBox chkMouseFlick;
         private PictureBox pictureBox1;
         private RadioButton ahkCompatibility;
-        private RadioButton ahkSynchronous;
         private GroupBox groupBox4;
         private Panel panel1;
     }

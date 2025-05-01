@@ -59,6 +59,7 @@ namespace _4RTools.Forms
             this.toolTipWeight50 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTipSwitchAmmoCB = new System.Windows.Forms.ToolTip(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
@@ -113,6 +114,7 @@ namespace _4RTools.Forms
             this.chkSoundEnabled.Size = new System.Drawing.Size(89, 21);
             this.chkSoundEnabled.TabIndex = 317;
             this.chkSoundEnabled.Text = "Sounds on";
+            this.toolTipchkSoundEnabled.SetToolTip(this.chkSoundEnabled, "Play sounds when toggling on and off");
             this.chkSoundEnabled.UseVisualStyleBackColor = true;
             this.chkSoundEnabled.CheckedChanged += new System.EventHandler(this.ChkSoundEnabled_CheckedChanged);
             // 
@@ -165,6 +167,7 @@ namespace _4RTools.Forms
             this.overweightKey.Name = "overweightKey";
             this.overweightKey.Size = new System.Drawing.Size(55, 25);
             this.overweightKey.TabIndex = 311;
+            this.toolTipOverweightKey.SetToolTip(this.overweightKey, "Alt-# macro to send when overweight. Tip: set this to your @aaoff macro in RO!");
             this.overweightKey.TextChanged += new System.EventHandler(this.OverweightKey_TextChanged);
             // 
             // overweightOff
@@ -204,6 +207,7 @@ namespace _4RTools.Forms
             this.ammo2textBox.Name = "ammo2textBox";
             this.ammo2textBox.Size = new System.Drawing.Size(45, 25);
             this.ammo2textBox.TabIndex = 309;
+            this.toolTipAmmo2.SetToolTip(this.ammo2textBox, "ammo 2 shortcut");
             // 
             // ammo1textBox
             // 
@@ -213,6 +217,7 @@ namespace _4RTools.Forms
             this.ammo1textBox.Name = "ammo1textBox";
             this.ammo1textBox.Size = new System.Drawing.Size(45, 25);
             this.ammo1textBox.TabIndex = 308;
+            this.toolTipAmmo1.SetToolTip(this.ammo1textBox, "ammo 1 shortcut");
             // 
             // switchAmmoCheckBox
             // 
@@ -224,6 +229,7 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox.Size = new System.Drawing.Size(160, 21);
             this.switchAmmoCheckBox.TabIndex = 307;
             this.switchAmmoCheckBox.Text = "Automatic ammo swap";
+            this.toolTipSwitchAmmoCB.SetToolTip(this.switchAmmoCheckBox, "Switch between ammunition");
             this.switchAmmoCheckBox.UseVisualStyleBackColor = true;
             this.switchAmmoCheckBox.CheckedChanged += new System.EventHandler(this.SwitchAmmoCheckBox_CheckedChanged);
             // 
@@ -285,7 +291,7 @@ namespace _4RTools.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(630, 440);
             this.Controls.Add(this.groupGlobalSettings);
             this.Controls.Add(this.groupSettings);
@@ -335,5 +341,6 @@ namespace _4RTools.Forms
         private ToolTip toolTipReqRestart;
         private ToolTip toolTipWeight50;
         private ToolTip toolTipWeight90;
+        private ToolTip toolTipSwitchAmmoCB;
     }
 }

@@ -16,9 +16,9 @@ namespace _4RTools.Forms
             debuffContainers.Add(new BuffContainer(this.DebuffsGP, Buff.GetDebuffs()));
             debuffContainers.Add(new BuffContainer(this.WeightDebuffsGP, Buff.GetWeightDebuffs()));
             new DebuffRenderer(debuffContainers, toolTipPanacea).DoRender();
-            this.txtStatusKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-            this.txtStatusKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-            this.txtStatusKey.TextChanged += new EventHandler(OnStatusKeyChange);
+            this.txtPanaceaKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
+            this.txtPanaceaKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
+            this.txtPanaceaKey.TextChanged += new EventHandler(OnPanaceaKeyChange);
             subject.Attach(this);
         }
         public void Update(ISubject subject)
@@ -26,7 +26,7 @@ namespace _4RTools.Forms
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
-                    this.txtStatusKey.Text = ProfileSingleton.GetCurrent().StatusRecovery.buffMapping.Keys.Contains(EffectStatusIDs.SILENCE) ? ProfileSingleton.GetCurrent().StatusRecovery.buffMapping[EffectStatusIDs.SILENCE].ToString() : Keys.None.ToString();
+                    this.txtPanaceaKey.Text = ProfileSingleton.GetCurrent().StatusRecovery.buffMapping.Keys.Contains(EffectStatusIDs.SILENCE) ? ProfileSingleton.GetCurrent().StatusRecovery.buffMapping[EffectStatusIDs.SILENCE].ToString() : Keys.None.ToString();
                     UpdateAllDebuffs();
                     break;
                 case MessageCode.TURN_OFF:
@@ -89,9 +89,10 @@ namespace _4RTools.Forms
             }
         }
 
-        private void OnStatusKeyChange(object sender, EventArgs e)
+        // This method is for Panacea
+        private void OnPanaceaKeyChange(object sender, EventArgs e)
         {
-            Key k = (Key)Enum.Parse(typeof(Key), this.txtStatusKey.Text.ToString());
+            Key k = (Key)Enum.Parse(typeof(Key), this.txtPanaceaKey.Text.ToString());
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.POISON, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.SILENCE, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.BLIND, k);
