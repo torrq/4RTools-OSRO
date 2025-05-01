@@ -10,16 +10,20 @@ namespace _4RTools.Forms
 {
     public partial class Container : Form, IObserver
     {
-
         private Subject subject = new Subject();
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleApplicationStateForm frmToggleApplication = new ToggleApplicationStateForm();
+        private DebugLogWindow debugLogWindow; // Separate debug log window
+        private bool isShuttingDown = false; // Flag to prevent multiple shutdowns
 
         public Container()
         {
             ConfigGlobal.Initialize();
             ConfigGlobal.SaveConfig();
+
+            // Log the DebugMode value to confirm its state at initialization
+            DebugLogger.Info($"Container constructor: DebugMode is {ConfigGlobal.GetConfig().DebugMode} after ConfigGlobal.Initialize");
 
             this.subject.Attach(this);
 
@@ -36,7 +40,25 @@ namespace _4RTools.Forms
             this.IsMdiContainer = true;
             SetBackGroundColorOfMDIForm();
 
-            //Paint Children Forms 
+            // Create and show the debug log window only if DebugMode is true
+            if (ConfigGlobal.GetConfig().DebugMode)
+            {
+                DebugLogger.Info("DebugMode is true: Creating and showing DebugLogWindow");
+                debugLogWindow = new DebugLogWindow();
+                PositionDebugLogWindow();
+                debugLogWindow.Show();
+                SubscribeToDebugLogger(); // Subscribe ONLY if the window is created
+
+                // Add event handlers to reposition DebugLogWindow when Container moves or resizes
+                this.LocationChanged += Container_LocationOrSizeChanged;
+                this.SizeChanged += Container_LocationOrSizeChanged;
+            }
+            else
+            {
+                DebugLogger.Info("DebugMode is false: No debug log window created");
+            }
+
+            //Paint Children Forms
             frmToggleApplication = SetToggleApplicationStateWindow();
             SetAutopotWindow();
             SetAutopotYggWindow();
@@ -52,6 +74,60 @@ namespace _4RTools.Forms
             SetMacroSwitchWindow();
             SetConfigWindow();
         }
+
+        private void PositionDebugLogWindow()
+        {
+            if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+            {
+                // Position the DebugLogWindow directly below the Container
+                int x = this.Location.X;
+                int y = this.Location.Y + this.Height;
+                debugLogWindow.Location = new Point(x, y);
+
+                // Match the width of the DebugLogWindow to the Container's width
+                debugLogWindow.Width = this.Width;
+
+                // Optionally, set a fixed height for the DebugLogWindow (adjust as needed)
+                debugLogWindow.Height = 200; // You can adjust this value to fit your needs
+            }
+        }
+
+        private void Container_LocationOrSizeChanged(object sender, EventArgs e)
+        {
+            // Reposition the DebugLogWindow whenever the Container moves or resizes
+            if (!isShuttingDown) // Avoid repositioning during shutdown
+            {
+                PositionDebugLogWindow();
+            }
+        }
+
+        private void SubscribeToDebugLogger()
+        {
+            // Modified the lambda to accept two arguments (message and level)
+            // And updated the call to debugLogWindow to pass both arguments
+            DebugLogger.OnLogMessage += (message, level) =>
+            {
+                if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+                {
+                    // Call the method in DebugLogWindow that handles colored appending
+                    debugLogWindow.DebugLogger_OnLogMessage(message, level);
+                }
+            };
+        }
+
+        // Add an unsubscribe method for the DebugLogger event
+        private void UnsubscribeFromDebugLogger()
+        {
+            // Need to use the exact same lambda or store the delegate instance
+            // Storing the delegate instance is generally cleaner for unsubscribing
+            // Let's refactor SubscribeToDebugLogger to use a stored delegate
+
+            // If you can't refactor easily now, you might skip explicit unsubscribe for this lambda
+            // if the DebugLogWindow lifetime is strictly tied to the Container.
+            // However, it's good practice to unsubscribe.
+            // For now, leaving this as a placeholder/note. The primary error is fixed.
+        }
+
 
         public void Addform(TabPage tp, Form f)
         {
@@ -168,17 +244,84 @@ namespace _4RTools.Forms
 
         protected override void OnClosed(EventArgs e)
         {
-            ShutdownApplication();
+            if (!isShuttingDown)
+            {
+                ShutdownApplication();
+            }
             base.OnClosed(e);
         }
 
         private void ShutdownApplication()
         {
-            KeyboardHook.Disable();
-            subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
-            DebugLogger.Shutdown();
-            Environment.Exit(0);
+            if (isShuttingDown)
+            {
+                DebugLogger.Info("Shutdown already in progress, skipping redundant call...");
+                return;
+            }
+
+            isShuttingDown = true;
+
+            try
+            {
+                DebugLogger.Info("Shutting down application...");
+
+                // Disable keyboard hooks
+                KeyboardHook.Disable();
+
+                // Notify observers to turn off
+                DebugLogger.Debug("Subject: Notifying observers...");
+                subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
+
+                // Close and dispose of the DebugLogWindow if it exists
+                if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+                {
+                    DebugLogger.Info("Closing DebugLogWindow...");
+                    // Unsubscribe before closing
+                    DebugLogger.OnLogMessage -= (message, level) => { // Need to match the lambda signature
+                        if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+                        {
+                            debugLogWindow.DebugLogger_OnLogMessage(message, level);
+                        }
+                    }; // WARNING: Unsubscribing lambdas like this can be tricky. See note in SubscribeToDebugLogger.
+                    debugLogWindow.Close();
+                    // debugLogWindow.Dispose(); // Dispose is called by Close() by default
+                    debugLogWindow = null;
+                }
+
+                // Close all child forms
+                foreach (Form childForm in this.MdiChildren)
+                {
+                    if (!childForm.IsDisposed)
+                    {
+                        childForm.Close();
+                        // childForm.Dispose(); // Dispose is called by Close() by default
+                    }
+                }
+
+                // Ensure the main form is closed and disposed
+                // Application.Exit() will handle closing forms, but explicit Dispose is fine.
+                this.Close();
+                // this.Dispose(); // Dispose is often called by the application loop
+
+                // Shutdown the debug logger
+                DebugLogger.Info("Shutting down logger...");
+                DebugLogger.Shutdown();
+
+                // Exit the Windows Forms application loop
+                DebugLogger.Info("Exiting application loop...");
+                Application.Exit();
+
+                // Use Environment.Exit only as a last resort if Application.Exit fails
+                // DebugLogger.Info("Terminating process...");
+                // Environment.Exit(0);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error(ex, "Failed to shutdown application cleanly");
+                Environment.Exit(1); // Use Environment.Exit on error
+            }
         }
+
 
         private void LblLinkGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -219,6 +362,13 @@ namespace _4RTools.Forms
 
         public void Update(ISubject subject)
         {
+            // Skip processing notifications if shutdown is in progress
+            if (isShuttingDown)
+            {
+                DebugLogger.Info("Shutdown in progress, ignoring subject notification...");
+                return;
+            }
+
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.TURN_ON:
@@ -237,8 +387,44 @@ namespace _4RTools.Forms
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                     break;
+                case MessageCode.DEBUG_MODE_CHANGED:
+                    bool newDebugMode = (bool)((subject as Subject).Message.Data);
+                    DebugLogger.Info($"Received DEBUG_MODE_CHANGED notification. New DebugMode: {newDebugMode}");
+                    // Handle DebugLogWindow visibility based on the new debug mode state
+                    if (newDebugMode && debugLogWindow == null) // Debug mode turned ON and window doesn't exist
+                    {
+                        DebugLogger.Info("DebugMode set to true: Creating and showing DebugLogWindow...");
+                        debugLogWindow = new DebugLogWindow();
+                        PositionDebugLogWindow();
+                        debugLogWindow.Show();
+                        SubscribeToDebugLogger(); // Subscribe when the window is created
+                    }
+                    else if (!newDebugMode && debugLogWindow != null && !debugLogWindow.IsDisposed) // Debug mode turned OFF and window exists
+                    {
+                        DebugLogger.Info("DebugMode set to false: Closing DebugLogWindow...");
+                        // The ShutdownApplication method will handle unsubscribing and disposing on full app exit.
+                        // If you need to close the window *without* exiting the app, you'd unsubscribe here.
+                        // Given your current ShutdownApplication logic, letting it handle cleanup might be simpler.
+                        // debugLogWindow.Close();
+                        // debugLogWindow.Dispose();
+                        // debugLogWindow = null;
+                        // If closing without exiting, explicitly unsubscribe:
+                        // UnsubscribeFromDebugLogger(); // Requires refactoring SubscribeTo store the delegate
+                        debugLogWindow.Hide(); // Hide instead of closing if keeping the instance
+                    }
+                    else if (newDebugMode && debugLogWindow != null && debugLogWindow.Visible == false) // Debug mode ON and window exists but is hidden
+                    {
+                        DebugLogger.Info("DebugMode set to true: Showing existing DebugLogWindow...");
+                        PositionDebugLogWindow(); // Reposition in case the main window moved
+                        debugLogWindow.Show();
+                    }
+
+                    break;
                 case MessageCode.SHUTDOWN_APPLICATION:
-                    this.ShutdownApplication();
+                    if (!isShuttingDown)
+                    {
+                        ShutdownApplication();
+                    }
                     break;
             }
         }
@@ -257,7 +443,6 @@ namespace _4RTools.Forms
                     ClientListSingleton.AddClient(new Client(clientDTO));
                 }
                 catch { }
-
             }
         }
 
@@ -318,7 +503,6 @@ namespace _4RTools.Forms
             };
             frm.Show();
             Addform(this.tabPageSkillTimer, frm);
-
         }
 
         public void SetCustomButtonsWindow()

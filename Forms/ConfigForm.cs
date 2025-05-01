@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,13 +12,22 @@ namespace _4RTools.Forms
 {
     public partial class ConfigForm : Form, IObserver
     {
+        private readonly Subject _subject;
+        private bool isInitializing = true; // Flag to prevent event firing during initialization
+
         public ConfigForm(Subject subject)
         {
             Config cfg = ConfigGlobal.GetConfig();
 
             InitializeComponent();
 
-            chkDebugMode.Checked = cfg.DebugMode;
+            // Detach event handler before setting initial state
+            this.chkDebugMode.CheckedChanged -= new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            this.chkDebugMode.Checked = cfg.DebugMode;
+            // Reattach event handler after setting initial state
+            this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+
+            isInitializing = false; // Initialization complete
 
             this.ammo1textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             this.ammo1textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
@@ -39,6 +49,7 @@ namespace _4RTools.Forms
 
             toolTipchkStopBuffsOnCity.SetToolTip(chkStopBuffsOnCity, "Pause when in a city (cities defined in " + cityName + ")");
 
+            _subject = subject;
             subject.Attach(this);
         }
 
@@ -68,6 +79,12 @@ namespace _4RTools.Forms
                     skillsListBox.Items.Add(buff.ToDescriptionString());
                 }
 
+                // Temporarily detach to avoid triggering logic during UI update
+                this.chkStopBuffsOnCity.CheckedChanged -= ChkStopBuffsOnCity_CheckedChanged;
+                this.chkSoundEnabled.CheckedChanged -= ChkSoundEnabled_CheckedChanged;
+                this.switchAmmoCheckBox.CheckedChanged -= SwitchAmmoCheckBox_CheckedChanged;
+                this.chkDebugMode.CheckedChanged -= chkDebugMode_CheckedChanged; // Detach DebugMode handler as well
+
                 this.chkStopBuffsOnCity.Checked = prefs.StopBuffsCity;
                 this.chkSoundEnabled.Checked = prefs.SoundEnabled;
                 this.switchAmmoCheckBox.Checked = prefs.SwitchAmmo;
@@ -81,6 +98,12 @@ namespace _4RTools.Forms
                     rdOverweightMode.Checked = true;
                 }
                 ;
+
+                // Reattach event handlers
+                this.chkStopBuffsOnCity.CheckedChanged += ChkStopBuffsOnCity_CheckedChanged;
+                this.chkSoundEnabled.CheckedChanged += ChkSoundEnabled_CheckedChanged;
+                this.switchAmmoCheckBox.CheckedChanged += SwitchAmmoCheckBox_CheckedChanged;
+                this.chkDebugMode.CheckedChanged += chkDebugMode_CheckedChanged; // Reattach DebugMode handler
 
             }
             catch (Exception)
@@ -239,18 +262,53 @@ namespace _4RTools.Forms
 
         private void chkDebugMode_CheckedChanged(object sender, EventArgs e)
         {
+            // Prevent this logic from running during form initialization
+            if (isInitializing)
+                return;
+
             Config cfg = ConfigGlobal.GetConfig();
             bool newValue = chkDebugMode.Checked;
+            bool currentValue = cfg.DebugMode;
 
-            if (cfg.DebugMode != newValue)
+            // Only proceed if the checkbox state actually changed from the saved config
+            if (newValue != currentValue)
             {
-                cfg.DebugMode = newValue;
-                ConfigGlobal.SaveConfig();
+                string action = newValue ? "enable" : "disable";
+                string message = $"Restart to {action} debug mode now?";
 
-                MessageBox.Show("Restart required to apply debug mode change.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Restart();
+                // Prompt for restart confirmation
+                bool confirmRestart = DialogConfirm.ShowDialog(message, "App Restart Required");
+
+                // Check if the user confirmed the restart
+                if (confirmRestart)
+                {
+                    cfg.DebugMode = newValue; // Update the setting
+                    ConfigGlobal.SaveConfig(); // Save the updated config
+
+                    DebugLogger.Info($"DebugMode changed to {newValue}. Initiating application restart...");
+                    _subject.Notify(new Utils.Message(MessageCode.DEBUG_MODE_CHANGED, newValue));
+                    DebugLogger.Info("Attempting Application.Restart()...");
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+                else // User cancelled restart
+                {
+                    DebugLogger.Info("User cancelled application restart.");
+                    // Revert the checkbox to the original value if the user cancels
+                    // Detach temporarily to prevent triggering the event again
+                    this.chkDebugMode.CheckedChanged -= chkDebugMode_CheckedChanged;
+                    chkDebugMode.Checked = currentValue;
+                    this.chkDebugMode.CheckedChanged += chkDebugMode_CheckedChanged;
+                }
+            }
+            else
+            {
+                // If the checkbox state matches the saved config, do nothing.
+                // This handles cases where the event might fire without a logical change.
+                // DebugLogger.Info($"DebugMode checkbox checked changed, but value is already {newValue}. No action needed.");
             }
         }
+
 
         private void groupGlobalSettings_Enter(object sender, EventArgs e)
         {

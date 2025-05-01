@@ -16,7 +16,7 @@ namespace _4RTools.Utils
         public static int ServerMode = 0; // Default to MR
 
         // DebugMode=true will output to DebugLogFilePath with extra information
-        public static bool DebugMode = true;
+        public static bool DebugMode = false;
         public static string DebugLogFilePath = "4rtools_debug.log";
 
         // Delay defaults in milliseconds
@@ -43,6 +43,16 @@ namespace _4RTools.Utils
         // Profile button border darkness
         public static int ProfileButtonBorderDarkenAmount = 60;
 
+        // Debug Log Colors (New)
+        public static Color LogColor_INFO = Color.Black;
+        public static Color LogColor_WARNING = Color.Orange;
+        public static Color LogColor_ERROR = Color.Red;
+        public static Color LogColor_DEBUG = Color.Gray;
+        public static Color LogColor_STATUS = Color.Blue; // Color for the "[STATUS]" tag
+
+        // New colors for Status messages
+        public static Color LogColor_StatusId = Color.Cyan; // Color for the numeric status ID
+        public static Color LogColor_StatusName = Color.LightBlue; // Color for the status name
 
         public static string WindowTitle => $"{Name} - {Version} ({(ServerMode == 0 ? "MR" : "HR")})";
         public static string NotifyIconTitle => $"{Name} ({(ServerMode == 0 ? "MR" : "HR")})";

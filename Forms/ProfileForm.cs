@@ -14,15 +14,48 @@ namespace _4RTools.Forms
             InitializeComponent();
             this.container = container;
 
-            foreach (string profile in Profile.ListAll())
-            {
-                if (profile != "Default") { this.lbProfilesList.Items.Add(profile); }
-            }
+            RefreshProfileList(); // Initial load with sorting
 
             FormUtils.ApplyColorToButtons(this, new[] { "btnSave" }, AppConfig.CreateButtonBackColor);
             FormUtils.ApplyColorToButtons(this, new[] { "btnCopyProfile" }, AppConfig.CopyButtonBackColor);
             FormUtils.ApplyColorToButtons(this, new[] { "btnRemoveProfile" }, AppConfig.RemoveButtonBackColor);
             FormUtils.ApplyColorToButtons(this, new[] { "btnRenameProfile" }, AppConfig.RenameButtonBackColor);
+
+            // Set initial status message
+            UpdateStatus("Ready");
+        }
+
+        // Helper method to refresh and sort the profile list
+        private void RefreshProfileList()
+        {
+            // Store the currently selected item (if any)
+            string selectedProfile = this.lbProfilesList.SelectedItem?.ToString();
+
+            // Clear the current list
+            this.lbProfilesList.Items.Clear();
+
+            // Reload all profiles and sort them
+            var profiles = Profile.ListAll()
+                .Where(profile => profile != "Default")
+                .OrderBy(profile => profile, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            foreach (string profile in profiles)
+            {
+                this.lbProfilesList.Items.Add(profile);
+            }
+
+            // Restore the selection if the profile still exists
+            if (selectedProfile != null && profiles.Contains(selectedProfile))
+            {
+                this.lbProfilesList.SelectedItem = selectedProfile;
+            }
+        }
+
+        // Helper method to update the status bar message
+        private void UpdateStatus(string message)
+        {
+            statusLabel.Text = message;
         }
 
         private string ValidateProfileName(string profileName, bool isRename = false)
@@ -98,8 +131,9 @@ namespace _4RTools.Forms
             if (newProfileName == null) { return; }
 
             ProfileSingleton.Create(newProfileName);
-            this.lbProfilesList.Items.Add(newProfileName);
+            RefreshProfileList(); // Refresh and sort the list
             this.container.RefreshProfileList();
+            UpdateStatus($"Profile '{newProfileName}' created successfully");
         }
 
         private void btnCopyProfile_Click(object sender, EventArgs e)
@@ -128,12 +162,14 @@ namespace _4RTools.Forms
             try
             {
                 ProfileSingleton.Copy(selectedProfile, newProfileName);
-                this.lbProfilesList.Items.Add(newProfileName);
+                RefreshProfileList(); // Refresh and sort the list
                 this.container.RefreshProfileList();
+                UpdateStatus($"Profile '{selectedProfile}' copied to '{newProfileName}' successfully");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error copying profile: {ex.Message}");
+                UpdateStatus($"Error copying profile: {ex.Message}");
             }
         }
 
@@ -156,8 +192,9 @@ namespace _4RTools.Forms
             if (!confirmDelete) { return; }
 
             ProfileSingleton.Delete(selectedProfile);
-            this.lbProfilesList.Items.Remove(selectedProfile);
+            RefreshProfileList(); // Refresh and sort the list
             this.container.RefreshProfileList();
+            UpdateStatus($"Profile '{selectedProfile}' deleted successfully");
         }
 
         private void btnRenameProfile_Click(object sender, EventArgs e)
@@ -184,13 +221,14 @@ namespace _4RTools.Forms
             try
             {
                 ProfileSingleton.Rename(selectedProfile, newProfileName);
-                int selectedIndex = this.lbProfilesList.SelectedIndex;
-                this.lbProfilesList.Items[selectedIndex] = newProfileName;
+                RefreshProfileList(); // Refresh and sort the list
                 this.container.RefreshProfileList();
+                UpdateStatus($"Profile '{selectedProfile}' renamed to '{newProfileName}' successfully");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error renaming profile: {ex.Message}");
+                UpdateStatus($"Error renaming profile: {ex.Message}");
             }
         }
     }

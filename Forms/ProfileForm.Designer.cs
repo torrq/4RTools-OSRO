@@ -43,6 +43,8 @@ namespace _4RTools.Forms
             this.btnRemoveProfile = new System.Windows.Forms.Button();
             this.btnCopyProfile = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.SuspendLayout();
             //
             // lblProfilesList
@@ -65,7 +67,7 @@ namespace _4RTools.Forms
             this.lbProfilesList.Location = new System.Drawing.Point(125, 33);
             this.lbProfilesList.Name = "lbProfilesList";
             this.lbProfilesList.ScrollAlwaysVisible = true;
-            this.lbProfilesList.Size = new System.Drawing.Size(365, 393);
+            this.lbProfilesList.Size = new System.Drawing.Size(365, 369);
             this.lbProfilesList.TabIndex = 8;
             //
             // btnRenameProfile
@@ -127,7 +129,21 @@ namespace _4RTools.Forms
             this.toolTipAdd.SetToolTip(this.btnSave, "Create a new profile");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-
+            //
+            // statusStrip
+            //
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.statusLabel });
+            this.statusStrip.Location = new System.Drawing.Point(0, 418);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(630, 22);
+            this.statusStrip.TabIndex = 9;
+            this.statusStrip.Text = "statusStrip";
+            //
+            // statusLabel
+            //
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(39, 17);
+            this.statusLabel.Text = "Ready";
             //
             // Set border colors and sizes based on AppConfig colors
             //
@@ -153,7 +169,6 @@ namespace _4RTools.Forms
             this.btnRenameProfile.FlatAppearance.BorderColor = renameBorderColor;
             this.btnRenameProfile.FlatAppearance.BorderSize = 1;
 
-
             //
             // ProfileForm
             //
@@ -161,6 +176,7 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = AppConfig.AccentBackColor;
             this.ClientSize = new System.Drawing.Size(630, 440);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.lbProfilesList);
             this.Controls.Add(this.lblProfilesList);
             this.Controls.Add(this.btnRenameProfile);
@@ -173,7 +189,6 @@ namespace _4RTools.Forms
             this.Text = "ProfileForm";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -188,6 +203,8 @@ namespace _4RTools.Forms
         private System.Windows.Forms.ToolTip toolTipCopy;
         private System.Windows.Forms.ToolTip toolTipRename;
         private System.Windows.Forms.ToolTip toolTipRemove;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
 
         // Helper method to darken a color
         private Color DarkenColor(Color color, int amount)

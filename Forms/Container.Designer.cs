@@ -293,14 +293,14 @@ namespace _4RTools.Forms
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::_4RTools.Resources._4RTools.Icons.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(204, 29);
+            this.btnRefresh.Location = new System.Drawing.Point(202, 29); // Adjusted to align exactly with right edge of processCB
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(24, 24);
             this.btnRefresh.TabIndex = 5;
@@ -312,7 +312,7 @@ namespace _4RTools.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(668, 761);
+            this.ClientSize = new System.Drawing.Size(668, 761); // Fixed size, no resizing needed
             this.Controls.Add(this.characterMap);
             this.Controls.Add(atkDefMode);
             this.Controls.Add(this.tabControlAutopot);
@@ -338,7 +338,6 @@ namespace _4RTools.Forms
             this.tabControlAutopot.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -362,7 +361,6 @@ namespace _4RTools.Forms
         private TabPage tabPageProfiles;
         private TabPage tabMacroSwitch;
         private TabPage tabPageSkillTimer;
-//        private TabPage tabPageServer;
         private TabPage tabPageDebuffs;
         private TabPage tabConfig;
         private Panel panel4;

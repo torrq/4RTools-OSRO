@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using _4RTools.Model;
+using _4RTools.Model; // Assuming this is needed for ConfigGlobal
+using _4RTools.Utils; // Assuming AppConfig is in this namespace
 
 namespace _4RTools.Utils
 {
@@ -24,6 +25,10 @@ namespace _4RTools.Utils
         private static DateTime _lastQueuedTimestamp = DateTime.MinValue;
         private static int _queuedDuplicateCount = 0;
         private static readonly Queue<LogEntry> _messageQueue = new Queue<LogEntry>();
+
+        // Event to notify UI of new log messages - Updated to include LogLevel
+        public delegate void LogMessageHandler(string message, LogLevel level);
+        public static event LogMessageHandler OnLogMessage;
 
         public enum LogLevel
         {
@@ -94,7 +99,7 @@ namespace _4RTools.Utils
 
         public static void Log(LogLevel level, string message)
         {
-            if (!_debugMode && level != LogLevel.ERROR)
+            if (!_debugMode && level != LogLevel.ERROR) // Always log ERROR regardless of debug mode
                 return;
 
             try
@@ -117,6 +122,7 @@ namespace _4RTools.Utils
                                     writer.WriteLine(formattedMessage);
                                 }
                             }
+                            OnLogMessage?.Invoke(formattedMessage, level); // Notify UI with level
                             _lastInfoMessage = message;
                         }
                     }
@@ -134,6 +140,7 @@ namespace _4RTools.Utils
                                     writer.WriteLine(formattedMessage);
                                 }
                             }
+                            OnLogMessage?.Invoke(formattedMessage, level); // Notify UI with level
                             _lastStatusMessage = message;
                         }
                     }
@@ -162,24 +169,36 @@ namespace _4RTools.Utils
                             {
                                 writer.WriteLine(formattedMessage);
                             }
-                            _messageQueue.Enqueue(entry);
+                            OnLogMessage?.Invoke(formattedMessage, entry.Level); // Notify UI with level
+                            // No need to enqueue if we log it here, it was already enqueued implicitly by the deduplication logic
                         }
 
-                        // Update deduplication state and enqueue new message
+                        // Update deduplication state and process new message
                         _lastQueuedMessage = message;
                         _lastQueuedLogLevel = level;
                         _lastQueuedTimestamp = now;
                         _queuedDuplicateCount = 0;
 
-                        // Enqueue new message without logging immediately
+                        // Log the new message immediately
                         var newEntry = new LogEntry
                         {
                             Message = message,
                             Level = level,
                             Timestamp = now,
-                            RepeatCount = 0
+                            RepeatCount = 0 // New messages are not repeats yet
                         };
-                        _messageQueue.Enqueue(newEntry);
+                        string newFormattedMessage = newEntry.FormatMessage();
+                        Console.WriteLine(newFormattedMessage);
+                        if (_isInitialized && _debugMode)
+                        {
+                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                            {
+                                writer.WriteLine(newFormattedMessage);
+                            }
+                        }
+                        OnLogMessage?.Invoke(newFormattedMessage, level); // Notify UI with level
+                                                                          // No need to enqueue here either, the deduplication state holds the 'pending' message
+
                     }
                 }
             }
@@ -188,6 +207,7 @@ namespace _4RTools.Utils
                 Console.WriteLine($"Error in DebugLogger.Log: {ex.Message}");
             }
         }
+
 
         public static void Info(string message) => Log(LogLevel.INFO, message);
         public static void Status(string message) => Log(LogLevel.STATUS, message);
@@ -219,7 +239,7 @@ namespace _4RTools.Utils
             {
                 lock (_logLock)
                 {
-                    // Log any pending deduplicated message
+                    // Log any pending deduplicated message before shutdown
                     if (_lastQueuedMessage != null)
                     {
                         var entry = new LogEntry
@@ -235,10 +255,18 @@ namespace _4RTools.Utils
                         {
                             writer.WriteLine(formattedMessage);
                         }
+                        OnLogMessage?.Invoke(formattedMessage, entry.Level); // Notify UI with level
                     }
 
-                    // Clear queue without re-logging
-                    _messageQueue.Clear();
+                    // Clear deduplication state
+                    _lastInfoMessage = null;
+                    _lastStatusMessage = null;
+                    _lastQueuedMessage = null;
+                    _lastQueuedLogLevel = LogLevel.INFO;
+                    _lastQueuedTimestamp = DateTime.MinValue;
+                    _queuedDuplicateCount = 0;
+                    _messageQueue.Clear(); // Clear the queue after processing pending
+
 
                     // Log shutdown message
                     string shutdownMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [INFO] Shutting down logger...";
@@ -248,14 +276,8 @@ namespace _4RTools.Utils
                         writer.WriteLine(shutdownMessage);
                         writer.WriteLine($"=== SESSION ENDED {DateTime.Now} ===");
                     }
+                    OnLogMessage?.Invoke(shutdownMessage, LogLevel.INFO); // Notify UI with level for shutdown message
 
-                    // Reset deduplication state
-                    _lastInfoMessage = null;
-                    _lastStatusMessage = null;
-                    _lastQueuedMessage = null;
-                    _lastQueuedLogLevel = LogLevel.INFO;
-                    _lastQueuedTimestamp = DateTime.MinValue;
-                    _queuedDuplicateCount = 0;
                 }
             }
             catch (Exception ex)
