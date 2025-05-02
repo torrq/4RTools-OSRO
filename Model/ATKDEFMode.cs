@@ -214,7 +214,10 @@ namespace _4RTools.Model
 
         public void Stop()
         {
-            _4RThread.Stop(this.thread);
+            if (this.thread != null)
+            {
+                _4RThread.Stop(this.thread);
+            }
         }
     }
 }

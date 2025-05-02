@@ -68,10 +68,22 @@ namespace _4RTools.Model
 
         public void Stop()
         {
-            _4RThread.Stop(this.thread1);
-            _4RThread.Stop(this.thread2);
-            _4RThread.Stop(this.thread3);
-            _4RThread.Stop(this.thread4);
+            if (this.thread1 != null)
+            {
+                _4RThread.Stop(this.thread1);
+            }
+            if (this.thread2 != null)
+            {
+                _4RThread.Stop(this.thread2);
+            }
+            if (this.thread3 != null)
+            {
+                _4RThread.Stop(this.thread3);
+            }
+            if (this.thread4 != null)
+            {
+                _4RThread.Stop(this.thread4);
+            }
         }
 
         public string GetConfiguration()
