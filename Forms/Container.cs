@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using _4RTools.Model;
 using _4RTools.Utils;
@@ -16,6 +17,10 @@ namespace _4RTools.Forms
         private ToggleApplicationStateForm frmToggleApplication = new ToggleApplicationStateForm();
         private DebugLogWindow debugLogWindow; // Separate debug log window
         private bool isShuttingDown = false; // Flag to prevent multiple shutdowns
+
+        // Store the delegate instance to allow explicit unsubscribing
+        // This delegate now matches the DebugLogger.LogMessageHandler signature (string, LogLevel)
+        private DebugLogger.LogMessageHandler debugLogHandler;
 
         public Container()
         {
@@ -40,14 +45,14 @@ namespace _4RTools.Forms
             this.IsMdiContainer = true;
             SetBackGroundColorOfMDIForm();
 
-            // Create and show the debug log window only if DebugMode is true
+            // Create and show the debug log window only if DebugMode is true at startup
             if (ConfigGlobal.GetConfig().DebugMode)
             {
                 DebugLogger.Info("DebugMode is true: Creating and showing DebugLogWindow");
-                debugLogWindow = new DebugLogWindow();
+                debugLogWindow = new DebugLogWindow(); // Window created
                 PositionDebugLogWindow();
                 debugLogWindow.Show();
-                SubscribeToDebugLogger(); // Subscribe ONLY if the window is created
+                SubscribeToDebugLogger(); // Subscribe immediately after creation
 
                 // Add event handlers to reposition DebugLogWindow when Container moves or resizes
                 this.LocationChanged += Container_LocationOrSizeChanged;
@@ -103,29 +108,26 @@ namespace _4RTools.Forms
 
         private void SubscribeToDebugLogger()
         {
-            // Modified the lambda to accept two arguments (message and level)
-            // And updated the call to debugLogWindow to pass both arguments
-            DebugLogger.OnLogMessage += (message, level) =>
+            // Create the delegate instance matching the DebugLogger.LogMessageHandler signature (string, LogLevel)
+            debugLogHandler = (message, level) => // <-- Lambda takes 2 arguments
             {
                 if (debugLogWindow != null && !debugLogWindow.IsDisposed)
                 {
-                    // Call the method in DebugLogWindow that handles colored appending
+                    // Call the DebugLogger_OnLogMessage method in DebugLogWindow that handles coloring
                     debugLogWindow.DebugLogger_OnLogMessage(message, level);
                 }
             };
+            // Subscribe the delegate instance
+            DebugLogger.OnLogMessage += debugLogHandler;
         }
 
-        // Add an unsubscribe method for the DebugLogger event
         private void UnsubscribeFromDebugLogger()
         {
-            // Need to use the exact same lambda or store the delegate instance
-            // Storing the delegate instance is generally cleaner for unsubscribing
-            // Let's refactor SubscribeToDebugLogger to use a stored delegate
-
-            // If you can't refactor easily now, you might skip explicit unsubscribe for this lambda
-            // if the DebugLogWindow lifetime is strictly tied to the Container.
-            // However, it's good practice to unsubscribe.
-            // For now, leaving this as a placeholder/note. The primary error is fixed.
+            if (debugLogHandler != null)
+            {
+                DebugLogger.OnLogMessage -= debugLogHandler;
+                debugLogHandler = null; // Clear the stored delegate
+            }
         }
 
 
@@ -154,8 +156,22 @@ namespace _4RTools.Forms
 
         private void ProcessCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Client client = new Client(this.processCB.SelectedItem.ToString());
+            string selectedProcessString = this.processCB.SelectedItem.ToString();
+            Client client = new Client(selectedProcessString); // This constructor likely sets client.Process
             ClientSingleton.Instance(client);
+
+            // Log Process Name and Process ID using the Process property
+            // Ensure the Client constructor successfully sets the Process property.
+            if (client.Process != null)
+            {
+                DebugLogger.Info($"Process selected: {client.Process.ProcessName} - {client.Process.Id}"); // <-- Using client.Process.Id
+            }
+            else
+            {
+                DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
+            }
+
+
             characterName.Text = client.ReadCharacterName();
             characterMap.Text = client.ReadCurrentMap();
             subject.Notify(new Utils.Message(Utils.MessageCode.PROCESS_CHANGED, null));
@@ -272,19 +288,14 @@ namespace _4RTools.Forms
                 DebugLogger.Debug("Subject: Notifying observers...");
                 subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
+                // Unsubscribe from DebugLogger before disposing the window
+                UnsubscribeFromDebugLogger();
+
                 // Close and dispose of the DebugLogWindow if it exists
                 if (debugLogWindow != null && !debugLogWindow.IsDisposed)
                 {
                     DebugLogger.Info("Closing DebugLogWindow...");
-                    // Unsubscribe before closing
-                    DebugLogger.OnLogMessage -= (message, level) => { // Need to match the lambda signature
-                        if (debugLogWindow != null && !debugLogWindow.IsDisposed)
-                        {
-                            debugLogWindow.DebugLogger_OnLogMessage(message, level);
-                        }
-                    }; // WARNING: Unsubscribing lambdas like this can be tricky. See note in SubscribeToDebugLogger.
                     debugLogWindow.Close();
-                    // debugLogWindow.Dispose(); // Dispose is called by Close() by default
                     debugLogWindow = null;
                 }
 
@@ -294,14 +305,11 @@ namespace _4RTools.Forms
                     if (!childForm.IsDisposed)
                     {
                         childForm.Close();
-                        // childForm.Dispose(); // Dispose is called by Close() by default
                     }
                 }
 
-                // Ensure the main form is closed and disposed
-                // Application.Exit() will handle closing forms, but explicit Dispose is fine.
+                // Ensure the main form is closed
                 this.Close();
-                // this.Dispose(); // Dispose is often called by the application loop
 
                 // Shutdown the debug logger
                 DebugLogger.Info("Shutting down logger...");
@@ -311,9 +319,6 @@ namespace _4RTools.Forms
                 DebugLogger.Info("Exiting application loop...");
                 Application.Exit();
 
-                // Use Environment.Exit only as a last resort if Application.Exit fails
-                // DebugLogger.Info("Terminating process...");
-                // Environment.Exit(0);
             }
             catch (Exception ex)
             {
@@ -348,6 +353,7 @@ namespace _4RTools.Forms
                     {
                         this.frmToggleApplication.TurnOFF();
                     }
+                    DebugLogger.Info($"Loading profile: {this.profileCB.Text}"); // Log profile change
                     ProfileSingleton.ClearProfile(this.profileCB.Text);
                     ProfileSingleton.Load(this.profileCB.Text); //LOAD PROFILE
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
@@ -355,6 +361,7 @@ namespace _4RTools.Forms
                 }
                 catch (Exception ex)
                 {
+                    DebugLogger.Error(ex, $"Failed to load profile: {this.profileCB.Text}"); // Log the error
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -365,7 +372,7 @@ namespace _4RTools.Forms
             // Skip processing notifications if shutdown is in progress
             if (isShuttingDown)
             {
-                DebugLogger.Info("Shutdown in progress, ignoring subject notification...");
+                // DebugLogger.Info("Shutdown in progress, ignoring subject notification..."); // Avoid excessive logging during shutdown
                 return;
             }
 
@@ -382,8 +389,10 @@ namespace _4RTools.Forms
                     break;
                 case MessageCode.SERVER_LIST_CHANGED:
                     this.RefreshProcessList();
+                    DebugLogger.Info("Server list refreshed."); // Log server list change
                     break;
                 case MessageCode.CLICK_ICON_TRAY:
+                    DebugLogger.Info("Tray icon clicked: Showing main window."); // Log tray icon click
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                     break;
@@ -394,29 +403,27 @@ namespace _4RTools.Forms
                     if (newDebugMode && debugLogWindow == null) // Debug mode turned ON and window doesn't exist
                     {
                         DebugLogger.Info("DebugMode set to true: Creating and showing DebugLogWindow...");
-                        debugLogWindow = new DebugLogWindow();
+                        debugLogWindow = new DebugLogWindow(); // Create window
                         PositionDebugLogWindow();
                         debugLogWindow.Show();
-                        SubscribeToDebugLogger(); // Subscribe when the window is created
+                        SubscribeToDebugLogger(); // Subscribe only when a *new* window is created
                     }
                     else if (!newDebugMode && debugLogWindow != null && !debugLogWindow.IsDisposed) // Debug mode turned OFF and window exists
                     {
-                        DebugLogger.Info("DebugMode set to false: Closing DebugLogWindow...");
-                        // The ShutdownApplication method will handle unsubscribing and disposing on full app exit.
-                        // If you need to close the window *without* exiting the app, you'd unsubscribe here.
-                        // Given your current ShutdownApplication logic, letting it handle cleanup might be simpler.
-                        // debugLogWindow.Close();
-                        // debugLogWindow.Dispose();
-                        // debugLogWindow = null;
-                        // If closing without exiting, explicitly unsubscribe:
-                        // UnsubscribeFromDebugLogger(); // Requires refactoring SubscribeTo store the delegate
-                        debugLogWindow.Hide(); // Hide instead of closing if keeping the instance
+                        DebugLogger.Info("DebugMode set to false: Hiding DebugLogWindow...");
+                        // Unsubscribe only if the window is being hidden/closed without full app exit
+                        UnsubscribeFromDebugLogger();
+                        debugLogWindow.Hide(); // Hide the window
+                                               // You might want to Dispose the window here if it's not needed again until debug mode is re-enabled.
+                                               // However, hiding keeps the instance alive to potentially show again faster.
+                                               // If hiding, make sure to handle showing the *existing* instance when debug mode is turned back on.
                     }
                     else if (newDebugMode && debugLogWindow != null && debugLogWindow.Visible == false) // Debug mode ON and window exists but is hidden
                     {
                         DebugLogger.Info("DebugMode set to true: Showing existing DebugLogWindow...");
                         PositionDebugLogWindow(); // Reposition in case the main window moved
                         debugLogWindow.Show();
+                        // No need to subscribe again here, it's already subscribed
                     }
 
                     break;

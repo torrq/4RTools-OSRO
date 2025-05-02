@@ -50,10 +50,16 @@ namespace _4RTools.Utils
 
         public void Attach(IObserver observer)
         {
+            if (observer == null)
+            {
+                DebugLogger.Warning("Subject: Attempted to attach a null observer.");
+                return;
+            }
+
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
-                DebugLogger.Debug($"Subject: Attached an observer.");
+
             }
         }
 

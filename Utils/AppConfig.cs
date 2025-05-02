@@ -44,7 +44,7 @@ namespace _4RTools.Utils
         public static int ProfileButtonBorderDarkenAmount = 60;
 
         // Debug Log Colors (New)
-        public static Color LogColor_INFO = Color.Black;
+        public static Color LogColor_INFO = Color.White;
         public static Color LogColor_WARNING = Color.Orange;
         public static Color LogColor_ERROR = Color.Red;
         public static Color LogColor_DEBUG = Color.Gray;

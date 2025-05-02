@@ -282,14 +282,20 @@ namespace _4RTools.Forms
                 // Check if the user confirmed the restart
                 if (confirmRestart)
                 {
-                    cfg.DebugMode = newValue; // Update the setting
-                    ConfigGlobal.SaveConfig(); // Save the updated config
+                    if (cfg.DebugMode != newValue)
+                    {
+                        cfg.DebugMode = newValue; // Update the setting
+                        ConfigGlobal.SaveConfig(); // Save the updated config
 
-                    DebugLogger.Info($"DebugMode changed to {newValue}. Initiating application restart...");
-                    _subject.Notify(new Utils.Message(MessageCode.DEBUG_MODE_CHANGED, newValue));
-                    DebugLogger.Info("Attempting Application.Restart()...");
-                    Application.Restart();
-                    Environment.Exit(0);
+                        // Notify the DebugLogger about the change in debug mode
+                        DebugLogger.UpdateDebugMode(newValue);
+
+                        DebugLogger.Info($"DebugMode changed to {newValue}. Initiating application restart...");
+                        _subject.Notify(new Utils.Message(MessageCode.DEBUG_MODE_CHANGED, newValue));
+                        DebugLogger.Info("Attempting Application.Restart()...");
+                        Application.Restart();
+                        Environment.Exit(0);
+                    }
                 }
                 else // User cancelled restart
                 {

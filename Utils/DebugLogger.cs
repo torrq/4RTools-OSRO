@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using _4RTools.Model; // Assuming this is needed for ConfigGlobal
-using _4RTools.Utils; // Assuming AppConfig is in this namespace
+using _4RTools.Model;
+using _4RTools.Utils;
 
 namespace _4RTools.Utils
 {
@@ -11,22 +11,11 @@ namespace _4RTools.Utils
     {
         private static readonly object _logLock = new object();
         private static readonly string _logFilePath = AppConfig.DebugLogFilePath;
-        private static readonly bool _debugMode;
+        private static bool _debugMode;
         private static bool _isInitialized = false;
         private static bool _initializationLogged = false;
 
-        // Deduplication for INFO and STATUS
-        private static string _lastInfoMessage = null;
-        private static string _lastStatusMessage = null;
-
-        // Deduplication for queued messages (WARNING, ERROR, DEBUG)
-        private static string _lastQueuedMessage = null;
-        private static LogLevel _lastQueuedLogLevel = LogLevel.INFO;
-        private static DateTime _lastQueuedTimestamp = DateTime.MinValue;
-        private static int _queuedDuplicateCount = 0;
-        private static readonly Queue<LogEntry> _messageQueue = new Queue<LogEntry>();
-
-        // Event to notify UI of new log messages - Updated to include LogLevel
+        // Event to notify UI of new log messages
         public delegate void LogMessageHandler(string message, LogLevel level);
         public static event LogMessageHandler OnLogMessage;
 
@@ -39,31 +28,32 @@ namespace _4RTools.Utils
             STATUS
         }
 
-        private class LogEntry
-        {
-            public string Message { get; set; }
-            public LogLevel Level { get; set; }
-            public DateTime Timestamp { get; set; }
-            public int RepeatCount { get; set; }
-
-            public string FormatMessage()
-            {
-                string baseMessage = $"[{Timestamp:yyyy-MM-dd HH:mm:ss.fff}] [{Level}] {Message}";
-                return RepeatCount > 0 ? $"{baseMessage} (repeated {RepeatCount} times)" : baseMessage;
-            }
-        }
-
         static DebugLogger()
         {
+            // Initialize _debugMode based on config at startup
+            _debugMode = ConfigGlobal.GetConfig().DebugMode;
+            InitializeLogger();
+        }
+
+        // Added a public method to allow re-initialization if debug mode changes
+        public static void InitializeLogger()
+        {
+            // Ensure this is only run if debug mode is enabled and not already initialized
+            if (!_debugMode || _isInitialized)
+                return;
+
             try
             {
-                _debugMode = ConfigGlobal.GetConfig().DebugMode;
-
-                if (!_debugMode)
-                    return;
-
+                // Use the lock here too, as initialization involves file access
                 lock (_logLock)
                 {
+                    // Ensure directory exists if needed
+                    string logDirectory = Path.GetDirectoryName(_logFilePath);
+                    if (!string.IsNullOrEmpty(logDirectory) && !Directory.Exists(logDirectory))
+                    {
+                        Directory.CreateDirectory(logDirectory);
+                    }
+
                     if (!File.Exists(_logFilePath))
                     {
                         using (StreamWriter writer = new StreamWriter(_logFilePath, false, Encoding.UTF8))
@@ -74,6 +64,7 @@ namespace _4RTools.Utils
                     }
                     else
                     {
+                        // Append to existing log file
                         using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
                         {
                             writer.WriteLine();
@@ -84,127 +75,111 @@ namespace _4RTools.Utils
 
                     _isInitialized = true;
 
+                    // Log successful initialization only once per application run
                     if (!_initializationLogged)
                     {
                         Info("DebugLogger initialized successfully");
                         _initializationLogged = true;
                     }
-                }
+                } // Release lock
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to initialize DebugLogger: {ex.Message}");
+                // Log errors that occur during initialization, trying to avoid infinite loops
+                string errorMsg = $"Failed to initialize DebugLogger: {ex.Message}";
+                Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [ERROR] {errorMsg}");
+                // Even if file logging fails initialization, we can still try to send to UI
+                // Format manually here to avoid calling Log() recursively during logger issues
+                OnLogMessage?.Invoke($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [ERROR] {errorMsg}", LogLevel.ERROR);
             }
         }
 
+        // Method to update debug mode from ConfigForm
+        public static void UpdateDebugMode(bool newDebugMode)
+        {
+            // Use lock as this accesses shared state (_debugMode, _isInitialized) and calls Initialize/Shutdown
+            lock (_logLock)
+            {
+                bool oldDebugMode = _debugMode;
+                _debugMode = newDebugMode;
+
+                if (newDebugMode && !oldDebugMode && !_isInitialized)
+                {
+                    // If debug mode is turned ON, was previously OFF, and logger was not initialized, initialize it
+                    // The check inside InitializeLogger() prevents double initialization if called elsewhere
+                    InitializeLogger();
+                }
+                else if (!newDebugMode && oldDebugMode && _isInitialized)
+                {
+                    // If debug mode is turned OFF, was previously ON, and logger was initialized, perform shutdown
+                    // The check inside Shutdown() prevents double shutdown if called elsewhere
+                    Shutdown();
+                    // Reset state variables specifically tied to initialization state
+                    _isInitialized = false;
+                    _initializationLogged = false;
+                }
+                // If debug mode state didn't change or state transition doesn't require init/shutdown, do nothing.
+            }
+        }
+
+
         public static void Log(LogLevel level, string message)
         {
-            if (!_debugMode && level != LogLevel.ERROR) // Always log ERROR regardless of debug mode
+            // Only process messages if debug mode is ON, or if it's an ERROR message
+            if (!_debugMode && level != LogLevel.ERROR)
+            {
                 return;
+            }
+
+            // Format the message with timestamp and level
+            DateTime now = DateTime.Now;
+            string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [{level}] {message}";
 
             try
             {
+                // Use the lock for thread safety when writing to file and console
                 lock (_logLock)
                 {
-                    DateTime now = DateTime.Now;
+                    // Write to Console
+                    Console.WriteLine(formattedMessage);
 
-                    if (level == LogLevel.INFO)
+                    // Write to File (only if initialized AND debug mode is ON)
+                    // Note: ERRORs will ONLY go to the file if debugMode is ON due to this check.
+                    // If you need ERRORs always in the file regardless of debugMode, move file writing outside this check
+                    // and add a specific check for LogLevel.ERROR.
+                    if (_isInitialized && _debugMode)
                     {
-                        // Direct write for INFO
-                        if (message != _lastInfoMessage)
+                        try
                         {
-                            string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [INFO] {message}";
-                            Console.WriteLine(formattedMessage);
-                            if (_isInitialized && _debugMode)
-                            {
-                                using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                                {
-                                    writer.WriteLine(formattedMessage);
-                                }
-                            }
-                            OnLogMessage?.Invoke(formattedMessage, level); // Notify UI with level
-                            _lastInfoMessage = message;
-                        }
-                    }
-                    else if (level == LogLevel.STATUS)
-                    {
-                        // Direct write for STATUS
-                        if (message != _lastStatusMessage)
-                        {
-                            string formattedMessage = $"[{now:yyyy-MM-dd HH:mm:ss.fff}] [STATUS] {message}";
-                            Console.WriteLine(formattedMessage);
-                            if (_isInitialized && _debugMode)
-                            {
-                                using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                                {
-                                    writer.WriteLine(formattedMessage);
-                                }
-                            }
-                            OnLogMessage?.Invoke(formattedMessage, level); // Notify UI with level
-                            _lastStatusMessage = message;
-                        }
-                    }
-                    else
-                    {
-                        // Queue other levels (WARNING, ERROR, DEBUG)
-                        if (message == _lastQueuedMessage && level == _lastQueuedLogLevel)
-                        {
-                            _queuedDuplicateCount++;
-                            return;
-                        }
-
-                        // Log previous queued message if it exists
-                        if (_lastQueuedMessage != null && _isInitialized && _debugMode)
-                        {
-                            var entry = new LogEntry
-                            {
-                                Message = _lastQueuedMessage,
-                                Level = _lastQueuedLogLevel,
-                                Timestamp = _lastQueuedTimestamp,
-                                RepeatCount = _queuedDuplicateCount
-                            };
-                            string formattedMessage = entry.FormatMessage();
-                            Console.WriteLine(formattedMessage);
+                            // Use 'true' to append to the file
                             using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
                             {
                                 writer.WriteLine(formattedMessage);
                             }
-                            OnLogMessage?.Invoke(formattedMessage, entry.Level); // Notify UI with level
-                            // No need to enqueue if we log it here, it was already enqueued implicitly by the deduplication logic
                         }
-
-                        // Update deduplication state and process new message
-                        _lastQueuedMessage = message;
-                        _lastQueuedLogLevel = level;
-                        _lastQueuedTimestamp = now;
-                        _queuedDuplicateCount = 0;
-
-                        // Log the new message immediately
-                        var newEntry = new LogEntry
+                        catch (Exception ex)
                         {
-                            Message = message,
-                            Level = level,
-                            Timestamp = now,
-                            RepeatCount = 0 // New messages are not repeats yet
-                        };
-                        string newFormattedMessage = newEntry.FormatMessage();
-                        Console.WriteLine(newFormattedMessage);
-                        if (_isInitialized && _debugMode)
-                        {
-                            using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                            {
-                                writer.WriteLine(newFormattedMessage);
-                            }
+                            // Handle file writing errors internally to avoid recursive logging issues
+                            // Cannot use Log() here, would cause infinite loop.
+                            string fileErrorMsg = $"Failed to write log to file '{_logFilePath}': {ex.Message}";
+                            Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [ERROR] {fileErrorMsg}");
+                            // It's risky to send this file error back to the UI event via OnLogMessage here
+                            // as it might cause issues if the UI logging is related to the file problem.
                         }
-                        OnLogMessage?.Invoke(newFormattedMessage, level); // Notify UI with level
-                                                                          // No need to enqueue here either, the deduplication state holds the 'pending' message
-
                     }
-                }
+
+                    // Invoke the UI event handler (if any subscribers)
+                    // This sends the message to the DebugLogWindow and potentially the Container's lambda
+                    OnLogMessage?.Invoke(formattedMessage, level);
+                } // Release lock
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in DebugLogger.Log: {ex.Message}");
+                // This catch block handles errors that occur *within* the logging logic itself (e.g., lock issues)
+                // Avoid infinite loops by only writing to Console
+                string loggingErrorMsg = $"CRITICAL ERROR in DebugLogger.Log: {ex.Message}";
+                Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [ERROR] {loggingErrorMsg}");
+                // Cannot safely send this critical error via OnLogMessage without risk
             }
         }
 
@@ -215,12 +190,18 @@ namespace _4RTools.Utils
         public static void Error(string message) => Log(LogLevel.ERROR, message);
         public static void Error(Exception ex, string context = "")
         {
+            // Format the error message including exception details
             string message = string.IsNullOrEmpty(context)
                 ? $"Exception: {ex.Message}"
                 : $"{context}: {ex.Message}";
 
             Log(LogLevel.ERROR, message);
-            Log(LogLevel.DEBUG, $"Stack trace: {ex.StackTrace}");
+
+            // Log the stack trace as DEBUG, but only if DebugMode is ON
+            if (_debugMode)
+            {
+                Log(LogLevel.DEBUG, $"Stack trace: {ex.StackTrace}");
+            }
         }
 
         public static void Debug(string message) => Log(LogLevel.DEBUG, message);
@@ -232,6 +213,7 @@ namespace _4RTools.Utils
 
         public static void Shutdown()
         {
+            // Ensure shutdown logic runs only if the logger was initialized and debug mode was on
             if (!_isInitialized || !_debugMode)
                 return;
 
@@ -239,50 +221,46 @@ namespace _4RTools.Utils
             {
                 lock (_logLock)
                 {
-                    // Log any pending deduplicated message before shutdown
-                    if (_lastQueuedMessage != null)
-                    {
-                        var entry = new LogEntry
-                        {
-                            Message = _lastQueuedMessage,
-                            Level = _lastQueuedLogLevel,
-                            Timestamp = _lastQueuedTimestamp,
-                            RepeatCount = _queuedDuplicateCount
-                        };
-                        string formattedMessage = entry.FormatMessage();
-                        Console.WriteLine(formattedMessage);
-                        using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                        {
-                            writer.WriteLine(formattedMessage);
-                        }
-                        OnLogMessage?.Invoke(formattedMessage, entry.Level); // Notify UI with level
-                    }
-
-                    // Clear deduplication state
-                    _lastInfoMessage = null;
-                    _lastStatusMessage = null;
-                    _lastQueuedMessage = null;
-                    _lastQueuedLogLevel = LogLevel.INFO;
-                    _lastQueuedTimestamp = DateTime.MinValue;
-                    _queuedDuplicateCount = 0;
-                    _messageQueue.Clear(); // Clear the queue after processing pending
-
-
                     // Log shutdown message
                     string shutdownMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [INFO] Shutting down logger...";
                     Console.WriteLine(shutdownMessage);
-                    using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
-                    {
-                        writer.WriteLine(shutdownMessage);
-                        writer.WriteLine($"=== SESSION ENDED {DateTime.Now} ===");
-                    }
-                    OnLogMessage?.Invoke(shutdownMessage, LogLevel.INFO); // Notify UI with level for shutdown message
 
-                }
+                    // Write shutdown message and session end marker to file
+                    try
+                    {
+                        using (StreamWriter writer = new StreamWriter(_logFilePath, true, Encoding.UTF8))
+                        {
+                            writer.WriteLine(shutdownMessage);
+                            writer.WriteLine($"=== SESSION ENDED {DateTime.Now} ===");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle file writing errors during shutdown
+                        string fileErrorMsg = $"Failed to write shutdown log to file '{_logFilePath}': {ex.Message}";
+                        Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [ERROR] {fileErrorMsg}");
+                    }
+
+
+                    // Invoke the UI event for the shutdown message
+                    OnLogMessage?.Invoke(shutdownMessage, LogLevel.INFO);
+
+                } // Release lock
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error during DebugLogger shutdown: {ex.Message}");
+                // Handle errors during logger shutdown itself
+                string shutdownErrorMsg = $"Error during DebugLogger shutdown: {ex.Message}";
+                Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] [ERROR] {shutdownErrorMsg}");
+            }
+            finally
+            {
+                // Ensure state is reset even if shutdown fails partially
+                lock (_logLock) // Acquire lock one last time for state reset
+                {
+                    _isInitialized = false; // Mark as uninitialized
+                    _initializationLogged = false; // Reset initialization flag
+                }
             }
         }
     }
