@@ -35,7 +35,7 @@ namespace _4RTools.Model
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
         private const string ACTION_NAME = "AHK";
-        private _4RThread thread;
+        private ThreadRunner thread;
         public const string COMPATIBILITY = "ahkCompatibility";
         public const string SPEED_BOOST = "ahkSpeedBoost";
         public Dictionary<string, KeyConfig> AhkEntries { get; set; } = new Dictionary<string, KeyConfig>();
@@ -62,11 +62,11 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
 
-                this.thread = new _4RThread(_ => AHKThreadExecution(roClient));
-                _4RThread.Start(this.thread);
+                this.thread = new ThreadRunner(_ => AHKThreadExecution(roClient));
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -238,9 +238,12 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
+
 
         public string GetConfiguration()
         {

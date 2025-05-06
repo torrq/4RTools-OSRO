@@ -68,7 +68,7 @@ namespace _4RTools.Model
     public class ATKDEFMode : IAction
     {
         public static string ACTION_NAME_ATKDEF = "ATKDEFMode";
-        private _4RThread thread;
+        private ThreadRunner thread;
         public List<EquipConfig> EquipConfigs { get; set; } = new List<EquipConfig>();
 
         public ATKDEFMode(int macroLanes)
@@ -97,10 +97,10 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new _4RThread(_ => AHKThreadExecution(roClient));
-                _4RThread.Start(this.thread);
+                this.thread = new ThreadRunner(_ => AHKThreadExecution(roClient));
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -216,7 +216,9 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
     }

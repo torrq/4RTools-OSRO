@@ -15,7 +15,7 @@ namespace _4RTools.Model
     {
         public static string ACTION_NAME_AUTOBUFFSKILL = "AutobuffSkill";
         public string ActionName { get; set; }
-        private _4RThread thread;
+        private ThreadRunner thread;
         private int _delay = AppConfig.AutoBuffSkillsDefaultDelay;
         public int Delay
         {
@@ -43,11 +43,11 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
                 if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = AutoBuffThread(roClient);
-                _4RThread.Start(this.thread);
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -74,9 +74,9 @@ namespace _4RTools.Model
             return key.ToString().ToLower();
         }
 
-        public _4RThread AutoBuffThread(Client c)
+        public ThreadRunner AutoBuffThread(Client c)
         {
-            _4RThread autobuffItemThread = new _4RThread(_ =>
+            ThreadRunner autobuffItemThread = new ThreadRunner(_ =>
             {
                 bool foundQuag = false;
                 bool foundDecreaseAgi = false;
@@ -242,7 +242,9 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
 

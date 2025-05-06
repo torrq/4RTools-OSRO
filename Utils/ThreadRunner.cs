@@ -3,16 +3,17 @@ using System.Threading;
 
 namespace _4RTools.Utils
 {
-    public class _4RThread
+    public class ThreadRunner
     {
         private readonly Thread thread;
         private readonly ManualResetEventSlim suspendEvent = new ManualResetEventSlim(true); // Initially set
+        private volatile bool running = true;
 
-        public _4RThread(Func<int, int> toRun)
+        public ThreadRunner(Func<int, int> toRun)
         {
             this.thread = new Thread(() =>
             {
-                while (true)
+                while (running)
                 {
                     try
                     {
@@ -21,7 +22,7 @@ namespace _4RTools.Utils
                     }
                     catch (Exception ex)
                     {
-                        DebugLogger.Error("[4RThread Exception] Error while Executing Thread Method ==== " + ex.Message);
+                        DebugLogger.Error("[ThreadRunner Exception] Error while executing thread method: " + ex.Message);
                     }
                     finally
                     {
@@ -29,31 +30,42 @@ namespace _4RTools.Utils
                     }
                 }
             });
+
+            this.thread.IsBackground = true;
             this.thread.SetApartmentState(ApartmentState.STA);
         }
 
-        public static void Start(_4RThread _4RThread)
+        public static void Start(ThreadRunner runner)
         {
-            if (_4RThread != null)
+            if (runner != null)
             {
-                _4RThread.suspendEvent.Set(); // Resume execution
-                _4RThread.thread.Start();
+                runner.suspendEvent.Set(); // Resume execution
+                if (!runner.thread.IsAlive)
+                {
+                    runner.thread.Start();
+                }
             }
         }
 
-        public static void Stop(_4RThread _4RThread)
+        public static void Stop(ThreadRunner runner)
         {
-            if (_4RThread != null && _4RThread.thread.IsAlive)
+            if (runner != null && runner.thread.IsAlive)
             {
                 try
                 {
-                    _4RThread.suspendEvent.Reset(); // This will "pause" the thread
+                    runner.suspendEvent.Reset(); // This will "pause" the thread
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.Error("[4R Thread Exception] =========== We could not suspend current thread: " + ex);
+                    DebugLogger.Error("[ThreadRunner Exception] Could not suspend thread: " + ex);
                 }
             }
+        }
+
+        public void Terminate()
+        {
+            running = false;
+            suspendEvent.Set(); // Unblock the wait if paused
         }
     }
 }

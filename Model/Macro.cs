@@ -63,7 +63,7 @@ namespace _4RTools.Model
         public static string ACTION_NAME_MACRO_SWITCH = "MacroSwitch";
 
         public string ActionName { get; set; }
-        private _4RThread thread;
+        private ThreadRunner thread;
         public List<ChainConfig> ChainConfigs { get; set; } = new List<ChainConfig>();
 
         public Macro(string macroname, int macroLanes)
@@ -146,10 +146,10 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new _4RThread((_) => MacroExecutionThread(roClient));
-                _4RThread.Start(this.thread);
+                this.thread = new ThreadRunner((_) => MacroExecutionThread(roClient));
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -157,7 +157,9 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
     }

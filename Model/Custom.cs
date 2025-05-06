@@ -14,7 +14,7 @@ namespace _4RTools.Model
 
         public string ActionName { get; set; }
 
-        private _4RThread thread;
+        private ThreadRunner thread;
 
         [DllImport("user32.dll")]
         public static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
@@ -73,10 +73,10 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new _4RThread((_) => CustomExecutionThread(roClient));
-                _4RThread.Start(this.thread);
+                this.thread = new ThreadRunner((_) => CustomExecutionThread(roClient));
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -84,7 +84,9 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
     }

@@ -12,7 +12,7 @@ namespace _4RTools.Model
     {
         public static string ACTION_NAME_PANACEA_AUTOBUFF = "PanaceaAutoBuff";
 
-        private _4RThread thread;
+        private ThreadRunner thread;
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
         public int Delay { get; set; } = 1;
 
@@ -21,10 +21,10 @@ namespace _4RTools.Model
             return ACTION_NAME_PANACEA_AUTOBUFF;
         }
 
-        public _4RThread RestoreStatusThread(Client c)
+        public ThreadRunner RestoreStatusThread(Client c)
         {
             Client roClient = ClientSingleton.GetClient();
-            _4RThread statusEffectsThread = new _4RThread(_ =>
+            ThreadRunner statusEffectsThread = new ThreadRunner(_ =>
             {
                 for (int i = 0; i <= Constants.MAX_BUFF_LIST_INDEX_SIZE - 1; i++)
                 {
@@ -63,10 +63,10 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
                 this.thread = RestoreStatusThread(roClient);
-                _4RThread.Start(this.thread);
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -87,7 +87,9 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
 

@@ -15,10 +15,10 @@ namespace _4RTools.Model
         public Dictionary<int, MacroKey> skillTimer = new Dictionary<int, MacroKey>();
         public List<string> CityList { get; set; }
 
-        private _4RThread thread1;
-        private _4RThread thread2;
-        private _4RThread thread3;
-        private _4RThread thread4;
+        private ThreadRunner thread1;
+        private ThreadRunner thread2;
+        private ThreadRunner thread3;
+        private ThreadRunner thread4;
 
         public void Start()
         {
@@ -32,23 +32,23 @@ namespace _4RTools.Model
 
                 if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
 
-                this.thread1 = new _4RThread((_) => AutoRefreshThreadExecution(roClient, skillTimer[1].Delay, skillTimer[1].Key));
-                this.thread2 = new _4RThread((_) => AutoRefreshThreadExecution(roClient, skillTimer[2].Delay, skillTimer[2].Key));
-                this.thread3 = new _4RThread((_) => AutoRefreshThreadExecution(roClient, skillTimer[3].Delay, skillTimer[3].Key));
-                this.thread4 = new _4RThread((_) => AutoRefreshThreadExecution(roClient, skillTimer[4].Delay, skillTimer[4].Key));
+                this.thread1 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[1].Delay, skillTimer[1].Key));
+                this.thread2 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[2].Delay, skillTimer[2].Key));
+                this.thread3 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[3].Delay, skillTimer[3].Key));
+                this.thread4 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[4].Delay, skillTimer[4].Key));
 
-                _4RThread.Start(this.thread1);
-                _4RThread.Start(this.thread2);
-                _4RThread.Start(this.thread3);
-                _4RThread.Start(this.thread4);
+                ThreadRunner.Start(this.thread1);
+                ThreadRunner.Start(this.thread2);
+                ThreadRunner.Start(this.thread3);
+                ThreadRunner.Start(this.thread4);
             }
         }
 
-        private void ValidadeThreads(_4RThread _4RThread)
+        private void ValidadeThreads(ThreadRunner _4RThread)
         {
             if (_4RThread != null)
             {
-                _4RThread.Stop(_4RThread);
+                ThreadRunner.Stop(_4RThread);
             }
         }
 
@@ -70,19 +70,27 @@ namespace _4RTools.Model
         {
             if (this.thread1 != null)
             {
-                _4RThread.Stop(this.thread1);
+                ThreadRunner.Stop(this.thread1);
+                this.thread1.Terminate();
+                this.thread1 = null;
             }
             if (this.thread2 != null)
             {
-                _4RThread.Stop(this.thread2);
+                ThreadRunner.Stop(this.thread2);
+                this.thread2.Terminate();
+                this.thread2 = null;
             }
             if (this.thread3 != null)
             {
-                _4RThread.Stop(this.thread3);
+                ThreadRunner.Stop(this.thread3);
+                this.thread3.Terminate();
+                this.thread3 = null;
             }
             if (this.thread4 != null)
             {
-                _4RThread.Stop(this.thread4);
+                ThreadRunner.Stop(this.thread4);
+                this.thread4.Terminate();
+                this.thread4 = null;
             }
         }
 

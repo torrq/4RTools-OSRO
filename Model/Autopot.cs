@@ -40,7 +40,7 @@ namespace _4RTools.Model
         public string FirstHeal { get; set; } = FIRSTHP;
 
         public string ActionName { get; set; }
-        private _4RThread thread;
+        private ThreadRunner thread;
 
         public List<string> CityList { get; set; }
 
@@ -71,12 +71,12 @@ namespace _4RTools.Model
             {
                 if (this.thread != null)
                 {
-                    _4RThread.Stop(this.thread);
+                    ThreadRunner.Stop(this.thread);
                 }
                 int hpPotCount = 0;
                 if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
-                this.thread = new _4RThread(_ => AutopotThreadExecution(roClient, hpPotCount));
-                _4RThread.Start(this.thread);
+                this.thread = new ThreadRunner(_ => AutopotThreadExecution(roClient, hpPotCount));
+                ThreadRunner.Start(this.thread);
             }
         }
 
@@ -169,7 +169,9 @@ namespace _4RTools.Model
         {
             if (this.thread != null)
             {
-                _4RThread.Stop(this.thread);
+                ThreadRunner.Stop(this.thread);
+                this.thread.Terminate();
+                this.thread = null;
             }
         }
 
