@@ -11,13 +11,13 @@ namespace _4RTools.Forms
     public partial class ToggleApplicationStateForm : Form, IObserver
     {
         private Subject subject;
-        private ContextMenu contextMenu;
-        private MenuItem menuItem;
+        private ContextMenuStrip contextMenu;
+        private ToolStripMenuItem menuItemClose;
+        private ToolStripMenuItem menuItemToggle;
 
         private Keys lastKey;
 
         private bool isApplicationOn = false;
-
 
         public ToggleApplicationStateForm() { }
 
@@ -36,7 +36,6 @@ namespace _4RTools.Forms
             }
             catch
             {
-
             }
             lastKey = initialToggleKey;
 
@@ -44,7 +43,6 @@ namespace _4RTools.Forms
             this.txtStatusToggleKey.KeyDown += new KeyEventHandler(FormUtils.OnKeyDown);
             this.txtStatusToggleKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
             this.txtStatusToggleKey.TextChanged += new EventHandler(this.onStatusToggleKeyChange);
-
 
             if (lastKey != Keys.None)
             {
@@ -58,17 +56,36 @@ namespace _4RTools.Forms
 
         private void InitializeContextualMenu()
         {
-            this.contextMenu = new ContextMenu();
-            this.menuItem = new MenuItem();
+            this.contextMenu = new ContextMenuStrip();
+            this.menuItemToggle = new ToolStripMenuItem();
+            this.menuItemClose = new ToolStripMenuItem();
 
-            this.contextMenu.MenuItems.AddRange(
-                    new MenuItem[] { this.menuItem });
+            // Configure Toggle menu item (dynamic Start/Stop)
+            UpdateToggleMenuItem();
+            this.menuItemToggle.Click += new EventHandler(this.toggleStatusFromMenu);
 
-            this.menuItem.Index = 0;
-            this.menuItem.Text = "Close";
-            this.menuItem.Click += new EventHandler(this.notifyShutdownApplication);
+            // Configure Close menu item
+            this.menuItemClose.Text = "Exit " + AppConfig.Name;
+            this.menuItemClose.Image = SystemIcons.Application.ToBitmap(); // Stock close-like icon
+            this.menuItemClose.Click += new EventHandler(this.notifyShutdownApplication);
 
-            this.notifyIconTray.ContextMenu = this.contextMenu;
+            this.contextMenu.Items.AddRange(new ToolStripItem[] { this.menuItemToggle, this.menuItemClose });
+
+            this.notifyIconTray.ContextMenuStrip = this.contextMenu;
+        }
+
+        private void UpdateToggleMenuItem()
+        {
+            if (isApplicationOn)
+            {
+                this.menuItemToggle.Text = "Turn Off";
+                this.menuItemToggle.Image = SystemIcons.Error.ToBitmap(); // Stock stop-like icon
+            }
+            else
+            {
+                this.menuItemToggle.Text = "Turn On";
+                this.menuItemToggle.Image = SystemIcons.Information.ToBitmap(); // Stock play-like icon
+            }
         }
 
         public void Update(ISubject subject)
@@ -81,15 +98,12 @@ namespace _4RTools.Forms
                     {
                         currentToggleKey = (Keys)Enum.Parse(typeof(Keys), ProfileSingleton.GetCurrent().UserPreferences.ToggleStateKey);
 
-
                         if (lastKey != Keys.None)
                         {
                             KeyboardHook.RemoveDown(lastKey);
                         }
 
-
                         this.txtStatusToggleKey.Text = currentToggleKey.ToString();
-
 
                         if (currentToggleKey != Keys.None)
                         {
@@ -100,19 +114,16 @@ namespace _4RTools.Forms
 
                         isApplicationOn = false;
                         SetVisualState(isApplicationOn);
-
-
+                        UpdateToggleMenuItem(); // Update menu item after profile change
                     }
                     catch
                     {
-
                         lastKey = Keys.None;
                         this.txtStatusToggleKey.Text = string.Empty;
                         isApplicationOn = false;
                         SetVisualState(isApplicationOn);
-
+                        UpdateToggleMenuItem(); // Update menu item on error
                     }
-
                     break;
             }
         }
@@ -124,7 +135,6 @@ namespace _4RTools.Forms
             try
             {
                 Keys newToggleKey = (Keys)Enum.Parse(typeof(Keys), this.txtStatusToggleKey.Text);
-
 
                 if (lastKey != Keys.None)
                 {
@@ -138,28 +148,26 @@ namespace _4RTools.Forms
                     ProfileSingleton.GetCurrent().UserPreferences.ToggleStateKey = newToggleKey.ToString();
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
 
-
                     lastKey = newToggleKey;
 
                     isApplicationOn = false;
                     SetVisualState(isApplicationOn);
-
+                    UpdateToggleMenuItem(); // Update menu item after key change
                 }
                 else
                 {
-
                     this.txtStatusToggleKey.Text = lastKey.ToString();
                     isApplicationOn = false;
                     SetVisualState(isApplicationOn);
+                    UpdateToggleMenuItem(); // Update menu item on invalid key
                 }
-
-
             }
             catch
             {
                 this.txtStatusToggleKey.Text = lastKey.ToString();
                 isApplicationOn = false;
                 SetVisualState(isApplicationOn);
+                UpdateToggleMenuItem(); // Update menu item on exception
             }
         }
 
@@ -169,41 +177,38 @@ namespace _4RTools.Forms
 
             if (isApplicationOn)
             {
-
                 isApplicationOn = false;
                 SetVisualState(isApplicationOn);
+                UpdateToggleMenuItem(); // Update menu item after toggle
 
                 this.subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
                 this.lblStatusToggle.Text = "Press the key to start!";
+                this.lblStatusToggle.ForeColor = Color.FromArgb(148, 155, 164);
 
                 if (prefs.SoundEnabled)
                 {
                     new SoundPlayer(ETCResource.Speech_Off).Play();
                 }
-
             }
             else
             {
                 Client client = ClientSingleton.GetClient();
                 if (client != null)
                 {
-
                     isApplicationOn = true;
                     SetVisualState(isApplicationOn);
-
+                    UpdateToggleMenuItem(); // Update menu item after toggle
 
                     this.subject.Notify(new Utils.Message(MessageCode.TURN_ON, null));
 
                     this.lblStatusToggle.Text = "Press the key to stop!";
                     this.lblStatusToggle.ForeColor = Color.FromArgb(120, 120, 120);
 
-
                     if (prefs.SoundEnabled)
                     {
                         new SoundPlayer(ETCResource.Speech_On).Play();
                     }
-
                 }
                 else
                 {
@@ -211,14 +216,13 @@ namespace _4RTools.Forms
                     this.lblStatusToggle.ForeColor = Color.Red;
                     isApplicationOn = false;
                     SetVisualState(isApplicationOn);
+                    UpdateToggleMenuItem(); // Update menu item on client error
                     return false;
                 }
             }
 
-
             return true;
         }
-
 
         public bool TurnOFF()
         {
@@ -228,20 +232,17 @@ namespace _4RTools.Forms
             {
                 isApplicationOn = false;
                 SetVisualState(isApplicationOn);
-
+                UpdateToggleMenuItem(); // Update menu item after turning off
 
                 this.subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
                 this.lblStatusToggle.Text = "Press the key to start!";
                 this.lblStatusToggle.ForeColor = Color.FromArgb(148, 155, 164);
 
-
                 if (prefs.SoundEnabled)
                 {
                     new SoundPlayer(ETCResource.Speech_Off).Play();
                 }
-
             }
-
 
             return true;
         }
@@ -250,7 +251,6 @@ namespace _4RTools.Forms
         {
             if (on)
             {
-
                 this.btnStatusToggle.BackColor = Color.Transparent;
                 this.btnStatusToggle.Image = Icons.toggle_on;
                 this.notifyIconTray.Icon = ETCResource.icon4rtools_on;
@@ -259,7 +259,6 @@ namespace _4RTools.Forms
             }
             else
             {
-
                 this.btnStatusToggle.BackColor = Color.Transparent;
                 this.btnStatusToggle.Image = Icons.toggle_off;
                 this.notifyIconTray.Icon = ETCResource.icon4rtools_off;
@@ -268,21 +267,23 @@ namespace _4RTools.Forms
             }
         }
 
-
         private void notifyIconDoubleClick(object sender, MouseEventArgs e)
         {
             this.subject.Notify(new Utils.Message(MessageCode.CLICK_ICON_TRAY, null));
         }
 
-        private void notifyShutdownApplication(object Sender, EventArgs e)
+        private void notifyShutdownApplication(object sender, EventArgs e)
         {
             this.subject.Notify(new Utils.Message(MessageCode.SHUTDOWN_APPLICATION, null));
         }
 
         private void lblStatusToggle_Click(object sender, EventArgs e)
         {
-
         }
 
+        private void toggleStatusFromMenu(object sender, EventArgs e)
+        {
+            toggleStatus();
+        }
     }
 }
