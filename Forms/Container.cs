@@ -15,11 +15,8 @@ namespace _4RTools.Forms
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleApplicationStateForm frmToggleApplication = new ToggleApplicationStateForm();
-        private DebugLogWindow debugLogWindow; // Separate debug log window
-        private bool isShuttingDown = false; // Flag to prevent multiple shutdowns
-
-        // Store the delegate instance to allow explicit unsubscribing
-        // This delegate now matches the DebugLogger.LogMessageHandler signature (string, LogLevel)
+        private DebugLogWindow debugLogWindow;
+        private bool isShuttingDown = false;
         private DebugLogger.LogMessageHandler debugLogHandler;
 
         public Container()
@@ -27,7 +24,6 @@ namespace _4RTools.Forms
             ConfigGlobal.Initialize();
             ConfigGlobal.SaveConfig();
 
-            // Log the DebugMode value to confirm its state at initialization
             DebugLogger.Info($"Container constructor: DebugMode is {ConfigGlobal.GetConfig().DebugMode} after ConfigGlobal.Initialize");
 
             this.subject.Attach(this);
@@ -36,25 +32,22 @@ namespace _4RTools.Forms
 
             this.Text = AppConfig.WindowTitle;
 
-            Server.Initialize(); // Will log errors if they occur
-            clients.AddRange(Server.GetLocalClients()); //Load Local Servers First
+            Server.Initialize();
+            clients.AddRange(Server.GetLocalClients());
 
             LoadServers(clients);
 
-            //Container Configuration
             this.IsMdiContainer = true;
             SetBackGroundColorOfMDIForm();
 
-            // Create and show the debug log window only if DebugMode is true at startup
             if (ConfigGlobal.GetConfig().DebugMode)
             {
                 DebugLogger.Info("DebugMode is true: Creating and showing DebugLogWindow");
-                debugLogWindow = new DebugLogWindow(); // Window created
-                PositionDebugLogWindow();
+                debugLogWindow = new DebugLogWindow(this.Icon);
+                debugLogWindow.Owner = this; // Owner relationship for focus sync
                 debugLogWindow.Show();
-                SubscribeToDebugLogger(); // Subscribe immediately after creation
+                SubscribeToDebugLogger();
 
-                // Add event handlers to reposition DebugLogWindow when Container moves or resizes
                 this.LocationChanged += Container_LocationOrSizeChanged;
                 this.SizeChanged += Container_LocationOrSizeChanged;
             }
@@ -63,7 +56,6 @@ namespace _4RTools.Forms
                 DebugLogger.Info("DebugMode is false: No debug log window created");
             }
 
-            //Paint Children Forms
             frmToggleApplication = SetToggleApplicationStateWindow();
             SetAutopotWindow();
             SetAutopotYggWindow();
@@ -84,23 +76,19 @@ namespace _4RTools.Forms
         {
             if (debugLogWindow != null && !debugLogWindow.IsDisposed)
             {
-                // Position the DebugLogWindow directly below the Container
-                int x = this.Location.X;
-                int y = this.Location.Y + this.Height;
+                // Position the DebugLogWindow 8 pixels above the bottom of the Container
+                int x = this.Location.X + this.DisplayRectangle.X + 8;
+                int y = this.Location.Y + this.Height - 8;
                 debugLogWindow.Location = new Point(x, y);
 
-                // Match the width of the DebugLogWindow to the Container's width
-                debugLogWindow.Width = this.Width;
-
-                // Optionally, set a fixed height for the DebugLogWindow (adjust as needed)
-                debugLogWindow.Height = 200; // You can adjust this value to fit your needs
+                // Match the width of the DebugLogWindow to the Container's drawable area width
+                debugLogWindow.Width = this.DisplayRectangle.Width;
             }
         }
 
         private void Container_LocationOrSizeChanged(object sender, EventArgs e)
         {
-            // Reposition the DebugLogWindow whenever the Container moves or resizes
-            if (!isShuttingDown) // Avoid repositioning during shutdown
+            if (!isShuttingDown)
             {
                 PositionDebugLogWindow();
             }
@@ -108,16 +96,13 @@ namespace _4RTools.Forms
 
         private void SubscribeToDebugLogger()
         {
-            // Create the delegate instance matching the DebugLogger.LogMessageHandler signature (string, LogLevel)
-            debugLogHandler = (message, level) => // <-- Lambda takes 2 arguments
+            debugLogHandler = (message, level) =>
             {
                 if (debugLogWindow != null && !debugLogWindow.IsDisposed)
                 {
-                    // Call the DebugLogger_OnLogMessage method in DebugLogWindow that handles coloring
                     debugLogWindow.DebugLogger_OnLogMessage(message, level);
                 }
             };
-            // Subscribe the delegate instance
             DebugLogger.OnLogMessage += debugLogHandler;
         }
 
@@ -126,10 +111,9 @@ namespace _4RTools.Forms
             if (debugLogHandler != null)
             {
                 DebugLogger.OnLogMessage -= debugLogHandler;
-                debugLogHandler = null; // Clear the stored delegate
+                debugLogHandler = null;
             }
         }
-
 
         public void Addform(TabPage tp, Form f)
         {
@@ -157,20 +141,17 @@ namespace _4RTools.Forms
         private void ProcessCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedProcessString = this.processCB.SelectedItem.ToString();
-            Client client = new Client(selectedProcessString); // This constructor likely sets client.Process
+            Client client = new Client(selectedProcessString);
             ClientSingleton.Instance(client);
 
-            // Log Process Name and Process ID using the Process property
-            // Ensure the Client constructor successfully sets the Process property.
             if (client.Process != null)
             {
-                DebugLogger.Info($"Process selected: {client.Process.ProcessName} - {client.Process.Id}"); // <-- Using client.Process.Id
+                DebugLogger.Info($"Process selected: {client.Process.ProcessName} - {client.Process.Id}");
             }
             else
             {
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
-
 
             characterName.Text = client.ReadCharacterName();
             characterMap.Text = client.ReadCurrentMap();
@@ -181,19 +162,14 @@ namespace _4RTools.Forms
         {
             if (!(sender is TabControl tabControl)) return;
 
-            // Background color for all tabs
             e.Graphics.FillRectangle(new SolidBrush(AppConfig.AccentBackColor), e.Bounds);
 
-            // Check if this is the selected (active) tab
             bool isActiveTab = (e.Index == tabControl.SelectedIndex);
 
-            // Use bold font for active tab, regular for others
             Font tabFont = isActiveTab ? new Font(e.Font, FontStyle.Bold) : e.Font;
 
-            // Set text color (change if needed)
             Color textColor = Color.Black;
 
-            // Draw tab text centered
             string text = tabControl.TabPages[e.Index].Text;
             using (Brush textBrush = new SolidBrush(textColor))
             {
@@ -212,7 +188,12 @@ namespace _4RTools.Forms
             this.profileCB.SelectedItem = "Default";
 
             ConfigureTabControl(tabControlAutopot);
-            //ConfigureTabControl(atkDefMode);
+
+            // Position DebugLogWindow after the Container is fully loaded
+            if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+            {
+                PositionDebugLogWindow();
+            }
         }
 
         private void ConfigureTabControl(TabControl tabControl)
@@ -222,8 +203,7 @@ namespace _4RTools.Forms
             tabControl.BackColor = AppConfig.AccentBackColor;
             tabControl.ForeColor = Color.Black;
 
-            // Ensure a flat modern look
-            tabControl.Appearance = TabAppearance.Normal; // Prevents 3D borders
+            tabControl.Appearance = TabAppearance.Normal;
         }
 
         public void RefreshProfileList()
@@ -281,25 +261,21 @@ namespace _4RTools.Forms
             {
                 DebugLogger.Info("Shutting down application...");
 
-                // Disable keyboard hooks
                 KeyboardHook.Disable();
 
-                // Notify observers to turn off
                 DebugLogger.Debug("Subject: Notifying observers...");
                 subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
-                // Unsubscribe from DebugLogger before disposing the window
                 UnsubscribeFromDebugLogger();
 
-                // Close and dispose of the DebugLogWindow if it exists
                 if (debugLogWindow != null && !debugLogWindow.IsDisposed)
                 {
                     DebugLogger.Info("Closing DebugLogWindow...");
                     debugLogWindow.Close();
+                    debugLogWindow.Dispose();
                     debugLogWindow = null;
                 }
 
-                // Close all child forms
                 foreach (Form childForm in this.MdiChildren)
                 {
                     if (!childForm.IsDisposed)
@@ -308,25 +284,20 @@ namespace _4RTools.Forms
                     }
                 }
 
-                // Ensure the main form is closed
                 this.Close();
 
-                // Shutdown the debug logger
                 DebugLogger.Info("Shutting down logger...");
                 DebugLogger.Shutdown();
 
-                // Exit the Windows Forms application loop
-                DebugLogger.Info("Exiting application loop...");
-                Application.Exit();
-
+                DebugLogger.Info("Forcibly exiting application...");
+                Environment.Exit(0);
             }
             catch (Exception ex)
             {
                 DebugLogger.Error(ex, "Failed to shutdown application cleanly");
-                Environment.Exit(1); // Use Environment.Exit on error
+                Environment.Exit(1);
             }
         }
-
 
         private void LblLinkGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -353,15 +324,15 @@ namespace _4RTools.Forms
                     {
                         this.frmToggleApplication.TurnOFF();
                     }
-                    DebugLogger.Info($"Loading profile: {this.profileCB.Text}"); // Log profile change
+                    DebugLogger.Info($"Loading profile: {this.profileCB.Text}");
                     ProfileSingleton.ClearProfile(this.profileCB.Text);
-                    ProfileSingleton.Load(this.profileCB.Text); //LOAD PROFILE
+                    ProfileSingleton.Load(this.profileCB.Text);
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
                     currentProfile = this.profileCB.Text.ToString();
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.Error(ex, $"Failed to load profile: {this.profileCB.Text}"); // Log the error
+                    DebugLogger.Error(ex, $"Failed to load profile: {this.profileCB.Text}");
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -369,10 +340,8 @@ namespace _4RTools.Forms
 
         public void Update(ISubject subject)
         {
-            // Skip processing notifications if shutdown is in progress
             if (isShuttingDown)
             {
-                // DebugLogger.Info("Shutdown in progress, ignoring subject notification..."); // Avoid excessive logging during shutdown
                 return;
             }
 
@@ -389,43 +358,39 @@ namespace _4RTools.Forms
                     break;
                 case MessageCode.SERVER_LIST_CHANGED:
                     this.RefreshProcessList();
-                    DebugLogger.Info("Server list refreshed."); // Log server list change
+                    DebugLogger.Info("Server list refreshed.");
                     break;
                 case MessageCode.CLICK_ICON_TRAY:
-                    DebugLogger.Info("Tray icon clicked: Showing main window."); // Log tray icon click
+                    DebugLogger.Info("Tray icon clicked: Showing main window.");
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                     break;
                 case MessageCode.DEBUG_MODE_CHANGED:
                     bool newDebugMode = (bool)((subject as Subject).Message.Data);
                     DebugLogger.Info($"Received DEBUG_MODE_CHANGED notification. New DebugMode: {newDebugMode}");
-                    // Handle DebugLogWindow visibility based on the new debug mode state
-                    if (newDebugMode && debugLogWindow == null) // Debug mode turned ON and window doesn't exist
+                    if (newDebugMode && debugLogWindow == null)
                     {
                         DebugLogger.Info("DebugMode set to true: Creating and showing DebugLogWindow...");
-                        debugLogWindow = new DebugLogWindow(); // Create window
+                        debugLogWindow = new DebugLogWindow(this.Icon);
+                        debugLogWindow.Owner = this; // Set Owner when re-enabling DebugMode
                         PositionDebugLogWindow();
                         debugLogWindow.Show();
-                        SubscribeToDebugLogger(); // Subscribe only when a *new* window is created
+                        SubscribeToDebugLogger();
                     }
-                    else if (!newDebugMode && debugLogWindow != null && !debugLogWindow.IsDisposed) // Debug mode turned OFF and window exists
+                    else if (!newDebugMode && debugLogWindow != null && !debugLogWindow.IsDisposed)
                     {
-                        DebugLogger.Info("DebugMode set to false: Hiding DebugLogWindow...");
-                        // Unsubscribe only if the window is being hidden/closed without full app exit
+                        DebugLogger.Info("DebugMode set to false: Closing DebugLogWindow...");
                         UnsubscribeFromDebugLogger();
-                        debugLogWindow.Hide(); // Hide the window
-                                               // You might want to Dispose the window here if it's not needed again until debug mode is re-enabled.
-                                               // However, hiding keeps the instance alive to potentially show again faster.
-                                               // If hiding, make sure to handle showing the *existing* instance when debug mode is turned back on.
+                        debugLogWindow.Close();
+                        debugLogWindow = null;
                     }
-                    else if (newDebugMode && debugLogWindow != null && debugLogWindow.Visible == false) // Debug mode ON and window exists but is hidden
+                    else if (newDebugMode && debugLogWindow != null && debugLogWindow.Visible == false)
                     {
                         DebugLogger.Info("DebugMode set to true: Showing existing DebugLogWindow...");
-                        PositionDebugLogWindow(); // Reposition in case the main window moved
+                        debugLogWindow.Owner = this; // Ensure Owner is set when showing again
+                        PositionDebugLogWindow();
                         debugLogWindow.Show();
-                        // No need to subscribe again here, it's already subscribed
                     }
-
                     break;
                 case MessageCode.SHUTDOWN_APPLICATION:
                     if (!isShuttingDown)
@@ -517,7 +482,7 @@ namespace _4RTools.Forms
             TransferButtonForm form = new TransferButtonForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(445, 220),
+                Location = new Point(360, 220),
                 MdiParent = this
             };
             form.Show();
