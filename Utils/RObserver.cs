@@ -9,6 +9,7 @@ namespace _4RTools.Utils
 
     public interface ISubject
     {
+        Message Message { get; }
         void Attach(IObserver observer);
         void Detach(IObserver observer);
         void Notify(Message message);
@@ -59,7 +60,6 @@ namespace _4RTools.Utils
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
-
             }
         }
 

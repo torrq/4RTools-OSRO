@@ -8,6 +8,18 @@ namespace _4RTools.Forms
 {
     public partial class DebugLogWindow : Form
     {
+        // Helper method to get a brighter version of a color
+        private Color GetBrighterColor(Color baseColor)
+        {
+            // Make the color brighter by increasing its RGB values
+            // but keeping them within the valid range (0-255)
+            int r = Math.Min(255, (int)(baseColor.R * 1.3));
+            int g = Math.Min(255, (int)(baseColor.G * 1.3));
+            int b = Math.Min(255, (int)(baseColor.B * 1.3));
+
+            return Color.FromArgb(baseColor.A, r, g, b);
+        }
+
         private RichTextBox debugConsole;
 
         public DebugLogWindow(Icon containerIcon)
@@ -59,7 +71,7 @@ namespace _4RTools.Forms
             debugConsole.SelectionStart = debugConsole.TextLength;
             debugConsole.SelectionLength = 0;
 
-            System.Drawing.Color defaultLineColor;
+            Color defaultLineColor;
             switch (level)
             {
                 case DebugLogger.LogLevel.INFO:
@@ -84,16 +96,19 @@ namespace _4RTools.Forms
 
             if (level == DebugLogger.LogLevel.STATUS)
             {
-                var match = Regex.Match(message, @"^(\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}\]) (\[STATUS\]) (.*)$");
+                var match = Regex.Match(message, $@"^(\d{{2}}:\d{{2}}:\d{{2}}\.\d{{3}}) \[({AppConfig.STATUS})\] (.*)$");
 
                 if (match.Success)
                 {
-                    debugConsole.SelectionColor = debugConsole.ForeColor;
+                    // Timestamp
+                    debugConsole.SelectionColor = AppConfig.LogColor_Timestamp;
                     debugConsole.AppendText(match.Groups[1].Value + " ");
 
+                    // [STATUS]
                     debugConsole.SelectionColor = AppConfig.LogColor_STATUS;
-                    debugConsole.AppendText(match.Groups[2].Value + " ");
+                    debugConsole.AppendText("[" + match.Groups[2].Value + "] ");
 
+                    // Status data
                     string statusDetails = match.Groups[3].Value;
                     string[] statuses = statusDetails.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -110,8 +125,17 @@ namespace _4RTools.Forms
                             debugConsole.SelectionColor = debugConsole.ForeColor;
                             debugConsole.AppendText(":");
 
-                            debugConsole.SelectionColor = AppConfig.LogColor_StatusName;
-                            debugConsole.AppendText(parts[1]);
+                            // Check for unknown status
+                            if (parts[1] == "**UNKNOWN**")
+                            {
+                                debugConsole.SelectionColor = AppConfig.LogColor_StatusUnknown;
+                                debugConsole.AppendText(parts[1]);
+                            }
+                            else
+                            {
+                                debugConsole.SelectionColor = AppConfig.LogColor_StatusName;
+                                debugConsole.AppendText(parts[1]);
+                            }
                         }
                         else
                         {
@@ -134,13 +158,34 @@ namespace _4RTools.Forms
             }
             else
             {
-                debugConsole.SelectionColor = defaultLineColor;
-                debugConsole.AppendText(message);
+                // Create a pattern that will match any of the log levels from AppConfig
+                string logLevelPattern = $"({AppConfig.INFO}|{AppConfig.WARNING}|{AppConfig.ERROR}|{AppConfig.DEBUG}|{AppConfig.STATUS})";
+                var match = Regex.Match(message, $@"^(\d{{2}}:\d{{2}}:\d{{2}}\.\d{{3}}) \[{logLevelPattern}\] (.*)$");
+
+                if (match.Success)
+                {
+                    // Timestamp
+                    debugConsole.SelectionColor = AppConfig.LogColor_Timestamp;
+                    debugConsole.AppendText(match.Groups[1].Value + " ");
+
+                    // Log level tag
+                    debugConsole.SelectionColor = defaultLineColor;
+                    debugConsole.AppendText("[" + match.Groups[2].Value + "] ");
+
+                    // Log message content with brighter color based on log level
+                    Color contentColor = GetBrighterColor(defaultLineColor);
+                    debugConsole.SelectionColor = contentColor;
+                    debugConsole.AppendText(match.Groups[3].Value);
+                }
+                else
+                {
+                    debugConsole.SelectionColor = defaultLineColor;
+                    debugConsole.AppendText(message);
+                }
             }
 
             debugConsole.SelectionColor = debugConsole.ForeColor;
             debugConsole.AppendText(Environment.NewLine);
-
             debugConsole.ScrollToCaret();
             debugConsole.ResumeLayout();
         }

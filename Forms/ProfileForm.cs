@@ -50,6 +50,8 @@ namespace _4RTools.Forms
             {
                 this.lbProfilesList.SelectedItem = selectedProfile;
             }
+
+            DebugLogger.Debug($"Profile list refreshed: {profiles.Count} profiles loaded");
         }
 
         // Helper method to update the status bar message
@@ -67,6 +69,7 @@ namespace _4RTools.Forms
             if (string.IsNullOrWhiteSpace(profileName))
             {
                 MessageBox.Show("Profile name cannot be empty or consist only of whitespace.", "Invalid Profile Name");
+                DebugLogger.Warning("Profile name validation failed: Empty or whitespace-only name");
                 return null;
             }
 
@@ -75,6 +78,7 @@ namespace _4RTools.Forms
             if (profileName.Length > maxFileNameLength)
             {
                 MessageBox.Show($"Profile name exceeds the maximum length of {maxFileNameLength} characters (accounting for the .json extension and directory path).", "Invalid Profile Name");
+                DebugLogger.Warning($"Profile name validation failed: Name exceeds max length ({profileName.Length} > {maxFileNameLength})");
                 return null;
             }
 
@@ -83,6 +87,7 @@ namespace _4RTools.Forms
             if (profileName.Any(c => invalidChars.Contains(c)))
             {
                 MessageBox.Show($"Profile name cannot contain any of the following characters: {string.Join(" ", invalidChars)}", "Invalid Profile Name");
+                DebugLogger.Warning($"Profile name validation failed: Contains invalid characters: {profileName}");
                 return null;
             }
 
@@ -90,12 +95,14 @@ namespace _4RTools.Forms
             if (profileName.Any(c => c < 32))
             {
                 MessageBox.Show("Profile name cannot contain control characters (e.g., newlines, tabs).", "Invalid Profile Name");
+                DebugLogger.Warning("Profile name validation failed: Contains control characters");
                 return null;
             }
 
             // Additional checks for rename: ensure the new name isn't the same as the old one
             if (isRename && profileName == this.lbProfilesList.SelectedItem?.ToString())
             {
+                DebugLogger.Debug($"Profile rename skipped: New name is the same as old name ({profileName})");
                 return null; // No change, so return null to skip the rename operation
             }
 
@@ -119,21 +126,36 @@ namespace _4RTools.Forms
                 counter++;
             } while (Profile.ListAll().Contains(newName));
 
+            DebugLogger.Debug($"Generated unique profile name: {newName} (from base: {baseName})");
             return newName;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             string newProfileName = DialogInput.ShowDialog("Enter new profile name:", "Create Profile", "");
-            if (newProfileName == null) { return; }
+            if (newProfileName == null)
+            {
+                DebugLogger.Debug("Create profile operation canceled by user");
+                return;
+            }
 
             newProfileName = ValidateProfileName(newProfileName);
             if (newProfileName == null) { return; }
 
-            ProfileSingleton.Create(newProfileName);
-            RefreshProfileList(); // Refresh and sort the list
-            this.container.RefreshProfileList();
-            UpdateStatus($"Profile '{newProfileName}' created successfully");
+            try
+            {
+                ProfileSingleton.Create(newProfileName);
+                RefreshProfileList(); // Refresh and sort the list
+                this.container.RefreshProfileList();
+                UpdateStatus($"Profile '{newProfileName}' created successfully");
+                DebugLogger.Info($"New profile created: '{newProfileName}'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error creating profile: {ex.Message}");
+                UpdateStatus($"Error creating profile: {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to create profile '{newProfileName}'");
+            }
         }
 
         private void btnCopyProfile_Click(object sender, EventArgs e)
@@ -141,6 +163,7 @@ namespace _4RTools.Forms
             if (this.lbProfilesList.SelectedItem == null)
             {
                 MessageBox.Show("No profile found! To copy a profile, first select an option from the Profile list.");
+                DebugLogger.Warning("Copy profile operation failed: No profile selected");
                 return;
             }
 
@@ -148,13 +171,18 @@ namespace _4RTools.Forms
             if (selectedProfile == "Default")
             {
                 MessageBox.Show("Cannot copy the Default profile!");
+                DebugLogger.Warning("Copy profile operation failed: Cannot copy Default profile");
                 return;
             }
 
             // Generate a unique name for the copied profile
             string suggestedName = GenerateUniqueProfileName(selectedProfile);
             string newProfileName = DialogInput.ShowDialog("Enter name for the copied profile:", "Copy Profile", suggestedName);
-            if (newProfileName == null) { return; }
+            if (newProfileName == null)
+            {
+                DebugLogger.Debug("Copy profile operation canceled by user");
+                return;
+            }
 
             newProfileName = ValidateProfileName(newProfileName);
             if (newProfileName == null) { return; }
@@ -165,11 +193,13 @@ namespace _4RTools.Forms
                 RefreshProfileList(); // Refresh and sort the list
                 this.container.RefreshProfileList();
                 UpdateStatus($"Profile '{selectedProfile}' copied to '{newProfileName}' successfully");
+                DebugLogger.Info($"Profile copied: '{selectedProfile}' to '{newProfileName}'");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error copying profile: {ex.Message}");
                 UpdateStatus($"Error copying profile: {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to copy profile '{selectedProfile}' to '{newProfileName}'");
             }
         }
 
@@ -178,6 +208,7 @@ namespace _4RTools.Forms
             if (this.lbProfilesList.SelectedItem == null)
             {
                 MessageBox.Show("No profile found! To delete a profile, first select an option from the Profile list.");
+                DebugLogger.Warning("Delete profile operation failed: No profile selected");
                 return;
             }
 
@@ -185,16 +216,31 @@ namespace _4RTools.Forms
             if (selectedProfile == "Default")
             {
                 MessageBox.Show("Cannot delete a Default profile!");
+                DebugLogger.Warning("Delete profile operation failed: Cannot delete Default profile");
                 return;
             }
 
             bool confirmDelete = DialogConfirmDelete.ShowDialog($"Are you sure you want to delete the profile '{selectedProfile}'?");
-            if (!confirmDelete) { return; }
+            if (!confirmDelete)
+            {
+                DebugLogger.Debug($"Delete profile operation canceled by user for '{selectedProfile}'");
+                return;
+            }
 
-            ProfileSingleton.Delete(selectedProfile);
-            RefreshProfileList(); // Refresh and sort the list
-            this.container.RefreshProfileList();
-            UpdateStatus($"Profile '{selectedProfile}' deleted successfully");
+            try
+            {
+                ProfileSingleton.Delete(selectedProfile);
+                RefreshProfileList(); // Refresh and sort the list
+                this.container.RefreshProfileList();
+                UpdateStatus($"Profile '{selectedProfile}' deleted successfully");
+                DebugLogger.Info($"Profile deleted: '{selectedProfile}'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting profile: {ex.Message}");
+                UpdateStatus($"Error deleting profile: {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to delete profile '{selectedProfile}'");
+            }
         }
 
         private void btnRenameProfile_Click(object sender, EventArgs e)
@@ -202,6 +248,7 @@ namespace _4RTools.Forms
             if (this.lbProfilesList.SelectedItem == null)
             {
                 MessageBox.Show("No profile found! To rename a profile, first select an option from the Profile list.");
+                DebugLogger.Warning("Rename profile operation failed: No profile selected");
                 return;
             }
 
@@ -209,11 +256,16 @@ namespace _4RTools.Forms
             if (selectedProfile == "Default")
             {
                 MessageBox.Show("Cannot rename the Default profile!");
+                DebugLogger.Warning("Rename profile operation failed: Cannot rename Default profile");
                 return;
             }
 
             string newProfileName = DialogInput.ShowDialog("Enter new profile name:", "Rename Profile", selectedProfile);
-            if (newProfileName == null) { return; }
+            if (newProfileName == null)
+            {
+                DebugLogger.Debug($"Rename profile operation canceled by user for '{selectedProfile}'");
+                return;
+            }
 
             newProfileName = ValidateProfileName(newProfileName, isRename: true);
             if (newProfileName == null) { return; }
@@ -224,11 +276,13 @@ namespace _4RTools.Forms
                 RefreshProfileList(); // Refresh and sort the list
                 this.container.RefreshProfileList();
                 UpdateStatus($"Profile '{selectedProfile}' renamed to '{newProfileName}' successfully");
+                DebugLogger.Info($"Profile renamed: '{selectedProfile}' to '{newProfileName}'");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error renaming profile: {ex.Message}");
                 UpdateStatus($"Error renaming profile: {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to rename profile '{selectedProfile}' to '{newProfileName}'");
             }
         }
     }

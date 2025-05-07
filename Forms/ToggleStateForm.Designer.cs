@@ -2,14 +2,13 @@
 
 namespace _4RTools.Forms
 {
-    partial class ToggleApplicationStateForm
+    partial class ToggleStateForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.ToolTip toolTipStatusToggle;
-
 
         /// <summary>
         /// Clean up any resources being used.
@@ -33,7 +32,7 @@ namespace _4RTools.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToggleApplicationStateForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToggleStateForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtStatusToggleKey = new System.Windows.Forms.TextBox();
             this.lblStatusToggle = new System.Windows.Forms.Label();
@@ -104,7 +103,6 @@ namespace _4RTools.Forms
             this.notifyIconTray.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconTray.Icon")));
             this.notifyIconTray.Text = "4RTools-OSRO (MR)";
             this.notifyIconTray.Visible = true;
-            this.notifyIconTray.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconDoubleClick);
             // 
             // ToggleApplicationStateForm
             // 

@@ -149,7 +149,7 @@ namespace _4RTools.Model
             if (status == EffectStatusIDs.WEIGHT50 && prefs.OverweightMode == "overweight50")
             {
                 // Corrected type cast to ToggleApplicationStateForm
-                var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
+                var frmToggleApplication = (ToggleStateForm)Application.OpenForms["ToggleApplicationStateForm"];
                 if (frmToggleApplication != null)
                 {
                     frmToggleApplication.toggleStatus();
@@ -166,7 +166,7 @@ namespace _4RTools.Model
             {
                 DebugLogger.Info("Overweight 90%, disable now");
                 // Corrected type cast to ToggleApplicationStateForm
-                var frmToggleApplication = (ToggleApplicationStateForm)Application.OpenForms["ToggleApplicationStateForm"];
+                var frmToggleApplication = (ToggleStateForm)Application.OpenForms["ToggleApplicationStateForm"];
                 if (frmToggleApplication != null)
                 {
                     frmToggleApplication.toggleStatus();

@@ -14,7 +14,7 @@ namespace _4RTools.Forms
         private Subject subject = new Subject();
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
-        private ToggleApplicationStateForm frmToggleApplication = new ToggleApplicationStateForm();
+        private ToggleStateForm frmToggleApplication = new ToggleStateForm();
         private DebugLogWindow debugLogWindow;
         private bool isShuttingDown = false;
         private DebugLogger.LogMessageHandler debugLogHandler;
@@ -361,7 +361,7 @@ namespace _4RTools.Forms
                     DebugLogger.Info("Server list refreshed.");
                     break;
                 case MessageCode.CLICK_ICON_TRAY:
-                    DebugLogger.Info("Tray icon clicked: Showing main window.");
+                    //DebugLogger.Info("Tray icon clicked: Showing main window.");
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                     break;
@@ -420,9 +420,9 @@ namespace _4RTools.Forms
 
         #region Frames
 
-        public ToggleApplicationStateForm SetToggleApplicationStateWindow()
+        public ToggleStateForm SetToggleApplicationStateWindow()
         {
-            ToggleApplicationStateForm frm = new ToggleApplicationStateForm(subject)
+            ToggleStateForm frm = new ToggleStateForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(360, 80),
