@@ -1,8 +1,8 @@
-﻿using System;
+﻿using _4RTools.Model;
+using _4RTools.Utils;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using _4RTools.Model;
-using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
@@ -51,7 +51,7 @@ namespace _4RTools.Forms
                 this.lbProfilesList.SelectedItem = selectedProfile;
             }
 
-            DebugLogger.Debug($"Profile list refreshed: {profiles.Count} profiles loaded");
+            DebugLogger.Info($"Profile list refreshed: {profiles.Count} profiles loaded");
         }
 
         // Helper method to update the status bar message

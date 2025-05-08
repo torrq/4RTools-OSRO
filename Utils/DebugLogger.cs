@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using _4RTools.Model;
+using System;
 using System.IO;
 using System.Text;
-using _4RTools.Model;
-using _4RTools.Utils;
 
 namespace _4RTools.Utils
 {

@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using _4RTools.Utils;
+﻿using _4RTools.Utils;
 using Newtonsoft.Json;
+using System;
+using System.IO;
 
 namespace _4RTools.Model
 {

@@ -12,7 +12,7 @@ namespace _4RTools.Utils
         public static string _4RLatestVersionURL = "";
         public static string Version = "v1.0.3";
 
-        public static int ServerMode = 0;
+        public static int ServerMode = 0; // 0 = MR, 1 = HR
 
         public static bool DebugMode = false;
         public static string DebugLogFilePath = "4rtools_debug.log";

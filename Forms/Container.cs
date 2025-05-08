@@ -1,11 +1,10 @@
-﻿using System;
+﻿using _4RTools.Model;
+using _4RTools.Utils;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using _4RTools.Model;
-using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {
@@ -263,7 +262,7 @@ namespace _4RTools.Forms
 
                 KeyboardHook.Disable();
 
-                DebugLogger.Debug("Subject: Notifying observers...");
+                //DebugLogger.Debug("Subject: Notifying observers...");
                 subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
                 UnsubscribeFromDebugLogger();

@@ -71,7 +71,7 @@ namespace _4RTools.Utils
 
         public void Notify(Message message)
         {
-            DebugLogger.Debug("Subject: Notifying observers...");
+            //DebugLogger.Debug("Subject: Notifying observers...");
             this.Message = message;
             foreach (var observer in _observers)
             {

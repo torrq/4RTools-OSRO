@@ -36,19 +36,21 @@ namespace _4RTools.Forms
             this.lblProfilesList = new System.Windows.Forms.Label();
             this.lbProfilesList = new System.Windows.Forms.ListBox();
             this.toolTipAdd = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipCopy = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipRename = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipRemove = new System.Windows.Forms.ToolTip(this.components);
-            this.btnRenameProfile = new System.Windows.Forms.Button();
-            this.btnRemoveProfile = new System.Windows.Forms.Button();
-            this.btnCopyProfile = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.toolTipCopy = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCopyProfile = new System.Windows.Forms.Button();
+            this.toolTipRename = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRenameProfile = new System.Windows.Forms.Button();
+            this.toolTipRemove = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRemoveProfile = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // lblProfilesList
-            //
+            // 
             this.lblProfilesList.AutoSize = true;
             this.lblProfilesList.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblProfilesList.Location = new System.Drawing.Point(109, 13);
@@ -57,9 +59,9 @@ namespace _4RTools.Forms
             this.lblProfilesList.TabIndex = 6;
             this.lblProfilesList.Text = "Profile List";
             this.lblProfilesList.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            //
+            // 
             // lbProfilesList
-            //
+            // 
             this.lbProfilesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbProfilesList.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbProfilesList.FormattingEnabled = true;
@@ -67,56 +69,11 @@ namespace _4RTools.Forms
             this.lbProfilesList.Location = new System.Drawing.Point(125, 33);
             this.lbProfilesList.Name = "lbProfilesList";
             this.lbProfilesList.ScrollAlwaysVisible = true;
-            this.lbProfilesList.Size = new System.Drawing.Size(365, 369);
+            this.lbProfilesList.Size = new System.Drawing.Size(365, 359);
             this.lbProfilesList.TabIndex = 8;
-            //
-            // btnRenameProfile
-            //
-            this.btnRenameProfile.BackColor = System.Drawing.Color.LightBlue;
-            this.btnRenameProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRenameProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRenameProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnRenameProfile.Image = global::_4RTools.Resources._4RTools.Icons.edit;
-            this.btnRenameProfile.Location = new System.Drawing.Point(496, 71);
-            this.btnRenameProfile.Name = "btnRenameProfile";
-            this.btnRenameProfile.Size = new System.Drawing.Size(48, 32);
-            this.btnRenameProfile.TabIndex = 4;
-            this.toolTipRename.SetToolTip(this.btnRenameProfile, "Rename the selected profile");
-            this.btnRenameProfile.UseVisualStyleBackColor = false;
-            this.btnRenameProfile.Click += new System.EventHandler(this.btnRenameProfile_Click);
-            //
-            // btnRemoveProfile
-            //
-            this.btnRemoveProfile.BackColor = System.Drawing.Color.Pink;
-            this.btnRemoveProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemoveProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnRemoveProfile.Image = global::_4RTools.Resources._4RTools.Icons.delete;
-            this.btnRemoveProfile.Location = new System.Drawing.Point(496, 147);
-            this.btnRemoveProfile.Name = "btnRemoveProfile";
-            this.btnRemoveProfile.Size = new System.Drawing.Size(48, 32);
-            this.btnRemoveProfile.TabIndex = 3;
-            this.toolTipRemove.SetToolTip(this.btnRemoveProfile, "Delete the selected profile");
-            this.btnRemoveProfile.UseVisualStyleBackColor = false;
-            this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
-            //
-            // btnCopyProfile
-            //
-            this.btnCopyProfile.BackColor = System.Drawing.Color.LightYellow;
-            this.btnCopyProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCopyProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnCopyProfile.Image = global::_4RTools.Resources._4RTools.Icons.copy;
-            this.btnCopyProfile.Location = new System.Drawing.Point(496, 109);
-            this.btnCopyProfile.Name = "btnCopyProfile";
-            this.btnCopyProfile.Size = new System.Drawing.Size(48, 32);
-            this.btnCopyProfile.TabIndex = 2;
-            this.toolTipCopy.SetToolTip(this.btnCopyProfile, "Copy the selected profile");
-            this.btnCopyProfile.UseVisualStyleBackColor = false;
-            this.btnCopyProfile.Click += new System.EventHandler(this.btnCopyProfile_Click);
-            //
+            // 
             // btnSave
-            //
+            // 
             this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -129,52 +86,73 @@ namespace _4RTools.Forms
             this.toolTipAdd.SetToolTip(this.btnSave, "Create a new profile");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            //
+            // 
+            // btnCopyProfile
+            // 
+            this.btnCopyProfile.BackColor = System.Drawing.Color.LightYellow;
+            this.btnCopyProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopyProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnCopyProfile.Image = global::_4RTools.Resources._4RTools.Icons.copy;
+            this.btnCopyProfile.Location = new System.Drawing.Point(496, 109);
+            this.btnCopyProfile.Name = "btnCopyProfile";
+            this.btnCopyProfile.Size = new System.Drawing.Size(48, 32);
+            this.btnCopyProfile.TabIndex = 2;
+            this.toolTipCopy.SetToolTip(this.btnCopyProfile, "Copy the selected profile");
+            this.btnCopyProfile.UseVisualStyleBackColor = false;
+            this.btnCopyProfile.Click += new System.EventHandler(this.btnCopyProfile_Click);
+            // 
+            // btnRenameProfile
+            // 
+            this.btnRenameProfile.BackColor = System.Drawing.Color.LightBlue;
+            this.btnRenameProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRenameProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRenameProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnRenameProfile.Image = global::_4RTools.Resources._4RTools.Icons.edit;
+            this.btnRenameProfile.Location = new System.Drawing.Point(496, 71);
+            this.btnRenameProfile.Name = "btnRenameProfile";
+            this.btnRenameProfile.Size = new System.Drawing.Size(48, 32);
+            this.btnRenameProfile.TabIndex = 4;
+            this.toolTipRename.SetToolTip(this.btnRenameProfile, "Rename the selected profile");
+            this.btnRenameProfile.UseVisualStyleBackColor = false;
+            this.btnRenameProfile.Click += new System.EventHandler(this.btnRenameProfile_Click);
+            // 
+            // btnRemoveProfile
+            // 
+            this.btnRemoveProfile.BackColor = System.Drawing.Color.Pink;
+            this.btnRemoveProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnRemoveProfile.Image = global::_4RTools.Resources._4RTools.Icons.delete;
+            this.btnRemoveProfile.Location = new System.Drawing.Point(496, 147);
+            this.btnRemoveProfile.Name = "btnRemoveProfile";
+            this.btnRemoveProfile.Size = new System.Drawing.Size(48, 32);
+            this.btnRemoveProfile.TabIndex = 3;
+            this.toolTipRemove.SetToolTip(this.btnRemoveProfile, "Delete the selected profile");
+            this.btnRemoveProfile.UseVisualStyleBackColor = false;
+            this.btnRemoveProfile.Click += new System.EventHandler(this.btnRemoveProfile_Click);
+            // 
             // statusStrip
-            //
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.statusLabel });
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 418);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(630, 22);
             this.statusStrip.TabIndex = 9;
             this.statusStrip.Text = "statusStrip";
-            //
+            // 
             // statusLabel
-            //
+            // 
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(39, 17);
             this.statusLabel.Text = "Ready";
-            //
-            // Set border colors and sizes based on AppConfig colors
-            //
-            int darkenAmount = global::_4RTools.Utils.AppConfig.ProfileButtonBorderDarkenAmount; // Get amount from AppConfig
-
-            // btnSave (CreateButtonBackColor)
-            Color saveBorderColor = DarkenColor(global::_4RTools.Utils.AppConfig.CreateButtonBackColor, darkenAmount);
-            this.btnSave.FlatAppearance.BorderColor = saveBorderColor;
-            this.btnSave.FlatAppearance.BorderSize = 1;
-
-            // btnCopyProfile (CopyButtonBackColor)
-            Color copyBorderColor = DarkenColor(global::_4RTools.Utils.AppConfig.CopyButtonBackColor, darkenAmount);
-            this.btnCopyProfile.FlatAppearance.BorderColor = copyBorderColor;
-            this.btnCopyProfile.FlatAppearance.BorderSize = 1;
-
-            // btnRemoveProfile (RemoveButtonBackColor)
-            Color removeBorderColor = DarkenColor(global::_4RTools.Utils.AppConfig.RemoveButtonBackColor, darkenAmount);
-            this.btnRemoveProfile.FlatAppearance.BorderColor = removeBorderColor;
-            this.btnRemoveProfile.FlatAppearance.BorderSize = 1;
-
-            // btnRenameProfile (RenameButtonBackColor)
-            Color renameBorderColor = DarkenColor(global::_4RTools.Utils.AppConfig.RenameButtonBackColor, darkenAmount);
-            this.btnRenameProfile.FlatAppearance.BorderColor = renameBorderColor;
-            this.btnRenameProfile.FlatAppearance.BorderSize = 1;
-
-            //
+            // 
             // ProfileForm
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(630, 440);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.lbProfilesList);
@@ -187,8 +165,11 @@ namespace _4RTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProfileForm";
             this.Text = "ProfileForm";
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -214,5 +195,7 @@ namespace _4RTools.Forms
             int b = Math.Max(0, color.B - amount);
             return Color.FromArgb(r, g, b);
         }
+
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using _4RTools.Utils;
+using System;
 using System.Windows.Forms;
-using _4RTools.Utils;
 
 namespace _4RTools
 {

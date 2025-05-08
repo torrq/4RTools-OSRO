@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using _4RTools.Utils;
+using System.Collections.Generic;
 using System.Drawing;
-using _4RTools.Utils;
 
 namespace _4RTools.Model
 {

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using _4RTools.Model;
+using _4RTools.Utils;
+using System;
 using System.Windows.Forms;
 using System.Windows.Input;
-using _4RTools.Model;
-using _4RTools.Utils;
 namespace _4RTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver

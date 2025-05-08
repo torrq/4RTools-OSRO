@@ -1,8 +1,8 @@
-﻿using System;
+﻿using _4RTools.Utils;
+using System;
 using System.Drawing;
-using System.Windows.Forms;
-using _4RTools.Utils;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace _4RTools.Forms
 {
@@ -56,7 +56,8 @@ namespace _4RTools.Forms
         {
             if (debugConsole.InvokeRequired)
             {
-                debugConsole.Invoke((MethodInvoker)delegate {
+                debugConsole.Invoke((MethodInvoker)delegate
+                {
                     DebugLogger_OnLogMessage(message, level);
                 });
                 return;
