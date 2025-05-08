@@ -10,7 +10,9 @@ namespace _4RTools.Forms
 {
     public partial class Container : Form, IObserver
     {
+        //public static Subject SharedSubject { get; private set; }
         private Subject subject = new Subject();
+
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleStateForm frmToggleApplication = new ToggleStateForm();
@@ -26,6 +28,7 @@ namespace _4RTools.Forms
             DebugLogger.Info($"Container constructor: DebugMode is {ConfigGlobal.GetConfig().DebugMode} after ConfigGlobal.Initialize");
 
             this.subject.Attach(this);
+            //SharedSubject = this.subject;
 
             InitializeComponent();
 
@@ -481,7 +484,7 @@ namespace _4RTools.Forms
             TransferButtonForm form = new TransferButtonForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(360, 220),
+                Location = new Point(450, 220),
                 MdiParent = this
             };
             form.Show();

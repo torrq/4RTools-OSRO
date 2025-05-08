@@ -18,7 +18,7 @@ namespace _4RTools.Model
                 string json = File.ReadAllText(AppConfig.ProfileFolder + profileName + ".json");
                 dynamic rawObject = JsonConvert.DeserializeObject(json);
 
-                if ((rawObject != null))
+                if (rawObject != null)
                 {
                     profile.Name = profileName;
                     profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));

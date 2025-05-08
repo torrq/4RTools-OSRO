@@ -5,17 +5,17 @@ namespace _4RTools.Utils
     internal class AppConfig
     {
         public static string Name = "4RTools-OSRO";
-        public static string ProfileFolder = "Profile\\";
-        public static string Website = "";
-        public static string GithubLink = "";
-        public static string DiscordLink = "";
-        public static string _4RLatestVersionURL = "";
         public static string Version = "v1.0.3";
 
         public static int ServerMode = 0; // 0 = MR, 1 = HR
-
         public static bool DebugMode = false;
+
         public static string DebugLogFilePath = "4rtools_debug.log";
+        public static string ProfileFolder = "Profile\\";
+
+        public static string GithubLink = "https://github.com/torrq/4RTools-OSRO";
+        public static string Website => ServerMode == 0 ? "https://osro.mr" : "https://osro.gg";
+        public static string DiscordLink => ServerMode == 0 ? "https://discord.com/invite/osro2" : "https://discord.com/invite/b5mjuCxY";
 
         public static int AutoPotDefaultDelay = 50;
         public static int YggDefaultDelay = 50;

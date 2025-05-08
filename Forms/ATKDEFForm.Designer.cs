@@ -39,6 +39,7 @@ namespace _4RTools.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.equipGroup1 = new System.Windows.Forms.GroupBox();
             this.panelSwitch1 = new System.Windows.Forms.Panel();
+            this.btnResetAtkDef1 = new System.Windows.Forms.Button();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.in1Atk6 = new System.Windows.Forms.TextBox();
@@ -74,6 +75,7 @@ namespace _4RTools.Forms
             this.in1SpammerDelay = new System.Windows.Forms.NumericUpDown();
             this.equipGroup2 = new System.Windows.Forms.GroupBox();
             this.panelSwitch2 = new System.Windows.Forms.Panel();
+            this.btnResetAtkDef2 = new System.Windows.Forms.Button();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.in2Atk6 = new System.Windows.Forms.TextBox();
@@ -195,6 +197,7 @@ namespace _4RTools.Forms
             // 
             // panelSwitch1
             // 
+            this.panelSwitch1.Controls.Add(this.btnResetAtkDef1);
             this.panelSwitch1.Controls.Add(this.pictureBox12);
             this.panelSwitch1.Controls.Add(this.pictureBox11);
             this.panelSwitch1.Controls.Add(this.in1Atk6);
@@ -228,11 +231,22 @@ namespace _4RTools.Forms
             this.panelSwitch1.Size = new System.Drawing.Size(588, 180);
             this.panelSwitch1.TabIndex = 28;
             // 
+            // btnResetAtkDef1
+            // 
+            this.btnResetAtkDef1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetAtkDef1.Location = new System.Drawing.Point(521, 151);
+            this.btnResetAtkDef1.Name = "btnResetAtkDef1";
+            this.btnResetAtkDef1.Size = new System.Drawing.Size(61, 23);
+            this.btnResetAtkDef1.TabIndex = 38;
+            this.btnResetAtkDef1.Text = "Reset";
+            this.btnResetAtkDef1.UseVisualStyleBackColor = false;
+            this.btnResetAtkDef1.Click += new System.EventHandler(this.btnResetAtkDefGroup_Click);
+            // 
             // pictureBox12
             // 
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
             this.pictureBox12.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.InitialImage")));
-            this.pictureBox12.Location = new System.Drawing.Point(493, 28);
+            this.pictureBox12.Location = new System.Drawing.Point(469, 28);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(25, 25);
             this.pictureBox12.TabIndex = 37;
@@ -251,7 +265,7 @@ namespace _4RTools.Forms
             // in1Atk6
             // 
             this.in1Atk6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1Atk6.Location = new System.Drawing.Point(429, 151);
+            this.in1Atk6.Location = new System.Drawing.Point(405, 151);
             this.in1Atk6.Name = "in1Atk6";
             this.in1Atk6.Size = new System.Drawing.Size(60, 22);
             this.in1Atk6.TabIndex = 35;
@@ -269,7 +283,7 @@ namespace _4RTools.Forms
             // in1Atk2
             // 
             this.in1Atk2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1Atk2.Location = new System.Drawing.Point(429, 55);
+            this.in1Atk2.Location = new System.Drawing.Point(405, 55);
             this.in1Atk2.Name = "in1Atk2";
             this.in1Atk2.Size = new System.Drawing.Size(60, 22);
             this.in1Atk2.TabIndex = 9;
@@ -315,7 +329,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(493, 100);
+            this.pictureBox6.Location = new System.Drawing.Point(469, 100);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(25, 25);
             this.pictureBox6.TabIndex = 22;
@@ -334,7 +348,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(493, 148);
+            this.pictureBox7.Location = new System.Drawing.Point(469, 148);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(25, 25);
             this.pictureBox7.TabIndex = 21;
@@ -353,7 +367,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(493, 124);
+            this.pictureBox8.Location = new System.Drawing.Point(469, 124);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(25, 25);
             this.pictureBox8.TabIndex = 20;
@@ -362,16 +376,17 @@ namespace _4RTools.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(391, 10);
+            this.panel1.Location = new System.Drawing.Point(375, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 160);
             this.panel1.TabIndex = 6;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
             this.pictureBox9.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.InitialImage")));
-            this.pictureBox9.Location = new System.Drawing.Point(493, 76);
+            this.pictureBox9.Location = new System.Drawing.Point(469, 76);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(25, 25);
             this.pictureBox9.TabIndex = 19;
@@ -380,7 +395,7 @@ namespace _4RTools.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(426, 10);
+            this.label1.Location = new System.Drawing.Point(402, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 7;
@@ -390,7 +405,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
             this.pictureBox10.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.InitialImage")));
-            this.pictureBox10.Location = new System.Drawing.Point(493, 52);
+            this.pictureBox10.Location = new System.Drawing.Point(469, 52);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(25, 25);
             this.pictureBox10.TabIndex = 18;
@@ -399,7 +414,7 @@ namespace _4RTools.Forms
             // in1Atk1
             // 
             this.in1Atk1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1Atk1.Location = new System.Drawing.Point(429, 31);
+            this.in1Atk1.Location = new System.Drawing.Point(405, 31);
             this.in1Atk1.Name = "in1Atk1";
             this.in1Atk1.Size = new System.Drawing.Size(60, 22);
             this.in1Atk1.TabIndex = 8;
@@ -418,7 +433,7 @@ namespace _4RTools.Forms
             // in1Atk3
             // 
             this.in1Atk3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1Atk3.Location = new System.Drawing.Point(429, 79);
+            this.in1Atk3.Location = new System.Drawing.Point(405, 79);
             this.in1Atk3.Name = "in1Atk3";
             this.in1Atk3.Size = new System.Drawing.Size(60, 22);
             this.in1Atk3.TabIndex = 10;
@@ -437,7 +452,7 @@ namespace _4RTools.Forms
             // in1Atk4
             // 
             this.in1Atk4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1Atk4.Location = new System.Drawing.Point(429, 103);
+            this.in1Atk4.Location = new System.Drawing.Point(405, 103);
             this.in1Atk4.Name = "in1Atk4";
             this.in1Atk4.Size = new System.Drawing.Size(60, 22);
             this.in1Atk4.TabIndex = 11;
@@ -456,7 +471,7 @@ namespace _4RTools.Forms
             // in1Atk5
             // 
             this.in1Atk5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1Atk5.Location = new System.Drawing.Point(429, 127);
+            this.in1Atk5.Location = new System.Drawing.Point(405, 127);
             this.in1Atk5.Name = "in1Atk5";
             this.in1Atk5.Size = new System.Drawing.Size(60, 22);
             this.in1Atk5.TabIndex = 12;
@@ -571,6 +586,7 @@ namespace _4RTools.Forms
             // 
             // panelSwitch2
             // 
+            this.panelSwitch2.Controls.Add(this.btnResetAtkDef2);
             this.panelSwitch2.Controls.Add(this.pictureBox13);
             this.panelSwitch2.Controls.Add(this.pictureBox14);
             this.panelSwitch2.Controls.Add(this.in2Atk6);
@@ -603,12 +619,24 @@ namespace _4RTools.Forms
             this.panelSwitch2.Name = "panelSwitch2";
             this.panelSwitch2.Size = new System.Drawing.Size(588, 180);
             this.panelSwitch2.TabIndex = 28;
+            this.panelSwitch2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSwitch2_Paint);
+            // 
+            // btnResetAtkDef2
+            // 
+            this.btnResetAtkDef2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetAtkDef2.Location = new System.Drawing.Point(521, 152);
+            this.btnResetAtkDef2.Name = "btnResetAtkDef2";
+            this.btnResetAtkDef2.Size = new System.Drawing.Size(61, 23);
+            this.btnResetAtkDef2.TabIndex = 38;
+            this.btnResetAtkDef2.Text = "Reset";
+            this.btnResetAtkDef2.UseVisualStyleBackColor = false;
+            this.btnResetAtkDef2.Click += new System.EventHandler(this.btnResetAtkDefGroup_Click);
             // 
             // pictureBox13
             // 
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
             this.pictureBox13.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox13.InitialImage")));
-            this.pictureBox13.Location = new System.Drawing.Point(493, 28);
+            this.pictureBox13.Location = new System.Drawing.Point(469, 28);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(25, 25);
             this.pictureBox13.TabIndex = 37;
@@ -627,7 +655,7 @@ namespace _4RTools.Forms
             // in2Atk6
             // 
             this.in2Atk6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2Atk6.Location = new System.Drawing.Point(429, 151);
+            this.in2Atk6.Location = new System.Drawing.Point(405, 151);
             this.in2Atk6.Name = "in2Atk6";
             this.in2Atk6.Size = new System.Drawing.Size(60, 22);
             this.in2Atk6.TabIndex = 35;
@@ -645,7 +673,7 @@ namespace _4RTools.Forms
             // in2Atk2
             // 
             this.in2Atk2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2Atk2.Location = new System.Drawing.Point(429, 55);
+            this.in2Atk2.Location = new System.Drawing.Point(405, 55);
             this.in2Atk2.Name = "in2Atk2";
             this.in2Atk2.Size = new System.Drawing.Size(60, 22);
             this.in2Atk2.TabIndex = 9;
@@ -691,7 +719,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
             this.pictureBox15.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox15.InitialImage")));
-            this.pictureBox15.Location = new System.Drawing.Point(493, 100);
+            this.pictureBox15.Location = new System.Drawing.Point(469, 100);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(25, 25);
             this.pictureBox15.TabIndex = 22;
@@ -710,7 +738,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
             this.pictureBox16.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox16.InitialImage")));
-            this.pictureBox16.Location = new System.Drawing.Point(493, 148);
+            this.pictureBox16.Location = new System.Drawing.Point(469, 148);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(25, 25);
             this.pictureBox16.TabIndex = 21;
@@ -729,7 +757,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
             this.pictureBox17.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox17.InitialImage")));
-            this.pictureBox17.Location = new System.Drawing.Point(493, 124);
+            this.pictureBox17.Location = new System.Drawing.Point(469, 124);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(25, 25);
             this.pictureBox17.TabIndex = 20;
@@ -738,7 +766,7 @@ namespace _4RTools.Forms
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Location = new System.Drawing.Point(391, 10);
+            this.panel3.Location = new System.Drawing.Point(375, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 160);
             this.panel3.TabIndex = 6;
@@ -747,7 +775,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
             this.pictureBox18.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox18.InitialImage")));
-            this.pictureBox18.Location = new System.Drawing.Point(493, 76);
+            this.pictureBox18.Location = new System.Drawing.Point(469, 76);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(25, 25);
             this.pictureBox18.TabIndex = 19;
@@ -756,7 +784,7 @@ namespace _4RTools.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(426, 10);
+            this.label5.Location = new System.Drawing.Point(402, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 7;
@@ -766,7 +794,7 @@ namespace _4RTools.Forms
             // 
             this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
             this.pictureBox19.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox19.InitialImage")));
-            this.pictureBox19.Location = new System.Drawing.Point(493, 52);
+            this.pictureBox19.Location = new System.Drawing.Point(469, 52);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(25, 25);
             this.pictureBox19.TabIndex = 18;
@@ -775,7 +803,7 @@ namespace _4RTools.Forms
             // in2Atk1
             // 
             this.in2Atk1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2Atk1.Location = new System.Drawing.Point(429, 31);
+            this.in2Atk1.Location = new System.Drawing.Point(405, 31);
             this.in2Atk1.Name = "in2Atk1";
             this.in2Atk1.Size = new System.Drawing.Size(60, 22);
             this.in2Atk1.TabIndex = 8;
@@ -794,7 +822,7 @@ namespace _4RTools.Forms
             // in2Atk3
             // 
             this.in2Atk3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2Atk3.Location = new System.Drawing.Point(429, 79);
+            this.in2Atk3.Location = new System.Drawing.Point(405, 79);
             this.in2Atk3.Name = "in2Atk3";
             this.in2Atk3.Size = new System.Drawing.Size(60, 22);
             this.in2Atk3.TabIndex = 10;
@@ -813,7 +841,7 @@ namespace _4RTools.Forms
             // in2Atk4
             // 
             this.in2Atk4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2Atk4.Location = new System.Drawing.Point(429, 103);
+            this.in2Atk4.Location = new System.Drawing.Point(405, 103);
             this.in2Atk4.Name = "in2Atk4";
             this.in2Atk4.Size = new System.Drawing.Size(60, 22);
             this.in2Atk4.TabIndex = 11;
@@ -832,7 +860,7 @@ namespace _4RTools.Forms
             // in2Atk5
             // 
             this.in2Atk5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2Atk5.Location = new System.Drawing.Point(429, 127);
+            this.in2Atk5.Location = new System.Drawing.Point(405, 127);
             this.in2Atk5.Name = "in2Atk5";
             this.in2Atk5.Size = new System.Drawing.Size(60, 22);
             this.in2Atk5.TabIndex = 12;
@@ -940,7 +968,7 @@ namespace _4RTools.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(625, 450);
             this.Controls.Add(this.equipGroup2);
             this.Controls.Add(this.equipGroup1);
@@ -948,6 +976,7 @@ namespace _4RTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ATKDEFForm";
             this.Text = "ATKDEFForm";
+            this.Click += new System.EventHandler(this.btnResetAtkDefGroup_Click);
             this.equipGroup1.ResumeLayout(false);
             this.panelSwitch1.ResumeLayout(false);
             this.panelSwitch1.PerformLayout();
@@ -1066,5 +1095,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown in2SpammerDelay;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnResetAtkDef1;
+        private System.Windows.Forms.Button btnResetAtkDef2;
     }
 }

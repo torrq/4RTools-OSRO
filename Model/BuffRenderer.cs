@@ -16,7 +16,6 @@ namespace _4RTools.Model
         private readonly int ICON_SPACING = 93;
         private readonly Size TEXTBOX_SIZE = new Size(60, 20);
         private const int TEXTBOX_VERTICAL_ADJUSTMENT = 2;
-        private const int GROUPBOX_HEIGHT = 30;
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
@@ -45,6 +44,8 @@ namespace _4RTools.Model
             for (int i = 0; i < _containers.Count; i++)
             {
                 BuffContainer bk = _containers[i];
+                bk.Container.Controls.Clear();
+
                 Point lastLocation = new Point(bk.Container.Location.X, 20);
                 int colCount = 0;
                 int maxRowHeight = 0;
@@ -76,6 +77,7 @@ namespace _4RTools.Model
                     textBox.Name = "in" + ((int)skill.EffectStatusID);
                     textBox.Location = new Point(pb.Location.X + ICON_TEXT_SPACING, pb.Location.Y + 3 - TEXTBOX_VERTICAL_ADJUSTMENT);
                     textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    textBox.Text = "None"; // Set default value
 
                     bk.Container.Controls.Add(textBox);
                     bk.Container.Controls.Add(pb);
@@ -91,7 +93,6 @@ namespace _4RTools.Model
                         maxRowHeight = 0;
                     }
                 }
-                // Set the height of the GroupBox.  Calculate based on content.
                 int desiredHeight = lastElementY + 10;
                 bk.Container.Height = desiredHeight;
             }
@@ -101,8 +102,7 @@ namespace _4RTools.Model
         {
             try
             {
-                // Get the textbox and check if text actually changed and is not empty
-                TextBox txtBox = (TextBox)sender;
+                TextBox txtBox = (TextBox)sender;
                 bool textChanged = this.OldText != string.Empty && this.OldText != txtBox.Text.ToString();
 
                 if ((txtBox.Text.ToString() != string.Empty) && textChanged)
@@ -110,32 +110,36 @@ namespace _4RTools.Model
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
                     EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
 
-                    // Correctly distinguish between Skill and Item/Stuff and save to the correct profile section
-                    if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
+                    if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
                     {
                         var _autoBuffSkill = ProfileSingleton.GetCurrent().AutobuffSkill;
                         _autoBuffSkill.AddKeyToBuff(statusID, key);
                         ProfileSingleton.SetConfiguration(_autoBuffSkill);
-                        // Ensure correct notification is sent if needed
-                        _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_SKILL, _autoBuffSkill));
+                        _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_SKILL, _autoBuffSkill));
                     }
-                    else // Assumed to be AutobuffItem/Stuff based on context
-                    {
-                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem; // Correct variable name
-                        _autoBuffItem.AddKeyToBuff(statusID, key);
+                    else
+                    {
+                        var _autoBuffItem = ProfileSingleton.GetCurrent().AutobuffItem;
+                        _autoBuffItem.AddKeyToBuff(statusID, key);
                         ProfileSingleton.SetConfiguration(_autoBuffItem);
-                        // Send a notification specific to item/stuff if needed, or none if not required
-                        // Example: _subject.Notify(new Utils.Message(Utils.MessageCode.ADDED_NEW_AUTOBUFF_ITEM, _autoBuffItem));
-                    }
+                    }
                 }
             }
-            catch { } // Consider logging the exception here for debugging saves
-        }
+            catch (Exception ex)
+            {
+                DebugLogger.Debug($"OnTextChange: Error processing TextChanged event: {ex.Message}");
+            }
+        }
 
         public static void DoUpdate(Dictionary<EffectStatusIDs, Key> autobuffDict, Control control)
         {
-            if (control == null || autobuffDict == null) return;
-            FormUtils.ResetForm(control);
+            if (control == null || autobuffDict == null)
+            {
+                return;
+            }
+
+            ResetTextBoxes(control);
+
             foreach (EffectStatusIDs effect in autobuffDict.Keys)
             {
                 Control[] c = control.Controls.Find("in" + (int)effect, true);
@@ -145,8 +149,34 @@ namespace _4RTools.Model
                     textBox.Text = autobuffDict[effect].ToString();
                 }
             }
+            // Set unmapped TextBoxes back to "None"
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox textBox && textBox.Name.StartsWith("in") && string.IsNullOrEmpty(textBox.Text))
+                {
+                    textBox.Text = "None";
+                }
+                if (c.HasChildren)
+                {
+                    DoUpdate(autobuffDict, c); // Recursive update for nested controls
+                }
+            }
         }
 
+        private static void ResetTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox textBox && textBox.Name.StartsWith("in"))
+                {
+                    textBox.Text = "";
+                }
+                if (c.HasChildren)
+                {
+                    ResetTextBoxes(c);
+                }
+            }
+        }
 
         private void TextBox_GotFocus(object sender, EventArgs e)
         {
