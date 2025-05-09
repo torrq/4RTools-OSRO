@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/image/logos/applogo.png" alt="App Logo" width="150">
+  <img src="assets/image/logos/applogo.png" alt="App Logo" width="256">
 </p>
 
 # OSRO Tools
