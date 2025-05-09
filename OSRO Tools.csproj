@@ -54,9 +54,10 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <PreferNativeArm64>false</PreferNativeArm64>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo-4rtools.ico</ApplicationIcon>
+    <ApplicationIcon>applogo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -348,6 +349,7 @@
       <LastGenOutput>ETCResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="assets\image\logos\applogo.psd" />
     <None Include="Properties\DataSources\_4RTools.Model.ClientDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -363,8 +365,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icon4rtools_off.png" />
-    <None Include="Resources\icon4rtools_on.png" />
+    <Content Include="applogo.ico" />
+    <Content Include="assets\image\logos\applogo.png" />
     <None Include="Resources\icon4rtools_off.ico" />
     <None Include="Resources\icon4rtools_on.ico" />
     <Content Include="assets\image\icon\atkdef\cotton-shirt.gif" />
@@ -550,10 +552,7 @@
     <Content Include="assets\image\icon\ui\refresh.png" />
     <Content Include="assets\image\icon\ui\toggle_off.png" />
     <Content Include="assets\image\icon\ui\toggle_on.png" />
-    <Content Include="assets\image\logos\4rtools.png" />
     <Content Include="assets\image\logos\4rtools.svg" />
-    <Content Include="assets\image\logos\logo-4rtools.png" />
-    <Content Include="logo-4rtools.ico" />
     <None Include="assets\etc\arrowdown.png" />
     <None Include="assets\etc\arrowup.png" />
     <None Include="assets\etc\Speech_Off.wav" />
@@ -570,7 +569,6 @@
     <None Include="assets\etc\Healing_On.wav" />
     <None Include="assets\etc\arrowright.png" />
     <None Include="assets\etc\remove.png" />
-    <Content Include="logo-4rtools.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

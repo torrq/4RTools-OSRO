@@ -40,9 +40,9 @@ namespace _4RTools.Forms
 
             debugConsole = new RichTextBox
             {
-                BackColor = Color.Black,
-                ForeColor = Color.White,
-                Font = new Font("Consolas", 8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                BackColor = AppConfig.DebugConsoleBackColor,
+                ForeColor = AppConfig.DebugConsoleForeColor,
+                Font = AppConfig.DebugConsoleFont,
                 Dock = DockStyle.Fill,
                 ReadOnly = true,
                 BorderStyle = BorderStyle.None,
