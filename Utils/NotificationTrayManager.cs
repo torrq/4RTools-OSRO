@@ -89,7 +89,7 @@ namespace _4RTools.Utils
             menuItemProfiles.DropDownItems.Clear();
 
             // Load all profiles and sort them, with "Default" at the top
-            var profiles = Profile.ListAll().Select(FormUtils.RestoreInvalidCharacters).ToList();
+            var profiles = Profile.ListAll().ToList();
             if (profiles.Contains("Default"))
             {
                 AddProfileMenuItem("Default");

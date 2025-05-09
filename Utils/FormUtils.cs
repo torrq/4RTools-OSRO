@@ -249,43 +249,6 @@ namespace _4RTools.Utils
             return Color.FromArgb(r, g, b);
         }
 
-        public static string ReplaceInvalidCharacters(string profileName)
-        {
-            var substitutions = new (char InvalidChar, string Replacement)[]
-            {
-            (':', "&#58;"),
-            ('"', "&#34;"),
-            ('|', "&#124;"),
-            ('?', "&#63;"),
-            };
-
-            string result = profileName;
-            foreach (var (invalidChar, replacement) in substitutions)
-            {
-                result = result.Replace(invalidChar.ToString(), replacement);
-            }
-
-            return result;
-        }
-
-        public static string RestoreInvalidCharacters(string profileName)
-        {
-            var substitutions = new (string Replacement, char OriginalChar)[]
-            {
-            ("&#58;", ':'),
-            ("&#34;", '"'),
-            ("&#124;", '|'),
-            ("&#63;", '?'),
-            };
-
-            string result = profileName;
-            foreach (var (replacement, originalChar) in substitutions)
-            {
-                result = result.Replace(replacement, originalChar.ToString());
-            }
-
-            return result;
-        }
     }
 
     public static class EnumExtensions

@@ -268,7 +268,7 @@ namespace _4RTools.Forms
 
                 profileCB.Items.Clear();
 
-                var profiles = Profile.ListAll().Select(FormUtils.RestoreInvalidCharacters).ToList();
+                var profiles = Profile.ListAll().ToList();
                 if (profiles.Contains("Default"))
                 {
                     profileCB.Items.Add("Default");
@@ -399,25 +399,6 @@ namespace _4RTools.Forms
             Process.Start(AppConfig.Website);
         }
 
-        private string EncodeInvalidCharacters(string profileName)
-        {
-            var substitutions = new (char InvalidChar, string Replacement)[]
-            {
-                (':', "&#58;"),
-                ('"', "&#34;"),
-                ('|', "&#124;"),
-                ('?', "&#63;"),
-            };
-
-            string result = profileName;
-            foreach (var (invalidChar, replacement) in substitutions)
-            {
-                result = result.Replace(invalidChar.ToString(), replacement);
-            }
-
-            return result;
-        }
-
         public void LoadProfile(string profileName)
         {
             if (profileName != currentProfile)
@@ -429,19 +410,17 @@ namespace _4RTools.Forms
                         this.frmToggleApplication.TurnOFF();
                     }
 
-                    string encodedProfileName = EncodeInvalidCharacters(profileName);
-
-                    DebugLogger.Info($"Loading profile: {profileName}" + (profileName != encodedProfileName ? $" ({encodedProfileName})" : ""));
-                    ProfileSingleton.ClearProfile(encodedProfileName);
-                    ProfileSingleton.Load(encodedProfileName);
+                    DebugLogger.Info($"Loading profile: {profileName}");
+                    ProfileSingleton.ClearProfile(profileName);
+                    ProfileSingleton.Load(profileName);
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
                     currentProfile = profileName;
                     profileCB.SelectedItem = profileName;
 
                     // Save the profile as LastUsedProfile
-                    ConfigGlobal.GetConfig().LastUsedProfile = encodedProfileName;
+                    ConfigGlobal.GetConfig().LastUsedProfile = profileName;
                     ConfigGlobal.SaveConfig();
-                    DebugLogger.Info($"Saved profile '{encodedProfileName}' as LastUsedProfile");
+                    DebugLogger.Info($"Saved profile '{profileName}' as LastUsedProfile");
 
                     if (profileForm != null && !profileForm.IsDisposed)
                     {

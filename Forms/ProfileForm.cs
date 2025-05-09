@@ -121,7 +121,7 @@ namespace _4RTools.Forms
             this.lbProfilesList.Items.Clear();
 
             // Reload all profiles and sort them, with "Default" at the top
-            var profiles = Profile.ListAll().Select(FormUtils.RestoreInvalidCharacters).ToList();
+            var profiles = Profile.ListAll().ToList();
             if (profiles.Contains("Default"))
             {
                 this.lbProfilesList.Items.Add("Default");
@@ -202,13 +202,6 @@ namespace _4RTools.Forms
 
             // Replace invalid characters with numeric HTML entities
             string originalName = profileName;
-            profileName = FormUtils.ReplaceInvalidCharacters(profileName);
-
-            // Check if substitution resulted in a different name
-            if (originalName != profileName)
-            {
-                DebugLogger.Info($"Profile name substituted: '{originalName}' to '{profileName}'");
-            }
 
             // Check maximum length (Windows 7 path limit: 260 characters, accounting for directory and .json extension)
             const int maxFileNameLength = 160 - 5; // 160 minus ".json" (5 chars) = 155
@@ -352,7 +345,7 @@ namespace _4RTools.Forms
 
             try
             {
-                ProfileSingleton.Delete(FormUtils.ReplaceInvalidCharacters(selectedProfile));
+                ProfileSingleton.Delete(selectedProfile);
                 RefreshProfileList(); // Refresh and sort the list
                 this.container.RefreshProfileList();
                 this.container.LoadProfile("Default"); // Load Default profile after deletion
@@ -397,7 +390,7 @@ namespace _4RTools.Forms
 
             try
             {
-                ProfileSingleton.Rename(FormUtils.ReplaceInvalidCharacters(selectedProfile), FormUtils.ReplaceInvalidCharacters(newProfileName));
+                ProfileSingleton.Rename(selectedProfile, newProfileName);
                 RefreshProfileList(); // Refresh and sort the list
                 this.container.RefreshProfileList();
                 UpdateStatus($"Profile '{selectedProfile}' renamed to '{newProfileNameLog}' successfully");
