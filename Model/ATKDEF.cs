@@ -65,13 +65,13 @@ namespace _4RTools.Model
         }
     }
 
-    public class ATKDEFMode : IAction
+    public class ATKDEF : IAction
     {
         public static string ACTION_NAME_ATKDEF = "ATKDEFMode";
         private ThreadRunner thread;
         public List<EquipConfig> EquipConfigs { get; set; } = new List<EquipConfig>();
 
-        public ATKDEFMode(int macroLanes)
+        public ATKDEF(int macroLanes)
         {
             for (int i = 1; i <= macroLanes; i++)
             {

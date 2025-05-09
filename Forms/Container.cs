@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace _4RTools.Forms
@@ -16,9 +17,13 @@ namespace _4RTools.Forms
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleStateForm frmToggleApplication = new ToggleStateForm();
+        private NotificationTrayManager trayManager; // Add reference to NotificationTrayManager
         private DebugLogWindow debugLogWindow;
         private bool isShuttingDown = false;
         private DebugLogger.LogMessageHandler debugLogHandler;
+        private ProfileForm profileForm; // Store ProfileForm instance
+        private Font italicFont; // Font for italic "Default" entry
+        private Font regularFont; // Font for other entries
 
         public Container()
         {
@@ -31,6 +36,14 @@ namespace _4RTools.Forms
             //SharedSubject = this.subject;
 
             InitializeComponent();
+
+            // Initialize fonts for custom drawing
+            this.regularFont = this.profileCB.Font;
+            this.italicFont = new Font(this.regularFont, FontStyle.Italic);
+
+            // Configure ComboBox for custom drawing
+            this.profileCB.DrawMode = DrawMode.OwnerDrawFixed;
+            this.profileCB.DrawItem += new DrawItemEventHandler(this.profileCB_DrawItem);
 
             this.Text = AppConfig.WindowTitle;
 
@@ -59,6 +72,7 @@ namespace _4RTools.Forms
             }
 
             frmToggleApplication = SetToggleApplicationStateWindow();
+            trayManager = frmToggleApplication.GetTrayManager(); // Get the tray manager from ToggleStateForm
             SetAutopotWindow();
             SetAutopotYggWindow();
             SetSkillTimerWindow();
@@ -72,6 +86,55 @@ namespace _4RTools.Forms
             SetATKDEFWindow();
             SetMacroSwitchWindow();
             SetConfigWindow();
+        }
+
+        // Custom drawing for profileCB items
+        private void profileCB_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return; // No items to draw
+
+            // Get the item text
+            string itemText = this.profileCB.Items[e.Index].ToString();
+
+            // Choose font based on whether the item is "Default"
+            Font font = itemText == "Default" ? this.italicFont : this.regularFont;
+
+            // Determine the background and foreground colors
+            Brush backgroundBrush;
+            Brush foregroundBrush;
+
+            // Handle different states (selected, combo box edit area, dropdown list)
+            if ((e.State & DrawItemState.ComboBoxEdit) == DrawItemState.ComboBoxEdit)
+            {
+                // Drawing the edit area of the ComboBox
+                backgroundBrush = SystemBrushes.Window;
+                foregroundBrush = SystemBrushes.WindowText;
+            }
+            else if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Drawing a selected item in the dropdown list
+                backgroundBrush = SystemBrushes.Highlight;
+                foregroundBrush = SystemBrushes.HighlightText;
+            }
+            else
+            {
+                // Drawing an unselected item in the dropdown list
+                backgroundBrush = SystemBrushes.Window;
+                foregroundBrush = SystemBrushes.WindowText;
+            }
+
+            // Draw the background
+            e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+
+            // Draw the text with a slight padding for better alignment
+            e.Graphics.DrawString(itemText, font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top);
+
+            // Draw the focus rectangle if the item has focus (in the dropdown list)
+            if ((e.State & DrawItemState.Focus) == DrawItemState.Focus &&
+                (e.State & DrawItemState.ComboBoxEdit) != DrawItemState.ComboBoxEdit)
+            {
+                e.DrawFocusRectangle();
+            }
         }
 
         private void PositionDebugLogWindow()
@@ -212,12 +275,54 @@ namespace _4RTools.Forms
         {
             this.Invoke((MethodInvoker)delegate ()
             {
-                this.profileCB.Items.Clear();
+                // Store the currently selected item (if any)
+                string currentSelection = profileCB.SelectedItem?.ToString();
+
+                // Clear the current list
+                profileCB.Items.Clear();
+
+                // Reload all profiles and sort them, with "Default" at the top
+                var profiles = Profile.ListAll().Select(FormUtils.RestoreInvalidCharacters).ToList();
+                if (profiles.Contains("Default"))
+                {
+                    profileCB.Items.Add("Default");
+                    profiles.Remove("Default");
+                }
+                foreach (string profile in profiles.OrderBy(profile => profile, StringComparer.OrdinalIgnoreCase))
+                {
+                    profileCB.Items.Add(profile);
+                }
+
+                // Unsubscribe from SelectedIndexChanged to prevent redundant LoadProfile calls
+                this.profileCB.SelectedIndexChanged -= ProfileCB_SelectedIndexChanged;
+
+                // Restore the selection if the profile still exists
+                if (currentSelection != null && profileCB.Items.Contains(currentSelection))
+                {
+                    profileCB.SelectedItem = currentSelection;
+                }
+                else if (profileCB.Items.Count > 0)
+                {
+                    profileCB.SelectedIndex = 0;
+                }
+
+                // Resubscribe to SelectedIndexChanged
+                this.profileCB.SelectedIndexChanged += ProfileCB_SelectedIndexChanged;
+
+                //DebugLogger.Info($"Profile list refreshed: {profileCB.Items.Count} profiles loaded");
+
+                // Notify ProfileForm to refresh its list and update the icon position
+                if (profileForm != null && !profileForm.IsDisposed)
+                {
+                    profileForm.RefreshProfileList();
+                }
+
+                // Notify NotificationTrayManager to refresh its profile list
+                if (trayManager != null)
+                {
+                    trayManager.RefreshProfileMenu();
+                }
             });
-            foreach (string p in Profile.ListAll())
-            {
-                this.profileCB.Items.Add(p);
-            }
         }
 
         private void RefreshProcessList()
@@ -316,9 +421,28 @@ namespace _4RTools.Forms
             Process.Start(AppConfig.Website);
         }
 
-        private void ProfileCB_SelectedIndexChanged(object sender, EventArgs e)
+        private string EncodeInvalidCharacters(string profileName)
         {
-            if (this.profileCB.Text != currentProfile)
+            var substitutions = new (char InvalidChar, string Replacement)[]
+            {
+                (':', "&#58;"),
+                ('"', "&#34;"),
+                ('|', "&#124;"),
+                ('?', "&#63;"),
+            };
+
+            string result = profileName;
+            foreach (var (invalidChar, replacement) in substitutions)
+            {
+                result = result.Replace(invalidChar.ToString(), replacement);
+            }
+
+            return result;
+        }
+
+        public void LoadProfile(string profileName)
+        {
+            if (profileName != currentProfile)
             {
                 try
                 {
@@ -326,17 +450,35 @@ namespace _4RTools.Forms
                     {
                         this.frmToggleApplication.TurnOFF();
                     }
-                    DebugLogger.Info($"Loading profile: {this.profileCB.Text}");
-                    ProfileSingleton.ClearProfile(this.profileCB.Text);
-                    ProfileSingleton.Load(this.profileCB.Text);
+
+                    string encodedProfileName = EncodeInvalidCharacters(profileName);
+
+                    DebugLogger.Info($"Loading profile: {profileName}" + (profileName != encodedProfileName ? $" ({encodedProfileName})" : ""));
+                    ProfileSingleton.ClearProfile(encodedProfileName);
+                    ProfileSingleton.Load(encodedProfileName);
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
-                    currentProfile = this.profileCB.Text.ToString();
+                    currentProfile = profileName;
+                    profileCB.SelectedItem = profileName; // Keep UI in sync
+
+                    // Force ProfileForm to update its icon immediately
+                    if (profileForm != null && !profileForm.IsDisposed)
+                    {
+                        profileForm.UpdateProfileIcon(profileName);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.Error(ex, $"Failed to load profile: {this.profileCB.Text}");
+                    DebugLogger.Error(ex, $"Failed to load profile: {profileName}");
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void ProfileCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.profileCB.Text != currentProfile)
+            {
+                LoadProfile(this.profileCB.Text);
             }
         }
 
@@ -351,6 +493,11 @@ namespace _4RTools.Forms
             {
                 case MessageCode.TURN_ON:
                 case MessageCode.PROFILE_CHANGED:
+                    // Handle profile change from the tray
+                    if ((subject as Subject).Message.Data is string newProfileName && newProfileName != currentProfile)
+                    {
+                        LoadProfile(newProfileName);
+                    }
                     Client client = ClientSingleton.GetClient();
                     if (client != null)
                     {
@@ -504,14 +651,14 @@ namespace _4RTools.Forms
 
         public void SetProfileWindow()
         {
-            ProfileForm frm = new ProfileForm(this)
+            profileForm = new ProfileForm(this)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),
                 MdiParent = this
             };
-            frm.Show();
-            Addform(this.tabPageProfiles, frm);
+            profileForm.Show();
+            Addform(this.tabPageProfiles, profileForm);
         }
 
         public void SetAutobuffItemWindow()

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 namespace _4RTools.Model
 {
-    public class DebuffsRecovery : IAction
+    public class DebuffRecovery : IAction
     {
         public static string ACTION_NAME_DEBUFF_RECOVERY = "DebuffsRecovery";
         public static string ACTION_NAME_WEIGHT_DEBUFF_RECOVERY = "WeightDebuffsRecovery";
@@ -20,12 +20,12 @@ namespace _4RTools.Model
         private readonly string ActionName;
 
         // Default constructor
-        public DebuffsRecovery() : this(ACTION_NAME_DEBUFF_RECOVERY)
+        public DebuffRecovery() : this(ACTION_NAME_DEBUFF_RECOVERY)
         {
         }
 
         // Constructor with custom action name
-        public DebuffsRecovery(string actionName)
+        public DebuffRecovery(string actionName)
         {
             this.ActionName = actionName;
         }

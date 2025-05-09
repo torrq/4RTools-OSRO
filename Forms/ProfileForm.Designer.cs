@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using _4RTools.Utils; // Ensure this is included to access AppConfig
+using _4RTools.Utils;
 
 namespace _4RTools.Forms
 {

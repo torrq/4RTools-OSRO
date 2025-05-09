@@ -26,7 +26,7 @@ namespace _4RTools.Model
                     profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
                     profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
                     profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
-                    profile.AutoRefreshSpammer = JsonConvert.DeserializeObject<AutoRefreshSpammer>(Profile.GetByAction(rawObject, profile.AutoRefreshSpammer));
+                    profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
                     profile.AutobuffSkill = JsonConvert.DeserializeObject<AutoBuffSkill>(Profile.GetByAction(rawObject, profile.AutobuffSkill));
                     if (profile.AutobuffSkill.Delay < 0)
                     {
@@ -38,11 +38,11 @@ namespace _4RTools.Model
                         profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;
                     }
                     profile.SongMacro = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.SongMacro));
-                    profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEFMode>(Profile.GetByAction(rawObject, profile.AtkDefMode));
+                    profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
                     profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
                     profile.Custom = JsonConvert.DeserializeObject<Custom>(Profile.GetByAction(rawObject, profile.Custom));
-                    profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffsRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
-                    profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffsRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
+                    profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
+                    profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
                 }
             }
             catch
@@ -187,16 +187,16 @@ namespace _4RTools.Model
         public AHK AHK { get; set; }
         public Autopot Autopot { get; set; }
         public Autopot AutopotYgg { get; set; }
-        public AutoRefreshSpammer AutoRefreshSpammer { get; set; }
+        public SkillTimer SkillTimer { get; set; }
         public AutoBuffSkill AutobuffSkill { get; set; }
         public AutoBuffItem AutobuffItem { get; set; }
         public StatusRecovery StatusRecovery { get; set; }
-        public DebuffsRecovery DebuffsRecovery { get; set; }
-        public DebuffsRecovery WeightDebuffsRecovery { get; set; }
+        public DebuffRecovery DebuffsRecovery { get; set; }
+        public DebuffRecovery WeightDebuffsRecovery { get; set; }
         public Macro SongMacro { get; set; }
         public Macro MacroSwitch { get; set; }
         public Custom Custom { get; set; }
-        public ATKDEFMode AtkDefMode { get; set; }
+        public ATKDEF AtkDefMode { get; set; }
 
         public Profile(string name)
         {
@@ -206,15 +206,15 @@ namespace _4RTools.Model
             this.AHK = new AHK();
             this.Autopot = new Autopot(Autopot.ACTION_NAME_AUTOPOT);
             this.AutopotYgg = new Autopot(Autopot.ACTION_NAME_AUTOPOT_YGG);
-            this.AutoRefreshSpammer = new AutoRefreshSpammer();
+            this.SkillTimer = new SkillTimer();
             this.AutobuffSkill = new AutoBuffSkill(AutoBuffSkill.ACTION_NAME_AUTOBUFFSKILL);
             this.AutobuffItem = new AutoBuffItem(AutoBuffItem.ACTION_NAME_AUTOBUFFITEM);
             this.StatusRecovery = new StatusRecovery();
             this.SongMacro = new Macro(Macro.ACTION_NAME_SONG_MACRO, MacroSongForm.TOTAL_MACRO_LANES_FOR_SONGS);
             this.MacroSwitch = new Macro(Macro.ACTION_NAME_MACRO_SWITCH, MacroSwitchForm.TOTAL_MACRO_LANES);
-            this.AtkDefMode = new ATKDEFMode(ATKDEFForm.TOTAL_ATKDEF_LANES);
-            this.DebuffsRecovery = new DebuffsRecovery("DebuffsRecovery");
-            this.WeightDebuffsRecovery = new DebuffsRecovery("WeightDebuffsRecovery");
+            this.AtkDefMode = new ATKDEF(ATKDEFForm.TOTAL_ATKDEF_LANES);
+            this.DebuffsRecovery = new DebuffRecovery("DebuffsRecovery");
+            this.WeightDebuffsRecovery = new DebuffRecovery("WeightDebuffsRecovery");
             this.Custom = new Custom();
         }
 

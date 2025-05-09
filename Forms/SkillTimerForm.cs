@@ -25,10 +25,10 @@ namespace _4RTools.Forms
                     UpdateUI();
                     break;
                 case MessageCode.TURN_ON:
-                    ProfileSingleton.GetCurrent().AutoRefreshSpammer.Start();
+                    ProfileSingleton.GetCurrent().SkillTimer.Start();
                     break;
                 case MessageCode.TURN_OFF:
-                    ProfileSingleton.GetCurrent().AutoRefreshSpammer.Stop();
+                    ProfileSingleton.GetCurrent().SkillTimer.Stop();
                     break;
             }
         }
@@ -61,7 +61,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                AutoRefreshSpammer Spammers = ProfileSingleton.GetCurrent().AutoRefreshSpammer;
+                SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
 
                 if (!Spammers.skillTimer.ContainsKey(id))
                 {
@@ -83,7 +83,7 @@ namespace _4RTools.Forms
                     }
                 }
 
-                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutoRefreshSpammer);
+                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
             catch (Exception ex)
             {
@@ -112,7 +112,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                AutoRefreshSpammer Spammers = ProfileSingleton.GetCurrent().AutoRefreshSpammer;
+                SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
 
                 MacroKey skillTimer = Spammers.skillTimer[id];
 
@@ -142,7 +142,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                AutoRefreshSpammer Spammers = ProfileSingleton.GetCurrent().AutoRefreshSpammer;
+                SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
                 TextBox textBox = (TextBox)sender;
                 Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
 
@@ -158,7 +158,7 @@ namespace _4RTools.Forms
                     Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
-                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutoRefreshSpammer);
+                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
             catch (Exception ex)
             {
@@ -171,7 +171,7 @@ namespace _4RTools.Forms
         {
             try
             {
-                AutoRefreshSpammer Spammers = ProfileSingleton.GetCurrent().AutoRefreshSpammer;
+                SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
                 NumericUpDown numericUpDown = (NumericUpDown)sender;
                 int delay = (int)numericUpDown.Value;
 
@@ -187,7 +187,7 @@ namespace _4RTools.Forms
                     Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
-                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutoRefreshSpammer);
+                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
             catch (Exception ex)
             {

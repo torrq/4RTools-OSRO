@@ -50,6 +50,12 @@ namespace _4RTools.Forms
             trayManager = new NotificationTrayManager(notifyIconTray, subject, isApplicationOn);
         }
 
+        // Public method to access the trayManager
+        public NotificationTrayManager GetTrayManager()
+        {
+            return trayManager;
+        }
+
         public void Update(ISubject subject)
         {
             switch (subject.Message.Code)

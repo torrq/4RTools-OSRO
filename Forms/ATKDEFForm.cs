@@ -44,7 +44,7 @@ namespace _4RTools.Forms
                 GroupBox group = (GroupBox)this.Controls.Find("equipGroup" + id, true).FirstOrDefault();
                 if (group == null) return;
 
-                ATKDEFMode currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+                ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
                 if (currentMode == null) return;
 
                 EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
@@ -101,7 +101,7 @@ namespace _4RTools.Forms
 
         private void UpdateUi()
         {
-            ATKDEFMode currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
             if (currentMode == null) return;
 
             for (int i = 1; i <= currentMode.EquipConfigs.Count && i <= TOTAL_ATKDEF_LANES; i++)
@@ -120,7 +120,7 @@ namespace _4RTools.Forms
             int id = short.Parse(inputTag[0]);
             string type = inputTag[1];
 
-            ATKDEFMode currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
             if (currentMode == null) return;
             EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
             if (equipConfig == null) return;
@@ -153,7 +153,7 @@ namespace _4RTools.Forms
             int id = short.Parse(inputTag[0]);
             string type = inputTag[1];
 
-            ATKDEFMode currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
             if (currentMode == null) return;
             EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
             if (equipConfig == null) return;
@@ -176,7 +176,7 @@ namespace _4RTools.Forms
             string[] inputTag = checkBox.Tag.ToString().Split(new[] { ":" }, StringSplitOptions.None);
             int id = short.Parse(inputTag[0]);
 
-            ATKDEFMode currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
             if (currentMode == null) return;
             EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
             if (equipConfig == null) return;
@@ -253,7 +253,7 @@ namespace _4RTools.Forms
 
             if (configIdToReset == -1) return;
 
-            ATKDEFMode currentAtkDefMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentAtkDefMode = ProfileSingleton.GetCurrent().AtkDefMode;
             if (currentAtkDefMode == null) return;
 
             int groupIndex = currentAtkDefMode.EquipConfigs.FindIndex(ec => ec.id == configIdToReset);

@@ -8,9 +8,9 @@ using System.Windows.Input;
 
 namespace _4RTools.Model
 {
-    public class AutoRefreshSpammer : IAction
+    public class SkillTimer : IAction
     {
-        private string ACTION_NAME = "AutoRefreshSpammer";
+        private string ACTION_NAME = "SkillTimer";
 
         public Dictionary<int, MacroKey> skillTimer = new Dictionary<int, MacroKey>();
         public List<string> CityList { get; set; }
