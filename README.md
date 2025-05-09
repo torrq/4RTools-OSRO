@@ -20,7 +20,7 @@ OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools),
   - Upgraded .NET framework from v4.7.2 to v4.8.1.
 
 ### Installation Steps
-1. Download the `.zip` file from the [release](https://github.com/torrq/4RTools-OSRO/tags) page.
+1. Download the `.zip` file from the [release page](https://github.com/torrq/4RTools-OSRO/releases).
 2. Extract the contents to a folder of your choice.
 3. Run `OSRO Tools.exe` as Administrator.
 4. Configure your settings according to your needs.
