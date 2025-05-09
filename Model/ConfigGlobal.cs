@@ -8,6 +8,7 @@ namespace _4RTools.Model
     public class Config
     {
         public bool DebugMode { get; set; } = false;
+        public string LastUsedProfile { get; set; } = "Default"; // Default to "Default" profile
     }
 
     internal class ConfigGlobal
@@ -74,6 +75,5 @@ namespace _4RTools.Model
                 DebugLogger.Error(ex, "Failed to save config.json");
             }
         }
-
     }
 }

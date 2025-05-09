@@ -11,19 +11,17 @@ namespace _4RTools.Forms
 {
     public partial class Container : Form, IObserver
     {
-        //public static Subject SharedSubject { get; private set; }
         private Subject subject = new Subject();
-
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleStateForm frmToggleApplication = new ToggleStateForm();
-        private NotificationTrayManager trayManager; // Add reference to NotificationTrayManager
+        private NotificationTrayManager trayManager;
         private DebugLogWindow debugLogWindow;
         private bool isShuttingDown = false;
         private DebugLogger.LogMessageHandler debugLogHandler;
-        private ProfileForm profileForm; // Store ProfileForm instance
-        private Font italicFont; // Font for italic "Default" entry
-        private Font regularFont; // Font for other entries
+        private ProfileForm profileForm;
+        private Font italicFont;
+        private Font regularFont;
 
         public Container()
         {
@@ -33,15 +31,12 @@ namespace _4RTools.Forms
             DebugLogger.Info($"Container constructor: DebugMode is {ConfigGlobal.GetConfig().DebugMode} after ConfigGlobal.Initialize");
 
             this.subject.Attach(this);
-            //SharedSubject = this.subject;
 
             InitializeComponent();
 
-            // Initialize fonts for custom drawing
             this.regularFont = this.profileCB.Font;
             this.italicFont = new Font(this.regularFont, FontStyle.Italic);
 
-            // Configure ComboBox for custom drawing
             this.profileCB.DrawMode = DrawMode.OwnerDrawFixed;
             this.profileCB.DrawItem += new DrawItemEventHandler(this.profileCB_DrawItem);
 
@@ -59,7 +54,7 @@ namespace _4RTools.Forms
             {
                 DebugLogger.Info("DebugMode is true: Creating and showing DebugLogWindow");
                 debugLogWindow = new DebugLogWindow(this.Icon);
-                debugLogWindow.Owner = this; // Owner relationship for focus sync
+                debugLogWindow.Owner = this;
                 debugLogWindow.Show();
                 SubscribeToDebugLogger();
 
@@ -72,7 +67,7 @@ namespace _4RTools.Forms
             }
 
             frmToggleApplication = SetToggleApplicationStateWindow();
-            trayManager = frmToggleApplication.GetTrayManager(); // Get the tray manager from ToggleStateForm
+            trayManager = frmToggleApplication.GetTrayManager();
             SetAutopotWindow();
             SetAutopotYggWindow();
             SetSkillTimerWindow();
@@ -88,48 +83,35 @@ namespace _4RTools.Forms
             SetConfigWindow();
         }
 
-        // Custom drawing for profileCB items
         private void profileCB_DrawItem(object sender, DrawItemEventArgs e)
         {
-            if (e.Index < 0) return; // No items to draw
+            if (e.Index < 0) return;
 
-            // Get the item text
             string itemText = this.profileCB.Items[e.Index].ToString();
-
-            // Choose font based on whether the item is "Default"
             Font font = itemText == "Default" ? this.italicFont : this.regularFont;
 
-            // Determine the background and foreground colors
             Brush backgroundBrush;
             Brush foregroundBrush;
 
-            // Handle different states (selected, combo box edit area, dropdown list)
             if ((e.State & DrawItemState.ComboBoxEdit) == DrawItemState.ComboBoxEdit)
             {
-                // Drawing the edit area of the ComboBox
                 backgroundBrush = SystemBrushes.Window;
                 foregroundBrush = SystemBrushes.WindowText;
             }
             else if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                // Drawing a selected item in the dropdown list
                 backgroundBrush = SystemBrushes.Highlight;
                 foregroundBrush = SystemBrushes.HighlightText;
             }
             else
             {
-                // Drawing an unselected item in the dropdown list
                 backgroundBrush = SystemBrushes.Window;
                 foregroundBrush = SystemBrushes.WindowText;
             }
 
-            // Draw the background
             e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
-
-            // Draw the text with a slight padding for better alignment
             e.Graphics.DrawString(itemText, font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top);
 
-            // Draw the focus rectangle if the item has focus (in the dropdown list)
             if ((e.State & DrawItemState.Focus) == DrawItemState.Focus &&
                 (e.State & DrawItemState.ComboBoxEdit) != DrawItemState.ComboBoxEdit)
             {
@@ -141,12 +123,9 @@ namespace _4RTools.Forms
         {
             if (debugLogWindow != null && !debugLogWindow.IsDisposed)
             {
-                // Position the DebugLogWindow 8 pixels above the bottom of the Container
                 int x = this.Location.X + this.DisplayRectangle.X + 8;
                 int y = this.Location.Y + this.Height - 8;
                 debugLogWindow.Location = new Point(x, y);
-
-                // Match the width of the DebugLogWindow to the Container's drawable area width
                 debugLogWindow.Width = this.DisplayRectangle.Width;
             }
         }
@@ -250,11 +229,21 @@ namespace _4RTools.Forms
             ProfileSingleton.Create("Default");
             this.RefreshProcessList();
             this.RefreshProfileList();
-            this.profileCB.SelectedItem = "Default";
+
+            // Load the last used profile or Default
+            string lastUsedProfile = ConfigGlobal.GetConfig().LastUsedProfile;
+            string profileToLoad = "Default"; // Fallback to Default
+            if (!string.IsNullOrWhiteSpace(lastUsedProfile) && Profile.ListAll().Contains(lastUsedProfile))
+            {
+                profileToLoad = lastUsedProfile;
+            }
+
+            DebugLogger.Info($"Container_Load: Attempting to load profile '{profileToLoad}'");
+            LoadProfile(profileToLoad);
+            this.profileCB.SelectedItem = profileToLoad;
 
             ConfigureTabControl(tabControlAutopot);
 
-            // Position DebugLogWindow after the Container is fully loaded
             if (debugLogWindow != null && !debugLogWindow.IsDisposed)
             {
                 PositionDebugLogWindow();
@@ -275,13 +264,10 @@ namespace _4RTools.Forms
         {
             this.Invoke((MethodInvoker)delegate ()
             {
-                // Store the currently selected item (if any)
                 string currentSelection = profileCB.SelectedItem?.ToString();
 
-                // Clear the current list
                 profileCB.Items.Clear();
 
-                // Reload all profiles and sort them, with "Default" at the top
                 var profiles = Profile.ListAll().Select(FormUtils.RestoreInvalidCharacters).ToList();
                 if (profiles.Contains("Default"))
                 {
@@ -293,31 +279,24 @@ namespace _4RTools.Forms
                     profileCB.Items.Add(profile);
                 }
 
-                // Unsubscribe from SelectedIndexChanged to prevent redundant LoadProfile calls
                 this.profileCB.SelectedIndexChanged -= ProfileCB_SelectedIndexChanged;
 
-                // Restore the selection if the profile still exists
                 if (currentSelection != null && profileCB.Items.Contains(currentSelection))
                 {
                     profileCB.SelectedItem = currentSelection;
                 }
                 else if (profileCB.Items.Count > 0)
                 {
-                    profileCB.SelectedIndex = 0;
+                    profileCB.SelectedItem = ConfigGlobal.GetConfig().LastUsedProfile ?? "Default";
                 }
 
-                // Resubscribe to SelectedIndexChanged
                 this.profileCB.SelectedIndexChanged += ProfileCB_SelectedIndexChanged;
 
-                //DebugLogger.Info($"Profile list refreshed: {profileCB.Items.Count} profiles loaded");
-
-                // Notify ProfileForm to refresh its list and update the icon position
                 if (profileForm != null && !profileForm.IsDisposed)
                 {
                     profileForm.RefreshProfileList();
                 }
 
-                // Notify NotificationTrayManager to refresh its profile list
                 if (trayManager != null)
                 {
                     trayManager.RefreshProfileMenu();
@@ -370,7 +349,6 @@ namespace _4RTools.Forms
 
                 KeyboardHook.Disable();
 
-                //DebugLogger.Debug("Subject: Notifying observers...");
                 subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
                 UnsubscribeFromDebugLogger();
@@ -458,9 +436,13 @@ namespace _4RTools.Forms
                     ProfileSingleton.Load(encodedProfileName);
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
                     currentProfile = profileName;
-                    profileCB.SelectedItem = profileName; // Keep UI in sync
+                    profileCB.SelectedItem = profileName;
 
-                    // Force ProfileForm to update its icon immediately
+                    // Save the profile as LastUsedProfile
+                    ConfigGlobal.GetConfig().LastUsedProfile = encodedProfileName;
+                    ConfigGlobal.SaveConfig();
+                    DebugLogger.Info($"Saved profile '{encodedProfileName}' as LastUsedProfile");
+
                     if (profileForm != null && !profileForm.IsDisposed)
                     {
                         profileForm.UpdateProfileIcon(profileName);
@@ -470,6 +452,12 @@ namespace _4RTools.Forms
                 {
                     DebugLogger.Error(ex, $"Failed to load profile: {profileName}");
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Fallback to Default profile if loading fails
+                    if (profileName != "Default")
+                    {
+                        DebugLogger.Info("Falling back to Default profile due to load failure");
+                        LoadProfile("Default");
+                    }
                 }
             }
         }
@@ -493,7 +481,6 @@ namespace _4RTools.Forms
             {
                 case MessageCode.TURN_ON:
                 case MessageCode.PROFILE_CHANGED:
-                    // Handle profile change from the tray
                     if ((subject as Subject).Message.Data is string newProfileName && newProfileName != currentProfile)
                     {
                         LoadProfile(newProfileName);
@@ -510,7 +497,6 @@ namespace _4RTools.Forms
                     DebugLogger.Info("Server list refreshed.");
                     break;
                 case MessageCode.CLICK_ICON_TRAY:
-                    //DebugLogger.Info("Tray icon clicked: Showing main window.");
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                     break;
@@ -521,7 +507,7 @@ namespace _4RTools.Forms
                     {
                         DebugLogger.Info("DebugMode set to true: Creating and showing DebugLogWindow...");
                         debugLogWindow = new DebugLogWindow(this.Icon);
-                        debugLogWindow.Owner = this; // Set Owner when re-enabling DebugMode
+                        debugLogWindow.Owner = this;
                         PositionDebugLogWindow();
                         debugLogWindow.Show();
                         SubscribeToDebugLogger();
@@ -536,7 +522,7 @@ namespace _4RTools.Forms
                     else if (newDebugMode && debugLogWindow != null && debugLogWindow.Visible == false)
                     {
                         DebugLogger.Info("DebugMode set to true: Showing existing DebugLogWindow...");
-                        debugLogWindow.Owner = this; // Ensure Owner is set when showing again
+                        debugLogWindow.Owner = this;
                         PositionDebugLogWindow();
                         debugLogWindow.Show();
                     }
