@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General information about an assembly is controlled by
 // a set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("4RTools-OSRO")]
+[assembly: AssemblyTitle("OSRO Tools")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("https://github.com/torrq/4RTools-OSRO")]
-[assembly: AssemblyProduct("4RTools-OSRO")]
+[assembly: AssemblyProduct("OSRO Tools")]
 [assembly: AssemblyCopyright("2025 by torrq | MIT License")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -101,7 +101,7 @@ namespace _4RTools.Forms
             // notifyIconTray
             // 
             this.notifyIconTray.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconTray.Icon")));
-            this.notifyIconTray.Text = "4RTools-OSRO (MR)";
+            this.notifyIconTray.Text = "OSRO Tools (MR)";
             this.notifyIconTray.Visible = true;
             // 
             // ToggleApplicationStateForm

@@ -30,7 +30,7 @@ namespace _4RTools.Forms
 
         private void InitializeComponents()
         {
-            this.Text = "4RTools Debug Log";
+            this.Text = AppConfig.Name + " Debug Log";
             this.Size = new Size(300, 200);
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.Manual;
