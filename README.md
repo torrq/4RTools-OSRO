@@ -1,4 +1,4 @@
-<p align="left">
+<p align="center">
   <img src="assets/image/logos/applogo.png" alt="App Logo" width="150">
 </p>
 
