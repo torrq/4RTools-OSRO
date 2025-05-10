@@ -583,6 +583,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap discord {
+            get {
+                object obj = ResourceManager.GetObject("discord", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap drowsiness {
             get {
                 object obj = ResourceManager.GetObject("drowsiness", resourceCulture);
@@ -876,6 +886,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap gatling_fever {
             get {
                 object obj = ResourceManager.GetObject("gatling_fever", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap github {
+            get {
+                object obj = ResourceManager.GetObject("github", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1356,6 +1376,26 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap onehand {
             get {
                 object obj = ResourceManager.GetObject("onehand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap osro_logo_hr {
+            get {
+                object obj = ResourceManager.GetObject("osro_logo_hr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap osro_logo_mr {
+            get {
+                object obj = ResourceManager.GetObject("osro_logo_mr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1846,6 +1886,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap tumbling {
             get {
                 object obj = ResourceManager.GetObject("tumbling", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap url_green {
+            get {
+                object obj = ResourceManager.GetObject("url_green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

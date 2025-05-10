@@ -8,10 +8,8 @@ using System.Windows.Input;
 
 namespace _4RTools.Model
 {
-
     public class Autopot : IAction
     {
-
         public static string ACTION_NAME_AUTOPOT = "Autopot";
         public static string ACTION_NAME_AUTOPOT_YGG = "AutopotYgg";
         public const string FIRSTHP = "firstHP";
@@ -28,7 +26,6 @@ namespace _4RTools.Model
             set => _delay = value;
         }
 
-        // this is currently unused, should probably be hooked up someday. uses the above value instead for defaults
         private int _delayYgg = AppConfig.YggDefaultDelay;
         public int DelayYgg
         {
@@ -41,8 +38,6 @@ namespace _4RTools.Model
 
         public string ActionName { get; set; }
         private ThreadRunner thread;
-
-        public List<string> CityList { get; set; }
 
         public Autopot() { }
         public Autopot(string actionName)
@@ -61,7 +56,6 @@ namespace _4RTools.Model
             // SP
             this.SPKey = spKey;
             this.SPPercent = spPercent;
-
         }
 
         public void Start()
@@ -74,7 +68,6 @@ namespace _4RTools.Model
                     ThreadRunner.Stop(this.thread);
                 }
                 int hpPotCount = 0;
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = new ThreadRunner(_ => AutopotThreadExecution(roClient, hpPotCount));
                 ThreadRunner.Start(this.thread);
             }
@@ -83,7 +76,7 @@ namespace _4RTools.Model
         private int AutopotThreadExecution(Client roClient, int hpPotCount)
         {
             string currentMap = roClient.ReadCurrentMap();
-            if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || this.CityList.Contains(currentMap) == false)
+            if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
                 bool hasCriticalWound = HasCriticalWound(roClient);
                 if (FirstHeal.Equals(FIRSTHP))
@@ -117,7 +110,6 @@ namespace _4RTools.Model
                     {
                         Pot(this.HPKey);
                     }
-
                 }
             }
             // check hp
@@ -145,7 +137,6 @@ namespace _4RTools.Model
                 {
                     hpPotCount = 0;
                     Pot(this.SPKey);
-
                 }
             }
             // check sp

@@ -10,10 +10,9 @@ namespace _4RTools.Model
 {
     public class SkillTimer : IAction
     {
-        private string ACTION_NAME = "SkillTimer";
+        private readonly string ACTION_NAME = "SkillTimer";
 
         public Dictionary<int, MacroKey> skillTimer = new Dictionary<int, MacroKey>();
-        public List<string> CityList { get; set; }
 
         private ThreadRunner thread1;
         private ThreadRunner thread2;
@@ -29,8 +28,6 @@ namespace _4RTools.Model
                 ValidadeThreads(this.thread2);
                 ValidadeThreads(this.thread3);
                 ValidadeThreads(this.thread4);
-
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
 
                 this.thread1 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[1].Delay, skillTimer[1].Key));
                 this.thread2 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[2].Delay, skillTimer[2].Key));
@@ -55,7 +52,7 @@ namespace _4RTools.Model
         private int AutoRefreshThreadExecution(Client roClient, int delay, Key rKey)
         {
             string currentMap = roClient.ReadCurrentMap();
-            if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || this.CityList.Contains(currentMap) == false)
+            if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
                 if (rKey != Key.None)
                 {

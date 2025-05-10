@@ -8,13 +8,11 @@ namespace _4RTools.Model
 {
     internal class Server
     {
-        private static readonly string ServersFile = "servers.json";
-        private static readonly string CitiesFile = "cities.json";
         private static List<string> cityList;
 
         public static string GetCitiesFile()
         {
-            return CitiesFile;
+            return AppConfig.CitiesFile;
         }
 
         public static void Initialize()
@@ -25,7 +23,7 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Failed to initialize servers file");
+                DebugLogger.Error(ex, $"Failed to initialize {AppConfig.ServersFile}");
             }
 
             try
@@ -34,89 +32,63 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Failed to initialize cities file");
+                DebugLogger.Error(ex, $"Failed to initialize {AppConfig.CitiesFile}");
             }
         }
 
         private static void EnsureServersFileExists()
         {
-            dynamic server = AppConfig.ServerMode == 0
-                ? new
-                {
-                    name = "OsRO Midrate",
-                    hpAddress = "00E8F434",
-                    nameAddress = "00E91C00",
-                    mapAddress = "00E8ABD4"
-                }
-                : new
-                {
-                    name = "OSRO",
-                    hpAddress = "010DCE10",
-                    nameAddress = "010DF5D8",
-                    mapAddress = "010D856C"
-                };
-
-            string defaultJson = JsonConvert.SerializeObject(new List<dynamic> { server }, Formatting.Indented);
+            string defaultJson = JsonConvert.SerializeObject(AppConfig.DefaultServers, Formatting.Indented);
 
             try
             {
-                if (!File.Exists(ServersFile) || string.IsNullOrWhiteSpace(File.ReadAllText(ServersFile)) || File.ReadAllText(ServersFile).Length < 10)
+                if (!File.Exists(AppConfig.ServersFile) || string.IsNullOrWhiteSpace(File.ReadAllText(AppConfig.ServersFile)) || File.ReadAllText(AppConfig.ServersFile).Length < 10)
                 {
-                    File.WriteAllText(ServersFile, defaultJson);
-                    DebugLogger.Info("Created or updated servers.json with default data");
+                    File.WriteAllText(AppConfig.ServersFile, defaultJson);
+                    DebugLogger.Info($"Created or updated {AppConfig.ServersFile} with default data");
                 }
             }
             catch (IOException ex)
             {
-                DebugLogger.Error(ex, "IO error writing servers.json");
+                DebugLogger.Error(ex, $"IO error writing {AppConfig.ServersFile}");
                 throw;
             }
             catch (UnauthorizedAccessException ex)
             {
-                DebugLogger.Error(ex, "Permission denied for servers.json");
+                DebugLogger.Error(ex, $"Permission denied for {AppConfig.ServersFile}");
                 throw;
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Unexpected error with servers.json");
+                DebugLogger.Error(ex, $"Unexpected error with {AppConfig.ServersFile}");
                 throw;
             }
         }
 
-
         private static void EnsureCitiesFileExists()
         {
-            List<string> defaultCities = new List<string>
-            {
-                "prontera", "morocc", "geffen", "payon", "alberta", "izlude", "aldebaran", "xmas",
-                "comodo", "yuno", "amatsu", "gonryun", "umbala", "niflheim", "louyang", "jawaii",
-                "ayothaya", "einbroch", "lighthalzen", "einbech", "hugel", "rachel", "veins",
-                "moscovia", "mid_camp", "munak", "splendide", "brasilis", "dicastes01", "mora",
-                "dewata", "malangdo", "malaya", "eclage", "marketplace", "mainhall", "quiz_00"
-            };
-
             try
             {
-                if (!File.Exists(CitiesFile) || string.IsNullOrWhiteSpace(File.ReadAllText(CitiesFile)) || File.ReadAllText(CitiesFile).Length < 10)
+                if (!File.Exists(AppConfig.CitiesFile) || string.IsNullOrWhiteSpace(File.ReadAllText(AppConfig.CitiesFile)) || File.ReadAllText(AppConfig.CitiesFile).Length < 10)
                 {
-                    string json = JsonConvert.SerializeObject(defaultCities, Formatting.Indented);
-                    File.WriteAllText(CitiesFile, json);
-                    DebugLogger.Info("Created or updated cities.json with default data");
+                    string json = JsonConvert.SerializeObject(AppConfig.DefaultCities, Formatting.Indented);
+                    File.WriteAllText(AppConfig.CitiesFile, json);
+                    DebugLogger.Info($"Created or updated {AppConfig.CitiesFile} with default data");
                 }
             }
             catch (IOException ex)
             {
-                DebugLogger.Error(ex, "IO error writing cities.json");
+                DebugLogger.Error(ex, $"IO error writing {AppConfig.CitiesFile}");
                 throw;
             }
             catch (UnauthorizedAccessException ex)
             {
-                DebugLogger.Error(ex, "Permission denied for cities.json");
+                DebugLogger.Error(ex, $"Permission denied for {AppConfig.CitiesFile}");
                 throw;
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Unexpected error with cities.json");
+                DebugLogger.Error(ex, $"Unexpected error with {AppConfig.CitiesFile}");
                 throw;
             }
         }
@@ -125,11 +97,11 @@ namespace _4RTools.Model
         {
             try
             {
-                return File.Exists(ServersFile) ? File.ReadAllText(ServersFile) : string.Empty;
+                return File.Exists(AppConfig.ServersFile) ? File.ReadAllText(AppConfig.ServersFile) : string.Empty;
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Error reading servers.json");
+                DebugLogger.Error(ex, $"Error reading {AppConfig.ServersFile}");
                 return string.Empty;
             }
         }
@@ -140,7 +112,7 @@ namespace _4RTools.Model
 
             if (string.IsNullOrEmpty(localServers))
             {
-                DebugLogger.Warning("servers.json is empty or could not be read");
+                DebugLogger.Warning($"{AppConfig.ServersFile} is empty or could not be read");
                 return new List<ClientDTO>();
             }
 
@@ -150,7 +122,7 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Error deserializing servers.json");
+                DebugLogger.Error(ex, $"Error deserializing {AppConfig.ServersFile}");
                 return new List<ClientDTO>();
             }
         }
@@ -159,11 +131,11 @@ namespace _4RTools.Model
         {
             try
             {
-                return File.Exists(CitiesFile) ? File.ReadAllText(CitiesFile) : string.Empty;
+                return File.Exists(AppConfig.CitiesFile) ? File.ReadAllText(AppConfig.CitiesFile) : string.Empty;
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Error reading cities.json");
+                DebugLogger.Error(ex, $"Error reading {AppConfig.CitiesFile}");
                 return string.Empty;
             }
         }
@@ -176,7 +148,7 @@ namespace _4RTools.Model
 
                 if (string.IsNullOrEmpty(localCities))
                 {
-                    DebugLogger.Warning("cities.json is empty or could not be read");
+                    DebugLogger.Warning($"{AppConfig.CitiesFile} is empty or could not be read");
                     return new List<string>();
                 }
 
@@ -186,7 +158,7 @@ namespace _4RTools.Model
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.Error(ex, "Error deserializing cities.json");
+                    DebugLogger.Error(ex, $"Error deserializing {AppConfig.CitiesFile}");
                     return new List<string>();
                 }
             }

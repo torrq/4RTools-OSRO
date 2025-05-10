@@ -10,7 +10,6 @@ using System.Windows.Input;
 
 namespace _4RTools.Model
 {
-
     public class AutoBuffSkill : IAction
     {
         public static string ACTION_NAME_AUTOBUFFSKILL = "AutobuffSkill";
@@ -22,8 +21,6 @@ namespace _4RTools.Model
             get => _delay <= 0 ? AppConfig.AutoBuffSkillsDefaultDelay : _delay;
             set => _delay = value;
         }
-
-        public List<string> CityList { get; set; }
 
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
 
@@ -45,7 +42,6 @@ namespace _4RTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = AutoBuffThread(roClient);
                 ThreadRunner.Start(this.thread);
             }
@@ -83,7 +79,7 @@ namespace _4RTools.Model
                 string currentMap = c.ReadCurrentMap();
                 ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
 
-                if (!prefs.StopBuffsCity || !this.CityList.Contains(currentMap))
+                if (!prefs.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
                 {
                     List<EffectStatusIDs> currentBuffs = new List<EffectStatusIDs>();
                     Dictionary<EffectStatusIDs, Key> buffsToApply = new Dictionary<EffectStatusIDs, Key>(this.buffMapping);

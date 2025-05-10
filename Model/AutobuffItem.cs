@@ -20,7 +20,6 @@ namespace _4RTools.Model
             set => _delay = value;
         }
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
-        public List<string> CityList { get; set; }
 
         public AutoBuffItem(string actionName)
         {
@@ -37,7 +36,6 @@ namespace _4RTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                if (this.CityList == null || this.CityList.Count == 0) this.CityList = Server.GetCityList();
                 this.thread = AutoBuffThread(roClient);
                 ThreadRunner.Start(this.thread);
             }
@@ -61,7 +59,7 @@ namespace _4RTools.Model
                 }
                 StatusIdLogger.LogAllStatuses(statusList);
 
-                if (!prefs.StopBuffsCity || this.CityList.Contains(currentMap) == false)
+                if (!prefs.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
                 {
                     // Process buffs
                     List<EffectStatusIDs> buffs = new List<EffectStatusIDs>();

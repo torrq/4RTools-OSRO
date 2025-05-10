@@ -2,15 +2,16 @@
 using _4RTools.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace _4RTools.Forms
 {
-    public partial class AHKForm : Form, IObserver
+    public partial class SkillSpammerForm : Form, IObserver
     {
         private AHK ahk;
-        public AHKForm(Subject subject)
+        public SkillSpammerForm(Subject subject)
         {
             subject.Attach(this);
             InitializeComponent();
@@ -222,6 +223,31 @@ namespace _4RTools.Forms
         private void ChkL_CheckedChanged(object sender, EventArgs e) { }
 
         private void PictureBox1_Click(object sender, EventArgs e) { }
+
+        private void MRWebsiteButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.WebsiteMR);
+        }
+
+        private void HRWebsiteButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.WebsiteHR);
+        }
+
+        private void GitHubButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.GithubLink);
+        }
+
+        private void MRDiscordButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.DiscordLinkMR);
+        }
+
+        private void HRDiscordButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.DiscordLinkHR);
+        }
 
     }
 }

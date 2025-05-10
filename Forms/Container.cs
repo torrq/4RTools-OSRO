@@ -381,21 +381,6 @@ namespace _4RTools.Forms
             }
         }
 
-        private void LblLinkGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(AppConfig.GithubLink);
-        }
-
-        private void LblLinkDiscord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(AppConfig.DiscordLink);
-        }
-
-        private void WebsiteLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(AppConfig.Website);
-        }
-
         public void LoadProfile(string profileName)
         {
             if (profileName != currentProfile)
@@ -603,7 +588,7 @@ namespace _4RTools.Forms
 
         public void SetAHKWindow()
         {
-            AHKForm frm = new AHKForm(subject)
+            SkillSpammerForm frm = new SkillSpammerForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),

@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Collections.Generic;
 
 namespace _4RTools.Utils
 {
@@ -12,14 +13,48 @@ namespace _4RTools.Utils
 
         public static string WindowTitle => $"{Name} {Version}/{(ServerMode == 0 ? "MR" : "HR")}";
 
-        // Paths
+        // File Paths
         public static string DebugLogFilePath = "debug.log";
         public static string ProfileFolder = "Profile\\";
+        public static string ServersFile = "servers.json";
+        public static string CitiesFile = "cities.json";
+
+        // Server Information
+        public static List<dynamic> DefaultServers => new List<dynamic>
+        {
+            ServerMode == 0
+                ? new
+                {
+                    name = "OsRO Midrate",
+                    hpAddress = "00E8F434",
+                    nameAddress = "00E91C00",
+                    mapAddress = "00E8ABD4"
+                }
+                : new
+                {
+                    name = "OSRO",
+                    hpAddress = "010DCE10",
+                    nameAddress = "010DF5D8",
+                    mapAddress = "010D856C"
+                }
+        };
+
+        // Default City List
+        public static List<string> DefaultCities => new List<string>
+        {
+            "prontera", "morocc", "geffen", "payon", "alberta", "izlude", "aldebaran", "xmas",
+            "comodo", "yuno", "amatsu", "gonryun", "umbala", "niflheim", "louyang", "jawaii",
+            "ayothaya", "einbroch", "lighthalzen", "einbech", "hugel", "rachel", "veins",
+            "moscovia", "mid_camp", "munak", "splendide", "brasilis", "dicastes01", "mora",
+            "dewata", "malangdo", "malaya", "eclage", "marketplace", "mainhall", "quiz_00"
+        };
 
         // URLs
-        public static string GithubLink = "https://github.com/torrq/4RTools-OSRO";
-        public static string Website => ServerMode == 0 ? "https://osro.mr" : "https://osro.gg";
-        public static string DiscordLink => ServerMode == 0 ? "https://discord.com/invite/osro2" : "https://discord.com/invite/b5mjuCxY";
+        public static string GithubLink = "https://github.com/torrq/4RTools-OSRO/releases";
+        public static string WebsiteMR = "https://osro.mr";
+        public static string WebsiteHR = "https://osro.gg";
+        public static string DiscordLinkMR = "https://discord.com/invite/osro2";
+        public static string DiscordLinkHR = "https://discord.com/invite/b5mjuCxY";
 
         // Default minimum delays
         public static int AutoPotDefaultDelay = 50;
