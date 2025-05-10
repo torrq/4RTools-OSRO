@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Input;
 
 namespace _4RTools.Model
 {
@@ -11,12 +12,52 @@ namespace _4RTools.Model
     {
         public static Profile profile = new Profile("Default");
 
+        // Temporary class to deserialize old "Custom" data
+        private class LegacyCustom
+        {
+            public string ActionName { get; set; }
+            public Key tiMode { get; set; }
+        }
+
         public static void Load(string profileName)
         {
             try
             {
                 string json = File.ReadAllText(AppConfig.ProfileFolder + profileName + ".json");
                 dynamic rawObject = JsonConvert.DeserializeObject(json);
+
+                // Migrate old "Custom" key to "TransferHelper"
+                if (rawObject != null && rawObject["Custom"] != null && rawObject["TransferHelper"] == null)
+                {
+                    try
+                    {
+                        // Deserialize the old "Custom" data
+                        string customJson = rawObject["Custom"].ToString();
+                        LegacyCustom legacyCustom = JsonConvert.DeserializeObject<LegacyCustom>(customJson);
+
+                        // Create new TransferHelper data
+                        TransferHelper newTransferHelper = new TransferHelper
+                        {
+                            ActionName = TransferHelper.ACTION_NAME_TRANSFER,
+                            TransferKey = legacyCustom.tiMode
+                        };
+
+                        // Update the JSON object
+                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(newTransferHelper);
+                        rawObject.Property("Custom").Remove();
+
+                        // Save the updated JSON back to the file
+                        File.WriteAllText(AppConfig.ProfileFolder + profileName + ".json", JsonConvert.SerializeObject(rawObject, Formatting.Indented));
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error but continue loading with default TransferHelper
+                        Console.WriteLine($"Failed to migrate Custom to TransferHelper: {ex.Message}");
+                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(new TransferHelper());
+                        rawObject.Property("Custom").Remove();
+                        File.WriteAllText(AppConfig.ProfileFolder + profileName + ".json", JsonConvert.SerializeObject(rawObject, Formatting.Indented));
+                    }
+                }
 
                 if (rawObject != null)
                 {
@@ -40,14 +81,14 @@ namespace _4RTools.Model
                     profile.SongMacro = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.SongMacro));
                     profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
                     profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
-                    profile.Custom = JsonConvert.DeserializeObject<Custom>(Profile.GetByAction(rawObject, profile.Custom));
+                    profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
                     profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
                     profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("There was a problem loading the profile. Delete the Profiles folder and try again.");
+                throw new Exception($"There was a problem loading the profile: {ex.Message}. Delete the Profiles folder and try again.");
             }
         }
 
@@ -195,7 +236,7 @@ namespace _4RTools.Model
         public DebuffRecovery WeightDebuffsRecovery { get; set; }
         public Macro SongMacro { get; set; }
         public Macro MacroSwitch { get; set; }
-        public Custom Custom { get; set; }
+        public TransferHelper TransferHelper { get; set; }
         public ATKDEF AtkDefMode { get; set; }
 
         public Profile(string name)
@@ -215,7 +256,7 @@ namespace _4RTools.Model
             this.AtkDefMode = new ATKDEF(ATKDEFForm.TOTAL_ATKDEF_LANES);
             this.DebuffsRecovery = new DebuffRecovery("DebuffsRecovery");
             this.WeightDebuffsRecovery = new DebuffRecovery("WeightDebuffsRecovery");
-            this.Custom = new Custom();
+            this.TransferHelper = new TransferHelper();
         }
 
         public static object GetByAction(dynamic obj, IAction action)

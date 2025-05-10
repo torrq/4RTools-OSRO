@@ -8,8 +8,7 @@ namespace _4RTools.Forms
 {
     public partial class TransferButtonForm : Form, IObserver
     {
-
-        private Custom custom;
+        private TransferHelper transferHelper;
 
         public TransferButtonForm(Subject subject)
         {
@@ -24,25 +23,24 @@ namespace _4RTools.Forms
 
         public void Update(ISubject subject)
         {
-
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
                     InitializeApplicationForm();
                     break;
                 case MessageCode.TURN_OFF:
-                    this.custom.Stop();
+                    this.transferHelper.Stop();
                     break;
                 case MessageCode.TURN_ON:
-                    this.custom.Start();
+                    this.transferHelper.Start();
                     break;
             }
         }
 
         private void InitializeApplicationForm()
         {
-            this.custom = ProfileSingleton.GetCurrent().Custom;
-            this.txtTransferKey.Text = custom.tiMode.ToString();
+            this.transferHelper = ProfileSingleton.GetCurrent().TransferHelper;
+            this.txtTransferKey.Text = transferHelper.TransferKey.ToString();
 
             this.txtTransferKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
             this.txtTransferKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
@@ -52,11 +50,11 @@ namespace _4RTools.Forms
 
         private void OnTransferKeyChange(object sender, EventArgs e)
         {
-            Key key = (Key)Enum.Parse(typeof(Key), this.txtTransferKey.Text.ToString());
             try
             {
-                this.custom.tiMode = key;
-                ProfileSingleton.SetConfiguration(this.custom);
+                Key key = (Key)Enum.Parse(typeof(Key), this.txtTransferKey.Text.ToString());
+                this.transferHelper.TransferKey = key;
+                ProfileSingleton.SetConfiguration(this.transferHelper);
             }
             catch { }
             this.ActiveControl = null;
@@ -64,17 +62,14 @@ namespace _4RTools.Forms
 
         private void Label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void TxtTransferKey_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

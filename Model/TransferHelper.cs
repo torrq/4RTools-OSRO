@@ -8,22 +8,22 @@ using System.Windows.Input;
 
 namespace _4RTools.Model
 {
-    public class Custom : IAction
+    public class TransferHelper : IAction
     {
-        public static string ACTION_NAME_CUSTOM = "Custom";
+        public static string ACTION_NAME_TRANSFER = "TransferHelper";
 
-        public string ActionName { get; set; }
+        public string ActionName { get; set; } = ACTION_NAME_TRANSFER;
 
         private ThreadRunner thread;
 
         [DllImport("user32.dll")]
         public static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
-        public Key tiMode { get; set; } = 0;
+        public Key TransferKey { get; set; } = Key.None;
 
         public string GetActionName()
         {
-            return ACTION_NAME_CUSTOM;
+            return ACTION_NAME_TRANSFER;
         }
 
         public string GetConfiguration()
@@ -31,12 +31,12 @@ namespace _4RTools.Model
             return JsonConvert.SerializeObject(this);
         }
 
-        private int CustomExecutionThread(Client roClient)
+        private int TransferExecutionThread(Client roClient)
         {
-            var TiMode = ProfileSingleton.GetCurrent().Custom.tiMode;
-            if (!TiMode.Equals(Key.None) && Keyboard.IsKeyDown(TiMode))
+            var transferKey = ProfileSingleton.GetCurrent().TransferHelper.TransferKey;
+            if (transferKey != Key.None && Keyboard.IsKeyDown(transferKey))
             {
-                AHKTransferBoost(roClient, new KeyConfig(TiMode, true), (Keys)Enum.Parse(typeof(Keys), TiMode.ToString()));
+                AHKTransferBoost(roClient, new KeyConfig(transferKey, true), (Keys)Enum.Parse(typeof(Keys), transferKey.ToString()));
                 return 0;
             }
             Thread.Sleep(100);
@@ -45,10 +45,7 @@ namespace _4RTools.Model
 
         private void AHKTransferBoost(Client roClient, KeyConfig config, Keys thisk)
         {
-            Func<int, int> send_click;
-
-            //Send Event Directly to Window via PostMessage
-            send_click = (evt) =>
+            Func<int, int> send_click = (evt) =>
             {
                 Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_RBUTTONDOWN, 0, 0);
                 Thread.Sleep(1);
@@ -75,7 +72,7 @@ namespace _4RTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new ThreadRunner((_) => CustomExecutionThread(roClient));
+                this.thread = new ThreadRunner((_) => TransferExecutionThread(roClient));
                 ThreadRunner.Start(this.thread);
             }
         }

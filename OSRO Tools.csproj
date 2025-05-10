@@ -283,7 +283,7 @@
     <Compile Include="Model\ConfigGlobal.cs" />
     <Compile Include="Model\DebuffRenderer.cs" />
     <Compile Include="Model\BuffRenderer.cs" />
-    <Compile Include="Model\Custom.cs" />
+    <Compile Include="Model\TransferHelper.cs" />
     <Compile Include="Model\DebuffRecovery.cs" />
     <Compile Include="Model\Server.cs" />
     <Compile Include="Model\StatusRecovery.cs" />
