@@ -6,11 +6,11 @@ using System.Windows.Input;
 
 namespace _4RTools.Forms
 {
-    public partial class TransferButtonForm : Form, IObserver
+    public partial class TransferHelperForm : Form, IObserver
     {
         private TransferHelper transferHelper;
 
-        public TransferButtonForm(Subject subject)
+        public TransferHelperForm(Subject subject)
         {
             InitializeComponent();
             string toolTipText = "Simulates Alt+Right Click for quick item transfer between storage and inventory";

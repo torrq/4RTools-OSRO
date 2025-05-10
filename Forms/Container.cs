@@ -576,7 +576,7 @@ namespace _4RTools.Forms
 
         public void SetCustomButtonsWindow()
         {
-            TransferButtonForm form = new TransferButtonForm(subject)
+            TransferHelperForm form = new TransferHelperForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(450, 220),

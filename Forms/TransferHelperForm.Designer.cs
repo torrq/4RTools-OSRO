@@ -1,6 +1,6 @@
 ﻿namespace _4RTools.Forms
 {
-    partial class TransferButtonForm
+    partial class TransferHelperForm
     {
         /// <summary>
         /// Required designer variable.

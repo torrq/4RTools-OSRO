@@ -214,13 +214,6 @@
       <DependentUpon>SkillTimerForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\TransferButtonForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TransferButtonForm.Designer.cs">
-      <DependentUpon>TransferButtonForm.cs</DependentUpon>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Compile>
     <Compile Include="Forms\AutoBuffStatusForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,10 +226,6 @@
     </Compile>
     <EmbeddedResource Include="Forms\SkillTimerForm.resx">
       <DependentUpon>SkillTimerForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TransferButtonForm.resx">
-      <DependentUpon>TransferButtonForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Forms\AutobuffItemForm.Designer.cs">
@@ -271,6 +260,10 @@
     <Compile Include="Forms\ToggleStateForm.Designer.cs">
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Compile>
+    <Compile Include="Forms\TransferHelperForm.cs" />
+    <Compile Include="Forms\TransferHelperForm.Designer.cs">
+      <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\SkillSpammer.cs" />
     <Compile Include="Model\ATKDEF.cs" />
@@ -333,6 +326,9 @@
     <EmbeddedResource Include="Forms\ToggleStateForm.resx">
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransferHelperForm.resx">
+      <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
