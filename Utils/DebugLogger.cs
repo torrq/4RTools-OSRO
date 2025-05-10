@@ -8,7 +8,7 @@ namespace _4RTools.Utils
     public static class DebugLogger
     {
         private static readonly object _logLock = new object();
-        private static readonly string _logFilePath = AppConfig.DebugLogFilePath;
+        private static readonly string _logFilePath = AppConfig.DebugLogFile;
         private static bool _debugMode;
         private static bool _isInitialized = false;
         private static bool _initializationLogged = false;

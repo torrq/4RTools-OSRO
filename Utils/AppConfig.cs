@@ -14,10 +14,10 @@ namespace _4RTools.Utils
         public static string WindowTitle => $"{Name} {Version}/{(ServerMode == 0 ? "MR" : "HR")}";
 
         // File Paths
-        public static string DebugLogFilePath = "debug.log";
-        public static string ProfileFolder = "Profile\\";
+        public static string ProfileFolder = "Profile" + "\\";
         public static string ServersFile = "servers.json";
         public static string CitiesFile = "cities.json";
+        public static string DebugLogFile = "debug.log";
 
         // Server Information
         public static List<dynamic> DefaultServers => new List<dynamic>
