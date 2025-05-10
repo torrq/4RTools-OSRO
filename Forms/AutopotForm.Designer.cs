@@ -47,7 +47,7 @@ namespace _4RTools.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.firstHP = new System.Windows.Forms.RadioButton();
             this.firstSP = new System.Windows.Forms.RadioButton();
-            this.chkStopWitchFC = new System.Windows.Forms.CheckBox();
+            this.chkStopOnCriticalInjury = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtHPpct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAutopotDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSP)).BeginInit();
@@ -89,11 +89,6 @@ namespace _4RTools.Forms
             // 
             this.numAutopotDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numAutopotDelay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numAutopotDelay.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numAutopotDelay.Location = new System.Drawing.Point(222, 122);
             this.numAutopotDelay.Maximum = new decimal(new int[] {
             32767,
@@ -168,10 +163,10 @@ namespace _4RTools.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(100, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 21);
+            this.label3.Size = new System.Drawing.Size(31, 21);
             this.label3.TabIndex = 45;
             this.label3.Text = "HP";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -179,10 +174,10 @@ namespace _4RTools.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(100, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 21);
+            this.label4.Size = new System.Drawing.Size(28, 21);
             this.label4.TabIndex = 46;
             this.label4.Text = "SP";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -200,10 +195,10 @@ namespace _4RTools.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(23, 4);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 17);
+            this.label5.Size = new System.Drawing.Size(30, 17);
             this.label5.TabIndex = 47;
             this.label5.Text = "First";
             // 
@@ -230,26 +225,26 @@ namespace _4RTools.Forms
             this.firstSP.UseVisualStyleBackColor = true;
             this.firstSP.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
-            // chkStopWitchFC
+            // chkStopOnCriticalInjury
             // 
-            this.chkStopWitchFC.AutoSize = true;
-            this.chkStopWitchFC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkStopWitchFC.Location = new System.Drawing.Point(7, 126);
-            this.chkStopWitchFC.Name = "chkStopWitchFC";
-            this.chkStopWitchFC.Size = new System.Drawing.Size(137, 17);
-            this.chkStopWitchFC.TabIndex = 50;
-            this.chkStopWitchFC.Text = "Stop on Critical Injury";
-            this.chkStopWitchFC.UseVisualStyleBackColor = true;
-            this.chkStopWitchFC.CheckedChanged += new System.EventHandler(this.ChkStopWitchFC_CheckedChanged);
+            this.chkStopOnCriticalInjury.AutoSize = true;
+            this.chkStopOnCriticalInjury.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkStopOnCriticalInjury.Location = new System.Drawing.Point(7, 126);
+            this.chkStopOnCriticalInjury.Name = "chkStopOnCriticalInjury";
+            this.chkStopOnCriticalInjury.Size = new System.Drawing.Size(137, 17);
+            this.chkStopOnCriticalInjury.TabIndex = 50;
+            this.chkStopOnCriticalInjury.Text = "Stop on Critical Injury";
+            this.chkStopOnCriticalInjury.UseVisualStyleBackColor = true;
+            this.chkStopOnCriticalInjury.CheckedChanged += new System.EventHandler(this.ChkStopOnCriticalInjury_CheckedChanged);
             // 
             // AutopotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(300, 150);
-            this.Controls.Add(this.chkStopWitchFC);
+            this.Controls.Add(this.chkStopOnCriticalInjury);
             this.Controls.Add(this.firstSP);
             this.Controls.Add(this.firstHP);
             this.Controls.Add(this.label5);
@@ -298,7 +293,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton firstHP;
         private System.Windows.Forms.RadioButton firstSP;
-        private System.Windows.Forms.CheckBox chkStopWitchFC;
+        private System.Windows.Forms.CheckBox chkStopOnCriticalInjury;
         private System.Windows.Forms.NumericUpDown numAutopotDelay;
     }
 }

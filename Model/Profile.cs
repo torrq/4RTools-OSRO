@@ -22,7 +22,7 @@ namespace _4RTools.Model
                 {
                     profile.Name = profileName;
                     profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));
-                    profile.AHK = JsonConvert.DeserializeObject<AHK>(Profile.GetByAction(rawObject, profile.AHK));
+                    profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
                     profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
                     profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
                     profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
@@ -184,7 +184,7 @@ namespace _4RTools.Model
     {
         public string Name { get; set; }
         public ConfigProfile UserPreferences { get; set; }
-        public AHK AHK { get; set; }
+        public SkillSpammer SkillSpammer { get; set; }
         public Autopot Autopot { get; set; }
         public Autopot AutopotYgg { get; set; }
         public SkillTimer SkillTimer { get; set; }
@@ -203,7 +203,7 @@ namespace _4RTools.Model
             this.Name = name;
 
             this.UserPreferences = new ConfigProfile();
-            this.AHK = new AHK();
+            this.SkillSpammer = new SkillSpammer();
             this.Autopot = new Autopot(Autopot.ACTION_NAME_AUTOPOT);
             this.AutopotYgg = new Autopot(Autopot.ACTION_NAME_AUTOPOT_YGG);
             this.SkillTimer = new SkillTimer();

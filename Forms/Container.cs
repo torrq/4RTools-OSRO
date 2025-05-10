@@ -256,7 +256,6 @@ namespace _4RTools.Forms
             tabControl.DrawItem += TabControlAutopot_DrawItem;
             tabControl.BackColor = AppConfig.AccentBackColor;
             tabControl.ForeColor = Color.Black;
-
             tabControl.Appearance = TabAppearance.Normal;
         }
 

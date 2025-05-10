@@ -33,7 +33,7 @@ namespace _4RTools.Model
             set => _delayYgg = value;
         }
 
-        public bool StopWitchFC { get; set; } = false;
+        public bool StopOnCriticalInjury { get; set; } = false;
         public string FirstHeal { get; set; } = FIRSTHP;
 
         public string ActionName { get; set; }
@@ -106,7 +106,7 @@ namespace _4RTools.Model
                     {
                         Pot(this.HPKey);
                     }
-                    else if (this.ActionName == ACTION_NAME_AUTOPOT && ((!this.StopWitchFC && hasCriticalWound) || !hasCriticalWound))
+                    else if (this.ActionName == ACTION_NAME_AUTOPOT && ((!this.StopOnCriticalInjury && hasCriticalWound) || !hasCriticalWound))
                     {
                         Pot(this.HPKey);
                     }
@@ -128,7 +128,7 @@ namespace _4RTools.Model
                     Pot(this.HPKey);
                     hpPotCount++;
                 }
-                else if (this.ActionName == ACTION_NAME_AUTOPOT && ((!this.StopWitchFC && hasCriticalWound) || !hasCriticalWound))
+                else if (this.ActionName == ACTION_NAME_AUTOPOT && ((!this.StopOnCriticalInjury && hasCriticalWound) || !hasCriticalWound))
                 {
                     Pot(this.HPKey);
                     hpPotCount++;

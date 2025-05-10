@@ -272,7 +272,7 @@
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Model\AHK.cs" />
+    <Compile Include="Model\SkillSpammer.cs" />
     <Compile Include="Model\ATKDEF.cs" />
     <Compile Include="Model\AutobuffSkill.cs" />
     <Compile Include="Model\Autopot.cs" />

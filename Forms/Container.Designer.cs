@@ -165,16 +165,16 @@ namespace _4RTools.Forms
             // lblProcessName
             // 
             this.lblProcessName.AutoSize = true;
-            this.lblProcessName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblProcessName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProcessName.Location = new System.Drawing.Point(13, 9);
             this.lblProcessName.Name = "lblProcessName";
-            this.lblProcessName.Size = new System.Drawing.Size(44, 17);
+            this.lblProcessName.Size = new System.Drawing.Size(42, 17);
             this.lblProcessName.TabIndex = 3;
             this.lblProcessName.Text = "Client";
             // 
             // processCB
             // 
-            this.processCB.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.processCB.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.processCB.FormattingEnabled = true;
             this.processCB.Location = new System.Drawing.Point(18, 29);
             this.processCB.Name = "processCB";
@@ -185,16 +185,16 @@ namespace _4RTools.Forms
             // labelProfile
             // 
             this.labelProfile.AutoSize = true;
-            this.labelProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.labelProfile.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProfile.Location = new System.Drawing.Point(252, 9);
             this.labelProfile.Name = "labelProfile";
-            this.labelProfile.Size = new System.Drawing.Size(49, 17);
+            this.labelProfile.Size = new System.Drawing.Size(46, 17);
             this.labelProfile.TabIndex = 15;
             this.labelProfile.Text = "Profile";
             // 
             // profileCB
             // 
-            this.profileCB.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.profileCB.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileCB.FormattingEnabled = true;
             this.profileCB.Location = new System.Drawing.Point(256, 29);
             this.profileCB.Name = "profileCB";
@@ -213,7 +213,7 @@ namespace _4RTools.Forms
             // lblCharacterName
             // 
             this.lblCharacterName.AutoSize = true;
-            this.lblCharacterName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblCharacterName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCharacterName.Location = new System.Drawing.Point(463, 9);
             this.lblCharacterName.Name = "lblCharacterName";
             this.lblCharacterName.Size = new System.Drawing.Size(66, 17);
@@ -236,9 +236,12 @@ namespace _4RTools.Forms
             this.tabControlAutopot.Controls.Add(this.tabPageAutopot);
             this.tabControlAutopot.Controls.Add(this.tabPageYggAutopot);
             this.tabControlAutopot.Controls.Add(this.tabPageSkillTimer);
+            this.tabControlAutopot.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlAutopot.ItemSize = new System.Drawing.Size(68, 20);
             this.tabControlAutopot.Location = new System.Drawing.Point(15, 83);
             this.tabControlAutopot.Multiline = true;
             this.tabControlAutopot.Name = "tabControlAutopot";
+            this.tabControlAutopot.Padding = new System.Drawing.Point(12, 3);
             this.tabControlAutopot.SelectedIndex = 0;
             this.tabControlAutopot.Size = new System.Drawing.Size(328, 180);
             this.tabControlAutopot.TabIndex = 25;
@@ -246,30 +249,30 @@ namespace _4RTools.Forms
             // tabPageAutopot
             // 
             this.tabPageAutopot.BackColor = AppConfig.AccentBackColor;
-            this.tabPageAutopot.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAutopot.Location = new System.Drawing.Point(4, 24);
             this.tabPageAutopot.Name = "tabPageAutopot";
             this.tabPageAutopot.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAutopot.Size = new System.Drawing.Size(320, 154);
+            this.tabPageAutopot.Size = new System.Drawing.Size(320, 152);
             this.tabPageAutopot.TabIndex = 0;
             this.tabPageAutopot.Text = "Autopot";
             // 
             // tabPageYggAutopot
             // 
             this.tabPageYggAutopot.BackColor = AppConfig.AccentBackColor;
-            this.tabPageYggAutopot.Location = new System.Drawing.Point(4, 22);
+            this.tabPageYggAutopot.Location = new System.Drawing.Point(4, 26);
             this.tabPageYggAutopot.Name = "tabPageYggAutopot";
             this.tabPageYggAutopot.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageYggAutopot.Size = new System.Drawing.Size(320, 154);
+            this.tabPageYggAutopot.Size = new System.Drawing.Size(320, 150);
             this.tabPageYggAutopot.TabIndex = 1;
             this.tabPageYggAutopot.Text = "Yggdrasil";
             // 
             // tabPageSkillTimer
             // 
             this.tabPageSkillTimer.BackColor = AppConfig.AccentBackColor;
-            this.tabPageSkillTimer.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSkillTimer.Location = new System.Drawing.Point(4, 26);
             this.tabPageSkillTimer.Name = "tabPageSkillTimer";
             this.tabPageSkillTimer.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSkillTimer.Size = new System.Drawing.Size(320, 154);
+            this.tabPageSkillTimer.Size = new System.Drawing.Size(320, 150);
             this.tabPageSkillTimer.TabIndex = 2;
             this.tabPageSkillTimer.Text = "Skill Timer";
             // 
@@ -293,14 +296,14 @@ namespace _4RTools.Forms
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Image = global::_4RTools.Resources._4RTools.Icons.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(202, 29); // Adjusted to align exactly with right edge of processCB
+            this.btnRefresh.Location = new System.Drawing.Point(202, 29);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(24, 24);
             this.btnRefresh.TabIndex = 5;
@@ -312,7 +315,7 @@ namespace _4RTools.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(668, 761); // Fixed size, no resizing needed
+            this.ClientSize = new System.Drawing.Size(668, 761);
             this.Controls.Add(this.characterMap);
             this.Controls.Add(atkDefMode);
             this.Controls.Add(this.tabControlAutopot);
@@ -338,6 +341,7 @@ namespace _4RTools.Forms
             this.tabControlAutopot.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

@@ -22,7 +22,7 @@ namespace _4RTools.Model
         }
     }
 
-    public class AHK : IAction
+    public class SkillSpammer : IAction
     {
         // Import the mouse_event function from the Windows API
         [DllImport("user32.dll")]
@@ -51,7 +51,7 @@ namespace _4RTools.Model
         public bool NoShift { get; set; } = false;
         public string AHKMode { get; set; } = COMPATIBILITY;
 
-        public AHK()
+        public SkillSpammer()
         {
         }
 

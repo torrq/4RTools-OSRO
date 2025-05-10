@@ -21,7 +21,7 @@ namespace _4RTools.Forms
             {
                 this.picBoxHP.Image = Resources._4RTools.ETCResource.Ygg;
                 this.picBoxSP.Image = Resources._4RTools.ETCResource.Ygg;
-                this.chkStopWitchFC.Hide();
+                this.chkStopOnCriticalInjury.Hide();
             }
             subject.Attach(this);
 
@@ -52,7 +52,7 @@ namespace _4RTools.Forms
             this.txtHPpct.Text = this.autopot.HPPercent.ToString();
             this.txtSPpct.Text = this.autopot.SPPercent.ToString();
             this.numAutopotDelay.Text = this.autopot.Delay.ToString();
-            this.chkStopWitchFC.Checked = this.autopot.StopWitchFC;
+            this.chkStopOnCriticalInjury.Checked = this.autopot.StopOnCriticalInjury;
             RadioButton rdHealFirst = (RadioButton)this.Controls[ProfileSingleton.GetCurrent().Autopot.FirstHeal];
             if (rdHealFirst != null) { rdHealFirst.Checked = true; }
             ;
@@ -109,10 +109,10 @@ namespace _4RTools.Forms
 
         }
 
-        private void ChkStopWitchFC_CheckedChanged(object sender, EventArgs e)
+        private void ChkStopOnCriticalInjury_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox chk = sender as CheckBox;
-            this.autopot.StopWitchFC = chk.Checked;
+            this.autopot.StopOnCriticalInjury = chk.Checked;
             ProfileSingleton.SetConfiguration(this.autopot);
         }
 

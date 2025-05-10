@@ -10,7 +10,7 @@ namespace _4RTools.Forms
 {
     public partial class SkillSpammerForm : Form, IObserver
     {
-        private AHK ahk;
+        private SkillSpammer ahk;
         public SkillSpammerForm(Subject subject)
         {
             subject.Attach(this);
@@ -40,18 +40,18 @@ namespace _4RTools.Forms
             RemoveHandlers();
             FormUtils.ResetCheckboxForm(this);
             SetLegendDefaultValues();
-            this.ahk = ProfileSingleton.GetCurrent().AHK;
+            this.ahk = ProfileSingleton.GetCurrent().SkillSpammer;
             InitializeCheckAsThreeState();
 
-            RadioButton rdAhkMode = (RadioButton)this.groupAhkConfig.Controls[ProfileSingleton.GetCurrent().AHK.AHKMode];
+            RadioButton rdAhkMode = (RadioButton)this.groupAhkConfig.Controls[ProfileSingleton.GetCurrent().SkillSpammer.AHKMode];
             if (rdAhkMode != null) { rdAhkMode.Checked = true; }
             ;
-            this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().AHK.AhkDelay.ToString();
-            this.chkNoShift.Checked = ProfileSingleton.GetCurrent().AHK.NoShift;
-            this.chkMouseFlick.Checked = ProfileSingleton.GetCurrent().AHK.MouseFlick;
+            this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().SkillSpammer.AhkDelay.ToString();
+            this.chkNoShift.Checked = ProfileSingleton.GetCurrent().SkillSpammer.NoShift;
+            this.chkMouseFlick.Checked = ProfileSingleton.GetCurrent().SkillSpammer.MouseFlick;
             this.DisableControlsIfSpeedBoost();
 
-            Dictionary<string, KeyConfig> ahkClones = new Dictionary<string, KeyConfig>(ProfileSingleton.GetCurrent().AHK.AhkEntries);
+            Dictionary<string, KeyConfig> ahkClones = new Dictionary<string, KeyConfig>(ProfileSingleton.GetCurrent().SkillSpammer.AhkEntries);
 
             foreach (KeyValuePair<string, KeyConfig> config in ahkClones)
             {
@@ -172,7 +172,7 @@ namespace _4RTools.Forms
 
         private void DisableControlsIfSpeedBoost()
         {
-            if (this.ahk.AHKMode == AHK.SPEED_BOOST)
+            if (this.ahk.AHKMode == SkillSpammer.SPEED_BOOST)
             {
                 this.chkMouseFlick.Enabled = false;
                 this.chkNoShift.Enabled = false;

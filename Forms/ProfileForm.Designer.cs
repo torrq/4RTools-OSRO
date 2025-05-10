@@ -52,10 +52,10 @@ namespace _4RTools.Forms
             // lblProfilesList
             // 
             this.lblProfilesList.AutoSize = true;
-            this.lblProfilesList.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblProfilesList.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProfilesList.Location = new System.Drawing.Point(109, 13);
             this.lblProfilesList.Name = "lblProfilesList";
-            this.lblProfilesList.Size = new System.Drawing.Size(68, 17);
+            this.lblProfilesList.Size = new System.Drawing.Size(70, 17);
             this.lblProfilesList.TabIndex = 6;
             this.lblProfilesList.Text = "Profile List";
             this.lblProfilesList.TextAlign = System.Drawing.ContentAlignment.TopCenter;

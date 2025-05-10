@@ -80,10 +80,10 @@ namespace _4RTools.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(9, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 17);
+            this.label2.Size = new System.Drawing.Size(158, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Order of using autobuffs";
             this.label2.Click += new System.EventHandler(this.Label2_Click);
