@@ -1,11 +1,11 @@
-<p align="left">
-  <img src="https://github.com/torrq/4RTools-OSRO/blob/main/assets/images/logo-4rtools.png?raw=true" alt="4RTools Logo" width="300"/>
+<p align="center">
+  <img src="assets/image/logos/applogo.png" alt="App Logo" width="256">
 </p>
 
-# 4RTools-OSRO
+# OSRO Tools
 
 ## Overview
-4RTools-OSRO is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with [OsRO MR](https://osro.mr/) and [OsRO HR](https://osro.gg/).
+OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with [OsRO MR](https://osro.mr/) and [OsRO HR](https://osro.gg/).
 
 ## Key Changes
 - **Language & Adaptation:** Re-translated back into English and adjusted to align with OsRO's status set.
@@ -20,9 +20,9 @@
   - Upgraded .NET framework from v4.7.2 to v4.8.1.
 
 ### Installation Steps
-1. Download the `.zip` file from the release page.
+1. Download the `.zip` file from the [release page](https://github.com/torrq/4RTools-OSRO/releases).
 2. Extract the contents to a folder of your choice.
-3. Run `4RTools-OSRO.exe` as Administrator.
+3. Run `OSRO Tools.exe` as Administrator.
 4. Configure your settings according to your needs.
 5. Ensure your game client is running before enabling macros.
 
