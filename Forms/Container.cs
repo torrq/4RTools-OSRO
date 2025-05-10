@@ -238,7 +238,7 @@ namespace _4RTools.Forms
                 profileToLoad = lastUsedProfile;
             }
 
-            DebugLogger.Info($"Container_Load: Attempting to load profile '{profileToLoad}'");
+            //DebugLogger.Info($"Container_Load: Attempting to load profile '{profileToLoad}'");
             LoadProfile(profileToLoad);
             this.profileCB.SelectedItem = profileToLoad;
 
@@ -297,10 +297,7 @@ namespace _4RTools.Forms
                     profileForm.RefreshProfileList();
                 }
 
-                if (trayManager != null)
-                {
-                    trayManager.RefreshProfileMenu();
-                }
+                trayManager?.RefreshProfileMenu();
             });
         }
 
@@ -420,7 +417,7 @@ namespace _4RTools.Forms
                     // Save the profile as LastUsedProfile
                     ConfigGlobal.GetConfig().LastUsedProfile = profileName;
                     ConfigGlobal.SaveConfig();
-                    DebugLogger.Info($"Saved profile '{profileName}' as LastUsedProfile");
+                    //DebugLogger.Info($"Saved profile '{profileName}' as LastUsedProfile");
 
                     if (profileForm != null && !profileForm.IsDisposed)
                     {
@@ -485,8 +482,10 @@ namespace _4RTools.Forms
                     if (newDebugMode && debugLogWindow == null)
                     {
                         DebugLogger.Info("DebugMode set to true: Creating and showing DebugLogWindow...");
-                        debugLogWindow = new DebugLogWindow(this.Icon);
-                        debugLogWindow.Owner = this;
+                        debugLogWindow = new DebugLogWindow(this.Icon)
+                        {
+                            Owner = this
+                        };
                         PositionDebugLogWindow();
                         debugLogWindow.Show();
                         SubscribeToDebugLogger();
