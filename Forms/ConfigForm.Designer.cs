@@ -58,8 +58,8 @@ namespace _4RTools.Forms
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipWeight50 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
-            this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolTipSwitchAmmoCB = new System.Windows.Forms.ToolTip(this.components);
+            this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
@@ -253,9 +253,9 @@ namespace _4RTools.Forms
             this.chkDebugMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDebugMode.Location = new System.Drawing.Point(94, 21);
             this.chkDebugMode.Name = "chkDebugMode";
-            this.chkDebugMode.Size = new System.Drawing.Size(95, 19);
+            this.chkDebugMode.Size = new System.Drawing.Size(118, 19);
             this.chkDebugMode.TabIndex = 320;
-            this.chkDebugMode.Text = "Debug Mode";
+            this.chkDebugMode.Text = "Debug Log Mode";
             this.toolTipDebugMode.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
             this.chkDebugMode.UseVisualStyleBackColor = true;
             this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);

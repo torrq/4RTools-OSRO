@@ -261,7 +261,9 @@
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\TransferHelperForm.cs" />
+    <Compile Include="Forms\TransferHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\TransferHelperForm.Designer.cs">
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
