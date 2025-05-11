@@ -101,24 +101,6 @@ namespace _4RTools.Resources._4RTools {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Healing_Off {
-            get {
-                return ResourceManager.GetStream("Healing_Off", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Healing_On {
-            get {
-                return ResourceManager.GetStream("Healing_On", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icon4rtools_off {
@@ -135,16 +117,6 @@ namespace _4RTools.Resources._4RTools {
             get {
                 object obj = ResourceManager.GetObject("icon4rtools_on", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap remove {
-            get {
-                object obj = ResourceManager.GetObject("remove", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -192,16 +164,6 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap Ygg {
             get {
                 object obj = ResourceManager.GetObject("Ygg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Yggdrasil {
-            get {
-                object obj = ResourceManager.GetObject("Yggdrasil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

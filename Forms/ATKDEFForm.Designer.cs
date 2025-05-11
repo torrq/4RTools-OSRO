@@ -244,7 +244,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
             this.pictureBox12.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.InitialImage")));
             this.pictureBox12.Location = new System.Drawing.Point(469, 28);
             this.pictureBox12.Name = "pictureBox12";
@@ -254,7 +254,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
             this.pictureBox11.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.InitialImage")));
             this.pictureBox11.Location = new System.Drawing.Point(258, 28);
             this.pictureBox11.Name = "pictureBox11";
@@ -327,7 +327,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
             this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
             this.pictureBox6.Location = new System.Drawing.Point(469, 100);
             this.pictureBox6.Name = "pictureBox6";
@@ -346,7 +346,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
             this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
             this.pictureBox7.Location = new System.Drawing.Point(469, 148);
             this.pictureBox7.Name = "pictureBox7";
@@ -365,7 +365,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
             this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
             this.pictureBox8.Location = new System.Drawing.Point(469, 124);
             this.pictureBox8.Name = "pictureBox8";
@@ -384,7 +384,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
             this.pictureBox9.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.InitialImage")));
             this.pictureBox9.Location = new System.Drawing.Point(469, 76);
             this.pictureBox9.Name = "pictureBox9";
@@ -403,7 +403,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
             this.pictureBox10.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.InitialImage")));
             this.pictureBox10.Location = new System.Drawing.Point(469, 52);
             this.pictureBox10.Name = "pictureBox10";
@@ -422,7 +422,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
             this.pictureBox5.Location = new System.Drawing.Point(258, 99);
             this.pictureBox5.Name = "pictureBox5";
@@ -441,7 +441,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
             this.pictureBox4.Location = new System.Drawing.Point(258, 147);
             this.pictureBox4.Name = "pictureBox4";
@@ -460,7 +460,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
             this.pictureBox3.Location = new System.Drawing.Point(258, 123);
             this.pictureBox3.Name = "pictureBox3";
@@ -479,7 +479,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
             this.pictureBox2.Location = new System.Drawing.Point(258, 75);
             this.pictureBox2.Name = "pictureBox2";
@@ -489,7 +489,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(258, 52);
             this.pictureBox1.Name = "pictureBox1";
@@ -634,7 +634,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
             this.pictureBox13.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox13.InitialImage")));
             this.pictureBox13.Location = new System.Drawing.Point(469, 28);
             this.pictureBox13.Name = "pictureBox13";
@@ -644,7 +644,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
+            this.pictureBox14.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
             this.pictureBox14.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox14.InitialImage")));
             this.pictureBox14.Location = new System.Drawing.Point(258, 28);
             this.pictureBox14.Name = "pictureBox14";
@@ -717,7 +717,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
             this.pictureBox15.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox15.InitialImage")));
             this.pictureBox15.Location = new System.Drawing.Point(469, 100);
             this.pictureBox15.Name = "pictureBox15";
@@ -736,7 +736,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
+            this.pictureBox16.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
             this.pictureBox16.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox16.InitialImage")));
             this.pictureBox16.Location = new System.Drawing.Point(469, 148);
             this.pictureBox16.Name = "pictureBox16";
@@ -755,7 +755,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
+            this.pictureBox17.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
             this.pictureBox17.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox17.InitialImage")));
             this.pictureBox17.Location = new System.Drawing.Point(469, 124);
             this.pictureBox17.Name = "pictureBox17";
@@ -773,7 +773,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
+            this.pictureBox18.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
             this.pictureBox18.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox18.InitialImage")));
             this.pictureBox18.Location = new System.Drawing.Point(469, 76);
             this.pictureBox18.Name = "pictureBox18";
@@ -792,7 +792,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox19
             // 
-            this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
+            this.pictureBox19.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
             this.pictureBox19.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox19.InitialImage")));
             this.pictureBox19.Location = new System.Drawing.Point(469, 52);
             this.pictureBox19.Name = "pictureBox19";
@@ -811,7 +811,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox20
             // 
-            this.pictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox20.Image")));
+            this.pictureBox20.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
             this.pictureBox20.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox20.InitialImage")));
             this.pictureBox20.Location = new System.Drawing.Point(258, 99);
             this.pictureBox20.Name = "pictureBox20";
@@ -830,7 +830,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox21
             // 
-            this.pictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox21.Image")));
+            this.pictureBox21.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
             this.pictureBox21.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox21.InitialImage")));
             this.pictureBox21.Location = new System.Drawing.Point(258, 147);
             this.pictureBox21.Name = "pictureBox21";
@@ -849,7 +849,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox22
             // 
-            this.pictureBox22.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox22.Image")));
+            this.pictureBox22.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
             this.pictureBox22.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox22.InitialImage")));
             this.pictureBox22.Location = new System.Drawing.Point(258, 123);
             this.pictureBox22.Name = "pictureBox22";
@@ -868,7 +868,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox23.Image")));
+            this.pictureBox23.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
             this.pictureBox23.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox23.InitialImage")));
             this.pictureBox23.Location = new System.Drawing.Point(258, 75);
             this.pictureBox23.Name = "pictureBox23";
@@ -878,7 +878,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox24
             // 
-            this.pictureBox24.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox24.Image")));
+            this.pictureBox24.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
             this.pictureBox24.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox24.InitialImage")));
             this.pictureBox24.Location = new System.Drawing.Point(258, 52);
             this.pictureBox24.Name = "pictureBox24";

@@ -365,6 +365,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="applogo.ico" />
+    <Content Include="assets\image\icon\atkdef\armor_body.png" />
+    <Content Include="assets\image\icon\atkdef\armor_head.png" />
+    <Content Include="assets\image\icon\atkdef\armor_robe.png" />
+    <Content Include="assets\image\icon\atkdef\armor_shield.png" />
+    <Content Include="assets\image\icon\atkdef\armor_shoes.png" />
+    <Content Include="assets\image\icon\atkdef\weapon.png" />
     <Content Include="assets\image\icon\ui\discord.png" />
     <Content Include="assets\image\icon\ui\github.png" />
     <Content Include="assets\image\icon\ui\url_black.png" />
@@ -374,13 +380,6 @@
     <Content Include="assets\image\logos\osro_logo_mr.png" />
     <None Include="Resources\icon4rtools_off.ico" />
     <None Include="Resources\icon4rtools_on.ico" />
-    <Content Include="assets\image\icon\atkdef\cotton-shirt.gif" />
-    <Content Include="assets\image\icon\atkdef\guard.gif" />
-    <Content Include="assets\image\icon\atkdef\hat.png" />
-    <Content Include="assets\image\icon\atkdef\hood.gif" />
-    <Content Include="assets\image\icon\atkdef\knife.gif" />
-    <Content Include="assets\image\icon\atkdef\shoes.gif" />
-    <Content Include="assets\image\icon\atkdef\violin.gif" />
     <Content Include="assets\image\icon\debuff\bleeding.png" />
     <Content Include="assets\image\icon\debuff\burning.png" />
     <Content Include="assets\image\icon\debuff\chaos.png" />
@@ -562,18 +561,9 @@
     <None Include="assets\etc\arrowup.png" />
     <None Include="assets\etc\Speech_Off.wav" />
     <None Include="assets\etc\Speech_On.wav" />
-    <None Include="assets\etc\supported_servers.txt" />
-    <None Include="assets\etc\Yggdrasil.bmp" />
-    <None Include="assets\etc\HP.png" />
-    <None Include="assets\etc\SP.png" />
     <None Include="assets\etc\shift.png" />
     <None Include="assets\etc\up-and-down-arrow.png" />
-    <None Include="assets\etc\Healing_On.mp3" />
-    <None Include="assets\etc\Healing_Off.mp3" />
-    <None Include="assets\etc\Healing_Off.wav" />
-    <None Include="assets\etc\Healing_On.wav" />
     <None Include="assets\etc\arrowright.png" />
-    <None Include="assets\etc\remove.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
