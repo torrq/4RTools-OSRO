@@ -6,7 +6,7 @@ namespace _4RTools.Utils
     internal class AppConfig
     {
         public static string Name = "OSRO Tools";
-        public static string Version = "v1.0.5";
+        public static string Version = "v1.0.6";
 
         // 0 = MR/Midrate, 1 = HR/Highrate
         public static int ServerMode = 0;

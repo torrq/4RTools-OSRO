@@ -303,6 +303,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blue_potion {
+            get {
+                object obj = ResourceManager.GetObject("blue_potion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boxofstorms {
             get {
                 object obj = ResourceManager.GetObject("boxofstorms", resourceCulture);
@@ -1936,6 +1946,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap weight90 {
             get {
                 object obj = ResourceManager.GetObject("weight90", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap white_potion {
+            get {
+                object obj = ResourceManager.GetObject("white_potion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
