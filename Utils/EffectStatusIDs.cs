@@ -31,14 +31,24 @@ namespace _4RTools.Utils
         INC_AGI = 12,
         [Description("Decrease AGI")]
         DECREASE_AGI = 13,
+        [Description("Slow Poison")]
+        SLOWPOISON = 14,
         [Description("Impositio Manus")]
         IMPOSITIO = 15,
+        [Description("Suffragium")]
+        SUFFRAGIUM = 16,
         [Description("Aspersio")]
         ASPERSIO = 17,
+        [Description("Benedictio Sanctissimi Sacramenti")]
+        BENEDICTIO = 18,
+        [Description("Kyrie Eleison")]
+        KYRIE = 19,
         [Description("Magnificat")]
         MAGNIFICAT = 20,
         [Description("Gloria")]
         GLORIA = 21,
+        [Description("Lex Aeterna")]
+        LEXAETERNA = 22,
         [Description("Adrenaline Rush")]
         ADRENALINE = 23,
         [Description("Weapon Perfection")]
@@ -409,6 +419,14 @@ namespace _4RTools.Utils
         KAITE = 1402,
         [Description("Box of Storms")]
         BOX_OF_STORMS = 1405,
+        [Description("Volcano")]
+        VOLCANO = 1412,
+        [Description("Deluge")]
+        DELUGE = 1413,
+        [Description("Violent Gale")]
+        VIOLENTGALE = 1414,
+        [Description("Land Protector")]
+        LANDPROTECTOR = 1415,
         [Description("Hallucination")]
         HALLUCINATION_DEBUFF = 1416,
 
