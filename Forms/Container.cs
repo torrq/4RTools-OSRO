@@ -22,6 +22,12 @@ namespace _4RTools.Forms
         private ProfileForm profileForm;
         private Font italicFont;
         private Font regularFont;
+        private Font boldFont;
+        private Font smallItalicFont;
+        private Font smallBoldFont;
+        private Font smallRegularFont;
+        private int maxDropDownWidth = 150; // Reduced initial width for a tighter fit
+        private const string OFFLINE_TEXT = "OFFLINE"; // Constant for offline text
 
         public Container()
         {
@@ -36,9 +42,23 @@ namespace _4RTools.Forms
 
             this.regularFont = this.profileCB.Font;
             this.italicFont = new Font(this.regularFont, FontStyle.Italic);
+            this.boldFont = new Font(this.regularFont, FontStyle.Bold);
+            // Create smaller fonts for character and map (reduce by 1 point)
+            float smallerFontSize = this.regularFont.Size - 1;
+            this.smallItalicFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Italic);
+            this.smallBoldFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Bold);
+            this.smallRegularFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Regular);
 
             this.profileCB.DrawMode = DrawMode.OwnerDrawFixed;
             this.profileCB.DrawItem += new DrawItemEventHandler(this.profileCB_DrawItem);
+
+            // Set up custom drawing for processCB to match profileCB style
+            this.processCB.DrawMode = DrawMode.OwnerDrawVariable; // Use variable height for dropdown items
+            this.processCB.ItemHeight = this.profileCB.ItemHeight; // Match profileCB height for the ComboBox
+            this.processCB.DropDownWidth = this.maxDropDownWidth; // Will be updated dynamically
+            this.processCB.DropDownHeight = 150; // Adjusted to reasonable height
+            this.processCB.MeasureItem += new MeasureItemEventHandler(this.processCB_MeasureItem); // Add MeasureItem handler
+            this.processCB.DrawItem += new DrawItemEventHandler(this.processCB_DrawItem);
 
             this.Text = AppConfig.WindowTitle;
 
@@ -119,6 +139,144 @@ namespace _4RTools.Forms
             }
         }
 
+        private void processCB_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            var item = processCB.Items[e.Index] as ProcessDisplayItem;
+            if (item == null) return;
+
+            // Measure the height needed for two lines (process, character@map or "OFFLINE")
+            int lineHeight = processCB.Font.Height;
+            e.ItemHeight = lineHeight * 2; // Space for two lines
+
+            // Measure the width of the process name
+            using (Graphics g = processCB.CreateGraphics())
+            {
+                float processWidth = g.MeasureString(item.ProcessText, processCB.Font).Width + 2; // Match drawing offset
+
+                float contextWidth;
+                bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+                                     (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
+
+                if (isNotLoggedIn)
+                {
+                    // Measure width of "OFFLINE"
+                    float indent = 10; // Indent for the context line
+                    contextWidth = indent + g.MeasureString(OFFLINE_TEXT, this.smallItalicFont).Width;
+                }
+                else
+                {
+                    // Measure the width of the "character @ map" line
+                    float indent = 10; // Indent for the context line
+                    float characterWidth = g.MeasureString(item.CharacterName, this.smallBoldFont).Width;
+                    float atWidth = g.MeasureString(" @ ", this.smallRegularFont).Width;
+                    float mapWidth = g.MeasureString(item.CurrentMap, this.smallRegularFont).Width;
+                    contextWidth = indent + characterWidth + atWidth + mapWidth;
+                }
+
+                // Update the maximum width needed
+                float itemWidth = Math.Max(processWidth, contextWidth) + 2; // Reduced padding
+                this.maxDropDownWidth = Math.Max(this.maxDropDownWidth, (int)itemWidth);
+                processCB.DropDownWidth = this.maxDropDownWidth;
+            }
+        }
+
+        private void processCB_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            var item = processCB.Items[e.Index] as ProcessDisplayItem;
+            if (item == null) return;
+
+            Brush backgroundBrush = null; // Initialize to null
+            Brush foregroundBrush = null; // Initialize to null
+            bool disposeCustomBrushes = false; // Flag to indicate if custom brushes were created
+
+            if ((e.State & DrawItemState.ComboBoxEdit) == DrawItemState.ComboBoxEdit)
+            {
+                backgroundBrush = SystemBrushes.Window;
+                foregroundBrush = SystemBrushes.WindowText;
+            }
+            else if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                backgroundBrush = new SolidBrush(Color.FromArgb(220, 220, 220)); // Lighter gray
+                foregroundBrush = new SolidBrush(Color.Black);                   // Custom text color
+                disposeCustomBrushes = true; // Mark that custom brushes need disposal
+            }
+            else
+            {
+                backgroundBrush = SystemBrushes.Window;
+                foregroundBrush = SystemBrushes.WindowText;
+            }
+
+            // Draw the process name (main item)
+            e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+            e.Graphics.DrawString(item.ProcessText, e.Font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top + 2);
+
+            // Check if character name or map name is missing (indicating offline)
+            bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+                                 (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
+
+            // Draw the second line
+            int lineHeight = e.Font.Height;
+            float xOffset = e.Bounds.Left + 10; // Indent
+            float yOffset = e.Bounds.Top + lineHeight + 2;
+
+            if (isNotLoggedIn)
+            {
+                // Draw "OFFLINE" in italics and red
+                using (Brush offlineBrush = new SolidBrush(Color.Red))
+                {
+                    e.Graphics.DrawString(OFFLINE_TEXT, this.smallItalicFont, offlineBrush, xOffset, yOffset);
+                }
+            }
+            else
+            {
+                // Draw the context line: "charactername @ mapname"
+                // Draw character name (bold, smaller, using AppConfig.CharacterColor)
+                string characterText = item.CharacterName;
+                using (Brush characterBrush = new SolidBrush(AppConfig.CharacterColor))
+                {
+                    e.Graphics.DrawString(characterText, this.smallBoldFont, characterBrush, xOffset, yOffset);
+                    xOffset += e.Graphics.MeasureString(characterText, this.smallBoldFont).Width;
+                }
+
+                // Draw "@" symbol (black, smaller)
+                using (Brush atBrush = new SolidBrush(Color.Black)) // Keep this custom, as it's specific
+                {
+                    e.Graphics.DrawString(" @ ", this.smallRegularFont, atBrush, xOffset, yOffset);
+                    xOffset += e.Graphics.MeasureString(" @ ", this.smallRegularFont).Width;
+                }
+
+                // Draw map name (regular, smaller, using AppConfig.MapColor)
+                using (Brush mapBrush = new SolidBrush(AppConfig.MapColor)) // Keep this custom
+                {
+                    e.Graphics.DrawString(item.CurrentMap, this.smallRegularFont, mapBrush, xOffset, yOffset);
+                }
+            }
+
+            // Dispose custom brushes if they were created for the selected state
+            if (disposeCustomBrushes)
+            {
+                backgroundBrush?.Dispose();
+                foregroundBrush?.Dispose();
+            }
+
+            // Check if the item has focus (and isn't the edit part)
+            if ((e.State & DrawItemState.Focus) == DrawItemState.Focus &&
+                (e.State & DrawItemState.ComboBoxEdit) != DrawItemState.ComboBoxEdit)
+            {
+                // Define a Pen for your custom focus rectangle
+                using (Pen focusPen = new Pen(Color.LightGray, 1))
+                {
+                    focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid; // Make it solid
+                    Rectangle focusBounds = e.Bounds;
+                    e.Graphics.DrawRectangle(focusPen, focusBounds);
+                }
+            }
+        }
+
         private void PositionDebugLogWindow()
         {
             if (debugLogWindow != null && !debugLogWindow.IsDisposed)
@@ -184,7 +342,11 @@ namespace _4RTools.Forms
 
         private void ProcessCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedProcessString = this.processCB.SelectedItem.ToString();
+            if (processCB.SelectedIndex < 0) return;
+
+            string selectedProcessString = (processCB.SelectedItem as ProcessDisplayItem)?.ProcessText;
+            if (string.IsNullOrEmpty(selectedProcessString)) return;
+
             Client client = new Client(selectedProcessString);
             ClientSingleton.Instance(client);
 
@@ -197,8 +359,8 @@ namespace _4RTools.Forms
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
 
-            characterName.Text = client.ReadCharacterName();
-            characterMap.Text = client.ReadCurrentMap();
+            characterName.Text = client.ReadCharacterName() ?? "- -";
+            characterMap.Text = client.ReadCurrentMap() ?? "- -";
             subject.Notify(new Utils.Message(Utils.MessageCode.PROCESS_CHANGED, null));
         }
 
@@ -238,7 +400,6 @@ namespace _4RTools.Forms
                 profileToLoad = lastUsedProfile;
             }
 
-            //DebugLogger.Info($"Container_Load: Attempting to load profile '{profileToLoad}'");
             LoadProfile(profileToLoad);
             this.profileCB.SelectedItem = profileToLoad;
 
@@ -305,14 +466,38 @@ namespace _4RTools.Forms
             this.Invoke((MethodInvoker)delegate ()
             {
                 this.processCB.Items.Clear();
-            });
-            foreach (Process p in Process.GetProcesses())
-            {
-                if (p.MainWindowTitle != "" && ClientListSingleton.ExistsByProcessName(p.ProcessName))
+                // Reset maxDropDownWidth when refreshing the list
+                this.maxDropDownWidth = 150; // Reduced initial width
+
+                var processItems = new List<ProcessDisplayItem>();
+                foreach (Process p in Process.GetProcesses())
                 {
-                    this.processCB.Items.Add(string.Format("{0}.exe - {1}", p.ProcessName, p.Id));
+                    if (p.MainWindowTitle != "" && ClientListSingleton.ExistsByProcessName(p.ProcessName))
+                    {
+                        Client client = new Client($"{p.ProcessName}.exe - {p.Id}");
+                        string processText = $"{p.ProcessName}.exe - {p.Id}";
+                        string characterName = client.ReadCharacterName() ?? "- -";
+                        string currentMap = client.ReadCurrentMap() ?? "- -";
+                        processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap));
+                    }
                 }
-            }
+
+                // Sort the list: logged-in processes by character name and then process ID, offline at the end
+                var sortedItems = processItems.OrderBy(item =>
+                    (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+                    (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0) // 1 for offline, 0 for online
+                    .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName) // Sort by character name, treat "- -" as empty
+                    .ThenBy(item =>
+                    {
+                        string idPart = item.ProcessText.Split('-').Last().Trim();
+                        return int.TryParse(idPart, out int id) ? id : int.MaxValue; // Parse process ID, default to MaxValue if parsing fails
+                    });
+
+                foreach (var item in sortedItems)
+                {
+                    this.processCB.Items.Add(item);
+                }
+            });
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -401,7 +586,6 @@ namespace _4RTools.Forms
                     // Save the profile as LastUsedProfile
                     ConfigGlobal.GetConfig().LastUsedProfile = profileName;
                     ConfigGlobal.SaveConfig();
-                    //DebugLogger.Info($"Saved profile '{profileName}' as LastUsedProfile");
 
                     if (profileForm != null && !profileForm.IsDisposed)
                     {
@@ -512,6 +696,25 @@ namespace _4RTools.Forms
                     ClientListSingleton.AddClient(new Client(clientDTO));
                 }
                 catch { }
+            }
+        }
+
+        private class ProcessDisplayItem
+        {
+            public string ProcessText { get; }
+            public string CharacterName { get; }
+            public string CurrentMap { get; }
+
+            public ProcessDisplayItem(string processText, string characterName, string currentMap)
+            {
+                ProcessText = processText;
+                CharacterName = characterName;
+                CurrentMap = currentMap;
+            }
+
+            public override string ToString()
+            {
+                return ProcessText;
             }
         }
 

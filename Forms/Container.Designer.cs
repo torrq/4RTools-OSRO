@@ -174,11 +174,14 @@ namespace _4RTools.Forms
             // 
             // processCB
             // 
+            this.processCB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.processCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.processCB.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.processCB.FormattingEnabled = true;
             this.processCB.Location = new System.Drawing.Point(18, 29);
             this.processCB.Name = "processCB";
             this.processCB.Size = new System.Drawing.Size(184, 25);
+            this.processCB.ItemHeight = 25; // Match profileCB height
+            this.processCB.DropDownHeight = 200; // Already set in code, but keep for consistency
             this.processCB.TabIndex = 2;
             this.processCB.SelectedIndexChanged += new System.EventHandler(this.ProcessCB_SelectedIndexChanged);
             // 
@@ -194,8 +197,9 @@ namespace _4RTools.Forms
             // 
             // profileCB
             // 
+            this.profileCB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profileCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.profileCB.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileCB.FormattingEnabled = true;
             this.profileCB.Location = new System.Drawing.Point(256, 29);
             this.profileCB.Name = "profileCB";
             this.profileCB.Size = new System.Drawing.Size(181, 25);
@@ -296,8 +300,8 @@ namespace _4RTools.Forms
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatAppearance.BorderSize = 0;

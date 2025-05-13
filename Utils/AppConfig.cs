@@ -77,6 +77,10 @@ namespace _4RTools.Utils
         public static Color CopyButtonBackColor = Color.FromArgb(249, 255, 175);
         public static Color AccentBackColor = Color.FromArgb(238, 248, 255);
 
+        // Character and Map colors
+        public static Color CharacterColor = Color.DarkGreen;
+        public static Color MapColor = Color.DarkCyan;
+
         // Dynamically darkens border colors according to background colors
         public static int ProfileButtonBorderDarkenAmount = 60;
 
