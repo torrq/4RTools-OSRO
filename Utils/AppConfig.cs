@@ -13,10 +13,14 @@ namespace _4RTools.Utils
 
         public static string WindowTitle => $"{Name} {Version}/{(ServerMode == 0 ? "MR" : "HR")}";
 
+        public static string SystemTrayText => $"{Name} {Version}/{(ServerMode == 0 ? "MR" : "HR")}";
+
         // File Paths
         public static string ProfileFolder = "Profile" + "\\";
-        public static string ServersFile = "servers.json";
-        public static string CitiesFile = "cities.json";
+        public static string ConfigFolder = "Config" + "\\";
+        public static string ConfigFile = ConfigFolder + "config.json";
+        public static string ServersFile = ConfigFolder + "servers.json";
+        public static string CitiesFile = ConfigFolder + "cities.json";
         public static string DebugLogFile = "debug.log";
 
         // Server Information

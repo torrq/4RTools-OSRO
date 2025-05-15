@@ -26,8 +26,8 @@ namespace _4RTools.Forms
         private Font smallItalicFont;
         private Font smallBoldFont;
         private Font smallRegularFont;
-        private int maxDropDownWidth = 150; // Reduced initial width for a tighter fit
-        private const string OFFLINE_TEXT = "OFFLINE"; // Constant for offline text
+        private int maxDropDownWidth = 150;
+        private const string OFFLINE_TEXT = "OFFLINE";
 
         public Container()
         {
@@ -43,7 +43,6 @@ namespace _4RTools.Forms
             this.regularFont = this.profileCB.Font;
             this.italicFont = new Font(this.regularFont, FontStyle.Italic);
             this.boldFont = new Font(this.regularFont, FontStyle.Bold);
-            // Create smaller fonts for character and map (reduce by 1 point)
             float smallerFontSize = this.regularFont.Size - 1;
             this.smallItalicFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Italic);
             this.smallBoldFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Bold);
@@ -52,12 +51,11 @@ namespace _4RTools.Forms
             this.profileCB.DrawMode = DrawMode.OwnerDrawFixed;
             this.profileCB.DrawItem += new DrawItemEventHandler(this.profileCB_DrawItem);
 
-            // Set up custom drawing for processCB to match profileCB style
-            this.processCB.DrawMode = DrawMode.OwnerDrawVariable; // Use variable height for dropdown items
-            this.processCB.ItemHeight = this.profileCB.ItemHeight; // Match profileCB height for the ComboBox
-            this.processCB.DropDownWidth = this.maxDropDownWidth; // Will be updated dynamically
-            this.processCB.DropDownHeight = 150; // Adjusted to reasonable height
-            this.processCB.MeasureItem += new MeasureItemEventHandler(this.processCB_MeasureItem); // Add MeasureItem handler
+            this.processCB.DrawMode = DrawMode.OwnerDrawVariable;
+            this.processCB.ItemHeight = this.profileCB.ItemHeight;
+            this.processCB.DropDownWidth = this.maxDropDownWidth;
+            this.processCB.DropDownHeight = 150;
+            this.processCB.MeasureItem += new MeasureItemEventHandler(this.processCB_MeasureItem);
             this.processCB.DrawItem += new DrawItemEventHandler(this.processCB_DrawItem);
 
             this.Text = AppConfig.WindowTitle;
@@ -146,14 +144,12 @@ namespace _4RTools.Forms
             var item = processCB.Items[e.Index] as ProcessDisplayItem;
             if (item == null) return;
 
-            // Measure the height needed for two lines (process, character@map or "OFFLINE")
             int lineHeight = processCB.Font.Height;
-            e.ItemHeight = lineHeight * 2; // Space for two lines
+            e.ItemHeight = lineHeight * 2;
 
-            // Measure the width of the process name
             using (Graphics g = processCB.CreateGraphics())
             {
-                float processWidth = g.MeasureString(item.ProcessText, processCB.Font).Width + 2; // Match drawing offset
+                float processWidth = g.MeasureString(item.ProcessText, processCB.Font).Width + 2;
 
                 float contextWidth;
                 bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
@@ -161,22 +157,19 @@ namespace _4RTools.Forms
 
                 if (isNotLoggedIn)
                 {
-                    // Measure width of "OFFLINE"
-                    float indent = 10; // Indent for the context line
+                    float indent = 10;
                     contextWidth = indent + g.MeasureString(OFFLINE_TEXT, this.smallItalicFont).Width;
                 }
                 else
                 {
-                    // Measure the width of the "character @ map" line
-                    float indent = 10; // Indent for the context line
+                    float indent = 10;
                     float characterWidth = g.MeasureString(item.CharacterName, this.smallBoldFont).Width;
                     float atWidth = g.MeasureString(" @ ", this.smallRegularFont).Width;
                     float mapWidth = g.MeasureString(item.CurrentMap, this.smallRegularFont).Width;
                     contextWidth = indent + characterWidth + atWidth + mapWidth;
                 }
 
-                // Update the maximum width needed
-                float itemWidth = Math.Max(processWidth, contextWidth) + 2; // Reduced padding
+                float itemWidth = Math.Max(processWidth, contextWidth) + 2;
                 this.maxDropDownWidth = Math.Max(this.maxDropDownWidth, (int)itemWidth);
                 processCB.DropDownWidth = this.maxDropDownWidth;
             }
@@ -189,9 +182,9 @@ namespace _4RTools.Forms
             var item = processCB.Items[e.Index] as ProcessDisplayItem;
             if (item == null) return;
 
-            Brush backgroundBrush = null; // Initialize to null
-            Brush foregroundBrush = null; // Initialize to null
-            bool disposeCustomBrushes = false; // Flag to indicate if custom brushes were created
+            Brush backgroundBrush = null;
+            Brush foregroundBrush = null;
+            bool disposeCustomBrushes = false;
 
             if ((e.State & DrawItemState.ComboBoxEdit) == DrawItemState.ComboBoxEdit)
             {
@@ -200,9 +193,9 @@ namespace _4RTools.Forms
             }
             else if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                backgroundBrush = new SolidBrush(Color.FromArgb(220, 220, 220)); // Lighter gray
-                foregroundBrush = new SolidBrush(Color.Black);                   // Custom text color
-                disposeCustomBrushes = true; // Mark that custom brushes need disposal
+                backgroundBrush = new SolidBrush(Color.FromArgb(220, 220, 220));
+                foregroundBrush = new SolidBrush(Color.Black);
+                disposeCustomBrushes = true;
             }
             else
             {
@@ -210,22 +203,18 @@ namespace _4RTools.Forms
                 foregroundBrush = SystemBrushes.WindowText;
             }
 
-            // Draw the process name (main item)
             e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             e.Graphics.DrawString(item.ProcessText, e.Font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top + 2);
 
-            // Check if character name or map name is missing (indicating offline)
             bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                                  (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
 
-            // Draw the second line
             int lineHeight = e.Font.Height;
-            float xOffset = e.Bounds.Left + 10; // Indent
+            float xOffset = e.Bounds.Left + 10;
             float yOffset = e.Bounds.Top + lineHeight + 2;
 
             if (isNotLoggedIn)
             {
-                // Draw "OFFLINE" in italics and red
                 using (Brush offlineBrush = new SolidBrush(Color.Red))
                 {
                     e.Graphics.DrawString(OFFLINE_TEXT, this.smallItalicFont, offlineBrush, xOffset, yOffset);
@@ -233,8 +222,6 @@ namespace _4RTools.Forms
             }
             else
             {
-                // Draw the context line: "charactername @ mapname"
-                // Draw character name (bold, smaller, using AppConfig.CharacterColor)
                 string characterText = item.CharacterName;
                 using (Brush characterBrush = new SolidBrush(AppConfig.CharacterColor))
                 {
@@ -242,38 +229,55 @@ namespace _4RTools.Forms
                     xOffset += e.Graphics.MeasureString(characterText, this.smallBoldFont).Width;
                 }
 
-                // Draw "@" symbol (black, smaller)
-                using (Brush atBrush = new SolidBrush(Color.Black)) // Keep this custom, as it's specific
+                using (Brush atBrush = new SolidBrush(Color.Black))
                 {
                     e.Graphics.DrawString(" @ ", this.smallRegularFont, atBrush, xOffset, yOffset);
                     xOffset += e.Graphics.MeasureString(" @ ", this.smallRegularFont).Width;
                 }
 
-                // Draw map name (regular, smaller, using AppConfig.MapColor)
-                using (Brush mapBrush = new SolidBrush(AppConfig.MapColor)) // Keep this custom
+                using (Brush mapBrush = new SolidBrush(AppConfig.MapColor))
                 {
                     e.Graphics.DrawString(item.CurrentMap, this.smallRegularFont, mapBrush, xOffset, yOffset);
                 }
             }
 
-            // Dispose custom brushes if they were created for the selected state
             if (disposeCustomBrushes)
             {
                 backgroundBrush?.Dispose();
                 foregroundBrush?.Dispose();
             }
 
-            // Check if the item has focus (and isn't the edit part)
             if ((e.State & DrawItemState.Focus) == DrawItemState.Focus &&
                 (e.State & DrawItemState.ComboBoxEdit) != DrawItemState.ComboBoxEdit)
             {
-                // Define a Pen for your custom focus rectangle
                 using (Pen focusPen = new Pen(Color.LightGray, 1))
                 {
-                    focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid; // Make it solid
+                    focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
                     Rectangle focusBounds = e.Bounds;
                     e.Graphics.DrawRectangle(focusPen, focusBounds);
                 }
+            }
+        }
+
+        private void TabControlAutopot_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (!(sender is TabControl tabControl)) return;
+
+            e.Graphics.FillRectangle(new SolidBrush(AppConfig.AccentBackColor), e.Bounds);
+
+            bool isActiveTab = (e.Index == tabControl.SelectedIndex);
+
+            Font tabFont = isActiveTab ? new Font(e.Font, FontStyle.Bold) : e.Font;
+
+            Color textColor = Color.Black;
+
+            string text = tabControl.TabPages[e.Index].Text;
+            using (Brush textBrush = new SolidBrush(textColor))
+            {
+                SizeF textSize = e.Graphics.MeasureString(text, tabFont);
+                float textX = e.Bounds.X + (e.Bounds.Width - textSize.Width) / 2;
+                float textY = e.Bounds.Y + (e.Bounds.Height - textSize.Height) / 2;
+                e.Graphics.DrawString(text, tabFont, textBrush, textX, textY);
             }
         }
 
@@ -364,37 +368,14 @@ namespace _4RTools.Forms
             subject.Notify(new Utils.Message(Utils.MessageCode.PROCESS_CHANGED, null));
         }
 
-        private void TabControlAutopot_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (!(sender is TabControl tabControl)) return;
-
-            e.Graphics.FillRectangle(new SolidBrush(AppConfig.AccentBackColor), e.Bounds);
-
-            bool isActiveTab = (e.Index == tabControl.SelectedIndex);
-
-            Font tabFont = isActiveTab ? new Font(e.Font, FontStyle.Bold) : e.Font;
-
-            Color textColor = Color.Black;
-
-            string text = tabControl.TabPages[e.Index].Text;
-            using (Brush textBrush = new SolidBrush(textColor))
-            {
-                SizeF textSize = e.Graphics.MeasureString(text, tabFont);
-                float textX = e.Bounds.X + (e.Bounds.Width - textSize.Width) / 2;
-                float textY = e.Bounds.Y + (e.Bounds.Height - textSize.Height) / 2;
-                e.Graphics.DrawString(text, tabFont, textBrush, textX, textY);
-            }
-        }
-
         private void Container_Load(object sender, EventArgs e)
         {
             ProfileSingleton.Create("Default");
             this.RefreshProcessList();
             this.RefreshProfileList();
 
-            // Load the last used profile or Default
             string lastUsedProfile = ConfigGlobal.GetConfig().LastUsedProfile;
-            string profileToLoad = "Default"; // Fallback to Default
+            string profileToLoad = "Default";
             if (!string.IsNullOrWhiteSpace(lastUsedProfile) && Profile.ListAll().Contains(lastUsedProfile))
             {
                 profileToLoad = lastUsedProfile;
@@ -466,8 +447,7 @@ namespace _4RTools.Forms
             this.Invoke((MethodInvoker)delegate ()
             {
                 this.processCB.Items.Clear();
-                // Reset maxDropDownWidth when refreshing the list
-                this.maxDropDownWidth = 150; // Reduced initial width
+                this.maxDropDownWidth = 150;
 
                 var processItems = new List<ProcessDisplayItem>();
                 foreach (Process p in Process.GetProcesses())
@@ -482,15 +462,14 @@ namespace _4RTools.Forms
                     }
                 }
 
-                // Sort the list: logged-in processes by character name and then process ID, offline at the end
                 var sortedItems = processItems.OrderBy(item =>
                     (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
-                    (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0) // 1 for offline, 0 for online
-                    .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName) // Sort by character name, treat "- -" as empty
+                    (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0)
+                    .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName)
                     .ThenBy(item =>
                     {
                         string idPart = item.ProcessText.Split('-').Last().Trim();
-                        return int.TryParse(idPart, out int id) ? id : int.MaxValue; // Parse process ID, default to MaxValue if parsing fails
+                        return int.TryParse(idPart, out int id) ? id : int.MaxValue;
                     });
 
                 foreach (var item in sortedItems)
@@ -542,6 +521,8 @@ namespace _4RTools.Forms
                     debugLogWindow = null;
                 }
 
+                trayManager?.Dispose();
+
                 foreach (Form childForm in this.MdiChildren)
                 {
                     if (!childForm.IsDisposed)
@@ -583,7 +564,6 @@ namespace _4RTools.Forms
                     currentProfile = profileName;
                     profileCB.SelectedItem = profileName;
 
-                    // Save the profile as LastUsedProfile
                     ConfigGlobal.GetConfig().LastUsedProfile = profileName;
                     ConfigGlobal.SaveConfig();
 
@@ -596,7 +576,6 @@ namespace _4RTools.Forms
                 {
                     DebugLogger.Error(ex, $"Failed to load profile: {profileName}");
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    // Fallback to Default profile if loading fails
                     if (profileName != "Default")
                     {
                         DebugLogger.Info("Falling back to Default profile due to load failure");

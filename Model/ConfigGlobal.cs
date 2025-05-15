@@ -13,19 +13,29 @@ namespace _4RTools.Model
 
     internal class ConfigGlobal
     {
-        private static readonly string ConfigFile = "config.json";
+        private static readonly string ConfigFile = AppConfig.ConfigFile;
         private static Config config;
 
         public static void Initialize()
         {
             try
             {
+                EnsureConfigFolderExists();
                 EnsureConfigFileExists();
                 LoadConfig();
             }
             catch (Exception ex)
             {
                 DebugLogger.Error(ex, "Failed to initialize config.json");
+            }
+        }
+
+        public static void EnsureConfigFolderExists()
+        {
+            if (!Directory.Exists(AppConfig.ConfigFolder))
+            {
+                Directory.CreateDirectory(AppConfig.ConfigFolder);
+                DebugLogger.Info($"Created config folder: {AppConfig.ConfigFolder}");
             }
         }
 

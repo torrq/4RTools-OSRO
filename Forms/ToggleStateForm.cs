@@ -21,8 +21,8 @@ namespace _4RTools.Forms
         {
             InitializeComponent();
 
-            subject.Attach(this);
             this.subject = subject;
+            subject.Attach(this);
             KeyboardHook.Enable();
 
             Keys initialToggleKey = Keys.None;
@@ -47,10 +47,9 @@ namespace _4RTools.Forms
 
             SetVisualState(isApplicationOn);
 
-            trayManager = new NotificationTrayManager(notifyIconTray, subject, isApplicationOn);
+            trayManager = new NotificationTrayManager(subject, isApplicationOn);
         }
 
-        // Public method to access the trayManager
         public NotificationTrayManager GetTrayManager()
         {
             return trayManager;

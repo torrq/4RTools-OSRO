@@ -50,7 +50,7 @@ namespace _4RTools.Utils
                     {
                         using (StreamWriter writer = new StreamWriter(_logFilePath, false, Encoding.UTF8))
                         {
-                            writer.WriteLine("=== 4RTOOLS DEBUG LOG ===");
+                            writer.WriteLine("=== "+ AppConfig.Name.ToUpper() +" DEBUG LOG ===");
                             writer.WriteLine("=== SESSION DATE " + _sessionDate + " ===");
                             writer.WriteLine("============================================");
                         }

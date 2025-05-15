@@ -37,7 +37,6 @@ namespace _4RTools.Forms
             this.txtStatusToggleKey = new System.Windows.Forms.TextBox();
             this.lblStatusToggle = new System.Windows.Forms.Label();
             this.btnStatusToggle = new System.Windows.Forms.Button();
-            this.notifyIconTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.toolTipStatusToggle = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -98,12 +97,6 @@ namespace _4RTools.Forms
             this.btnStatusToggle.UseVisualStyleBackColor = false;
             this.btnStatusToggle.Click += new System.EventHandler(this.btnToggleStatusHandler);
             // 
-            // notifyIconTray
-            // 
-            this.notifyIconTray.Icon = _4RTools.Resources._4RTools.Icons.systray_icon;
-            this.notifyIconTray.Text = "OSRO Tools";
-            this.notifyIconTray.Visible = true;
-            // 
             // ToggleApplicationStateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +121,5 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Button btnStatusToggle;
         private System.Windows.Forms.Label lblStatusToggle;
         private System.Windows.Forms.TextBox txtStatusToggleKey;
-        private System.Windows.Forms.NotifyIcon notifyIconTray;
     }
 }
