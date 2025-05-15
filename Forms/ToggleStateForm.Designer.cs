@@ -100,7 +100,7 @@ namespace _4RTools.Forms
             // 
             // notifyIconTray
             // 
-            this.notifyIconTray.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconTray.Icon")));
+            this.notifyIconTray.Icon = _4RTools.Resources._4RTools.Icons.systray_icon;
             this.notifyIconTray.Text = "OSRO Tools";
             this.notifyIconTray.Visible = true;
             // 

@@ -970,7 +970,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_4RTools.Properties.Resources.shift;
+            this.pictureBox1.Image = _4RTools.Resources._4RTools.Icons.shift;
             this.pictureBox1.Location = new System.Drawing.Point(102, 41);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
@@ -981,7 +981,7 @@ namespace _4RTools.Forms
             // 
             // pbUpAndDownArrow
             // 
-            this.pbUpAndDownArrow.Image = global::_4RTools.Properties.Resources.up_and_down_arrow;
+            this.pbUpAndDownArrow.Image = _4RTools.Resources._4RTools.Icons.up_and_down_arrow;
             this.pbUpAndDownArrow.Location = new System.Drawing.Point(106, 21);
             this.pbUpAndDownArrow.Name = "pbUpAndDownArrow";
             this.pbUpAndDownArrow.Size = new System.Drawing.Size(16, 16);

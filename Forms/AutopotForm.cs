@@ -19,8 +19,8 @@ namespace _4RTools.Forms
 
             if (isYgg)
             {
-                this.picBoxHP.Image = Resources._4RTools.ETCResource.Ygg;
-                this.picBoxSP.Image = Resources._4RTools.ETCResource.Ygg;
+                this.picBoxHP.Image = _4RTools.Resources._4RTools.Icons.ygg;
+                this.picBoxSP.Image = _4RTools.Resources._4RTools.Icons.ygg;
                 this.chkStopOnCriticalInjury.Hide();
             }
             subject.Attach(this);

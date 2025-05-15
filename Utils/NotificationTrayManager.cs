@@ -82,7 +82,7 @@ namespace _4RTools.Utils
         public void UpdateIcon(bool isOn)
         {
             isApplicationOn = isOn;
-            notifyIconTray.Icon = isOn ? ETCResource.icon4rtools_on : ETCResource.icon4rtools_off;
+            notifyIconTray.Icon = isOn ? _4RTools.Resources._4RTools.Icons.systray_on : _4RTools.Resources._4RTools.Icons.systray_off;
             UpdateToggleMenuItem();
         }
 

@@ -384,7 +384,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
+            this.pictureBox9.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
             this.pictureBox9.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.InitialImage")));
             this.pictureBox9.Location = new System.Drawing.Point(469, 76);
             this.pictureBox9.Name = "pictureBox9";
@@ -479,7 +479,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
+            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
             this.pictureBox2.Location = new System.Drawing.Point(258, 75);
             this.pictureBox2.Name = "pictureBox2";
@@ -773,7 +773,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
+            this.pictureBox18.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
             this.pictureBox18.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox18.InitialImage")));
             this.pictureBox18.Location = new System.Drawing.Point(469, 76);
             this.pictureBox18.Name = "pictureBox18";
@@ -868,7 +868,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Image = global::_4RTools.Resources._4RTools.Icons.weapon;
+            this.pictureBox23.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
             this.pictureBox23.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox23.InitialImage")));
             this.pictureBox23.Location = new System.Drawing.Point(258, 75);
             this.pictureBox23.Name = "pictureBox23";

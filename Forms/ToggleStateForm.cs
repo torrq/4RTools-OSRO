@@ -164,7 +164,7 @@ namespace _4RTools.Forms
 
                 if (prefs.SoundEnabled)
                 {
-                    new SoundPlayer(ETCResource.Speech_Off).Play();
+                    new SoundPlayer(Sounds.toggle_off).Play();
                 }
             }
             else
@@ -183,7 +183,7 @@ namespace _4RTools.Forms
 
                     if (prefs.SoundEnabled)
                     {
-                        new SoundPlayer(ETCResource.Speech_On).Play();
+                        new SoundPlayer(Sounds.toggle_on).Play();
                     }
                 }
                 else
@@ -216,7 +216,7 @@ namespace _4RTools.Forms
 
                 if (prefs.SoundEnabled)
                 {
-                    new SoundPlayer(ETCResource.Speech_Off).Play();
+                    new SoundPlayer(Sounds.toggle_off).Play();
                 }
             }
 
