@@ -56,8 +56,6 @@ namespace _4RTools.Forms
             this.tabPageSkillTimer = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.characterMap = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.toolTipRefresh = new System.Windows.Forms.ToolTip(this.components);
             atkDefMode = new System.Windows.Forms.TabControl();
             atkDefMode.SuspendLayout();
             this.tabControlAutopot.SuspendLayout();
@@ -298,22 +296,6 @@ namespace _4RTools.Forms
             this.characterMap.Size = new System.Drawing.Size(0, 17);
             this.characterMap.TabIndex = 26;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Image = global::_4RTools.Resources._4RTools.Icons.refresh;
-            this.btnRefresh.Location = new System.Drawing.Point(202, 29);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(24, 24);
-            this.btnRefresh.TabIndex = 5;
-            this.toolTipRefresh.SetToolTip(this.btnRefresh, "Refresh client list");
-            this.btnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
-            // 
             // Container
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,7 +311,6 @@ namespace _4RTools.Forms
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.labelProfile);
             this.Controls.Add(this.profileCB);
-            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblProcessName);
             this.Controls.Add(this.processCB);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -352,7 +333,6 @@ namespace _4RTools.Forms
 
         private System.Windows.Forms.Label lblProcessName;
         private System.Windows.Forms.ComboBox processCB;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.TabPage tabPageSpammer;
         private System.Windows.Forms.Label labelProfile;
         public System.Windows.Forms.ComboBox profileCB;
@@ -373,6 +353,5 @@ namespace _4RTools.Forms
         private TabPage tabConfig;
         private Panel panel4;
         private Label characterMap;
-        private ToolTip toolTipRefresh;
     }
 }

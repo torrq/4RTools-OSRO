@@ -57,6 +57,7 @@ namespace _4RTools.Forms
             this.processCB.DropDownHeight = 150;
             this.processCB.MeasureItem += new MeasureItemEventHandler(this.processCB_MeasureItem);
             this.processCB.DrawItem += new DrawItemEventHandler(this.processCB_DrawItem);
+            this.processCB.DropDown += new EventHandler(this.ProcessCB_DropDown); // Added for refresh on click
 
             this.Text = AppConfig.WindowTitle;
 
@@ -99,6 +100,11 @@ namespace _4RTools.Forms
             SetATKDEFWindow();
             SetMacroSwitchWindow();
             SetConfigWindow();
+        }
+
+        private void ProcessCB_DropDown(object sender, EventArgs e)
+        {
+            RefreshProcessList();
         }
 
         private void profileCB_DrawItem(object sender, DrawItemEventArgs e)
@@ -152,7 +158,8 @@ namespace _4RTools.Forms
                 float processWidth = g.MeasureString(item.ProcessText, processCB.Font).Width + 2;
 
                 float contextWidth;
-                bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+                bool isNotLoggedIn = !item.IsOnline ||
+                                     (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                                      (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
 
                 if (isNotLoggedIn)
@@ -206,7 +213,8 @@ namespace _4RTools.Forms
             e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             e.Graphics.DrawString(item.ProcessText, e.Font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top + 2);
 
-            bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+            bool isNotLoggedIn = !item.IsOnline ||
+                                 (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                                  (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
 
             int lineHeight = e.Font.Height;
@@ -363,6 +371,11 @@ namespace _4RTools.Forms
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
 
+            if (client != null)
+            {
+                DebugLogger.Info($"Client online status: {(client.IsOnline() ? "Online" : "Offline")}");
+            }
+
             characterName.Text = client.ReadCharacterName() ?? "- -";
             characterMap.Text = client.ReadCurrentMap() ?? "- -";
             subject.Notify(new Utils.Message(Utils.MessageCode.PROCESS_CHANGED, null));
@@ -458,11 +471,13 @@ namespace _4RTools.Forms
                         string processText = $"{p.ProcessName}.exe - {p.Id}";
                         string characterName = client.ReadCharacterName() ?? "- -";
                         string currentMap = client.ReadCurrentMap() ?? "- -";
-                        processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap));
+                        bool isOnline = client.IsOnline();
+                        processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap, isOnline));
                     }
                 }
 
                 var sortedItems = processItems.OrderBy(item =>
+                    !item.IsOnline ||
                     (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                     (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0)
                     .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName)
@@ -477,11 +492,6 @@ namespace _4RTools.Forms
                     this.processCB.Items.Add(item);
                 }
             });
-        }
-
-        private void BtnRefresh_Click(object sender, EventArgs e)
-        {
-            this.RefreshProcessList();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -558,6 +568,11 @@ namespace _4RTools.Forms
                     }
 
                     DebugLogger.Info($"Loading profile: {profileName}");
+                    Client client = ClientSingleton.GetClient();
+                    if (client != null)
+                    {
+                        DebugLogger.Info($"Client online status: {(client.IsOnline() ? "Online" : "Offline")}");
+                    }
                     ProfileSingleton.ClearProfile(profileName);
                     ProfileSingleton.Load(profileName);
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
@@ -683,12 +698,14 @@ namespace _4RTools.Forms
             public string ProcessText { get; }
             public string CharacterName { get; }
             public string CurrentMap { get; }
+            public bool IsOnline { get; }
 
-            public ProcessDisplayItem(string processText, string characterName, string currentMap)
+            public ProcessDisplayItem(string processText, string characterName, string currentMap, bool isOnline)
             {
                 ProcessText = processText;
                 CharacterName = characterName;
                 CurrentMap = currentMap;
+                IsOnline = isOnline;
             }
 
             public override string ToString()

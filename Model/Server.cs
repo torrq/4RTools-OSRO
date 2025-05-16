@@ -19,49 +19,11 @@ namespace _4RTools.Model
         {
             try
             {
-                EnsureServersFileExists();
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error(ex, $"Failed to initialize {AppConfig.ServersFile}");
-            }
-
-            try
-            {
                 EnsureCitiesFileExists();
             }
             catch (Exception ex)
             {
                 DebugLogger.Error(ex, $"Failed to initialize {AppConfig.CitiesFile}");
-            }
-        }
-
-        private static void EnsureServersFileExists()
-        {
-            string defaultJson = JsonConvert.SerializeObject(AppConfig.DefaultServers, Formatting.Indented);
-
-            try
-            {
-                if (!File.Exists(AppConfig.ServersFile) || string.IsNullOrWhiteSpace(File.ReadAllText(AppConfig.ServersFile)) || File.ReadAllText(AppConfig.ServersFile).Length < 10)
-                {
-                    File.WriteAllText(AppConfig.ServersFile, defaultJson);
-                    DebugLogger.Info($"Created or updated {AppConfig.ServersFile} with default data");
-                }
-            }
-            catch (IOException ex)
-            {
-                DebugLogger.Error(ex, $"IO error writing {AppConfig.ServersFile}");
-                throw;
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                DebugLogger.Error(ex, $"Permission denied for {AppConfig.ServersFile}");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error(ex, $"Unexpected error with {AppConfig.ServersFile}");
-                throw;
             }
         }
 
@@ -93,36 +55,28 @@ namespace _4RTools.Model
             }
         }
 
-        private static string LoadLocalServerFile()
-        {
-            try
-            {
-                return File.Exists(AppConfig.ServersFile) ? File.ReadAllText(AppConfig.ServersFile) : string.Empty;
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error(ex, $"Error reading {AppConfig.ServersFile}");
-                return string.Empty;
-            }
-        }
-
         public static List<ClientDTO> GetLocalClients()
         {
-            string localServers = LoadLocalServerFile();
-
-            if (string.IsNullOrEmpty(localServers))
-            {
-                DebugLogger.Warning($"{AppConfig.ServersFile} is empty or could not be read");
-                return new List<ClientDTO>();
-            }
-
             try
             {
-                return JsonConvert.DeserializeObject<List<ClientDTO>>(localServers);
+                var servers = AppConfig.DefaultServers;
+                var clients = new List<ClientDTO>();
+                foreach (var server in servers)
+                {
+                    clients.Add(new ClientDTO(
+                        server.name,
+                        server.description,
+                        server.hpAddress,
+                        server.nameAddress,
+                        server.mapAddress,
+                        server.onlineAddress
+                    ));
+                }
+                return clients;
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, $"Error deserializing {AppConfig.ServersFile}");
+                DebugLogger.Error(ex, "Error processing DefaultServers from AppConfig");
                 return new List<ClientDTO>();
             }
         }

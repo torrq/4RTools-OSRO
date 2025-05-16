@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _4RTools.Utils;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,6 @@ using System.Windows.Forms;
 
 namespace _4RTools.Model
 {
-
     public class ClientDTO
     {
         public int Index { get; set; }
@@ -16,26 +16,28 @@ namespace _4RTools.Model
         public string HPAddress { get; set; }
         public string NameAddress { get; set; }
         public string MapAddress { get; set; }
+        public string OnlineAddress { get; set; } // Added for connection status
         public int HPAddressPointer { get; set; }
         public int NameAddressPointer { get; set; }
         public int MapAddressPointer { get; set; }
+        public int OnlineAddressPointer { get; set; } // Added for connection status
 
         public ClientDTO() { }
 
-        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress)
+        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string onlineAddress)
         {
             this.Name = name;
             this.Description = description;
             this.HPAddress = hpAddress;
             this.NameAddress = nameAddress;
             this.MapAddress = mapAddress;
+            this.OnlineAddress = onlineAddress;
 
             this.HPAddressPointer = Convert.ToInt32(hpAddress, 16);
             this.NameAddressPointer = Convert.ToInt32(nameAddress, 16);
             this.MapAddressPointer = Convert.ToInt32(mapAddress, 16);
-
+            this.OnlineAddressPointer = Convert.ToInt32(onlineAddress, 16);
         }
-
     }
 
     public sealed class ClientListSingleton
@@ -91,14 +93,16 @@ namespace _4RTools.Model
         public int CurrentNameAddress { get; set; }
         public int CurrentHPBaseAddress { get; set; }
         public int CurrentMapAddress { get; set; }
+        public int CurrentOnlineAddress { get; set; } // Added for connection status
         private int StatusBufferAddress { get; set; }
         private int _num = 0;
 
-        public Client(string processName, int currentHPBaseAddress, int currentNameAddress, int currentMapAddress)
+        public Client(string processName, int currentHPBaseAddress, int currentNameAddress, int currentMapAddress, int currentOnlineAddress)
         {
             this.CurrentNameAddress = currentNameAddress;
             this.CurrentHPBaseAddress = currentHPBaseAddress;
             this.CurrentMapAddress = currentMapAddress;
+            this.CurrentOnlineAddress = currentOnlineAddress;
             this.ProcessName = processName;
             this.StatusBufferAddress = currentHPBaseAddress + 0x474;
         }
@@ -109,6 +113,7 @@ namespace _4RTools.Model
             this.CurrentHPBaseAddress = Convert.ToInt32(dto.HPAddress, 16);
             this.CurrentNameAddress = Convert.ToInt32(dto.NameAddress, 16);
             this.CurrentMapAddress = Convert.ToInt32(dto.MapAddress, 16);
+            this.CurrentOnlineAddress = Convert.ToInt32(dto.OnlineAddress, 16); // Initialize online address
             this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474;
         }
 
@@ -132,6 +137,7 @@ namespace _4RTools.Model
                         this.CurrentHPBaseAddress = c.CurrentHPBaseAddress;
                         this.CurrentNameAddress = c.CurrentNameAddress;
                         this.CurrentMapAddress = c.CurrentMapAddress;
+                        this.CurrentOnlineAddress = c.CurrentOnlineAddress; // Initialize online address
                         this.StatusBufferAddress = c.StatusBufferAddress;
                     }
                     catch
@@ -140,11 +146,9 @@ namespace _4RTools.Model
                         this.CurrentHPBaseAddress = 0;
                         this.CurrentNameAddress = 0;
                         this.CurrentMapAddress = 0;
+                        this.CurrentOnlineAddress = 0; // Set to 0 for unsupported clients
                         this.StatusBufferAddress = 0;
                     }
-
-                    //Do not block spammer for non supported Versions
-
                 }
             }
         }
@@ -152,22 +156,39 @@ namespace _4RTools.Model
         private string ReadMemoryAsString(int address)
         {
             byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 40u, out _num);
-            List<byte> buffer = new List<byte>(); //Need a list with dynamic size 
+            List<byte> buffer = new List<byte>();
             for (int i = 0; i < bytes.Length; i++)
             {
-                if (bytes[i] == 0) break; //Check Nullability based ON ASCII Table
-
-                buffer.Add(bytes[i]); //Add only bytes needed
+                if (bytes[i] == 0) break;
+                buffer.Add(bytes[i]);
             }
-
             return Encoding.Default.GetString(buffer.ToArray());
-
         }
 
         private uint ReadMemory(int address)
         {
             return BitConverter.ToUInt32(PMR.ReadProcessMemory((IntPtr)address, 4u, out _num), 0);
         }
+
+        public bool IsOnline()
+        {
+            try
+            {
+                byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentOnlineAddress, 1u, out _num);
+                if (_num == 1)
+                {
+                    return bytes[0] == 1; // 1 = online, 0 = offline
+                }
+                DebugLogger.Warning($"Failed to read online status at address 0x{CurrentOnlineAddress:X8}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Error reading online status: {ex.Message}");
+                return false;
+            }
+        }
+
         public void WriteMemory(int address, uint intToWrite)
         {
             PMR.WriteProcessMemory((IntPtr)address, BitConverter.GetBytes(intToWrite), out _num);
@@ -225,7 +246,6 @@ namespace _4RTools.Model
 
         public Client GetClientByProcess(string processName)
         {
-
             foreach (Client c in ClientListSingleton.GetAll())
             {
                 if (c.ProcessName == processName)
@@ -242,7 +262,9 @@ namespace _4RTools.Model
             return ClientListSingleton.GetAll()
                 .Where(c => c.ProcessName == dto.Name)
                 .Where(c => c.CurrentHPBaseAddress == dto.HPAddressPointer)
-                .Where(c => c.CurrentNameAddress == dto.NameAddressPointer).FirstOrDefault();
+                .Where(c => c.CurrentNameAddress == dto.NameAddressPointer)
+                .Where(c => c.CurrentOnlineAddress == dto.OnlineAddressPointer) // Added online address check
+                .FirstOrDefault();
         }
     }
 }
