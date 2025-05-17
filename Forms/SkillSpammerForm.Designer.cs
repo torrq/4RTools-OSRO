@@ -80,12 +80,13 @@ namespace _4RTools.Forms
             this.chkS = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupAhkConfig = new System.Windows.Forms.GroupBox();
             this.chkNoShift = new System.Windows.Forms.CheckBox();
             this.chkMouseFlick = new System.Windows.Forms.CheckBox();
             this.ahkSpeedBoost = new System.Windows.Forms.RadioButton();
             this.ahkCompatibility = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbDeactivated = new System.Windows.Forms.CheckBox();
             this.cbWithNoClick = new System.Windows.Forms.CheckBox();
@@ -98,34 +99,33 @@ namespace _4RTools.Forms
             this.MRWebsiteButton = new System.Windows.Forms.Button();
             this.OSROHRBox = new System.Windows.Forms.PictureBox();
             this.OSROMRBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
             this.MRWebsiteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRWebsiteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.GitHubButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.skillSpammerModeGroup = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupAhkConfig.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).BeginInit();
+            this.skillSpammerModeGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkF9
             // 
             this.chkF9.AutoSize = true;
             this.chkF9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF9.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF9.Location = new System.Drawing.Point(415, 12);
             this.chkF9.Name = "chkF9";
             this.chkF9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkF9.Size = new System.Drawing.Size(46, 25);
+            this.chkF9.Size = new System.Drawing.Size(45, 25);
             this.chkF9.TabIndex = 9;
             this.chkF9.Text = "F9";
             this.chkF9.UseVisualStyleBackColor = true;
@@ -135,11 +135,11 @@ namespace _4RTools.Forms
             // 
             this.chkF8.AutoSize = true;
             this.chkF8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF8.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF8.Location = new System.Drawing.Point(365, 12);
             this.chkF8.Name = "chkF8";
             this.chkF8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkF8.Size = new System.Drawing.Size(46, 25);
+            this.chkF8.Size = new System.Drawing.Size(45, 25);
             this.chkF8.TabIndex = 8;
             this.chkF8.Text = "F8";
             this.chkF8.UseVisualStyleBackColor = true;
@@ -149,10 +149,10 @@ namespace _4RTools.Forms
             // 
             this.chkF7.AutoSize = true;
             this.chkF7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF7.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF7.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF7.Location = new System.Drawing.Point(315, 12);
             this.chkF7.Name = "chkF7";
-            this.chkF7.Size = new System.Drawing.Size(46, 25);
+            this.chkF7.Size = new System.Drawing.Size(45, 25);
             this.chkF7.TabIndex = 7;
             this.chkF7.Text = "F7";
             this.chkF7.UseVisualStyleBackColor = true;
@@ -162,10 +162,10 @@ namespace _4RTools.Forms
             // 
             this.chkF6.AutoSize = true;
             this.chkF6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF6.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF6.Location = new System.Drawing.Point(265, 12);
             this.chkF6.Name = "chkF6";
-            this.chkF6.Size = new System.Drawing.Size(46, 25);
+            this.chkF6.Size = new System.Drawing.Size(45, 25);
             this.chkF6.TabIndex = 6;
             this.chkF6.Text = "F6";
             this.chkF6.UseVisualStyleBackColor = true;
@@ -175,10 +175,10 @@ namespace _4RTools.Forms
             // 
             this.chkF5.AutoSize = true;
             this.chkF5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF5.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF5.Location = new System.Drawing.Point(215, 12);
             this.chkF5.Name = "chkF5";
-            this.chkF5.Size = new System.Drawing.Size(46, 25);
+            this.chkF5.Size = new System.Drawing.Size(45, 25);
             this.chkF5.TabIndex = 5;
             this.chkF5.Text = "F5";
             this.chkF5.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@ namespace _4RTools.Forms
             // 
             this.chkF4.AutoSize = true;
             this.chkF4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF4.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF4.Location = new System.Drawing.Point(165, 12);
             this.chkF4.Name = "chkF4";
             this.chkF4.Size = new System.Drawing.Size(46, 25);
@@ -201,10 +201,10 @@ namespace _4RTools.Forms
             // 
             this.chkF3.AutoSize = true;
             this.chkF3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF3.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF3.Location = new System.Drawing.Point(115, 12);
             this.chkF3.Name = "chkF3";
-            this.chkF3.Size = new System.Drawing.Size(46, 25);
+            this.chkF3.Size = new System.Drawing.Size(45, 25);
             this.chkF3.TabIndex = 3;
             this.chkF3.Text = "F3";
             this.chkF3.UseVisualStyleBackColor = true;
@@ -214,10 +214,10 @@ namespace _4RTools.Forms
             // 
             this.chkF2.AutoSize = true;
             this.chkF2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.chkF2.Location = new System.Drawing.Point(65, 12);
+            this.chkF2.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkF2.Location = new System.Drawing.Point(64, 12);
             this.chkF2.Name = "chkF2";
-            this.chkF2.Size = new System.Drawing.Size(46, 25);
+            this.chkF2.Size = new System.Drawing.Size(45, 25);
             this.chkF2.TabIndex = 2;
             this.chkF2.Text = "F2";
             this.chkF2.UseVisualStyleBackColor = true;
@@ -227,10 +227,10 @@ namespace _4RTools.Forms
             // 
             this.chkF1.AutoSize = true;
             this.chkF1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF1.Location = new System.Drawing.Point(15, 12);
             this.chkF1.Name = "chkF1";
-            this.chkF1.Size = new System.Drawing.Size(46, 25);
+            this.chkF1.Size = new System.Drawing.Size(43, 25);
             this.chkF1.TabIndex = 1;
             this.chkF1.Text = "F1";
             this.chkF1.UseVisualStyleBackColor = true;
@@ -240,11 +240,11 @@ namespace _4RTools.Forms
             // 
             this.chk9.AutoSize = true;
             this.chk9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk9.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk9.Location = new System.Drawing.Point(415, 57);
             this.chk9.Name = "chk9";
             this.chk9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chk9.Size = new System.Drawing.Size(38, 25);
+            this.chk9.Size = new System.Drawing.Size(37, 25);
             this.chk9.TabIndex = 9;
             this.chk9.Text = "9";
             this.chk9.UseVisualStyleBackColor = true;
@@ -253,11 +253,11 @@ namespace _4RTools.Forms
             // 
             this.chk8.AutoSize = true;
             this.chk8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk8.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk8.Location = new System.Drawing.Point(365, 57);
             this.chk8.Name = "chk8";
             this.chk8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chk8.Size = new System.Drawing.Size(38, 25);
+            this.chk8.Size = new System.Drawing.Size(37, 25);
             this.chk8.TabIndex = 8;
             this.chk8.Text = "8";
             this.chk8.UseVisualStyleBackColor = true;
@@ -267,10 +267,10 @@ namespace _4RTools.Forms
             // 
             this.chk7.AutoSize = true;
             this.chk7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk7.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk7.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk7.Location = new System.Drawing.Point(315, 57);
             this.chk7.Name = "chk7";
-            this.chk7.Size = new System.Drawing.Size(38, 25);
+            this.chk7.Size = new System.Drawing.Size(37, 25);
             this.chk7.TabIndex = 7;
             this.chk7.Text = "7";
             this.chk7.UseVisualStyleBackColor = true;
@@ -280,10 +280,10 @@ namespace _4RTools.Forms
             // 
             this.chk6.AutoSize = true;
             this.chk6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk6.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk6.Location = new System.Drawing.Point(265, 57);
             this.chk6.Name = "chk6";
-            this.chk6.Size = new System.Drawing.Size(38, 25);
+            this.chk6.Size = new System.Drawing.Size(37, 25);
             this.chk6.TabIndex = 6;
             this.chk6.Text = "6";
             this.chk6.UseVisualStyleBackColor = true;
@@ -293,10 +293,10 @@ namespace _4RTools.Forms
             // 
             this.chk5.AutoSize = true;
             this.chk5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk5.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk5.Location = new System.Drawing.Point(215, 57);
             this.chk5.Name = "chk5";
-            this.chk5.Size = new System.Drawing.Size(38, 25);
+            this.chk5.Size = new System.Drawing.Size(37, 25);
             this.chk5.TabIndex = 5;
             this.chk5.Text = "5";
             this.chk5.UseVisualStyleBackColor = true;
@@ -306,7 +306,7 @@ namespace _4RTools.Forms
             // 
             this.chk4.AutoSize = true;
             this.chk4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk4.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk4.Location = new System.Drawing.Point(165, 57);
             this.chk4.Name = "chk4";
             this.chk4.Size = new System.Drawing.Size(38, 25);
@@ -319,10 +319,10 @@ namespace _4RTools.Forms
             // 
             this.chk3.AutoSize = true;
             this.chk3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk3.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk3.Location = new System.Drawing.Point(115, 57);
             this.chk3.Name = "chk3";
-            this.chk3.Size = new System.Drawing.Size(38, 25);
+            this.chk3.Size = new System.Drawing.Size(37, 25);
             this.chk3.TabIndex = 3;
             this.chk3.Text = "3";
             this.chk3.UseVisualStyleBackColor = true;
@@ -332,10 +332,10 @@ namespace _4RTools.Forms
             // 
             this.chk2.AutoSize = true;
             this.chk2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk2.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk2.Location = new System.Drawing.Point(64, 57);
             this.chk2.Name = "chk2";
-            this.chk2.Size = new System.Drawing.Size(38, 25);
+            this.chk2.Size = new System.Drawing.Size(37, 25);
             this.chk2.TabIndex = 2;
             this.chk2.Text = "2";
             this.chk2.UseVisualStyleBackColor = true;
@@ -345,10 +345,10 @@ namespace _4RTools.Forms
             // 
             this.chk1.AutoSize = true;
             this.chk1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chk1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chk1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk1.Location = new System.Drawing.Point(15, 57);
             this.chk1.Name = "chk1";
-            this.chk1.Size = new System.Drawing.Size(38, 25);
+            this.chk1.Size = new System.Drawing.Size(35, 25);
             this.chk1.TabIndex = 1;
             this.chk1.Text = "1";
             this.chk1.UseVisualStyleBackColor = true;
@@ -358,7 +358,7 @@ namespace _4RTools.Forms
             // 
             this.chkM.AutoSize = true;
             this.chkM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkM.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkM.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkM.Location = new System.Drawing.Point(315, 162);
             this.chkM.Name = "chkM";
             this.chkM.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -371,7 +371,7 @@ namespace _4RTools.Forms
             // 
             this.chkN.AutoSize = true;
             this.chkN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkN.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkN.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkN.Location = new System.Drawing.Point(265, 162);
             this.chkN.Name = "chkN";
             this.chkN.Size = new System.Drawing.Size(41, 25);
@@ -383,7 +383,7 @@ namespace _4RTools.Forms
             // 
             this.chkB.AutoSize = true;
             this.chkB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkB.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkB.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkB.Location = new System.Drawing.Point(215, 162);
             this.chkB.Name = "chkB";
             this.chkB.Size = new System.Drawing.Size(38, 25);
@@ -395,7 +395,7 @@ namespace _4RTools.Forms
             // 
             this.chkV.AutoSize = true;
             this.chkV.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkV.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkV.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkV.Location = new System.Drawing.Point(165, 162);
             this.chkV.Name = "chkV";
             this.chkV.Size = new System.Drawing.Size(39, 25);
@@ -407,7 +407,7 @@ namespace _4RTools.Forms
             // 
             this.chkC.AutoSize = true;
             this.chkC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkC.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkC.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkC.Location = new System.Drawing.Point(115, 162);
             this.chkC.Name = "chkC";
             this.chkC.Size = new System.Drawing.Size(39, 25);
@@ -419,7 +419,7 @@ namespace _4RTools.Forms
             // 
             this.chkX.AutoSize = true;
             this.chkX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkX.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkX.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkX.Location = new System.Drawing.Point(64, 162);
             this.chkX.Name = "chkX";
             this.chkX.Size = new System.Drawing.Size(38, 25);
@@ -431,7 +431,7 @@ namespace _4RTools.Forms
             // 
             this.chkZ.AutoSize = true;
             this.chkZ.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkZ.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkZ.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkZ.Location = new System.Drawing.Point(15, 162);
             this.chkZ.Name = "chkZ";
             this.chkZ.Size = new System.Drawing.Size(38, 25);
@@ -443,11 +443,11 @@ namespace _4RTools.Forms
             // 
             this.chkL.AutoSize = true;
             this.chkL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkL.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkL.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkL.Location = new System.Drawing.Point(415, 132);
             this.chkL.Name = "chkL";
             this.chkL.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkL.Size = new System.Drawing.Size(37, 25);
+            this.chkL.Size = new System.Drawing.Size(36, 25);
             this.chkL.TabIndex = 17;
             this.chkL.Text = "L";
             this.chkL.UseVisualStyleBackColor = true;
@@ -457,7 +457,7 @@ namespace _4RTools.Forms
             // 
             this.chkK.AutoSize = true;
             this.chkK.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkK.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkK.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkK.Location = new System.Drawing.Point(365, 132);
             this.chkK.Name = "chkK";
             this.chkK.Size = new System.Drawing.Size(38, 25);
@@ -469,10 +469,10 @@ namespace _4RTools.Forms
             // 
             this.chkJ.AutoSize = true;
             this.chkJ.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkJ.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkJ.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkJ.Location = new System.Drawing.Point(315, 132);
             this.chkJ.Name = "chkJ";
-            this.chkJ.Size = new System.Drawing.Size(35, 25);
+            this.chkJ.Size = new System.Drawing.Size(34, 25);
             this.chkJ.TabIndex = 15;
             this.chkJ.Text = "J";
             this.chkJ.UseVisualStyleBackColor = true;
@@ -481,7 +481,7 @@ namespace _4RTools.Forms
             // 
             this.chkH.AutoSize = true;
             this.chkH.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkH.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkH.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkH.Location = new System.Drawing.Point(265, 132);
             this.chkH.Name = "chkH";
             this.chkH.Size = new System.Drawing.Size(40, 25);
@@ -493,7 +493,7 @@ namespace _4RTools.Forms
             // 
             this.chkG.AutoSize = true;
             this.chkG.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkG.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkG.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkG.Location = new System.Drawing.Point(215, 132);
             this.chkG.Name = "chkG";
             this.chkG.Size = new System.Drawing.Size(40, 25);
@@ -505,7 +505,7 @@ namespace _4RTools.Forms
             // 
             this.chkF.AutoSize = true;
             this.chkF.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkF.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkF.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF.Location = new System.Drawing.Point(165, 132);
             this.chkF.Name = "chkF";
             this.chkF.Size = new System.Drawing.Size(37, 25);
@@ -517,7 +517,7 @@ namespace _4RTools.Forms
             // 
             this.chkD.AutoSize = true;
             this.chkD.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkD.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkD.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkD.Location = new System.Drawing.Point(115, 132);
             this.chkD.Name = "chkD";
             this.chkD.Size = new System.Drawing.Size(40, 25);
@@ -529,7 +529,7 @@ namespace _4RTools.Forms
             // 
             this.chkA.AutoSize = true;
             this.chkA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkA.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkA.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkA.Location = new System.Drawing.Point(15, 132);
             this.chkA.Name = "chkA";
             this.chkA.Size = new System.Drawing.Size(39, 25);
@@ -541,7 +541,7 @@ namespace _4RTools.Forms
             // 
             this.chkO.AutoSize = true;
             this.chkO.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkO.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkO.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkO.Location = new System.Drawing.Point(415, 102);
             this.chkO.Name = "chkO";
             this.chkO.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -554,7 +554,7 @@ namespace _4RTools.Forms
             // 
             this.chkI.AutoSize = true;
             this.chkI.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkI.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkI.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkI.Location = new System.Drawing.Point(365, 102);
             this.chkI.Name = "chkI";
             this.chkI.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -567,7 +567,7 @@ namespace _4RTools.Forms
             // 
             this.chkU.AutoSize = true;
             this.chkU.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkU.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkU.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkU.Location = new System.Drawing.Point(315, 102);
             this.chkU.Name = "chkU";
             this.chkU.Size = new System.Drawing.Size(40, 25);
@@ -579,8 +579,8 @@ namespace _4RTools.Forms
             // 
             this.chkY.AutoSize = true;
             this.chkY.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkY.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.chkY.Location = new System.Drawing.Point(265, 102);
+            this.chkY.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkY.Location = new System.Drawing.Point(265, 101);
             this.chkY.Name = "chkY";
             this.chkY.Size = new System.Drawing.Size(38, 25);
             this.chkY.TabIndex = 6;
@@ -591,7 +591,7 @@ namespace _4RTools.Forms
             // 
             this.chkT.AutoSize = true;
             this.chkT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkT.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkT.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkT.Location = new System.Drawing.Point(215, 102);
             this.chkT.Name = "chkT";
             this.chkT.Size = new System.Drawing.Size(37, 25);
@@ -603,10 +603,10 @@ namespace _4RTools.Forms
             // 
             this.chkR.AutoSize = true;
             this.chkR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkR.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkR.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkR.Location = new System.Drawing.Point(165, 102);
             this.chkR.Name = "chkR";
-            this.chkR.Size = new System.Drawing.Size(39, 25);
+            this.chkR.Size = new System.Drawing.Size(38, 25);
             this.chkR.TabIndex = 4;
             this.chkR.Text = "R";
             this.chkR.UseVisualStyleBackColor = true;
@@ -615,7 +615,7 @@ namespace _4RTools.Forms
             // 
             this.chkE.AutoSize = true;
             this.chkE.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkE.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkE.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkE.Location = new System.Drawing.Point(115, 102);
             this.chkE.Name = "chkE";
             this.chkE.Size = new System.Drawing.Size(37, 25);
@@ -627,7 +627,7 @@ namespace _4RTools.Forms
             // 
             this.chkW.AutoSize = true;
             this.chkW.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkW.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkW.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkW.Location = new System.Drawing.Point(64, 102);
             this.chkW.Name = "chkW";
             this.chkW.Size = new System.Drawing.Size(44, 25);
@@ -639,7 +639,7 @@ namespace _4RTools.Forms
             // 
             this.chkQ.AutoSize = true;
             this.chkQ.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkQ.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkQ.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkQ.Location = new System.Drawing.Point(15, 102);
             this.chkQ.Name = "chkQ";
             this.chkQ.Size = new System.Drawing.Size(41, 25);
@@ -650,22 +650,21 @@ namespace _4RTools.Forms
             // txtSpammerDelay
             // 
             this.txtSpammerDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSpammerDelay.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpammerDelay.Location = new System.Drawing.Point(10, 24);
+            this.txtSpammerDelay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSpammerDelay.Location = new System.Drawing.Point(15, 19);
             this.txtSpammerDelay.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.txtSpammerDelay.Name = "txtSpammerDelay";
-            this.txtSpammerDelay.Size = new System.Drawing.Size(65, 25);
+            this.txtSpammerDelay.Size = new System.Drawing.Size(65, 23);
             this.txtSpammerDelay.TabIndex = 31;
             this.txtSpammerDelay.ValueChanged += new System.EventHandler(this.TxtSpammerDelay_TextChanged);
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.panel4.Location = new System.Drawing.Point(15, 92);
@@ -686,10 +685,10 @@ namespace _4RTools.Forms
             // 
             this.chkS.AutoSize = true;
             this.chkS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkS.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkS.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkS.Location = new System.Drawing.Point(64, 132);
             this.chkS.Name = "chkS";
-            this.chkS.Size = new System.Drawing.Size(38, 25);
+            this.chkS.Size = new System.Drawing.Size(37, 25);
             this.chkS.TabIndex = 30;
             this.chkS.Text = "S";
             this.chkS.UseVisualStyleBackColor = true;
@@ -698,9 +697,9 @@ namespace _4RTools.Forms
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtSpammerDelay);
-            this.groupBox2.Location = new System.Drawing.Point(466, 11);
+            this.groupBox2.Location = new System.Drawing.Point(479, 209);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(115, 62);
+            this.groupBox2.Size = new System.Drawing.Size(115, 49);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Spammer Delay";
@@ -708,33 +707,19 @@ namespace _4RTools.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 26);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(82, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 17);
+            this.label1.Size = new System.Drawing.Size(23, 15);
             this.label1.TabIndex = 32;
             this.label1.Text = "ms";
-            // 
-            // groupAhkConfig
-            // 
-            this.groupAhkConfig.Controls.Add(this.chkNoShift);
-            this.groupAhkConfig.Controls.Add(this.chkMouseFlick);
-            this.groupAhkConfig.Controls.Add(this.ahkSpeedBoost);
-            this.groupAhkConfig.Controls.Add(this.groupBox2);
-            this.groupAhkConfig.Controls.Add(this.ahkCompatibility);
-            this.groupAhkConfig.Controls.Add(this.groupBox4);
-            this.groupAhkConfig.Location = new System.Drawing.Point(13, 193);
-            this.groupAhkConfig.Name = "groupAhkConfig";
-            this.groupAhkConfig.Size = new System.Drawing.Size(594, 84);
-            this.groupAhkConfig.TabIndex = 33;
-            this.groupAhkConfig.TabStop = false;
-            this.groupAhkConfig.Text = "Spammer Configuration";
             // 
             // chkNoShift
             // 
             this.chkNoShift.AutoSize = true;
             this.chkNoShift.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkNoShift.Location = new System.Drawing.Point(266, 53);
+            this.chkNoShift.Location = new System.Drawing.Point(123, 21);
+            this.chkNoShift.Margin = new System.Windows.Forms.Padding(0);
             this.chkNoShift.Name = "chkNoShift";
             this.chkNoShift.Size = new System.Drawing.Size(68, 17);
             this.chkNoShift.TabIndex = 39;
@@ -746,7 +731,7 @@ namespace _4RTools.Forms
             // 
             this.chkMouseFlick.AutoSize = true;
             this.chkMouseFlick.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkMouseFlick.Location = new System.Drawing.Point(266, 31);
+            this.chkMouseFlick.Location = new System.Drawing.Point(12, 21);
             this.chkMouseFlick.Name = "chkMouseFlick";
             this.chkMouseFlick.Size = new System.Drawing.Size(87, 17);
             this.chkMouseFlick.TabIndex = 38;
@@ -758,7 +743,7 @@ namespace _4RTools.Forms
             // 
             this.ahkSpeedBoost.AutoSize = true;
             this.ahkSpeedBoost.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ahkSpeedBoost.Location = new System.Drawing.Point(135, 38);
+            this.ahkSpeedBoost.Location = new System.Drawing.Point(113, 19);
             this.ahkSpeedBoost.Name = "ahkSpeedBoost";
             this.ahkSpeedBoost.Size = new System.Drawing.Size(89, 17);
             this.ahkSpeedBoost.TabIndex = 37;
@@ -771,7 +756,7 @@ namespace _4RTools.Forms
             // 
             this.ahkCompatibility.AutoSize = true;
             this.ahkCompatibility.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ahkCompatibility.Location = new System.Drawing.Point(27, 38);
+            this.ahkCompatibility.Location = new System.Drawing.Point(12, 19);
             this.ahkCompatibility.Name = "ahkCompatibility";
             this.ahkCompatibility.Size = new System.Drawing.Size(93, 17);
             this.ahkCompatibility.TabIndex = 35;
@@ -784,21 +769,45 @@ namespace _4RTools.Forms
             // 
             this.groupBox4.Controls.Add(this.pictureBox1);
             this.groupBox4.Controls.Add(this.pbUpAndDownArrow);
-            this.groupBox4.Location = new System.Drawing.Point(254, 11);
+            this.groupBox4.Controls.Add(this.chkMouseFlick);
+            this.groupBox4.Controls.Add(this.chkNoShift);
+            this.groupBox4.Location = new System.Drawing.Point(250, 209);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(128, 67);
+            this.groupBox4.Size = new System.Drawing.Size(218, 49);
             this.groupBox4.TabIndex = 33;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Key Config";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.shift;
+            this.pictureBox1.Location = new System.Drawing.Point(188, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
+            // 
+            // pbUpAndDownArrow
+            // 
+            this.pbUpAndDownArrow.Image = global::_4RTools.Resources._4RTools.Icons.up_and_down_arrow;
+            this.pbUpAndDownArrow.Location = new System.Drawing.Point(95, 20);
+            this.pbUpAndDownArrow.Name = "pbUpAndDownArrow";
+            this.pbUpAndDownArrow.Size = new System.Drawing.Size(16, 16);
+            this.pbUpAndDownArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbUpAndDownArrow.TabIndex = 35;
+            this.pbUpAndDownArrow.TabStop = false;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cbDeactivated);
             this.groupBox3.Controls.Add(this.cbWithNoClick);
             this.groupBox3.Controls.Add(this.cbWithClick);
-            this.groupBox3.Location = new System.Drawing.Point(467, 12);
+            this.groupBox3.ForeColor = System.Drawing.Color.Black;
+            this.groupBox3.Location = new System.Drawing.Point(481, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(143, 92);
+            this.groupBox3.Size = new System.Drawing.Size(127, 92);
             this.groupBox3.TabIndex = 34;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Legend";
@@ -807,10 +816,11 @@ namespace _4RTools.Forms
             // 
             this.cbDeactivated.AutoCheck = false;
             this.cbDeactivated.AutoSize = true;
-            this.cbDeactivated.Cursor = System.Windows.Forms.Cursors.Help;
-            this.cbDeactivated.Location = new System.Drawing.Point(18, 64);
+            this.cbDeactivated.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDeactivated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbDeactivated.Location = new System.Drawing.Point(10, 64);
             this.cbDeactivated.Name = "cbDeactivated";
-            this.cbDeactivated.Size = new System.Drawing.Size(86, 17);
+            this.cbDeactivated.Size = new System.Drawing.Size(86, 19);
             this.cbDeactivated.TabIndex = 2;
             this.cbDeactivated.Text = "Deactivated";
             this.cbDeactivated.UseVisualStyleBackColor = true;
@@ -818,10 +828,11 @@ namespace _4RTools.Forms
             // cbWithNoClick
             // 
             this.cbWithNoClick.AutoSize = true;
-            this.cbWithNoClick.Cursor = System.Windows.Forms.Cursors.Help;
-            this.cbWithNoClick.Location = new System.Drawing.Point(18, 40);
+            this.cbWithNoClick.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWithNoClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbWithNoClick.Location = new System.Drawing.Point(10, 42);
             this.cbWithNoClick.Name = "cbWithNoClick";
-            this.cbWithNoClick.Size = new System.Drawing.Size(103, 17);
+            this.cbWithNoClick.Size = new System.Drawing.Size(103, 19);
             this.cbWithNoClick.TabIndex = 1;
             this.cbWithNoClick.Text = "No mouse click";
             this.cbWithNoClick.UseVisualStyleBackColor = true;
@@ -831,17 +842,18 @@ namespace _4RTools.Forms
             this.cbWithClick.AutoSize = true;
             this.cbWithClick.Checked = true;
             this.cbWithClick.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbWithClick.Cursor = System.Windows.Forms.Cursors.Help;
-            this.cbWithClick.Location = new System.Drawing.Point(18, 16);
+            this.cbWithClick.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWithClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbWithClick.Location = new System.Drawing.Point(10, 20);
             this.cbWithClick.Name = "cbWithClick";
-            this.cbWithClick.Size = new System.Drawing.Size(113, 17);
+            this.cbWithClick.Size = new System.Drawing.Size(113, 19);
             this.cbWithClick.TabIndex = 0;
             this.cbWithClick.Text = "With mouse click";
             this.cbWithClick.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.panel1.Location = new System.Drawing.Point(15, 47);
             this.panel1.Name = "panel1";
@@ -968,26 +980,16 @@ namespace _4RTools.Forms
             this.OSROMRBox.TabIndex = 36;
             this.OSROMRBox.TabStop = false;
             // 
-            // pictureBox1
+            // skillSpammerModeGroup
             // 
-            this.pictureBox1.Image = _4RTools.Resources._4RTools.Icons.shift;
-            this.pictureBox1.Location = new System.Drawing.Point(102, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 35;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
-            // 
-            // pbUpAndDownArrow
-            // 
-            this.pbUpAndDownArrow.Image = _4RTools.Resources._4RTools.Icons.up_and_down_arrow;
-            this.pbUpAndDownArrow.Location = new System.Drawing.Point(106, 21);
-            this.pbUpAndDownArrow.Name = "pbUpAndDownArrow";
-            this.pbUpAndDownArrow.Size = new System.Drawing.Size(16, 16);
-            this.pbUpAndDownArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbUpAndDownArrow.TabIndex = 35;
-            this.pbUpAndDownArrow.TabStop = false;
+            this.skillSpammerModeGroup.Controls.Add(this.ahkSpeedBoost);
+            this.skillSpammerModeGroup.Controls.Add(this.ahkCompatibility);
+            this.skillSpammerModeGroup.Location = new System.Drawing.Point(28, 209);
+            this.skillSpammerModeGroup.Name = "skillSpammerModeGroup";
+            this.skillSpammerModeGroup.Size = new System.Drawing.Size(209, 49);
+            this.skillSpammerModeGroup.TabIndex = 43;
+            this.skillSpammerModeGroup.TabStop = false;
+            this.skillSpammerModeGroup.Text = "Spammer Mode";
             // 
             // SkillSpammerForm
             // 
@@ -995,6 +997,9 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(620, 454);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.skillSpammerModeGroup);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.GitHubButton);
             this.Controls.Add(this.HRDiscordButton);
             this.Controls.Add(this.MRDiscordButton);
@@ -1004,7 +1009,6 @@ namespace _4RTools.Forms
             this.Controls.Add(this.OSROMRBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupAhkConfig);
             this.Controls.Add(this.chkS);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.chkM);
@@ -1059,16 +1063,16 @@ namespace _4RTools.Forms
             this.panel4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupAhkConfig.ResumeLayout(false);
-            this.groupAhkConfig.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).EndInit();
+            this.skillSpammerModeGroup.ResumeLayout(false);
+            this.skillSpammerModeGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1123,7 +1127,6 @@ namespace _4RTools.Forms
         private System.Windows.Forms.NumericUpDown txtSpammerDelay;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupAhkConfig;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox cbDeactivated;
         private System.Windows.Forms.CheckBox cbWithNoClick;
@@ -1148,5 +1151,6 @@ namespace _4RTools.Forms
         private ToolTip MRDiscordButtonToolTip;
         private ToolTip HRDiscordButtonToolTip;
         private ToolTip GitHubButtonToolTip;
+        private GroupBox skillSpammerModeGroup;
     }
 }

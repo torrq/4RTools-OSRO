@@ -43,7 +43,7 @@ namespace _4RTools.Forms
             this.ahk = ProfileSingleton.GetCurrent().SkillSpammer;
             InitializeCheckAsThreeState();
 
-            RadioButton rdAhkMode = (RadioButton)this.groupAhkConfig.Controls[ProfileSingleton.GetCurrent().SkillSpammer.AHKMode];
+            RadioButton rdAhkMode = (RadioButton)this.skillSpammerModeGroup.Controls[ProfileSingleton.GetCurrent().SkillSpammer.AHKMode];
             if (rdAhkMode != null) { rdAhkMode.Checked = true; }
             ;
             this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().SkillSpammer.AhkDelay.ToString();
