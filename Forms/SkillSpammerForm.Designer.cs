@@ -869,10 +869,10 @@ namespace _4RTools.Forms
             this.GitHubButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GitHubButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GitHubButton.Image = global::_4RTools.Resources._4RTools.Icons.github;
-            this.GitHubButton.Location = new System.Drawing.Point(269, 409);
+            this.GitHubButton.Location = new System.Drawing.Point(525, 122);
             this.GitHubButton.Margin = new System.Windows.Forms.Padding(0);
             this.GitHubButton.Name = "GitHubButton";
-            this.GitHubButton.Size = new System.Drawing.Size(83, 32);
+            this.GitHubButton.Size = new System.Drawing.Size(83, 35);
             this.GitHubButton.TabIndex = 42;
             this.GitHubButton.Text = "GitHub";
             this.GitHubButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -889,14 +889,14 @@ namespace _4RTools.Forms
             this.HRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRDiscordButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
-            this.HRDiscordButton.Location = new System.Drawing.Point(511, 409);
+            this.HRDiscordButton.Location = new System.Drawing.Point(460, 409);
             this.HRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRDiscordButton.Name = "HRDiscordButton";
             this.HRDiscordButton.Size = new System.Drawing.Size(83, 32);
             this.HRDiscordButton.TabIndex = 41;
             this.HRDiscordButton.Text = "Discord";
             this.HRDiscordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRDiscordButtonToolTip.SetToolTip(this.HRDiscordButton, "Link to OSRO:HR (Highrate) Discord group");
+            this.HRDiscordButtonToolTip.SetToolTip(this.HRDiscordButton, "Link to OSRO Highrate Discord group");
             this.HRDiscordButton.UseVisualStyleBackColor = false;
             this.HRDiscordButton.Click += new System.EventHandler(this.HRDiscordButton_Click);
             // 
@@ -909,14 +909,14 @@ namespace _4RTools.Forms
             this.MRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRDiscordButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
-            this.MRDiscordButton.Location = new System.Drawing.Point(113, 409);
+            this.MRDiscordButton.Location = new System.Drawing.Point(162, 409);
             this.MRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRDiscordButton.Name = "MRDiscordButton";
             this.MRDiscordButton.Size = new System.Drawing.Size(83, 32);
             this.MRDiscordButton.TabIndex = 40;
             this.MRDiscordButton.Text = "Discord";
             this.MRDiscordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.MRDiscordButtonToolTip.SetToolTip(this.MRDiscordButton, "Link to OSRO:MR (Midrate) Discord group");
+            this.MRDiscordButtonToolTip.SetToolTip(this.MRDiscordButton, "Link to OSRO Midrate Discord group");
             this.MRDiscordButton.UseVisualStyleBackColor = false;
             this.MRDiscordButton.Click += new System.EventHandler(this.MRDiscordButton_Click);
             // 
@@ -929,14 +929,14 @@ namespace _4RTools.Forms
             this.HRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRWebsiteButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
-            this.HRWebsiteButton.Location = new System.Drawing.Point(426, 409);
+            this.HRWebsiteButton.Location = new System.Drawing.Point(375, 409);
             this.HRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRWebsiteButton.Name = "HRWebsiteButton";
             this.HRWebsiteButton.Size = new System.Drawing.Size(83, 32);
             this.HRWebsiteButton.TabIndex = 39;
             this.HRWebsiteButton.Text = "Website";
             this.HRWebsiteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRWebsiteButtonToolTip.SetToolTip(this.HRWebsiteButton, "Link to OSRO:HR (Highrate) website");
+            this.HRWebsiteButtonToolTip.SetToolTip(this.HRWebsiteButton, "Link to OSRO Highrate website");
             this.HRWebsiteButton.UseVisualStyleBackColor = false;
             this.HRWebsiteButton.Click += new System.EventHandler(this.HRWebsiteButton_Click);
             // 
@@ -949,14 +949,14 @@ namespace _4RTools.Forms
             this.MRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRWebsiteButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
-            this.MRWebsiteButton.Location = new System.Drawing.Point(28, 409);
+            this.MRWebsiteButton.Location = new System.Drawing.Point(77, 409);
             this.MRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRWebsiteButton.Name = "MRWebsiteButton";
             this.MRWebsiteButton.Size = new System.Drawing.Size(83, 32);
             this.MRWebsiteButton.TabIndex = 38;
             this.MRWebsiteButton.Text = "Website";
             this.MRWebsiteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.MRWebsiteButtonToolTip.SetToolTip(this.MRWebsiteButton, "Link to OSRO:MR (Midrate) website");
+            this.MRWebsiteButtonToolTip.SetToolTip(this.MRWebsiteButton, "Link to OSRO Midrate website");
             this.MRWebsiteButton.UseVisualStyleBackColor = false;
             this.MRWebsiteButton.Click += new System.EventHandler(this.MRWebsiteButton_Click);
             // 

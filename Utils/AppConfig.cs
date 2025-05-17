@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
+using System;
 
 namespace _4RTools.Utils
 {
@@ -8,11 +9,11 @@ namespace _4RTools.Utils
         public static string Name = "OSRO Tools";
         public static string Version = "v1.0.6";
 
+        // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
         public static int ServerMode = 0;
 
-        public static string WindowTitle => $"{Name} {Version}/{(ServerMode == 0 ? "MR" : "HR")}";
-
-        public static string SystemTrayText => $"{Name} {Version}/{(ServerMode == 0 ? "MR" : "HR")}";
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";
 
         public static string ProfileFolder = "Profile" + "\\";
         public static string ConfigFolder = "Config" + "\\";
@@ -21,28 +22,59 @@ namespace _4RTools.Utils
         public static string CitiesFile = ConfigFolder + "cities.json";
         public static string DebugLogFile = "debug.log";
 
-        public static List<dynamic> DefaultServers => new List<dynamic>
+        public static List<dynamic> DefaultServers
         {
-            ServerMode == 0
-                ? new
+            get
+            {
+                switch (ServerMode)
                 {
-                    name = "OsRO Midrate",
-                    description = "OsRO Midrate",
-                    hpAddress = "00E8F434",
-                    nameAddress = "00E91C00",
-                    mapAddress = "00E8ABD4",
-                    onlineAddress = "00E8A928"
-                }
-                : new
+                    case 0: // Mid‑rate
+                        return new List<dynamic>
                 {
-                    name = "OSRO",
-                    description = "OsRO Highrate",
-                    hpAddress = "010DCE10",
-                    nameAddress = "010DF5D8",
-                    mapAddress = "010D856C",
-                    onlineAddress = "010D83C7"
+                    new
+                    {
+                        name          = "OsRO Midrate",
+                        description   = "OsRO Midrate",
+                        hpAddress     = "00E8F434",
+                        nameAddress   = "00E91C00",
+                        mapAddress    = "00E8ABD4",
+                        onlineAddress = "00E8A928"
+                    }
+                };
+
+                    case 1: // High‑rate
+                        return new List<dynamic>
+                {
+                    new
+                    {
+                        name          = "OsRO",
+                        description   = "OsRO Highrate",
+                        hpAddress     = "010DCE10",
+                        nameAddress   = "010DF5D8",
+                        mapAddress    = "010D856C",
+                        onlineAddress = "010D83C7"
+                    }
+                };
+
+                    case 2: // Low-rate
+                        return new List<dynamic>
+                {
+                    new
+                    {
+                        name          = "OsRO Revo",
+                        description   = "OsRO Revo (Lowrate)",
+                        hpAddress     = "00000000",
+                        nameAddress   = "00000000",
+                        mapAddress    = "00000000",
+                        onlineAddress = "00000000"
+                    }
+                };
+
+                    default:
+                        throw new InvalidOperationException($"Unsupported ServerMode value: {ServerMode}");
                 }
-        };
+            }
+        }
 
         public static List<string> DefaultCities => new List<string>
         {
@@ -56,8 +88,10 @@ namespace _4RTools.Utils
         public static string GithubLink = "https://github.com/torrq/4RTools-OSRO/releases";
         public static string WebsiteMR = "https://osro.mr";
         public static string WebsiteHR = "https://osro.gg";
+        public static string WebsiteLR = "https://osro-revo.gg";
         public static string DiscordLinkMR = "https://discord.com/invite/osro2";
-        public static string DiscordLinkHR = "https://discord.com/invite/b5mjuCxY";
+        public static string DiscordLinkHR = "https://discord.com/invite/osro";
+        public static string DiscordLinkLR = "https://discord.com/invite/osro3";
 
         public static int AutoPotDefaultDelay = 50;
         public static int YggDefaultDelay = 50;
@@ -104,5 +138,17 @@ namespace _4RTools.Utils
         public const string STATUS = "S";
 
         public static bool DebugMode = false;
+
+        private static string GetRateTag()
+        {
+            switch (ServerMode)
+            {
+                case 0: return "MR";   // Mid‑rate
+                case 1: return "HR";   // High‑rate
+                case 2: return "LR";   // Low‑rate
+                default:
+                    throw new InvalidOperationException($"Unsupported ServerMode value: {ServerMode}");
+            }
+        }
     }
 }

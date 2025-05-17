@@ -1,4 +1,5 @@
 ﻿using _4RTools.Utils;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -20,7 +21,7 @@ namespace _4RTools.Model
         //--------------------- SKILLS ------------------------------
 
         //Archer Skills
-        public static List<Buff> GetArcherSkills()
+        public static List<Buff> GetArcherBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -34,7 +35,7 @@ namespace _4RTools.Model
         }
 
         //Swordsman Skills
-        public static List<Buff> GetSwordmanSkill()
+        public static List<Buff> GetSwordmanBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -61,7 +62,7 @@ namespace _4RTools.Model
         }
 
         //Mage Skills
-        public static List<Buff> GetMageSkills()
+        public static List<Buff> GetMageBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -78,7 +79,7 @@ namespace _4RTools.Model
         }
 
         //Merchant Skills
-        public static List<Buff> GetMerchantSkills()
+        public static List<Buff> GetMerchantBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -99,7 +100,7 @@ namespace _4RTools.Model
         }
 
         //Thief Skills
-        public static List<Buff> GetThiefSkills()
+        public static List<Buff> GetThiefBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -116,7 +117,7 @@ namespace _4RTools.Model
         }
 
         //Acolyte Skills
-        public static List<Buff> GetAcolyteSkills()
+        public static List<Buff> GetAcolyteBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -133,7 +134,7 @@ namespace _4RTools.Model
         }
 
         //Ninja Skills
-        public static List<Buff> GetNinjaSkills()
+        public static List<Buff> GetNinjaBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -150,7 +151,7 @@ namespace _4RTools.Model
         }
 
         //Taekwon Skills
-        public static List<Buff> GetTaekwonSkills()
+        public static List<Buff> GetTaekwonBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -178,7 +179,7 @@ namespace _4RTools.Model
         }
 
 
-        public static List<Buff> GetGunsSkills()
+        public static List<Buff> GetGunsBuffs()
         {
             List<Buff> skills = new List<Buff>
             {
@@ -193,55 +194,68 @@ namespace _4RTools.Model
             return skills;
         }
 
-        public static List<Buff> GetPadawanSkills()
+        // HR‑specific Padawan list (ServerMode == 1)
+        private static readonly List<Buff> PadawanBuffsHR = new List<Buff>
         {
+            new Buff("Force Element (Earth)",  EffectStatusIDs.PROPERTYGROUND,     Resources._4RTools.Icons.forceelement_earth),
+            new Buff("Force Element (Wind)",   EffectStatusIDs.PROPERTYWIND,       Resources._4RTools.Icons.forceelement_wind),
+            new Buff("Force Element (Water)",  EffectStatusIDs.PROPERTYWATER,      Resources._4RTools.Icons.forceelement_water),
+            // fire doesn't work as is, so it's commented out
+            // new Buff("Force Element (Fire)",   EffectStatusIDs.PROPERTYFIRE,       Resources._4RTools.Icons.forceelement_fire),
+            new Buff("Force Element (Ghost)",  EffectStatusIDs.PROPERTYTELEKINESIS, Resources._4RTools.Icons.forceelement_ghost),
+            new Buff("Force Element (Shadow)", EffectStatusIDs.PROPERTYDARK,       Resources._4RTools.Icons.forceelement_shadow),
+            new Buff("Force Element (Holy)",   EffectStatusIDs.ASPERSIO,           Resources._4RTools.Icons.forceelement_holy),
+            new Buff("Force Projection",       EffectStatusIDs.HR_PROJECTION,      Resources._4RTools.Icons.hr_forceprojection),
+            new Buff("Cold Skin",              EffectStatusIDs.RESIST_PROPERTY_WATER, Resources._4RTools.Icons.hr_coldskin),
+            new Buff("Saber Parry",            EffectStatusIDs.HR_SABERPARRY,      Resources._4RTools.Icons.hr_saberparry),
+            new Buff("Force Concentration",    EffectStatusIDs.HR_FORCECONCENTRATE,Resources._4RTools.Icons.hr_forceconcentrate),
+            new Buff("Saber Thrust",           EffectStatusIDs.LKCONCENTRATION,    Resources._4RTools.Icons.hr_saberthrust),
+            new Buff("Force Persuasion",       EffectStatusIDs.HR_FORCEPERSUASION, Resources._4RTools.Icons.hr_forcepersuasion),
+            new Buff("Force Haste",            EffectStatusIDs.HR_FORCEHASTE,      Resources._4RTools.Icons.forcehaste),
+            new Buff("Force Sacrifice",        EffectStatusIDs.HR_FORCESACRIFICE,  Resources._4RTools.Icons.hr_forcesacrifice),
+            new Buff("Jedi Frenzy",            EffectStatusIDs.HR_JEDIFRENZY,      Resources._4RTools.Icons.hr_jedifrenzy)
+        };
+
+        // MR / LR shared list (ServerMode == 0 or 2)
+        private static readonly List<Buff> PadawanBuffsMR = new List<Buff>
+        {
+            new Buff("Force Element (Earth)",  EffectStatusIDs.ELEMENT_EARTH,   Resources._4RTools.Icons.forceelement_earth),
+            new Buff("Force Element (Wind)",   EffectStatusIDs.ELEMENT_WIND,    Resources._4RTools.Icons.forceelement_wind),
+            new Buff("Force Element (Water)",  EffectStatusIDs.ELEMENT_WATER,   Resources._4RTools.Icons.forceelement_water),
+            new Buff("Force Element (Fire)",   EffectStatusIDs.ELEMENT_FIRE,    Resources._4RTools.Icons.forceelement_fire),
+            new Buff("Force Element (Ghost)",  EffectStatusIDs.ELEMENT_GHOST,   Resources._4RTools.Icons.forceelement_ghost),
+            new Buff("Force Element (Shadow)", EffectStatusIDs.ELEMENT_SHADOW,  Resources._4RTools.Icons.forceelement_shadow),
+            new Buff("Force Element (Holy)",   EffectStatusIDs.ELEMENT_HOLY,    Resources._4RTools.Icons.forceelement_holy),
+            new Buff("Force Projection",       EffectStatusIDs.PROJECTION,      Resources._4RTools.Icons.forceprojection),
+            new Buff("Cold Skin",              EffectStatusIDs.COLDSKIN,        Resources._4RTools.Icons.coldskin),
+            new Buff("Saber Parry",            EffectStatusIDs.SABERPARRY,      Resources._4RTools.Icons.saberparry),
+            new Buff("Force Concentration",    EffectStatusIDs.FORCECONCENTRATE,Resources._4RTools.Icons.forceconcentrate),
+            new Buff("Saber Thrust",           EffectStatusIDs.SABERTHRUST,     Resources._4RTools.Icons.saberthrust),
+            new Buff("Force Persuasion",       EffectStatusIDs.FORCEPERSUASION, Resources._4RTools.Icons.forcepersuasion),
+            new Buff("Jedi Stealth",           EffectStatusIDs.JEDISTEALTH,     Resources._4RTools.Icons.jedistealth),
+            new Buff("Force Levitate",         EffectStatusIDs.FORCELEVITATE,   Resources._4RTools.Icons.forcelevitate),
+            new Buff("Jedi Frenzy",            EffectStatusIDs.JEDIFRENZY,      Resources._4RTools.Icons.jedifrenzy),
+            new Buff("Force Sacrifice",        EffectStatusIDs.FORCESACRIFICE,  Resources._4RTools.Icons.forcesacrifice)
+        };
+
+        public static List<Buff> GetPadawanBuffs()
+        {
+
             List<Buff> skills;
 
-            if (AppConfig.ServerMode == 1) // OsRO Highrate mode
+            switch (AppConfig.ServerMode)   // 0 = MR, 1 = HR, 2 = LR
             {
-                skills = new List<Buff>
-                {
-                    new Buff("Force Element (Earth)", EffectStatusIDs.PROPERTYGROUND, Resources._4RTools.Icons.forceelement_earth),
-                    new Buff("Force Element (Wind)", EffectStatusIDs.PROPERTYWIND, Resources._4RTools.Icons.forceelement_wind),
-                    new Buff("Force Element (Water)", EffectStatusIDs.PROPERTYWATER, Resources._4RTools.Icons.forceelement_water),
-                    // fire doesn't work as is, so it's commented out
-                    //new Buff("Force Element (Fire)", EffectStatusIDs.PROPERTYFIRE, Resources._4RTools.Icons.forceelement_fire),
-                    new Buff("Force Element (Ghost)", EffectStatusIDs.PROPERTYTELEKINESIS, Resources._4RTools.Icons.forceelement_ghost),
-                    new Buff("Force Element (Shadow)", EffectStatusIDs.PROPERTYDARK, Resources._4RTools.Icons.forceelement_shadow),
-                    new Buff("Force Element (Holy)", EffectStatusIDs.ASPERSIO, Resources._4RTools.Icons.forceelement_holy),
-                    new Buff("Force Projection", EffectStatusIDs.HR_PROJECTION, Resources._4RTools.Icons.hr_forceprojection),
-                    new Buff("Cold Skin", EffectStatusIDs.RESIST_PROPERTY_WATER, Resources._4RTools.Icons.hr_coldskin),
-                    new Buff("Saber Parry", EffectStatusIDs.HR_SABERPARRY, Resources._4RTools.Icons.hr_saberparry),
-                    new Buff("Force Concentration", EffectStatusIDs.HR_FORCECONCENTRATE, Resources._4RTools.Icons.hr_forceconcentrate),
-                    new Buff("Saber Thrust", EffectStatusIDs.LKCONCENTRATION, Resources._4RTools.Icons.hr_saberthrust),
-                    new Buff("Force Persuasion", EffectStatusIDs.HR_FORCEPERSUASION, Resources._4RTools.Icons.hr_forcepersuasion),
-                    new Buff("Force Haste", EffectStatusIDs.HR_FORCEHASTE, Resources._4RTools.Icons.forcehaste),
-                    new Buff("Force Sacrifice", EffectStatusIDs.HR_FORCESACRIFICE, Resources._4RTools.Icons.hr_forcesacrifice),
-                    new Buff("Jedi Frenzy", EffectStatusIDs.HR_JEDIFRENZY, Resources._4RTools.Icons.hr_jedifrenzy)
-                };
-            }
-            else // OsRO Midrate mode (default for ServerMode == 0)
-            {
-                skills = new List<Buff>
-                {
-                    new Buff("Force Element (Earth)", EffectStatusIDs.ELEMENT_EARTH, Resources._4RTools.Icons.forceelement_earth),
-                    new Buff("Force Element (Wind)", EffectStatusIDs.ELEMENT_WIND, Resources._4RTools.Icons.forceelement_wind),
-                    new Buff("Force Element (Water)", EffectStatusIDs.ELEMENT_WATER, Resources._4RTools.Icons.forceelement_water),
-                    new Buff("Force Element (Fire)", EffectStatusIDs.ELEMENT_FIRE, Resources._4RTools.Icons.forceelement_fire),
-                    new Buff("Force Element (Ghost)", EffectStatusIDs.ELEMENT_GHOST, Resources._4RTools.Icons.forceelement_ghost),
-                    new Buff("Force Element (Shadow)", EffectStatusIDs.ELEMENT_SHADOW, Resources._4RTools.Icons.forceelement_shadow),
-                    new Buff("Force Element (Holy)", EffectStatusIDs.ELEMENT_HOLY, Resources._4RTools.Icons.forceelement_holy),
-                    new Buff("Force Projection", EffectStatusIDs.PROJECTION, Resources._4RTools.Icons.forceprojection),
-                    new Buff("Cold Skin", EffectStatusIDs.COLDSKIN, Resources._4RTools.Icons.coldskin),
-                    new Buff("Saber Parry", EffectStatusIDs.SABERPARRY, Resources._4RTools.Icons.saberparry),
-                    new Buff("Force Concentration", EffectStatusIDs.FORCECONCENTRATE, Resources._4RTools.Icons.forceconcentrate),
-                    new Buff("Saber Thrust", EffectStatusIDs.SABERTHRUST, Resources._4RTools.Icons.saberthrust),
-                    new Buff("Force Persuasion", EffectStatusIDs.FORCEPERSUASION, Resources._4RTools.Icons.forcepersuasion),
-                    new Buff("Jedi Stealth", EffectStatusIDs.JEDISTEALTH, Resources._4RTools.Icons.jedistealth),
-                    new Buff("Force Levitate", EffectStatusIDs.FORCELEVITATE, Resources._4RTools.Icons.forcelevitate),
-                    new Buff("Jedi Frenzy", EffectStatusIDs.JEDIFRENZY, Resources._4RTools.Icons.jedifrenzy),
-                    new Buff("Force Sacrifice", EffectStatusIDs.FORCESACRIFICE, Resources._4RTools.Icons.forcesacrifice)
-                };
+                case 1:  // High‑rate
+                    skills = PadawanBuffsHR;
+                    break;
+
+                case 0:  // Mid‑rate
+                case 2:  // Low‑rate (currently same as MR)
+                    skills = PadawanBuffsMR;
+                    break;
+
+                default:
+                    throw new InvalidOperationException($"Unsupported ServerMode value: {AppConfig.ServerMode}");
             }
 
             return skills;

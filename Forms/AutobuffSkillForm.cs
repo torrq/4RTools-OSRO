@@ -30,16 +30,16 @@ namespace _4RTools.Forms
         }
         private void InitializeSkillContainers()
         {
-            skillContainers.Add(new BuffContainer(this.ArcherSkillsGP, Buff.GetArcherSkills()));
-            skillContainers.Add(new BuffContainer(this.SwordmanSkillGP, Buff.GetSwordmanSkill()));
-            skillContainers.Add(new BuffContainer(this.MageSkillGP, Buff.GetMageSkills()));
-            skillContainers.Add(new BuffContainer(this.MerchantSkillsGP, Buff.GetMerchantSkills()));
-            skillContainers.Add(new BuffContainer(this.ThiefSkillsGP, Buff.GetThiefSkills()));
-            skillContainers.Add(new BuffContainer(this.AcolyteSkillsGP, Buff.GetAcolyteSkills()));
-            skillContainers.Add(new BuffContainer(this.TKSkillGroupBox, Buff.GetTaekwonSkills()));
-            skillContainers.Add(new BuffContainer(this.NinjaSkillsGP, Buff.GetNinjaSkills()));
-            skillContainers.Add(new BuffContainer(this.GunsSkillsGP, Buff.GetGunsSkills()));
-            skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, Buff.GetPadawanSkills()));
+            skillContainers.Add(new BuffContainer(this.ArcherSkillsGP, Buff.GetArcherBuffs()));
+            skillContainers.Add(new BuffContainer(this.SwordmanSkillGP, Buff.GetSwordmanBuffs()));
+            skillContainers.Add(new BuffContainer(this.MageSkillGP, Buff.GetMageBuffs()));
+            skillContainers.Add(new BuffContainer(this.MerchantSkillsGP, Buff.GetMerchantBuffs()));
+            skillContainers.Add(new BuffContainer(this.ThiefSkillsGP, Buff.GetThiefBuffs()));
+            skillContainers.Add(new BuffContainer(this.AcolyteSkillsGP, Buff.GetAcolyteBuffs()));
+            skillContainers.Add(new BuffContainer(this.TKSkillGroupBox, Buff.GetTaekwonBuffs()));
+            skillContainers.Add(new BuffContainer(this.NinjaSkillsGP, Buff.GetNinjaBuffs()));
+            skillContainers.Add(new BuffContainer(this.GunsSkillsGP, Buff.GetGunsBuffs()));
+            skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, Buff.GetPadawanBuffs()));
         }
 
         private void RenderSkillBuffs()
