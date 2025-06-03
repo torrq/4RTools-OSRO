@@ -111,14 +111,14 @@ namespace _4RTools.Utils
                 {
                     if (wParam == (IntPtr)WM_KEYDOWN && !_instance.wasDown)
                     {
-                        DebugLogger.Debug($"[AmmoSwapHandler] Intercepted {wpfKey} press, blocking and swapping");
+                        //DebugLogger.Debug($"[AmmoSwapHandler] Intercepted {wpfKey} press, blocking and swapping");
                         _instance.SwapAmmoKey();
                         _instance.wasDown = true;
                         return (IntPtr)1; // Block the key
                     }
                     else if (wParam == (IntPtr)WM_KEYUP && _instance.wasDown)
                     {
-                        DebugLogger.Debug($"[AmmoSwapHandler] Intercepted {wpfKey} release");
+                        //DebugLogger.Debug($"[AmmoSwapHandler] Intercepted {wpfKey} release");
                         _instance.wasDown = false;
                         return (IntPtr)1; // Block the key
                     }
@@ -143,13 +143,13 @@ namespace _4RTools.Utils
             Client client = ClientSingleton.GetClient();
             if (client == null)
             {
-                DebugLogger.Debug("[AmmoSwapHandler] Client is null, skipping key press");
+                //DebugLogger.Debug("[AmmoSwapHandler] Client is null, skipping key press");
                 return;
             }
 
             // Select the key based on current toggle state
             Key keyToPress = ammoToggle ? prefs.Ammo2Key : prefs.Ammo1Key;
-            DebugLogger.Debug($"[AmmoSwapHandler] Selected key: {keyToPress} (Ammo1Key={prefs.Ammo1Key}, Ammo2Key={prefs.Ammo2Key}, toggle={ammoToggle})");
+            //DebugLogger.Debug($"[AmmoSwapHandler] Selected key: {keyToPress} (Ammo1Key={prefs.Ammo1Key}, Ammo2Key={prefs.Ammo2Key}, toggle={ammoToggle})");
 
             Keys winFormsKey = (Keys)KeyInterop.VirtualKeyFromKey(keyToPress);
             byte vkCode = (byte)winFormsKey;
@@ -171,7 +171,7 @@ namespace _4RTools.Utils
                 this.isSendingKey = false; // Always reset the flag
             }
 
-            DebugLogger.Debug($"[AmmoSwapHandler] Sent {winFormsKey} using keybd_event (vkCode={vkCode}, scanCode={scanCode}, new toggle={ammoToggle})");
+            //DebugLogger.Debug($"[AmmoSwapHandler] Sent {winFormsKey} using keybd_event (vkCode={vkCode}, scanCode={scanCode}, new toggle={ammoToggle})");
         }
 
         private bool IsGameWindowActive()

@@ -355,8 +355,8 @@ namespace _4RTools.Model
         {
             List<Buff> skills = new List<Buff>
             {
-                new Buff("Field Manual 100%", EffectStatusIDs.FIELD_MANUAL, Resources._4RTools.Icons.fieldmanual),
-                //new Buff("HE Bubble Gum", EffectStatusIDs.CASH_RECEIVEITEM, Resources._4RTools.Icons.he_bubble_gum),
+                new Buff("Field Manual 100% / 300%", EffectStatusIDs.FIELD_MANUAL, Resources._4RTools.Icons.fieldmanual),
+                new Buff("Bubble Gum / HE Bubble Gum", EffectStatusIDs.CASH_RECEIVEITEM, Resources._4RTools.Icons.he_bubble_gum),
 
             };
 

@@ -16,7 +16,7 @@ namespace _4RTools.Utils
 #elif LR_BUILD
         public static int ServerMode = 2; // Low-rate
 #else
-        public static int ServerMode = 1;
+        public static int ServerMode = 0;
 #endif
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
