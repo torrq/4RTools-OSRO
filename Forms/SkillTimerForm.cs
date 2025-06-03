@@ -87,7 +87,7 @@ namespace _4RTools.Forms
             }
             catch (Exception ex)
             {
-                var exception = ex;
+                DebugLogger.Error($"Exception in ValidateAllSkillTimer: {ex}");
             }
         }
 

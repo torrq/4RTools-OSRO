@@ -14,11 +14,13 @@ namespace _4RTools.Model
         public string ActionName { get; set; }
         private ThreadRunner thread;
         private int _delay = AppConfig.AutoBuffItemsDefaultDelay;
+
         public int Delay
         {
             get => _delay <= 0 ? AppConfig.AutoBuffItemsDefaultDelay : _delay;
             set => _delay = value;
         }
+
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
 
         public AutoBuffItem(string actionName)
@@ -55,8 +57,14 @@ namespace _4RTools.Model
                 for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                 {
                     uint currentStatus = c.CurrentBuffStatusCode(i);
-                    statusList.Add((i, currentStatus));
+
+                    if (StatusUtils.IsValidStatus(currentStatus))
+                    {
+                        statusList.Add((i, currentStatus));
+                        //DebugLogger.Debug("currentStatus: " + i + ":" + currentStatus);
+                    }
                 }
+
                 StatusIdLogger.LogAllStatuses(statusList);
 
                 if (!prefs.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
@@ -67,7 +75,7 @@ namespace _4RTools.Model
 
                     foreach (var (i, currentStatus) in statusList)
                     {
-                        if (currentStatus == uint.MaxValue) { continue; }
+                        if (!StatusUtils.IsValidStatus(currentStatus)) { continue; }
 
                         buffs.Add((EffectStatusIDs)currentStatus);
                         EffectStatusIDs status = (EffectStatusIDs)currentStatus;
@@ -112,8 +120,12 @@ namespace _4RTools.Model
                     for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                     {
                         uint currentStatus = c.CurrentBuffStatusCode(i);
-                        statusList.Add((i, currentStatus));
+                        if (StatusUtils.IsValidStatus(currentStatus))
+                        {
+                            statusList.Add((i, currentStatus));
+                        }
                     }
+
                     StatusIdLogger.LogAllStatuses(statusList);
                 }
 

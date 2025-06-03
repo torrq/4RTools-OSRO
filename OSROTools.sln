@@ -1,25 +1,43 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSRO Tools", "OSRO Tools.csproj", "{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug-HR|Any CPU = Debug-HR|Any CPU
+		Debug-LR|Any CPU = Debug-LR|Any CPU
+		Debug-MR|Any CPU = Debug-MR|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Release-HR|Any CPU = Release-HR|Any CPU
+		Release-LR|Any CPU = Release-LR|Any CPU
+		Release-MR|Any CPU = Release-MR|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug-HR|Any CPU.ActiveCfg = Debug-HR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug-HR|Any CPU.Build.0 = Debug-HR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug-LR|Any CPU.ActiveCfg = Debug-LR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug-LR|Any CPU.Build.0 = Debug-LR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug-MR|Any CPU.ActiveCfg = Debug-MR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Debug-MR|Any CPU.Build.0 = Debug-MR|Any CPU
 		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release-HR|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release-HR|Any CPU.Build.0 = Release|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release-LR|Any CPU.ActiveCfg = Release-LR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release-LR|Any CPU.Build.0 = Release-LR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release-MR|Any CPU.ActiveCfg = Release-MR|Any CPU
+		{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}.Release-MR|Any CPU.Build.0 = Release-MR|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {73867649-1922-4374-9A70-AB355692CB36}
+		SolutionGuid = {2C68E354-92E1-47D1-A924-B0E55B2152E5}
 	EndGlobalSection
 EndGlobal

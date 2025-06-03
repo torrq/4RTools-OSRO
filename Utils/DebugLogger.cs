@@ -15,6 +15,7 @@ namespace _4RTools.Utils
         private static string _sessionDate;
 
         public delegate void LogMessageHandler(string message, LogLevel level);
+
         public static event LogMessageHandler OnLogMessage;
 
         public enum LogLevel
@@ -50,7 +51,7 @@ namespace _4RTools.Utils
                     {
                         using (StreamWriter writer = new StreamWriter(_logFilePath, false, Encoding.UTF8))
                         {
-                            writer.WriteLine("=== "+ AppConfig.Name.ToUpper() +" DEBUG LOG ===");
+                            writer.WriteLine("=== " + AppConfig.Name.ToUpper() + " DEBUG LOG ===");
                             writer.WriteLine("=== SESSION DATE " + _sessionDate + " ===");
                             writer.WriteLine("============================================");
                         }
@@ -144,22 +145,30 @@ namespace _4RTools.Utils
             {
                 case LogLevel.INFO:
                     return AppConfig.INFO;
+
                 case LogLevel.WARNING:
                     return AppConfig.WARNING;
+
                 case LogLevel.ERROR:
                     return AppConfig.ERROR;
+
                 case LogLevel.DEBUG:
                     return AppConfig.DEBUG;
+
                 case LogLevel.STATUS:
                     return AppConfig.STATUS;
+
                 default:
                     return level.ToString();
             }
         }
 
         public static void Info(string message) => Log(LogLevel.INFO, message);
+
         public static void Status(string message) => Log(LogLevel.STATUS, message);
+
         public static void Warning(string message) => Log(LogLevel.WARNING, message);
+
         public static void Error(string message) => Log(LogLevel.ERROR, message);
 
         public static void Error(Exception ex, string context = "")

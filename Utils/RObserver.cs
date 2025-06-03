@@ -10,8 +10,11 @@ namespace _4RTools.Utils
     public interface ISubject
     {
         Message Message { get; }
+
         void Attach(IObserver observer);
+
         void Detach(IObserver observer);
+
         void Notify(Message message);
     }
 
@@ -35,7 +38,9 @@ namespace _4RTools.Utils
     {
         public MessageCode Code { get; }
         public object Data { get; set; }
-        public Message() { }
+
+        public Message()
+        { }
 
         public Message(MessageCode code, object data)
         {

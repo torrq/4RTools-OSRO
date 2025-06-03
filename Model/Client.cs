@@ -16,11 +16,11 @@ namespace _4RTools.Model
         public string HPAddress { get; set; }
         public string NameAddress { get; set; }
         public string MapAddress { get; set; }
-        public string OnlineAddress { get; set; } // Added for connection status
+        public string OnlineAddress { get; set; }
         public int HPAddressPointer { get; set; }
         public int NameAddressPointer { get; set; }
         public int MapAddressPointer { get; set; }
-        public int OnlineAddressPointer { get; set; } // Added for connection status
+        public int OnlineAddressPointer { get; set; }
 
         public ClientDTO() { }
 
@@ -93,7 +93,7 @@ namespace _4RTools.Model
         public int CurrentNameAddress { get; set; }
         public int CurrentHPBaseAddress { get; set; }
         public int CurrentMapAddress { get; set; }
-        public int CurrentOnlineAddress { get; set; } // Added for connection status
+        public int CurrentOnlineAddress { get; set; }
         private int StatusBufferAddress { get; set; }
         private int _num = 0;
 
@@ -104,7 +104,22 @@ namespace _4RTools.Model
             this.CurrentMapAddress = currentMapAddress;
             this.CurrentOnlineAddress = currentOnlineAddress;
             this.ProcessName = processName;
-            this.StatusBufferAddress = currentHPBaseAddress + 0x474;
+
+            if (AppConfig.ServerMode == 1) // HR
+            {
+                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x470;
+                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for HR client.");
+            }
+            else if (AppConfig.ServerMode == 2) // LR
+            {
+                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474; // Placeholder for LR, to be updated with correct offset
+                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for LR client.");
+            }
+            else // Default to MR (ServerMode == 0)
+            {
+                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474;
+                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for MR client.");
+            }
         }
 
         public Client(ClientDTO dto)
@@ -113,8 +128,23 @@ namespace _4RTools.Model
             this.CurrentHPBaseAddress = Convert.ToInt32(dto.HPAddress, 16);
             this.CurrentNameAddress = Convert.ToInt32(dto.NameAddress, 16);
             this.CurrentMapAddress = Convert.ToInt32(dto.MapAddress, 16);
-            this.CurrentOnlineAddress = Convert.ToInt32(dto.OnlineAddress, 16); // Initialize online address
-            this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474;
+            this.CurrentOnlineAddress = Convert.ToInt32(dto.OnlineAddress, 16);
+
+            if (AppConfig.ServerMode == 1) // HR
+            {
+                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x470;
+                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for HR client.");
+            }
+            else if (AppConfig.ServerMode == 2) // LR
+            {
+                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474; // Placeholder for LR, to be updated with correct offset
+                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for LR client.");
+            }
+            else // Default to MR (ServerMode == 0)
+            {
+                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474;
+                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for MR client.");
+            }
         }
 
         public Client(string processName)
@@ -137,7 +167,7 @@ namespace _4RTools.Model
                         this.CurrentHPBaseAddress = c.CurrentHPBaseAddress;
                         this.CurrentNameAddress = c.CurrentNameAddress;
                         this.CurrentMapAddress = c.CurrentMapAddress;
-                        this.CurrentOnlineAddress = c.CurrentOnlineAddress; // Initialize online address
+                        this.CurrentOnlineAddress = c.CurrentOnlineAddress;
                         this.StatusBufferAddress = c.StatusBufferAddress;
                     }
                     catch
@@ -146,7 +176,7 @@ namespace _4RTools.Model
                         this.CurrentHPBaseAddress = 0;
                         this.CurrentNameAddress = 0;
                         this.CurrentMapAddress = 0;
-                        this.CurrentOnlineAddress = 0; // Set to 0 for unsupported clients
+                        this.CurrentOnlineAddress = 0;
                         this.StatusBufferAddress = 0;
                     }
                 }
@@ -172,6 +202,8 @@ namespace _4RTools.Model
 
         public bool IsOnline()
         {
+            return true;
+            /*
             try
             {
                 byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentOnlineAddress, 1u, out _num);
@@ -187,6 +219,7 @@ namespace _4RTools.Model
                 DebugLogger.Error($"Error reading online status: {ex.Message}");
                 return false;
             }
+            */
         }
 
         public void WriteMemory(int address, uint intToWrite)
@@ -241,7 +274,7 @@ namespace _4RTools.Model
 
         public uint CurrentBuffStatusCode(int effectStatusIndex)
         {
-            return ReadMemory(this.StatusBufferAddress + effectStatusIndex * 4);
+            return ReadMemory(this.StatusBufferAddress + (effectStatusIndex * 4));
         }
 
         public Client GetClientByProcess(string processName)
@@ -263,7 +296,7 @@ namespace _4RTools.Model
                 .Where(c => c.ProcessName == dto.Name)
                 .Where(c => c.CurrentHPBaseAddress == dto.HPAddressPointer)
                 .Where(c => c.CurrentNameAddress == dto.NameAddressPointer)
-                .Where(c => c.CurrentOnlineAddress == dto.OnlineAddressPointer) // Added online address check
+                .Where(c => c.CurrentOnlineAddress == dto.OnlineAddressPointer)
                 .FirstOrDefault();
         }
     }

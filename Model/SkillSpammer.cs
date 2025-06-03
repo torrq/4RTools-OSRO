@@ -24,18 +24,24 @@ namespace _4RTools.Model
 
     public class SkillSpammer : IAction
     {
-        // Import the mouse_event function from the Windows API
-        [DllImport("user32.dll")]
-        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
+        [DllImport("user32.dll")] public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
+        [DllImport("user32.dll")] public static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+        [DllImport("user32.dll", SetLastError = true)] public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")] static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
 
-        [DllImport("user32.dll")]
-        public static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+        public bool IsGameWindowActive()
+        {
+            IntPtr foreground = GetForegroundWindow();
+            return
+                foreground == FindWindow(AppConfig.WindowClassLR, null) ||
+                foreground == FindWindow(AppConfig.WindowClassMR, null) ||
+                foreground == FindWindow(AppConfig.WindowClassHR, null);
+        }
 
         private const string ACTION_NAME = "AHK";
         private ThreadRunner thread;
+        private AmmoSwapHandler ammoSwapHandler = new AmmoSwapHandler();
         public const string COMPATIBILITY = "ahkCompatibility";
         public const string SPEED_BOOST = "ahkSpeedBoost";
         public Dictionary<string, KeyConfig> AhkEntries { get; set; } = new Dictionary<string, KeyConfig>();
@@ -51,9 +57,7 @@ namespace _4RTools.Model
         public bool NoShift { get; set; } = false;
         public string AHKMode { get; set; } = COMPATIBILITY;
 
-        public SkillSpammer()
-        {
-        }
+        public SkillSpammer() { }
 
         public void Start()
         {
@@ -65,50 +69,52 @@ namespace _4RTools.Model
                     ThreadRunner.Stop(this.thread);
                 }
 
-                this.thread = new ThreadRunner(_ => AHKThreadExecution(roClient));
+                this.thread = new ThreadRunner(_ => SkillSpammerThreadExecution(roClient));
                 ThreadRunner.Start(this.thread);
+
+                ammoSwapHandler.Start();
             }
         }
 
-        private int AHKThreadExecution(Client roClient)
+        private int SkillSpammerThreadExecution(Client roClient)
         {
             if (AHKMode.Equals(COMPATIBILITY))
             {
                 foreach (KeyConfig config in AhkEntries.Values)
                 {
                     Keys thisk = (Keys)Enum.Parse(typeof(Keys), config.Key.ToString());
-                    if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+                    if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt) && this.IsGameWindowActive())
                     {
                         if (config.ClickActive && Keyboard.IsKeyDown(config.Key))
                         {
                             if (NoShift) keybd_event(Constants.VK_SHIFT, 0x45, Constants.KEYEVENTF_EXTENDEDKEY, 0);
-                            AHKCompatibility(roClient, config, thisk);
+                            SkillSpammerCompatibility(roClient, config, thisk);
                             if (NoShift) keybd_event(Constants.VK_SHIFT, 0x45, Constants.KEYEVENTF_EXTENDEDKEY | Constants.KEYEVENTF_KEYUP, 0);
-
                         }
                         else
                         {
-                            this.AHKNoClick(roClient, config, thisk);
+                            this.SkillSpammerNoClick(roClient, config, thisk);
                         }
                     }
                 }
             }
             else
             {
-                foreach (KeyConfig config in AhkEntries.Values)
+                if (this.IsGameWindowActive())
                 {
-                    Keys thisk = (Keys)Enum.Parse(typeof(Keys), config.Key.ToString());
-                    this.AHKSpeedBoost(roClient, config, thisk);
+                    foreach (KeyConfig config in AhkEntries.Values)
+                    {
+                        Keys thisk = (Keys)Enum.Parse(typeof(Keys), config.Key.ToString());
+                        this.SkillSpammerSpeedBoost(roClient, config, thisk);
+                    }
                 }
             }
             return 0;
         }
 
-        private void AHKCompatibility(Client roClient, KeyConfig config, Keys thisk)
+        private void SkillSpammerCompatibility(Client roClient, KeyConfig config, Keys thisk)
         {
-            Func<int, int> send_click;
-
-            send_click = (evt) =>
+            Func<int, int> send_click = (evt) =>
             {
                 Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
                 Thread.Sleep(1);
@@ -116,39 +122,27 @@ namespace _4RTools.Model
                 return 0;
             };
 
-            if (this.MouseFlick)
+            while (Keyboard.IsKeyDown(config.Key))
             {
-                bool ammo = false;
-                while (Keyboard.IsKeyDown(config.Key))
+                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                if (this.MouseFlick)
                 {
-                    AutoSwitchAmmo(roClient, ref ammo);
-                    Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                     System.Windows.Forms.Cursor.Position = new Point(System.Windows.Forms.Cursor.Position.X - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK, System.Windows.Forms.Cursor.Position.Y - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK);
                     send_click(0);
                     System.Windows.Forms.Cursor.Position = new Point(System.Windows.Forms.Cursor.Position.X + Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK, System.Windows.Forms.Cursor.Position.Y + Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK);
-                    Thread.Sleep(this.AhkDelay);
                 }
-            }
-            else
-            {
-                bool ammo = false;
-                while (Keyboard.IsKeyDown(config.Key))
+                else
                 {
-                    AutoSwitchAmmo(roClient, ref ammo);
-                    Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                     send_click(0);
-                    Thread.Sleep(this.AhkDelay);
                 }
+                Thread.Sleep(this.AhkDelay);
             }
         }
 
-        private void AHKSpeedBoost(Client roClient, KeyConfig config, Keys thisk)
+        private void SkillSpammerSpeedBoost(Client roClient, KeyConfig config, Keys thisk)
         {
-            bool ammo = false;
             while (Keyboard.IsKeyDown(config.Key))
             {
-                AutoSwitchAmmo(roClient, ref ammo);
-
                 Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                 if (config.ClickActive)
                 {
@@ -161,55 +155,7 @@ namespace _4RTools.Model
             }
         }
 
-        private void AutoSwitchAmmo(Client roClient, ref bool ammo)
-        {
-            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
-            if (prefs.SwitchAmmo)
-            {
-                if (prefs.Ammo1Key.ToString() != string.Empty && prefs.Ammo2Key.ToString() != string.Empty)
-                {
-                    if (ammo == false)
-                    {
-                        Key key = prefs.Ammo1Key;
-                        Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, ToKeys(key), 0);
-                        ammo = true;
-                    }
-                    else
-                    {
-                        Key key = prefs.Ammo2Key;
-                        Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, ToKeys(key), 0);
-                        ammo = false;
-                    }
-
-                }
-            }
-        }
-
-        private Keys ToKeys(Key k)
-        {
-            // Explicit mapping for D0-D9 and other special keys
-            switch (k)
-            {
-                case Key.D0: return Keys.D0;
-                case Key.D1: return Keys.D1;
-                case Key.D2: return Keys.D2;
-                case Key.D3: return Keys.D3;
-                case Key.D4: return Keys.D4;
-                case Key.D5: return Keys.D5;
-                case Key.D6: return Keys.D6;
-                case Key.D7: return Keys.D7;
-                case Key.D8: return Keys.D8;
-                case Key.D9: return Keys.D9;
-                case Key.OemPlus: return Keys.Oemplus;
-                case Key.OemTilde: return Keys.Oemtilde;
-                case Key.OemComma: return Keys.Oemcomma;
-                default:
-                    // Use Enum.Parse for other keys
-                    return (Keys)Enum.Parse(typeof(Keys), k.ToString());
-            }
-        }
-
-        private void AHKNoClick(Client roClient, KeyConfig config, Keys thisk)
+        private void SkillSpammerNoClick(Client roClient, KeyConfig config, Keys thisk)
         {
             while (Keyboard.IsKeyDown(config.Key))
             {
@@ -218,18 +164,16 @@ namespace _4RTools.Model
             }
         }
 
-        public void AddAHKEntry(string chkboxName, KeyConfig value)
+        public void AddSkillSpammerEntry(string chkboxName, KeyConfig value)
         {
             if (this.AhkEntries.ContainsKey(chkboxName))
             {
-                RemoveAHKEntry(chkboxName);
+                RemoveSkillSpammerEntry(chkboxName);
             }
-
             this.AhkEntries.Add(chkboxName, value);
-
         }
 
-        public void RemoveAHKEntry(string chkboxName)
+        public void RemoveSkillSpammerEntry(string chkboxName)
         {
             this.AhkEntries.Remove(chkboxName);
         }
@@ -242,8 +186,9 @@ namespace _4RTools.Model
                 this.thread.Terminate();
                 this.thread = null;
             }
-        }
 
+            ammoSwapHandler.Stop();
+        }
 
         public string GetConfiguration()
         {

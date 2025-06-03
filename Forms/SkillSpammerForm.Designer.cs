@@ -869,12 +869,13 @@ namespace _4RTools.Forms
             this.GitHubButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GitHubButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GitHubButton.Image = global::_4RTools.Resources._4RTools.Icons.github;
-            this.GitHubButton.Location = new System.Drawing.Point(525, 122);
+            this.GitHubButton.Location = new System.Drawing.Point(538, 107);
             this.GitHubButton.Margin = new System.Windows.Forms.Padding(0);
             this.GitHubButton.Name = "GitHubButton";
-            this.GitHubButton.Size = new System.Drawing.Size(83, 35);
+            this.GitHubButton.Size = new System.Drawing.Size(70, 26);
             this.GitHubButton.TabIndex = 42;
             this.GitHubButton.Text = "GitHub";
+            this.GitHubButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.GitHubButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.GitHubButtonToolTip.SetToolTip(this.GitHubButton, "Link to GitHub project page, check for updates!");
             this.GitHubButton.UseVisualStyleBackColor = false;

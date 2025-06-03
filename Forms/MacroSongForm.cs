@@ -109,7 +109,11 @@ namespace _4RTools.Forms
                     delayInput.Value = chainConfig.Delay;
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Exception in MacroSongForm.UpdatePanelData: {ex}");
+            }
+
         }
 
         private void OnTextChange(object sender, EventArgs e)
@@ -253,7 +257,11 @@ namespace _4RTools.Forms
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Exception in MacroSongForm.InitializeLane: {ex}");
+            }
+
         }
 
         private void InTriggerMacro1_TextChanged(object sender, EventArgs e)

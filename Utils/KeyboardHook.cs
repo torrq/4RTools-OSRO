@@ -8,6 +8,7 @@ namespace _4RTools.Utils
     public static class KeyboardHook
     {
         #region interop
+
         //This is the Import for the SetWindowsHookEx function.
         //Use this function to install a thread-specific hook.
         [DllImport("user32.dll", CharSet = CharSet.Auto,
@@ -29,11 +30,13 @@ namespace _4RTools.Utils
         [DllImport("user32.dll", CharSet = CharSet.Auto,
          CallingConvention = CallingConvention.StdCall)]
         internal static extern bool UnhookWindowsHookEx(IntPtr idHook);
-        #endregion
+
+        #endregion interop
 
         public delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         private static IntPtr hHook = IntPtr.Zero;
+
         //Delegate that points to the filter function
         private static readonly HookProc hookproc = new HookProc(Filter);
 
@@ -41,14 +44,17 @@ namespace _4RTools.Utils
         /// Check to see if either Control modifier is active.
         /// </summary>
         public static bool Control = false;
+
         /// <summary>
         /// Check to see if either Shift modifier is active.
         /// </summary>
         public static bool Shift = false;
+
         /// <summary>
         /// Check to see if either Alt modifier is active.
         /// </summary>
         public static bool Alt = false;
+
         /// <summary>
         /// Check to see if either Win modifier is active.
         /// </summary>
@@ -63,6 +69,7 @@ namespace _4RTools.Utils
         /// Keys handled and their callbacks
         /// </summary>
         private static System.Collections.Generic.Dictionary<Keys, KeyPressed> handledKeysDown = new System.Collections.Generic.Dictionary<Keys, KeyPressed>();
+
         private static System.Collections.Generic.Dictionary<Keys, KeyPressed> handledKeysUp = new System.Collections.Generic.Dictionary<Keys, KeyPressed>();
 
         /// <summary>
@@ -109,6 +116,7 @@ namespace _4RTools.Utils
             else
                 return false;
         }
+
         /// <summary>
         /// Disable keyboard hooking.
         /// </summary>

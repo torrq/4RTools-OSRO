@@ -56,6 +56,72 @@
     <PreferNativeArm64>false</PreferNativeArm64>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-HR|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug-HR\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;HR_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-HR|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release-HR\</OutputPath>
+    <DefineConstants>TRACE;HR_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>false</PreferNativeArm64>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-LR|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug-LR\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;LR_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-LR|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release-LR\</OutputPath>
+    <DefineConstants>TRACE;LR_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>false</PreferNativeArm64>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-MR|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug-MR\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;MR_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-MR|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release-MR\</OutputPath>
+    <DefineConstants>TRACE;MR_BUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>false</PreferNativeArm64>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>applogo.ico</ApplicationIcon>
   </PropertyGroup>
@@ -282,7 +348,6 @@
     <Compile Include="Model\DebuffRecovery.cs" />
     <Compile Include="Model\Server.cs" />
     <Compile Include="Model\StatusRecovery.cs" />
-    <!-- <Compile Include="Model\Tracker.cs" /> -->
     <Compile Include="Model\ConfigProfile.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Action.cs" />
@@ -312,6 +377,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AmmoSwapHandler.cs" />
     <Compile Include="Utils\DebugLogger.cs" />
     <Compile Include="Utils\EffectStatusIDs.cs" />
     <Compile Include="Utils\AppConfig.cs" />
@@ -323,6 +389,7 @@
     <Compile Include="Utils\ProcessMemoryReader.cs" />
     <Compile Include="Utils\RObserver.cs" />
     <Compile Include="Utils\StatusIdLogger.cs" />
+    <Compile Include="Utils\StatusUtils.cs" />
     <Compile Include="Utils\ThreadRunner.cs" />
     <EmbeddedResource Include="Forms\ToggleStateForm.resx">
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
@@ -714,4 +781,20 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="PackageOutputsAfterBuild" AfterTargets="Build">
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release-MR' ">
+      <PackageDir>$(SolutionDir)bin\OSRO Tools-MR\</PackageDir>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release-HR' ">
+      <PackageDir>$(SolutionDir)bin\OSRO Tools-HR\</PackageDir>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release-LR' ">
+      <PackageDir>$(SolutionDir)bin\OSRO Tools-LR\</PackageDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(PackageDir)" Condition=" '$(PackageDir)' != '' " />
+    <ItemGroup Condition=" '$(PackageDir)' != '' ">
+      <FilesToPackage Include="$(OutputPath)**\*.*" Exclude="$(OutputPath)$(TargetName).exe.config" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FilesToPackage)" DestinationFolder="$(PackageDir)" SkipUnchangedFiles="true" Condition=" '$(PackageDir)' != '' " />
+  </Target>
 </Project>

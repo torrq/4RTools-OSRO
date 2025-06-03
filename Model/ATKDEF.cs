@@ -20,6 +20,7 @@ namespace _4RTools.Model
         public int id;
 
         private int _AHKDelay = AppConfig.ATKDEFSpammerDefaultDelay;
+
         public int AHKDelay
         {
             get => _AHKDelay <= 0 ? AppConfig.ATKDEFSpammerDefaultDelay : _AHKDelay;
@@ -27,6 +28,7 @@ namespace _4RTools.Model
         }
 
         private int _switchdelay = AppConfig.ATKDEFSwitchDefaultDelay;
+
         public int SwitchDelay
         {
             get => _switchdelay <= 0 ? AppConfig.ATKDEFSwitchDefaultDelay : _switchdelay;
@@ -37,7 +39,10 @@ namespace _4RTools.Model
         public bool KeySpammerWithClick { get; set; } = true;
         public Dictionary<string, Key> DefKeys { get; set; } = new Dictionary<string, Key>();
         public Dictionary<string, Key> AtkKeys { get; set; } = new Dictionary<string, Key>();
-        public EquipConfig() { }
+
+        public EquipConfig()
+        { }
+
         public EquipConfig(int id)
         {
             this.id = id;
@@ -54,8 +59,8 @@ namespace _4RTools.Model
             this.KeySpammerWithClick = macro.KeySpammerWithClick;
             this.DefKeys = new Dictionary<string, Key>(macro.DefKeys);
             this.AtkKeys = new Dictionary<string, Key>(macro.AtkKeys);
-
         }
+
         public EquipConfig(int id, Key trigger)
         {
             this.id = id;
@@ -76,7 +81,6 @@ namespace _4RTools.Model
             for (int i = 1; i <= macroLanes; i++)
             {
                 EquipConfigs.Add(new EquipConfig(i, Key.None));
-
             }
         }
 
@@ -177,7 +181,6 @@ namespace _4RTools.Model
                         Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = false;
                     }
-
                 }
             }
         }
@@ -197,7 +200,6 @@ namespace _4RTools.Model
             {
                 copy.Add(dictKey, k);
             }
-
         }
 
         public void RemoveSwitchEntry(int id, string dictKey, string type)

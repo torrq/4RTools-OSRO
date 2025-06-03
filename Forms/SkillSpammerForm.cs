@@ -76,10 +76,10 @@ namespace _4RTools.Forms
                     key = (Key)new KeyConverter().ConvertFromString(checkbox.Text);
                 }
 
-                this.ahk.AddAHKEntry(checkbox.Name, new KeyConfig(key, haveMouseClick));
+                this.ahk.AddSkillSpammerEntry(checkbox.Name, new KeyConfig(key, haveMouseClick));
             }
             else
-                this.ahk.RemoveAHKEntry(checkbox.Name);
+                this.ahk.RemoveSkillSpammerEntry(checkbox.Name);
 
             ProfileSingleton.SetConfiguration(this.ahk);
         }
@@ -88,10 +88,20 @@ namespace _4RTools.Forms
         {
             try
             {
+                // At start, a null value is set, so we avoid it
+                if (this.ahk == null)
+                {
+                    return;
+                }
+
                 this.ahk.AhkDelay = Convert.ToInt16(this.txtSpammerDelay.Value);
                 ProfileSingleton.SetConfiguration(this.ahk);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Exception in TxtSpammerDelay_TextChanged: {ex}");
+            }
+
         }
 
         private void ToggleCheckboxByName(string Name, bool state)
@@ -102,7 +112,10 @@ namespace _4RTools.Forms
                 checkBox.CheckState = state ? CheckState.Checked : CheckState.Indeterminate;
                 ProfileSingleton.SetConfiguration(this.ahk);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Exception in ToggleCheckboxByName: {ex}");
+            }
         }
 
         private void RemoveHandlers()

@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-
 namespace _4RTools.Utils
 {
     internal class ProcessMemoryReader
@@ -24,6 +23,7 @@ namespace _4RTools.Utils
                 ExecuteRead = 0x20,
                 ExecuteReadWrite = 0x40,
             }
+
             [Flags]
             public enum FreeType
             {
@@ -49,21 +49,26 @@ namespace _4RTools.Utils
 
             [DllImport("kernel32.dll")]
             public static extern IntPtr OpenProcess(uint dwDesiredAccess, int bInheritHandle, uint dwProcessId);
+
             [DllImport("kernel32.dll")]
             public static extern int CloseHandle(IntPtr hObject);
+
             [DllImport("kernel32.dll")]
             public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [In][Out] byte[] buffer, uint size, out IntPtr lpNumberOfBytesRead);
+
             [DllImport("kernel32.dll")]
             public static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [In][Out] byte[] buffer, uint size, out IntPtr lpNumberOfBytesWritten);
 
             [DllImport("kernel32.dll")]
             public static extern int VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, int dwSize, AllocType flAllocationType, Protect flProtect);
+
             [DllImport("kernel32.dll")]
             public static extern bool VirtualFreeEx(IntPtr hProcess, IntPtr lpAddress, int dwSize, FreeType dwFreeType);
         }
 
         private Process m_ReadProcess = null;
         private IntPtr m_hProcess = IntPtr.Zero;
+
         public Process ReadProcess
         {
             get
@@ -75,11 +80,13 @@ namespace _4RTools.Utils
                 this.m_ReadProcess = value;
             }
         }
+
         public void OpenProcess()
         {
             MemoryApi.ProcessAccessType dwDesiredAccess = MemoryApi.ProcessAccessType.PROCESS_VM_OPERATION | MemoryApi.ProcessAccessType.PROCESS_VM_READ | MemoryApi.ProcessAccessType.PROCESS_VM_WRITE;
             this.m_hProcess = MemoryApi.OpenProcess((uint)dwDesiredAccess, 1, (uint)this.m_ReadProcess.Id);
         }
+
         public void CloseHandle()
         {
             int num = MemoryApi.CloseHandle(this.m_hProcess);
@@ -88,6 +95,7 @@ namespace _4RTools.Utils
                 throw new Exception("CloseHandle failed");
             }
         }
+
         public byte[] ReadProcessMemory(IntPtr MemoryAddress, uint bytesToRead, out int bytesRead)
         {
             byte[] array = new byte[bytesToRead];
@@ -96,6 +104,7 @@ namespace _4RTools.Utils
             bytesRead = intPtr.ToInt32();
             return array;
         }
+
         public void WriteProcessMemory(IntPtr MemoryAddress, byte[] bytesToWrite, out int bytesWritten)
         {
             IntPtr intPtr;
@@ -103,11 +112,11 @@ namespace _4RTools.Utils
             bytesWritten = intPtr.ToInt32();
         }
 
-
         public void Alloc(out int Addr, int Size)
         {
             Addr = MemoryApi.VirtualAllocEx(m_hProcess, IntPtr.Zero, Size, MemoryApi.AllocType.Commit, MemoryApi.Protect.ExecuteReadWrite);
         }
+
         public bool Dealloc(int Addr)
         {
             return MemoryApi.VirtualFreeEx(m_hProcess, (IntPtr)Addr, 0, MemoryApi.FreeType.Release);

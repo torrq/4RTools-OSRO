@@ -29,7 +29,6 @@ namespace _4RTools.Utils
                     Color borderColor = DarkenColor(color, darkenAmount);
                     button.FlatAppearance.BorderColor = borderColor;
                     button.FlatAppearance.BorderSize = 1; // Ensure border is visible
-
                 }
                 else { DebugLogger.Warning($"Button '{buttonName}' not found in {parentControl.Name}."); }
             }
@@ -105,6 +104,7 @@ namespace _4RTools.Utils
                     case Key.Back:
                         textBox.Text = Key.None.ToString();
                         break;
+
                     default:
                         textBox.Text = thisk.ToString();
                         break;
@@ -118,7 +118,6 @@ namespace _4RTools.Utils
                 DebugLogger.Error("Error in OnKeyDown: " + ex.Message);
             }
         }
-
 
         public static bool IsValidKey(Key key)
         {
@@ -177,7 +176,6 @@ namespace _4RTools.Utils
 
         private static void resetCheckboxForm(Control control)
         {
-
             IEnumerable<Control> checks = GetAll(control, typeof(CheckBox));
             IEnumerable<Control> combos = GetAll(control, typeof(ComboBox));
 
@@ -221,7 +219,7 @@ namespace _4RTools.Utils
 
             foreach (Control control in GetAllControls(form))
             {
-                if (control is NumericUpDown delayInput && delayInput.Name.ToLower().Contains("delay"))
+                if (control is NumericUpDown delayInput && delayInput.Name.IndexOf("delay", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     delayInput.Minimum = minimumDelayValue;
 
@@ -248,7 +246,6 @@ namespace _4RTools.Utils
             int b = Math.Max(0, color.B - amount);
             return Color.FromArgb(r, g, b);
         }
-
     }
 
     public static class EnumExtensions
@@ -261,6 +258,7 @@ namespace _4RTools.Utils
                 .GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0 ? attributes[0].Description : string.Empty;
         }
+
         public static string GetDescription(this Enum value)
         {
             Type type = value.GetType();
@@ -281,7 +279,6 @@ namespace _4RTools.Utils
 
         public static EffectStatusIDs ToEffectStatusId(this string val)
         {
-
             EffectStatusIDs t = Enum.GetValues(typeof(EffectStatusIDs))
                     .Cast<EffectStatusIDs>()
                     .FirstOrDefault(v => v.GetDescription() == val);

@@ -244,23 +244,27 @@ namespace _4RTools.Forms
                 {
                     if (control is TextBox textBox)
                     {
-                        textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-                        textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-                        textBox.TextChanged += new EventHandler(this.OnTextChange);
+                        textBox.KeyDown += FormUtils.OnKeyDown;
+                        textBox.KeyPress += FormUtils.OnKeyPress;
+                        textBox.TextChanged += this.OnTextChange;
                     }
 
                     if (control is NumericUpDown delayInput)
                     {
-                        delayInput.ValueChanged += new System.EventHandler(this.OnDelayChange);
+                        delayInput.ValueChanged += this.OnDelayChange;
                     }
 
                     if (control is Button resetButton)
                     {
-                        resetButton.Click += new EventHandler(this.OnReset);
+                        resetButton.Click += this.OnReset;
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Exception in MacroSwitchForm.InitializeLane: {ex}");
+            }
+
         }
 
         private void OnReset(object sender, EventArgs e)

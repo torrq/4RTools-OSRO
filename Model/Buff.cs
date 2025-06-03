@@ -200,8 +200,7 @@ namespace _4RTools.Model
             new Buff("Force Element (Earth)",  EffectStatusIDs.PROPERTYGROUND,     Resources._4RTools.Icons.forceelement_earth),
             new Buff("Force Element (Wind)",   EffectStatusIDs.PROPERTYWIND,       Resources._4RTools.Icons.forceelement_wind),
             new Buff("Force Element (Water)",  EffectStatusIDs.PROPERTYWATER,      Resources._4RTools.Icons.forceelement_water),
-            // fire doesn't work as is, so it's commented out
-            // new Buff("Force Element (Fire)",   EffectStatusIDs.PROPERTYFIRE,       Resources._4RTools.Icons.forceelement_fire),
+            new Buff("Force Element (Fire)",   EffectStatusIDs.PROPERTYFIRE,       Resources._4RTools.Icons.forceelement_fire),
             new Buff("Force Element (Ghost)",  EffectStatusIDs.PROPERTYTELEKINESIS, Resources._4RTools.Icons.forceelement_ghost),
             new Buff("Force Element (Shadow)", EffectStatusIDs.PROPERTYDARK,       Resources._4RTools.Icons.forceelement_shadow),
             new Buff("Force Element (Holy)",   EffectStatusIDs.ASPERSIO,           Resources._4RTools.Icons.forceelement_holy),
@@ -357,9 +356,8 @@ namespace _4RTools.Model
             List<Buff> skills = new List<Buff>
             {
                 new Buff("Field Manual 100%", EffectStatusIDs.FIELD_MANUAL, Resources._4RTools.Icons.fieldmanual),
-    /*
-                new Buff("HE Bubble Gum", EffectStatusIDs.CASH_RECEIVEITEM, Resources._4RTools.Icons.he_bubble_gum),
-    */
+                //new Buff("HE Bubble Gum", EffectStatusIDs.CASH_RECEIVEITEM, Resources._4RTools.Icons.he_bubble_gum),
+
             };
 
             return skills;

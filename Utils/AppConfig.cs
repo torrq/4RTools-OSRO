@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Drawing;
 
 namespace _4RTools.Utils
 {
@@ -9,18 +9,29 @@ namespace _4RTools.Utils
         public static string Name = "OSRO Tools";
         public static string Version = "v1.0.6";
 
-        // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
-        public static int ServerMode = 0;
+#if MR_BUILD
+        public static int ServerMode = 0; // Mid-rate
+#elif HR_BUILD
+        public static int ServerMode = 1; // High-rate
+#elif LR_BUILD
+        public static int ServerMode = 2; // Low-rate
+#else
+        public static int ServerMode = 1;
+#endif
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";
 
-        public static string ProfileFolder = "Profile" + "\\";
-        public static string ConfigFolder = "Config" + "\\";
+        public static string ProfileFolder = "Profile\\";
+        public static string ConfigFolder = "Config\\";
         public static string ConfigFile = ConfigFolder + "config.json";
         public static string ServersFile = ConfigFolder + "servers.json";
         public static string CitiesFile = ConfigFolder + "cities.json";
         public static string DebugLogFile = "debug.log";
+
+        public static string WindowClassMR = "Oldschool RO - Midrate | www.osro.mr";
+        public static string WindowClassHR = "Oldschool RO | www.osro.gg";
+        public static string WindowClassLR = "Oldschool RO | dunno";
 
         public static List<dynamic> DefaultServers
         {
@@ -30,45 +41,45 @@ namespace _4RTools.Utils
                 {
                     case 0: // Mid‑rate
                         return new List<dynamic>
-                {
-                    new
-                    {
-                        name          = "OsRO Midrate",
-                        description   = "OsRO Midrate",
-                        hpAddress     = "00E8F434",
-                        nameAddress   = "00E91C00",
-                        mapAddress    = "00E8ABD4",
-                        onlineAddress = "00E8A928"
-                    }
-                };
+                        {
+                            new
+                            {
+                                name          = "OsRO Midrate",
+                                description   = "OsRO Midrate",
+                                hpAddress     = "00E8F434",
+                                nameAddress   = "00E91C00",
+                                mapAddress    = "00E8ABD4",
+                                onlineAddress = "00E8A928"
+                            }
+                        };
 
                     case 1: // High‑rate
                         return new List<dynamic>
-                {
-                    new
-                    {
-                        name          = "OsRO",
-                        description   = "OsRO Highrate",
-                        hpAddress     = "010DCE10",
-                        nameAddress   = "010DF5D8",
-                        mapAddress    = "010D856C",
-                        onlineAddress = "010D83C7"
-                    }
-                };
+                        {
+                            new
+                            {
+                                name          = "OSRO",
+                                description   = "OsRO Highrate",
+                                hpAddress     = "010DCE10",
+                                nameAddress   = "010DF5D8",
+                                mapAddress    = "010D856C",
+                                onlineAddress = "010D83C7"
+                            }
+                        };
 
                     case 2: // Low-rate
                         return new List<dynamic>
-                {
-                    new
-                    {
-                        name          = "OsRO Revo",
-                        description   = "OsRO Revo (Lowrate)",
-                        hpAddress     = "00000000",
-                        nameAddress   = "00000000",
-                        mapAddress    = "00000000",
-                        onlineAddress = "00000000"
-                    }
-                };
+                        {
+                            new
+                            {
+                                name          = "OsRO Revo",
+                                description   = "OsRO Revo (Lowrate)",
+                                hpAddress     = "00000000",
+                                nameAddress   = "00000000",
+                                mapAddress    = "00000000",
+                                onlineAddress = "00000000"
+                            }
+                        };
 
                     default:
                         throw new InvalidOperationException($"Unsupported ServerMode value: {ServerMode}");
@@ -119,7 +130,7 @@ namespace _4RTools.Utils
 
         public static Color DebugConsoleBackColor = Color.Black;
         public static Color DebugConsoleForeColor = Color.White;
-        public static Font DebugConsoleFont = new Font("Consolas", 8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+        public static Font DebugConsoleFont = new Font("Consolas", 8F, FontStyle.Regular, GraphicsUnit.Point, (byte)(0));
 
         public static Color LogColor_INFO = Color.LightSkyBlue;
         public static Color LogColor_WARNING = Color.Orange;
