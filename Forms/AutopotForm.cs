@@ -85,12 +85,17 @@ namespace _4RTools.Forms
         {
             try
             {
+                if (this.autopot == null)
+                {
+                    return;
+                }
+
                 this.autopot.Delay = short.Parse(this.numAutopotDelay.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
             catch (Exception ex)
             {
-                var exception = ex;
+                DebugLogger.Error($"Error in NumAutopotDelayTextChanged: {ex.Message}");
             }
 
         }
@@ -99,12 +104,17 @@ namespace _4RTools.Forms
         {
             try
             {
+                if (this.autopot == null)
+                {
+                    return;
+                }
+
                 this.autopot.HPPercent = short.Parse(this.txtHPpct.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
             catch (Exception ex)
             {
-                var exception = ex;
+                DebugLogger.Error($"Error in TxtHPpctTextChanged: {ex.Message}");
             }
 
         }
@@ -120,11 +130,17 @@ namespace _4RTools.Forms
         {
             try
             {
+                if (this.autopot == null)
+                {
+                    return;
+                }
+
                 this.autopot.SPPercent = short.Parse(this.txtSPpct.Text);
                 ProfileSingleton.SetConfiguration(this.autopot);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                DebugLogger.Error($"Error in TxtSPpctTextChanged: {ex.Message}");
             }
         }
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
