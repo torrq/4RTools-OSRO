@@ -32,6 +32,3 @@ OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools),
 
 ![4rt_screens_1](https://github.com/user-attachments/assets/2cabbec4-1072-4dbf-b4bb-8681663394ee)
 ![4rt_screens_2](https://github.com/user-attachments/assets/4c7493a5-8ca7-441f-88e7-c1bf3b73e9f1)
-
-## Known Issues
-- Force Element (Fire) isn't in autobuffs on HR. Couldn't get it to work yet.
