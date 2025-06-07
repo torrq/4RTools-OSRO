@@ -193,6 +193,9 @@ namespace _4RTools.Utils
         [Description("Concentration / Saber Thrust (HR)")]
         LKCONCENTRATION = 105,
 
+        [Description("Tension Relax")]
+        TENSIONRELAX = 106,
+
         [Description("Berserk")]
         BERSERK = 107,
 
@@ -317,14 +320,14 @@ namespace _4RTools.Utils
         [Description("Gatling Fever")]
         GATLINGFEVER = 204,
 
-        [Description("Peel Change")]
-        PEEL_CHANGE = 206,
+        [Description("Cast-off Cicada Shell / Cicada Skin Shed")]
+        CICADA_SKIN_SHED = 206,
 
-        [Description("Bunshin no Jutsu")]
-        BUNSINJYUTSU = 207,
+        [Description("Illusionary Shadow / Mirror Image")]
+        MIRROR_IMAGE = 207,
 
-        [Description("Aura Ninja")]
-        AURA_NINJA = 208,
+        [Description("Ninja Aura")]
+        NINJA_AURA = 208,
 
         [Description("Adjustment")]
         ADJUSTMENT = 209,
@@ -381,6 +384,10 @@ namespace _4RTools.Utils
         MENTAL_POTION = 298,
         SPELLBREAKER = 300,
         TARGET_BLOOD = 301,
+
+        [Description("Enchant Poison Armor")]
+        ENCHANT_POISON_ARMOR = 302,
+
         CASH_PLUSECLASSXP = 312,
 
         [Description("Enchant Blade")]
@@ -399,7 +406,11 @@ namespace _4RTools.Utils
         [Description("Lauda Ramus")]
         LAUDA_RAMUS = 332,
 
+        [Description("Hallucination Walk")]
         HALLUCINATIONWALK = 334,
+
+        [Description("Expiatio")]
+        EXPIATIO = 335,
 
         [Description("Freezing")]
         FREEZING = 351,
@@ -581,6 +592,21 @@ namespace _4RTools.Utils
 
         [Description("Thunderproof Potion")]
         RESIST_PROPERTY_WIND = 911,
+
+        [Description("Service for You / Gypsy's Kiss")]
+        SERVICE_FOR_YOU = 1002,
+
+        [Description("A Poem of Bragi / Magic Strings")]
+        POEM_OF_BRAGI = 1005,
+
+        [Description("Apple of Idun / Song of Lutie")]
+        APPLE_OF_IDUN = 1006,
+
+        [Description("Mana Shield")]
+        MANA_SHIELD = 1007,
+
+        [Description("Refraction")]
+        REFRACTION = 1008,
 
         [Description("Infinity Drink")]
         INFINITY_DRINK = 1065,

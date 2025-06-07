@@ -7,7 +7,7 @@ namespace _4RTools.Utils
     internal class AppConfig
     {
         public static string Name = "OSRO Tools";
-        public static string Version = "v1.0.6";
+        public static string Version = "v1.0.7";
 
 #if MR_BUILD
         public static int ServerMode = 0; // Mid-rate

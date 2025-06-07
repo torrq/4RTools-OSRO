@@ -445,6 +445,10 @@
     <Content Include="assets\image\icon\common\arrow_up.png" />
     <Content Include="assets\image\icon\common\dagger.png" />
     <Content Include="assets\image\icon\common\violin.png" />
+    <Content Include="assets\image\icon\skill\3rd\archbishop\refraction.png" />
+    <Content Include="assets\image\icon\skill\3rd\archbishop\shallowgrave.png" />
+    <Content Include="assets\image\icon\skill\3rd\guillotinecross\enchantpoisonarmor.png" />
+    <Content Include="assets\image\icon\skill\3rd\royalguard\manashield.png" />
     <Content Include="assets\image\icon\ui\discord.png" />
     <Content Include="assets\image\icon\ui\github.png" />
     <Content Include="assets\image\icon\ui\systray_icon.ico" />

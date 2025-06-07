@@ -59,7 +59,12 @@ namespace _4RTools.Forms
             this.toolTipWeight50 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipSwitchAmmoCB = new System.Windows.Forms.ToolTip(this.components);
+            this.ammoTrigger = new System.Windows.Forms.TextBox();
+            this.ammoTriggerLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTipAmmoTrigger = new System.Windows.Forms.ToolTip(this.components);
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
@@ -90,6 +95,10 @@ namespace _4RTools.Forms
             // 
             // groupSettings
             // 
+            this.groupSettings.Controls.Add(this.label4);
+            this.groupSettings.Controls.Add(this.label3);
+            this.groupSettings.Controls.Add(this.ammoTriggerLabel);
+            this.groupSettings.Controls.Add(this.ammoTrigger);
             this.groupSettings.Controls.Add(this.chkSoundEnabled);
             this.groupSettings.Controls.Add(this.groupOverweight);
             this.groupSettings.Controls.Add(this.ammo2textBox);
@@ -207,7 +216,7 @@ namespace _4RTools.Forms
             this.ammo2textBox.Name = "ammo2textBox";
             this.ammo2textBox.Size = new System.Drawing.Size(45, 25);
             this.ammo2textBox.TabIndex = 309;
-            this.toolTipAmmo2.SetToolTip(this.ammo2textBox, "ammo 2 shortcut");
+            this.toolTipAmmo2.SetToolTip(this.ammo2textBox, "Ammo #2");
             // 
             // ammo1textBox
             // 
@@ -217,7 +226,7 @@ namespace _4RTools.Forms
             this.ammo1textBox.Name = "ammo1textBox";
             this.ammo1textBox.Size = new System.Drawing.Size(45, 25);
             this.ammo1textBox.TabIndex = 308;
-            this.toolTipAmmo1.SetToolTip(this.ammo1textBox, "ammo 1 shortcut");
+            this.toolTipAmmo1.SetToolTip(this.ammo1textBox, "Ammo #1");
             // 
             // switchAmmoCheckBox
             // 
@@ -226,9 +235,9 @@ namespace _4RTools.Forms
             this.switchAmmoCheckBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.switchAmmoCheckBox.Location = new System.Drawing.Point(13, 107);
             this.switchAmmoCheckBox.Name = "switchAmmoCheckBox";
-            this.switchAmmoCheckBox.Size = new System.Drawing.Size(160, 21);
+            this.switchAmmoCheckBox.Size = new System.Drawing.Size(119, 21);
             this.switchAmmoCheckBox.TabIndex = 307;
-            this.switchAmmoCheckBox.Text = "Automatic ammo swap";
+            this.switchAmmoCheckBox.Text = "Ammo swapper";
             this.toolTipSwitchAmmoCB.SetToolTip(this.switchAmmoCheckBox, "Switch between ammunition");
             this.switchAmmoCheckBox.UseVisualStyleBackColor = true;
             this.switchAmmoCheckBox.CheckedChanged += new System.EventHandler(this.SwitchAmmoCheckBox_CheckedChanged);
@@ -282,6 +291,46 @@ namespace _4RTools.Forms
             // toolTipWeight90
             // 
             this.toolTipWeight90.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipWeight90_Popup);
+            // 
+            // ammoTrigger
+            // 
+            this.ammoTrigger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ammoTrigger.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ammoTrigger.Location = new System.Drawing.Point(141, 107);
+            this.ammoTrigger.Name = "ammoTrigger";
+            this.ammoTrigger.Size = new System.Drawing.Size(45, 25);
+            this.ammoTrigger.TabIndex = 318;
+            this.toolTipAmmoTrigger.SetToolTip(this.ammoTrigger, "Ammo Swap key");
+            // 
+            // ammoTriggerLabel
+            // 
+            this.ammoTriggerLabel.AutoSize = true;
+            this.ammoTriggerLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ammoTriggerLabel.Location = new System.Drawing.Point(140, 135);
+            this.ammoTriggerLabel.Name = "ammoTriggerLabel";
+            this.ammoTriggerLabel.Size = new System.Drawing.Size(41, 13);
+            this.ammoTriggerLabel.TabIndex = 319;
+            this.ammoTriggerLabel.Text = "Trigger";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(189, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 320;
+            this.label3.Text = "Ammo 1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(239, 135);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 321;
+            this.label4.Text = "Ammo 2";
             // 
             // clientDTOBindingSource
             // 
@@ -342,5 +391,10 @@ namespace _4RTools.Forms
         private ToolTip toolTipWeight50;
         private ToolTip toolTipWeight90;
         private ToolTip toolTipSwitchAmmoCB;
+        private TextBox ammoTrigger;
+        private Label label4;
+        private Label label3;
+        private Label ammoTriggerLabel;
+        private ToolTip toolTipAmmoTrigger;
     }
 }

@@ -107,7 +107,7 @@ namespace _4RTools.Utils
                 Key wpfKey = KeyInterop.KeyFromVirtualKey(vkCode);
 
                 // Check if this is our trigger key
-                if (wpfKey == prefs.Ammo1Key)
+                if (wpfKey == prefs.AmmoTriggerKey)
                 {
                     if (wParam == (IntPtr)WM_KEYDOWN && !_instance.wasDown)
                     {
@@ -149,7 +149,7 @@ namespace _4RTools.Utils
 
             // Select the key based on current toggle state
             Key keyToPress = ammoToggle ? prefs.Ammo2Key : prefs.Ammo1Key;
-            //DebugLogger.Debug($"[AmmoSwapHandler] Selected key: {keyToPress} (Ammo1Key={prefs.Ammo1Key}, Ammo2Key={prefs.Ammo2Key}, toggle={ammoToggle})");
+            //DebugLogger.Debug($"[AmmoSwapHandler] Selected key: {keyToPress} (Ammo1Key={prefs.Ammo1Key}, Ammo2Key={prefs.Ammo2Key}, trigger={prefs.AmmoTriggerKey}, toggle={ammoToggle})");
 
             Keys winFormsKey = (Keys)KeyInterop.VirtualKeyFromKey(keyToPress);
             byte vkCode = (byte)winFormsKey;

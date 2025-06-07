@@ -58,6 +58,12 @@ namespace _4RTools.Model
 
             };
 
+            // HR server, 3rd Job: Royal Guard
+            if (AppConfig.ServerMode == 1)
+            {
+                skills.Add(new Buff("Mana Shield", EffectStatusIDs.MANA_SHIELD, Resources._4RTools.Icons.manashield));
+            }
+
             return skills;
         }
 
@@ -113,6 +119,12 @@ namespace _4RTools.Model
                 new Buff("Chase Walk", EffectStatusIDs.CHASEWALK, Resources._4RTools.Icons.chase_walk),
             };
 
+            // HR server, 3rd Job: Guillotine Cross
+            if (AppConfig.ServerMode == 1)
+            {
+                skills.Add(new Buff("Enchant Poison Armor", EffectStatusIDs.ENCHANT_POISON_ARMOR, Resources._4RTools.Icons.enchantpoisonarmor));
+            }
+
             return skills;
         }
 
@@ -121,6 +133,8 @@ namespace _4RTools.Model
         {
             List<Buff> skills = new List<Buff>
             {
+                new Buff("Blessing", EffectStatusIDs.BLESSING, Resources._4RTools.Icons.al_blessing1),
+                new Buff("Increase Agility", EffectStatusIDs.INC_AGI, Resources._4RTools.Icons.al_incagi1),
                 new Buff("Gloria", EffectStatusIDs.GLORIA, Resources._4RTools.Icons.pr_gloria),
                 new Buff("Magnificat", EffectStatusIDs.MAGNIFICAT, Resources._4RTools.Icons.pr_magnificat),
                 new Buff("Angelus", EffectStatusIDs.ANGELUS, Resources._4RTools.Icons.al_angelus),
@@ -130,6 +144,13 @@ namespace _4RTools.Model
 
             };
 
+            // HR server, 3rd Job: Arch Bishop
+            if (AppConfig.ServerMode == 1)
+            {
+                skills.Add(new Buff("Refraction", EffectStatusIDs.REFRACTION, Resources._4RTools.Icons.refraction));
+                skills.Add(new Buff("Shallow Grave", EffectStatusIDs.KAIZEL, Resources._4RTools.Icons.shallowgrave));
+            }
+
             return skills;
         }
 
@@ -138,13 +159,11 @@ namespace _4RTools.Model
         {
             List<Buff> skills = new List<Buff>
             {
-                new Buff("Shadow Body", EffectStatusIDs.PEEL_CHANGE, Resources._4RTools.Icons.nj_utsusemi),
-                new Buff("Ninpou", EffectStatusIDs.AURA_NINJA, Resources._4RTools.Icons.nj_nen),
-
+                new Buff("Ninja Aura", EffectStatusIDs.NINJA_AURA, Resources._4RTools.Icons.nj_nen),
+                new Buff("Cast-off Cicada Shell / Cicada Skin Shed", EffectStatusIDs.CICADA_SKIN_SHED, Resources._4RTools.Icons.nj_utsusemi),
+                new Buff("Illusionary Shadow / Mirror Image", EffectStatusIDs.MIRROR_IMAGE, Resources._4RTools.Icons.bunsinjyutsu),
                 // Possibly Renewal
-                new Buff("Izayoi", EffectStatusIDs.IZAYOI, Resources._4RTools.Icons.izayoi),
-                new Buff("Bunshin no Jutsu", EffectStatusIDs.BUNSINJYUTSU, Resources._4RTools.Icons.bunsinjyutsu),
-
+                //new Buff("Izayoi", EffectStatusIDs.IZAYOI, Resources._4RTools.Icons.izayoi),
             };
 
             return skills;
@@ -187,8 +206,6 @@ namespace _4RTools.Model
                 new Buff("Last Stand", EffectStatusIDs.MADNESSCANCEL, Resources._4RTools.Icons.madnesscancel),
                 new Buff("Adjustment", EffectStatusIDs.ADJUSTMENT, Resources._4RTools.Icons.adjustment),
                 new Buff("Increased Accuracy", EffectStatusIDs.ACCURACY, Resources._4RTools.Icons.increase_accuracy),
-                new Buff("Unlimited Chain Action", EffectStatusIDs.E_CHAIN, Resources._4RTools.Icons.e_chain),
-
             };
 
             return skills;

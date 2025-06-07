@@ -21,28 +21,31 @@ namespace _4RTools.Forms
             InitializeComponent();
 
             // Detach event handler before setting initial state
-            this.chkDebugMode.CheckedChanged -= new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            this.chkDebugMode.CheckedChanged -= this.chkDebugMode_CheckedChanged;
             this.chkDebugMode.Checked = cfg.DebugMode;
             // Reattach event handler after setting initial state
-            this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            this.chkDebugMode.CheckedChanged += this.chkDebugMode_CheckedChanged;
 
             isInitializing = false; // Initialization complete
 
-            this.ammo1textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-            this.ammo1textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-            this.ammo1textBox.TextChanged += new EventHandler(this.TextAmmo1_TextChanged);
-            this.ammo2textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-            this.ammo2textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-            this.ammo2textBox.TextChanged += new EventHandler(this.TextAmmo2_TextChanged);
-            this.overweightKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-            this.overweightKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-            this.overweightKey.TextChanged += new EventHandler(this.OverweightKey_TextChanged);
+            this.ammo1textBox.KeyDown += FormUtils.OnKeyDown;
+            this.ammo1textBox.KeyPress += FormUtils.OnKeyPress;
+            this.ammo1textBox.TextChanged += this.TextAmmo1_TextChanged;
+            this.ammo2textBox.KeyDown += FormUtils.OnKeyDown;
+            this.ammo2textBox.KeyPress += FormUtils.OnKeyPress;
+            this.ammo2textBox.TextChanged += this.TextAmmo2_TextChanged;
+            this.ammoTrigger.KeyDown += FormUtils.OnKeyDown;
+            this.ammoTrigger.KeyPress += FormUtils.OnKeyPress;
+            this.ammoTrigger.TextChanged += this.TextAmmoTrigger_TextChanged;
+            this.overweightKey.KeyDown += FormUtils.OnKeyDown;
+            this.overweightKey.KeyPress += FormUtils.OnKeyPress;
+            this.overweightKey.TextChanged += this.OverweightKey_TextChanged;
 
             var newListBuff = ProfileSingleton.GetCurrent().UserPreferences.AutoBuffOrder;
-            this.skillsListBox.MouseLeave += new System.EventHandler(this.SkillsListBox_MouseLeave);
-            this.skillsListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SkillsListBox_MouseDown);
-            this.skillsListBox.DragOver += new DragEventHandler(this.SkillsListBox_DragOver);
-            this.skillsListBox.DragDrop += new DragEventHandler(this.SkillsListBox_DragDrop);
+            this.skillsListBox.MouseLeave += this.SkillsListBox_MouseLeave;
+            this.skillsListBox.MouseDown += this.SkillsListBox_MouseDown;
+            this.skillsListBox.DragOver += this.SkillsListBox_DragOver;
+            this.skillsListBox.DragDrop += this.SkillsListBox_DragDrop;
 
             string cityName = _4RTools.Model.Server.GetCitiesFile();
 
@@ -89,6 +92,7 @@ namespace _4RTools.Forms
                 this.switchAmmoCheckBox.Checked = prefs.SwitchAmmo;
                 this.ammo1textBox.Text = prefs.Ammo1Key.ToString();
                 this.ammo2textBox.Text = prefs.Ammo2Key.ToString();
+                this.ammoTrigger.Text = prefs.AmmoTriggerKey.ToString();
                 this.overweightKey.Text = prefs.OverweightKey.ToString();
 
                 RadioButton rdOverweightMode = (RadioButton)this.groupOverweight.Controls[ProfileSingleton.GetCurrent().UserPreferences.OverweightMode.ToString()];
@@ -187,9 +191,9 @@ namespace _4RTools.Forms
             try
             {
                 TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != string.Empty)
+                if (txtBox.Text != string.Empty)
                 {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
+                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text);
                     ProfileSingleton.GetCurrent().UserPreferences.Ammo1Key = key;
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
@@ -202,10 +206,25 @@ namespace _4RTools.Forms
             try
             {
                 TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != string.Empty)
+                if (txtBox.Text != string.Empty)
                 {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
+                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text);
                     ProfileSingleton.GetCurrent().UserPreferences.Ammo2Key = key;
+                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+                }
+            }
+            catch { }
+        }
+
+        private void TextAmmoTrigger_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox txtBox = (TextBox)sender;
+                if (txtBox.Text != string.Empty)
+                {
+                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text);
+                    ProfileSingleton.GetCurrent().UserPreferences.AmmoTriggerKey = key;
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }

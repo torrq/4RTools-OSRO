@@ -18,6 +18,7 @@ namespace _4RTools.Model
         public bool SwitchAmmo { get; set; } = false;
         public Key Ammo1Key { get; set; }
         public Key Ammo2Key { get; set; }
+        public Key AmmoTriggerKey { get; set; }
 
         public ConfigProfile()
         {
