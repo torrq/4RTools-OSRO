@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace _4RTools.Forms
@@ -29,6 +30,14 @@ namespace _4RTools.Forms
         private int maxDropDownWidth = 150;
         private const string OFFLINE_TEXT = "OFFLINE";
 
+        // Mini-mode fields
+        private bool isMiniMode = false;
+        private Size fullModeClientSize;
+        private Size miniModeClientSize;
+        private const string HIDE_TEXT = "▲ LESS ▲";
+        private const string SHOW_TEXT = "▼ MORE ▼";
+
+
         public Container()
         {
             ConfigGlobal.Initialize();
@@ -39,6 +48,11 @@ namespace _4RTools.Forms
             this.subject.Attach(this);
 
             InitializeComponent();
+
+            // Setup for Mini-Mode Toggle
+            this.fullModeClientSize = this.ClientSize;
+            this.miniModeClientSize = new Size(this.ClientSize.Width, this.btnToggleMiniMode.Bottom + 12);
+            this.btnToggleMiniMode.Text = HIDE_TEXT; // Initial text
 
             this.regularFont = this.profileCB.Font;
             this.italicFont = new Font(this.regularFont, FontStyle.Italic);
@@ -90,6 +104,7 @@ namespace _4RTools.Forms
             SetAutopotWindow();
             SetAutopotYggWindow();
             SetSkillTimerWindow();
+            SetAutoOffWindow();
             SetCustomButtonsWindow();
             SetAHKWindow();
             SetAutoBuffStatusWindow();
@@ -100,6 +115,30 @@ namespace _4RTools.Forms
             SetATKDEFWindow();
             SetMacroSwitchWindow();
             SetConfigWindow();
+        }
+
+        private void BtnToggleMiniMode_Click(object sender, EventArgs e)
+        {
+            isMiniMode = !isMiniMode; // Toggle state
+
+            this.SuspendLayout();
+
+            if (isMiniMode)
+            {
+                // Enter Mini Mode
+                this.atkDefMode.Visible = false;
+                this.btnToggleMiniMode.Text = SHOW_TEXT;
+                this.ClientSize = this.miniModeClientSize;
+            }
+            else
+            {
+                // Exit Mini Mode (return to full)
+                this.atkDefMode.Visible = true;
+                this.btnToggleMiniMode.Text = HIDE_TEXT;
+                this.ClientSize = this.fullModeClientSize;
+            }
+
+            this.ResumeLayout(true);
         }
 
         private void ProcessCB_DropDown(object sender, EventArgs e)
@@ -158,8 +197,7 @@ namespace _4RTools.Forms
                 float processWidth = g.MeasureString(item.ProcessText, processCB.Font).Width + 2;
 
                 float contextWidth;
-                bool isNotLoggedIn = !item.IsOnline ||
-                                     (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+                bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                                      (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
 
                 if (isNotLoggedIn)
@@ -213,8 +251,7 @@ namespace _4RTools.Forms
             e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             e.Graphics.DrawString(item.ProcessText, e.Font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top + 2);
 
-            bool isNotLoggedIn = !item.IsOnline ||
-                                 (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+            bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                                  (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
 
             int lineHeight = e.Font.Height;
@@ -371,11 +408,6 @@ namespace _4RTools.Forms
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
 
-            if (client != null)
-            {
-                DebugLogger.Info($"Client online status: {(client.IsOnline() ? "Online" : "Offline")}");
-            }
-
             characterName.Text = client.ReadCharacterName() ?? "- -";
             characterMap.Text = client.ReadCurrentMap() ?? "- -";
             subject.Notify(new Utils.Message(Utils.MessageCode.PROCESS_CHANGED, null));
@@ -471,13 +503,27 @@ namespace _4RTools.Forms
                         string processText = $"{p.ProcessName}.exe - {p.Id}";
                         string characterName = client.ReadCharacterName() ?? "- -";
                         string currentMap = client.ReadCurrentMap() ?? "- -";
-                        bool isOnline = client.IsOnline();
-                        processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap, isOnline));
+                        int currentLevel = (int)client.ReadCurrentLevel();
+                        int currentJobId = (int)client.ReadCurrentJob();
+                        int currentExp = (int)client.ReadCurrentExp();
+                        int currentExpToLevel = (int)client.ReadCurrentExpToLevel();
+                        int currentHP = (int)client.ReadCurrentHp();
+                        int currentMaxHP = (int)client.ReadMaxHp();
+                        int currentSP = (int)client.ReadCurrentSp();
+                        int currentMaxSP = (int)client.ReadMaxSp();
+
+                        string jobName = JobList.GetNameById(currentJobId);
+
+                        string clientDebugInfo =
+                            $"  {characterName} / {jobName} / Lv.{currentLevel} / Exp. {currentExp}\n" +
+                            $"  HP. {currentHP} / {currentMaxHP} | Sp. {currentSP} / {currentMaxSP}";
+
+                        processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap));
+                        DebugLogger.Debug("CLIENT:\n" + clientDebugInfo);
                     }
                 }
 
                 var sortedItems = processItems.OrderBy(item =>
-                    !item.IsOnline ||
                     (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
                     (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0)
                     .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName)
@@ -491,6 +537,8 @@ namespace _4RTools.Forms
                 {
                     this.processCB.Items.Add(item);
                 }
+
+
             });
         }
 
@@ -569,10 +617,6 @@ namespace _4RTools.Forms
 
                     DebugLogger.Info($"Loading profile: {profileName}");
                     Client client = ClientSingleton.GetClient();
-                    if (client != null)
-                    {
-                        DebugLogger.Info($"Client online status: {(client.IsOnline() ? "Online" : "Offline")}");
-                    }
                     ProfileSingleton.ClearProfile(profileName);
                     ProfileSingleton.Load(profileName);
                     subject.Notify(new Utils.Message(MessageCode.PROFILE_CHANGED, null));
@@ -698,14 +742,12 @@ namespace _4RTools.Forms
             public string ProcessText { get; }
             public string CharacterName { get; }
             public string CurrentMap { get; }
-            public bool IsOnline { get; }
 
-            public ProcessDisplayItem(string processText, string characterName, string currentMap, bool isOnline)
+            public ProcessDisplayItem(string processText, string characterName, string currentMap)
             {
                 ProcessText = processText;
                 CharacterName = characterName;
                 CurrentMap = currentMap;
-                IsOnline = isOnline;
             }
 
             public override string ToString()
@@ -773,12 +815,23 @@ namespace _4RTools.Forms
             Addform(this.tabPageSkillTimer, frm);
         }
 
+        public void SetAutoOffWindow()
+        {
+            AutoOffForm frm = new AutoOffForm(subject)
+            {
+                FormBorderStyle = FormBorderStyle.None,
+                MdiParent = this
+            };
+            frm.Show();
+            Addform(this.tabPageAutoOff, frm);
+        }
+
         public void SetCustomButtonsWindow()
         {
             TransferHelperForm form = new TransferHelperForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(450, 220),
+                Location = new Point(475, 220),
                 MdiParent = this
             };
             form.Show();

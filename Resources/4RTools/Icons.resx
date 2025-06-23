@@ -258,6 +258,9 @@
   <data name="sl_soullinker" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\item\scroll\sl_soullinker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="vip_ticket" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\item\scroll\vip_ticket.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="refraction" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\skill\3rd\archbishop\refraction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

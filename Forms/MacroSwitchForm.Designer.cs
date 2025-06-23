@@ -30,8 +30,6 @@ namespace _4RTools.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MacroSwitchForm));
             this.in1mac1 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -62,7 +60,9 @@ namespace _4RTools.Forms
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.in5mac1 = new System.Windows.Forms.TextBox();
             this.chainGroup1 = new System.Windows.Forms.GroupBox();
+            this.btnResMac1 = new System.Windows.Forms.Button();
             this.chainGroup2 = new System.Windows.Forms.GroupBox();
+            this.btnResMac2 = new System.Windows.Forms.Button();
             this.in1mac2 = new System.Windows.Forms.TextBox();
             this.in7mac2 = new System.Windows.Forms.TextBox();
             this.in6mac2 = new System.Windows.Forms.TextBox();
@@ -93,6 +93,7 @@ namespace _4RTools.Forms
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.chainGroup3 = new System.Windows.Forms.GroupBox();
+            this.btnResMac3 = new System.Windows.Forms.Button();
             this.in1mac3 = new System.Windows.Forms.TextBox();
             this.in7mac3 = new System.Windows.Forms.TextBox();
             this.in6mac3 = new System.Windows.Forms.TextBox();
@@ -123,6 +124,7 @@ namespace _4RTools.Forms
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.pictureBox39 = new System.Windows.Forms.PictureBox();
             this.chainGroup4 = new System.Windows.Forms.GroupBox();
+            this.btnResMac4 = new System.Windows.Forms.Button();
             this.in1mac4 = new System.Windows.Forms.TextBox();
             this.in7mac4 = new System.Windows.Forms.TextBox();
             this.in6mac4 = new System.Windows.Forms.TextBox();
@@ -153,6 +155,7 @@ namespace _4RTools.Forms
             this.pictureBox51 = new System.Windows.Forms.PictureBox();
             this.pictureBox52 = new System.Windows.Forms.PictureBox();
             this.chainGroup5 = new System.Windows.Forms.GroupBox();
+            this.btnResMac5 = new System.Windows.Forms.Button();
             this.in1mac5 = new System.Windows.Forms.TextBox();
             this.in7mac5 = new System.Windows.Forms.TextBox();
             this.in6mac5 = new System.Windows.Forms.TextBox();
@@ -182,11 +185,6 @@ namespace _4RTools.Forms
             this.pictureBox63 = new System.Windows.Forms.PictureBox();
             this.pictureBox64 = new System.Windows.Forms.PictureBox();
             this.pictureBox65 = new System.Windows.Forms.PictureBox();
-            this.btnResMac1 = new System.Windows.Forms.Button();
-            this.btnResMac2 = new System.Windows.Forms.Button();
-            this.btnResMac3 = new System.Windows.Forms.Button();
-            this.btnResMac4 = new System.Windows.Forms.Button();
-            this.btnResMac5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.in1mac1delay)).BeginInit();
@@ -299,12 +297,12 @@ namespace _4RTools.Forms
             this.in1mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in1mac1.Location = new System.Drawing.Point(62, 13);
             this.in1mac1.Name = "in1mac1";
-            this.in1mac1.Size = new System.Drawing.Size(49, 22);
+            this.in1mac1.Size = new System.Drawing.Size(49, 21);
             this.in1mac1.TabIndex = 182;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox2.Location = new System.Drawing.Point(81, 33);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(11, 14);
@@ -327,7 +325,7 @@ namespace _4RTools.Forms
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(26, 17);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 222;
             this.label5.Text = "Keys:";
             // 
@@ -336,7 +334,7 @@ namespace _4RTools.Forms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(2, 51);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 248;
             this.label4.Text = "Delays(ms):";
             // 
@@ -350,7 +348,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in1mac1delay.Name = "in1mac1delay";
-            this.in1mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in1mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac1delay.TabIndex = 254;
             // 
             // in2mac1delay
@@ -363,7 +361,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in2mac1delay.Name = "in2mac1delay";
-            this.in2mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in2mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac1delay.TabIndex = 260;
             // 
             // pictureBox4
@@ -378,7 +376,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox5.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox5.Location = new System.Drawing.Point(150, 33);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(11, 14);
@@ -391,7 +389,7 @@ namespace _4RTools.Forms
             this.in2mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in2mac1.Location = new System.Drawing.Point(131, 13);
             this.in2mac1.Name = "in2mac1";
-            this.in2mac1.Size = new System.Drawing.Size(49, 22);
+            this.in2mac1.Size = new System.Drawing.Size(49, 21);
             this.in2mac1.TabIndex = 257;
             // 
             // in4mac1delay
@@ -404,7 +402,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in4mac1delay.Name = "in4mac1delay";
-            this.in4mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in4mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac1delay.TabIndex = 268;
             // 
             // pictureBox6
@@ -419,7 +417,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox7.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox7.Location = new System.Drawing.Point(288, 33);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(11, 14);
@@ -432,7 +430,7 @@ namespace _4RTools.Forms
             this.in4mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in4mac1.Location = new System.Drawing.Point(269, 13);
             this.in4mac1.Name = "in4mac1";
-            this.in4mac1.Size = new System.Drawing.Size(49, 22);
+            this.in4mac1.Size = new System.Drawing.Size(49, 21);
             this.in4mac1.TabIndex = 265;
             // 
             // in3mac1delay
@@ -445,7 +443,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in3mac1delay.Name = "in3mac1delay";
-            this.in3mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in3mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac1delay.TabIndex = 264;
             // 
             // pictureBox8
@@ -460,7 +458,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox9.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox9.Location = new System.Drawing.Point(219, 33);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(11, 14);
@@ -473,7 +471,7 @@ namespace _4RTools.Forms
             this.in3mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in3mac1.Location = new System.Drawing.Point(200, 13);
             this.in3mac1.Name = "in3mac1";
-            this.in3mac1.Size = new System.Drawing.Size(49, 22);
+            this.in3mac1.Size = new System.Drawing.Size(49, 21);
             this.in3mac1.TabIndex = 261;
             // 
             // in7mac1delay
@@ -486,12 +484,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in7mac1delay.Name = "in7mac1delay";
-            this.in7mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in7mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac1delay.TabIndex = 280;
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox11.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox11.Location = new System.Drawing.Point(495, 33);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(11, 14);
@@ -504,7 +502,7 @@ namespace _4RTools.Forms
             this.in7mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in7mac1.Location = new System.Drawing.Point(476, 13);
             this.in7mac1.Name = "in7mac1";
-            this.in7mac1.Size = new System.Drawing.Size(49, 22);
+            this.in7mac1.Size = new System.Drawing.Size(49, 21);
             this.in7mac1.TabIndex = 277;
             // 
             // in6mac1delay
@@ -517,7 +515,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in6mac1delay.Name = "in6mac1delay";
-            this.in6mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in6mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac1delay.TabIndex = 276;
             // 
             // pictureBox12
@@ -532,7 +530,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox13.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox13.Location = new System.Drawing.Point(426, 33);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(11, 14);
@@ -545,7 +543,7 @@ namespace _4RTools.Forms
             this.in6mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in6mac1.Location = new System.Drawing.Point(407, 13);
             this.in6mac1.Name = "in6mac1";
-            this.in6mac1.Size = new System.Drawing.Size(49, 22);
+            this.in6mac1.Size = new System.Drawing.Size(49, 21);
             this.in6mac1.TabIndex = 273;
             // 
             // in5mac1delay
@@ -558,7 +556,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in5mac1delay.Name = "in5mac1delay";
-            this.in5mac1delay.Size = new System.Drawing.Size(47, 22);
+            this.in5mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac1delay.TabIndex = 272;
             // 
             // pictureBox14
@@ -573,7 +571,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox15.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox15.Location = new System.Drawing.Point(357, 33);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(11, 14);
@@ -586,7 +584,7 @@ namespace _4RTools.Forms
             this.in5mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in5mac1.Location = new System.Drawing.Point(338, 13);
             this.in5mac1.Name = "in5mac1";
-            this.in5mac1.Size = new System.Drawing.Size(49, 22);
+            this.in5mac1.Size = new System.Drawing.Size(49, 21);
             this.in5mac1.TabIndex = 269;
             // 
             // chainGroup1
@@ -603,7 +601,6 @@ namespace _4RTools.Forms
             this.chainGroup1.Controls.Add(this.pictureBox11);
             this.chainGroup1.Controls.Add(this.pictureBox2);
             this.chainGroup1.Controls.Add(this.in6mac1delay);
-            this.chainGroup1.Controls.Add(this.label4);
             this.chainGroup1.Controls.Add(this.label5);
             this.chainGroup1.Controls.Add(this.pictureBox13);
             this.chainGroup1.Controls.Add(this.in1mac1delay);
@@ -621,6 +618,7 @@ namespace _4RTools.Forms
             this.chainGroup1.Controls.Add(this.pictureBox6);
             this.chainGroup1.Controls.Add(this.pictureBox14);
             this.chainGroup1.Controls.Add(this.pictureBox12);
+            this.chainGroup1.Controls.Add(this.label4);
             this.chainGroup1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chainGroup1.Location = new System.Drawing.Point(12, 10);
             this.chainGroup1.Name = "chainGroup1";
@@ -628,6 +626,17 @@ namespace _4RTools.Forms
             this.chainGroup1.TabIndex = 281;
             this.chainGroup1.TabStop = false;
             this.chainGroup1.Text = "Switch 1";
+            // 
+            // btnResMac1
+            // 
+            this.btnResMac1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResMac1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResMac1.Location = new System.Drawing.Point(532, 33);
+            this.btnResMac1.Name = "btnResMac1";
+            this.btnResMac1.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac1.TabIndex = 281;
+            this.btnResMac1.Text = "Reset";
+            this.btnResMac1.UseVisualStyleBackColor = false;
             // 
             // chainGroup2
             // 
@@ -643,7 +652,6 @@ namespace _4RTools.Forms
             this.chainGroup2.Controls.Add(this.pictureBox1);
             this.chainGroup2.Controls.Add(this.pictureBox10);
             this.chainGroup2.Controls.Add(this.in6mac2delay);
-            this.chainGroup2.Controls.Add(this.label1);
             this.chainGroup2.Controls.Add(this.label2);
             this.chainGroup2.Controls.Add(this.pictureBox16);
             this.chainGroup2.Controls.Add(this.in1mac2delay);
@@ -661,6 +669,7 @@ namespace _4RTools.Forms
             this.chainGroup2.Controls.Add(this.pictureBox24);
             this.chainGroup2.Controls.Add(this.pictureBox25);
             this.chainGroup2.Controls.Add(this.pictureBox26);
+            this.chainGroup2.Controls.Add(this.label1);
             this.chainGroup2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chainGroup2.Location = new System.Drawing.Point(12, 95);
             this.chainGroup2.Name = "chainGroup2";
@@ -669,12 +678,23 @@ namespace _4RTools.Forms
             this.chainGroup2.TabStop = false;
             this.chainGroup2.Text = "Switch 2";
             // 
+            // btnResMac2
+            // 
+            this.btnResMac2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResMac2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResMac2.Location = new System.Drawing.Point(531, 34);
+            this.btnResMac2.Name = "btnResMac2";
+            this.btnResMac2.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac2.TabIndex = 282;
+            this.btnResMac2.Text = "Reset";
+            this.btnResMac2.UseVisualStyleBackColor = false;
+            // 
             // in1mac2
             // 
             this.in1mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in1mac2.Location = new System.Drawing.Point(62, 13);
             this.in1mac2.Name = "in1mac2";
-            this.in1mac2.Size = new System.Drawing.Size(49, 22);
+            this.in1mac2.Size = new System.Drawing.Size(49, 21);
             this.in1mac2.TabIndex = 182;
             // 
             // in7mac2
@@ -682,7 +702,7 @@ namespace _4RTools.Forms
             this.in7mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in7mac2.Location = new System.Drawing.Point(476, 13);
             this.in7mac2.Name = "in7mac2";
-            this.in7mac2.Size = new System.Drawing.Size(49, 22);
+            this.in7mac2.Size = new System.Drawing.Size(49, 21);
             this.in7mac2.TabIndex = 277;
             // 
             // in6mac2
@@ -690,7 +710,7 @@ namespace _4RTools.Forms
             this.in6mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in6mac2.Location = new System.Drawing.Point(407, 13);
             this.in6mac2.Name = "in6mac2";
-            this.in6mac2.Size = new System.Drawing.Size(49, 22);
+            this.in6mac2.Size = new System.Drawing.Size(49, 21);
             this.in6mac2.TabIndex = 273;
             // 
             // in2mac2
@@ -698,7 +718,7 @@ namespace _4RTools.Forms
             this.in2mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in2mac2.Location = new System.Drawing.Point(131, 13);
             this.in2mac2.Name = "in2mac2";
-            this.in2mac2.Size = new System.Drawing.Size(49, 22);
+            this.in2mac2.Size = new System.Drawing.Size(49, 21);
             this.in2mac2.TabIndex = 257;
             // 
             // in5mac2
@@ -706,7 +726,7 @@ namespace _4RTools.Forms
             this.in5mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in5mac2.Location = new System.Drawing.Point(338, 13);
             this.in5mac2.Name = "in5mac2";
-            this.in5mac2.Size = new System.Drawing.Size(49, 22);
+            this.in5mac2.Size = new System.Drawing.Size(49, 21);
             this.in5mac2.TabIndex = 269;
             // 
             // in3mac2
@@ -714,7 +734,7 @@ namespace _4RTools.Forms
             this.in3mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in3mac2.Location = new System.Drawing.Point(200, 13);
             this.in3mac2.Name = "in3mac2";
-            this.in3mac2.Size = new System.Drawing.Size(49, 22);
+            this.in3mac2.Size = new System.Drawing.Size(49, 21);
             this.in3mac2.TabIndex = 261;
             // 
             // in4mac2
@@ -722,7 +742,7 @@ namespace _4RTools.Forms
             this.in4mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in4mac2.Location = new System.Drawing.Point(269, 13);
             this.in4mac2.Name = "in4mac2";
-            this.in4mac2.Size = new System.Drawing.Size(49, 22);
+            this.in4mac2.Size = new System.Drawing.Size(49, 21);
             this.in4mac2.TabIndex = 265;
             // 
             // in7mac2delay
@@ -735,12 +755,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in7mac2delay.Name = "in7mac2delay";
-            this.in7mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in7mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac2delay.TabIndex = 280;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox1.Location = new System.Drawing.Point(495, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(11, 14);
@@ -750,7 +770,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox10.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox10.Location = new System.Drawing.Point(81, 33);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(11, 14);
@@ -768,7 +788,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in6mac2delay.Name = "in6mac2delay";
-            this.in6mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in6mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac2delay.TabIndex = 276;
             // 
             // label1
@@ -776,7 +796,7 @@ namespace _4RTools.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(2, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 248;
             this.label1.Text = "Delays(ms):";
             // 
@@ -785,13 +805,13 @@ namespace _4RTools.Forms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(26, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 222;
             this.label2.Text = "Keys:";
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox16.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox16.Location = new System.Drawing.Point(426, 33);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(11, 14);
@@ -809,7 +829,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in1mac2delay.Name = "in1mac2delay";
-            this.in1mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in1mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac2delay.TabIndex = 254;
             // 
             // in5mac2delay
@@ -822,12 +842,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in5mac2delay.Name = "in5mac2delay";
-            this.in5mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in5mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac2delay.TabIndex = 272;
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox17.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox17.Location = new System.Drawing.Point(150, 33);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(11, 14);
@@ -837,7 +857,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox18.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox18.Location = new System.Drawing.Point(357, 33);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(11, 14);
@@ -855,7 +875,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in2mac2delay.Name = "in2mac2delay";
-            this.in2mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in2mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac2delay.TabIndex = 260;
             // 
             // in4mac2delay
@@ -868,12 +888,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in4mac2delay.Name = "in4mac2delay";
-            this.in4mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in4mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac2delay.TabIndex = 268;
             // 
             // pictureBox19
             // 
-            this.pictureBox19.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox19.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox19.Location = new System.Drawing.Point(219, 33);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(11, 14);
@@ -883,7 +903,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox20
             // 
-            this.pictureBox20.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox20.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox20.Location = new System.Drawing.Point(288, 33);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(11, 14);
@@ -901,7 +921,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in3mac2delay.Name = "in3mac2delay";
-            this.in3mac2delay.Size = new System.Drawing.Size(47, 22);
+            this.in3mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac2delay.TabIndex = 264;
             // 
             // pictureBox21
@@ -978,7 +998,6 @@ namespace _4RTools.Forms
             this.chainGroup3.Controls.Add(this.pictureBox27);
             this.chainGroup3.Controls.Add(this.pictureBox28);
             this.chainGroup3.Controls.Add(this.in6mac3delay);
-            this.chainGroup3.Controls.Add(this.label3);
             this.chainGroup3.Controls.Add(this.label6);
             this.chainGroup3.Controls.Add(this.pictureBox29);
             this.chainGroup3.Controls.Add(this.in1mac3delay);
@@ -996,6 +1015,7 @@ namespace _4RTools.Forms
             this.chainGroup3.Controls.Add(this.pictureBox37);
             this.chainGroup3.Controls.Add(this.pictureBox38);
             this.chainGroup3.Controls.Add(this.pictureBox39);
+            this.chainGroup3.Controls.Add(this.label3);
             this.chainGroup3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chainGroup3.Location = new System.Drawing.Point(12, 180);
             this.chainGroup3.Name = "chainGroup3";
@@ -1004,12 +1024,23 @@ namespace _4RTools.Forms
             this.chainGroup3.TabStop = false;
             this.chainGroup3.Text = "Switch 3";
             // 
+            // btnResMac3
+            // 
+            this.btnResMac3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResMac3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResMac3.Location = new System.Drawing.Point(531, 33);
+            this.btnResMac3.Name = "btnResMac3";
+            this.btnResMac3.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac3.TabIndex = 283;
+            this.btnResMac3.Text = "Reset";
+            this.btnResMac3.UseVisualStyleBackColor = false;
+            // 
             // in1mac3
             // 
             this.in1mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in1mac3.Location = new System.Drawing.Point(62, 13);
             this.in1mac3.Name = "in1mac3";
-            this.in1mac3.Size = new System.Drawing.Size(49, 22);
+            this.in1mac3.Size = new System.Drawing.Size(49, 21);
             this.in1mac3.TabIndex = 182;
             // 
             // in7mac3
@@ -1017,7 +1048,7 @@ namespace _4RTools.Forms
             this.in7mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in7mac3.Location = new System.Drawing.Point(476, 13);
             this.in7mac3.Name = "in7mac3";
-            this.in7mac3.Size = new System.Drawing.Size(49, 22);
+            this.in7mac3.Size = new System.Drawing.Size(49, 21);
             this.in7mac3.TabIndex = 277;
             // 
             // in6mac3
@@ -1025,7 +1056,7 @@ namespace _4RTools.Forms
             this.in6mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in6mac3.Location = new System.Drawing.Point(407, 13);
             this.in6mac3.Name = "in6mac3";
-            this.in6mac3.Size = new System.Drawing.Size(49, 22);
+            this.in6mac3.Size = new System.Drawing.Size(49, 21);
             this.in6mac3.TabIndex = 273;
             // 
             // in2mac3
@@ -1033,7 +1064,7 @@ namespace _4RTools.Forms
             this.in2mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in2mac3.Location = new System.Drawing.Point(131, 13);
             this.in2mac3.Name = "in2mac3";
-            this.in2mac3.Size = new System.Drawing.Size(49, 22);
+            this.in2mac3.Size = new System.Drawing.Size(49, 21);
             this.in2mac3.TabIndex = 257;
             // 
             // in5mac3
@@ -1041,7 +1072,7 @@ namespace _4RTools.Forms
             this.in5mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in5mac3.Location = new System.Drawing.Point(338, 13);
             this.in5mac3.Name = "in5mac3";
-            this.in5mac3.Size = new System.Drawing.Size(49, 22);
+            this.in5mac3.Size = new System.Drawing.Size(49, 21);
             this.in5mac3.TabIndex = 269;
             // 
             // in3mac3
@@ -1049,7 +1080,7 @@ namespace _4RTools.Forms
             this.in3mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in3mac3.Location = new System.Drawing.Point(200, 13);
             this.in3mac3.Name = "in3mac3";
-            this.in3mac3.Size = new System.Drawing.Size(49, 22);
+            this.in3mac3.Size = new System.Drawing.Size(49, 21);
             this.in3mac3.TabIndex = 261;
             // 
             // in4mac3
@@ -1057,7 +1088,7 @@ namespace _4RTools.Forms
             this.in4mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in4mac3.Location = new System.Drawing.Point(269, 13);
             this.in4mac3.Name = "in4mac3";
-            this.in4mac3.Size = new System.Drawing.Size(49, 22);
+            this.in4mac3.Size = new System.Drawing.Size(49, 21);
             this.in4mac3.TabIndex = 265;
             // 
             // in7mac3delay
@@ -1070,12 +1101,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in7mac3delay.Name = "in7mac3delay";
-            this.in7mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in7mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac3delay.TabIndex = 280;
             // 
             // pictureBox27
             // 
-            this.pictureBox27.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox27.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox27.Location = new System.Drawing.Point(495, 33);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(11, 14);
@@ -1085,7 +1116,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox28
             // 
-            this.pictureBox28.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox28.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox28.Location = new System.Drawing.Point(81, 33);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(11, 14);
@@ -1103,7 +1134,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in6mac3delay.Name = "in6mac3delay";
-            this.in6mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in6mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac3delay.TabIndex = 276;
             // 
             // label3
@@ -1111,7 +1142,7 @@ namespace _4RTools.Forms
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(2, 51);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 248;
             this.label3.Text = "Delays(ms):";
             // 
@@ -1120,13 +1151,13 @@ namespace _4RTools.Forms
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(26, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 222;
             this.label6.Text = "Keys:";
             // 
             // pictureBox29
             // 
-            this.pictureBox29.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox29.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox29.Location = new System.Drawing.Point(426, 33);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(11, 14);
@@ -1144,7 +1175,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in1mac3delay.Name = "in1mac3delay";
-            this.in1mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in1mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac3delay.TabIndex = 254;
             // 
             // in5mac3delay
@@ -1157,12 +1188,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in5mac3delay.Name = "in5mac3delay";
-            this.in5mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in5mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac3delay.TabIndex = 272;
             // 
             // pictureBox30
             // 
-            this.pictureBox30.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox30.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox30.Location = new System.Drawing.Point(150, 33);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(11, 14);
@@ -1172,7 +1203,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox31
             // 
-            this.pictureBox31.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox31.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox31.Location = new System.Drawing.Point(357, 33);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(11, 14);
@@ -1190,7 +1221,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in2mac3delay.Name = "in2mac3delay";
-            this.in2mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in2mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac3delay.TabIndex = 260;
             // 
             // in4mac3delay
@@ -1203,12 +1234,12 @@ namespace _4RTools.Forms
             0,
             0});
             this.in4mac3delay.Name = "in4mac3delay";
-            this.in4mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in4mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac3delay.TabIndex = 268;
             // 
             // pictureBox32
             // 
-            this.pictureBox32.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox32.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox32.Location = new System.Drawing.Point(219, 33);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(11, 14);
@@ -1218,7 +1249,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox33
             // 
-            this.pictureBox33.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox33.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
             this.pictureBox33.Location = new System.Drawing.Point(288, 33);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(11, 14);
@@ -1236,7 +1267,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in3mac3delay.Name = "in3mac3delay";
-            this.in3mac3delay.Size = new System.Drawing.Size(47, 22);
+            this.in3mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac3delay.TabIndex = 264;
             // 
             // pictureBox34
@@ -1313,7 +1344,6 @@ namespace _4RTools.Forms
             this.chainGroup4.Controls.Add(this.pictureBox40);
             this.chainGroup4.Controls.Add(this.pictureBox41);
             this.chainGroup4.Controls.Add(this.in6mac4delay);
-            this.chainGroup4.Controls.Add(this.label7);
             this.chainGroup4.Controls.Add(this.label8);
             this.chainGroup4.Controls.Add(this.pictureBox42);
             this.chainGroup4.Controls.Add(this.in1mac4delay);
@@ -1331,6 +1361,7 @@ namespace _4RTools.Forms
             this.chainGroup4.Controls.Add(this.pictureBox50);
             this.chainGroup4.Controls.Add(this.pictureBox51);
             this.chainGroup4.Controls.Add(this.pictureBox52);
+            this.chainGroup4.Controls.Add(this.label7);
             this.chainGroup4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chainGroup4.Location = new System.Drawing.Point(12, 265);
             this.chainGroup4.Name = "chainGroup4";
@@ -1339,12 +1370,23 @@ namespace _4RTools.Forms
             this.chainGroup4.TabStop = false;
             this.chainGroup4.Text = "Switch 4";
             // 
+            // btnResMac4
+            // 
+            this.btnResMac4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResMac4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResMac4.Location = new System.Drawing.Point(531, 33);
+            this.btnResMac4.Name = "btnResMac4";
+            this.btnResMac4.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac4.TabIndex = 284;
+            this.btnResMac4.Text = "Reset";
+            this.btnResMac4.UseVisualStyleBackColor = false;
+            // 
             // in1mac4
             // 
             this.in1mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in1mac4.Location = new System.Drawing.Point(62, 13);
             this.in1mac4.Name = "in1mac4";
-            this.in1mac4.Size = new System.Drawing.Size(49, 22);
+            this.in1mac4.Size = new System.Drawing.Size(49, 21);
             this.in1mac4.TabIndex = 182;
             // 
             // in7mac4
@@ -1352,7 +1394,7 @@ namespace _4RTools.Forms
             this.in7mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in7mac4.Location = new System.Drawing.Point(476, 13);
             this.in7mac4.Name = "in7mac4";
-            this.in7mac4.Size = new System.Drawing.Size(49, 22);
+            this.in7mac4.Size = new System.Drawing.Size(49, 21);
             this.in7mac4.TabIndex = 277;
             // 
             // in6mac4
@@ -1360,7 +1402,7 @@ namespace _4RTools.Forms
             this.in6mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in6mac4.Location = new System.Drawing.Point(407, 13);
             this.in6mac4.Name = "in6mac4";
-            this.in6mac4.Size = new System.Drawing.Size(49, 22);
+            this.in6mac4.Size = new System.Drawing.Size(49, 21);
             this.in6mac4.TabIndex = 273;
             // 
             // in2mac4
@@ -1368,7 +1410,7 @@ namespace _4RTools.Forms
             this.in2mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in2mac4.Location = new System.Drawing.Point(131, 13);
             this.in2mac4.Name = "in2mac4";
-            this.in2mac4.Size = new System.Drawing.Size(49, 22);
+            this.in2mac4.Size = new System.Drawing.Size(49, 21);
             this.in2mac4.TabIndex = 257;
             // 
             // in5mac4
@@ -1376,7 +1418,7 @@ namespace _4RTools.Forms
             this.in5mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in5mac4.Location = new System.Drawing.Point(338, 13);
             this.in5mac4.Name = "in5mac4";
-            this.in5mac4.Size = new System.Drawing.Size(49, 22);
+            this.in5mac4.Size = new System.Drawing.Size(49, 21);
             this.in5mac4.TabIndex = 269;
             // 
             // in3mac4
@@ -1384,7 +1426,7 @@ namespace _4RTools.Forms
             this.in3mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in3mac4.Location = new System.Drawing.Point(200, 13);
             this.in3mac4.Name = "in3mac4";
-            this.in3mac4.Size = new System.Drawing.Size(49, 22);
+            this.in3mac4.Size = new System.Drawing.Size(49, 21);
             this.in3mac4.TabIndex = 261;
             // 
             // in4mac4
@@ -1392,7 +1434,7 @@ namespace _4RTools.Forms
             this.in4mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in4mac4.Location = new System.Drawing.Point(269, 13);
             this.in4mac4.Name = "in4mac4";
-            this.in4mac4.Size = new System.Drawing.Size(49, 22);
+            this.in4mac4.Size = new System.Drawing.Size(49, 21);
             this.in4mac4.TabIndex = 265;
             // 
             // in7mac4delay
@@ -1405,12 +1447,11 @@ namespace _4RTools.Forms
             0,
             0});
             this.in7mac4delay.Name = "in7mac4delay";
-            this.in7mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in7mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac4delay.TabIndex = 280;
             // 
             // pictureBox40
             // 
-            this.pictureBox40.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox40.Image")));
             this.pictureBox40.Location = new System.Drawing.Point(495, 33);
             this.pictureBox40.Name = "pictureBox40";
             this.pictureBox40.Size = new System.Drawing.Size(11, 14);
@@ -1420,7 +1461,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox41
             // 
-            this.pictureBox41.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox41.Image")));
             this.pictureBox41.Location = new System.Drawing.Point(81, 33);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(11, 14);
@@ -1438,7 +1478,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in6mac4delay.Name = "in6mac4delay";
-            this.in6mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in6mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac4delay.TabIndex = 276;
             // 
             // label7
@@ -1446,7 +1486,7 @@ namespace _4RTools.Forms
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(2, 51);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 248;
             this.label7.Text = "Delays(ms):";
             // 
@@ -1455,13 +1495,12 @@ namespace _4RTools.Forms
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(26, 17);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 222;
             this.label8.Text = "Keys:";
             // 
             // pictureBox42
             // 
-            this.pictureBox42.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox42.Image")));
             this.pictureBox42.Location = new System.Drawing.Point(426, 33);
             this.pictureBox42.Name = "pictureBox42";
             this.pictureBox42.Size = new System.Drawing.Size(11, 14);
@@ -1479,7 +1518,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in1mac4delay.Name = "in1mac4delay";
-            this.in1mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in1mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac4delay.TabIndex = 254;
             // 
             // in5mac4delay
@@ -1492,12 +1531,11 @@ namespace _4RTools.Forms
             0,
             0});
             this.in5mac4delay.Name = "in5mac4delay";
-            this.in5mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in5mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac4delay.TabIndex = 272;
             // 
             // pictureBox43
             // 
-            this.pictureBox43.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox43.Image")));
             this.pictureBox43.Location = new System.Drawing.Point(150, 33);
             this.pictureBox43.Name = "pictureBox43";
             this.pictureBox43.Size = new System.Drawing.Size(11, 14);
@@ -1507,7 +1545,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox44
             // 
-            this.pictureBox44.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox44.Image")));
             this.pictureBox44.Location = new System.Drawing.Point(357, 33);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(11, 14);
@@ -1525,7 +1562,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in2mac4delay.Name = "in2mac4delay";
-            this.in2mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in2mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac4delay.TabIndex = 260;
             // 
             // in4mac4delay
@@ -1538,12 +1575,11 @@ namespace _4RTools.Forms
             0,
             0});
             this.in4mac4delay.Name = "in4mac4delay";
-            this.in4mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in4mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac4delay.TabIndex = 268;
             // 
             // pictureBox45
             // 
-            this.pictureBox45.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox45.Image")));
             this.pictureBox45.Location = new System.Drawing.Point(219, 33);
             this.pictureBox45.Name = "pictureBox45";
             this.pictureBox45.Size = new System.Drawing.Size(11, 14);
@@ -1553,7 +1589,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox46
             // 
-            this.pictureBox46.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox46.Image")));
             this.pictureBox46.Location = new System.Drawing.Point(288, 33);
             this.pictureBox46.Name = "pictureBox46";
             this.pictureBox46.Size = new System.Drawing.Size(11, 14);
@@ -1571,7 +1606,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in3mac4delay.Name = "in3mac4delay";
-            this.in3mac4delay.Size = new System.Drawing.Size(47, 22);
+            this.in3mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac4delay.TabIndex = 264;
             // 
             // pictureBox47
@@ -1648,7 +1683,6 @@ namespace _4RTools.Forms
             this.chainGroup5.Controls.Add(this.pictureBox53);
             this.chainGroup5.Controls.Add(this.pictureBox54);
             this.chainGroup5.Controls.Add(this.in6mac5delay);
-            this.chainGroup5.Controls.Add(this.label9);
             this.chainGroup5.Controls.Add(this.label10);
             this.chainGroup5.Controls.Add(this.pictureBox55);
             this.chainGroup5.Controls.Add(this.in1mac5delay);
@@ -1666,6 +1700,7 @@ namespace _4RTools.Forms
             this.chainGroup5.Controls.Add(this.pictureBox63);
             this.chainGroup5.Controls.Add(this.pictureBox64);
             this.chainGroup5.Controls.Add(this.pictureBox65);
+            this.chainGroup5.Controls.Add(this.label9);
             this.chainGroup5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chainGroup5.Location = new System.Drawing.Point(12, 350);
             this.chainGroup5.Name = "chainGroup5";
@@ -1674,12 +1709,23 @@ namespace _4RTools.Forms
             this.chainGroup5.TabStop = false;
             this.chainGroup5.Text = "Switch 5";
             // 
+            // btnResMac5
+            // 
+            this.btnResMac5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResMac5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResMac5.Location = new System.Drawing.Point(531, 33);
+            this.btnResMac5.Name = "btnResMac5";
+            this.btnResMac5.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac5.TabIndex = 285;
+            this.btnResMac5.Text = "Reset";
+            this.btnResMac5.UseVisualStyleBackColor = false;
+            // 
             // in1mac5
             // 
             this.in1mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in1mac5.Location = new System.Drawing.Point(62, 13);
             this.in1mac5.Name = "in1mac5";
-            this.in1mac5.Size = new System.Drawing.Size(49, 22);
+            this.in1mac5.Size = new System.Drawing.Size(49, 21);
             this.in1mac5.TabIndex = 182;
             // 
             // in7mac5
@@ -1687,7 +1733,7 @@ namespace _4RTools.Forms
             this.in7mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in7mac5.Location = new System.Drawing.Point(476, 13);
             this.in7mac5.Name = "in7mac5";
-            this.in7mac5.Size = new System.Drawing.Size(49, 22);
+            this.in7mac5.Size = new System.Drawing.Size(49, 21);
             this.in7mac5.TabIndex = 277;
             // 
             // in6mac5
@@ -1695,7 +1741,7 @@ namespace _4RTools.Forms
             this.in6mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in6mac5.Location = new System.Drawing.Point(407, 13);
             this.in6mac5.Name = "in6mac5";
-            this.in6mac5.Size = new System.Drawing.Size(49, 22);
+            this.in6mac5.Size = new System.Drawing.Size(49, 21);
             this.in6mac5.TabIndex = 273;
             // 
             // in2mac5
@@ -1703,7 +1749,7 @@ namespace _4RTools.Forms
             this.in2mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in2mac5.Location = new System.Drawing.Point(131, 13);
             this.in2mac5.Name = "in2mac5";
-            this.in2mac5.Size = new System.Drawing.Size(49, 22);
+            this.in2mac5.Size = new System.Drawing.Size(49, 21);
             this.in2mac5.TabIndex = 257;
             // 
             // in5mac5
@@ -1711,7 +1757,7 @@ namespace _4RTools.Forms
             this.in5mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in5mac5.Location = new System.Drawing.Point(338, 13);
             this.in5mac5.Name = "in5mac5";
-            this.in5mac5.Size = new System.Drawing.Size(49, 22);
+            this.in5mac5.Size = new System.Drawing.Size(49, 21);
             this.in5mac5.TabIndex = 269;
             // 
             // in3mac5
@@ -1719,7 +1765,7 @@ namespace _4RTools.Forms
             this.in3mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in3mac5.Location = new System.Drawing.Point(200, 13);
             this.in3mac5.Name = "in3mac5";
-            this.in3mac5.Size = new System.Drawing.Size(49, 22);
+            this.in3mac5.Size = new System.Drawing.Size(49, 21);
             this.in3mac5.TabIndex = 261;
             // 
             // in4mac5
@@ -1727,7 +1773,7 @@ namespace _4RTools.Forms
             this.in4mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.in4mac5.Location = new System.Drawing.Point(269, 13);
             this.in4mac5.Name = "in4mac5";
-            this.in4mac5.Size = new System.Drawing.Size(49, 22);
+            this.in4mac5.Size = new System.Drawing.Size(49, 21);
             this.in4mac5.TabIndex = 265;
             // 
             // in7mac5delay
@@ -1740,12 +1786,11 @@ namespace _4RTools.Forms
             0,
             0});
             this.in7mac5delay.Name = "in7mac5delay";
-            this.in7mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in7mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac5delay.TabIndex = 280;
             // 
             // pictureBox53
             // 
-            this.pictureBox53.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox53.Image")));
             this.pictureBox53.Location = new System.Drawing.Point(495, 33);
             this.pictureBox53.Name = "pictureBox53";
             this.pictureBox53.Size = new System.Drawing.Size(11, 14);
@@ -1755,7 +1800,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox54
             // 
-            this.pictureBox54.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox54.Image")));
             this.pictureBox54.Location = new System.Drawing.Point(81, 33);
             this.pictureBox54.Name = "pictureBox54";
             this.pictureBox54.Size = new System.Drawing.Size(11, 14);
@@ -1773,7 +1817,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in6mac5delay.Name = "in6mac5delay";
-            this.in6mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in6mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac5delay.TabIndex = 276;
             // 
             // label9
@@ -1781,7 +1825,7 @@ namespace _4RTools.Forms
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(2, 51);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
+            this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 248;
             this.label9.Text = "Delays(ms):";
             // 
@@ -1790,13 +1834,12 @@ namespace _4RTools.Forms
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(26, 17);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.Size = new System.Drawing.Size(34, 13);
             this.label10.TabIndex = 222;
             this.label10.Text = "Keys:";
             // 
             // pictureBox55
             // 
-            this.pictureBox55.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox55.Image")));
             this.pictureBox55.Location = new System.Drawing.Point(426, 33);
             this.pictureBox55.Name = "pictureBox55";
             this.pictureBox55.Size = new System.Drawing.Size(11, 14);
@@ -1814,7 +1857,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in1mac5delay.Name = "in1mac5delay";
-            this.in1mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in1mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac5delay.TabIndex = 254;
             // 
             // in5mac5delay
@@ -1827,12 +1870,11 @@ namespace _4RTools.Forms
             0,
             0});
             this.in5mac5delay.Name = "in5mac5delay";
-            this.in5mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in5mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac5delay.TabIndex = 272;
             // 
             // pictureBox56
             // 
-            this.pictureBox56.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox56.Image")));
             this.pictureBox56.Location = new System.Drawing.Point(150, 33);
             this.pictureBox56.Name = "pictureBox56";
             this.pictureBox56.Size = new System.Drawing.Size(11, 14);
@@ -1842,7 +1884,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox57
             // 
-            this.pictureBox57.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox57.Image")));
             this.pictureBox57.Location = new System.Drawing.Point(357, 33);
             this.pictureBox57.Name = "pictureBox57";
             this.pictureBox57.Size = new System.Drawing.Size(11, 14);
@@ -1860,7 +1901,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in2mac5delay.Name = "in2mac5delay";
-            this.in2mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in2mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac5delay.TabIndex = 260;
             // 
             // in4mac5delay
@@ -1873,12 +1914,11 @@ namespace _4RTools.Forms
             0,
             0});
             this.in4mac5delay.Name = "in4mac5delay";
-            this.in4mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in4mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac5delay.TabIndex = 268;
             // 
             // pictureBox58
             // 
-            this.pictureBox58.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox58.Image")));
             this.pictureBox58.Location = new System.Drawing.Point(219, 33);
             this.pictureBox58.Name = "pictureBox58";
             this.pictureBox58.Size = new System.Drawing.Size(11, 14);
@@ -1888,7 +1928,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox59
             // 
-            this.pictureBox59.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox59.Image")));
             this.pictureBox59.Location = new System.Drawing.Point(288, 33);
             this.pictureBox59.Name = "pictureBox59";
             this.pictureBox59.Size = new System.Drawing.Size(11, 14);
@@ -1906,7 +1945,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.in3mac5delay.Name = "in3mac5delay";
-            this.in3mac5delay.Size = new System.Drawing.Size(47, 22);
+            this.in3mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac5delay.TabIndex = 264;
             // 
             // pictureBox60
@@ -1969,74 +2008,19 @@ namespace _4RTools.Forms
             this.pictureBox65.TabIndex = 275;
             this.pictureBox65.TabStop = false;
             // 
-            // btnResMac1
-            // 
-            this.btnResMac1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac1.Location = new System.Drawing.Point(532, 33);
-            this.btnResMac1.Name = "btnResMac1";
-            this.btnResMac1.Size = new System.Drawing.Size(62, 23);
-            this.btnResMac1.TabIndex = 281;
-            this.btnResMac1.Text = "Reset";
-            this.btnResMac1.UseVisualStyleBackColor = false;
-            // 
-            // btnResMac2
-            // 
-            this.btnResMac2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac2.Location = new System.Drawing.Point(531, 34);
-            this.btnResMac2.Name = "btnResMac2";
-            this.btnResMac2.Size = new System.Drawing.Size(62, 23);
-            this.btnResMac2.TabIndex = 282;
-            this.btnResMac2.Text = "Reset";
-            this.btnResMac2.UseVisualStyleBackColor = false;
-            // 
-            // btnResMac3
-            // 
-            this.btnResMac3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac3.Location = new System.Drawing.Point(531, 33);
-            this.btnResMac3.Name = "btnResMac3";
-            this.btnResMac3.Size = new System.Drawing.Size(62, 23);
-            this.btnResMac3.TabIndex = 283;
-            this.btnResMac3.Text = "Reset";
-            this.btnResMac3.UseVisualStyleBackColor = false;
-            // 
-            // btnResMac4
-            // 
-            this.btnResMac4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac4.Location = new System.Drawing.Point(531, 33);
-            this.btnResMac4.Name = "btnResMac4";
-            this.btnResMac4.Size = new System.Drawing.Size(62, 23);
-            this.btnResMac4.TabIndex = 284;
-            this.btnResMac4.Text = "Reset";
-            this.btnResMac4.UseVisualStyleBackColor = false;
-            // 
-            // btnResMac5
-            // 
-            this.btnResMac5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac5.Location = new System.Drawing.Point(531, 33);
-            this.btnResMac5.Name = "btnResMac5";
-            this.btnResMac5.Size = new System.Drawing.Size(62, 23);
-            this.btnResMac5.TabIndex = 285;
-            this.btnResMac5.Text = "Reset";
-            this.btnResMac5.UseVisualStyleBackColor = false;
-            // 
             // MacroSwitchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(625, 450);
             this.Controls.Add(this.chainGroup5);
             this.Controls.Add(this.chainGroup4);
             this.Controls.Add(this.chainGroup3);
             this.Controls.Add(this.chainGroup2);
             this.Controls.Add(this.chainGroup1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MacroSwitchForm";
             this.Text = "MacroSwitchForm";

@@ -357,7 +357,6 @@ namespace _4RTools.Model
                 new Buff("Increase Agility Scroll", EffectStatusIDs.INC_AGI, Resources._4RTools.Icons.al_incagi1),
                 new Buff("Bless Scroll", EffectStatusIDs.BLESSING, Resources._4RTools.Icons.al_blessing1),
                 new Buff("Full Chemical Protection (Scroll)", EffectStatusIDs.PROTECTARMOR, Resources._4RTools.Icons.cr_fullprotection),
-                new Buff("Burnt Incense",  EffectStatusIDs.SPIRIT, Resources._4RTools.Icons.burnt_incense),
                 new Buff("Link Scroll", EffectStatusIDs.SOULLINK, Resources._4RTools.Icons.sl_soullinker),
                 new Buff("Assumptio",  EffectStatusIDs.ASSUMPTIO, Resources._4RTools.Icons.assumptio),
                 new Buff("Flee Scroll / Spray of Flowers",  EffectStatusIDs.FLEE_SCROLL, Resources._4RTools.Icons.flee_scroll),
@@ -372,6 +371,7 @@ namespace _4RTools.Model
         {
             List<Buff> skills = new List<Buff>
             {
+                new Buff("VIP Ticket",  EffectStatusIDs.VIP_BONUS, Resources._4RTools.Icons.vip_ticket),
                 new Buff("Field Manual 100% / 300%", EffectStatusIDs.FIELD_MANUAL, Resources._4RTools.Icons.fieldmanual),
                 new Buff("Bubble Gum / HE Bubble Gum", EffectStatusIDs.CASH_RECEIVEITEM, Resources._4RTools.Icons.he_bubble_gum),
 

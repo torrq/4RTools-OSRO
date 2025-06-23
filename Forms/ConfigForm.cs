@@ -143,7 +143,9 @@ namespace _4RTools.Forms
                     newOrderedBuffList.Clear();
                 }
             }
-            catch { }
+            catch (Exception ex) {
+                DebugLogger.Error("Error in SkillsListBox_MouseLeave: " + ex.Message);
+            }
         }
         private void SkillsListBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {

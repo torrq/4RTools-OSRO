@@ -37,26 +37,26 @@
             // lblPrompt
             // 
             this.lblPrompt.AutoSize = true;
-            this.lblPrompt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblPrompt.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrompt.Location = new System.Drawing.Point(12, 9);
             this.lblPrompt.Name = "lblPrompt";
-            this.lblPrompt.Size = new System.Drawing.Size(45, 17);
+            this.lblPrompt.Size = new System.Drawing.Size(48, 16);
             this.lblPrompt.TabIndex = 0;
             this.lblPrompt.Text = "Prompt";
             // 
             // txtInput
             // 
-            this.txtInput.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.txtInput.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInput.Location = new System.Drawing.Point(12, 29);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(263, 25);
+            this.txtInput.Size = new System.Drawing.Size(263, 23);
             this.txtInput.TabIndex = 1;
             // 
             // btnOK
             // 
             this.btnOK.BackColor = System.Drawing.Color.LightGreen;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnOK.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.Location = new System.Drawing.Point(119, 60);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 28);
@@ -68,8 +68,9 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Pink;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnCancel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(200, 60);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 28);
@@ -81,14 +82,15 @@
             // DialogInput
             // 
             this.AcceptButton = this.btnOK;
-            this.CancelButton = this.btnCancel;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(287, 95);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtInput);
             this.Controls.Add(this.lblPrompt);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -97,6 +99,7 @@
             this.Text = "Input";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

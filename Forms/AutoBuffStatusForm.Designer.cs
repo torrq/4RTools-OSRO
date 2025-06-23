@@ -99,7 +99,7 @@ namespace _4RTools.Forms
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtPanaceaKey);
             this.Controls.Add(this.DebuffsGP);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AutoBuffStatusForm";
             this.Text = "AutoBuffStatusForm";

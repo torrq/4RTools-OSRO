@@ -634,7 +634,9 @@ namespace _4RTools.Utils
         SHIELDSPELL = 1316,
 
         CASH_PLUSEXP = 1400,
-        SPIRIT = 1401,
+
+        [Description("VIP Bonus")]
+        VIP_BONUS = 1401,
 
         [Description("Kaite")]
         KAITE = 1402,

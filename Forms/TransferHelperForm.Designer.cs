@@ -30,61 +30,48 @@
         {
             this.components = new System.ComponentModel.Container();
             this.txtTransferKey = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TransferItemLabel = new System.Windows.Forms.Label();
             this.tooltipTransferKey = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTransferKey
             // 
             this.txtTransferKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTransferKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTransferKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTransferKey.Location = new System.Drawing.Point(111, 8);
             this.txtTransferKey.Name = "txtTransferKey";
-            this.txtTransferKey.Size = new System.Drawing.Size(65, 25);
+            this.txtTransferKey.Size = new System.Drawing.Size(50, 23);
             this.txtTransferKey.TabIndex = 11;
+            this.tooltipTransferKey.SetToolTip(this.txtTransferKey, "Simulates Alt+Right Click for quick item transfer between storage and inventory");
             this.txtTransferKey.TextChanged += new System.EventHandler(this.TxtTransferKey_TextChanged);
             // 
-            // label1
+            // TransferItemLabel
             // 
-            this.label1.Cursor = System.Windows.Forms.Cursors.Help;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(52, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 27);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Transfer";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
+            this.TransferItemLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransferItemLabel.Location = new System.Drawing.Point(8, 6);
+            this.TransferItemLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TransferItemLabel.Name = "TransferItemLabel";
+            this.TransferItemLabel.Size = new System.Drawing.Size(99, 27);
+            this.TransferItemLabel.TabIndex = 13;
+            this.TransferItemLabel.Text = "Item Transfer";
+            this.TransferItemLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pictureBox2
+            // tooltipTransferKey
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Help;
-            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.info;
-            this.pictureBox2.Location = new System.Drawing.Point(177, 8);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
+            this.tooltipTransferKey.Popup += new System.Windows.Forms.PopupEventHandler(this.tooltipTransferKey_Popup);
             // 
-            // TransferButtonForm
+            // TransferHelperForm
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(205, 39);
-            this.Controls.Add(this.pictureBox2);
+            this.ClientSize = new System.Drawing.Size(175, 40);
             this.Controls.Add(this.txtTransferKey);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.TransferItemLabel);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "TransferButtonForm";
+            this.Name = "TransferHelperForm";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "StatusEffect";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,8 +79,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox txtTransferKey;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TransferItemLabel;
         private System.Windows.Forms.ToolTip tooltipTransferKey;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

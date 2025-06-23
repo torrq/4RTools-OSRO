@@ -52,10 +52,10 @@ namespace _4RTools.Forms
             // lblProfilesList
             // 
             this.lblProfilesList.AutoSize = true;
-            this.lblProfilesList.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProfilesList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProfilesList.Location = new System.Drawing.Point(109, 13);
             this.lblProfilesList.Name = "lblProfilesList";
-            this.lblProfilesList.Size = new System.Drawing.Size(70, 17);
+            this.lblProfilesList.Size = new System.Drawing.Size(75, 16);
             this.lblProfilesList.TabIndex = 6;
             this.lblProfilesList.Text = "Profile List";
             this.lblProfilesList.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -63,13 +63,13 @@ namespace _4RTools.Forms
             // lbProfilesList
             // 
             this.lbProfilesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbProfilesList.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lbProfilesList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbProfilesList.FormattingEnabled = true;
-            this.lbProfilesList.ItemHeight = 17;
+            this.lbProfilesList.ItemHeight = 16;
             this.lbProfilesList.Location = new System.Drawing.Point(125, 33);
             this.lbProfilesList.Name = "lbProfilesList";
             this.lbProfilesList.ScrollAlwaysVisible = true;
-            this.lbProfilesList.Size = new System.Drawing.Size(365, 359);
+            this.lbProfilesList.Size = new System.Drawing.Size(365, 354);
             this.lbProfilesList.TabIndex = 8;
             // 
             // btnSave
@@ -77,7 +77,7 @@ namespace _4RTools.Forms
             this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::_4RTools.Resources._4RTools.Icons.add;
             this.btnSave.Location = new System.Drawing.Point(496, 33);
             this.btnSave.Name = "btnSave";
@@ -92,7 +92,7 @@ namespace _4RTools.Forms
             this.btnCopyProfile.BackColor = System.Drawing.Color.LightYellow;
             this.btnCopyProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCopyProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnCopyProfile.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCopyProfile.Image = global::_4RTools.Resources._4RTools.Icons.copy;
             this.btnCopyProfile.Location = new System.Drawing.Point(496, 109);
             this.btnCopyProfile.Name = "btnCopyProfile";
@@ -107,7 +107,7 @@ namespace _4RTools.Forms
             this.btnRenameProfile.BackColor = System.Drawing.Color.LightBlue;
             this.btnRenameProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRenameProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRenameProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnRenameProfile.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRenameProfile.Image = global::_4RTools.Resources._4RTools.Icons.edit;
             this.btnRenameProfile.Location = new System.Drawing.Point(496, 71);
             this.btnRenameProfile.Name = "btnRenameProfile";
@@ -122,7 +122,7 @@ namespace _4RTools.Forms
             this.btnRemoveProfile.BackColor = System.Drawing.Color.Pink;
             this.btnRemoveProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveProfile.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnRemoveProfile.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveProfile.Image = global::_4RTools.Resources._4RTools.Icons.delete;
             this.btnRemoveProfile.Location = new System.Drawing.Point(496, 147);
             this.btnRemoveProfile.Name = "btnRemoveProfile";
@@ -161,7 +161,7 @@ namespace _4RTools.Forms
             this.Controls.Add(this.btnRemoveProfile);
             this.Controls.Add(this.btnCopyProfile);
             this.Controls.Add(this.btnSave);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProfileForm";
             this.Text = "ProfileForm";

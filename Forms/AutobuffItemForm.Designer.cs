@@ -145,7 +145,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.numericDelay.Name = "numericDelay";
-            this.numericDelay.Size = new System.Drawing.Size(60, 22);
+            this.numericDelay.Size = new System.Drawing.Size(60, 21);
             this.numericDelay.TabIndex = 302;
             this.numericDelay.Value = new decimal(new int[] {
             50,
@@ -179,7 +179,7 @@ namespace _4RTools.Forms
             this.Controls.Add(this.BoxesGP);
             this.Controls.Add(this.PotionsGP);
             this.Controls.Add(this.FoodsGP);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AutobuffItemForm";
             this.Text = "AutobuffItemForm";

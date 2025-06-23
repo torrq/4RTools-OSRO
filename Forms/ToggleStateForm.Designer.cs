@@ -32,7 +32,6 @@ namespace _4RTools.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToggleStateForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtStatusToggleKey = new System.Windows.Forms.TextBox();
             this.lblStatusToggle = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@ namespace _4RTools.Forms
             this.groupBox1.Controls.Add(this.txtStatusToggleKey);
             this.groupBox1.Controls.Add(this.lblStatusToggle);
             this.groupBox1.Controls.Add(this.btnStatusToggle);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(47, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 112);
@@ -56,18 +56,18 @@ namespace _4RTools.Forms
             // txtStatusToggleKey
             // 
             this.txtStatusToggleKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStatusToggleKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatusToggleKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStatusToggleKey.Location = new System.Drawing.Point(102, 34);
             this.txtStatusToggleKey.Name = "txtStatusToggleKey";
-            this.txtStatusToggleKey.Size = new System.Drawing.Size(72, 25);
+            this.txtStatusToggleKey.Size = new System.Drawing.Size(72, 23);
             this.txtStatusToggleKey.TabIndex = 23;
             this.txtStatusToggleKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblStatusToggle
             // 
             this.lblStatusToggle.AllowDrop = true;
-            this.lblStatusToggle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatusToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.lblStatusToggle.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.lblStatusToggle.Location = new System.Drawing.Point(4, 72);
             this.lblStatusToggle.MaximumSize = new System.Drawing.Size(190, 18);
             this.lblStatusToggle.Name = "lblStatusToggle";
@@ -85,7 +85,7 @@ namespace _4RTools.Forms
             this.btnStatusToggle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnStatusToggle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnStatusToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatusToggle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatusToggle.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatusToggle.ForeColor = System.Drawing.SystemColors.Window;
             this.btnStatusToggle.Image = global::_4RTools.Resources._4RTools.Icons.toggle_off;
             this.btnStatusToggle.Location = new System.Drawing.Point(18, 22);
@@ -97,16 +97,16 @@ namespace _4RTools.Forms
             this.btnStatusToggle.UseVisualStyleBackColor = false;
             this.btnStatusToggle.Click += new System.EventHandler(this.btnToggleStatusHandler);
             // 
-            // ToggleApplicationStateForm
+            // ToggleStateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(290, 136);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ToggleApplicationStateForm";
+            this.Name = "ToggleStateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ToggleApplicationStateForm";
             this.groupBox1.ResumeLayout(false);

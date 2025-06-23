@@ -31,7 +31,6 @@ namespace _4RTools.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutobuffSkillForm));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.ArcherSkillsGP = new System.Windows.Forms.GroupBox();
@@ -54,7 +53,6 @@ namespace _4RTools.Forms
             // 
             // pictureBox38
             // 
-            this.pictureBox38.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox38.BackgroundImage")));
             this.pictureBox38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox38.Location = new System.Drawing.Point(274, 290);
@@ -192,7 +190,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.numericDelay.Name = "numericDelay";
-            this.numericDelay.Size = new System.Drawing.Size(60, 22);
+            this.numericDelay.Size = new System.Drawing.Size(60, 21);
             this.numericDelay.TabIndex = 302;
             this.numericDelay.Value = new decimal(new int[] {
             50,
@@ -215,7 +213,7 @@ namespace _4RTools.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = AppConfig.AccentBackColor;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(606, 416);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericDelay);
@@ -230,7 +228,7 @@ namespace _4RTools.Forms
             this.Controls.Add(this.MageSkillGP);
             this.Controls.Add(this.ArcherSkillsGP);
             this.Controls.Add(this.SwordmanSkillGP);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AutobuffSkillForm";
             this.Text = "AutobuffSkillForm";

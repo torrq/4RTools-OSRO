@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace _4RTools.Utils
 {
-    internal class AppConfig
+    internal static class AppConfig
     {
         public static string Name = "OSRO Tools";
         public static string Version = "v1.0.7";
@@ -49,7 +49,7 @@ namespace _4RTools.Utils
                                 hpAddress     = "00E8F434",
                                 nameAddress   = "00E91C00",
                                 mapAddress    = "00E8ABD4",
-                                onlineAddress = "00E8A928"
+                                jobAddress    = "00E8BA54",
                             }
                         };
 
@@ -63,7 +63,7 @@ namespace _4RTools.Utils
                                 hpAddress     = "010DCE10",
                                 nameAddress   = "010DF5D8",
                                 mapAddress    = "010D856C",
-                                onlineAddress = "010D83C7"
+                                jobAddress    = "00000000",
                             }
                         };
 
@@ -77,7 +77,7 @@ namespace _4RTools.Utils
                                 hpAddress     = "00000000",
                                 nameAddress   = "00000000",
                                 mapAddress    = "00000000",
-                                onlineAddress = "00000000"
+                                jobAddress    = "00000000",
                             }
                         };
 

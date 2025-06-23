@@ -16,27 +16,27 @@ namespace _4RTools.Model
         public string HPAddress { get; set; }
         public string NameAddress { get; set; }
         public string MapAddress { get; set; }
-        public string OnlineAddress { get; set; }
+        public string JobAdress { get; set; }
         public int HPAddressPointer { get; set; }
         public int NameAddressPointer { get; set; }
         public int MapAddressPointer { get; set; }
-        public int OnlineAddressPointer { get; set; }
+        public int JobAddressPointer { get; set; }
 
         public ClientDTO() { }
 
-        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string onlineAddress)
+        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress)
         {
             this.Name = name;
             this.Description = description;
             this.HPAddress = hpAddress;
             this.NameAddress = nameAddress;
             this.MapAddress = mapAddress;
-            this.OnlineAddress = onlineAddress;
+            this.JobAdress = jobAddress;
 
             this.HPAddressPointer = Convert.ToInt32(hpAddress, 16);
             this.NameAddressPointer = Convert.ToInt32(nameAddress, 16);
             this.MapAddressPointer = Convert.ToInt32(mapAddress, 16);
-            this.OnlineAddressPointer = Convert.ToInt32(onlineAddress, 16);
+            this.JobAddressPointer = Convert.ToInt32(jobAddress, 16);
         }
     }
 
@@ -93,16 +93,16 @@ namespace _4RTools.Model
         public int CurrentNameAddress { get; set; }
         public int CurrentHPBaseAddress { get; set; }
         public int CurrentMapAddress { get; set; }
-        public int CurrentOnlineAddress { get; set; }
+        public int CurrentJobAddress { get; set; }
         private int StatusBufferAddress { get; set; }
         private int _num = 0;
 
-        public Client(string processName, int currentHPBaseAddress, int currentNameAddress, int currentMapAddress, int currentOnlineAddress)
+        public Client(string processName, int currentHPBaseAddress, int currentNameAddress, int currentMapAddress, int currentJobAddress)
         {
             this.CurrentNameAddress = currentNameAddress;
             this.CurrentHPBaseAddress = currentHPBaseAddress;
             this.CurrentMapAddress = currentMapAddress;
-            this.CurrentOnlineAddress = currentOnlineAddress;
+            this.CurrentJobAddress = currentJobAddress;
             this.ProcessName = processName;
 
             if (AppConfig.ServerMode == 1) // HR
@@ -120,6 +120,8 @@ namespace _4RTools.Model
                 this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474;
                 //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for MR client.");
             }
+
+            CurrentJobAddress = currentJobAddress;
         }
 
         public Client(ClientDTO dto)
@@ -128,7 +130,7 @@ namespace _4RTools.Model
             this.CurrentHPBaseAddress = Convert.ToInt32(dto.HPAddress, 16);
             this.CurrentNameAddress = Convert.ToInt32(dto.NameAddress, 16);
             this.CurrentMapAddress = Convert.ToInt32(dto.MapAddress, 16);
-            this.CurrentOnlineAddress = Convert.ToInt32(dto.OnlineAddress, 16);
+            this.CurrentJobAddress = Convert.ToInt32(dto.JobAdress, 16);
 
             if (AppConfig.ServerMode == 1) // HR
             {
@@ -167,16 +169,16 @@ namespace _4RTools.Model
                         this.CurrentHPBaseAddress = c.CurrentHPBaseAddress;
                         this.CurrentNameAddress = c.CurrentNameAddress;
                         this.CurrentMapAddress = c.CurrentMapAddress;
-                        this.CurrentOnlineAddress = c.CurrentOnlineAddress;
+                        this.CurrentJobAddress = c.CurrentJobAddress;
                         this.StatusBufferAddress = c.StatusBufferAddress;
                     }
                     catch
                     {
-                        MessageBox.Show("This client is not supported. Only Spammers and macro will works.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //MessageBox.Show("This client is not supported. Only Spammers and macro will works.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         this.CurrentHPBaseAddress = 0;
                         this.CurrentNameAddress = 0;
                         this.CurrentMapAddress = 0;
-                        this.CurrentOnlineAddress = 0;
+                        this.CurrentJobAddress = 0;
                         this.StatusBufferAddress = 0;
                     }
                 }
@@ -198,28 +200,6 @@ namespace _4RTools.Model
         private uint ReadMemory(int address)
         {
             return BitConverter.ToUInt32(PMR.ReadProcessMemory((IntPtr)address, 4u, out _num), 0);
-        }
-
-        public bool IsOnline()
-        {
-            return true;
-            /*
-            try
-            {
-                byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentOnlineAddress, 1u, out _num);
-                if (_num == 1)
-                {
-                    return bytes[0] == 1; // 1 = online, 0 = offline
-                }
-                DebugLogger.Warning($"Failed to read online status at address 0x{CurrentOnlineAddress:X8}");
-                return false;
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error($"Error reading online status: {ex.Message}");
-                return false;
-            }
-            */
         }
 
         public void WriteMemory(int address, uint intToWrite)
@@ -272,6 +252,25 @@ namespace _4RTools.Model
             return ReadMemory(this.CurrentHPBaseAddress + 12);
         }
 
+        public uint ReadCurrentJob()
+        {
+            return ReadMemory(this.CurrentJobAddress);
+        }
+
+        public uint ReadCurrentExp()
+        {
+            return ReadMemory(this.CurrentJobAddress + (4 * 1));
+        }
+
+        public uint ReadCurrentExpToLevel()
+        {
+            return ReadMemory(this.CurrentJobAddress + (4 * 2));
+        }
+        public uint ReadCurrentLevel()
+        {
+            return ReadMemory(this.CurrentJobAddress + (4 * 9));
+        }
+
         public uint CurrentBuffStatusCode(int effectStatusIndex)
         {
             return ReadMemory(this.StatusBufferAddress + (effectStatusIndex * 4));
@@ -296,7 +295,7 @@ namespace _4RTools.Model
                 .Where(c => c.ProcessName == dto.Name)
                 .Where(c => c.CurrentHPBaseAddress == dto.HPAddressPointer)
                 .Where(c => c.CurrentNameAddress == dto.NameAddressPointer)
-                .Where(c => c.CurrentOnlineAddress == dto.OnlineAddressPointer)
+                .Where(c => c.CurrentJobAddress == dto.JobAddressPointer)
                 .FirstOrDefault();
         }
     }

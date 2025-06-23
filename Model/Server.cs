@@ -6,7 +6,7 @@ using System.IO;
 
 namespace _4RTools.Model
 {
-    internal class Server
+    internal static class Server
     {
         private static List<string> cityList;
 
@@ -69,7 +69,7 @@ namespace _4RTools.Model
                         server.hpAddress,
                         server.nameAddress,
                         server.mapAddress,
-                        server.onlineAddress
+                        server.jobAddress
                     ));
                 }
                 return clients;

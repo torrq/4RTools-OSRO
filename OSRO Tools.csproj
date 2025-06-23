@@ -172,6 +172,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AutoOffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AutoOffForm.Designer.cs">
+      <DependentUpon>AutoOffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SkillSpammerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,18 @@
     <Compile Include="Forms\ATKDEFForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\AutoOffForm.resx">
+      <DependentUpon>AutoOffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogConfirm.resx">
+      <DependentUpon>DialogConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogConfirmDelete.resx">
+      <DependentUpon>DialogConfirmDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogInput.resx">
+      <DependentUpon>DialogInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SkillSpammerForm.resx">
       <DependentUpon>SkillSpammerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -384,6 +402,7 @@
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\FormUtils.cs" />
     <Compile Include="Utils\Interop.cs" />
+    <Compile Include="Utils\JobList.cs" />
     <Compile Include="Utils\KeyboardHook.cs" />
     <Compile Include="Utils\NotificationTrayManager.cs" />
     <Compile Include="Utils\ProcessMemoryReader.cs" />

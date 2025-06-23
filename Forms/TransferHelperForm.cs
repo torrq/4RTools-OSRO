@@ -13,11 +13,6 @@ namespace _4RTools.Forms
         public TransferHelperForm(Subject subject)
         {
             InitializeComponent();
-            string toolTipText = "Simulates Alt+Right Click for quick item transfer between storage and inventory";
-
-            tooltipTransferKey.SetToolTip(label1, toolTipText);
-            tooltipTransferKey.SetToolTip(pictureBox2, toolTipText);
-
             subject.Attach(this);
         }
 
@@ -60,16 +55,17 @@ namespace _4RTools.Forms
             this.ActiveControl = null;
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void PictureBox2_Click(object sender, EventArgs e)
         {
         }
 
         private void TxtTransferKey_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void tooltipTransferKey_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }
