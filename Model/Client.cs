@@ -259,16 +259,20 @@ namespace _4RTools.Model
 
         public uint ReadCurrentExp()
         {
-            return ReadMemory(this.CurrentJobAddress + (4 * 1));
+            return ReadMemory(this.CurrentJobAddress + 4);
         }
 
         public uint ReadCurrentExpToLevel()
         {
-            return ReadMemory(this.CurrentJobAddress + (4 * 2));
+            return ReadMemory(this.CurrentJobAddress + 12);
         }
         public uint ReadCurrentLevel()
         {
             return ReadMemory(this.CurrentJobAddress + (4 * 9));
+        }
+        public uint ReadCurrentJobLevel()
+        {
+            return ReadMemory(this.CurrentJobAddress + (4 * 11));
         }
 
         public uint CurrentBuffStatusCode(int effectStatusIndex)

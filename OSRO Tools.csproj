@@ -178,6 +178,18 @@
     <Compile Include="Forms\AutoOffForm.Designer.cs">
       <DependentUpon>AutoOffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CharacterInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CharacterInfo.Designer.cs">
+      <DependentUpon>CharacterInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogOK.Designer.cs">
+      <DependentUpon>DialogOK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SkillSpammerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +202,12 @@
     </Compile>
     <EmbeddedResource Include="Forms\AutoOffForm.resx">
       <DependentUpon>AutoOffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CharacterInfo.resx">
+      <DependentUpon>CharacterInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogOK.resx">
+      <DependentUpon>DialogOK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogConfirm.resx">
       <DependentUpon>DialogConfirm.cs</DependentUpon>

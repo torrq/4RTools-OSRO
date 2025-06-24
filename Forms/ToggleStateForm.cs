@@ -55,6 +55,11 @@ namespace _4RTools.Forms
             return trayManager;
         }
 
+        public bool IsApplicationOn()
+        {
+            return isApplicationOn;
+        }
+
         public void Update(ISubject subject)
         {
             switch (subject.Message.Code)

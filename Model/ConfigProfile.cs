@@ -19,6 +19,7 @@ namespace _4RTools.Model
         public Key Ammo1Key { get; set; }
         public Key Ammo2Key { get; set; }
         public Key AmmoTriggerKey { get; set; }
+        public int AutoOffTime { get; set; } = 1;
 
         public ConfigProfile()
         {

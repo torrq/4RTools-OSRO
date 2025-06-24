@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace _4RTools.Forms
@@ -29,6 +28,7 @@ namespace _4RTools.Forms
         private Font smallRegularFont;
         private int maxDropDownWidth = 150;
         private const string OFFLINE_TEXT = "OFFLINE";
+        private CharacterInfo characterInfoForm;
 
         // Mini-mode fields
         private bool isMiniMode = false;
@@ -36,7 +36,6 @@ namespace _4RTools.Forms
         private Size miniModeClientSize;
         private const string HIDE_TEXT = "▲ LESS ▲";
         private const string SHOW_TEXT = "▼ MORE ▼";
-
 
         public Container()
         {
@@ -49,10 +48,18 @@ namespace _4RTools.Forms
 
             InitializeComponent();
 
+            // Initialize CharacterInfo form
+            this.characterInfoForm = new CharacterInfo();
+            this.characterInfoForm.TopLevel = false;
+            this.characterInfoForm.FormBorderStyle = FormBorderStyle.None;
+            this.characterInfoForm.Location = new Point(425, 6);
+            this.Controls.Add(this.characterInfoForm);
+            this.characterInfoForm.Show();
+
             // Setup for Mini-Mode Toggle
             this.fullModeClientSize = this.ClientSize;
-            this.miniModeClientSize = new Size(this.ClientSize.Width, this.btnToggleMiniMode.Bottom + 12);
-            this.btnToggleMiniMode.Text = HIDE_TEXT; // Initial text
+            this.miniModeClientSize = new Size(this.ClientSize.Width, this.btnToggleMiniMode.Bottom);
+            this.btnToggleMiniMode.Text = HIDE_TEXT;
 
             this.regularFont = this.profileCB.Font;
             this.italicFont = new Font(this.regularFont, FontStyle.Italic);
@@ -71,7 +78,7 @@ namespace _4RTools.Forms
             this.processCB.DropDownHeight = 150;
             this.processCB.MeasureItem += new MeasureItemEventHandler(this.processCB_MeasureItem);
             this.processCB.DrawItem += new DrawItemEventHandler(this.processCB_DrawItem);
-            this.processCB.DropDown += new EventHandler(this.ProcessCB_DropDown); // Added for refresh on click
+            this.processCB.DropDown += new EventHandler(this.ProcessCB_DropDown);
 
             this.Text = AppConfig.WindowTitle;
 
@@ -115,30 +122,41 @@ namespace _4RTools.Forms
             SetATKDEFWindow();
             SetMacroSwitchWindow();
             SetConfigWindow();
+
+            SetMiniMode(ConfigGlobal.GetConfig().MiniMode);
+        }
+
+        public void SetMiniMode(bool isMiniMode)
+        {
+            if (this.isMiniMode != isMiniMode)
+            {
+                this.isMiniMode = isMiniMode;
+
+                this.SuspendLayout();
+
+                if (isMiniMode)
+                {
+                    this.atkDef.Visible = false;
+                    this.btnToggleMiniMode.Text = SHOW_TEXT;
+                    this.ClientSize = this.miniModeClientSize;
+                }
+                else
+                {
+                    this.atkDef.Visible = true;
+                    this.btnToggleMiniMode.Text = HIDE_TEXT;
+                    this.ClientSize = this.fullModeClientSize;
+                }
+
+                this.ResumeLayout(true);
+
+                ConfigGlobal.GetConfig().MiniMode = isMiniMode;
+                ConfigGlobal.SaveConfig();
+            }
         }
 
         private void BtnToggleMiniMode_Click(object sender, EventArgs e)
         {
-            isMiniMode = !isMiniMode; // Toggle state
-
-            this.SuspendLayout();
-
-            if (isMiniMode)
-            {
-                // Enter Mini Mode
-                this.atkDefMode.Visible = false;
-                this.btnToggleMiniMode.Text = SHOW_TEXT;
-                this.ClientSize = this.miniModeClientSize;
-            }
-            else
-            {
-                // Exit Mini Mode (return to full)
-                this.atkDefMode.Visible = true;
-                this.btnToggleMiniMode.Text = HIDE_TEXT;
-                this.ClientSize = this.fullModeClientSize;
-            }
-
-            this.ResumeLayout(true);
+            SetMiniMode(!isMiniMode);
         }
 
         private void ProcessCB_DropDown(object sender, EventArgs e)
@@ -408,9 +426,38 @@ namespace _4RTools.Forms
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
 
-            characterName.Text = client.ReadCharacterName() ?? "- -";
-            characterMap.Text = client.ReadCurrentMap() ?? "- -";
-            subject.Notify(new Utils.Message(Utils.MessageCode.PROCESS_CHANGED, null));
+            string characterName = client.ReadCharacterName() ?? "- -";
+            int currentLevel = (int)client.ReadCurrentLevel();
+            int currentJobLevel = (int)client.ReadCurrentJobLevel();
+            int currentJobId = (int)client.ReadCurrentJob();
+            int currentExpToLevel = (int)client.ReadCurrentExpToLevel();
+            int currentExp = (int)client.ReadCurrentExp();
+            string currentExpPercent;
+            if (currentExpToLevel > 0)
+            {
+                double ratio = (double)currentExp / currentExpToLevel;
+                currentExpPercent = $"{(ratio * 100):0.00}%";
+            }
+            else
+            {
+                currentExpPercent = "100%";
+            }
+
+            int currentHP = (int)client.ReadCurrentHp();
+            int currentMaxHP = (int)client.ReadMaxHp();
+            int currentSP = (int)client.ReadCurrentSp();
+            int currentMaxSP = (int)client.ReadMaxSp();
+
+            string jobName = JobList.GetNameById(currentJobId);
+
+            string clientDebugInfo =
+                $"Lv{currentLevel} / {jobName} / Lv{currentJobLevel} / Exp{currentExpPercent}\n" +
+                $"HP {currentHP} / {currentMaxHP} | SP {currentSP} / {currentMaxSP}";
+
+            characterInfoForm.CharacterNameLabel = client.ReadCharacterName() ?? "";
+            characterInfoForm.CharacterInfoLabel = clientDebugInfo;
+            characterInfoForm.CharacterMapLabel = client.ReadCurrentMap() ?? "";
+            subject.Notify(new Utils.Message(MessageCode.PROCESS_CHANGED, null));
         }
 
         private void Container_Load(object sender, EventArgs e)
@@ -519,7 +566,7 @@ namespace _4RTools.Forms
                             $"  HP. {currentHP} / {currentMaxHP} | Sp. {currentSP} / {currentMaxSP}";
 
                         processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap));
-                        DebugLogger.Debug("CLIENT:\n" + clientDebugInfo);
+                        //DebugLogger.Debug("CLIENT:\n" + clientDebugInfo);
                     }
                 }
 
@@ -537,8 +584,6 @@ namespace _4RTools.Forms
                 {
                     this.processCB.Items.Add(item);
                 }
-
-
             });
         }
 
@@ -666,12 +711,6 @@ namespace _4RTools.Forms
                     if ((subject as Subject).Message.Data is string newProfileName && newProfileName != currentProfile)
                     {
                         LoadProfile(newProfileName);
-                    }
-                    Client client = ClientSingleton.GetClient();
-                    if (client != null)
-                    {
-                        characterName.Text = ClientSingleton.GetClient().ReadCharacterName();
-                        characterMap.Text = ClientSingleton.GetClient().ReadCurrentMap();
                     }
                     break;
                 case MessageCode.SERVER_LIST_CHANGED:
@@ -817,7 +856,7 @@ namespace _4RTools.Forms
 
         public void SetAutoOffWindow()
         {
-            AutoOffForm frm = new AutoOffForm(subject)
+            AutoOffForm frm = new AutoOffForm(subject, frmToggleApplication)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 MdiParent = this

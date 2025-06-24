@@ -185,7 +185,7 @@ namespace _4RTools.Forms
             0,
             0});
             this.numericDelay.Minimum = new decimal(new int[] {
-            10,
+            0,
             0,
             0,
             0});
@@ -193,7 +193,7 @@ namespace _4RTools.Forms
             this.numericDelay.Size = new System.Drawing.Size(60, 21);
             this.numericDelay.TabIndex = 302;
             this.numericDelay.Value = new decimal(new int[] {
-            50,
+            0,
             0,
             0,
             0});

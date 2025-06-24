@@ -8,219 +8,6 @@ using System.Windows.Input;
 
 namespace _4RTools.Model
 {
-    public class ProfileSingleton
-    {
-        public static Profile profile = new Profile("Default");
-
-        // Temporary class to deserialize old "Custom" data
-        private class LegacyCustom
-        {
-            public string ActionName { get; set; }
-            public Key tiMode { get; set; }
-        }
-
-        public static void Load(string profileName)
-        {
-            try
-            {
-                string json = File.ReadAllText(AppConfig.ProfileFolder + profileName + ".json");
-                dynamic rawObject = JsonConvert.DeserializeObject(json);
-
-                // Migrate old "Custom" key to "TransferHelper"
-                if (rawObject != null && rawObject["Custom"] != null && rawObject["TransferHelper"] == null)
-                {
-                    try
-                    {
-                        // Deserialize the old "Custom" data
-                        string customJson = rawObject["Custom"].ToString();
-                        LegacyCustom legacyCustom = JsonConvert.DeserializeObject<LegacyCustom>(customJson);
-
-                        // Create new TransferHelper data
-                        TransferHelper newTransferHelper = new TransferHelper
-                        {
-                            ActionName = TransferHelper.ACTION_NAME_TRANSFER,
-                            TransferKey = legacyCustom.tiMode
-                        };
-
-                        // Update the JSON object
-                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(newTransferHelper);
-                        rawObject.Property("Custom").Remove();
-
-                        // Save the updated JSON back to the file
-                        File.WriteAllText(AppConfig.ProfileFolder + profileName + ".json", JsonConvert.SerializeObject(rawObject, Formatting.Indented));
-                    }
-                    catch (Exception ex)
-                    {
-                        // Log the error but continue loading with default TransferHelper
-                        Console.WriteLine($"Failed to migrate Custom to TransferHelper: {ex.Message}");
-                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(new TransferHelper());
-                        rawObject.Property("Custom").Remove();
-                        File.WriteAllText(AppConfig.ProfileFolder + profileName + ".json", JsonConvert.SerializeObject(rawObject, Formatting.Indented));
-                    }
-                }
-
-                if (rawObject != null)
-                {
-                    profile.Name = profileName;
-                    profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));
-                    profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
-                    profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
-                    profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
-                    profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
-                    profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
-                    profile.AutobuffSkill = JsonConvert.DeserializeObject<AutoBuffSkill>(Profile.GetByAction(rawObject, profile.AutobuffSkill));
-                    if (profile.AutobuffSkill.Delay < 0)
-                    {
-                        profile.AutobuffSkill.Delay = AppConfig.AutoBuffSkillsDefaultDelay;
-                    }
-                    profile.AutobuffItem = JsonConvert.DeserializeObject<AutoBuffItem>(Profile.GetByAction(rawObject, profile.AutobuffItem));
-                    if (profile.AutobuffItem.Delay < 0)
-                    {
-                        profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;
-                    }
-                    profile.SongMacro = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.SongMacro));
-                    profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
-                    profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
-                    profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
-                    profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
-                    profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"There was a problem loading the profile: {ex.Message}. Delete the Profiles folder and try again.");
-            }
-        }
-
-        public static void ClearProfile(string profileName)
-        {
-            if (profileName != profile.Name)
-            {
-                profile = new Profile(profileName);
-            }
-        }
-
-        public static void Create(string profileName)
-        {
-            string jsonFileName = AppConfig.ProfileFolder + profileName + ".json";
-
-            if (!File.Exists(jsonFileName))
-            {
-                ClearProfile(profileName);
-                if (!Directory.Exists(AppConfig.ProfileFolder)) { Directory.CreateDirectory(AppConfig.ProfileFolder); }
-                FileStream fs = File.Create(jsonFileName);
-                fs.Close();
-
-                Profile profile = new Profile(profileName);
-                string output = JsonConvert.SerializeObject(profile, Formatting.Indented);
-                File.WriteAllText(jsonFileName, output);
-            }
-
-            ProfileSingleton.Load(profileName);
-        }
-
-        public static void Delete(string profileName)
-        {
-            try
-            {
-                if (profileName != "Default") { File.Delete(AppConfig.ProfileFolder + profileName + ".json"); }
-            }
-            catch { }
-        }
-
-        public static void Rename(string oldProfileName, string newProfileName)
-        {
-            try
-            {
-                if (oldProfileName == "Default")
-                {
-                    throw new Exception("Cannot rename the Default profile!");
-                }
-
-                string oldFilePath = AppConfig.ProfileFolder + oldProfileName + ".json";
-                string newFilePath = AppConfig.ProfileFolder + newProfileName + ".json";
-
-                if (!File.Exists(oldFilePath))
-                {
-                    throw new Exception("Profile file does not exist!");
-                }
-                if (File.Exists(newFilePath))
-                {
-                    throw new Exception("A profile with the new name already exists!");
-                }
-
-                // Rename the file
-                File.Move(oldFilePath, newFilePath);
-
-                // Update the current profile if it was the one renamed
-                if (profile.Name == oldProfileName)
-                {
-                    profile.Name = newProfileName;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Failed to rename profile: {ex.Message}");
-            }
-        }
-
-        public static void SetConfiguration(IAction action)
-        {
-            if (profile != null)
-            {
-                string jsonData = File.ReadAllText(AppConfig.ProfileFolder + profile.Name + ".json");
-                dynamic jsonObj = JsonConvert.DeserializeObject(jsonData);
-                jsonObj[action.GetActionName()] = action.GetConfiguration();
-                string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
-                File.WriteAllText(AppConfig.ProfileFolder + profile.Name + ".json", output);
-            }
-        }
-
-        public static Profile GetCurrent()
-        {
-            return profile;
-        }
-
-        public static void Copy(string sourceProfileName, string destinationProfileName)
-        {
-            if (string.IsNullOrWhiteSpace(destinationProfileName) || destinationProfileName.Equals("Default", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new ArgumentException("Invalid new profile name.");
-            }
-            if (string.IsNullOrWhiteSpace(sourceProfileName))
-            {
-                throw new ArgumentException("Source profile name cannot be empty.");
-            }
-
-            string sourceFilePath = AppConfig.ProfileFolder + sourceProfileName + ".json";
-            string destinationFilePath = AppConfig.ProfileFolder + destinationProfileName + ".json";
-
-            if (!File.Exists(sourceFilePath))
-            {
-                throw new FileNotFoundException($"Source profile '{sourceProfileName}' not found.");
-            }
-
-            if (File.Exists(destinationFilePath))
-            {
-                throw new ArgumentException($"A profile named '{destinationProfileName}' already exists.");
-            }
-
-            try
-            {
-                if (!Directory.Exists(AppConfig.ProfileFolder))
-                {
-                    Directory.CreateDirectory(AppConfig.ProfileFolder);
-                }
-
-                File.Copy(sourceFilePath, destinationFilePath);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error copying profile file: {ex.Message}", ex);
-            }
-        }
-    }
-
     public class Profile
     {
         public string Name { get; set; }
@@ -285,6 +72,259 @@ namespace _4RTools.Model
             }
             catch { }
             return profiles;
+        }
+    }
+
+    public class ProfileSingleton
+    {
+        private static Profile profile = new Profile("Default");
+
+        // Temporary class to deserialize old "Custom" data
+        private class LegacyCustom
+        {
+            public string ActionName { get; set; }
+            public Key tiMode { get; set; }
+        }
+
+        public static void Load(string profileName)
+        {
+            try
+            {
+                string filePath = AppConfig.ProfileFolder + profileName + ".json";
+                if (!File.Exists(filePath))
+                {
+                    Create(profileName); // Create profile if it doesn't exist
+                    return;
+                }
+
+                string json = File.ReadAllText(filePath);
+                dynamic rawObject = JsonConvert.DeserializeObject(json);
+
+                // Migrate old "Custom" key to "TransferHelper"
+                if (rawObject != null && rawObject["Custom"] != null && rawObject["TransferHelper"] == null)
+                {
+                    try
+                    {
+                        // Deserialize the old "Custom" data
+                        string customJson = rawObject["Custom"].ToString();
+                        LegacyCustom legacyCustom = JsonConvert.DeserializeObject<LegacyCustom>(customJson);
+
+                        // Create new TransferHelper data
+                        TransferHelper newTransferHelper = new TransferHelper
+                        {
+                            ActionName = TransferHelper.ACTION_NAME_TRANSFER,
+                            TransferKey = legacyCustom.tiMode
+                        };
+
+                        // Update the JSON object
+                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(newTransferHelper);
+                        rawObject.Property("Custom").Remove();
+
+                        // Save the updated JSON back to the file
+                        File.WriteAllText(filePath, JsonConvert.SerializeObject(rawObject, Formatting.Indented));
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugLogger.Error($"Failed to migrate Custom to TransferHelper: {ex.Message}");
+                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(new TransferHelper());
+                        rawObject.Property("Custom").Remove();
+                        File.WriteAllText(filePath, JsonConvert.SerializeObject(rawObject, Formatting.Indented));
+                    }
+                }
+
+                if (rawObject != null)
+                {
+                    profile.Name = profileName;
+                    profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));
+                    profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
+                    profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
+                    profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
+                    profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
+                    profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
+                    profile.AutobuffSkill = JsonConvert.DeserializeObject<AutoBuffSkill>(Profile.GetByAction(rawObject, profile.AutobuffSkill));
+                    if (profile.AutobuffSkill.Delay < 0)
+                    {
+                        profile.AutobuffSkill.Delay = AppConfig.AutoBuffSkillsDefaultDelay;
+                    }
+                    profile.AutobuffItem = JsonConvert.DeserializeObject<AutoBuffItem>(Profile.GetByAction(rawObject, profile.AutobuffItem));
+                    if (profile.AutobuffItem.Delay < 0)
+                    {
+                        profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;
+                    }
+                    profile.SongMacro = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.SongMacro));
+                    profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
+                    profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
+                    profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
+                    profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
+                    profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Failed to load profile '{profileName}': {ex.Message}");
+                throw new Exception($"There was a problem loading the profile: {ex.Message}. Delete the Profiles folder and try again.");
+            }
+        }
+
+        public static void ClearProfile(string profileName)
+        {
+            if (profileName != profile.Name)
+            {
+                profile = new Profile(profileName);
+            }
+        }
+
+        public static void Create(string profileName)
+        {
+            string jsonFileName = AppConfig.ProfileFolder + profileName + ".json";
+
+            if (!File.Exists(jsonFileName))
+            {
+                try
+                {
+                    if (!Directory.Exists(AppConfig.ProfileFolder))
+                    {
+                        Directory.CreateDirectory(AppConfig.ProfileFolder);
+                    }
+                    ClearProfile(profileName);
+                    FileStream fs = File.Create(jsonFileName);
+                    fs.Close();
+
+                    Profile newProfile = new Profile(profileName);
+                    string output = JsonConvert.SerializeObject(newProfile, Formatting.Indented);
+                    File.WriteAllText(jsonFileName, output);
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Error($"Failed to create profile '{profileName}': {ex.Message}");
+                }
+            }
+        }
+
+        public static void Delete(string profileName)
+        {
+            try
+            {
+                if (profileName != "Default") { File.Delete(AppConfig.ProfileFolder + profileName + ".json"); }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Failed to delete profile '{profileName}': {ex.Message}");
+            }
+        }
+
+        public static void Rename(string oldProfileName, string newProfileName)
+        {
+            try
+            {
+                if (oldProfileName == "Default")
+                {
+                    throw new Exception("Cannot rename the Default profile!");
+                }
+
+                string oldFilePath = AppConfig.ProfileFolder + oldProfileName + ".json";
+                string newFilePath = AppConfig.ProfileFolder + newProfileName + ".json";
+
+                if (!File.Exists(oldFilePath))
+                {
+                    throw new Exception("Profile file does not exist!");
+                }
+                if (File.Exists(newFilePath))
+                {
+                    throw new Exception("A profile with the new name already exists!");
+                }
+
+                // Rename the file
+                File.Move(oldFilePath, newFilePath);
+
+                // Update the current profile if it was the one renamed
+                if (profile.Name == oldProfileName)
+                {
+                    profile.Name = newProfileName;
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Failed to rename profile from '{oldProfileName}' to '{newProfileName}': {ex.Message}");
+                throw new Exception($"Failed to rename profile: {ex.Message}");
+            }
+        }
+
+        public static void SetConfiguration(IAction action)
+        {
+            if (profile != null)
+            {
+                string filePath = AppConfig.ProfileFolder + profile.Name + ".json";
+                try
+                {
+                    // Create profile file if it doesn't exist
+                    if (!File.Exists(filePath))
+                    {
+                        Create(profile.Name);
+                    }
+
+                    // Read existing JSON
+                    string jsonData = File.ReadAllText(filePath);
+                    dynamic jsonObj = JsonConvert.DeserializeObject(jsonData) ?? new Newtonsoft.Json.Linq.JObject();
+                    jsonObj[action.GetActionName()] = action.GetConfiguration();
+                    string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+                    File.WriteAllText(filePath, output);
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Error($"Failed to save configuration for action '{action.GetActionName()}' to profile '{profile.Name}': {ex.Message}");
+                }
+            }
+        }
+
+        public static Profile GetCurrent()
+        {
+            if (profile == null)
+            {
+                Create("Default"); // Ensure default profile exists
+                Load("Default");
+            }
+            return profile;
+        }
+
+        public static void Copy(string sourceProfileName, string destinationProfileName)
+        {
+            if (string.IsNullOrWhiteSpace(destinationProfileName) || destinationProfileName.Equals("Default", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Invalid new profile name.");
+            }
+            if (string.IsNullOrWhiteSpace(sourceProfileName))
+            {
+                throw new ArgumentException("Source profile name cannot be empty.");
+            }
+
+            string sourceFilePath = AppConfig.ProfileFolder + sourceProfileName + ".json";
+            string destinationFilePath = AppConfig.ProfileFolder + destinationProfileName + ".json";
+
+            if (!File.Exists(sourceFilePath))
+            {
+                throw new FileNotFoundException($"Source profile '{sourceProfileName}' not found.");
+            }
+
+            if (File.Exists(destinationFilePath))
+            {
+                throw new ArgumentException($"A profile named '{destinationProfileName}' already exists.");
+            }
+
+            try
+            {
+                if (!Directory.Exists(AppConfig.ProfileFolder))
+                {
+                    Directory.CreateDirectory(AppConfig.ProfileFolder);
+                }
+
+                File.Copy(sourceFilePath, destinationFilePath);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Failed to copy profile from '{sourceProfileName}' to '{destinationProfileName}': {ex.Message}");
+                throw new Exception($"Error copying profile file: {ex.Message}", ex);
+            }
         }
     }
 }

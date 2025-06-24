@@ -45,16 +45,12 @@ namespace _4RTools.Forms
             this.processCB = new System.Windows.Forms.ComboBox();
             this.labelProfile = new System.Windows.Forms.Label();
             this.profileCB = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblCharacterName = new System.Windows.Forms.Label();
-            this.characterName = new System.Windows.Forms.Label();
             this.tabControlAutopot = new System.Windows.Forms.TabControl();
             this.tabPageAutopot = new System.Windows.Forms.TabPage();
             this.tabPageYggAutopot = new System.Windows.Forms.TabPage();
             this.tabPageSkillTimer = new System.Windows.Forms.TabPage();
             this.tabPageAutoOff = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.characterMap = new System.Windows.Forms.Label();
             this.atkDefMode = new System.Windows.Forms.TabControl();
             this.btnToggleMiniMode = new System.Windows.Forms.Button();
             this.atkDefMode.SuspendLayout();
@@ -180,7 +176,7 @@ namespace _4RTools.Forms
             // 
             this.lblProcessName.AutoSize = true;
             this.lblProcessName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProcessName.Location = new System.Drawing.Point(13, 9);
+            this.lblProcessName.Location = new System.Drawing.Point(10, 9);
             this.lblProcessName.Name = "lblProcessName";
             this.lblProcessName.Size = new System.Drawing.Size(42, 14);
             this.lblProcessName.TabIndex = 3;
@@ -204,7 +200,7 @@ namespace _4RTools.Forms
             // 
             this.labelProfile.AutoSize = true;
             this.labelProfile.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfile.Location = new System.Drawing.Point(252, 9);
+            this.labelProfile.Location = new System.Drawing.Point(220, 9);
             this.labelProfile.Name = "labelProfile";
             this.labelProfile.Size = new System.Drawing.Size(46, 14);
             this.labelProfile.TabIndex = 15;
@@ -215,40 +211,11 @@ namespace _4RTools.Forms
             this.profileCB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.profileCB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileCB.Location = new System.Drawing.Point(256, 29);
+            this.profileCB.Location = new System.Drawing.Point(224, 29);
             this.profileCB.Name = "profileCB";
             this.profileCB.Size = new System.Drawing.Size(181, 22);
             this.profileCB.TabIndex = 14;
             this.profileCB.SelectedIndexChanged += new System.EventHandler(this.ProfileCB_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 18;
-            // 
-            // lblCharacterName
-            // 
-            this.lblCharacterName.AutoSize = true;
-            this.lblCharacterName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCharacterName.Location = new System.Drawing.Point(463, 9);
-            this.lblCharacterName.Name = "lblCharacterName";
-            this.lblCharacterName.Size = new System.Drawing.Size(66, 14);
-            this.lblCharacterName.TabIndex = 19;
-            this.lblCharacterName.Text = "Character";
-            // 
-            // characterName
-            // 
-            this.characterName.AutoSize = true;
-            this.characterName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.characterName.ForeColor = System.Drawing.Color.DarkGreen;
-            this.characterName.Location = new System.Drawing.Point(475, 30);
-            this.characterName.Name = "characterName";
-            this.characterName.Size = new System.Drawing.Size(21, 14);
-            this.characterName.TabIndex = 20;
-            this.characterName.Text = "- -";
             // 
             // tabControlAutopot
             // 
@@ -312,16 +279,6 @@ namespace _4RTools.Forms
             this.panel4.Size = new System.Drawing.Size(635, 1);
             this.panel4.TabIndex = 17;
             // 
-            // characterMap
-            // 
-            this.characterMap.AutoSize = true;
-            this.characterMap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic);
-            this.characterMap.ForeColor = System.Drawing.Color.DarkCyan;
-            this.characterMap.Location = new System.Drawing.Point(475, 47);
-            this.characterMap.Name = "characterMap";
-            this.characterMap.Size = new System.Drawing.Size(0, 17);
-            this.characterMap.TabIndex = 26;
-            // 
             // Container
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,12 +286,8 @@ namespace _4RTools.Forms
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(668, 779);
             this.Controls.Add(this.btnToggleMiniMode);
-            this.Controls.Add(this.characterMap);
             this.Controls.Add(this.atkDefMode);
             this.Controls.Add(this.tabControlAutopot);
-            this.Controls.Add(this.characterName);
-            this.Controls.Add(this.lblCharacterName);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.labelProfile);
             this.Controls.Add(this.profileCB);
@@ -353,7 +306,6 @@ namespace _4RTools.Forms
             this.tabControlAutopot.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -364,9 +316,6 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Label labelProfile;
         public System.Windows.Forms.ComboBox profileCB;
         private System.Windows.Forms.TabPage tabPageAutobuffSkill;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCharacterName;
-        private System.Windows.Forms.Label characterName;
         private TabPage tabPageAutobuffItem;
         private TabPage tabPageMacroSongs;
         private TabPage atkDef;
@@ -379,7 +328,6 @@ namespace _4RTools.Forms
         private TabPage tabPageDebuffs;
         private TabPage tabConfig;
         private Panel panel4;
-        private Label characterMap;
         private TabPage tabPageAutoOff;
         private TabControl atkDefMode;
         private Button btnToggleMiniMode;

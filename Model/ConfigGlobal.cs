@@ -9,6 +9,7 @@ namespace _4RTools.Model
     {
         public bool DebugMode { get; set; } = false;
         public string LastUsedProfile { get; set; } = "Default"; // Default to "Default" profile
+        public bool MiniMode { get; set; } = false;
     }
 
     internal class ConfigGlobal

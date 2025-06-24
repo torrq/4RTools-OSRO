@@ -7,7 +7,7 @@ namespace _4RTools.Utils
     internal static class AppConfig
     {
         public static string Name = "OSRO Tools";
-        public static string Version = "v1.0.7";
+        public static string Version = "v1.0.8";
 
 #if MR_BUILD
         public static int ServerMode = 0; // Mid-rate
@@ -113,7 +113,7 @@ namespace _4RTools.Utils
         public static int ATKDEFSwitchDefaultDelay = 100;
         public static int MacroDefaultDelay = 100;
         public static int SkillTimerDefaultDelay = 1000;
-        public static decimal DefaultMinimumDelay = 10;
+        public static decimal DefaultMinimumDelay = 0;
 
         public static Color DefaultButtonBackColor = Color.White;
         public static Color ResetButtonBackColor = Color.FromArgb(245, 210, 230);
