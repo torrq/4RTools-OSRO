@@ -51,29 +51,29 @@ namespace _4RTools.Forms
             this.tabPageSkillTimer = new System.Windows.Forms.TabPage();
             this.tabPageAutoOff = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.atkDefMode = new System.Windows.Forms.TabControl();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
             this.btnToggleMiniMode = new System.Windows.Forms.Button();
-            this.atkDefMode.SuspendLayout();
+            this.tabControl2.SuspendLayout();
             this.tabControlAutopot.SuspendLayout();
             this.SuspendLayout();
             // 
-            // atkDefMode
+            // tabControl2
             // 
-            this.atkDefMode.Controls.Add(this.tabPageSpammer);
-            this.atkDefMode.Controls.Add(this.tabPageDebuffs);
-            this.atkDefMode.Controls.Add(this.tabPageAutobuffSkill);
-            this.atkDefMode.Controls.Add(this.tabPageAutobuffItem);
-            this.atkDefMode.Controls.Add(this.atkDef);
-            this.atkDefMode.Controls.Add(this.tabPageMacroSongs);
-            this.atkDefMode.Controls.Add(this.tabMacroSwitch);
-            this.atkDefMode.Controls.Add(this.tabConfig);
-            this.atkDefMode.Controls.Add(this.tabPageProfiles);
-            this.atkDefMode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.atkDefMode.Location = new System.Drawing.Point(15, 292);
-            this.atkDefMode.Name = "atkDefMode";
-            this.atkDefMode.SelectedIndex = 0;
-            this.atkDefMode.Size = new System.Drawing.Size(637, 475);
-            this.atkDefMode.TabIndex = 6;
+            this.tabControl2.Controls.Add(this.tabPageSpammer);
+            this.tabControl2.Controls.Add(this.tabPageDebuffs);
+            this.tabControl2.Controls.Add(this.tabPageAutobuffSkill);
+            this.tabControl2.Controls.Add(this.tabPageAutobuffItem);
+            this.tabControl2.Controls.Add(this.atkDef);
+            this.tabControl2.Controls.Add(this.tabPageMacroSongs);
+            this.tabControl2.Controls.Add(this.tabMacroSwitch);
+            this.tabControl2.Controls.Add(this.tabConfig);
+            this.tabControl2.Controls.Add(this.tabPageProfiles);
+            this.tabControl2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl2.Location = new System.Drawing.Point(5, 292);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(632, 475);
+            this.tabControl2.TabIndex = 6;
             // 
             // btnToggleMiniMode
             // 
@@ -81,13 +81,15 @@ namespace _4RTools.Forms
             this.btnToggleMiniMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnToggleMiniMode.FlatAppearance.BorderSize = 0;
             this.btnToggleMiniMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToggleMiniMode.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToggleMiniMode.Location = new System.Drawing.Point(15, 266);
+            // Note: Replace 'minimode_less' with the actual resource name if different
+            this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
+            this.btnToggleMiniMode.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnToggleMiniMode.Location = new System.Drawing.Point(2, 266);
             this.btnToggleMiniMode.Name = "btnToggleMiniMode";
-            this.btnToggleMiniMode.Size = new System.Drawing.Size(637, 23);
+            this.btnToggleMiniMode.Size = new System.Drawing.Size(636, 18);
             this.btnToggleMiniMode.TabIndex = 27;
-            this.btnToggleMiniMode.Text = "▲ LESS ▲";
-            this.btnToggleMiniMode.UseVisualStyleBackColor = false;
+            this.btnToggleMiniMode.Text = "";
+            this.btnToggleMiniMode.UseVisualStyleBackColor = true;
             this.btnToggleMiniMode.Click += new System.EventHandler(this.BtnToggleMiniMode_Click);
             // 
             // tabPageSpammer
@@ -200,7 +202,7 @@ namespace _4RTools.Forms
             // 
             this.labelProfile.AutoSize = true;
             this.labelProfile.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfile.Location = new System.Drawing.Point(220, 9);
+            this.labelProfile.Location = new System.Drawing.Point(206, 9);
             this.labelProfile.Name = "labelProfile";
             this.labelProfile.Size = new System.Drawing.Size(46, 14);
             this.labelProfile.TabIndex = 15;
@@ -211,7 +213,7 @@ namespace _4RTools.Forms
             this.profileCB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.profileCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.profileCB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileCB.Location = new System.Drawing.Point(224, 29);
+            this.profileCB.Location = new System.Drawing.Point(210, 29);
             this.profileCB.Name = "profileCB";
             this.profileCB.Size = new System.Drawing.Size(181, 22);
             this.profileCB.TabIndex = 14;
@@ -284,9 +286,9 @@ namespace _4RTools.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(668, 779);
+            this.ClientSize = new System.Drawing.Size(640, 779);
             this.Controls.Add(this.btnToggleMiniMode);
-            this.Controls.Add(this.atkDefMode);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.tabControlAutopot);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.labelProfile);
@@ -302,7 +304,7 @@ namespace _4RTools.Forms
             this.Text = "OSRO Tools";
             this.Load += new System.EventHandler(this.Container_Load);
             this.Resize += new System.EventHandler(this.ContainerResize);
-            this.atkDefMode.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
             this.tabControlAutopot.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -316,20 +318,20 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Label labelProfile;
         public System.Windows.Forms.ComboBox profileCB;
         private System.Windows.Forms.TabPage tabPageAutobuffSkill;
-        private TabPage tabPageAutobuffItem;
-        private TabPage tabPageMacroSongs;
-        private TabPage atkDef;
-        private TabControl tabControlAutopot;
-        private TabPage tabPageAutopot;
-        private TabPage tabPageYggAutopot;
-        private TabPage tabPageProfiles;
-        private TabPage tabMacroSwitch;
-        private TabPage tabPageSkillTimer;
-        private TabPage tabPageDebuffs;
-        private TabPage tabConfig;
-        private Panel panel4;
-        private TabPage tabPageAutoOff;
-        private TabControl atkDefMode;
-        private Button btnToggleMiniMode;
+        private System.Windows.Forms.TabPage tabPageAutobuffItem;
+        private System.Windows.Forms.TabPage tabPageMacroSongs;
+        private System.Windows.Forms.TabPage atkDef;
+        private System.Windows.Forms.TabControl tabControlAutopot;
+        private System.Windows.Forms.TabPage tabPageAutopot;
+        private System.Windows.Forms.TabPage tabPageYggAutopot;
+        private System.Windows.Forms.TabPage tabPageProfiles;
+        private System.Windows.Forms.TabPage tabMacroSwitch;
+        private System.Windows.Forms.TabPage tabPageSkillTimer;
+        private System.Windows.Forms.TabPage tabPageDebuffs;
+        private System.Windows.Forms.TabPage tabConfig;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TabPage tabPageAutoOff;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.Button btnToggleMiniMode;
     }
 }

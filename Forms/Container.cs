@@ -34,8 +34,6 @@ namespace _4RTools.Forms
         private bool isMiniMode = false;
         private Size fullModeClientSize;
         private Size miniModeClientSize;
-        private const string HIDE_TEXT = "▲ LESS ▲";
-        private const string SHOW_TEXT = "▼ MORE ▼";
 
         public Container()
         {
@@ -52,14 +50,13 @@ namespace _4RTools.Forms
             this.characterInfoForm = new CharacterInfo();
             this.characterInfoForm.TopLevel = false;
             this.characterInfoForm.FormBorderStyle = FormBorderStyle.None;
-            this.characterInfoForm.Location = new Point(425, 6);
+            this.characterInfoForm.Location = new Point(400, 6);
             this.Controls.Add(this.characterInfoForm);
             this.characterInfoForm.Show();
 
             // Setup for Mini-Mode Toggle
             this.fullModeClientSize = this.ClientSize;
             this.miniModeClientSize = new Size(this.ClientSize.Width, this.btnToggleMiniMode.Bottom);
-            this.btnToggleMiniMode.Text = HIDE_TEXT;
 
             this.regularFont = this.profileCB.Font;
             this.italicFont = new Font(this.regularFont, FontStyle.Italic);
@@ -137,13 +134,13 @@ namespace _4RTools.Forms
                 if (isMiniMode)
                 {
                     this.atkDef.Visible = false;
-                    this.btnToggleMiniMode.Text = SHOW_TEXT;
+                    this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_more;
                     this.ClientSize = this.miniModeClientSize;
                 }
                 else
                 {
                     this.atkDef.Visible = true;
-                    this.btnToggleMiniMode.Text = HIDE_TEXT;
+                    this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
                     this.ClientSize = this.fullModeClientSize;
                 }
 
@@ -457,6 +454,7 @@ namespace _4RTools.Forms
             characterInfoForm.CharacterNameLabel = client.ReadCharacterName() ?? "";
             characterInfoForm.CharacterInfoLabel = clientDebugInfo;
             characterInfoForm.CharacterMapLabel = client.ReadCurrentMap() ?? "";
+            characterInfoForm.MapLink = "https://ratemyserver.net/index.php?page=npc_shop_warp&map=" + (client.ReadCurrentMap() ?? "");
             subject.Notify(new Utils.Message(MessageCode.PROCESS_CHANGED, null));
         }
 
@@ -802,7 +800,7 @@ namespace _4RTools.Forms
             ToggleStateForm frm = new ToggleStateForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(360, 80),
+                Location = new Point(390, 80),
                 MdiParent = this
             };
             frm.Show();
@@ -870,7 +868,7 @@ namespace _4RTools.Forms
             TransferHelperForm form = new TransferHelperForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(475, 220),
+                Location = new Point(460, 220),
                 MdiParent = this
             };
             form.Show();

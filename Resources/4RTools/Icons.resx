@@ -627,6 +627,12 @@
   <data name="menu_toggle_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\menu_toggle_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="minimode_less" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\minimode_less.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimode_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\minimode_more.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="profile_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\profile_active.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
