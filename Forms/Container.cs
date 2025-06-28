@@ -868,7 +868,7 @@ namespace _4RTools.Forms
             TransferHelperForm form = new TransferHelperForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(460, 220),
+                Location = new Point(460, 230),
                 MdiParent = this
             };
             form.Show();

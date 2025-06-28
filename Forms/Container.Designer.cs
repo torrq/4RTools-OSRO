@@ -52,7 +52,7 @@ namespace _4RTools.Forms
             this.tabPageAutoOff = new System.Windows.Forms.TabPage();
             this.topSplitterPanel = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.btnToggleMiniMode = new System.Windows.Forms.Button();
+            this.btnToggleMiniMode = new NoFocusButton();
             this.tabControl2.SuspendLayout();
             this.tabControlAutopot.SuspendLayout();
             this.SuspendLayout();
@@ -80,8 +80,9 @@ namespace _4RTools.Forms
             this.btnToggleMiniMode.BackColor = System.Drawing.Color.White;
             this.btnToggleMiniMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnToggleMiniMode.FlatAppearance.BorderSize = 0;
+            this.btnToggleMiniMode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnToggleMiniMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnToggleMiniMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            // Note: Replace 'minimode_less' with the actual resource name if different
             this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
             this.btnToggleMiniMode.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnToggleMiniMode.Location = new System.Drawing.Point(2, 266);
@@ -89,7 +90,7 @@ namespace _4RTools.Forms
             this.btnToggleMiniMode.Size = new System.Drawing.Size(636, 18);
             this.btnToggleMiniMode.TabIndex = 27;
             this.btnToggleMiniMode.Text = "";
-            this.btnToggleMiniMode.UseVisualStyleBackColor = true;
+            this.btnToggleMiniMode.UseVisualStyleBackColor = false;
             this.btnToggleMiniMode.Click += new System.EventHandler(this.BtnToggleMiniMode_Click);
             // 
             // tabPageSpammer
@@ -332,6 +333,6 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Panel topSplitterPanel;
         private System.Windows.Forms.TabPage tabPageAutoOff;
         private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.Button btnToggleMiniMode;
+        private NoFocusButton btnToggleMiniMode;
     }
 }
