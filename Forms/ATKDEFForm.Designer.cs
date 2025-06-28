@@ -374,10 +374,10 @@ namespace _4RTools.Forms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel1.Location = new System.Drawing.Point(375, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 160);
+            this.panel1.Size = new System.Drawing.Size(2, 160);
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -764,10 +764,10 @@ namespace _4RTools.Forms
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel3.Location = new System.Drawing.Point(375, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 160);
+            this.panel3.Size = new System.Drawing.Size(2, 160);
             this.panel3.TabIndex = 6;
             // 
             // pictureBox18

@@ -45,6 +45,7 @@ namespace _4RTools.Forms
             this.groupBox1.Controls.Add(this.txtStatusToggleKey);
             this.groupBox1.Controls.Add(this.lblStatusToggle);
             this.groupBox1.Controls.Add(this.btnStatusToggle);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(11, 10);
             this.groupBox1.Name = "groupBox1";

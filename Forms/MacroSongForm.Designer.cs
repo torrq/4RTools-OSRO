@@ -226,10 +226,10 @@ namespace _4RTools.Forms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel1.Location = new System.Drawing.Point(122, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 70);
+            this.panel1.Size = new System.Drawing.Size(2, 70);
             this.panel1.TabIndex = 289;
             // 
             // pictureBox9
@@ -322,10 +322,10 @@ namespace _4RTools.Forms
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel3.Location = new System.Drawing.Point(416, 23);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 70);
+            this.panel3.Size = new System.Drawing.Size(2, 70);
             this.panel3.TabIndex = 279;
             // 
             // pictureBox6
@@ -523,10 +523,10 @@ namespace _4RTools.Forms
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel2.Location = new System.Drawing.Point(122, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 70);
+            this.panel2.Size = new System.Drawing.Size(2, 70);
             this.panel2.TabIndex = 304;
             // 
             // pictureBox12
@@ -673,10 +673,10 @@ namespace _4RTools.Forms
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Silver;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel4.Location = new System.Drawing.Point(416, 25);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 70);
+            this.panel4.Size = new System.Drawing.Size(2, 70);
             this.panel4.TabIndex = 284;
             // 
             // pictureBox10
@@ -818,10 +818,10 @@ namespace _4RTools.Forms
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Silver;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel5.Location = new System.Drawing.Point(122, 23);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1, 70);
+            this.panel5.Size = new System.Drawing.Size(2, 70);
             this.panel5.TabIndex = 319;
             // 
             // pictureBox21
@@ -968,10 +968,10 @@ namespace _4RTools.Forms
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.Silver;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel6.Location = new System.Drawing.Point(416, 22);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1, 70);
+            this.panel6.Size = new System.Drawing.Size(2, 70);
             this.panel6.TabIndex = 289;
             // 
             // pictureBox19
@@ -1115,10 +1115,10 @@ namespace _4RTools.Forms
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.Silver;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel7.Location = new System.Drawing.Point(122, 23);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1, 70);
+            this.panel7.Size = new System.Drawing.Size(2, 70);
             this.panel7.TabIndex = 339;
             // 
             // pictureBox28
@@ -1265,10 +1265,10 @@ namespace _4RTools.Forms
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.Silver;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.panel8.Location = new System.Drawing.Point(416, 21);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1, 70);
+            this.panel8.Size = new System.Drawing.Size(2, 70);
             this.panel8.TabIndex = 323;
             // 
             // pictureBox35

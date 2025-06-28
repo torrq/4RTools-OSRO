@@ -238,6 +238,18 @@ namespace _4RTools.Utils
         [Description("Autoberserk")]
         AUTOBERSERK = 132,
 
+        [Description("Tornado Kick Stance")]
+        TORNADO_KICK_STANCE=135,
+
+        [Description("Axe Kick Stance")]
+        AXE_KICK_STANCE = 137,
+
+        [Description("Round Kick Stance")]
+        ROUND_KICK_STANCE = 139,
+
+        [Description("Counter Kick Stance")]
+        COUNTER_KICK_STANCE = 141,
+
         [Description("Dodge On")]
         DODGE_ON = 143,
 

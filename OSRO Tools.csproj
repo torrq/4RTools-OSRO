@@ -403,15 +403,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\4RTools\Sounds.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sounds.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\4RTools\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\4RTools\Sounds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sounds.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\AmmoSwapHandler.cs" />
     <Compile Include="Utils\DebugLogger.cs" />
@@ -482,12 +482,60 @@
     <Content Include="assets\image\icon\common\arrow_up.png" />
     <Content Include="assets\image\icon\common\dagger.png" />
     <Content Include="assets\image\icon\common\violin.png" />
+    <Content Include="assets\image\icon\key\key_0.png" />
+    <Content Include="assets\image\icon\key\key_1.png" />
+    <Content Include="assets\image\icon\key\key_2.png" />
+    <Content Include="assets\image\icon\key\key_3.png" />
+    <Content Include="assets\image\icon\key\key_4.png" />
+    <Content Include="assets\image\icon\key\key_5.png" />
+    <Content Include="assets\image\icon\key\key_6.png" />
+    <Content Include="assets\image\icon\key\key_7.png" />
+    <Content Include="assets\image\icon\key\key_8.png" />
+    <Content Include="assets\image\icon\key\key_9.png" />
+    <Content Include="assets\image\icon\key\key_a.png" />
+    <Content Include="assets\image\icon\key\key_alt.png" />
+    <Content Include="assets\image\icon\key\key_b.png" />
+    <Content Include="assets\image\icon\key\key_c.png" />
+    <Content Include="assets\image\icon\key\key_d.png" />
+    <Content Include="assets\image\icon\key\key_e.png" />
+    <Content Include="assets\image\icon\key\key_f.png" />
+    <Content Include="assets\image\icon\key\key_f1.png" />
+    <Content Include="assets\image\icon\key\key_f2.png" />
+    <Content Include="assets\image\icon\key\key_f3.png" />
+    <Content Include="assets\image\icon\key\key_f4.png" />
+    <Content Include="assets\image\icon\key\key_f5.png" />
+    <Content Include="assets\image\icon\key\key_f6.png" />
+    <Content Include="assets\image\icon\key\key_f7.png" />
+    <Content Include="assets\image\icon\key\key_f8.png" />
+    <Content Include="assets\image\icon\key\key_f9.png" />
+    <Content Include="assets\image\icon\key\key_g.png" />
+    <Content Include="assets\image\icon\key\key_h.png" />
+    <Content Include="assets\image\icon\key\key_i.png" />
+    <Content Include="assets\image\icon\key\key_j.png" />
+    <Content Include="assets\image\icon\key\key_k.png" />
+    <Content Include="assets\image\icon\key\key_l.png" />
+    <Content Include="assets\image\icon\key\key_m.png" />
+    <Content Include="assets\image\icon\key\key_n.png" />
+    <Content Include="assets\image\icon\key\key_o.png" />
+    <Content Include="assets\image\icon\key\key_p.png" />
+    <Content Include="assets\image\icon\key\key_q.png" />
+    <Content Include="assets\image\icon\key\key_r.png" />
+    <Content Include="assets\image\icon\key\key_s.png" />
+    <Content Include="assets\image\icon\key\key_t.png" />
+    <Content Include="assets\image\icon\key\key_u.png" />
+    <Content Include="assets\image\icon\key\key_v.png" />
+    <Content Include="assets\image\icon\key\key_w.png" />
+    <Content Include="assets\image\icon\key\key_x.png" />
+    <Content Include="assets\image\icon\key\key_y.png" />
+    <Content Include="assets\image\icon\key\key_z.png" />
     <Content Include="assets\image\icon\skill\3rd\archbishop\refraction.png" />
     <Content Include="assets\image\icon\skill\3rd\archbishop\shallowgrave.png" />
     <Content Include="assets\image\icon\skill\3rd\guillotinecross\enchantpoisonarmor.png" />
     <Content Include="assets\image\icon\skill\3rd\royalguard\manashield.png" />
     <Content Include="assets\image\icon\ui\discord.png" />
     <Content Include="assets\image\icon\ui\github.png" />
+    <Content Include="assets\image\icon\ui\minimode_less.png" />
+    <Content Include="assets\image\icon\ui\minimode_more.png" />
     <Content Include="assets\image\icon\ui\systray_icon.ico" />
     <Content Include="assets\image\icon\ui\url_green.png" />
     <Content Include="assets\image\logos\applogo.png" />

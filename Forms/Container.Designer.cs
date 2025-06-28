@@ -50,7 +50,7 @@ namespace _4RTools.Forms
             this.tabPageYggAutopot = new System.Windows.Forms.TabPage();
             this.tabPageSkillTimer = new System.Windows.Forms.TabPage();
             this.tabPageAutoOff = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.topSplitterPanel = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.btnToggleMiniMode = new System.Windows.Forms.Button();
             this.tabControl2.SuspendLayout();
@@ -194,7 +194,7 @@ namespace _4RTools.Forms
             this.processCB.ItemHeight = 14;
             this.processCB.Location = new System.Drawing.Point(18, 29);
             this.processCB.Name = "processCB";
-            this.processCB.Size = new System.Drawing.Size(184, 22);
+            this.processCB.Size = new System.Drawing.Size(180, 22);
             this.processCB.TabIndex = 2;
             this.processCB.SelectedIndexChanged += new System.EventHandler(this.ProcessCB_SelectedIndexChanged);
             // 
@@ -215,7 +215,7 @@ namespace _4RTools.Forms
             this.profileCB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileCB.Location = new System.Drawing.Point(210, 29);
             this.profileCB.Name = "profileCB";
-            this.profileCB.Size = new System.Drawing.Size(181, 22);
+            this.profileCB.Size = new System.Drawing.Size(150, 22);
             this.profileCB.TabIndex = 14;
             this.profileCB.SelectedIndexChanged += new System.EventHandler(this.ProfileCB_SelectedIndexChanged);
             // 
@@ -273,13 +273,13 @@ namespace _4RTools.Forms
             this.tabPageAutoOff.TabIndex = 3;
             this.tabPageAutoOff.Text = "Auto-Off";
             // 
-            // panel4
+            // topSplitterPanel
             // 
-            this.panel4.BackColor = System.Drawing.Color.Silver;
-            this.panel4.Location = new System.Drawing.Point(16, 73);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(635, 1);
-            this.panel4.TabIndex = 17;
+            this.topSplitterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
+            this.topSplitterPanel.Location = new System.Drawing.Point(2, 70);
+            this.topSplitterPanel.Name = "topSplitterPanel";
+            this.topSplitterPanel.Size = new System.Drawing.Size(635, 2);
+            this.topSplitterPanel.TabIndex = 17;
             // 
             // Container
             // 
@@ -290,7 +290,7 @@ namespace _4RTools.Forms
             this.Controls.Add(this.btnToggleMiniMode);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.tabControlAutopot);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.topSplitterPanel);
             this.Controls.Add(this.labelProfile);
             this.Controls.Add(this.profileCB);
             this.Controls.Add(this.lblProcessName);
@@ -329,7 +329,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.TabPage tabPageSkillTimer;
         private System.Windows.Forms.TabPage tabPageDebuffs;
         private System.Windows.Forms.TabPage tabConfig;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel topSplitterPanel;
         private System.Windows.Forms.TabPage tabPageAutoOff;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.Button btnToggleMiniMode;

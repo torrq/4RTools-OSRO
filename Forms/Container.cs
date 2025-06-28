@@ -972,4 +972,15 @@ namespace _4RTools.Forms
 
         #endregion
     }
+
+    /// <summary>
+    /// Custom button class that prevents the focus rectangle from being drawn.
+    /// </summary>
+    public class NoFocusButton : Button
+    {
+        public NoFocusButton()
+        {
+            this.SetStyle(ControlStyles.Selectable, false);
+        }
+    }
 }

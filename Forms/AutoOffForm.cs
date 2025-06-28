@@ -25,6 +25,17 @@ namespace _4RTools.Forms
         private Button btnSet3Hours;
         private Button btnSet4Hours;
         private Button btnSet8Hours;
+        private const string LABEL_REMAINING_TIME_TEXT = "Remaining Time:";
+        private const string LABEL_REMAINING_TIME_STOPPED_TEXT = "Timer Stopped";
+        private const string BUTTON_TIMER_START = "Start Timer";
+        private const string BUTTON_TIMER_STOP = "Stop Timer";
+        private const string BUTTON_SET_1H = "1h";
+        private const string BUTTON_SET_3H = "3h";
+        private const string BUTTON_SET_4H = "4h";
+        private const string BUTTON_SET_8H = "8h";
+        private const string ERROR_NOT_ACTIVE_TITLE = "Can't start auto-off timer";
+        private const string ERROR_NOT_ACTIVE = "Sorry!\nMacro must be active first!";
+
         private int MaxMinutes => AppConfig.ServerMode == 1 ? EIGHT_HOURS : FOUR_HOURS; // Dynamic maximum based on ServerMode
 
         public AutoOffForm(Subject subject, ToggleStateForm toggleStateForm)
@@ -66,12 +77,11 @@ namespace _4RTools.Forms
 
         private void CreateDynamicButtons()
         {
-            int buttonWidth = 55;
-            int buttonHeight = 31;
+            int buttonWidth = 35;
+            int buttonHeight = 24;
             int buttonSpacing = 4;
-            int bottomMargin = 12;
             int rightMargin = 12;
-            int buttonY = ClientSize.Height - buttonHeight - bottomMargin;
+            int buttonY = btnToggleTimer.Location.Y;
             int currentX = ClientSize.Width - rightMargin;
 
             var buttonsToCreate = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
@@ -80,21 +90,21 @@ namespace _4RTools.Forms
             var potentialButtons = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
             if (AppConfig.ServerMode == 0)
             {
-                potentialButtons.Add(("btnSet4Hours", "4 Hours", BtnSet4Hours_Click, 7, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", "3 Hours", BtnSet3Hours_Click, 6, THREE_HOURS));
-                potentialButtons.Add(("btnSet1Hours", "1 Hour", BtnSet1Hours_Click, 5, ONE_HOUR));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, FOUR_HOURS));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 6, THREE_HOURS));
+                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
             }
             else if (AppConfig.ServerMode == 1)
             {
-                potentialButtons.Add(("btnSet8Hours", "8 Hours", BtnSet8Hours_Click, 7, EIGHT_HOURS));
-                potentialButtons.Add(("btnSet4Hours", "4 Hours", BtnSet4Hours_Click, 6, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", "3 Hours", BtnSet3Hours_Click, 5, THREE_HOURS));
+                potentialButtons.Add(("btnSet8Hours", BUTTON_SET_8H, BtnSet8Hours_Click, 7, EIGHT_HOURS));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 6, FOUR_HOURS));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 5, THREE_HOURS));
             }
             else
             {
-                potentialButtons.Add(("btnSet4Hours", "4 Hours", BtnSet4Hours_Click, 7, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", "3 Hours", BtnSet3Hours_Click, 6, THREE_HOURS));
-                potentialButtons.Add(("btnSet1Hours", "1 Hour", BtnSet1Hours_Click, 5, ONE_HOUR));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, FOUR_HOURS));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 6, THREE_HOURS));
+                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
             }
 
             // Filter buttons to only include those within MaxMinutes
@@ -131,7 +141,7 @@ namespace _4RTools.Forms
                 case MessageCode.PROFILE_CHANGED:
                     // Load auto-off time from new profile
                     LoadAutoOffTimeFromProfile();
-                    btnToggleTimer.Text = "Start";
+                    btnToggleTimer.Text = BUTTON_TIMER_START;
                     FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
                     break;
             }
@@ -164,19 +174,19 @@ namespace _4RTools.Forms
             if (isTimerRunning)
             {
                 StopTimer();
-                btnToggleTimer.Text = "Start";
+                btnToggleTimer.Text = BUTTON_TIMER_START;
                 FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
             }
             else
             {
                 if (!frmToggleApplication.IsApplicationOn())
                 {
-                    DialogOK.ShowDialog($"Sorry!\nMacro must be active first!", "Can't start auto-off timer");
+                    DialogOK.ShowDialog(ERROR_NOT_ACTIVE, ERROR_NOT_ACTIVE_TITLE);
                 }
                 else
                 {
                     StartTimer();
-                    btnToggleTimer.Text = "Stop";
+                    btnToggleTimer.Text = BUTTON_TIMER_STOP;
                     FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.ResetButtonBackColor);
                 }
             }
@@ -248,11 +258,15 @@ namespace _4RTools.Forms
                 int hours = remainingMinutes / 60;
                 int minutes = remainingMinutes % 60;
                 string timeText = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
-                lblRemainingTime.Text = $"Remaining: {timeText}";
+                lblRemainingTime.Text = $"{timeText}";
+                lblRemainingTimeText.Text = LABEL_REMAINING_TIME_TEXT;
+                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
             }
             else
             {
                 lblRemainingTime.Text = "";
+                lblRemainingTimeText.Text = LABEL_REMAINING_TIME_STOPPED_TEXT;
+                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
             }
         }
 
@@ -277,7 +291,7 @@ namespace _4RTools.Forms
             isTimerRunning = false;
             remainingSeconds = 0;
             UpdateRemainingTimeLabel();
-            btnToggleTimer.Text = "Start";
+            btnToggleTimer.Text = BUTTON_TIMER_START;
             FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
         }
 
@@ -315,6 +329,11 @@ namespace _4RTools.Forms
                 btnSet8Hours?.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void AutoOffForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

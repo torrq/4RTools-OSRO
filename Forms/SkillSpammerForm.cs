@@ -237,6 +237,11 @@ namespace _4RTools.Forms
 
         private void PictureBox1_Click(object sender, EventArgs e) { }
 
+        private void LRWebsiteButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.WebsiteLR);
+        }
+
         private void MRWebsiteButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.WebsiteMR);
@@ -250,6 +255,11 @@ namespace _4RTools.Forms
         private void GitHubButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.GithubLink);
+        }
+
+        private void LRDiscordButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.DiscordLinkLR);
         }
 
         private void MRDiscordButton_Click(object sender, EventArgs e)

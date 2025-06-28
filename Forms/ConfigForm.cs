@@ -109,8 +109,9 @@ namespace _4RTools.Forms
                 this.chkDebugMode.CheckedChanged += chkDebugMode_CheckedChanged; // Reattach DebugMode handler
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                DebugLogger.Error("Error in UpdateUI: " + ex.Message);
             }
         }
 
@@ -200,7 +201,14 @@ namespace _4RTools.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error("Invalid key entered for Ammo1: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unexpected error in TextAmmo1_TextChanged: " + ex.Message);
+            }
         }
 
         private void TextAmmo2_TextChanged(object sender, EventArgs e)
@@ -215,7 +223,14 @@ namespace _4RTools.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error("Invalid key entered for Ammo2: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unexpected error in TextAmmo2_TextChanged: " + ex.Message);
+            }
         }
 
         private void TextAmmoTrigger_TextChanged(object sender, EventArgs e)
@@ -230,7 +245,14 @@ namespace _4RTools.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error("Invalid key entered for AmmoTrigger: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unexpected error in TextAmmoTrigger_TextChanged: " + ex.Message);
+            }
         }
 
         private void Label2_Click(object sender, EventArgs e)
@@ -250,7 +272,14 @@ namespace _4RTools.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error("Invalid key entered for OverweightKey: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unexpected error in OverweightKey_TextChanged: " + ex.Message);
+            }
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)
@@ -357,6 +386,11 @@ namespace _4RTools.Forms
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void overweightAltKeyLabel_Click(object sender, EventArgs e)
         {
 
         }

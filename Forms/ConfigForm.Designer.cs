@@ -42,7 +42,7 @@ namespace _4RTools.Forms
             this.ammoTrigger = new System.Windows.Forms.TextBox();
             this.chkSoundEnabled = new System.Windows.Forms.CheckBox();
             this.groupOverweight = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.overweightAltKeyLabel = new System.Windows.Forms.Label();
             this.overweight50 = new System.Windows.Forms.RadioButton();
             this.overweightKey = new System.Windows.Forms.TextBox();
             this.overweightOff = new System.Windows.Forms.RadioButton();
@@ -64,7 +64,9 @@ namespace _4RTools.Forms
             this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipSwitchAmmoCB = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAmmoTrigger = new System.Windows.Forms.ToolTip(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.groupSettings.SuspendLayout();
             this.groupOverweight.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
@@ -170,6 +172,7 @@ namespace _4RTools.Forms
             // groupOverweight
             // 
             this.groupOverweight.Controls.Add(this.label1);
+            this.groupOverweight.Controls.Add(this.overweightAltKeyLabel);
             this.groupOverweight.Controls.Add(this.overweight50);
             this.groupOverweight.Controls.Add(this.overweightKey);
             this.groupOverweight.Controls.Add(this.overweightOff);
@@ -182,15 +185,18 @@ namespace _4RTools.Forms
             this.groupOverweight.Text = "Turn off when overweight";
             this.groupOverweight.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
-            // label1
+            // overweightAltKeyLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(120, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 16);
-            this.label1.TabIndex = 316;
-            this.label1.Text = ".. also send Alt -";
+            this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
+            this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.overweightAltKeyLabel.Location = new System.Drawing.Point(107, 76);
+            this.overweightAltKeyLabel.Name = "overweightAltKeyLabel";
+            this.overweightAltKeyLabel.Size = new System.Drawing.Size(107, 24);
+            this.overweightAltKeyLabel.TabIndex = 316;
+            this.overweightAltKeyLabel.Text = "Then send";
+            this.overweightAltKeyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.overweightAltKeyLabel.Click += new System.EventHandler(this.overweightAltKeyLabel_Click);
             // 
             // overweight50
             // 
@@ -212,9 +218,9 @@ namespace _4RTools.Forms
             // 
             this.overweightKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.overweightKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightKey.Location = new System.Drawing.Point(222, 76);
+            this.overweightKey.Location = new System.Drawing.Point(229, 76);
             this.overweightKey.Name = "overweightKey";
-            this.overweightKey.Size = new System.Drawing.Size(55, 23);
+            this.overweightKey.Size = new System.Drawing.Size(49, 23);
             this.overweightKey.TabIndex = 311;
             this.toolTipOverweightKey.SetToolTip(this.overweightKey, "Alt-# macro to send when overweight. Tip: set this to your @aaoff macro in RO!");
             this.overweightKey.TextChanged += new System.EventHandler(this.OverweightKey_TextChanged);
@@ -332,9 +338,26 @@ namespace _4RTools.Forms
             // 
             this.toolTipWeight90.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipWeight90_Popup);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // clientDTOBindingSource
             // 
             this.clientDTOBindingSource.DataSource = typeof(_4RTools.Model.ClientDTO);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(212, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 24);
+            this.label1.TabIndex = 317;
+            this.label1.Text = "+";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ConfigForm
             // 
@@ -383,7 +406,7 @@ namespace _4RTools.Forms
         private RadioButton overweight50;
         private RadioButton overweightOff;
         private GroupBox groupOverweight;
-        private Label label1;
+        private Label overweightAltKeyLabel;
         private CheckBox chkSoundEnabled;
         private GroupBox groupGlobalSettings;
         private CheckBox chkDebugMode;
@@ -396,5 +419,7 @@ namespace _4RTools.Forms
         private Label label3;
         private Label ammoTriggerLabel;
         private ToolTip toolTipAmmoTrigger;
+        private ImageList imageList1;
+        private Label label1;
     }
 }
