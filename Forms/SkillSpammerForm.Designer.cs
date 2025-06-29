@@ -129,6 +129,7 @@ namespace _4RTools.Forms
             this.chkF9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkF9.Size = new System.Drawing.Size(44, 28);
             this.chkF9.TabIndex = 9;
+            this.chkF9.Tag = "F9";
             this.chkF9.UseVisualStyleBackColor = true;
             this.chkF9.CheckedChanged += new System.EventHandler(this.ChkF9_CheckedChanged);
             // 
@@ -143,6 +144,7 @@ namespace _4RTools.Forms
             this.chkF8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkF8.Size = new System.Drawing.Size(44, 28);
             this.chkF8.TabIndex = 8;
+            this.chkF8.Tag = "F8";
             this.chkF8.UseVisualStyleBackColor = true;
             this.chkF8.CheckedChanged += new System.EventHandler(this.ChkF8_CheckedChanged);
             // 
@@ -156,6 +158,7 @@ namespace _4RTools.Forms
             this.chkF7.Name = "chkF7";
             this.chkF7.Size = new System.Drawing.Size(44, 28);
             this.chkF7.TabIndex = 7;
+            this.chkF7.Tag = "F7";
             this.chkF7.UseVisualStyleBackColor = true;
             this.chkF7.CheckedChanged += new System.EventHandler(this.ChkF7_CheckedChanged);
             // 
@@ -169,6 +172,7 @@ namespace _4RTools.Forms
             this.chkF6.Name = "chkF6";
             this.chkF6.Size = new System.Drawing.Size(44, 28);
             this.chkF6.TabIndex = 6;
+            this.chkF6.Tag = "F6";
             this.chkF6.UseVisualStyleBackColor = true;
             this.chkF6.CheckedChanged += new System.EventHandler(this.ChkF6_CheckedChanged);
             // 
@@ -182,6 +186,7 @@ namespace _4RTools.Forms
             this.chkF5.Name = "chkF5";
             this.chkF5.Size = new System.Drawing.Size(44, 28);
             this.chkF5.TabIndex = 5;
+            this.chkF5.Tag = "F5";
             this.chkF5.UseVisualStyleBackColor = true;
             this.chkF5.CheckedChanged += new System.EventHandler(this.ChkF5_CheckedChanged);
             // 
@@ -195,6 +200,7 @@ namespace _4RTools.Forms
             this.chkF4.Name = "chkF4";
             this.chkF4.Size = new System.Drawing.Size(44, 28);
             this.chkF4.TabIndex = 4;
+            this.chkF4.Tag = "F4";
             this.chkF4.UseVisualStyleBackColor = true;
             this.chkF4.CheckedChanged += new System.EventHandler(this.ChkF4_CheckedChanged);
             // 
@@ -208,6 +214,7 @@ namespace _4RTools.Forms
             this.chkF3.Name = "chkF3";
             this.chkF3.Size = new System.Drawing.Size(44, 28);
             this.chkF3.TabIndex = 3;
+            this.chkF3.Tag = "F3";
             this.chkF3.UseVisualStyleBackColor = true;
             this.chkF3.CheckedChanged += new System.EventHandler(this.ChkF3_CheckedChanged);
             // 
@@ -221,6 +228,7 @@ namespace _4RTools.Forms
             this.chkF2.Name = "chkF2";
             this.chkF2.Size = new System.Drawing.Size(44, 28);
             this.chkF2.TabIndex = 2;
+            this.chkF2.Tag = "F2";
             this.chkF2.UseVisualStyleBackColor = true;
             this.chkF2.CheckedChanged += new System.EventHandler(this.ChkF2_CheckedChanged);
             // 
@@ -235,6 +243,7 @@ namespace _4RTools.Forms
             this.chkF1.Name = "chkF1";
             this.chkF1.Size = new System.Drawing.Size(44, 28);
             this.chkF1.TabIndex = 1;
+            this.chkF1.Tag = "F1";
             this.chkF1.UseVisualStyleBackColor = true;
             this.chkF1.CheckedChanged += new System.EventHandler(this.ChkF1_CheckedChanged);
             // 
@@ -249,6 +258,7 @@ namespace _4RTools.Forms
             this.chk9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chk9.Size = new System.Drawing.Size(44, 28);
             this.chk9.TabIndex = 9;
+            this.chk9.Tag = "D9";
             this.chk9.UseVisualStyleBackColor = true;
             // 
             // chk8
@@ -262,6 +272,7 @@ namespace _4RTools.Forms
             this.chk8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chk8.Size = new System.Drawing.Size(44, 28);
             this.chk8.TabIndex = 8;
+            this.chk8.Tag = "D8";
             this.chk8.UseVisualStyleBackColor = true;
             this.chk8.CheckedChanged += new System.EventHandler(this.Chk8_CheckedChanged);
             // 
@@ -275,6 +286,7 @@ namespace _4RTools.Forms
             this.chk7.Name = "chk7";
             this.chk7.Size = new System.Drawing.Size(44, 28);
             this.chk7.TabIndex = 7;
+            this.chk7.Tag = "D7";
             this.chk7.UseVisualStyleBackColor = true;
             this.chk7.CheckedChanged += new System.EventHandler(this.Chk7_CheckedChanged);
             // 
@@ -288,6 +300,7 @@ namespace _4RTools.Forms
             this.chk6.Name = "chk6";
             this.chk6.Size = new System.Drawing.Size(44, 28);
             this.chk6.TabIndex = 6;
+            this.chk6.Tag = "D6";
             this.chk6.UseVisualStyleBackColor = true;
             this.chk6.CheckedChanged += new System.EventHandler(this.Chk6_CheckedChanged);
             // 
@@ -301,6 +314,7 @@ namespace _4RTools.Forms
             this.chk5.Name = "chk5";
             this.chk5.Size = new System.Drawing.Size(44, 28);
             this.chk5.TabIndex = 5;
+            this.chk5.Tag = "D5";
             this.chk5.UseVisualStyleBackColor = true;
             this.chk5.CheckedChanged += new System.EventHandler(this.Chk5_CheckedChanged);
             // 
@@ -314,6 +328,7 @@ namespace _4RTools.Forms
             this.chk4.Name = "chk4";
             this.chk4.Size = new System.Drawing.Size(44, 28);
             this.chk4.TabIndex = 4;
+            this.chk4.Tag = "D4";
             this.chk4.UseVisualStyleBackColor = true;
             this.chk4.CheckedChanged += new System.EventHandler(this.Chk4_CheckedChanged);
             // 
@@ -327,6 +342,7 @@ namespace _4RTools.Forms
             this.chk3.Name = "chk3";
             this.chk3.Size = new System.Drawing.Size(44, 28);
             this.chk3.TabIndex = 3;
+            this.chk3.Tag = "D2";
             this.chk3.UseVisualStyleBackColor = true;
             this.chk3.CheckedChanged += new System.EventHandler(this.Chk3_CheckedChanged);
             // 
@@ -340,6 +356,7 @@ namespace _4RTools.Forms
             this.chk2.Name = "chk2";
             this.chk2.Size = new System.Drawing.Size(44, 28);
             this.chk2.TabIndex = 2;
+            this.chk2.Tag = "D2";
             this.chk2.UseVisualStyleBackColor = true;
             this.chk2.CheckedChanged += new System.EventHandler(this.Chk2_CheckedChanged);
             // 
@@ -353,6 +370,7 @@ namespace _4RTools.Forms
             this.chk1.Name = "chk1";
             this.chk1.Size = new System.Drawing.Size(44, 28);
             this.chk1.TabIndex = 1;
+            this.chk1.Tag = "D1";
             this.chk1.UseVisualStyleBackColor = true;
             this.chk1.CheckedChanged += new System.EventHandler(this.Chk1_CheckedChanged);
             // 
@@ -367,6 +385,7 @@ namespace _4RTools.Forms
             this.chkM.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkM.Size = new System.Drawing.Size(44, 28);
             this.chkM.TabIndex = 25;
+            this.chkM.Tag = "M";
             this.chkM.UseVisualStyleBackColor = true;
             // 
             // chkN
@@ -379,6 +398,7 @@ namespace _4RTools.Forms
             this.chkN.Name = "chkN";
             this.chkN.Size = new System.Drawing.Size(44, 28);
             this.chkN.TabIndex = 24;
+            this.chkN.Tag = "N";
             this.chkN.UseVisualStyleBackColor = true;
             // 
             // chkB
@@ -391,6 +411,7 @@ namespace _4RTools.Forms
             this.chkB.Name = "chkB";
             this.chkB.Size = new System.Drawing.Size(44, 28);
             this.chkB.TabIndex = 23;
+            this.chkB.Tag = "B";
             this.chkB.UseVisualStyleBackColor = true;
             // 
             // chkV
@@ -403,6 +424,7 @@ namespace _4RTools.Forms
             this.chkV.Name = "chkV";
             this.chkV.Size = new System.Drawing.Size(44, 28);
             this.chkV.TabIndex = 22;
+            this.chkV.Tag = "V";
             this.chkV.UseVisualStyleBackColor = true;
             // 
             // chkC
@@ -415,6 +437,7 @@ namespace _4RTools.Forms
             this.chkC.Name = "chkC";
             this.chkC.Size = new System.Drawing.Size(44, 28);
             this.chkC.TabIndex = 21;
+            this.chkC.Tag = "C";
             this.chkC.UseVisualStyleBackColor = true;
             // 
             // chkX
@@ -427,6 +450,7 @@ namespace _4RTools.Forms
             this.chkX.Name = "chkX";
             this.chkX.Size = new System.Drawing.Size(44, 28);
             this.chkX.TabIndex = 20;
+            this.chkX.Tag = "X";
             this.chkX.UseVisualStyleBackColor = true;
             // 
             // chkZ
@@ -439,6 +463,7 @@ namespace _4RTools.Forms
             this.chkZ.Name = "chkZ";
             this.chkZ.Size = new System.Drawing.Size(44, 28);
             this.chkZ.TabIndex = 19;
+            this.chkZ.Tag = "Z";
             this.chkZ.UseVisualStyleBackColor = true;
             // 
             // chkL
@@ -452,6 +477,7 @@ namespace _4RTools.Forms
             this.chkL.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkL.Size = new System.Drawing.Size(44, 28);
             this.chkL.TabIndex = 17;
+            this.chkL.Tag = "L";
             this.chkL.UseVisualStyleBackColor = true;
             this.chkL.CheckedChanged += new System.EventHandler(this.ChkL_CheckedChanged);
             // 
@@ -465,6 +491,7 @@ namespace _4RTools.Forms
             this.chkK.Name = "chkK";
             this.chkK.Size = new System.Drawing.Size(44, 28);
             this.chkK.TabIndex = 16;
+            this.chkK.Tag = "K";
             this.chkK.UseVisualStyleBackColor = true;
             // 
             // chkJ
@@ -477,6 +504,7 @@ namespace _4RTools.Forms
             this.chkJ.Name = "chkJ";
             this.chkJ.Size = new System.Drawing.Size(44, 28);
             this.chkJ.TabIndex = 15;
+            this.chkJ.Tag = "J";
             this.chkJ.UseVisualStyleBackColor = true;
             // 
             // chkH
@@ -489,6 +517,7 @@ namespace _4RTools.Forms
             this.chkH.Name = "chkH";
             this.chkH.Size = new System.Drawing.Size(44, 28);
             this.chkH.TabIndex = 14;
+            this.chkH.Tag = "H";
             this.chkH.UseVisualStyleBackColor = true;
             // 
             // chkG
@@ -501,6 +530,7 @@ namespace _4RTools.Forms
             this.chkG.Name = "chkG";
             this.chkG.Size = new System.Drawing.Size(44, 28);
             this.chkG.TabIndex = 13;
+            this.chkG.Tag = "G";
             this.chkG.UseVisualStyleBackColor = true;
             // 
             // chkF
@@ -513,6 +543,7 @@ namespace _4RTools.Forms
             this.chkF.Name = "chkF";
             this.chkF.Size = new System.Drawing.Size(44, 28);
             this.chkF.TabIndex = 12;
+            this.chkF.Tag = "F";
             this.chkF.UseVisualStyleBackColor = true;
             // 
             // chkD
@@ -525,6 +556,7 @@ namespace _4RTools.Forms
             this.chkD.Name = "chkD";
             this.chkD.Size = new System.Drawing.Size(44, 28);
             this.chkD.TabIndex = 11;
+            this.chkD.Tag = "D";
             this.chkD.UseVisualStyleBackColor = true;
             // 
             // chkA
@@ -537,6 +569,7 @@ namespace _4RTools.Forms
             this.chkA.Name = "chkA";
             this.chkA.Size = new System.Drawing.Size(44, 28);
             this.chkA.TabIndex = 10;
+            this.chkA.Tag = "A";
             this.chkA.UseVisualStyleBackColor = true;
             // 
             // chkO
@@ -550,6 +583,7 @@ namespace _4RTools.Forms
             this.chkO.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkO.Size = new System.Drawing.Size(44, 28);
             this.chkO.TabIndex = 9;
+            this.chkO.Tag = "O";
             this.chkO.UseVisualStyleBackColor = true;
             // 
             // chkI
@@ -563,6 +597,7 @@ namespace _4RTools.Forms
             this.chkI.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkI.Size = new System.Drawing.Size(44, 28);
             this.chkI.TabIndex = 8;
+            this.chkI.Tag = "I";
             this.chkI.UseVisualStyleBackColor = true;
             // 
             // chkU
@@ -575,6 +610,7 @@ namespace _4RTools.Forms
             this.chkU.Name = "chkU";
             this.chkU.Size = new System.Drawing.Size(44, 28);
             this.chkU.TabIndex = 7;
+            this.chkU.Tag = "U";
             this.chkU.UseVisualStyleBackColor = true;
             // 
             // chkY
@@ -587,6 +623,7 @@ namespace _4RTools.Forms
             this.chkY.Name = "chkY";
             this.chkY.Size = new System.Drawing.Size(44, 28);
             this.chkY.TabIndex = 6;
+            this.chkY.Tag = "Y";
             this.chkY.UseVisualStyleBackColor = true;
             // 
             // chkT
@@ -599,6 +636,7 @@ namespace _4RTools.Forms
             this.chkT.Name = "chkT";
             this.chkT.Size = new System.Drawing.Size(44, 28);
             this.chkT.TabIndex = 5;
+            this.chkT.Tag = "T";
             this.chkT.UseVisualStyleBackColor = true;
             // 
             // chkR
@@ -611,6 +649,7 @@ namespace _4RTools.Forms
             this.chkR.Name = "chkR";
             this.chkR.Size = new System.Drawing.Size(44, 28);
             this.chkR.TabIndex = 4;
+            this.chkR.Tag = "R";
             this.chkR.UseVisualStyleBackColor = true;
             // 
             // chkE
@@ -623,6 +662,7 @@ namespace _4RTools.Forms
             this.chkE.Name = "chkE";
             this.chkE.Size = new System.Drawing.Size(44, 28);
             this.chkE.TabIndex = 3;
+            this.chkE.Tag = "E";
             this.chkE.UseVisualStyleBackColor = true;
             // 
             // chkW
@@ -635,6 +675,7 @@ namespace _4RTools.Forms
             this.chkW.Name = "chkW";
             this.chkW.Size = new System.Drawing.Size(44, 28);
             this.chkW.TabIndex = 2;
+            this.chkW.Tag = "W";
             this.chkW.UseVisualStyleBackColor = true;
             // 
             // chkQ
@@ -647,6 +688,7 @@ namespace _4RTools.Forms
             this.chkQ.Name = "chkQ";
             this.chkQ.Size = new System.Drawing.Size(44, 28);
             this.chkQ.TabIndex = 1;
+            this.chkQ.Tag = "Q";
             this.chkQ.UseVisualStyleBackColor = true;
             // 
             // txtSpammerDelay
@@ -674,6 +716,7 @@ namespace _4RTools.Forms
             this.chkS.Name = "chkS";
             this.chkS.Size = new System.Drawing.Size(44, 28);
             this.chkS.TabIndex = 30;
+            this.chkS.Tag = "S";
             this.chkS.UseVisualStyleBackColor = true;
             // 
             // groupBox2
