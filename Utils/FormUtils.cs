@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _4RTools.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -195,7 +196,13 @@ namespace _4RTools.Utils
 
         public static void ResetCheckboxForm(Form form)
         {
-            resetCheckboxForm(form);
+            foreach (Control c in form.Controls)
+            {
+                if (c is BorderedCheckBox check)
+                {
+                    check.CheckState = CheckState.Unchecked;
+                }
+            }
         }
 
         public static void ResetForm(Form form)

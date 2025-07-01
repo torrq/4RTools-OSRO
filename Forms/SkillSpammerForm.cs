@@ -1,8 +1,10 @@
-﻿using _4RTools.Model;
+﻿using _4RTools.Controls;
+using _4RTools.Model;
 using _4RTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -45,7 +47,6 @@ namespace _4RTools.Forms
 
             RadioButton rdAhkMode = (RadioButton)this.skillSpammerModeGroup.Controls[ProfileSingleton.GetCurrent().SkillSpammer.AHKMode];
             if (rdAhkMode != null) { rdAhkMode.Checked = true; }
-            ;
             this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().SkillSpammer.AhkDelay.ToString();
             this.chkNoShift.Checked = ProfileSingleton.GetCurrent().SkillSpammer.NoShift;
             this.chkMouseFlick.Checked = ProfileSingleton.GetCurrent().SkillSpammer.MouseFlick;
@@ -55,31 +56,40 @@ namespace _4RTools.Forms
 
             foreach (KeyValuePair<string, KeyConfig> config in ahkClones)
             {
-                ToggleCheckboxByName(config.Key, config.Value.ClickActive);
+                BorderedCheckBox checkBox = this.Controls.Find(config.Key, true).OfType<BorderedCheckBox>().FirstOrDefault();
+                if (checkBox != null)
+                {
+                    checkBox.CheckState = config.Value.IsIndeterminate ? CheckState.Indeterminate : (config.Value.ClickActive ? CheckState.Checked : CheckState.Unchecked);
+                }
             }
         }
 
         private void OnCheckChange(object sender, EventArgs e)
         {
-            CheckBox checkbox = (CheckBox)sender;
+            BorderedCheckBox checkbox = sender as BorderedCheckBox;
+            if (checkbox == null) return;
+
             bool haveMouseClick = checkbox.CheckState == CheckState.Checked;
+            bool isIndeterminate = checkbox.CheckState == CheckState.Indeterminate;
+
+            Key key;
+            if (checkbox.Tag != null)
+            {
+                key = (Key)new KeyConverter().ConvertFromString(checkbox.Tag.ToString());
+            }
+            else
+            {
+                key = (Key)new KeyConverter().ConvertFromString(checkbox.Text);
+            }
 
             if (checkbox.CheckState == CheckState.Checked || checkbox.CheckState == CheckState.Indeterminate)
             {
-                Key key;
-                if (checkbox.Tag != null)
-                {
-                    key = (Key)new KeyConverter().ConvertFromString(checkbox.Tag.ToString());
-                }
-                else
-                {
-                    key = (Key)new KeyConverter().ConvertFromString(checkbox.Text);
-                }
-
-                this.ahk.AddSkillSpammerEntry(checkbox.Name, new KeyConfig(key, haveMouseClick));
+                this.ahk.AddSkillSpammerEntry(checkbox.Name, new KeyConfig(key, haveMouseClick, isIndeterminate));
             }
             else
+            {
                 this.ahk.RemoveSkillSpammerEntry(checkbox.Name);
+            }
 
             ProfileSingleton.SetConfiguration(this.ahk);
         }
@@ -102,20 +112,6 @@ namespace _4RTools.Forms
                 DebugLogger.Error($"Exception in TxtSpammerDelay_TextChanged: {ex}");
             }
 
-        }
-
-        private void ToggleCheckboxByName(string Name, bool state)
-        {
-            try
-            {
-                CheckBox checkBox = (CheckBox)this.Controls.Find(Name, true)[0];
-                checkBox.CheckState = state ? CheckState.Checked : CheckState.Indeterminate;
-                ProfileSingleton.SetConfiguration(this.ahk);
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error($"Exception in ToggleCheckboxByName: {ex}");
-            }
         }
 
         private void RemoveHandlers()

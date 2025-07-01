@@ -123,6 +123,11 @@ namespace _4RTools.Utils
         public static Color CopyButtonBackColor = Color.FromArgb(249, 255, 175);
         public static Color AccentBackColor = Color.FromArgb(238, 248, 255);
 
+        public static Color CheckBoxCheckedBorderColor = Color.FromArgb(0, 120, 215); // A nice blue for "Checked"
+        public static Color CheckBoxIndeterminateBorderColor = Color.FromArgb(255, 128, 0); // Orange for "Indeterminate"
+        public static Color CheckBoxUncheckedBorderColor = Color.FromArgb(171, 171, 171); // A standard gray for "Unchecked"
+        public static Color CheckBoxDisabledBorderColor = Color.FromArgb(204, 204, 204); // Lighter gray for "Disabled"
+
         public static Color CharacterColor = Color.DarkGreen;
         public static Color MapColor = Color.DarkCyan;
 

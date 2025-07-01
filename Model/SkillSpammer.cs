@@ -14,11 +14,13 @@ namespace _4RTools.Model
     {
         public Key Key { get; set; }
         public bool ClickActive { get; set; }
+        public bool IsIndeterminate { get; set; }
 
-        public KeyConfig(Key key, bool clickAtive)
+        public KeyConfig(Key key, bool clickActive, bool isIndeterminate = false)
         {
-            this.Key = key;
-            this.ClickActive = clickAtive;
+            Key = key;
+            ClickActive = clickActive;
+            IsIndeterminate = isIndeterminate;
         }
     }
 
