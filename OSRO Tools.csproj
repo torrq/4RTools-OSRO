@@ -423,6 +423,7 @@
     <Compile Include="Utils\JobList.cs" />
     <Compile Include="Utils\KeyboardHook.cs" />
     <Compile Include="Utils\NotificationTrayManager.cs" />
+    <Compile Include="Utils\OverweightMacro.cs" />
     <Compile Include="Utils\ProcessMemoryReader.cs" />
     <Compile Include="Utils\RObserver.cs" />
     <Compile Include="Utils\StatusIdLogger.cs" />

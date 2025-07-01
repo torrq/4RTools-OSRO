@@ -124,7 +124,7 @@ namespace _4RTools.Forms
             this.chkF9.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF9.Image = global::_4RTools.Resources._4RTools.Icons.key_f9;
             this.chkF9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF9.Location = new System.Drawing.Point(415, 12);
+            this.chkF9.Location = new System.Drawing.Point(431, 12);
             this.chkF9.Name = "chkF9";
             this.chkF9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkF9.Size = new System.Drawing.Size(44, 28);
@@ -139,7 +139,7 @@ namespace _4RTools.Forms
             this.chkF8.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF8.Image = global::_4RTools.Resources._4RTools.Icons.key_f8;
             this.chkF8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF8.Location = new System.Drawing.Point(365, 12);
+            this.chkF8.Location = new System.Drawing.Point(379, 12);
             this.chkF8.Name = "chkF8";
             this.chkF8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkF8.Size = new System.Drawing.Size(44, 28);
@@ -154,7 +154,7 @@ namespace _4RTools.Forms
             this.chkF7.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF7.Image = global::_4RTools.Resources._4RTools.Icons.key_f7;
             this.chkF7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF7.Location = new System.Drawing.Point(315, 12);
+            this.chkF7.Location = new System.Drawing.Point(327, 12);
             this.chkF7.Name = "chkF7";
             this.chkF7.Size = new System.Drawing.Size(44, 28);
             this.chkF7.TabIndex = 7;
@@ -168,7 +168,7 @@ namespace _4RTools.Forms
             this.chkF6.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF6.Image = global::_4RTools.Resources._4RTools.Icons.key_f6;
             this.chkF6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF6.Location = new System.Drawing.Point(265, 12);
+            this.chkF6.Location = new System.Drawing.Point(275, 12);
             this.chkF6.Name = "chkF6";
             this.chkF6.Size = new System.Drawing.Size(44, 28);
             this.chkF6.TabIndex = 6;
@@ -182,7 +182,7 @@ namespace _4RTools.Forms
             this.chkF5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF5.Image = global::_4RTools.Resources._4RTools.Icons.key_f5;
             this.chkF5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF5.Location = new System.Drawing.Point(215, 12);
+            this.chkF5.Location = new System.Drawing.Point(223, 12);
             this.chkF5.Name = "chkF5";
             this.chkF5.Size = new System.Drawing.Size(44, 28);
             this.chkF5.TabIndex = 5;
@@ -196,7 +196,7 @@ namespace _4RTools.Forms
             this.chkF4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF4.Image = global::_4RTools.Resources._4RTools.Icons.key_f4;
             this.chkF4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF4.Location = new System.Drawing.Point(165, 12);
+            this.chkF4.Location = new System.Drawing.Point(171, 12);
             this.chkF4.Name = "chkF4";
             this.chkF4.Size = new System.Drawing.Size(44, 28);
             this.chkF4.TabIndex = 4;
@@ -210,7 +210,7 @@ namespace _4RTools.Forms
             this.chkF3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF3.Image = global::_4RTools.Resources._4RTools.Icons.key_f3;
             this.chkF3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF3.Location = new System.Drawing.Point(115, 12);
+            this.chkF3.Location = new System.Drawing.Point(119, 12);
             this.chkF3.Name = "chkF3";
             this.chkF3.Size = new System.Drawing.Size(44, 28);
             this.chkF3.TabIndex = 3;
@@ -224,7 +224,7 @@ namespace _4RTools.Forms
             this.chkF2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF2.Image = global::_4RTools.Resources._4RTools.Icons.key_f2;
             this.chkF2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF2.Location = new System.Drawing.Point(64, 12);
+            this.chkF2.Location = new System.Drawing.Point(66, 12);
             this.chkF2.Name = "chkF2";
             this.chkF2.Size = new System.Drawing.Size(44, 28);
             this.chkF2.TabIndex = 2;
@@ -253,7 +253,7 @@ namespace _4RTools.Forms
             this.chk9.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk9.Image = global::_4RTools.Resources._4RTools.Icons.key_9;
             this.chk9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk9.Location = new System.Drawing.Point(415, 57);
+            this.chk9.Location = new System.Drawing.Point(431, 69);
             this.chk9.Name = "chk9";
             this.chk9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chk9.Size = new System.Drawing.Size(44, 28);
@@ -267,7 +267,7 @@ namespace _4RTools.Forms
             this.chk8.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk8.Image = global::_4RTools.Resources._4RTools.Icons.key_8;
             this.chk8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk8.Location = new System.Drawing.Point(365, 57);
+            this.chk8.Location = new System.Drawing.Point(379, 69);
             this.chk8.Name = "chk8";
             this.chk8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chk8.Size = new System.Drawing.Size(44, 28);
@@ -282,7 +282,7 @@ namespace _4RTools.Forms
             this.chk7.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk7.Image = global::_4RTools.Resources._4RTools.Icons.key_7;
             this.chk7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk7.Location = new System.Drawing.Point(315, 57);
+            this.chk7.Location = new System.Drawing.Point(327, 69);
             this.chk7.Name = "chk7";
             this.chk7.Size = new System.Drawing.Size(44, 28);
             this.chk7.TabIndex = 7;
@@ -296,7 +296,7 @@ namespace _4RTools.Forms
             this.chk6.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk6.Image = global::_4RTools.Resources._4RTools.Icons.key_6;
             this.chk6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk6.Location = new System.Drawing.Point(265, 57);
+            this.chk6.Location = new System.Drawing.Point(275, 69);
             this.chk6.Name = "chk6";
             this.chk6.Size = new System.Drawing.Size(44, 28);
             this.chk6.TabIndex = 6;
@@ -310,7 +310,7 @@ namespace _4RTools.Forms
             this.chk5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk5.Image = global::_4RTools.Resources._4RTools.Icons.key_5;
             this.chk5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk5.Location = new System.Drawing.Point(215, 57);
+            this.chk5.Location = new System.Drawing.Point(223, 69);
             this.chk5.Name = "chk5";
             this.chk5.Size = new System.Drawing.Size(44, 28);
             this.chk5.TabIndex = 5;
@@ -324,7 +324,7 @@ namespace _4RTools.Forms
             this.chk4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk4.Image = global::_4RTools.Resources._4RTools.Icons.key_4;
             this.chk4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk4.Location = new System.Drawing.Point(165, 57);
+            this.chk4.Location = new System.Drawing.Point(171, 69);
             this.chk4.Name = "chk4";
             this.chk4.Size = new System.Drawing.Size(44, 28);
             this.chk4.TabIndex = 4;
@@ -338,7 +338,7 @@ namespace _4RTools.Forms
             this.chk3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk3.Image = global::_4RTools.Resources._4RTools.Icons.key_3;
             this.chk3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk3.Location = new System.Drawing.Point(115, 57);
+            this.chk3.Location = new System.Drawing.Point(119, 69);
             this.chk3.Name = "chk3";
             this.chk3.Size = new System.Drawing.Size(44, 28);
             this.chk3.TabIndex = 3;
@@ -352,7 +352,7 @@ namespace _4RTools.Forms
             this.chk2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk2.Image = global::_4RTools.Resources._4RTools.Icons.key_2;
             this.chk2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk2.Location = new System.Drawing.Point(64, 57);
+            this.chk2.Location = new System.Drawing.Point(66, 69);
             this.chk2.Name = "chk2";
             this.chk2.Size = new System.Drawing.Size(44, 28);
             this.chk2.TabIndex = 2;
@@ -366,7 +366,7 @@ namespace _4RTools.Forms
             this.chk1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk1.Image = global::_4RTools.Resources._4RTools.Icons.key_1;
             this.chk1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk1.Location = new System.Drawing.Point(15, 57);
+            this.chk1.Location = new System.Drawing.Point(15, 69);
             this.chk1.Name = "chk1";
             this.chk1.Size = new System.Drawing.Size(44, 28);
             this.chk1.TabIndex = 1;
@@ -380,7 +380,7 @@ namespace _4RTools.Forms
             this.chkM.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkM.Image = global::_4RTools.Resources._4RTools.Icons.key_m;
             this.chkM.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkM.Location = new System.Drawing.Point(315, 149);
+            this.chkM.Location = new System.Drawing.Point(327, 191);
             this.chkM.Name = "chkM";
             this.chkM.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkM.Size = new System.Drawing.Size(44, 28);
@@ -394,7 +394,7 @@ namespace _4RTools.Forms
             this.chkN.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkN.Image = global::_4RTools.Resources._4RTools.Icons.key_n;
             this.chkN.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkN.Location = new System.Drawing.Point(265, 149);
+            this.chkN.Location = new System.Drawing.Point(275, 191);
             this.chkN.Name = "chkN";
             this.chkN.Size = new System.Drawing.Size(44, 28);
             this.chkN.TabIndex = 24;
@@ -407,7 +407,7 @@ namespace _4RTools.Forms
             this.chkB.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkB.Image = global::_4RTools.Resources._4RTools.Icons.key_b;
             this.chkB.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkB.Location = new System.Drawing.Point(215, 149);
+            this.chkB.Location = new System.Drawing.Point(223, 191);
             this.chkB.Name = "chkB";
             this.chkB.Size = new System.Drawing.Size(44, 28);
             this.chkB.TabIndex = 23;
@@ -420,7 +420,7 @@ namespace _4RTools.Forms
             this.chkV.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkV.Image = global::_4RTools.Resources._4RTools.Icons.key_v;
             this.chkV.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkV.Location = new System.Drawing.Point(165, 149);
+            this.chkV.Location = new System.Drawing.Point(171, 191);
             this.chkV.Name = "chkV";
             this.chkV.Size = new System.Drawing.Size(44, 28);
             this.chkV.TabIndex = 22;
@@ -433,7 +433,7 @@ namespace _4RTools.Forms
             this.chkC.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkC.Image = global::_4RTools.Resources._4RTools.Icons.key_c;
             this.chkC.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkC.Location = new System.Drawing.Point(115, 149);
+            this.chkC.Location = new System.Drawing.Point(119, 191);
             this.chkC.Name = "chkC";
             this.chkC.Size = new System.Drawing.Size(44, 28);
             this.chkC.TabIndex = 21;
@@ -446,7 +446,7 @@ namespace _4RTools.Forms
             this.chkX.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkX.Image = global::_4RTools.Resources._4RTools.Icons.key_x;
             this.chkX.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkX.Location = new System.Drawing.Point(64, 149);
+            this.chkX.Location = new System.Drawing.Point(66, 191);
             this.chkX.Name = "chkX";
             this.chkX.Size = new System.Drawing.Size(44, 28);
             this.chkX.TabIndex = 20;
@@ -459,7 +459,7 @@ namespace _4RTools.Forms
             this.chkZ.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkZ.Image = global::_4RTools.Resources._4RTools.Icons.key_z;
             this.chkZ.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkZ.Location = new System.Drawing.Point(15, 149);
+            this.chkZ.Location = new System.Drawing.Point(15, 191);
             this.chkZ.Name = "chkZ";
             this.chkZ.Size = new System.Drawing.Size(44, 28);
             this.chkZ.TabIndex = 19;
@@ -472,7 +472,7 @@ namespace _4RTools.Forms
             this.chkL.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkL.Image = global::_4RTools.Resources._4RTools.Icons.key_l;
             this.chkL.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkL.Location = new System.Drawing.Point(415, 119);
+            this.chkL.Location = new System.Drawing.Point(431, 151);
             this.chkL.Name = "chkL";
             this.chkL.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkL.Size = new System.Drawing.Size(44, 28);
@@ -487,7 +487,7 @@ namespace _4RTools.Forms
             this.chkK.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkK.Image = global::_4RTools.Resources._4RTools.Icons.key_k;
             this.chkK.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkK.Location = new System.Drawing.Point(365, 119);
+            this.chkK.Location = new System.Drawing.Point(379, 151);
             this.chkK.Name = "chkK";
             this.chkK.Size = new System.Drawing.Size(44, 28);
             this.chkK.TabIndex = 16;
@@ -500,7 +500,7 @@ namespace _4RTools.Forms
             this.chkJ.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkJ.Image = global::_4RTools.Resources._4RTools.Icons.key_j;
             this.chkJ.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkJ.Location = new System.Drawing.Point(315, 119);
+            this.chkJ.Location = new System.Drawing.Point(327, 151);
             this.chkJ.Name = "chkJ";
             this.chkJ.Size = new System.Drawing.Size(44, 28);
             this.chkJ.TabIndex = 15;
@@ -513,7 +513,7 @@ namespace _4RTools.Forms
             this.chkH.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkH.Image = global::_4RTools.Resources._4RTools.Icons.key_h;
             this.chkH.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkH.Location = new System.Drawing.Point(265, 119);
+            this.chkH.Location = new System.Drawing.Point(275, 151);
             this.chkH.Name = "chkH";
             this.chkH.Size = new System.Drawing.Size(44, 28);
             this.chkH.TabIndex = 14;
@@ -526,7 +526,7 @@ namespace _4RTools.Forms
             this.chkG.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkG.Image = global::_4RTools.Resources._4RTools.Icons.key_g;
             this.chkG.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkG.Location = new System.Drawing.Point(215, 119);
+            this.chkG.Location = new System.Drawing.Point(223, 151);
             this.chkG.Name = "chkG";
             this.chkG.Size = new System.Drawing.Size(44, 28);
             this.chkG.TabIndex = 13;
@@ -539,7 +539,7 @@ namespace _4RTools.Forms
             this.chkF.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkF.Image = global::_4RTools.Resources._4RTools.Icons.key_f;
             this.chkF.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkF.Location = new System.Drawing.Point(165, 119);
+            this.chkF.Location = new System.Drawing.Point(171, 151);
             this.chkF.Name = "chkF";
             this.chkF.Size = new System.Drawing.Size(44, 28);
             this.chkF.TabIndex = 12;
@@ -552,7 +552,7 @@ namespace _4RTools.Forms
             this.chkD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkD.Image = global::_4RTools.Resources._4RTools.Icons.key_d;
             this.chkD.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkD.Location = new System.Drawing.Point(115, 119);
+            this.chkD.Location = new System.Drawing.Point(119, 151);
             this.chkD.Name = "chkD";
             this.chkD.Size = new System.Drawing.Size(44, 28);
             this.chkD.TabIndex = 11;
@@ -565,7 +565,7 @@ namespace _4RTools.Forms
             this.chkA.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkA.Image = global::_4RTools.Resources._4RTools.Icons.key_a;
             this.chkA.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkA.Location = new System.Drawing.Point(15, 119);
+            this.chkA.Location = new System.Drawing.Point(15, 151);
             this.chkA.Name = "chkA";
             this.chkA.Size = new System.Drawing.Size(44, 28);
             this.chkA.TabIndex = 10;
@@ -578,7 +578,7 @@ namespace _4RTools.Forms
             this.chkO.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkO.Image = global::_4RTools.Resources._4RTools.Icons.key_o;
             this.chkO.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkO.Location = new System.Drawing.Point(415, 89);
+            this.chkO.Location = new System.Drawing.Point(431, 111);
             this.chkO.Name = "chkO";
             this.chkO.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkO.Size = new System.Drawing.Size(44, 28);
@@ -592,7 +592,7 @@ namespace _4RTools.Forms
             this.chkI.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkI.Image = global::_4RTools.Resources._4RTools.Icons.key_i;
             this.chkI.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkI.Location = new System.Drawing.Point(365, 89);
+            this.chkI.Location = new System.Drawing.Point(379, 111);
             this.chkI.Name = "chkI";
             this.chkI.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkI.Size = new System.Drawing.Size(44, 28);
@@ -606,7 +606,7 @@ namespace _4RTools.Forms
             this.chkU.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkU.Image = global::_4RTools.Resources._4RTools.Icons.key_u;
             this.chkU.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkU.Location = new System.Drawing.Point(315, 89);
+            this.chkU.Location = new System.Drawing.Point(327, 111);
             this.chkU.Name = "chkU";
             this.chkU.Size = new System.Drawing.Size(44, 28);
             this.chkU.TabIndex = 7;
@@ -619,7 +619,7 @@ namespace _4RTools.Forms
             this.chkY.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkY.Image = global::_4RTools.Resources._4RTools.Icons.key_y;
             this.chkY.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkY.Location = new System.Drawing.Point(265, 89);
+            this.chkY.Location = new System.Drawing.Point(275, 111);
             this.chkY.Name = "chkY";
             this.chkY.Size = new System.Drawing.Size(44, 28);
             this.chkY.TabIndex = 6;
@@ -632,7 +632,7 @@ namespace _4RTools.Forms
             this.chkT.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkT.Image = global::_4RTools.Resources._4RTools.Icons.key_t;
             this.chkT.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkT.Location = new System.Drawing.Point(215, 89);
+            this.chkT.Location = new System.Drawing.Point(223, 111);
             this.chkT.Name = "chkT";
             this.chkT.Size = new System.Drawing.Size(44, 28);
             this.chkT.TabIndex = 5;
@@ -645,7 +645,7 @@ namespace _4RTools.Forms
             this.chkR.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkR.Image = global::_4RTools.Resources._4RTools.Icons.key_r;
             this.chkR.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkR.Location = new System.Drawing.Point(165, 89);
+            this.chkR.Location = new System.Drawing.Point(171, 111);
             this.chkR.Name = "chkR";
             this.chkR.Size = new System.Drawing.Size(44, 28);
             this.chkR.TabIndex = 4;
@@ -658,7 +658,7 @@ namespace _4RTools.Forms
             this.chkE.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkE.Image = global::_4RTools.Resources._4RTools.Icons.key_e;
             this.chkE.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkE.Location = new System.Drawing.Point(115, 89);
+            this.chkE.Location = new System.Drawing.Point(119, 111);
             this.chkE.Name = "chkE";
             this.chkE.Size = new System.Drawing.Size(44, 28);
             this.chkE.TabIndex = 3;
@@ -671,7 +671,7 @@ namespace _4RTools.Forms
             this.chkW.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkW.Image = global::_4RTools.Resources._4RTools.Icons.key_w;
             this.chkW.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkW.Location = new System.Drawing.Point(64, 89);
+            this.chkW.Location = new System.Drawing.Point(66, 111);
             this.chkW.Name = "chkW";
             this.chkW.Size = new System.Drawing.Size(44, 28);
             this.chkW.TabIndex = 2;
@@ -684,7 +684,7 @@ namespace _4RTools.Forms
             this.chkQ.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkQ.Image = global::_4RTools.Resources._4RTools.Icons.key_q;
             this.chkQ.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkQ.Location = new System.Drawing.Point(15, 89);
+            this.chkQ.Location = new System.Drawing.Point(15, 111);
             this.chkQ.Name = "chkQ";
             this.chkQ.Size = new System.Drawing.Size(44, 28);
             this.chkQ.TabIndex = 1;
@@ -712,7 +712,7 @@ namespace _4RTools.Forms
             this.chkS.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkS.Image = global::_4RTools.Resources._4RTools.Icons.key_s;
             this.chkS.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkS.Location = new System.Drawing.Point(64, 119);
+            this.chkS.Location = new System.Drawing.Point(66, 151);
             this.chkS.Name = "chkS";
             this.chkS.Size = new System.Drawing.Size(44, 28);
             this.chkS.TabIndex = 30;
@@ -884,9 +884,9 @@ namespace _4RTools.Forms
             // 
             this.keysDividerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
             this.keysDividerPanel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.keysDividerPanel.Location = new System.Drawing.Point(15, 47);
+            this.keysDividerPanel.Location = new System.Drawing.Point(15, 53);
             this.keysDividerPanel.Name = "keysDividerPanel";
-            this.keysDividerPanel.Size = new System.Drawing.Size(440, 2);
+            this.keysDividerPanel.Size = new System.Drawing.Size(456, 2);
             this.keysDividerPanel.TabIndex = 35;
             // 
             // GitHubButton

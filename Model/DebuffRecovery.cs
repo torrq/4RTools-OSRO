@@ -11,7 +11,6 @@ namespace _4RTools.Model
     public class DebuffRecovery : IAction
     {
         public static string ACTION_NAME_DEBUFF_RECOVERY = "DebuffsRecovery";
-        public static string ACTION_NAME_WEIGHT_DEBUFF_RECOVERY = "WeightDebuffsRecovery";
 
         private ThreadRunner thread;
         public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();

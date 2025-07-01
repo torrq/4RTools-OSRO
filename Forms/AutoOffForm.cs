@@ -2,9 +2,12 @@
 using _4RTools.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace _4RTools.Forms
 {
@@ -16,12 +19,14 @@ namespace _4RTools.Forms
         private bool isTimerRunning;
         private bool isInitializing; // Flag to prevent saving during initialization
         private const int MIN_MINUTES = 1; // 1 minute minimum
-        private const int ONE_HOUR = 60; // 1 hour in minutes
+        private const int ONE_HOUR = 60; // 1 hour in minutes\
+        private const int TWO_HOURS = 2 * 60; // 2 hours in minutes
         private const int THREE_HOURS = 3 * 60; // 3 hours in minutes
         private const int FOUR_HOURS = 4 * 60; // 4 hours in minutes
         private const int EIGHT_HOURS = 8 * 60; // 8 hours in minutes
         private readonly ToggleStateForm frmToggleApplication;
         private Button btnSet1Hours;
+        private Button btnSet2Hours;
         private Button btnSet3Hours;
         private Button btnSet4Hours;
         private Button btnSet8Hours;
@@ -30,6 +35,7 @@ namespace _4RTools.Forms
         private const string BUTTON_TIMER_START = "Start Timer";
         private const string BUTTON_TIMER_STOP = "Stop Timer";
         private const string BUTTON_SET_1H = "1h";
+        private const string BUTTON_SET_2H = "2h";
         private const string BUTTON_SET_3H = "3h";
         private const string BUTTON_SET_4H = "4h";
         private const string BUTTON_SET_8H = "8h";
@@ -38,9 +44,17 @@ namespace _4RTools.Forms
 
         private int MaxMinutes => AppConfig.ServerMode == 1 ? EIGHT_HOURS : FOUR_HOURS; // Dynamic maximum based on ServerMode
 
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
         public AutoOffForm(Subject subject, ToggleStateForm toggleStateForm)
         {
             InitializeComponent();
+
+            this.overweightKey.KeyDown += FormUtils.OnKeyDown;
+            this.overweightKey.KeyPress += FormUtils.OnKeyPress;
+            this.overweightKey.TextChanged += this.OverweightKey_TextChanged;
+
             subject.Attach(this);
 
             this.frmToggleApplication = toggleStateForm;
@@ -66,6 +80,7 @@ namespace _4RTools.Forms
             FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
             var dynamicButtonNames = new List<string>();
             if (btnSet1Hours != null) dynamicButtonNames.Add("btnSet1Hours");
+            if (btnSet2Hours != null) dynamicButtonNames.Add("btnSet2Hours");
             if (btnSet3Hours != null) dynamicButtonNames.Add("btnSet3Hours");
             if (btnSet4Hours != null) dynamicButtonNames.Add("btnSet4Hours");
             if (btnSet8Hours != null) dynamicButtonNames.Add("btnSet8Hours");
@@ -90,20 +105,23 @@ namespace _4RTools.Forms
             var potentialButtons = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
             if (AppConfig.ServerMode == 0)
             {
-                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 6, THREE_HOURS));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 8, FOUR_HOURS));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 7, THREE_HOURS));
+                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, TWO_HOURS));
                 potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
             }
             else if (AppConfig.ServerMode == 1)
             {
-                potentialButtons.Add(("btnSet8Hours", BUTTON_SET_8H, BtnSet8Hours_Click, 7, EIGHT_HOURS));
-                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 6, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 5, THREE_HOURS));
+                potentialButtons.Add(("btnSet8Hours", BUTTON_SET_8H, BtnSet8Hours_Click, 8, EIGHT_HOURS));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, FOUR_HOURS));
+                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, TWO_HOURS));
+                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
             }
             else
             {
-                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 6, THREE_HOURS));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 8, FOUR_HOURS));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 7, THREE_HOURS));
+                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, TWO_HOURS));
                 potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
             }
 
@@ -118,7 +136,7 @@ namespace _4RTools.Forms
                     Text = text,
                     Size = new Size(buttonWidth, buttonHeight),
                     Location = new Point(currentX - buttonWidth, buttonY),
-                    Cursor = Cursors.Hand,
+                    Cursor = System.Windows.Forms.Cursors.Hand,
                     FlatStyle = FlatStyle.Flat,
                     UseVisualStyleBackColor = true,
                     TabIndex = tabIndex
@@ -130,6 +148,7 @@ namespace _4RTools.Forms
                 if (name == "btnSet8Hours") btnSet8Hours = button;
                 else if (name == "btnSet4Hours") btnSet4Hours = button;
                 else if (name == "btnSet3Hours") btnSet3Hours = button;
+                else if (name == "btnSet2Hours") btnSet2Hours = button;
                 else if (name == "btnSet1Hours") btnSet1Hours = button;
             }
         }
@@ -139,10 +158,13 @@ namespace _4RTools.Forms
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
+                    ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
                     // Load auto-off time from new profile
                     LoadAutoOffTimeFromProfile();
                     btnToggleTimer.Text = BUTTON_TIMER_START;
                     FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+                    this.overweightKey.Text = prefs.OverweightKey.ToString();
+                    this.AutoOffOverweightCB.Checked = prefs.AutoOffOverweight;
                     break;
             }
         }
@@ -195,6 +217,17 @@ namespace _4RTools.Forms
         private void BtnSet1Hours_Click(object sender, EventArgs e)
         {
             selectedMinutes = Math.Min(ONE_HOUR, MaxMinutes);
+            trackBarTime.Value = selectedMinutes;
+            UpdateTimeLabel();
+            if (isTimerRunning)
+            {
+                StopTimer();
+            }
+        }
+
+        private void BtnSet2Hours_Click(object sender, EventArgs e)
+        {
+            selectedMinutes = Math.Min(TWO_HOURS, MaxMinutes);
             trackBarTime.Value = selectedMinutes;
             UpdateTimeLabel();
             if (isTimerRunning)
@@ -278,6 +311,7 @@ namespace _4RTools.Forms
                 autoOffTimer.Start();
                 isTimerRunning = true;
                 UpdateRemainingTimeLabel();
+                animatedClockImage.Image = _4RTools.Resources._4RTools.Icons.clock_animated;
                 int hours = selectedMinutes / 60;
                 int minutes = selectedMinutes % 60;
                 string timeText = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
@@ -292,6 +326,7 @@ namespace _4RTools.Forms
             remainingSeconds = 0;
             UpdateRemainingTimeLabel();
             btnToggleTimer.Text = BUTTON_TIMER_START;
+            animatedClockImage.Image = null;
             FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
         }
 
@@ -310,6 +345,7 @@ namespace _4RTools.Forms
                 {
                     frmToggleApplication.toggleStatus();
                     DebugLogger.Debug($"Auto-off timer stopped at {DateTime.Now:yyyy-MM-dd HH:mm:ss}. Set duration: {timeText} ({selectedMinutes} minutes). Timer running: {isTimerRunning}.");
+                    OverweightMacro.SendOverweightMacro("90", 2, 5000);
                 }
                 else
                 {
@@ -324,6 +360,7 @@ namespace _4RTools.Forms
             {
                 autoOffTimer?.Dispose();
                 btnSet1Hours?.Dispose();
+                btnSet2Hours?.Dispose();
                 btnSet3Hours?.Dispose();
                 btnSet4Hours?.Dispose();
                 btnSet8Hours?.Dispose();
@@ -335,5 +372,40 @@ namespace _4RTools.Forms
         {
 
         }
+
+        private void groupOverweight_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OverweightKey_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox txtBox = (TextBox)sender;
+                if (txtBox.Text.ToString() != string.Empty)
+                {
+                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
+                    ProfileSingleton.GetCurrent().UserPreferences.OverweightKey = key;
+                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error("Invalid key entered for OverweightKey: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unexpected error in OverweightKey_TextChanged: " + ex.Message);
+            }
+        }
+
+        private void AutoOffOverweight_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            ProfileSingleton.GetCurrent().UserPreferences.AutoOffOverweight = chk.Checked;
+            ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+        }
+
     }
 }

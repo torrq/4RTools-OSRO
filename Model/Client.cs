@@ -302,5 +302,32 @@ namespace _4RTools.Model
                 .Where(c => c.CurrentJobAddress == dto.JobAddressPointer)
                 .FirstOrDefault();
         }
+
+        public static bool IsClientWindowActive()
+        {
+            try
+            {
+                IntPtr activeWindowHandle = Interop.GetForegroundWindow();
+
+                uint activeProcessId;
+                Interop.GetWindowThreadProcessId(activeWindowHandle, out activeProcessId);
+
+                Process activeProcess = Process.GetProcessById((int)activeProcessId);
+                return activeProcess.ProcessName.Equals(ClientSingleton.GetClient().Process.ProcessName, StringComparison.OrdinalIgnoreCase);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static void SendKeysToClientIfActive(byte bVk, byte bScan, int dwFlags, int dwExtraInfo)
+        {
+            if (IsClientWindowActive())
+            {
+                Interop.keybd_event(bVk, bScan, dwFlags, dwExtraInfo);
+            }
+        }
+
     }
 }

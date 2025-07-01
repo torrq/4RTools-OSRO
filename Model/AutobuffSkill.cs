@@ -47,29 +47,6 @@ namespace _4RTools.Model
             }
         }
 
-        private static readonly Dictionary<Key, string> _sendKeysMap = new Dictionary<Key, string>()
-         {
-             { Key.D0, "0" },
-             { Key.D1, "1" },
-             { Key.D2, "2" },
-             { Key.D3, "3" },
-             { Key.D4, "4" },
-             { Key.D5, "5" },
-             { Key.D6, "6" },
-             { Key.D7, "7" },
-             { Key.D8, "8" },
-             { Key.D9, "9" }
-         };
-
-        private string ToSendKeysFormat(Key key)
-        {
-            if (_sendKeysMap.TryGetValue(key, out string value))
-            {
-                return value;
-            }
-            return key.ToString().ToLower();
-        }
-
         public ThreadRunner AutoBuffThread(Client c)
         {
             ThreadRunner autobuffItemThread = new ThreadRunner(_ =>
@@ -142,23 +119,7 @@ namespace _4RTools.Model
         private void HandleOverweightStatus(Client c, EffectStatusIDs status)
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
-            if (status == EffectStatusIDs.WEIGHT50 && prefs.OverweightMode == "overweight50")
-            {
-                // Corrected type cast to ToggleApplicationStateForm
-                var frmToggleApplication = (ToggleStateForm)Application.OpenForms["ToggleApplicationStateForm"];
-                if (frmToggleApplication != null)
-                {
-                    frmToggleApplication.toggleStatus();
-                    DebugLogger.Info("Overweight 50%, disable now");
-                    SendOverweightMacro(c, "50");
-                }
-                else
-                {
-                    DebugLogger.Error("HandleOverweightStatus: Could not find 'ToggleApplicationStateForm' to toggle status.");
-                }
-
-            }
-            else if (status == EffectStatusIDs.WEIGHT90 && prefs.OverweightMode == "overweight90")
+            if (status == EffectStatusIDs.WEIGHT90 && prefs.AutoOffOverweight)
             {
                 DebugLogger.Info("Overweight 90%, disable now");
                 // Corrected type cast to ToggleApplicationStateForm
@@ -166,7 +127,7 @@ namespace _4RTools.Model
                 if (frmToggleApplication != null)
                 {
                     frmToggleApplication.toggleStatus();
-                    SendOverweightMacro(c, "90");
+                    OverweightMacro.SendOverweightMacro("90", 2, 5000);
                 }
                 else
                 {
@@ -175,32 +136,6 @@ namespace _4RTools.Model
             }
         }
 
-        private void SendOverweightMacro(Client c, string percentage, int times = 2, int intervalMs = 5000)
-        {
-            ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
-            if (!string.IsNullOrEmpty(prefs.OverweightKey.ToString()) && prefs.OverweightKey.ToString() != "None")
-            {
-                // Set focus to the RO window
-                IntPtr handle = ClientSingleton.GetClient().Process.MainWindowHandle;
-                SetForegroundWindow(handle);
-
-                Thread.Sleep(1000);
-
-                string keyToSend = "%" + ToSendKeysFormat(prefs.OverweightKey);
-                for (int i = 0; i < times; i++)
-                {
-                    // Send the key combination
-                    System.Windows.Forms.SendKeys.SendWait(keyToSend);
-                    DebugLogger.Info($"Sent macro {i + 1}/{times}: Alt + {prefs.OverweightKey} (Overweight {percentage}%)");
-
-                    // Don't sleep after the last iteration
-                    if (i < times - 1)
-                    {
-                        Thread.Sleep(intervalMs);
-                    }
-                }
-            }
-        }
 
         private bool ShouldSkipBuffDueToQuag(bool foundQuag, EffectStatusIDs buffKey)
         {

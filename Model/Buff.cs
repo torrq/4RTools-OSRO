@@ -182,12 +182,11 @@ namespace _4RTools.Model
                 new Buff("Mild Wind (Holy)", EffectStatusIDs.ASPERSIO, Resources._4RTools.Icons.tk_mild_holy),
                 new Buff("Mild Wind (Shadow)", EffectStatusIDs.PROPERTYDARK, Resources._4RTools.Icons.tk_mild_shadow),
                 new Buff("Tumbling", EffectStatusIDs.DODGE_ON, Resources._4RTools.Icons.tumbling),
-                new Buff("Solar, Lunar, and Stellar Miracle", EffectStatusIDs.MIRACLE, Resources._4RTools.Icons.solar_miracle),
+                //new Buff("Solar, Lunar, and Stellar Miracle", EffectStatusIDs.MIRACLE, Resources._4RTools.Icons.solar_miracle),
                 new Buff("Solar, Lunar, and Stellar Warmth", EffectStatusIDs.WARM, Resources._4RTools.Icons.sun_warm),
                 new Buff("Comfort of the Sun", EffectStatusIDs.SUN_COMFORT, Resources._4RTools.Icons.sun_comfort),
                 new Buff("Comfort of the Moon", EffectStatusIDs.MOON_COMFORT, Resources._4RTools.Icons.moon_comfort),
                 new Buff("Comfort of the Stars", EffectStatusIDs.STAR_COMFORT, Resources._4RTools.Icons.star_comfort),
-                // "FUSION" buff doesn't yet exist on OSRO MR at least
                 //new Buff("Union of the Sun, Moon, and Stars", EffectStatusIDs.FUSION, Resources._4RTools.Icons.fusion),
                 new Buff("Kaupe", EffectStatusIDs.KAUPE, Resources._4RTools.Icons.kaupe),
                 new Buff("Kaite", EffectStatusIDs.KAITE, Resources._4RTools.Icons.kaite),
@@ -403,18 +402,6 @@ namespace _4RTools.Model
                 new Buff("Stone Curse (initial stage)", EffectStatusIDs.STONE, Resources._4RTools.Icons.stonecurse1),
                 new Buff("Stone Curse (petrified)", EffectStatusIDs.STONEWAIT, Resources._4RTools.Icons.stonecurse2),
                 new Buff("Stun", EffectStatusIDs.STUN, Resources._4RTools.Icons.stun),
-            };
-
-            return skills;
-        }
-
-        //--------------------- WEIGHT ------------------------------
-        public static List<Buff> GetWeightDebuffs()
-        {
-            List<Buff> skills = new List<Buff>
-            {
-                new Buff("Overweight (50%)", EffectStatusIDs.WEIGHT50, Resources._4RTools.Icons.weight50),
-                new Buff("Overweight (90%)", EffectStatusIDs.WEIGHT90, Resources._4RTools.Icons.weight90)
             };
 
             return skills;

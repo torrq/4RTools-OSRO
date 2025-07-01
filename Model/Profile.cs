@@ -20,7 +20,6 @@ namespace _4RTools.Model
         public AutoBuffItem AutobuffItem { get; set; }
         public StatusRecovery StatusRecovery { get; set; }
         public DebuffRecovery DebuffsRecovery { get; set; }
-        public DebuffRecovery WeightDebuffsRecovery { get; set; }
         public Macro SongMacro { get; set; }
         public Macro MacroSwitch { get; set; }
         public TransferHelper TransferHelper { get; set; }
@@ -42,7 +41,6 @@ namespace _4RTools.Model
             this.MacroSwitch = new Macro(Macro.ACTION_NAME_MACRO_SWITCH, MacroSwitchForm.TOTAL_MACRO_LANES);
             this.AtkDefMode = new ATKDEF(ATKDEFForm.TOTAL_ATKDEF_LANES);
             this.DebuffsRecovery = new DebuffRecovery("DebuffsRecovery");
-            this.WeightDebuffsRecovery = new DebuffRecovery("WeightDebuffsRecovery");
             this.TransferHelper = new TransferHelper();
         }
 
@@ -156,7 +154,6 @@ namespace _4RTools.Model
                     profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
                     profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
                     profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
-                    profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
                 }
             }
             catch (Exception ex)

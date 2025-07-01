@@ -9,12 +9,12 @@ namespace _4RTools.Model
 {
     internal class BuffRenderer
     {
-        private readonly int BUFFS_PER_ROW = 6;
+        private readonly int BUFFS_PER_ROW = 8;
         private readonly int DISTANCE_BETWEEN_CONTAINERS = 2;
         private readonly int DISTANCE_BETWEEN_ROWS = 28;
         private readonly int ICON_TEXT_SPACING = 27;
-        private readonly int ICON_SPACING = 93;
-        private readonly Size TEXTBOX_SIZE = new Size(60, 20);
+        private readonly int ICON_SPACING = 70;
+        private readonly Size TEXTBOX_SIZE = new Size(35, 20);
         private const int TEXTBOX_VERTICAL_ADJUSTMENT = 2;
 
         private readonly List<BuffContainer> _containers;

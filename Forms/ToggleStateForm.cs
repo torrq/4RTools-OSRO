@@ -21,6 +21,7 @@ namespace _4RTools.Forms
         {
             InitializeComponent();
 
+            this.Name = "ToggleApplicationStateForm";
             this.subject = subject;
             subject.Attach(this);
             KeyboardHook.Enable();

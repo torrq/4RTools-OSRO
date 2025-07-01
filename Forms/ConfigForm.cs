@@ -12,7 +12,7 @@ namespace _4RTools.Forms
     public partial class ConfigForm : Form, IObserver
     {
         private readonly Subject _subject;
-        private bool isInitializing = true; // Flag to prevent event firing during initialization
+        private bool isInitializing = true;
 
         public ConfigForm(Subject subject)
         {
@@ -37,9 +37,6 @@ namespace _4RTools.Forms
             this.ammoTrigger.KeyDown += FormUtils.OnKeyDown;
             this.ammoTrigger.KeyPress += FormUtils.OnKeyPress;
             this.ammoTrigger.TextChanged += this.TextAmmoTrigger_TextChanged;
-            this.overweightKey.KeyDown += FormUtils.OnKeyDown;
-            this.overweightKey.KeyPress += FormUtils.OnKeyPress;
-            this.overweightKey.TextChanged += this.OverweightKey_TextChanged;
 
             var newListBuff = ProfileSingleton.GetCurrent().UserPreferences.AutoBuffOrder;
             this.skillsListBox.MouseLeave += this.SkillsListBox_MouseLeave;
@@ -93,14 +90,6 @@ namespace _4RTools.Forms
                 this.ammo1textBox.Text = prefs.Ammo1Key.ToString();
                 this.ammo2textBox.Text = prefs.Ammo2Key.ToString();
                 this.ammoTrigger.Text = prefs.AmmoTriggerKey.ToString();
-                this.overweightKey.Text = prefs.OverweightKey.ToString();
-
-                RadioButton rdOverweightMode = (RadioButton)this.groupOverweight.Controls[ProfileSingleton.GetCurrent().UserPreferences.OverweightMode.ToString()];
-                if (rdOverweightMode != null)
-                {
-                    rdOverweightMode.Checked = true;
-                }
-                ;
 
                 // Reattach event handlers
                 this.chkStopBuffsOnCity.CheckedChanged += ChkStopBuffsOnCity_CheckedChanged;
@@ -260,51 +249,7 @@ namespace _4RTools.Forms
 
         }
 
-        private void OverweightKey_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != string.Empty)
-                {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
-                    ProfileSingleton.GetCurrent().UserPreferences.OverweightKey = key;
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                DebugLogger.Error("Invalid key entered for OverweightKey: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error("Unexpected error in OverweightKey_TextChanged: " + ex.Message);
-            }
-        }
-
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OverweightMode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (sender is RadioButton rb && rb.Checked)
-            {
-                if (!string.IsNullOrWhiteSpace(rb.Name))
-                {
-                    ProfileSingleton.GetCurrent().UserPreferences.OverweightMode = rb.Name;
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-                }
-            }
-        }
-
         private void groupSettings_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -385,14 +330,5 @@ namespace _4RTools.Forms
 
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
-        private void overweightAltKeyLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

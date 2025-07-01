@@ -17,7 +17,7 @@ namespace _4RTools.Forms
         private ToggleStateForm frmToggleApplication = new ToggleStateForm();
         private NotificationTrayManager trayManager;
         private DebugLogWindow debugLogWindow;
-        private bool isShuttingDown = false;
+        private bool isShuttingDown;
         private DebugLogger.LogMessageHandler debugLogHandler;
         private ProfileForm profileForm;
         private Font italicFont;
@@ -29,9 +29,7 @@ namespace _4RTools.Forms
         private int maxDropDownWidth = 150;
         private const string OFFLINE_TEXT = "OFFLINE";
         private CharacterInfo characterInfoForm;
-
-        // Mini-mode fields
-        private bool isMiniMode = false;
+        private bool isMiniMode;
         private Size fullModeClientSize;
         private Size miniModeClientSize;
 
@@ -47,51 +45,55 @@ namespace _4RTools.Forms
             InitializeComponent();
 
             // Initialize CharacterInfo form
-            this.characterInfoForm = new CharacterInfo();
-            this.characterInfoForm.TopLevel = false;
-            this.characterInfoForm.FormBorderStyle = FormBorderStyle.None;
-            this.characterInfoForm.Location = new Point(400, 6);
-            this.Controls.Add(this.characterInfoForm);
-            this.characterInfoForm.Show();
+            characterInfoForm = new CharacterInfo
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Location = new Point(400, 6)
+            };
+            Controls.Add(characterInfoForm);
+            characterInfoForm.Show();
 
             // Setup for Mini-Mode Toggle
-            this.fullModeClientSize = this.ClientSize;
-            this.miniModeClientSize = new Size(this.ClientSize.Width, this.btnToggleMiniMode.Bottom);
+            fullModeClientSize = ClientSize;
+            miniModeClientSize = new Size(ClientSize.Width, btnToggleMiniMode.Bottom);
 
-            this.regularFont = this.profileCB.Font;
-            this.italicFont = new Font(this.regularFont, FontStyle.Italic);
-            this.boldFont = new Font(this.regularFont, FontStyle.Bold);
-            float smallerFontSize = this.regularFont.Size - 1;
-            this.smallItalicFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Italic);
-            this.smallBoldFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Bold);
-            this.smallRegularFont = new Font(this.regularFont.FontFamily, smallerFontSize, FontStyle.Regular);
+            regularFont = profileCB.Font;
+            italicFont = new Font(regularFont, FontStyle.Italic);
+            boldFont = new Font(regularFont, FontStyle.Bold);
+            float smallerFontSize = regularFont.Size - 1;
+            smallItalicFont = new Font(regularFont.FontFamily, smallerFontSize, FontStyle.Italic);
+            smallBoldFont = new Font(regularFont.FontFamily, smallerFontSize, FontStyle.Bold);
+            smallRegularFont = new Font(regularFont.FontFamily, smallerFontSize, FontStyle.Regular);
 
-            this.profileCB.DrawMode = DrawMode.OwnerDrawFixed;
-            this.profileCB.DrawItem += new DrawItemEventHandler(this.profileCB_DrawItem);
+            profileCB.DrawMode = DrawMode.OwnerDrawFixed;
+            profileCB.DrawItem += ProfileCB_DrawItem;
 
-            this.processCB.DrawMode = DrawMode.OwnerDrawVariable;
-            this.processCB.ItemHeight = this.profileCB.ItemHeight;
-            this.processCB.DropDownWidth = this.maxDropDownWidth;
-            this.processCB.DropDownHeight = 150;
-            this.processCB.MeasureItem += new MeasureItemEventHandler(this.processCB_MeasureItem);
-            this.processCB.DrawItem += new DrawItemEventHandler(this.processCB_DrawItem);
-            this.processCB.DropDown += new EventHandler(this.ProcessCB_DropDown);
+            processCB.DrawMode = DrawMode.OwnerDrawVariable;
+            processCB.ItemHeight = profileCB.ItemHeight;
+            processCB.DropDownWidth = maxDropDownWidth;
+            processCB.DropDownHeight = 150;
+            processCB.MeasureItem += ProcessCB_MeasureItem;
+            processCB.DrawItem += processCB_DrawItem;
+            processCB.DropDown += ProcessCB_DropDown;
 
-            this.Text = AppConfig.WindowTitle;
+            Text = AppConfig.WindowTitle;
 
             Server.Initialize();
             clients.AddRange(Server.GetLocalClients());
 
             LoadServers(clients);
 
-            this.IsMdiContainer = true;
+            IsMdiContainer = true;
             SetBackGroundColorOfMDIForm();
 
             if (ConfigGlobal.GetConfig().DebugMode)
             {
                 DebugLogger.Info("DebugMode is true: Creating and showing DebugLogWindow");
-                debugLogWindow = new DebugLogWindow(this.Icon);
-                debugLogWindow.Owner = this;
+                debugLogWindow = new DebugLogWindow(Icon)
+                {
+                    Owner = this
+                };
                 debugLogWindow.Show();
                 SubscribeToDebugLogger();
 
@@ -129,22 +131,34 @@ namespace _4RTools.Forms
             {
                 this.isMiniMode = isMiniMode;
 
-                this.SuspendLayout();
+                SuspendLayout();
 
                 if (isMiniMode)
                 {
-                    this.atkDef.Visible = false;
-                    this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_more;
-                    this.ClientSize = this.miniModeClientSize;
+                    atkDef.Visible = false;
+                    btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_more;
+                    ClientSize = miniModeClientSize;
                 }
                 else
                 {
-                    this.atkDef.Visible = true;
-                    this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
-                    this.ClientSize = this.fullModeClientSize;
+                    atkDef.Visible = true;
+                    btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
+
+                    if (isMiniMode)
+                    {
+                        atkDef.Visible = false;
+                        btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_more;
+                        ClientSize = miniModeClientSize;
+                    }
+                    else
+                    {
+                        atkDef.Visible = true;
+                        btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
+                        ClientSize = fullModeClientSize;
+                    }
                 }
 
-                this.ResumeLayout(true);
+                ResumeLayout(true);
 
                 ConfigGlobal.GetConfig().MiniMode = isMiniMode;
                 ConfigGlobal.SaveConfig();
@@ -161,12 +175,12 @@ namespace _4RTools.Forms
             RefreshProcessList();
         }
 
-        private void profileCB_DrawItem(object sender, DrawItemEventArgs e)
+        private void ProfileCB_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
 
-            string itemText = this.profileCB.Items[e.Index].ToString();
-            Font font = itemText == "Default" ? this.italicFont : this.regularFont;
+            string itemText = profileCB.Items[e.Index].ToString();
+            Font font = itemText == "Default" ? italicFont : regularFont;
 
             Brush backgroundBrush;
             Brush foregroundBrush;
@@ -197,12 +211,11 @@ namespace _4RTools.Forms
             }
         }
 
-        private void processCB_MeasureItem(object sender, MeasureItemEventArgs e)
+        private void ProcessCB_MeasureItem(object sender, MeasureItemEventArgs e)
         {
             if (e.Index < 0) return;
 
-            var item = processCB.Items[e.Index] as ProcessDisplayItem;
-            if (item == null) return;
+            if (!(processCB.Items[e.Index] is ProcessDisplayItem item)) return;
 
             int lineHeight = processCB.Font.Height;
             e.ItemHeight = lineHeight * 2;
@@ -217,21 +230,21 @@ namespace _4RTools.Forms
 
                 if (isNotLoggedIn)
                 {
-                    float indent = 10;
-                    contextWidth = indent + g.MeasureString(OFFLINE_TEXT, this.smallItalicFont).Width;
+                    const float indent = 10;
+                    contextWidth = indent + g.MeasureString(OFFLINE_TEXT, smallItalicFont).Width;
                 }
                 else
                 {
-                    float indent = 10;
-                    float characterWidth = g.MeasureString(item.CharacterName, this.smallBoldFont).Width;
-                    float atWidth = g.MeasureString(" @ ", this.smallRegularFont).Width;
-                    float mapWidth = g.MeasureString(item.CurrentMap, this.smallRegularFont).Width;
+                    const float indent = 10;
+                    float characterWidth = g.MeasureString(item.CharacterName, smallBoldFont).Width;
+                    float atWidth = g.MeasureString(" @ ", smallRegularFont).Width;
+                    float mapWidth = g.MeasureString(item.CurrentMap, smallRegularFont).Width;
                     contextWidth = indent + characterWidth + atWidth + mapWidth;
                 }
 
                 float itemWidth = Math.Max(processWidth, contextWidth) + 2;
-                this.maxDropDownWidth = Math.Max(this.maxDropDownWidth, (int)itemWidth);
-                processCB.DropDownWidth = this.maxDropDownWidth;
+                maxDropDownWidth = Math.Max(maxDropDownWidth, (int)itemWidth);
+                processCB.DropDownWidth = maxDropDownWidth;
             }
         }
 
@@ -277,7 +290,7 @@ namespace _4RTools.Forms
             {
                 using (Brush offlineBrush = new SolidBrush(Color.Red))
                 {
-                    e.Graphics.DrawString(OFFLINE_TEXT, this.smallItalicFont, offlineBrush, xOffset, yOffset);
+                    e.Graphics.DrawString(OFFLINE_TEXT, smallItalicFont, offlineBrush, xOffset, yOffset);
                 }
             }
             else
@@ -285,19 +298,19 @@ namespace _4RTools.Forms
                 string characterText = item.CharacterName;
                 using (Brush characterBrush = new SolidBrush(AppConfig.CharacterColor))
                 {
-                    e.Graphics.DrawString(characterText, this.smallBoldFont, characterBrush, xOffset, yOffset);
-                    xOffset += e.Graphics.MeasureString(characterText, this.smallBoldFont).Width;
+                    e.Graphics.DrawString(characterText, smallBoldFont, characterBrush, xOffset, yOffset);
+                    xOffset += e.Graphics.MeasureString(characterText, smallBoldFont).Width;
                 }
 
                 using (Brush atBrush = new SolidBrush(Color.Black))
                 {
-                    e.Graphics.DrawString(" @ ", this.smallRegularFont, atBrush, xOffset, yOffset);
-                    xOffset += e.Graphics.MeasureString(" @ ", this.smallRegularFont).Width;
+                    e.Graphics.DrawString(" @ ", smallRegularFont, atBrush, xOffset, yOffset);
+                    xOffset += e.Graphics.MeasureString(" @ ", smallRegularFont).Width;
                 }
 
                 using (Brush mapBrush = new SolidBrush(AppConfig.MapColor))
                 {
-                    e.Graphics.DrawString(item.CurrentMap, this.smallRegularFont, mapBrush, xOffset, yOffset);
+                    e.Graphics.DrawString(item.CurrentMap, smallRegularFont, mapBrush, xOffset, yOffset);
                 }
             }
 

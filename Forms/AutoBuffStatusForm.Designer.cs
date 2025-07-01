@@ -35,7 +35,6 @@ namespace _4RTools.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DebuffsGP = new System.Windows.Forms.GroupBox();
             this.txtPanaceaKey = new System.Windows.Forms.TextBox();
-            this.WeightDebuffsGP = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +62,7 @@ namespace _4RTools.Forms
             this.DebuffsGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DebuffsGP.Location = new System.Drawing.Point(33, 52);
             this.DebuffsGP.Name = "DebuffsGP";
-            this.DebuffsGP.Size = new System.Drawing.Size(563, 29);
+            this.DebuffsGP.Size = new System.Drawing.Size(563, 184);
             this.DebuffsGP.TabIndex = 294;
             this.DebuffsGP.TabStop = false;
             this.DebuffsGP.Text = "Debuffs";
@@ -77,17 +76,6 @@ namespace _4RTools.Forms
             this.txtPanaceaKey.Size = new System.Drawing.Size(45, 25);
             this.txtPanaceaKey.TabIndex = 295;
             // 
-            // WeightDebuffsGP
-            // 
-            this.WeightDebuffsGP.AutoSize = true;
-            this.WeightDebuffsGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WeightDebuffsGP.Location = new System.Drawing.Point(33, 110);
-            this.WeightDebuffsGP.Name = "WeightDebuffsGP";
-            this.WeightDebuffsGP.Size = new System.Drawing.Size(563, 88);
-            this.WeightDebuffsGP.TabIndex = 298;
-            this.WeightDebuffsGP.TabStop = false;
-            this.WeightDebuffsGP.Text = "Overweight";
-            // 
             // AutoBuffStatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,7 +83,6 @@ namespace _4RTools.Forms
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(635, 248);
-            this.Controls.Add(this.WeightDebuffsGP);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtPanaceaKey);
             this.Controls.Add(this.DebuffsGP);
@@ -115,6 +102,5 @@ namespace _4RTools.Forms
         private System.Windows.Forms.GroupBox DebuffsGP;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtPanaceaKey;
-        private System.Windows.Forms.GroupBox WeightDebuffsGP;
     }
 }

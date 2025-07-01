@@ -41,12 +41,6 @@ namespace _4RTools.Forms
             this.ammoTriggerLabel = new System.Windows.Forms.Label();
             this.ammoTrigger = new System.Windows.Forms.TextBox();
             this.chkSoundEnabled = new System.Windows.Forms.CheckBox();
-            this.groupOverweight = new System.Windows.Forms.GroupBox();
-            this.overweightAltKeyLabel = new System.Windows.Forms.Label();
-            this.overweight50 = new System.Windows.Forms.RadioButton();
-            this.overweightKey = new System.Windows.Forms.TextBox();
-            this.overweightOff = new System.Windows.Forms.RadioButton();
-            this.overweight90 = new System.Windows.Forms.RadioButton();
             this.ammo2textBox = new System.Windows.Forms.TextBox();
             this.ammo1textBox = new System.Windows.Forms.TextBox();
             this.switchAmmoCheckBox = new System.Windows.Forms.CheckBox();
@@ -60,15 +54,12 @@ namespace _4RTools.Forms
             this.toolTipOverweightKey = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipWeight50 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipSwitchAmmoCB = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipAmmoTrigger = new System.Windows.Forms.ToolTip(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.groupSettings.SuspendLayout();
-            this.groupOverweight.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +93,6 @@ namespace _4RTools.Forms
             this.groupSettings.Controls.Add(this.ammoTriggerLabel);
             this.groupSettings.Controls.Add(this.ammoTrigger);
             this.groupSettings.Controls.Add(this.chkSoundEnabled);
-            this.groupSettings.Controls.Add(this.groupOverweight);
             this.groupSettings.Controls.Add(this.ammo2textBox);
             this.groupSettings.Controls.Add(this.ammo1textBox);
             this.groupSettings.Controls.Add(this.switchAmmoCheckBox);
@@ -168,91 +158,6 @@ namespace _4RTools.Forms
             this.toolTipchkSoundEnabled.SetToolTip(this.chkSoundEnabled, "Play sounds when toggling on and off");
             this.chkSoundEnabled.UseVisualStyleBackColor = true;
             this.chkSoundEnabled.CheckedChanged += new System.EventHandler(this.ChkSoundEnabled_CheckedChanged);
-            // 
-            // groupOverweight
-            // 
-            this.groupOverweight.Controls.Add(this.label1);
-            this.groupOverweight.Controls.Add(this.overweightAltKeyLabel);
-            this.groupOverweight.Controls.Add(this.overweight50);
-            this.groupOverweight.Controls.Add(this.overweightKey);
-            this.groupOverweight.Controls.Add(this.overweightOff);
-            this.groupOverweight.Controls.Add(this.overweight90);
-            this.groupOverweight.Location = new System.Drawing.Point(6, 226);
-            this.groupOverweight.Name = "groupOverweight";
-            this.groupOverweight.Size = new System.Drawing.Size(288, 109);
-            this.groupOverweight.TabIndex = 316;
-            this.groupOverweight.TabStop = false;
-            this.groupOverweight.Text = "Turn off when overweight";
-            this.groupOverweight.Enter += new System.EventHandler(this.GroupBox1_Enter);
-            // 
-            // overweightAltKeyLabel
-            // 
-            this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
-            this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyLabel.Location = new System.Drawing.Point(107, 76);
-            this.overweightAltKeyLabel.Name = "overweightAltKeyLabel";
-            this.overweightAltKeyLabel.Size = new System.Drawing.Size(107, 24);
-            this.overweightAltKeyLabel.TabIndex = 316;
-            this.overweightAltKeyLabel.Text = "Then send";
-            this.overweightAltKeyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.overweightAltKeyLabel.Click += new System.EventHandler(this.overweightAltKeyLabel_Click);
-            // 
-            // overweight50
-            // 
-            this.overweight50.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.overweight50.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweight50.ForeColor = System.Drawing.Color.Crimson;
-            this.overweight50.Image = global::_4RTools.Resources._4RTools.Icons.weight50;
-            this.overweight50.Location = new System.Drawing.Point(166, 30);
-            this.overweight50.Name = "overweight50";
-            this.overweight50.Size = new System.Drawing.Size(54, 40);
-            this.overweight50.TabIndex = 313;
-            this.overweight50.TabStop = true;
-            this.overweight50.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolTipWeight50.SetToolTip(this.overweight50, "Auto-disable when weight is over 50%");
-            this.overweight50.UseVisualStyleBackColor = true;
-            this.overweight50.CheckedChanged += new System.EventHandler(this.OverweightMode_CheckedChanged);
-            // 
-            // overweightKey
-            // 
-            this.overweightKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.overweightKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightKey.Location = new System.Drawing.Point(229, 76);
-            this.overweightKey.Name = "overweightKey";
-            this.overweightKey.Size = new System.Drawing.Size(49, 23);
-            this.overweightKey.TabIndex = 311;
-            this.toolTipOverweightKey.SetToolTip(this.overweightKey, "Alt-# macro to send when overweight. Tip: set this to your @aaoff macro in RO!");
-            this.overweightKey.TextChanged += new System.EventHandler(this.OverweightKey_TextChanged);
-            // 
-            // overweightOff
-            // 
-            this.overweightOff.AutoSize = true;
-            this.overweightOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.overweightOff.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightOff.Location = new System.Drawing.Point(45, 40);
-            this.overweightOff.Name = "overweightOff";
-            this.overweightOff.Size = new System.Drawing.Size(73, 20);
-            this.overweightOff.TabIndex = 315;
-            this.overweightOff.TabStop = true;
-            this.overweightOff.Text = "Disabled";
-            this.overweightOff.UseVisualStyleBackColor = true;
-            this.overweightOff.CheckedChanged += new System.EventHandler(this.OverweightMode_CheckedChanged);
-            // 
-            // overweight90
-            // 
-            this.overweight90.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.overweight90.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweight90.ForeColor = System.Drawing.Color.Crimson;
-            this.overweight90.Image = global::_4RTools.Resources._4RTools.Icons.weight90;
-            this.overweight90.Location = new System.Drawing.Point(228, 30);
-            this.overweight90.Name = "overweight90";
-            this.overweight90.Size = new System.Drawing.Size(54, 40);
-            this.overweight90.TabIndex = 314;
-            this.overweight90.TabStop = true;
-            this.toolTipWeight90.SetToolTip(this.overweight90, "Auto-disable when weight is over 90%");
-            this.overweight90.UseVisualStyleBackColor = true;
-            this.overweight90.CheckedChanged += new System.EventHandler(this.OverweightMode_CheckedChanged);
             // 
             // ammo2textBox
             // 
@@ -348,17 +253,6 @@ namespace _4RTools.Forms
             // 
             this.clientDTOBindingSource.DataSource = typeof(_4RTools.Model.ClientDTO);
             // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(212, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 24);
-            this.label1.TabIndex = 317;
-            this.label1.Text = "+";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,8 +269,6 @@ namespace _4RTools.Forms
             this.Text = "ConfigForm";
             this.groupSettings.ResumeLayout(false);
             this.groupSettings.PerformLayout();
-            this.groupOverweight.ResumeLayout(false);
-            this.groupOverweight.PerformLayout();
             this.groupGlobalSettings.ResumeLayout(false);
             this.groupGlobalSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).EndInit();
@@ -401,17 +293,10 @@ namespace _4RTools.Forms
         private ToolTip toolTipAmmo2;
         private ToolTip toolTipOverweightKey;
         private ToolTip toolTipchkStopBuffsOnCity;
-        private TextBox overweightKey;
-        private RadioButton overweight90;
-        private RadioButton overweight50;
-        private RadioButton overweightOff;
-        private GroupBox groupOverweight;
-        private Label overweightAltKeyLabel;
         private CheckBox chkSoundEnabled;
         private GroupBox groupGlobalSettings;
         private CheckBox chkDebugMode;
         private ToolTip toolTipReqRestart;
-        private ToolTip toolTipWeight50;
         private ToolTip toolTipWeight90;
         private ToolTip toolTipSwitchAmmoCB;
         private TextBox ammoTrigger;
@@ -420,6 +305,5 @@ namespace _4RTools.Forms
         private Label ammoTriggerLabel;
         private ToolTip toolTipAmmoTrigger;
         private ImageList imageList1;
-        private Label label1;
     }
 }
