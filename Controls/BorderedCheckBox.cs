@@ -2,140 +2,169 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using static _4RTools.Utils.DebugLogger;
 
 namespace _4RTools.Controls
 {
-    /// <summary>
-    /// A custom CheckBox control that manually paints itself to allow for a
-    /// colored border on the checkbox square itself, while preserving the image content.
-    /// </summary>
     public class BorderedCheckBox : CheckBox
     {
+        private const int BoxSize = 14;
+        private const int BoxMargin = 3;
+        private const int ImageOffsetX = 2;
+        private const int ImageOffsetY = -2;
+
         public BorderedCheckBox()
         {
-            // We will handle all painting to avoid flicker and gain full control.
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.TextAlign = ContentAlignment.MiddleLeft; // Ensures text/image is to the right of the box.
-            this.ThreeState = true; // Enable three-state by default, can be overridden
-            this.CheckStateChanged += BorderedCheckBox_CheckStateChanged; // Debug event
-            this.Size = new Size(20, 20); // Adjust control size to accommodate 14x14 box with padding
-        }
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint |
+                    ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
 
-        private void BorderedCheckBox_CheckStateChanged(object sender, System.EventArgs e)
-        {
-            DebugLogger.Log(LogLevel.DEBUG, $"BorderedCheckBox {this.Name} state changed to: {this.CheckState}");
+            TextAlign = ContentAlignment.MiddleLeft;
+            ThreeState = true;
+            Size = new Size(20, 20);
+
+            // Remove empty event handler since it's not being used
+            // CheckStateChanged += BorderedCheckBox_CheckStateChanged;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            // We don't call base.OnPaint(e) because we are drawing everything from scratch.
-            e.Graphics.Clear(this.BackColor);
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias; // Default smoothing for overall rendering
+            var graphics = e.Graphics;
+            graphics.Clear(BackColor);
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            // --- 1. Define Rectangles ---
-            // Fixed 14x14 pixel box, centered vertically
-            Rectangle boxRect = new Rectangle(3, (this.Height - 14) / 2, 14, 14);
-            Rectangle contentRect = new Rectangle(boxRect.Right, 0, this.Width - boxRect.Right, this.Height);
+            var boxRect = CalculateBoxRectangle();
+            var contentRect = CalculateContentRectangle(boxRect);
 
-            // --- 2. Determine Colors and State ---
-            Color borderColor;
-            Color fillColor = default;
-            Color markColor = Color.White; // Color of the checkmark or dash
+            DrawCheckBox(graphics, boxRect);
+            DrawImage(graphics, contentRect);
+            DrawFocusRectangle(graphics);
+        }
 
-            if (!this.Enabled)
+        private Rectangle CalculateBoxRectangle()
+        {
+            return new Rectangle(BoxMargin, (Height - BoxSize) / 2, BoxSize, BoxSize);
+        }
+
+        private Rectangle CalculateContentRectangle(Rectangle boxRect)
+        {
+            return new Rectangle(boxRect.Right, 0, Width - boxRect.Right, Height);
+        }
+
+        private void DrawCheckBox(Graphics graphics, Rectangle boxRect)
+        {
+            var (borderColor, fillColor, markColor) = GetColors();
+
+            // Fill background
+            using (var brush = new SolidBrush(fillColor))
             {
-                borderColor = AppConfig.CheckBoxDisabledBorderColor;
-                fillColor = AppConfig.CheckBoxDisabledBorderColor;
-                markColor = Color.FromArgb(150, 150, 150); // Slightly darker gray for disabled mark
+                graphics.FillRectangle(brush, boxRect);
             }
-            else
+
+            // Draw border
+            using (var pen = new Pen(borderColor, 1))
             {
-                switch (this.CheckState)
+                graphics.DrawRectangle(pen, boxRect);
+            }
+
+            // Draw check mark or indeterminate state
+            switch (CheckState)
+            {
+                case CheckState.Checked:
+                    DrawCheckMark(graphics, boxRect, markColor);
+                    break;
+                case CheckState.Indeterminate:
+                    DrawIndeterminateMark(graphics, boxRect);
+                    break;
+            }
+        }
+
+        private (Color borderColor, Color fillColor, Color markColor) GetColors()
+        {
+            if (!Enabled)
+            {
+                return (AppConfig.CheckBoxDisabledBorderColor,
+                       AppConfig.CheckBoxDisabledBorderColor,
+                       Color.FromArgb(150, 150, 150));
+            }
+
+            switch (CheckState)
+            {
+                case CheckState.Checked:
+                    return (AppConfig.CheckBoxCheckedBorderColor,
+                           AppConfig.CheckBoxCheckedBorderColor,
+                           Color.White);
+                case CheckState.Indeterminate:
+                    return (AppConfig.CheckBoxIndeterminateBorderColor,
+                           AppConfig.CheckBoxIndeterminateBorderColor,
+                           Color.White);
+                default:
+                    return (AppConfig.CheckBoxUncheckedBorderColor, Color.White, Color.White);
+            }
+        }
+
+        private static void DrawCheckMark(Graphics graphics, Rectangle boxRect, Color markColor)
+        {
+            using (var pen = new Pen(markColor, 2))
+            {
+                var points = new[]
                 {
-                    case CheckState.Checked:
-                        borderColor = AppConfig.CheckBoxCheckedBorderColor;
-                        fillColor = AppConfig.CheckBoxCheckedBorderColor;
-                        break;
-                    case CheckState.Indeterminate:
-                        borderColor = AppConfig.CheckBoxIndeterminateBorderColor;
-                        fillColor = AppConfig.CheckBoxIndeterminateBorderColor;
-                        break;
-                    default: // Unchecked
-                        borderColor = AppConfig.CheckBoxUncheckedBorderColor;
-                        fillColor = Color.White;
-                        break;
-                }
+                    new Point(boxRect.Left + 3, boxRect.Top + 6),
+                    new Point(boxRect.Left + 6, boxRect.Top + 9),
+                    new Point(boxRect.Left + 10, boxRect.Top + 4)
+                };
+                graphics.DrawLines(pen, points);
             }
+        }
 
-            // --- 3. Draw the CheckBox Box and Mark ---
-            // Draw the background fill of the box.
-            using (SolidBrush b = new SolidBrush(fillColor))
+        private static void DrawIndeterminateMark(Graphics graphics, Rectangle boxRect)
+        {
+            var originalMode = graphics.SmoothingMode;
+            graphics.SmoothingMode = SmoothingMode.None;
+
+            const int dashWidth = 8;
+            const int dashHeight = 2;
+            var dashX = boxRect.Left + (boxRect.Width - dashWidth) / 2;
+            var dashY = boxRect.Top + (boxRect.Height - dashHeight) / 2;
+            var dashRect = new Rectangle(dashX, dashY, dashWidth, dashHeight);
+
+            using (var dashBrush = new SolidBrush(Color.White))
             {
-                e.Graphics.FillRectangle(b, boxRect);
+                graphics.FillRectangle(dashBrush, dashRect);
             }
 
-            // Draw the border of the box.
-            using (Pen p = new Pen(borderColor, 1))
+            graphics.SmoothingMode = originalMode;
+        }
+
+        private void DrawImage(Graphics graphics, Rectangle contentRect)
+        {
+            if (Image == null) return;
+
+            var imageX = contentRect.X;
+            var imageY = contentRect.Y;
+
+            if (ImageAlign == ContentAlignment.BottomCenter)
             {
-                e.Graphics.DrawRectangle(p, boxRect);
+                imageX = contentRect.X + (contentRect.Width - Image.Width) / 2;
+                imageY = contentRect.Bottom - Image.Height;
             }
 
-            // Draw the checkmark for Checked state
-            if (this.CheckState == CheckState.Checked)
+            graphics.DrawImage(Image, imageX + ImageOffsetX, imageY + ImageOffsetY);
+        }
+
+        private void DrawFocusRectangle(Graphics graphics)
+        {
+            if (Focused && ShowFocusCues)
             {
-                using (Pen p = new Pen(markColor, 2))
-                {
-                    e.Graphics.DrawLines(p, new Point[] {
-                        new Point(boxRect.Left + 3, boxRect.Top + 6),
-                        new Point(boxRect.Left + 6, boxRect.Top + 9),
-                        new Point(boxRect.Left + 10, boxRect.Top + 4)
-                    });
-                }
+                ControlPaint.DrawFocusRectangle(graphics, ClientRectangle);
             }
-            // Draw dash for Indeterminate state
-            else if (this.CheckState == CheckState.Indeterminate)
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                // Temporarily disable smoothing for sharp edges
-                SmoothingMode originalMode = e.Graphics.SmoothingMode;
-                e.Graphics.SmoothingMode = SmoothingMode.None;
-
-                // Draw a centered horizontal white dash on orange background
-                int dashWidth = 8; // Fixed width to fit 14x14 box
-                int dashHeight = 2; // Thin dash height
-                int dashX = boxRect.Left + (boxRect.Width - dashWidth) / 2; // Centered horizontally
-                int dashY = boxRect.Top + (boxRect.Height - dashHeight) / 2; // Centered vertically
-                Rectangle dashRect = new Rectangle(dashX, dashY, dashWidth, dashHeight);
-
-                using (SolidBrush dashBrush = new SolidBrush(Color.White))
-                {
-                    e.Graphics.FillRectangle(dashBrush, dashRect);
-                }
-
-                // Restore original smoothing mode
-                e.Graphics.SmoothingMode = originalMode;
+                // Clean up any managed resources if needed in the future
             }
-
-            // --- 4. Draw the Content (Image) ---
-            if (this.Image != null)
-            {
-                int imageX = contentRect.X;
-                int imageY = contentRect.Y;
-
-                if (this.ImageAlign == ContentAlignment.BottomCenter)
-                {
-                    imageX = contentRect.X + (contentRect.Width - this.Image.Width) / 2;
-                    imageY = contentRect.Bottom - this.Image.Height;
-                }
-
-                e.Graphics.DrawImage(this.Image, imageX +2, imageY - 2);
-            }
-
-            // --- 5. Draw Focus Rectangle ---
-            if (this.Focused && this.ShowFocusCues)
-            {
-                ControlPaint.DrawFocusRectangle(e.Graphics, this.ClientRectangle);
-            }
+            base.Dispose(disposing);
         }
     }
 }

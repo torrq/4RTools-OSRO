@@ -787,25 +787,6 @@ namespace _4RTools.Forms
             }
         }
 
-        private class ProcessDisplayItem
-        {
-            public string ProcessText { get; }
-            public string CharacterName { get; }
-            public string CurrentMap { get; }
-
-            public ProcessDisplayItem(string processText, string characterName, string currentMap)
-            {
-                ProcessText = processText;
-                CharacterName = characterName;
-                CurrentMap = currentMap;
-            }
-
-            public override string ToString()
-            {
-                return ProcessText;
-            }
-        }
-
         #region Frames
 
         public ToggleStateForm SetToggleApplicationStateWindow()

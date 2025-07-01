@@ -13,23 +13,7 @@ namespace _4RTools.Forms
 {
     public partial class AutoOffForm : Form, IObserver
     {
-        private readonly System.Windows.Forms.Timer autoOffTimer;
-        private int selectedMinutes;
-        private int remainingSeconds; // Track remaining time in seconds for precision
-        private bool isTimerRunning;
-        private bool isInitializing; // Flag to prevent saving during initialization
-        private const int MIN_MINUTES = 1; // 1 minute minimum
-        private const int ONE_HOUR = 60; // 1 hour in minutes\
-        private const int TWO_HOURS = 2 * 60; // 2 hours in minutes
-        private const int THREE_HOURS = 3 * 60; // 3 hours in minutes
-        private const int FOUR_HOURS = 4 * 60; // 4 hours in minutes
-        private const int EIGHT_HOURS = 8 * 60; // 8 hours in minutes
-        private readonly ToggleStateForm frmToggleApplication;
-        private Button btnSet1Hours;
-        private Button btnSet2Hours;
-        private Button btnSet3Hours;
-        private Button btnSet4Hours;
-        private Button btnSet8Hours;
+        #region Constants
         private const string LABEL_REMAINING_TIME_TEXT = "Remaining Time:";
         private const string LABEL_REMAINING_TIME_STOPPED_TEXT = "Timer Stopped";
         private const string BUTTON_TIMER_START = "Start Timer";
@@ -41,12 +25,29 @@ namespace _4RTools.Forms
         private const string BUTTON_SET_8H = "8h";
         private const string ERROR_NOT_ACTIVE_TITLE = "Can't start auto-off timer";
         private const string ERROR_NOT_ACTIVE = "Sorry!\nMacro must be active first!";
+        #endregion
 
-        private int MaxMinutes => AppConfig.ServerMode == 1 ? EIGHT_HOURS : FOUR_HOURS; // Dynamic maximum based on ServerMode
+        #region Private Fields
+        private readonly AutoOff autoOffModel;
+        private readonly ToggleStateForm frmToggleApplication;
+        private Button btnSet1Hours;
+        private Button btnSet2Hours;
+        private Button btnSet3Hours;
+        private Button btnSet4Hours;
+        private Button btnSet8Hours;
+        #endregion
+
+        #region Public Properties
+        /// <summary>
+        /// Gets the AutoOff model instance for external control
+        /// </summary>
+        public AutoOff AutoOffModel => autoOffModel;
+        #endregion
 
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
+        #region Constructor
         public AutoOffForm(Subject subject, ToggleStateForm toggleStateForm)
         {
             InitializeComponent();
@@ -56,148 +57,137 @@ namespace _4RTools.Forms
             this.overweightKey.TextChanged += this.OverweightKey_TextChanged;
 
             subject.Attach(this);
-
             this.frmToggleApplication = toggleStateForm;
 
+            // Initialize the AutoOff model
+            autoOffModel = new AutoOff();
+
+            // Subscribe to model events
+            autoOffModel.TimerStarted += AutoOffModel_TimerStarted;
+            autoOffModel.TimerStopped += AutoOffModel_TimerStopped;
+            autoOffModel.TimerTick += AutoOffModel_TimerTick;
+            autoOffModel.TimerCompleted += AutoOffModel_TimerCompleted;
+
             // Set trackbar maximum dynamically based on ServerMode
-            trackBarTime.Maximum = MaxMinutes;
-
-            // Initialize timer
-            autoOffTimer = new System.Windows.Forms.Timer();
-            autoOffTimer.Interval = 1000; // 1-second interval for countdown
-            autoOffTimer.Tick += AutoOffTimer_Tick;
-
-            // Prevent saving to profile during initialization
-            isInitializing = true;
-
-            // Load initial auto-off time from profile
-            LoadAutoOffTimeFromProfile();
+            trackBarTime.Maximum = autoOffModel.MaxMinutes;
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
 
             // Create dynamic buttons
             CreateDynamicButtons();
 
-            // Apply colors to buttons
-            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
-            var dynamicButtonNames = new List<string>();
-            if (btnSet1Hours != null) dynamicButtonNames.Add("btnSet1Hours");
-            if (btnSet2Hours != null) dynamicButtonNames.Add("btnSet2Hours");
-            if (btnSet3Hours != null) dynamicButtonNames.Add("btnSet3Hours");
-            if (btnSet4Hours != null) dynamicButtonNames.Add("btnSet4Hours");
-            if (btnSet8Hours != null) dynamicButtonNames.Add("btnSet8Hours");
-            FormUtils.ApplyColorToButtons(this, dynamicButtonNames.ToArray(), AppConfig.CopyButtonBackColor);
+            // Apply colors to form elements
+            ApplyFormColors();
 
-            // Initialization complete, allow saving
-            isInitializing = false;
+            // Initialize UI
+            UpdateUI();
+        }
+        #endregion
+
+        #region Model Event Handlers
+        private void AutoOffModel_TimerStarted(object sender, AutoOffEventArgs e)
+        {
+            btnToggleTimer.Text = BUTTON_TIMER_STOP;
+            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.ResetButtonBackColor);
+            animatedClockImage.Image = _4RTools.Resources._4RTools.Icons.clock_animated;
+            UpdateUI();
         }
 
-        private void CreateDynamicButtons()
+        private void AutoOffModel_TimerStopped(object sender, AutoOffEventArgs e)
         {
-            int buttonWidth = 35;
-            int buttonHeight = 24;
-            int buttonSpacing = 4;
-            int rightMargin = 12;
-            int buttonY = btnToggleTimer.Location.Y;
-            int currentX = ClientSize.Width - rightMargin;
+            btnToggleTimer.Text = BUTTON_TIMER_START;
+            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+            animatedClockImage.Image = null;
+            UpdateUI();
+        }
 
-            var buttonsToCreate = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
+        private void AutoOffModel_TimerTick(object sender, AutoOffEventArgs e)
+        {
+            UpdateUI();
+        }
 
-            // Define buttons based on ServerMode, but only add those within MaxMinutes
-            var potentialButtons = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
-            if (AppConfig.ServerMode == 0)
+        private void AutoOffModel_TimerCompleted(object sender, AutoOffEventArgs e)
+        {
+            if (frmToggleApplication != null)
             {
-                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 8, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 7, THREE_HOURS));
-                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, TWO_HOURS));
-                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
-            }
-            else if (AppConfig.ServerMode == 1)
-            {
-                potentialButtons.Add(("btnSet8Hours", BUTTON_SET_8H, BtnSet8Hours_Click, 8, EIGHT_HOURS));
-                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, FOUR_HOURS));
-                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, TWO_HOURS));
-                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
+                frmToggleApplication.toggleStatus();
+                OverweightMacro.SendOverweightMacro("90", 2, 5000);
             }
             else
             {
-                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 8, FOUR_HOURS));
-                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 7, THREE_HOURS));
-                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, TWO_HOURS));
-                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, ONE_HOUR));
-            }
-
-            // Filter buttons to only include those within MaxMinutes
-            buttonsToCreate.AddRange(potentialButtons.Where(b => b.Minutes <= MaxMinutes));
-
-            foreach (var (name, text, handler, tabIndex, minutes) in buttonsToCreate)
-            {
-                var button = new Button
-                {
-                    Name = name,
-                    Text = text,
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Location = new Point(currentX - buttonWidth, buttonY),
-                    Cursor = System.Windows.Forms.Cursors.Hand,
-                    FlatStyle = FlatStyle.Flat,
-                    UseVisualStyleBackColor = true,
-                    TabIndex = tabIndex
-                };
-                button.Click += handler;
-                Controls.Add(button);
-                currentX -= buttonWidth + buttonSpacing;
-
-                if (name == "btnSet8Hours") btnSet8Hours = button;
-                else if (name == "btnSet4Hours") btnSet4Hours = button;
-                else if (name == "btnSet3Hours") btnSet3Hours = button;
-                else if (name == "btnSet2Hours") btnSet2Hours = button;
-                else if (name == "btnSet1Hours") btnSet1Hours = button;
+                DebugLogger.Error("AutoOffForm: Could not find 'ToggleApplicationStateForm' to toggle status.");
             }
         }
+        #endregion
 
+        #region Public Methods
+        /// <summary>
+        /// Stops the auto-off timer from external code
+        /// </summary>
+        public void StopAutoOffTimer()
+        {
+            autoOffModel.StopTimer();
+        }
+
+        /// <summary>
+        /// Starts the auto-off timer from external code (if application is active)
+        /// </summary>
+        public bool StartAutoOffTimer()
+        {
+            if (!frmToggleApplication.IsApplicationOn())
+            {
+                return false;
+            }
+            return autoOffModel.StartTimer();
+        }
+
+        /// <summary>
+        /// Gets whether the auto-off timer is currently running
+        /// </summary>
+        public bool IsAutoOffTimerRunning()
+        {
+            return autoOffModel.IsTimerRunning;
+        }
+
+        /// <summary>
+        /// Sets the auto-off time in minutes
+        /// </summary>
+        public void SetAutoOffTime(int minutes)
+        {
+            autoOffModel.SetTime(minutes);
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
+        }
+        #endregion
+
+        #region Observer Pattern
         public void Update(ISubject subject)
         {
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
                     ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
-                    // Load auto-off time from new profile
-                    LoadAutoOffTimeFromProfile();
-                    btnToggleTimer.Text = BUTTON_TIMER_START;
-                    FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+                    autoOffModel.LoadFromProfile();
+                    trackBarTime.Value = autoOffModel.SelectedMinutes;
+                    UpdateUI();
                     this.overweightKey.Text = prefs.OverweightKey.ToString();
                     this.AutoOffOverweightCB.Checked = prefs.AutoOffOverweight;
                     break;
             }
         }
+        #endregion
 
-        // Public method to load auto-off time from profile
-        public void LoadAutoOffTimeFromProfile()
-        {
-            int profileAutoOffTime = ProfileSingleton.GetCurrent().UserPreferences.AutoOffTime;
-            // Validate against MIN_MINUTES and MaxMinutes
-            selectedMinutes = Math.Max(MIN_MINUTES, Math.Min(profileAutoOffTime, MaxMinutes));
-            trackBarTime.Value = selectedMinutes;
-            StopTimer(); // Ensure timer is stopped to avoid conflicts
-            UpdateTimeLabel();
-        }
-
+        #region UI Event Handlers
         private void TrackBarTime_Scroll(object sender, EventArgs e)
         {
-            selectedMinutes = Math.Min(trackBarTime.Value, MaxMinutes); // Ensure within bounds
-            UpdateTimeLabel();
-            if (isTimerRunning)
-            {
-                StopTimer();
-                //StartTimer();
-            }
+            autoOffModel.SetTime(trackBarTime.Value);
+            UpdateUI();
         }
 
         private void BtnToggleTimer_Click(object sender, EventArgs e)
         {
-            if (isTimerRunning)
+            if (autoOffModel.IsTimerRunning)
             {
-                StopTimer();
-                btnToggleTimer.Text = BUTTON_TIMER_START;
-                FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+                autoOffModel.StopTimer();
             }
             else
             {
@@ -207,175 +197,44 @@ namespace _4RTools.Forms
                 }
                 else
                 {
-                    StartTimer();
-                    btnToggleTimer.Text = BUTTON_TIMER_STOP;
-                    FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.ResetButtonBackColor);
+                    autoOffModel.StartTimer();
                 }
             }
         }
 
         private void BtnSet1Hours_Click(object sender, EventArgs e)
         {
-            selectedMinutes = Math.Min(ONE_HOUR, MaxMinutes);
-            trackBarTime.Value = selectedMinutes;
-            UpdateTimeLabel();
-            if (isTimerRunning)
-            {
-                StopTimer();
-            }
+            autoOffModel.SetTimeToOneHour();
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
         }
 
         private void BtnSet2Hours_Click(object sender, EventArgs e)
         {
-            selectedMinutes = Math.Min(TWO_HOURS, MaxMinutes);
-            trackBarTime.Value = selectedMinutes;
-            UpdateTimeLabel();
-            if (isTimerRunning)
-            {
-                StopTimer();
-            }
+            autoOffModel.SetTimeToTwoHours();
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
         }
 
         private void BtnSet3Hours_Click(object sender, EventArgs e)
         {
-            selectedMinutes = Math.Min(THREE_HOURS, MaxMinutes);
-            trackBarTime.Value = selectedMinutes;
-            UpdateTimeLabel();
-            if (isTimerRunning)
-            {
-                StopTimer();
-            }
+            autoOffModel.SetTimeToThreeHours();
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
         }
 
         private void BtnSet4Hours_Click(object sender, EventArgs e)
         {
-            selectedMinutes = Math.Min(FOUR_HOURS, MaxMinutes);
-            trackBarTime.Value = selectedMinutes;
-            UpdateTimeLabel();
-            if (isTimerRunning)
-            {
-                StopTimer();
-            }
+            autoOffModel.SetTimeToFourHours();
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
         }
 
         private void BtnSet8Hours_Click(object sender, EventArgs e)
         {
-            selectedMinutes = Math.Min(EIGHT_HOURS, MaxMinutes);
-            trackBarTime.Value = selectedMinutes;
-            UpdateTimeLabel();
-            if (isTimerRunning)
-            {
-                StopTimer();
-            }
-        }
-
-        private void UpdateTimeLabel()
-        {
-            int hours = selectedMinutes / 60;
-            int minutes = selectedMinutes % 60;
-            string timeText = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
-            lblSelectedTime.Text = $"{timeText}";
-            UpdateRemainingTimeLabel();
-            if (!isInitializing && selectedMinutes > 0)
-            {
-                ProfileSingleton.GetCurrent().UserPreferences.AutoOffTime = selectedMinutes;
-                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-            }
-        }
-
-        private void UpdateRemainingTimeLabel()
-        {
-            if (isTimerRunning)
-            {
-                int remainingMinutes = (remainingSeconds + 59) / 60; // Ceiling to ensure accurate minute display
-                int hours = remainingMinutes / 60;
-                int minutes = remainingMinutes % 60;
-                string timeText = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
-                lblRemainingTime.Text = $"{timeText}";
-                lblRemainingTimeText.Text = LABEL_REMAINING_TIME_TEXT;
-                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
-            }
-            else
-            {
-                lblRemainingTime.Text = "";
-                lblRemainingTimeText.Text = LABEL_REMAINING_TIME_STOPPED_TEXT;
-                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
-            }
-        }
-
-        private void StartTimer()
-        {
-            if (selectedMinutes >= MIN_MINUTES && selectedMinutes <= MaxMinutes)
-            {
-                remainingSeconds = selectedMinutes * 60; // Convert to seconds for countdown
-                autoOffTimer.Start();
-                isTimerRunning = true;
-                UpdateRemainingTimeLabel();
-                animatedClockImage.Image = _4RTools.Resources._4RTools.Icons.clock_animated;
-                int hours = selectedMinutes / 60;
-                int minutes = selectedMinutes % 60;
-                string timeText = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
-                DebugLogger.Debug($"Auto-off timer started at {DateTime.Now:yyyy-MM-dd HH:mm:ss}. Set duration: {timeText} ({selectedMinutes} minutes). Timer running: {isTimerRunning}.");
-            }
-        }
-
-        private void StopTimer()
-        {
-            autoOffTimer.Stop();
-            isTimerRunning = false;
-            remainingSeconds = 0;
-            UpdateRemainingTimeLabel();
-            btnToggleTimer.Text = BUTTON_TIMER_START;
-            animatedClockImage.Image = null;
-            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
-        }
-
-        private void AutoOffTimer_Tick(object sender, EventArgs e)
-        {
-            remainingSeconds--;
-            UpdateRemainingTimeLabel();
-            if (remainingSeconds <= 0)
-            {
-                int hours = selectedMinutes / 60;
-                int minutes = selectedMinutes % 60;
-                string timeText = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
-                StopTimer();
-
-                if (frmToggleApplication != null)
-                {
-                    frmToggleApplication.toggleStatus();
-                    DebugLogger.Debug($"Auto-off timer stopped at {DateTime.Now:yyyy-MM-dd HH:mm:ss}. Set duration: {timeText} ({selectedMinutes} minutes). Timer running: {isTimerRunning}.");
-                    OverweightMacro.SendOverweightMacro("90", 2, 5000);
-                }
-                else
-                {
-                    DebugLogger.Error("AutoOffForm: Could not find 'ToggleApplicationStateForm' to toggle status.");
-                }
-            }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                autoOffTimer?.Dispose();
-                btnSet1Hours?.Dispose();
-                btnSet2Hours?.Dispose();
-                btnSet3Hours?.Dispose();
-                btnSet4Hours?.Dispose();
-                btnSet8Hours?.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void AutoOffForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupOverweight_Enter(object sender, EventArgs e)
-        {
-
+            autoOffModel.SetTimeToEightHours();
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
         }
 
         private void OverweightKey_TextChanged(object sender, EventArgs e)
@@ -406,6 +265,127 @@ namespace _4RTools.Forms
             ProfileSingleton.GetCurrent().UserPreferences.AutoOffOverweight = chk.Checked;
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
         }
+        #endregion
 
+        #region Private Methods
+        private void UpdateUI()
+        {
+            lblSelectedTime.Text = autoOffModel.SelectedTimeText;
+
+            if (autoOffModel.IsTimerRunning)
+            {
+                lblRemainingTime.Text = autoOffModel.RemainingTimeText;
+                lblRemainingTimeText.Text = LABEL_REMAINING_TIME_TEXT;
+                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
+            }
+            else
+            {
+                lblRemainingTime.Text = "";
+                lblRemainingTimeText.Text = LABEL_REMAINING_TIME_STOPPED_TEXT;
+                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
+            }
+        }
+
+        private void CreateDynamicButtons()
+        {
+            int buttonWidth = 35;
+            int buttonHeight = 24;
+            int buttonSpacing = 4;
+            int rightMargin = 12;
+            int buttonY = btnToggleTimer.Location.Y;
+            int currentX = ClientSize.Width - rightMargin;
+
+            var buttonsToCreate = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
+
+            // Define buttons based on ServerMode, but only add those within MaxMinutes
+            var potentialButtons = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
+            if (AppConfig.ServerMode == 0)
+            {
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 8, 4 * 60));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 7, 3 * 60));
+                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, 2 * 60));
+                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, 1 * 60));
+            }
+            else if (AppConfig.ServerMode == 1)
+            {
+                potentialButtons.Add(("btnSet8Hours", BUTTON_SET_8H, BtnSet8Hours_Click, 8, 8 * 60));
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, 4 * 60));
+                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, 2 * 60));
+                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, 1 * 60));
+            }
+            else
+            {
+                potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 8, 4 * 60));
+                potentialButtons.Add(("btnSet3Hours", BUTTON_SET_3H, BtnSet3Hours_Click, 7, 3 * 60));
+                potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, 2 * 60));
+                potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, 1 * 60));
+            }
+
+            // Filter buttons to only include those within MaxMinutes
+            buttonsToCreate.AddRange(potentialButtons.Where(b => b.Minutes <= autoOffModel.MaxMinutes));
+
+            foreach (var (name, text, handler, tabIndex, minutes) in buttonsToCreate)
+            {
+                var button = new Button
+                {
+                    Name = name,
+                    Text = text,
+                    Size = new Size(buttonWidth, buttonHeight),
+                    Location = new Point(currentX - buttonWidth, buttonY),
+                    Cursor = System.Windows.Forms.Cursors.Hand,
+                    FlatStyle = FlatStyle.Flat,
+                    UseVisualStyleBackColor = true,
+                    TabIndex = tabIndex
+                };
+                button.Click += handler;
+                Controls.Add(button);
+                currentX -= buttonWidth + buttonSpacing;
+
+                if (name == "btnSet8Hours") btnSet8Hours = button;
+                else if (name == "btnSet4Hours") btnSet4Hours = button;
+                else if (name == "btnSet3Hours") btnSet3Hours = button;
+                else if (name == "btnSet2Hours") btnSet2Hours = button;
+                else if (name == "btnSet1Hours") btnSet1Hours = button;
+            }
+        }
+
+        private void ApplyFormColors()
+        {
+            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+            var dynamicButtonNames = new List<string>();
+            if (btnSet1Hours != null) dynamicButtonNames.Add("btnSet1Hours");
+            if (btnSet2Hours != null) dynamicButtonNames.Add("btnSet2Hours");
+            if (btnSet3Hours != null) dynamicButtonNames.Add("btnSet3Hours");
+            if (btnSet4Hours != null) dynamicButtonNames.Add("btnSet4Hours");
+            if (btnSet8Hours != null) dynamicButtonNames.Add("btnSet8Hours");
+            FormUtils.ApplyColorToButtons(this, dynamicButtonNames.ToArray(), AppConfig.CopyButtonBackColor);
+        }
+        #endregion
+
+        #region Cleanup
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                autoOffModel?.Dispose();
+                btnSet1Hours?.Dispose();
+                btnSet2Hours?.Dispose();
+                btnSet3Hours?.Dispose();
+                btnSet4Hours?.Dispose();
+                btnSet8Hours?.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+        #endregion
+
+        #region Unused Event Handlers (kept for Designer compatibility)
+        private void AutoOffForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void groupOverweight_Enter(object sender, EventArgs e)
+        {
+        }
+        #endregion
     }
 }

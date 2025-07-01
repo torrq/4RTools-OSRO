@@ -372,6 +372,7 @@
     <Compile Include="Forms\TransferHelperForm.Designer.cs">
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\AutoOff.cs" />
     <Compile Include="Model\SkillSpammer.cs" />
     <Compile Include="Model\ATKDEF.cs" />
     <Compile Include="Model\AutobuffSkill.cs" />
@@ -427,6 +428,7 @@
     <Compile Include="Utils\KeyboardHook.cs" />
     <Compile Include="Utils\NotificationTrayManager.cs" />
     <Compile Include="Utils\OverweightMacro.cs" />
+    <Compile Include="Utils\ProcessDisplayItem.cs" />
     <Compile Include="Utils\ProcessMemoryReader.cs" />
     <Compile Include="Utils\RObserver.cs" />
     <Compile Include="Utils\StatusIdLogger.cs" />
