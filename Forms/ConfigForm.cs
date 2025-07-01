@@ -108,35 +108,56 @@ namespace _4RTools.Forms
         {
             try
             {
-                var autoBuffSkill = ProfileSingleton.GetCurrent().AutobuffSkill;
-                var newOrderList = new List<EffectStatusIDs>();
-                var orderedBuffList = skillsListBox.Items;
-                Dictionary<EffectStatusIDs, Key> currentList = new Dictionary<EffectStatusIDs, Key>(autoBuffSkill.buffMapping);
-                Dictionary<EffectStatusIDs, Key> newOrderedBuffList = new Dictionary<EffectStatusIDs, Key>();
-                if (currentList.Count > 0)
+                var profile = ProfileSingleton.GetCurrent();
+                var autoBuffSkill = profile.AutobuffSkill;
+                var currentBuffMapping = autoBuffSkill.buffMapping;
+
+                if (currentBuffMapping == null || currentBuffMapping.Count == 0)
                 {
+                    return; // Nothing to process
+                }
 
-                    foreach (var buff in orderedBuffList)
+                var newOrderList = new List<EffectStatusIDs>();
+                var newOrderedBuffList = new Dictionary<EffectStatusIDs, Key>();
+                var processedBuffIds = new HashSet<EffectStatusIDs>(); // Track processed IDs to avoid duplicates
+
+                foreach (var item in skillsListBox.Items)
+                {
+                    var buffId = item.ToString().ToEffectStatusId();
+
+                    // Skip if we've already processed this buff ID
+                    if (processedBuffIds.Contains(buffId))
                     {
-                        var buffId = buff.ToString().ToEffectStatusId();
-                        newOrderList.Add(buffId);
-                        var findBuff = currentList.FirstOrDefault(t => t.Key == buffId);
-                        newOrderedBuffList.Add(findBuff.Key, findBuff.Value);
+                        continue;
                     }
-                    ProfileSingleton.GetCurrent().UserPreferences.SetAutoBuffOrder(newOrderList);
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
 
-                    ProfileSingleton.GetCurrent().AutobuffSkill.ClearKeyMapping();
-                    ProfileSingleton.GetCurrent().AutobuffSkill.SetBuffMapping(newOrderedBuffList);
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffSkill);
+                    // Check if this buff exists in the current mapping
+                    if (currentBuffMapping.TryGetValue(buffId, out Key keyValue))
+                    {
+                        newOrderList.Add(buffId);
+                        newOrderedBuffList.Add(buffId, keyValue);
+                        processedBuffIds.Add(buffId);
+                    }
+                }
 
-                    newOrderedBuffList.Clear();
+                // Only update if we have items to process
+                if (newOrderList.Count > 0)
+                {
+                    // Update configurations
+                    profile.UserPreferences.SetAutoBuffOrder(newOrderList);
+                    ProfileSingleton.SetConfiguration(profile.UserPreferences);
+
+                    autoBuffSkill.ClearKeyMapping();
+                    autoBuffSkill.SetBuffMapping(newOrderedBuffList);
+                    ProfileSingleton.SetConfiguration(autoBuffSkill);
                 }
             }
-            catch (Exception ex) {
-                DebugLogger.Error("Error in SkillsListBox_MouseLeave: " + ex.Message);
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Error in SkillsListBox_MouseLeave: {ex.Message}");
             }
         }
+
         private void SkillsListBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (this.skillsListBox.SelectedItem == null) return;
