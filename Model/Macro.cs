@@ -5,23 +5,60 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Runtime.InteropServices;
+using Cursor = System.Windows.Forms.Cursor;
 
 namespace _4RTools.Model
 {
     public class MacroKey
     {
         public Key Key { get; set; }
+        public bool AltKey { get; set; }
+        public bool Enabled { get; set; }
+
         private int _delay = AppConfig.MacroDefaultDelay;
         public int Delay
         {
             get => _delay <= 0 ? AppConfig.MacroDefaultDelay : _delay;
             set => _delay = value;
         }
+
+        /// <summary>
+        /// Represents the click behavior for the skill timer.
+        /// 0: No Click
+        /// 1: Click at current mouse position
+        /// 2: Click at the center of the game window
+        /// </summary>
+        public int ClickMode { get; set; } = 0;
+
+        // This property is for backward compatibility. It catches the old "ClickActive" boolean
+        // during JSON deserialization and converts it to the new "ClickMode" integer value.
+        [JsonProperty("ClickActive", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        private bool ObsoleteClickActive { set { ClickMode = value ? 1 : 0; } }
+
+
+        /// <summary>
+        /// Constructor for creating new instances programmatically.
+        /// </summary>
+        public MacroKey(Key key, int delay, int clickMode = 0)
+        {
+            this.Key = key;
+            this.Delay = delay;
+            this.ClickMode = clickMode;
+        }
+
+        /// <summary>
+        /// Constructor used by Newtonsoft.Json for deserialization.
+        /// This allows loading profiles that may or may not contain the click-related properties.
+        /// </summary>
+        [JsonConstructor]
         public MacroKey(Key key, int delay)
         {
             this.Key = key;
             this.Delay = delay;
         }
+
+        public MacroKey() { }  // Default constructor needed for some deserialization scenarios.
     }
 
     public class ChainConfig

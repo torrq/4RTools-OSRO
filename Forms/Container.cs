@@ -49,7 +49,7 @@ namespace _4RTools.Forms
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(400, 6)
+                Location = new Point(385, 6)
             };
             Controls.Add(characterInfoForm);
             characterInfoForm.Show();
@@ -574,7 +574,8 @@ namespace _4RTools.Forms
 
                         string clientDebugInfo =
                             $"  {characterName} / {jobName} / Lv.{currentLevel} / Exp. {currentExp}\n" +
-                            $"  HP. {currentHP} / {currentMaxHP} | Sp. {currentSP} / {currentMaxSP}";
+                            $"  HP. {currentHP} / {currentMaxHP} | Sp. {currentSP} / {currentMaxSP}\n +" +
+                            $"  currentExp: {currentExp} / currentExpToLevel: {currentExpToLevel}";
 
                         processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap));
                         //DebugLogger.Debug("CLIENT:\n" + clientDebugInfo);

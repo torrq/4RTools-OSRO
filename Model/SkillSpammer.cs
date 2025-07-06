@@ -72,6 +72,7 @@ namespace _4RTools.Model
                 }
 
                 this.thread = new ThreadRunner(_ => SkillSpammerThreadExecution(roClient));
+
                 ThreadRunner.Start(this.thread);
 
                 ammoSwapHandler.Start();

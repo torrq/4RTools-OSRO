@@ -413,6 +413,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buff_scroll {
+            get {
+                object obj = ResourceManager.GetObject("buff_scroll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bunsinjyutsu {
             get {
                 object obj = ResourceManager.GetObject("bunsinjyutsu", resourceCulture);
@@ -1383,9 +1393,29 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap key_alt_off {
+            get {
+                object obj = ResourceManager.GetObject("key_alt_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap key_b {
             get {
                 object obj = ResourceManager.GetObject("key_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap key_blank {
+            get {
+                object obj = ResourceManager.GetObject("key_blank", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1626,6 +1656,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap key_q {
             get {
                 object obj = ResourceManager.GetObject("key_q", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap key_question {
+            get {
+                object obj = ResourceManager.GetObject("key_question", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2276,6 +2316,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap solar_miracle {
             get {
                 object obj = ResourceManager.GetObject("solar_miracle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spammer_mouse_center {
+            get {
+                object obj = ResourceManager.GetObject("spammer_mouse_center", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

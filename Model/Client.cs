@@ -259,20 +259,51 @@ namespace _4RTools.Model
 
         public uint ReadCurrentExp()
         {
-            return ReadMemory(this.CurrentJobAddress + 4);
+            switch (AppConfig.ServerMode) {
+                case 1: // HR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 2));
+                case 2: // LR #FIXME
+                    return ReadMemory(this.CurrentJobAddress + 0);
+                default: // MR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + 4);
+            }
         }
 
         public uint ReadCurrentExpToLevel()
         {
-            return ReadMemory(this.CurrentJobAddress + 12);
+            switch (AppConfig.ServerMode)
+            {
+                case 1: // HR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 4));
+                case 2: // LR #FIXME
+                    return ReadMemory(this.CurrentJobAddress + 0);
+                default: // MR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 3));
+            }
         }
         public uint ReadCurrentLevel()
         {
-            return ReadMemory(this.CurrentJobAddress + (4 * 9));
+            switch (AppConfig.ServerMode)
+            {
+                case 1: // HR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 10));
+                case 2: // LR #FIXME
+                    return ReadMemory(this.CurrentJobAddress + 0);
+                default: // MR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 9));
+            }
         }
         public uint ReadCurrentJobLevel()
         {
-            return ReadMemory(this.CurrentJobAddress + (4 * 11));
+            switch (AppConfig.ServerMode)
+            {
+                case 1: // HR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 12));
+                case 2: // LR #FIXME
+                    return ReadMemory(this.CurrentJobAddress + 0);
+                default: // MR - correct as of 2025-07-05
+                    return ReadMemory(this.CurrentJobAddress + (4 * 11));
+            }
         }
 
         public uint CurrentBuffStatusCode(int effectStatusIndex)

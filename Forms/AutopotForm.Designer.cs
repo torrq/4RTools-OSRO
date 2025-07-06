@@ -88,7 +88,7 @@ namespace _4RTools.Forms
             // 
             this.numAutopotDelay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numAutopotDelay.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numAutopotDelay.Location = new System.Drawing.Point(259, 122);
+            this.numAutopotDelay.Location = new System.Drawing.Point(247, 122);
             this.numAutopotDelay.Maximum = new decimal(new int[] {
             32767,
             0,
@@ -125,7 +125,7 @@ namespace _4RTools.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(223, 125);
+            this.label2.Location = new System.Drawing.Point(211, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 41;
@@ -135,7 +135,7 @@ namespace _4RTools.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(308, 125);
+            this.label1.Location = new System.Drawing.Point(296, 125);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 15);
             this.label1.TabIndex = 42;
@@ -240,9 +240,9 @@ namespace _4RTools.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(340, 150);
+            this.ClientSize = new System.Drawing.Size(322, 291);
             this.Controls.Add(this.chkStopOnCriticalInjury);
             this.Controls.Add(this.firstSP);
             this.Controls.Add(this.firstHP);

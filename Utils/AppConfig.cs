@@ -63,7 +63,7 @@ namespace _4RTools.Utils
                                 hpAddress     = "010DCE10",
                                 nameAddress   = "010DF5D8",
                                 mapAddress    = "010D856C",
-                                jobAddress    = "00000000",
+                                jobAddress    = "010D93D8",
                             }
                         };
 

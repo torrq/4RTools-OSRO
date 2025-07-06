@@ -19,7 +19,7 @@ namespace _4RTools.Utils
             { 10, "Blacksmith" },
             { 11, "Hunter" },
             { 12, "Assassin" },
-            { 13, "Knight (2-2)" },
+            { 13, "Knight" }, // Knight (2-2)
             { 14, "Crusader" },
             { 15, "Monk" },
             { 16, "Sage" },
@@ -27,7 +27,7 @@ namespace _4RTools.Utils
             { 18, "Alchemist" },
             { 19, "Bard" },
             { 20, "Dancer" },
-            { 21, "Crusader (2-2)" },
+            { 21, "Crusader" }, // Crusader (2-2)
             { 22, "Wedding" },
             { 23, "Super Novice" },
             { 24, "Gunslinger" },
@@ -49,7 +49,7 @@ namespace _4RTools.Utils
             { 4011, "Whitesmith" },
             { 4012, "Sniper" },
             { 4013, "Assassin Cross" },
-            { 4014, "Lord Knight (2-2)" },
+            { 4014, "Lord Knight" }, // Lord Knight (2-2)
             { 4015, "Paladin" },
             { 4016, "Champion" },
             { 4017, "Professor" },
@@ -80,17 +80,37 @@ namespace _4RTools.Utils
             { 4040, "Baby Bard" },
             { 4041, "Baby Dancer" },
             { 4042, "Super Baby" },
-            { 4043, "Baby Crusader (2-2)" },
+            { 4043, "Baby Crusader" }, // Baby Crusader (2-2)
             { 4044, "Baby Clown" },
             { 4045, "Baby Gypsy" },
 
             // Extended Jobs
             { 4046, "Taekwon" },
             { 4047, "Star Gladiator" },
-            { 4048, "Star Gladiator (alt)" },
+            { 4048, "Star Gladiator" }, // "alt" SG
             { 4049, "Soul Linker" },
 
-            // Padawan jobs
+            // HR 3rd Jobs
+            { 4060, "Rune Knight" },
+            { 4061, "Warlock" },
+            { 4062, "Ranger" },
+            { 4063, "Arch Bishop" },
+            { 4064, "Mechanic" },
+            { 4065, "Guillotine Cross" },
+            { 4073, "Royal Guard" },
+            { 4074, "Sorcerer" },
+            { 4075, "Minstrel" },
+            { 4077, "Sura" },
+            { 4078, "Genetic" },
+            { 4079, "Shadow Chaser" },
+            { 4233, "Necromancer" },
+            { 4234, "Kage" },
+
+            // Padawan jobs HR
+            { 4231, "Jedi" },
+            { 4232, "Sith" },
+
+            // Padawan jobs MR
             { 4437, "Jedi" },
             { 4438, "Sith" },
         };

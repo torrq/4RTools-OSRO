@@ -7,11 +7,10 @@ namespace _4RTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver
     {
-        public static int TOTAL_SKILL_TIMER = 4;
+        public static int TOTAL_SKILL_TIMER = 10;
         public SkillTimerForm(Subject subject)
         {
             InitializeComponent();
-            //FormUtils.SetNumericUpDownMinimumDelays(this);
             subject.Attach(this);
             ConfigureTimerLanes();
         }
@@ -61,35 +60,19 @@ namespace _4RTools.Forms
         {
             try
             {
-                SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
+                SkillTimer spammers = ProfileSingleton.GetCurrent().SkillTimer;
 
-                if (!Spammers.skillTimer.ContainsKey(id))
+                if (!spammers.skillTimer.ContainsKey(id))
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
-
-                    Control[] c = this.Controls.Find("txtSkillTimerKey" + id, true);
-                    if (c.Length > 0)
-                    {
-                        TextBox keyTextBox = (TextBox)c[0];
-                        keyTextBox.Text = Spammers.skillTimer[id].Key.ToString();
-                    }
-
-                    //Update Delay Macro Value
-                    Control[] d = this.Controls.Find("txtAutoRefreshDelay" + id, true);
-                    if (d.Length > 0)
-                    {
-                        NumericUpDown delayInput = (NumericUpDown)d[0];
-                        delayInput.Value = Spammers.skillTimer[id].Delay;
-                    }
+                    spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
                 }
-
-                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
             catch (Exception ex)
             {
                 DebugLogger.Error($"Exception in ValidateAllSkillTimer: {ex}");
             }
         }
+
 
         private void InitializeLane(int id)
         {
@@ -104,8 +87,34 @@ namespace _4RTools.Forms
                 NumericUpDown txtAutoRefreshDelay = (NumericUpDown)this.Controls.Find("txtAutoRefreshDelay" + id, true)[0];
                 txtAutoRefreshDelay.ValueChanged += new EventHandler(this.TxtAutoRefreshDelayTextChanged);
 
+                CheckBox enabledCheckbox = (CheckBox)this.Controls.Find($"SkillTimerEnabled{id}", true)[0];
+                enabledCheckbox.CheckedChanged += new EventHandler(this.SkillTimerEnabled_CheckedChanged);
+
+                // Wire up the new radio buttons to a single handler
+                for (int i = 1; i <= 3; i++)
+                {
+                    RadioButton rb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
+                    rb.CheckedChanged += new EventHandler(this.SkillTimerClickMode_CheckedChanged);
+                }
+
+                // Wire up the AltKey checkbox
+                CheckBox altKeyCheckbox = (CheckBox)this.Controls.Find($"SkillTimerAltKey{id}", true)[0];
+                altKeyCheckbox.CheckedChanged += new EventHandler(this.SkillTimerAltKey_CheckedChanged);
+
+                // Set up custom appearance for AltKey checkbox
+                altKeyCheckbox.Appearance = Appearance.Button;
+                altKeyCheckbox.FlatStyle = FlatStyle.Flat;
+                altKeyCheckbox.FlatAppearance.BorderSize = 0;
+                altKeyCheckbox.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+                altKeyCheckbox.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+                altKeyCheckbox.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+                altKeyCheckbox.BackColor = System.Drawing.Color.Transparent;
+                altKeyCheckbox.Image = global::_4RTools.Resources._4RTools.Icons.key_alt_off;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Failed to initialize lane {id}: {ex.Message}");
+            }
         }
 
         private void UpdatePanelData(int id)
@@ -113,28 +122,98 @@ namespace _4RTools.Forms
             try
             {
                 SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
-
+                if (!Spammers.skillTimer.ContainsKey(id)) return;
                 MacroKey skillTimer = Spammers.skillTimer[id];
+
+                Control[] enabledControls = this.Controls.Find($"SkillTimerEnabled{id}", true);
+                if (enabledControls.Length > 0)
+                {
+                    CheckBox enabledCheckbox = (CheckBox)enabledControls[0];
+                    enabledCheckbox.CheckedChanged -= SkillTimerEnabled_CheckedChanged;
+                    enabledCheckbox.Checked = skillTimer.Enabled;
+                    enabledCheckbox.CheckedChanged += SkillTimerEnabled_CheckedChanged;
+                }
 
                 //Update Trigger Macro Value
                 Control[] c = this.Controls.Find("txtSkillTimerKey" + id, true);
                 if (c.Length > 0)
                 {
-                    TextBox keyTextBox = (TextBox)c[0];
-                    keyTextBox.Text = skillTimer.Key.ToString();
+                    ((TextBox)c[0]).Text = skillTimer.Key.ToString();
                 }
 
                 //Update Delay Macro Value
                 Control[] d = this.Controls.Find("txtAutoRefreshDelay" + id, true);
                 if (d.Length > 0)
                 {
-                    NumericUpDown delayInput = (NumericUpDown)d[0];
-                    delayInput.Value = skillTimer.Delay;
+                    ((NumericUpDown)d[0]).Value = skillTimer.Delay;
+                }
+
+                // Update Click Mode RadioButtons by detaching handlers, setting value, and re-attaching
+                for (int i = 1; i <= 3; i++)
+                {
+                    RadioButton rb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
+                    rb.CheckedChanged -= SkillTimerClickMode_CheckedChanged;
+                }
+
+                // ClickMode is 0, 1, 2. Radio buttons are _1, _2, _3.
+                int radioIndex = skillTimer.ClickMode + 1;
+                RadioButton selectedRb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{radioIndex}", true)[0];
+                selectedRb.Checked = true;
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    RadioButton rb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
+                    rb.CheckedChanged += SkillTimerClickMode_CheckedChanged;
+                }
+
+                // Update AltKey checkbox
+                Control[] altKeyControls = this.Controls.Find($"SkillTimerAltKey{id}", true);
+                if (altKeyControls.Length > 0)
+                {
+                    CheckBox altKeyCheckbox = (CheckBox)altKeyControls[0];
+                    altKeyCheckbox.CheckedChanged -= SkillTimerAltKey_CheckedChanged;
+                    altKeyCheckbox.Checked = skillTimer.AltKey;
+                    altKeyCheckbox.Image = skillTimer.AltKey ?
+                        global::_4RTools.Resources._4RTools.Icons.key_alt :
+                        global::_4RTools.Resources._4RTools.Icons.key_alt_off;
+                    altKeyCheckbox.CheckedChanged += SkillTimerAltKey_CheckedChanged;
                 }
             }
             catch (Exception ex)
             {
-                var exception = ex;
+                DebugLogger.Error($"Failed to update panel data for SkillTimer {id}: {ex.Message}");
+            }
+        }
+
+        private void SkillTimerAltKey_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                try
+                {
+                    // Parse the control name to get the lane ID
+                    // e.g., "SkillTimerAltKey1" -> ID=1
+                    string controlName = checkBox.Name;
+                    int id = int.Parse(controlName.Substring("SkillTimerAltKey".Length));
+
+                    SkillTimer skillTimer = ProfileSingleton.GetCurrent().SkillTimer;
+
+                    if (skillTimer.skillTimer.ContainsKey(id))
+                    {
+                        skillTimer.skillTimer[id].AltKey = checkBox.Checked;
+                        ProfileSingleton.SetConfiguration(skillTimer);
+                    }
+
+                    // Update the image based on checked state
+                    checkBox.Image = checkBox.Checked ?
+                        global::_4RTools.Resources._4RTools.Icons.key_alt :
+                        global::_4RTools.Resources._4RTools.Icons.key_alt_off;
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Error($"SkillTimerAltKey_CheckedChanged failed: {ex}");
+                }
             }
         }
 
@@ -146,7 +225,7 @@ namespace _4RTools.Forms
                 TextBox textBox = (TextBox)sender;
                 Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
 
-                var id = int.Parse(textBox.Name[textBox.Name.Length - 1].ToString());
+                var id = int.Parse(textBox.Name.Substring(textBox.Name.Length - 1));
 
                 if (Spammers.skillTimer.ContainsKey(id))
                 {
@@ -160,12 +239,64 @@ namespace _4RTools.Forms
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
-            catch (Exception ex)
+            catch { }
+        }
+
+        private void SkillTimerEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox != null)
             {
-                var exception = ex;
+                try
+                {
+                    string controlName = checkBox.Name; // e.g., "SkillTimerEnabled3"
+                    int id = int.Parse(controlName.Substring("SkillTimerEnabled".Length));
+
+                    SkillTimer skillTimer = ProfileSingleton.GetCurrent().SkillTimer;
+
+                    if (skillTimer.skillTimer.ContainsKey(id))
+                    {
+                        skillTimer.skillTimer[id].Enabled = checkBox.Checked;
+                        ProfileSingleton.SetConfiguration(skillTimer);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Error($"SkillTimerEnabled_CheckedChanged failed: {ex}");
+                }
             }
         }
 
+        private void SkillTimerClickMode_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton != null && radioButton.Checked) // Process only when a radio button becomes checked
+            {
+                try
+                {
+                    // Parse the control name to get the lane ID and the mode
+                    // e.g., "SkillTimerClick1_2" -> ID=1, Mode=2
+                    string[] nameParts = radioButton.Name.Split('_');
+                    int id = int.Parse(nameParts[0].Substring("SkillTimerClick".Length));
+                    int mode = int.Parse(nameParts[1]);
+
+                    // Convert radio button index (1, 2, 3) to data value (0, 1, 2)
+                    int clickModeValue = mode - 1;
+
+                    SkillTimer skillTimer = ProfileSingleton.GetCurrent().SkillTimer;
+
+                    if (skillTimer.skillTimer.ContainsKey(id))
+                    {
+                        skillTimer.skillTimer[id].ClickMode = clickModeValue;
+                        ProfileSingleton.SetConfiguration(skillTimer);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Error($"SkillTimerClickMode_CheckedChanged failed: {ex}");
+                }
+            }
+        }
 
         private void TxtAutoRefreshDelayTextChanged(object sender, EventArgs e)
         {
@@ -175,7 +306,7 @@ namespace _4RTools.Forms
                 NumericUpDown numericUpDown = (NumericUpDown)sender;
                 int delay = (int)numericUpDown.Value;
 
-                var id = int.Parse(numericUpDown.Name[numericUpDown.Name.Length - 1].ToString());
+                var id = int.Parse(numericUpDown.Name.Substring(numericUpDown.Name.Length - 1));
 
                 if (Spammers.skillTimer.ContainsKey(id))
                 {
@@ -189,11 +320,16 @@ namespace _4RTools.Forms
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
-            catch (Exception ex)
-            {
-                var exception = ex;
-            }
+            catch { }
         }
+
+
+
+        private void SkillTimerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

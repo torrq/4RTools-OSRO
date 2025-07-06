@@ -426,6 +426,7 @@
     <Compile Include="Utils\Interop.cs" />
     <Compile Include="Utils\JobList.cs" />
     <Compile Include="Utils\KeyboardHook.cs" />
+    <Compile Include="Utils\MouseClicker.cs" />
     <Compile Include="Utils\NotificationTrayManager.cs" />
     <Compile Include="Utils\OverweightMacro.cs" />
     <Compile Include="Utils\ProcessDisplayItem.cs" />
@@ -488,6 +489,7 @@
     <Content Include="assets\image\icon\common\arrow_up.png" />
     <Content Include="assets\image\icon\common\dagger.png" />
     <Content Include="assets\image\icon\common\violin.png" />
+    <Content Include="assets\image\icon\item\scroll\buff_scroll.png" />
     <Content Include="assets\image\icon\key\key_0.png" />
     <Content Include="assets\image\icon\key\key_1.png" />
     <Content Include="assets\image\icon\key\key_2.png" />
@@ -501,6 +503,7 @@
     <Content Include="assets\image\icon\key\key_a.png" />
     <Content Include="assets\image\icon\key\key_alt.png" />
     <Content Include="assets\image\icon\key\key_b.png" />
+    <Content Include="assets\image\icon\key\key_blank.png" />
     <Content Include="assets\image\icon\key\key_c.png" />
     <Content Include="assets\image\icon\key\key_d.png" />
     <Content Include="assets\image\icon\key\key_e.png" />
@@ -525,6 +528,7 @@
     <Content Include="assets\image\icon\key\key_o.png" />
     <Content Include="assets\image\icon\key\key_p.png" />
     <Content Include="assets\image\icon\key\key_q.png" />
+    <Content Include="assets\image\icon\key\key_question.png" />
     <Content Include="assets\image\icon\key\key_r.png" />
     <Content Include="assets\image\icon\key\key_s.png" />
     <Content Include="assets\image\icon\key\key_t.png" />
@@ -538,6 +542,7 @@
     <Content Include="assets\image\icon\skill\3rd\archbishop\shallowgrave.png" />
     <Content Include="assets\image\icon\skill\3rd\guillotinecross\enchantpoisonarmor.png" />
     <Content Include="assets\image\icon\skill\3rd\royalguard\manashield.png" />
+    <Content Include="assets\image\icon\ui\clock_animated.gif" />
     <Content Include="assets\image\icon\ui\discord.png" />
     <Content Include="assets\image\icon\ui\github.png" />
     <Content Include="assets\image\icon\ui\minimode_less.png" />
@@ -546,6 +551,7 @@
     <Content Include="assets\image\icon\ui\url_green.png" />
     <Content Include="assets\image\logos\applogo.png" />
     <Content Include="assets\image\logos\osro_logo_hr.png" />
+    <Content Include="assets\image\logos\osro_logo_lr.png" />
     <Content Include="assets\image\logos\osro_logo_mr.png" />
     <Content Include="assets\image\icon\debuff\bleeding.png" />
     <Content Include="assets\image\icon\debuff\burning.png" />

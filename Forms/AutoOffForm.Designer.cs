@@ -22,9 +22,9 @@ namespace _4RTools.Forms
             this.AutoOffOverweightCB = new System.Windows.Forms.CheckBox();
             this.overweightAltKeyPlusLabel = new System.Windows.Forms.Label();
             this.overweightAltKeyLabel = new System.Windows.Forms.Label();
-            this.overweightKey = new System.Windows.Forms.TextBox();
             this.arrowDown = new System.Windows.Forms.PictureBox();
             this.arrowRight = new System.Windows.Forms.PictureBox();
+            this.overweightKey = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown)).BeginInit();
@@ -38,7 +38,7 @@ namespace _4RTools.Forms
             this.trackBarTime.Maximum = 480;
             this.trackBarTime.Minimum = 1;
             this.trackBarTime.Name = "trackBarTime";
-            this.trackBarTime.Size = new System.Drawing.Size(340, 45);
+            this.trackBarTime.Size = new System.Drawing.Size(323, 45);
             this.trackBarTime.TabIndex = 0;
             this.trackBarTime.Value = 1;
             this.trackBarTime.Scroll += new System.EventHandler(this.TrackBarTime_Scroll);
@@ -46,7 +46,7 @@ namespace _4RTools.Forms
             // lblSelectedTime
             // 
             this.lblSelectedTime.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedTime.Location = new System.Drawing.Point(280, 48);
+            this.lblSelectedTime.Location = new System.Drawing.Point(275, 48);
             this.lblSelectedTime.Name = "lblSelectedTime";
             this.lblSelectedTime.Size = new System.Drawing.Size(50, 18);
             this.lblSelectedTime.TabIndex = 1;
@@ -79,7 +79,7 @@ namespace _4RTools.Forms
             // lblSelectedTimeText
             // 
             this.lblSelectedTimeText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedTimeText.Location = new System.Drawing.Point(204, 48);
+            this.lblSelectedTimeText.Location = new System.Drawing.Point(199, 48);
             this.lblSelectedTimeText.Name = "lblSelectedTimeText";
             this.lblSelectedTimeText.Size = new System.Drawing.Size(80, 18);
             this.lblSelectedTimeText.TabIndex = 4;
@@ -99,7 +99,7 @@ namespace _4RTools.Forms
             // animatedClockImage
             // 
             this.animatedClockImage.Image = global::_4RTools.Resources._4RTools.Icons.clock_animated;
-            this.animatedClockImage.Location = new System.Drawing.Point(316, 2);
+            this.animatedClockImage.Location = new System.Drawing.Point(295, 2);
             this.animatedClockImage.Name = "animatedClockImage";
             this.animatedClockImage.Size = new System.Drawing.Size(24, 24);
             this.animatedClockImage.TabIndex = 5;
@@ -122,7 +122,7 @@ namespace _4RTools.Forms
             // 
             this.overweightAltKeyPlusLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyPlusLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyPlusLabel.Location = new System.Drawing.Point(266, 118);
+            this.overweightAltKeyPlusLabel.Location = new System.Drawing.Point(262, 118);
             this.overweightAltKeyPlusLabel.Name = "overweightAltKeyPlusLabel";
             this.overweightAltKeyPlusLabel.Size = new System.Drawing.Size(16, 24);
             this.overweightAltKeyPlusLabel.TabIndex = 317;
@@ -134,27 +134,17 @@ namespace _4RTools.Forms
             this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyLabel.Location = new System.Drawing.Point(161, 119);
+            this.overweightAltKeyLabel.Location = new System.Drawing.Point(157, 119);
             this.overweightAltKeyLabel.Name = "overweightAltKeyLabel";
             this.overweightAltKeyLabel.Size = new System.Drawing.Size(107, 24);
             this.overweightAltKeyLabel.TabIndex = 316;
             this.overweightAltKeyLabel.Text = "Then send";
             this.overweightAltKeyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // overweightKey
-            // 
-            this.overweightKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.overweightKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightKey.Location = new System.Drawing.Point(283, 119);
-            this.overweightKey.Name = "overweightKey";
-            this.overweightKey.Size = new System.Drawing.Size(49, 23);
-            this.overweightKey.TabIndex = 311;
-            this.overweightKey.TextChanged += new System.EventHandler(this.OverweightKey_TextChanged);
-            // 
             // arrowDown
             // 
             this.arrowDown.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
-            this.arrowDown.Location = new System.Drawing.Point(249, 102);
+            this.arrowDown.Location = new System.Drawing.Point(238, 102);
             this.arrowDown.Name = "arrowDown";
             this.arrowDown.Size = new System.Drawing.Size(11, 14);
             this.arrowDown.TabIndex = 319;
@@ -163,18 +153,29 @@ namespace _4RTools.Forms
             // arrowRight
             // 
             this.arrowRight.Image = global::_4RTools.Resources._4RTools.Icons.arrow_right;
-            this.arrowRight.Location = new System.Drawing.Point(134, 127);
+            this.arrowRight.Location = new System.Drawing.Point(131, 127);
             this.arrowRight.Name = "arrowRight";
             this.arrowRight.Size = new System.Drawing.Size(19, 11);
             this.arrowRight.TabIndex = 320;
             this.arrowRight.TabStop = false;
             // 
+            // overweightKey
+            // 
+            this.overweightKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.overweightKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overweightKey.Location = new System.Drawing.Point(278, 119);
+            this.overweightKey.Name = "overweightKey";
+            this.overweightKey.Size = new System.Drawing.Size(41, 23);
+            this.overweightKey.TabIndex = 311;
+            this.overweightKey.TextChanged += new System.EventHandler(this.OverweightKey_TextChanged);
+            // 
             // AutoOffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(340, 150);
+            this.ClientSize = new System.Drawing.Size(335, 280);
             this.Controls.Add(this.arrowRight);
             this.Controls.Add(this.arrowDown);
             this.Controls.Add(this.AutoOffOverweightCB);
@@ -214,8 +215,8 @@ namespace _4RTools.Forms
         private System.Windows.Forms.CheckBox AutoOffOverweightCB;
         private System.Windows.Forms.Label overweightAltKeyPlusLabel;
         private System.Windows.Forms.Label overweightAltKeyLabel;
-        private System.Windows.Forms.TextBox overweightKey;
         private System.Windows.Forms.PictureBox arrowDown;
         private System.Windows.Forms.PictureBox arrowRight;
+        private System.Windows.Forms.TextBox overweightKey;
     }
 }
