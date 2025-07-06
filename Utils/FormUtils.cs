@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace _4RTools.Utils
 {
-    public class FormUtils
+    public static class FormUtils
     {
         public static void ApplyColorToButtons(Control parentControl, string[] buttonNames, Color color)
         {
@@ -291,5 +291,6 @@ namespace _4RTools.Utils
                     .FirstOrDefault(v => v.GetDescription() == val);
             return t;
         }
+
     }
 }

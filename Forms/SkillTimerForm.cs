@@ -7,7 +7,6 @@ namespace _4RTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver
     {
-        public static int TOTAL_SKILL_TIMER = 10;
         public SkillTimerForm(Subject subject)
         {
             InitializeComponent();
@@ -34,7 +33,7 @@ namespace _4RTools.Forms
 
         private void FormValidate()
         {
-            for (int i = 1; i <= TOTAL_SKILL_TIMER; i++)
+            for (int i = 1; i <= SkillTimer.MAX_SKILL_TIMERS; i++)
             {
                 ValidateAllSkillTimer(i);
             }
@@ -42,7 +41,7 @@ namespace _4RTools.Forms
 
         private void UpdateUI()
         {
-            for (int i = 1; i <= TOTAL_SKILL_TIMER; i++)
+            for (int i = 1; i <= SkillTimer.MAX_SKILL_TIMERS; i++)
             {
                 UpdatePanelData(i);
             }
@@ -50,7 +49,7 @@ namespace _4RTools.Forms
 
         private void ConfigureTimerLanes()
         {
-            for (int i = 1; i <= TOTAL_SKILL_TIMER; i++)
+            for (int i = 1; i <= SkillTimer.MAX_SKILL_TIMERS; i++)
             {
                 InitializeLane(i);
             }
@@ -79,27 +78,27 @@ namespace _4RTools.Forms
             try
             {
 
-                TextBox textBox = (TextBox)this.Controls.Find("txtSkillTimerKey" + id, true)[0];
-                textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-                textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-                textBox.TextChanged += new EventHandler(this.OnTextChange);
+                TextBox textBox = (TextBox)Controls.Find("txtSkillTimerKey" + id, true)[0];
+                textBox.KeyDown += FormUtils.OnKeyDown;
+                textBox.KeyPress += FormUtils.OnKeyPress;
+                textBox.TextChanged += OnTextChange;
 
-                NumericUpDown txtAutoRefreshDelay = (NumericUpDown)this.Controls.Find("txtAutoRefreshDelay" + id, true)[0];
-                txtAutoRefreshDelay.ValueChanged += new EventHandler(this.TxtAutoRefreshDelayTextChanged);
+                NumericUpDown txtAutoRefreshDelay = (NumericUpDown)Controls.Find("txtAutoRefreshDelay" + id, true)[0];
+                txtAutoRefreshDelay.ValueChanged += TxtAutoRefreshDelayTextChanged;
 
-                CheckBox enabledCheckbox = (CheckBox)this.Controls.Find($"SkillTimerEnabled{id}", true)[0];
-                enabledCheckbox.CheckedChanged += new EventHandler(this.SkillTimerEnabled_CheckedChanged);
+                CheckBox enabledCheckbox = (CheckBox)Controls.Find($"SkillTimerEnabled{id}", true)[0];
+                enabledCheckbox.CheckedChanged += SkillTimerEnabled_CheckedChanged;
 
                 // Wire up the new radio buttons to a single handler
                 for (int i = 1; i <= 3; i++)
                 {
-                    RadioButton rb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
-                    rb.CheckedChanged += new EventHandler(this.SkillTimerClickMode_CheckedChanged);
+                    RadioButton rb = (RadioButton)Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
+                    rb.CheckedChanged += SkillTimerClickMode_CheckedChanged;
                 }
 
                 // Wire up the AltKey checkbox
-                CheckBox altKeyCheckbox = (CheckBox)this.Controls.Find($"SkillTimerAltKey{id}", true)[0];
-                altKeyCheckbox.CheckedChanged += new EventHandler(this.SkillTimerAltKey_CheckedChanged);
+                CheckBox altKeyCheckbox = (CheckBox)Controls.Find($"SkillTimerAltKey{id}", true)[0];
+                altKeyCheckbox.CheckedChanged += SkillTimerAltKey_CheckedChanged;
 
                 // Set up custom appearance for AltKey checkbox
                 altKeyCheckbox.Appearance = Appearance.Button;
@@ -125,7 +124,7 @@ namespace _4RTools.Forms
                 if (!Spammers.skillTimer.ContainsKey(id)) return;
                 MacroKey skillTimer = Spammers.skillTimer[id];
 
-                Control[] enabledControls = this.Controls.Find($"SkillTimerEnabled{id}", true);
+                Control[] enabledControls = Controls.Find($"SkillTimerEnabled{id}", true);
                 if (enabledControls.Length > 0)
                 {
                     CheckBox enabledCheckbox = (CheckBox)enabledControls[0];
@@ -135,14 +134,14 @@ namespace _4RTools.Forms
                 }
 
                 //Update Trigger Macro Value
-                Control[] c = this.Controls.Find("txtSkillTimerKey" + id, true);
+                Control[] c = Controls.Find("txtSkillTimerKey" + id, true);
                 if (c.Length > 0)
                 {
                     ((TextBox)c[0]).Text = skillTimer.Key.ToString();
                 }
 
                 //Update Delay Macro Value
-                Control[] d = this.Controls.Find("txtAutoRefreshDelay" + id, true);
+                Control[] d = Controls.Find("txtAutoRefreshDelay" + id, true);
                 if (d.Length > 0)
                 {
                     ((NumericUpDown)d[0]).Value = skillTimer.Delay;
@@ -151,23 +150,23 @@ namespace _4RTools.Forms
                 // Update Click Mode RadioButtons by detaching handlers, setting value, and re-attaching
                 for (int i = 1; i <= 3; i++)
                 {
-                    RadioButton rb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
+                    RadioButton rb = (RadioButton)Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
                     rb.CheckedChanged -= SkillTimerClickMode_CheckedChanged;
                 }
 
                 // ClickMode is 0, 1, 2. Radio buttons are _1, _2, _3.
                 int radioIndex = skillTimer.ClickMode + 1;
-                RadioButton selectedRb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{radioIndex}", true)[0];
+                RadioButton selectedRb = (RadioButton)Controls.Find($"SkillTimerClick{id}_{radioIndex}", true)[0];
                 selectedRb.Checked = true;
 
                 for (int i = 1; i <= 3; i++)
                 {
-                    RadioButton rb = (RadioButton)this.Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
+                    RadioButton rb = (RadioButton)Controls.Find($"SkillTimerClick{id}_{i}", true)[0];
                     rb.CheckedChanged += SkillTimerClickMode_CheckedChanged;
                 }
 
                 // Update AltKey checkbox
-                Control[] altKeyControls = this.Controls.Find($"SkillTimerAltKey{id}", true);
+                Control[] altKeyControls = Controls.Find($"SkillTimerAltKey{id}", true);
                 if (altKeyControls.Length > 0)
                 {
                     CheckBox altKeyCheckbox = (CheckBox)altKeyControls[0];
@@ -195,7 +194,8 @@ namespace _4RTools.Forms
                     // Parse the control name to get the lane ID
                     // e.g., "SkillTimerAltKey1" -> ID=1
                     string controlName = checkBox.Name;
-                    int id = int.Parse(controlName.Substring("SkillTimerAltKey".Length));
+                    int id = ExtractIdFromControlName(controlName, "SkillTimerAltKey", SkillTimer.MAX_SKILL_TIMERS);
+                    if (id == -1) return;
 
                     SkillTimer skillTimer = ProfileSingleton.GetCurrent().SkillTimer;
 
@@ -224,8 +224,8 @@ namespace _4RTools.Forms
                 SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
                 TextBox textBox = (TextBox)sender;
                 Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
-
-                var id = int.Parse(textBox.Name.Substring(textBox.Name.Length - 1));
+                var id = ExtractIdFromControlName(textBox.Name, "txtSkillTimerKey", SkillTimer.MAX_SKILL_TIMERS);
+                if (id == -1) return;
 
                 if (Spammers.skillTimer.ContainsKey(id))
                 {
@@ -239,7 +239,24 @@ namespace _4RTools.Forms
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"OnTextChange failed: {ex}");
+            }
+        }
+
+        public static int ExtractIdFromControlName(string controlName, string prefix, int maxId)
+        {
+            if (controlName.StartsWith(prefix))
+            {
+                string idStr = controlName.Substring(prefix.Length);
+                if (int.TryParse(idStr, out int id) && id >= 1 && id <= maxId)
+                {
+                    return id;
+                }
+            }
+
+            return -1; // invalid or out of range
         }
 
         private void SkillTimerEnabled_CheckedChanged(object sender, EventArgs e)
@@ -250,14 +267,24 @@ namespace _4RTools.Forms
                 try
                 {
                     string controlName = checkBox.Name; // e.g., "SkillTimerEnabled3"
-                    int id = int.Parse(controlName.Substring("SkillTimerEnabled".Length));
+                    int id = ExtractIdFromControlName(controlName, "SkillTimerEnabled", SkillTimer.MAX_SKILL_TIMERS);
+                    if (id == -1) return;
 
                     SkillTimer skillTimer = ProfileSingleton.GetCurrent().SkillTimer;
-
                     if (skillTimer.skillTimer.ContainsKey(id))
                     {
                         skillTimer.skillTimer[id].Enabled = checkBox.Checked;
                         ProfileSingleton.SetConfiguration(skillTimer);
+
+                        // Start or stop the individual timer based on checkbox state
+                        if (checkBox.Checked)
+                        {
+                            skillTimer.StartTimer(id);
+                        }
+                        else
+                        {
+                            skillTimer.StopTimer(id);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -277,7 +304,9 @@ namespace _4RTools.Forms
                     // Parse the control name to get the lane ID and the mode
                     // e.g., "SkillTimerClick1_2" -> ID=1, Mode=2
                     string[] nameParts = radioButton.Name.Split('_');
-                    int id = int.Parse(nameParts[0].Substring("SkillTimerClick".Length));
+                    int id = ExtractIdFromControlName(nameParts[0], "SkillTimerClick", SkillTimer.MAX_SKILL_TIMERS);
+                    if (id == -1) return;
+
                     int mode = int.Parse(nameParts[1]);
 
                     // Convert radio button index (1, 2, 3) to data value (0, 1, 2)
@@ -305,8 +334,8 @@ namespace _4RTools.Forms
                 SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
                 NumericUpDown numericUpDown = (NumericUpDown)sender;
                 int delay = (int)numericUpDown.Value;
-
-                var id = int.Parse(numericUpDown.Name.Substring(numericUpDown.Name.Length - 1));
+                int id = ExtractIdFromControlName(numericUpDown.Name, "txtAutoRefreshDelay", SkillTimer.MAX_SKILL_TIMERS);
+                if (id == -1) return;
 
                 if (Spammers.skillTimer.ContainsKey(id))
                 {
@@ -320,10 +349,11 @@ namespace _4RTools.Forms
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"TxtAutoRefreshDelayTextChanged failed: {ex}");
+            }
         }
-
-
 
         private void SkillTimerForm_Load(object sender, EventArgs e)
         {

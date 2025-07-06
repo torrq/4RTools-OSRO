@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,7 +12,7 @@ namespace _4RTools.Model
 {
     public class SkillTimer : IAction
     {
-        // P/Invoke definitions for center-screen clicking
+        #region P/Invoke Definitions
         [StructLayout(LayoutKind.Sequential)]
         private struct RECT { public int Left, Top, Right, Bottom; }
 
@@ -50,75 +51,93 @@ namespace _4RTools.Model
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr GetForegroundWindow();
+        #endregion
 
+        #region Constants
         private const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
         private const uint MOUSEEVENTF_LEFTUP = 0x0004;
         private const uint WM_LBUTTONDOWN = 0x0201;
         private const uint WM_LBUTTONUP = 0x0202;
         private const int SW_RESTORE = 9;
+        public const int MAX_SKILL_TIMERS = 10;
+        #endregion
 
         private static IntPtr MakeLParam(int low, int high) => (IntPtr)((high << 16) | (low & 0xFFFF));
 
         private readonly string ACTION_NAME = "SkillTimer";
         public Dictionary<int, MacroKey> skillTimer = new Dictionary<int, MacroKey>();
 
-        private ThreadRunner thread1;
-        private ThreadRunner thread2;
-        private ThreadRunner thread3;
-        private ThreadRunner thread4;
-        private ThreadRunner thread5;
-        private ThreadRunner thread6;
-        private ThreadRunner thread7;
-        private ThreadRunner thread8;
-        private ThreadRunner thread9;
-        private ThreadRunner thread10;
+        private readonly Dictionary<int, ThreadRunner> threads = new Dictionary<int, ThreadRunner>();
 
         public void Start()
         {
             Client roClient = ClientSingleton.GetClient();
-            if (roClient != null)
+            if (roClient == null) return;
+
+            StopAllThreads();
+
+            // Create and start threads only for enabled skill timers
+            for (int i = 1; i <= MAX_SKILL_TIMERS; i++)
             {
-                ValidadeThreads(this.thread1);
-                ValidadeThreads(this.thread2);
-                ValidadeThreads(this.thread3);
-                ValidadeThreads(this.thread4);
-                ValidadeThreads(this.thread5);
-                ValidadeThreads(this.thread6);
-                ValidadeThreads(this.thread7);
-                ValidadeThreads(this.thread8);
-                ValidadeThreads(this.thread9);
-                ValidadeThreads(this.thread10);
-
-                this.thread1 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[1]));
-                this.thread2 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[2]));
-                this.thread3 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[3]));
-                this.thread4 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[4]));
-                this.thread5 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[5]));
-                this.thread6 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[6]));
-                this.thread7 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[7]));
-                this.thread8 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[8]));
-                this.thread9 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[9]));
-                this.thread10 = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[10]));
-
-                ThreadRunner.Start(this.thread1);
-                ThreadRunner.Start(this.thread2);
-                ThreadRunner.Start(this.thread3);
-                ThreadRunner.Start(this.thread4);
-                ThreadRunner.Start(this.thread5);
-                ThreadRunner.Start(this.thread6);
-                ThreadRunner.Start(this.thread7);
-                ThreadRunner.Start(this.thread8);
-                ThreadRunner.Start(this.thread9);
-                ThreadRunner.Start(this.thread10);
+                if (skillTimer.TryGetValue(i, out var macro) && macro.Enabled)
+                {
+                    int skillIndex = i; // Capture loop variable
+                    threads[i] = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[skillIndex]));
+                    ThreadRunner.Start(threads[i]);
+                }
             }
         }
 
-        private void ValidadeThreads(ThreadRunner _4RThread)
+        public void Stop()
         {
-            if (_4RThread != null)
+            StopAllThreads();
+        }
+
+        public void StartTimer(int timerId)
+        {
+            Client roClient = ClientSingleton.GetClient();
+            if (roClient == null) return;
+
+            // Stop existing thread for this timer if it exists
+            StopTimer(timerId);
+
+            // Start new thread if the timer exists and is enabled
+            if (skillTimer.TryGetValue(timerId, out var macro) && macro.Enabled)
             {
-                ThreadRunner.Stop(_4RThread);
+                // Respect the StopBuffsCity setting - if enabled and we're in a city, don't start the timer
+                string currentMap = roClient.ReadCurrentMap();
+                if (ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity && Server.GetCityList().Contains(currentMap))
+                {
+                    // Don't start timer if we're in a city and StopBuffsCity is enabled
+                    return;
+                }
+
+                threads[timerId] = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[timerId]));
+                ThreadRunner.Start(threads[timerId]);
             }
+        }
+
+        public void StopTimer(int timerId)
+        {
+            if (threads.TryGetValue(timerId, out var thread))
+            {
+                ThreadRunner.Stop(thread);
+                thread.Terminate();
+                threads.Remove(timerId);
+            }
+        }
+
+        private void StopAllThreads()
+        {
+            foreach (var thread in threads.Values.ToList())
+            {
+                if (thread != null)
+                {
+                    ThreadRunner.Stop(thread);
+                    thread.Terminate();
+                }
+            }
+            threads.Clear();
         }
 
         private int AutoRefreshThreadExecution(Client roClient, MacroKey macro)
@@ -139,7 +158,6 @@ namespace _4RTools.Model
                 switch (macro.ClickMode)
                 {
                     case 1: // Click at current cursor position
-                        // Try multiple approaches for better reliability
                         TryClickAtCurrentPosition(hWnd);
                         break;
                     case 2: // Click at the center of the game window
@@ -151,70 +169,6 @@ namespace _4RTools.Model
 
             Thread.Sleep(macro.Delay);
             return 0;
-        }
-
-        public void Stop()
-        {
-            if (this.thread1 != null)
-            {
-                ThreadRunner.Stop(this.thread1);
-                this.thread1.Terminate();
-                this.thread1 = null;
-            }
-            if (this.thread2 != null)
-            {
-                ThreadRunner.Stop(this.thread2);
-                this.thread2.Terminate();
-                this.thread2 = null;
-            }
-            if (this.thread3 != null)
-            {
-                ThreadRunner.Stop(this.thread3);
-                this.thread3.Terminate();
-                this.thread3 = null;
-            }
-            if (this.thread4 != null)
-            {
-                ThreadRunner.Stop(this.thread4);
-                this.thread4.Terminate();
-                this.thread4 = null;
-            }
-            if (this.thread5 != null)
-            {
-                ThreadRunner.Stop(this.thread5);
-                this.thread5.Terminate();
-                this.thread5 = null;
-            }
-            if (this.thread6 != null)
-            {
-                ThreadRunner.Stop(this.thread1);
-                this.thread6.Terminate();
-                this.thread6 = null;
-            }
-            if (this.thread7 != null)
-            {
-                ThreadRunner.Stop(this.thread2);
-                this.thread7.Terminate();
-                this.thread7 = null;
-            }
-            if (this.thread8 != null)
-            {
-                ThreadRunner.Stop(this.thread3);
-                this.thread8.Terminate();
-                this.thread8 = null;
-            }
-            if (this.thread9 != null)
-            {
-                ThreadRunner.Stop(this.thread4);
-                this.thread9.Terminate();
-                this.thread9 = null;
-            }
-            if (this.thread10 != null)
-            {
-                ThreadRunner.Stop(this.thread5);
-                this.thread10.Terminate();
-                this.thread10 = null;
-            }
         }
 
         public string GetConfiguration()

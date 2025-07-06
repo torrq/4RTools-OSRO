@@ -42,6 +42,7 @@
             this.txtTransferKey.Name = "txtTransferKey";
             this.txtTransferKey.Size = new System.Drawing.Size(50, 23);
             this.txtTransferKey.TabIndex = 11;
+            this.txtTransferKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tooltipTransferKey.SetToolTip(this.txtTransferKey, "Simulates Alt+Right Click for quick item transfer between storage and inventory");
             this.txtTransferKey.TextChanged += new System.EventHandler(this.TxtTransferKey_TextChanged);
             // 

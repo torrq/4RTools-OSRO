@@ -83,7 +83,7 @@ namespace _4RTools.Forms
             this.SkillTimerClick6_1 = new System.Windows.Forms.RadioButton();
             this.txtSkillTimerKey6 = new System.Windows.Forms.TextBox();
             this.txtAutoRefreshDelay6 = new System.Windows.Forms.NumericUpDown();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.SkillTimerPanel7 = new System.Windows.Forms.Panel();
             this.SkillTimerEnabled7 = new System.Windows.Forms.CheckBox();
             this.SkillTimerAltKey7 = new System.Windows.Forms.CheckBox();
             this.SkillTimerClick7_3 = new System.Windows.Forms.RadioButton();
@@ -91,7 +91,7 @@ namespace _4RTools.Forms
             this.SkillTimerClick7_1 = new System.Windows.Forms.RadioButton();
             this.txtSkillTimerKey7 = new System.Windows.Forms.TextBox();
             this.txtAutoRefreshDelay7 = new System.Windows.Forms.NumericUpDown();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.SkillTimerPanel8 = new System.Windows.Forms.Panel();
             this.SkillTimerEnabled8 = new System.Windows.Forms.CheckBox();
             this.SkillTimerAltKey8 = new System.Windows.Forms.CheckBox();
             this.SkillTimerClick8_3 = new System.Windows.Forms.RadioButton();
@@ -99,7 +99,7 @@ namespace _4RTools.Forms
             this.SkillTimerClick8_1 = new System.Windows.Forms.RadioButton();
             this.txtSkillTimerKey8 = new System.Windows.Forms.TextBox();
             this.txtAutoRefreshDelay8 = new System.Windows.Forms.NumericUpDown();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.SkillTimerPanel9 = new System.Windows.Forms.Panel();
             this.SkillTimerEnabled9 = new System.Windows.Forms.CheckBox();
             this.SkillTimerAltKey9 = new System.Windows.Forms.CheckBox();
             this.SkillTimerClick9_3 = new System.Windows.Forms.RadioButton();
@@ -107,7 +107,7 @@ namespace _4RTools.Forms
             this.SkillTimerClick9_1 = new System.Windows.Forms.RadioButton();
             this.txtSkillTimerKey9 = new System.Windows.Forms.TextBox();
             this.txtAutoRefreshDelay9 = new System.Windows.Forms.NumericUpDown();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.SkillTimerPanel10 = new System.Windows.Forms.Panel();
             this.SkillTimerEnabled10 = new System.Windows.Forms.CheckBox();
             this.SkillTimerAltKey10 = new System.Windows.Forms.CheckBox();
             this.SkillTimerClick10_3 = new System.Windows.Forms.RadioButton();
@@ -130,13 +130,13 @@ namespace _4RTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.SkillTimerLegendClickCenter)).BeginInit();
             this.SkillTimerPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay6)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.SkillTimerPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay7)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.SkillTimerPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay8)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.SkillTimerPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay9)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.SkillTimerPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay10)).BeginInit();
             this.SuspendLayout();
             // 
@@ -768,20 +768,20 @@ namespace _4RTools.Forms
             this.txtAutoRefreshDelay6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay6.ThousandsSeparator = true;
             // 
-            // panel1
+            // SkillTimerPanel7
             // 
-            this.panel1.Controls.Add(this.SkillTimerEnabled7);
-            this.panel1.Controls.Add(this.SkillTimerAltKey7);
-            this.panel1.Controls.Add(this.SkillTimerClick7_3);
-            this.panel1.Controls.Add(this.SkillTimerClick7_2);
-            this.panel1.Controls.Add(this.SkillTimerClick7_1);
-            this.panel1.Controls.Add(this.txtSkillTimerKey7);
-            this.panel1.Controls.Add(this.txtAutoRefreshDelay7);
-            this.panel1.Location = new System.Drawing.Point(-3, 174);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(322, 27);
-            this.panel1.TabIndex = 76;
+            this.SkillTimerPanel7.Controls.Add(this.SkillTimerEnabled7);
+            this.SkillTimerPanel7.Controls.Add(this.SkillTimerAltKey7);
+            this.SkillTimerPanel7.Controls.Add(this.SkillTimerClick7_3);
+            this.SkillTimerPanel7.Controls.Add(this.SkillTimerClick7_2);
+            this.SkillTimerPanel7.Controls.Add(this.SkillTimerClick7_1);
+            this.SkillTimerPanel7.Controls.Add(this.txtSkillTimerKey7);
+            this.SkillTimerPanel7.Controls.Add(this.txtAutoRefreshDelay7);
+            this.SkillTimerPanel7.Location = new System.Drawing.Point(-3, 174);
+            this.SkillTimerPanel7.Margin = new System.Windows.Forms.Padding(0);
+            this.SkillTimerPanel7.Name = "SkillTimerPanel7";
+            this.SkillTimerPanel7.Size = new System.Drawing.Size(322, 27);
+            this.SkillTimerPanel7.TabIndex = 76;
             // 
             // SkillTimerEnabled7
             // 
@@ -867,20 +867,20 @@ namespace _4RTools.Forms
             this.txtAutoRefreshDelay7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay7.ThousandsSeparator = true;
             // 
-            // panel2
+            // SkillTimerPanel8
             // 
-            this.panel2.Controls.Add(this.SkillTimerEnabled8);
-            this.panel2.Controls.Add(this.SkillTimerAltKey8);
-            this.panel2.Controls.Add(this.SkillTimerClick8_3);
-            this.panel2.Controls.Add(this.SkillTimerClick8_2);
-            this.panel2.Controls.Add(this.SkillTimerClick8_1);
-            this.panel2.Controls.Add(this.txtSkillTimerKey8);
-            this.panel2.Controls.Add(this.txtAutoRefreshDelay8);
-            this.panel2.Location = new System.Drawing.Point(-3, 200);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(322, 27);
-            this.panel2.TabIndex = 77;
+            this.SkillTimerPanel8.Controls.Add(this.SkillTimerEnabled8);
+            this.SkillTimerPanel8.Controls.Add(this.SkillTimerAltKey8);
+            this.SkillTimerPanel8.Controls.Add(this.SkillTimerClick8_3);
+            this.SkillTimerPanel8.Controls.Add(this.SkillTimerClick8_2);
+            this.SkillTimerPanel8.Controls.Add(this.SkillTimerClick8_1);
+            this.SkillTimerPanel8.Controls.Add(this.txtSkillTimerKey8);
+            this.SkillTimerPanel8.Controls.Add(this.txtAutoRefreshDelay8);
+            this.SkillTimerPanel8.Location = new System.Drawing.Point(-3, 200);
+            this.SkillTimerPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.SkillTimerPanel8.Name = "SkillTimerPanel8";
+            this.SkillTimerPanel8.Size = new System.Drawing.Size(322, 27);
+            this.SkillTimerPanel8.TabIndex = 77;
             // 
             // SkillTimerEnabled8
             // 
@@ -966,20 +966,20 @@ namespace _4RTools.Forms
             this.txtAutoRefreshDelay8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay8.ThousandsSeparator = true;
             // 
-            // panel3
+            // SkillTimerPanel9
             // 
-            this.panel3.Controls.Add(this.SkillTimerEnabled9);
-            this.panel3.Controls.Add(this.SkillTimerAltKey9);
-            this.panel3.Controls.Add(this.SkillTimerClick9_3);
-            this.panel3.Controls.Add(this.SkillTimerClick9_2);
-            this.panel3.Controls.Add(this.SkillTimerClick9_1);
-            this.panel3.Controls.Add(this.txtSkillTimerKey9);
-            this.panel3.Controls.Add(this.txtAutoRefreshDelay9);
-            this.panel3.Location = new System.Drawing.Point(-3, 226);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(322, 27);
-            this.panel3.TabIndex = 78;
+            this.SkillTimerPanel9.Controls.Add(this.SkillTimerEnabled9);
+            this.SkillTimerPanel9.Controls.Add(this.SkillTimerAltKey9);
+            this.SkillTimerPanel9.Controls.Add(this.SkillTimerClick9_3);
+            this.SkillTimerPanel9.Controls.Add(this.SkillTimerClick9_2);
+            this.SkillTimerPanel9.Controls.Add(this.SkillTimerClick9_1);
+            this.SkillTimerPanel9.Controls.Add(this.txtSkillTimerKey9);
+            this.SkillTimerPanel9.Controls.Add(this.txtAutoRefreshDelay9);
+            this.SkillTimerPanel9.Location = new System.Drawing.Point(-3, 226);
+            this.SkillTimerPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.SkillTimerPanel9.Name = "SkillTimerPanel9";
+            this.SkillTimerPanel9.Size = new System.Drawing.Size(322, 27);
+            this.SkillTimerPanel9.TabIndex = 78;
             // 
             // SkillTimerEnabled9
             // 
@@ -1065,20 +1065,20 @@ namespace _4RTools.Forms
             this.txtAutoRefreshDelay9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay9.ThousandsSeparator = true;
             // 
-            // panel4
+            // SkillTimerPanel10
             // 
-            this.panel4.Controls.Add(this.SkillTimerEnabled10);
-            this.panel4.Controls.Add(this.SkillTimerAltKey10);
-            this.panel4.Controls.Add(this.SkillTimerClick10_3);
-            this.panel4.Controls.Add(this.SkillTimerClick10_2);
-            this.panel4.Controls.Add(this.SkillTimerClick10_1);
-            this.panel4.Controls.Add(this.txtSkillTimerKey10);
-            this.panel4.Controls.Add(this.txtAutoRefreshDelay10);
-            this.panel4.Location = new System.Drawing.Point(-3, 252);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(322, 27);
-            this.panel4.TabIndex = 79;
+            this.SkillTimerPanel10.Controls.Add(this.SkillTimerEnabled10);
+            this.SkillTimerPanel10.Controls.Add(this.SkillTimerAltKey10);
+            this.SkillTimerPanel10.Controls.Add(this.SkillTimerClick10_3);
+            this.SkillTimerPanel10.Controls.Add(this.SkillTimerClick10_2);
+            this.SkillTimerPanel10.Controls.Add(this.SkillTimerClick10_1);
+            this.SkillTimerPanel10.Controls.Add(this.txtSkillTimerKey10);
+            this.SkillTimerPanel10.Controls.Add(this.txtAutoRefreshDelay10);
+            this.SkillTimerPanel10.Location = new System.Drawing.Point(-3, 252);
+            this.SkillTimerPanel10.Margin = new System.Windows.Forms.Padding(0);
+            this.SkillTimerPanel10.Name = "SkillTimerPanel10";
+            this.SkillTimerPanel10.Size = new System.Drawing.Size(322, 27);
+            this.SkillTimerPanel10.TabIndex = 79;
             // 
             // SkillTimerEnabled10
             // 
@@ -1171,10 +1171,10 @@ namespace _4RTools.Forms
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(319, 280);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.SkillTimerPanel10);
+            this.Controls.Add(this.SkillTimerPanel9);
+            this.Controls.Add(this.SkillTimerPanel8);
+            this.Controls.Add(this.SkillTimerPanel7);
             this.Controls.Add(this.SkillTimerPanel6);
             this.Controls.Add(this.txtSkillTimerKeyLabel);
             this.Controls.Add(this.txtAutoRefreshDelayLabel);
@@ -1212,17 +1212,17 @@ namespace _4RTools.Forms
             this.SkillTimerPanel6.ResumeLayout(false);
             this.SkillTimerPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay6)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.SkillTimerPanel7.ResumeLayout(false);
+            this.SkillTimerPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay7)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.SkillTimerPanel8.ResumeLayout(false);
+            this.SkillTimerPanel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay8)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.SkillTimerPanel9.ResumeLayout(false);
+            this.SkillTimerPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay9)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.SkillTimerPanel10.ResumeLayout(false);
+            this.SkillTimerPanel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay10)).EndInit();
             this.ResumeLayout(false);
 
@@ -1282,7 +1282,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.RadioButton SkillTimerClick6_1;
         private System.Windows.Forms.TextBox txtSkillTimerKey6;
         private System.Windows.Forms.NumericUpDown txtAutoRefreshDelay6;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel SkillTimerPanel7;
         private System.Windows.Forms.CheckBox SkillTimerEnabled7;
         private System.Windows.Forms.CheckBox SkillTimerAltKey7;
         private System.Windows.Forms.RadioButton SkillTimerClick7_3;
@@ -1290,7 +1290,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.RadioButton SkillTimerClick7_1;
         private System.Windows.Forms.TextBox txtSkillTimerKey7;
         private System.Windows.Forms.NumericUpDown txtAutoRefreshDelay7;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel SkillTimerPanel8;
         private System.Windows.Forms.CheckBox SkillTimerEnabled8;
         private System.Windows.Forms.CheckBox SkillTimerAltKey8;
         private System.Windows.Forms.RadioButton SkillTimerClick8_3;
@@ -1298,7 +1298,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.RadioButton SkillTimerClick8_1;
         private System.Windows.Forms.TextBox txtSkillTimerKey8;
         private System.Windows.Forms.NumericUpDown txtAutoRefreshDelay8;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel SkillTimerPanel9;
         private System.Windows.Forms.CheckBox SkillTimerEnabled9;
         private System.Windows.Forms.CheckBox SkillTimerAltKey9;
         private System.Windows.Forms.RadioButton SkillTimerClick9_3;
@@ -1306,7 +1306,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.RadioButton SkillTimerClick9_1;
         private System.Windows.Forms.TextBox txtSkillTimerKey9;
         private System.Windows.Forms.NumericUpDown txtAutoRefreshDelay9;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel SkillTimerPanel10;
         private System.Windows.Forms.CheckBox SkillTimerEnabled10;
         private System.Windows.Forms.CheckBox SkillTimerAltKey10;
         private System.Windows.Forms.RadioButton SkillTimerClick10_3;
