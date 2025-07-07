@@ -52,6 +52,7 @@ namespace _4RTools.Model
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr GetForegroundWindow();
+
         #endregion
 
         #region Constants
@@ -152,7 +153,11 @@ namespace _4RTools.Model
                 if (macro.Key != Key.None)
                 {
                     if (macro.AltKey) {
-                        SetForegroundWindow(hWnd);
+                        // Only focus the window if it's not already focused
+                        if (GetForegroundWindow() != hWnd)
+                        {
+                            SetForegroundWindow(hWnd);
+                        }
                         SendKeys.SendWait("%" + ToSendKeysFormat(macro.Key));
                         //DebugLogger.Info($"Sent ALT Skilltimer key: " + macro.Key);
                     } else {
