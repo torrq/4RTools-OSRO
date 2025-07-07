@@ -39,7 +39,7 @@ namespace _4RTools.Utils
         public static string WindowClassLR = "Oldschool RO | dunno";
         #endregion
 
-        #region Memory Addresses
+        #region Memory Addresses / Server Types
 
         public static List<dynamic> DefaultServers
         {
