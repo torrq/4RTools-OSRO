@@ -838,7 +838,7 @@ namespace _4RTools.Forms
 
         public void SetSkillTimerWindow()
         {
-            SkillTimerForm frm = new SkillTimerForm(subject)
+            SkillTimerForm frm = new SkillTimerForm(subject, frmToggleApplication)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 MdiParent = this

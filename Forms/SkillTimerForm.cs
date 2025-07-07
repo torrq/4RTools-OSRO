@@ -7,11 +7,14 @@ namespace _4RTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver
     {
-        public SkillTimerForm(Subject subject)
+        private readonly ToggleStateForm frmToggleApplication;
+
+        public SkillTimerForm(Subject subject, ToggleStateForm toggleStateForm)
         {
             InitializeComponent();
             subject.Attach(this);
             ConfigureTimerLanes();
+            this.frmToggleApplication = toggleStateForm;
         }
 
         public void Update(ISubject subject)
@@ -77,7 +80,6 @@ namespace _4RTools.Forms
         {
             try
             {
-
                 TextBox textBox = (TextBox)Controls.Find("txtSkillTimerKey" + id, true)[0];
                 textBox.KeyDown += FormUtils.OnKeyDown;
                 textBox.KeyPress += FormUtils.OnKeyPress;
@@ -277,7 +279,7 @@ namespace _4RTools.Forms
                         ProfileSingleton.SetConfiguration(skillTimer);
 
                         // Start or stop the individual timer based on checkbox state
-                        if (checkBox.Checked)
+                        if (checkBox.Checked && frmToggleApplication.IsApplicationOn())
                         {
                             skillTimer.StartTimer(id);
                         }

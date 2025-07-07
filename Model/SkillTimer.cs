@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -150,8 +151,13 @@ namespace _4RTools.Model
 
                 if (macro.Key != Key.None)
                 {
-                    // FIX: Use KeyInterop for robust conversion from Input.Key to Forms.Keys
-                    Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, (Keys)KeyInterop.VirtualKeyFromKey(macro.Key), 0);
+                    if (macro.AltKey) {
+                        SetForegroundWindow(hWnd);
+                        SendKeys.SendWait("%" + ToSendKeysFormat(macro.Key));
+                        //DebugLogger.Info($"Sent ALT Skilltimer key: " + macro.Key);
+                    } else {
+                        Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, (Keys)KeyInterop.VirtualKeyFromKey(macro.Key), 0);
+                    }
                 }
 
                 // Handle clicking based on the ClickMode
@@ -220,6 +226,29 @@ namespace _4RTools.Model
 
             // Restore original cursor position
             SetCursorPos(originalPos.X, originalPos.Y);
+        }
+
+        private static readonly Dictionary<Key, string> _sendKeysMap = new Dictionary<Key, string>()
+        {
+             { Key.D0, "0" },
+             { Key.D1, "1" },
+             { Key.D2, "2" },
+             { Key.D3, "3" },
+             { Key.D4, "4" },
+             { Key.D5, "5" },
+             { Key.D6, "6" },
+             { Key.D7, "7" },
+             { Key.D8, "8" },
+             { Key.D9, "9" }
+        };
+
+        public static string ToSendKeysFormat(Key key)
+        {
+            if (_sendKeysMap.TryGetValue(key, out string value))
+            {
+                return value;
+            }
+            return key.ToString().ToLower();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace _4RTools.Model
 {
@@ -16,6 +17,7 @@ namespace _4RTools.Model
         private readonly int ICON_SPACING = 70;
         private readonly Size TEXTBOX_SIZE = new Size(35, 20);
         private const int TEXTBOX_VERTICAL_ADJUSTMENT = 2;
+        public const string BUFF_KEYLESS = "None";
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
@@ -68,16 +70,16 @@ namespace _4RTools.Model
                     pb.Size = new Size(26, 26);
                     _toolTip.SetToolTip(pb, skill.Name);
 
-                    textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-                    textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
-                    textBox.GotFocus += new EventHandler(TextBox_GotFocus);
-                    textBox.TextChanged += new EventHandler(OnTextChange);
+                    textBox.KeyDown += FormUtils.OnKeyDown;
+                    textBox.KeyPress += FormUtils.OnKeyPress;
+                    textBox.GotFocus += TextBox_GotFocus;
+                    textBox.TextChanged += OnTextChange;
                     textBox.Size = TEXTBOX_SIZE;
                     textBox.Tag = ((int)skill.EffectStatusID);
                     textBox.Name = "in" + ((int)skill.EffectStatusID);
                     textBox.Location = new Point(pb.Location.X + ICON_TEXT_SPACING, pb.Location.Y + 3 - TEXTBOX_VERTICAL_ADJUSTMENT);
                     textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    textBox.Text = "None"; // Set default value
+                    textBox.Text = BUFF_KEYLESS; // Set default value
 
                     bk.Container.Controls.Add(textBox);
                     bk.Container.Controls.Add(pb);
@@ -154,7 +156,7 @@ namespace _4RTools.Model
             {
                 if (c is TextBox textBox && textBox.Name.StartsWith("in") && string.IsNullOrEmpty(textBox.Text))
                 {
-                    textBox.Text = "None";
+                    textBox.Text = BUFF_KEYLESS;
                 }
                 if (c.HasChildren)
                 {

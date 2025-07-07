@@ -16,6 +16,7 @@ namespace _4RTools.Model
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
+        private string OldText = string.Empty;
 
         public DebuffRenderer(List<BuffContainer> containers, ToolTip toolTip)
         {
@@ -57,6 +58,7 @@ namespace _4RTools.Model
                     textBox.Name = "in" + ((int)skill.EffectStatusID);
                     textBox.Location = new Point(pb.Location.X + 35, pb.Location.Y + 8);
                     textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    textBox.TextAlign = HorizontalAlignment.Center;
 
                     bk.Container.Controls.Add(textBox);
                     bk.Container.Controls.Add(pb);
@@ -73,6 +75,7 @@ namespace _4RTools.Model
             }
         }
 
+        /*
         private void OnTextChange(object sender, EventArgs e)
         {
             try
@@ -89,5 +92,46 @@ namespace _4RTools.Model
             }
             catch { }
         }
+        */
+
+        private void OnTextChange(object sender, EventArgs e)
+        {
+            TextBox txtBox = (TextBox)sender;
+            if (this.OldText == txtBox.Text) return;
+
+            try
+            {
+                Key key;
+                bool textChanged = this.OldText != string.Empty && this.OldText != txtBox.Text.ToString();
+
+                if (!Enum.TryParse(txtBox.Text, out key))
+                {
+                    key = Key.None;
+                }
+
+                if (txtBox.Text.ToString() != string.Empty)
+                {
+                    EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
+                    ProfileSingleton.GetCurrent().DebuffsRecovery.AddKeyToBuff(statusID, key);
+                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().DebuffsRecovery);
+                }
+
+                if (key != Key.None)
+                {
+                    txtBox.Font = new System.Drawing.Font(txtBox.Font, System.Drawing.FontStyle.Bold);
+                }
+                else
+                {
+                    txtBox.Font = new System.Drawing.Font(txtBox.Font, System.Drawing.FontStyle.Regular);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Debug($"OnTextChange: Error processing TextChanged event: {ex.Message}");
+            }
+        }
+
+
     }
 }

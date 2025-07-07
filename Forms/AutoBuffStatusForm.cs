@@ -18,6 +18,7 @@ namespace _4RTools.Forms
             txtPanaceaKey.KeyDown += FormUtils.OnKeyDown;
             txtPanaceaKey.KeyPress += FormUtils.OnKeyPress;
             txtPanaceaKey.TextChanged += OnPanaceaKeyChange;
+            txtPanaceaKey.TextAlign = HorizontalAlignment.Center;
             subject.Attach(this);
         }
         public void Update(ISubject subject)
@@ -68,7 +69,13 @@ namespace _4RTools.Forms
         // This method is for Panacea
         private void OnPanaceaKeyChange(object sender, EventArgs e)
         {
-            Key k = (Key)Enum.Parse(typeof(Key), txtPanaceaKey.Text);
+            Key k;
+            // Safely parse the key, defaulting to None if invalid.
+            if (!Enum.TryParse(txtPanaceaKey.Text, out k))
+            {
+                k = Key.None;
+            }
+
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.POISON, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.SILENCE, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.BLIND, k);
@@ -76,6 +83,17 @@ namespace _4RTools.Forms
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.HALLUCINATION, k);
             ProfileSingleton.GetCurrent().StatusRecovery.AddKeyToBuff(EffectStatusIDs.CURSE, k);
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().StatusRecovery);
+
+            // Update the font style for the Panacea textbox.
+            if (k != Key.None)
+            {
+                txtPanaceaKey.Font = new System.Drawing.Font(txtPanaceaKey.Font, System.Drawing.FontStyle.Bold);
+            }
+            else
+            {
+                txtPanaceaKey.Font = new System.Drawing.Font(txtPanaceaKey.Font, System.Drawing.FontStyle.Regular);
+            }
+
             this.ActiveControl = null;
         }
 
