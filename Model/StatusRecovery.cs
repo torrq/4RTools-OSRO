@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -10,11 +11,88 @@ namespace _4RTools.Model
 {
     public class StatusRecovery : IAction
     {
-        public static string ACTION_NAME_PANACEA_AUTOBUFF = "PanaceaAutoBuff";
+        public static string ACTION_NAME_PANACEA_AUTOBUFF = "StatusRecovery";
 
         private ThreadRunner thread;
-        public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
+
+        // Dictionary to store multiple status lists with their associated keys
+        public Dictionary<string, StatusRecoveryList> statusLists = new Dictionary<string, StatusRecoveryList>();
+
+        // Legacy property for backward compatibility with old JSON format
+        [JsonIgnore]
+        public Dictionary<EffectStatusIDs, Key> buffMapping
+        {
+            get
+            {
+                // Return the Panacea mapping for backward compatibility
+                var mapping = new Dictionary<EffectStatusIDs, Key>();
+                if (statusLists.ContainsKey("Panacea") && statusLists["Panacea"].Key != Key.None)
+                {
+                    var panaceaKey = statusLists["Panacea"].Key;
+                    foreach (var status in statusLists["Panacea"].Statuses)
+                    {
+                        mapping[status] = panaceaKey;
+                    }
+                }
+                return mapping;
+            }
+            set
+            {
+                // Handle setting from old JSON format
+                if (value != null && value.Count > 0)
+                {
+                    var firstKey = value.Values.FirstOrDefault();
+                    if (firstKey != Key.None)
+                    {
+                        SetKeyForList("Panacea", firstKey);
+                    }
+                }
+            }
+        }
+
         public int Delay { get; set; } = 1;
+
+        public StatusRecovery()
+        {
+            InitializeDefaultLists();
+        }
+
+        private void InitializeDefaultLists()
+        {
+            // Panacea list - cures many major debuffs
+            var panaceaStatuses = new List<EffectStatusIDs>
+            {
+                EffectStatusIDs.POISON,
+                EffectStatusIDs.SILENCE,
+                EffectStatusIDs.BLIND,
+                EffectStatusIDs.CURSE,
+                EffectStatusIDs.CONFUSION,
+                EffectStatusIDs.HALLUCINATION,
+                EffectStatusIDs.BLEEDING
+            };
+            statusLists["Panacea"] = new StatusRecoveryList("Panacea", panaceaStatuses, Key.None);
+
+            // Royal Jelly list - cures many major debuffs
+            var royalJellyStatuses = new List<EffectStatusIDs>
+            {
+                EffectStatusIDs.POISON,
+                EffectStatusIDs.SILENCE,
+                EffectStatusIDs.BLIND,
+                EffectStatusIDs.CURSE,
+                EffectStatusIDs.CONFUSION,
+                EffectStatusIDs.HALLUCINATION,
+                EffectStatusIDs.BLEEDING
+            };
+            statusLists["RoyalJelly"] = new StatusRecoveryList("RoyalJelly", royalJellyStatuses, Key.None);
+
+            // Green Potion list - cures Poison and Silence
+            var greenPotionStatuses = new List<EffectStatusIDs>
+            {
+                EffectStatusIDs.POISON,
+                EffectStatusIDs.SILENCE,
+            };
+            statusLists["GreenPotion"] = new StatusRecoveryList("GreenPotion", greenPotionStatuses, Key.None);
+        }
 
         public string GetActionName()
         {
@@ -33,13 +111,14 @@ namespace _4RTools.Model
                     if (currentStatus == uint.MaxValue) { continue; }
 
                     EffectStatusIDs status = (EffectStatusIDs)currentStatus;
-                    if (buffMapping.ContainsKey((EffectStatusIDs)currentStatus)) //IF FOR REMOVE STATUS - CHECK IF STATUS EXISTS IN STATUS LIST AND DO ACTION
+
+                    // Check each status list to see if any contains the current status
+                    foreach (var statusList in statusLists.Values)
                     {
-                        //IF CONTAINS CURRENT STATUS ON DICT
-                        Key key = buffMapping[(EffectStatusIDs)currentStatus];
-                        if (Enum.IsDefined(typeof(EffectStatusIDs), currentStatus))
+                        if (statusList.ContainsStatus(status) && statusList.Key != Key.None)
                         {
-                            this.UseStatusRecovery(key);
+                            this.UseStatusRecovery(statusList.Key);
+                            break; // Use first matching list only
                         }
                     }
                 }
@@ -52,7 +131,66 @@ namespace _4RTools.Model
 
         public string GetConfiguration()
         {
-            return JsonConvert.SerializeObject(this);
+            // Only serialize the keys, not the predefined status lists
+            var configData = new Dictionary<string, Key>();
+            foreach (var kvp in statusLists)
+            {
+                configData[kvp.Key] = kvp.Value.Key;
+            }
+            return JsonConvert.SerializeObject(configData);
+        }
+
+        public void LoadConfiguration(string config)
+        {
+            try
+            {
+                // First try to deserialize as the new format (Dictionary<string, Key>)
+                var configData = JsonConvert.DeserializeObject<Dictionary<string, Key>>(config);
+                if (configData != null)
+                {
+                    foreach (var kvp in configData)
+                    {
+                        if (statusLists.ContainsKey(kvp.Key))
+                        {
+                            statusLists[kvp.Key].Key = kvp.Value;
+                        }
+                    }
+                    return;
+                }
+            }
+            catch
+            {
+                // If that fails, try to deserialize as the old format (full StatusRecovery object)
+                try
+                {
+                    var oldStatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(config);
+                    if (oldStatusRecovery != null)
+                    {
+                        // Migrate old buffMapping to new format
+                        if (oldStatusRecovery.buffMapping != null && oldStatusRecovery.buffMapping.Count > 0)
+                        {
+                            // Check if this looks like the old Panacea mapping (multiple statuses with same key)
+                            var firstKey = oldStatusRecovery.buffMapping.Values.FirstOrDefault();
+                            if (firstKey != Key.None)
+                            {
+                                // Set the Panacea key
+                                SetKeyForList("Panacea", firstKey);
+                            }
+                        }
+
+                        // Copy other properties if they exist
+                        if (oldStatusRecovery.Delay > 0)
+                        {
+                            this.Delay = oldStatusRecovery.Delay;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle deserialization errors
+                    Console.WriteLine($"Error loading StatusRecovery configuration: {ex.Message}");
+                }
+            }
         }
 
         public void Start()
@@ -70,17 +208,34 @@ namespace _4RTools.Model
             }
         }
 
+        public void SetKeyForList(string listName, Key key)
+        {
+            if (statusLists.ContainsKey(listName))
+            {
+                statusLists[listName].Key = FormUtils.IsValidKey(key) ? key : Key.None;
+            }
+        }
+
+        public Key GetKeyForList(string listName)
+        {
+            return statusLists.ContainsKey(listName) ? statusLists[listName].Key : Key.None;
+        }
+
+        public List<string> GetAvailableLists()
+        {
+            return statusLists.Keys.ToList();
+        }
+
+        public StatusRecoveryList GetList(string listName)
+        {
+            return statusLists.ContainsKey(listName) ? statusLists[listName] : null;
+        }
+
+        // Legacy method for backward compatibility
         public void AddKeyToBuff(EffectStatusIDs status, Key key)
         {
-            if (buffMapping.ContainsKey(status))
-            {
-                buffMapping.Remove(status);
-            }
-
-            if (FormUtils.IsValidKey(key))
-            {
-                buffMapping.Add(status, key);
-            }
+            // For backward compatibility, assume this is for Panacea
+            SetKeyForList("Panacea", key);
         }
 
         public void Stop()
@@ -100,6 +255,25 @@ namespace _4RTools.Model
                 Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
             }
         }
+    }
 
+    // Helper class to represent a status recovery list
+    public class StatusRecoveryList
+    {
+        public string Name { get; set; }
+        public List<EffectStatusIDs> Statuses { get; set; }
+        public Key Key { get; set; }
+
+        public StatusRecoveryList(string name, List<EffectStatusIDs> statuses, Key key)
+        {
+            Name = name;
+            Statuses = statuses ?? new List<EffectStatusIDs>();
+            Key = key;
+        }
+
+        public bool ContainsStatus(EffectStatusIDs status)
+        {
+            return Statuses.Contains(status);
+        }
     }
 }

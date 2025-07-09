@@ -253,6 +253,24 @@ namespace _4RTools.Utils
             int b = Math.Max(0, color.B - amount);
             return Color.FromArgb(r, g, b);
         }
+
+        public static void AttachBlankFix(NumericUpDown num)
+        {
+            num.Leave += ForceValidZeroIfBlank;
+            num.Validating += ForceValidZeroIfBlank;
+        }
+
+        private static void ForceValidZeroIfBlank(object sender, EventArgs e)
+        {
+            var num = sender as NumericUpDown;
+            if (num != null && string.IsNullOrWhiteSpace(num.Text))
+            {
+                num.Value = 0;
+                // Force re-parse by resetting text
+                num.Text = "0";
+            }
+        }
+
     }
 
     public static class EnumExtensions

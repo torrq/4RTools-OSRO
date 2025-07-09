@@ -15,6 +15,8 @@ namespace _4RTools.Model
         public SkillSpammer SkillSpammer { get; set; }
         public Autopot Autopot { get; set; }
         public Autopot AutopotYgg { get; set; }
+        public AutopotHP AutopotHP { get; set; }
+        public AutopotSP AutopotSP { get; set; }
         public SkillTimer SkillTimer { get; set; }
         public AutoBuffSkill AutobuffSkill { get; set; }
         public AutoBuffItem AutobuffItem { get; set; }
@@ -33,6 +35,8 @@ namespace _4RTools.Model
             this.SkillSpammer = new SkillSpammer();
             this.Autopot = new Autopot(Autopot.ACTION_NAME_AUTOPOT);
             this.AutopotYgg = new Autopot(Autopot.ACTION_NAME_AUTOPOT_YGG);
+            this.AutopotHP = new AutopotHP(AutopotHP.ACTION_NAME_AUTOPOT_HP);
+            this.AutopotSP = new AutopotSP(AutopotSP.ACTION_NAME_AUTOPOT_SP);
             this.SkillTimer = new SkillTimer();
             this.AutobuffSkill = new AutoBuffSkill(AutoBuffSkill.ACTION_NAME_AUTOBUFFSKILL);
             this.AutobuffItem = new AutoBuffItem(AutoBuffItem.ACTION_NAME_AUTOBUFFITEM);
@@ -73,7 +77,7 @@ namespace _4RTools.Model
         }
     }
 
-    public class ProfileSingleton
+    public static class ProfileSingleton
     {
         private static Profile profile = new Profile("Default");
 
@@ -137,7 +141,20 @@ namespace _4RTools.Model
                     profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
                     profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
                     profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
-                    profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
+                    profile.AutopotHP = JsonConvert.DeserializeObject<AutopotHP>(Profile.GetByAction(rawObject, profile.AutopotHP));
+                    profile.AutopotSP = JsonConvert.DeserializeObject<AutopotSP>(Profile.GetByAction(rawObject, profile.AutopotSP));
+
+                    try
+                    {
+                        string statusRecoveryConfig = Profile.GetByAction(rawObject, profile.StatusRecovery).ToString();
+                        profile.StatusRecovery = new StatusRecovery();
+                        profile.StatusRecovery.LoadConfiguration(statusRecoveryConfig);
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugLogger.Error($"Failed to load StatusRecovery configuration: {ex.Message}");
+                        profile.StatusRecovery = new StatusRecovery(); // Use default if loading fails
+                    }
                     profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
                     profile.AutobuffSkill = JsonConvert.DeserializeObject<AutoBuffSkill>(Profile.GetByAction(rawObject, profile.AutobuffSkill));
                     if (profile.AutobuffSkill.Delay < 0)

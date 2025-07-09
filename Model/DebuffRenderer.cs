@@ -10,9 +10,20 @@ namespace _4RTools.Model
     internal class DebuffRenderer
     {
 
-        private readonly int BUFFS_PER_ROW = 5;
-        private readonly int DISTANCE_BETWEEN_CONTAINERS = 10;
-        private readonly int DISTANCE_BETWEEN_ROWS = 36;
+        private readonly int BUFFS_PER_ROW = 3;
+        private readonly int DISTANCE_BETWEEN_CONTAINERS = 0;
+        private readonly int DISTANCE_BETWEEN_ROWS = 52;
+        private readonly int ICON_SPACING = 180;
+        private readonly int DEBUFFS_Y_MARGIN = 35;
+        private readonly int DEBUFFS_X_MARGIN_OFFSET = 0;
+        private readonly int LABEL_SIZE_WIDTH = 85;
+        private readonly int LABEL_X_OFFSET = 6;
+        private readonly int LABEL_Y_OFFSET = -11;
+        private readonly Size LABEL_SIZE = new Size(80, 50);
+        private readonly Size PICTUREBOX_SIZE = new Size(48, 48);
+        private readonly Size TEXTBOX_SIZE = new Size(55, 20);
+        private readonly int TEXTBOX_X_OFFSET = 35;
+        private readonly int TEXTBOX_Y_OFFSET = 4;
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
@@ -29,7 +40,7 @@ namespace _4RTools.Model
             for (int i = 0; i < _containers.Count; i++)
             {
                 BuffContainer bk = _containers[i];
-                Point lastLocation = new Point(bk.Container.Location.X, 20);
+                Point lastLocation = new Point(bk.Container.Location.X + DEBUFFS_X_MARGIN_OFFSET, DEBUFFS_Y_MARGIN);
                 int colCount = 0;
 
                 if (i > 0)
@@ -40,26 +51,36 @@ namespace _4RTools.Model
 
                 foreach (Buff skill in bk.Skills)
                 {
+                    Label label = new Label();
                     PictureBox pb = new PictureBox();
                     TextBox textBox = new TextBox();
 
+                    label.BackgroundImageLayout = ImageLayout.Center;
+                    label.Location = new Point(lastLocation.X + (colCount * ICON_SPACING) + LABEL_X_OFFSET, lastLocation.Y + LABEL_Y_OFFSET);
+                    label.Name = "lbl" + ((int)skill.EffectStatusID);
+                    label.Size = LABEL_SIZE;
+                    label.Text = skill.Name;
+                    label.TextAlign = ContentAlignment.MiddleRight;
+                    _toolTip.SetToolTip(label, skill.Name);
+
                     pb.Image = skill.Icon;
                     pb.BackgroundImageLayout = ImageLayout.Center;
-                    pb.Location = new Point(lastLocation.X + (colCount * 100), lastLocation.Y);
+                    pb.Location = new Point(lastLocation.X + (colCount * ICON_SPACING) + LABEL_SIZE_WIDTH, lastLocation.Y);
                     pb.Name = "pbox" + ((int)skill.EffectStatusID);
-                    pb.Size = new Size(32, 32);
+                    pb.Size = PICTUREBOX_SIZE;
                     _toolTip.SetToolTip(pb, skill.Name);
 
                     textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
                     textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
                     textBox.TextChanged += new EventHandler(OnTextChange);
-                    textBox.Size = new Size(55, 20);
+                    textBox.Size = TEXTBOX_SIZE;
                     textBox.Tag = ((int)skill.EffectStatusID);
                     textBox.Name = "in" + ((int)skill.EffectStatusID);
-                    textBox.Location = new Point(pb.Location.X + 35, pb.Location.Y + 8);
+                    textBox.Location = new Point(pb.Location.X + TEXTBOX_X_OFFSET, pb.Location.Y + TEXTBOX_Y_OFFSET);
                     textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                     textBox.TextAlign = HorizontalAlignment.Center;
 
+                    bk.Container.Controls.Add(label);
                     bk.Container.Controls.Add(textBox);
                     bk.Container.Controls.Add(pb);
 
@@ -69,30 +90,11 @@ namespace _4RTools.Model
                     {
                         //5 Buffs per row
                         colCount = 0;
-                        lastLocation = new Point(bk.Container.Location.X, lastLocation.Y + DISTANCE_BETWEEN_ROWS);
+                        lastLocation = new Point(bk.Container.Location.X + DEBUFFS_X_MARGIN_OFFSET, lastLocation.Y + DISTANCE_BETWEEN_ROWS);
                     }
                 }
             }
         }
-
-        /*
-        private void OnTextChange(object sender, EventArgs e)
-        {
-            try
-            {
-
-                TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text.ToString() != string.Empty)
-                {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
-                    EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
-                    ProfileSingleton.GetCurrent().DebuffsRecovery.AddKeyToBuff(statusID, key);
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().DebuffsRecovery);
-                }
-            }
-            catch { }
-        }
-        */
 
         private void OnTextChange(object sender, EventArgs e)
         {
@@ -118,11 +120,13 @@ namespace _4RTools.Model
 
                 if (key != Key.None)
                 {
-                    txtBox.Font = new System.Drawing.Font(txtBox.Font, System.Drawing.FontStyle.Bold);
+                    txtBox.Font = new Font(txtBox.Font, FontStyle.Bold);
+                    txtBox.ForeColor = AppConfig.ActiveKeyColor;
                 }
                 else
                 {
-                    txtBox.Font = new System.Drawing.Font(txtBox.Font, System.Drawing.FontStyle.Regular);
+                    txtBox.Font = new Font(txtBox.Font, FontStyle.Regular);
+                    txtBox.ForeColor = AppConfig.InactiveKeyColor;
                 }
 
             }

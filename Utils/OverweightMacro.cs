@@ -10,6 +10,9 @@ namespace _4RTools.Utils
 {
     public static class OverweightMacro
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr GetForegroundWindow();
+
         private static readonly Dictionary<Key, string> _sendKeysMap = new Dictionary<Key, string>()
         {
              { Key.D0, "0" },
@@ -36,23 +39,27 @@ namespace _4RTools.Utils
             return key.ToString().ToLower();
         }
 
-        public static void SendOverweightMacro(string percentage, int times = 2, int intervalMs = 5000)
+        public static void SendOverweightMacro(string percentage, int timesToSend = 2, int intervalMs = 5000)
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (!string.IsNullOrEmpty(prefs.OverweightKey.ToString()) && prefs.OverweightKey.ToString() != "None")
             {
-                IntPtr handle = ClientSingleton.GetClient().Process.MainWindowHandle;
-                SetForegroundWindow(handle);
+                IntPtr hWnd = ClientSingleton.GetClient().Process.MainWindowHandle;
+                // Only focus the window if it's not already focused
+                if (GetForegroundWindow() != hWnd)
+                {
+                    SetForegroundWindow(hWnd);
+                }
 
                 Thread.Sleep(1000);
 
                 string keyToSend = "%" + ToSendKeysFormat(prefs.OverweightKey);
-                for (int i = 0; i < times; i++)
+                for (int i = 0; i < timesToSend; i++)
                 {
                     SendKeys.SendWait(keyToSend);
-                    DebugLogger.Info($"Sent macro {i + 1}/{times}: Alt + {prefs.OverweightKey} (Overweight {percentage}%)");
+                    DebugLogger.Info($"Sent macro {i + 1}/{timesToSend}: Alt + {prefs.OverweightKey} (Overweight {percentage}%)");
 
-                    if (i < times - 1)
+                    if (i < timesToSend - 1)
                     {
                         Thread.Sleep(intervalMs);
                     }

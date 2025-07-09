@@ -181,6 +181,20 @@
     <Compile Include="Forms\AutoOffForm.Designer.cs">
       <DependentUpon>AutoOffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AutopotSPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AutopotSPForm.Designer.cs">
+      <DependentUpon>AutopotSPForm.cs</DependentUpon>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Compile>
+    <Compile Include="Forms\AutopotHPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AutopotHPForm.Designer.cs">
+      <DependentUpon>AutopotHPForm.cs</DependentUpon>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Compile>
     <Compile Include="Forms\CharacterInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +219,14 @@
     </Compile>
     <EmbeddedResource Include="Forms\AutoOffForm.resx">
       <DependentUpon>AutoOffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AutopotSPForm.resx">
+      <DependentUpon>AutopotSPForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AutopotHPForm.resx">
+      <DependentUpon>AutopotHPForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CharacterInfo.resx">
       <DependentUpon>CharacterInfo.cs</DependentUpon>
@@ -373,6 +395,8 @@
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AutoOff.cs" />
+    <Compile Include="Model\AutopotHP.cs" />
+    <Compile Include="Model\AutopotSP.cs" />
     <Compile Include="Model\SkillSpammer.cs" />
     <Compile Include="Model\ATKDEF.cs" />
     <Compile Include="Model\AutobuffSkill.cs" />
@@ -419,9 +443,9 @@
     </Compile>
     <Compile Include="Utils\AmmoSwapHandler.cs" />
     <Compile Include="Utils\DebugLogger.cs" />
-    <Compile Include="Utils\EffectStatusIDs.cs" />
     <Compile Include="Utils\AppConfig.cs" />
     <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\EffectStatusIDs.cs" />
     <Compile Include="Utils\FormUtils.cs" />
     <Compile Include="Utils\Interop.cs" />
     <Compile Include="Utils\JobList.cs" />
@@ -482,13 +506,18 @@
     <Content Include="assets\image\icon\atkdef\armor_shoes.png" />
     <Content Include="assets\image\icon\atkdef\weapon.png" />
     <Content Include="assets\image\icon\autopot\blue_potion.png" />
+    <Content Include="assets\image\icon\autopot\mastela_fruit.png" />
     <Content Include="assets\image\icon\autopot\white_potion.png" />
+    <Content Include="assets\image\icon\autopot\white_potion_slim.png" />
     <Content Include="assets\image\icon\autopot\ygg.png" />
+    <Content Include="assets\image\icon\autopot\ygg_seed.png" />
     <Content Include="assets\image\icon\common\arrow_down.png" />
     <Content Include="assets\image\icon\common\arrow_right.png" />
     <Content Include="assets\image\icon\common\arrow_up.png" />
     <Content Include="assets\image\icon\common\dagger.png" />
     <Content Include="assets\image\icon\common\violin.png" />
+    <Content Include="assets\image\icon\debuff\green_potion.png" />
+    <Content Include="assets\image\icon\debuff\royal_jelly.png" />
     <Content Include="assets\image\icon\item\scroll\buff_scroll.png" />
     <Content Include="assets\image\icon\key\key_0.png" />
     <Content Include="assets\image\icon\key\key_1.png" />
@@ -502,6 +531,7 @@
     <Content Include="assets\image\icon\key\key_9.png" />
     <Content Include="assets\image\icon\key\key_a.png" />
     <Content Include="assets\image\icon\key\key_alt.png" />
+    <Content Include="assets\image\icon\key\key_alt_off.png" />
     <Content Include="assets\image\icon\key\key_b.png" />
     <Content Include="assets\image\icon\key\key_blank.png" />
     <Content Include="assets\image\icon\key\key_c.png" />
@@ -547,6 +577,8 @@
     <Content Include="assets\image\icon\ui\github.png" />
     <Content Include="assets\image\icon\ui\minimode_less.png" />
     <Content Include="assets\image\icon\ui\minimode_more.png" />
+    <Content Include="assets\image\icon\ui\sort_arrow_down.png" />
+    <Content Include="assets\image\icon\ui\sort_arrow_up.png" />
     <Content Include="assets\image\icon\ui\systray_icon.ico" />
     <Content Include="assets\image\icon\ui\url_green.png" />
     <Content Include="assets\image\logos\applogo.png" />

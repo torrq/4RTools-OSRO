@@ -1043,6 +1043,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap green_potion {
+            get {
+                object obj = ResourceManager.GetObject("green_potion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hallucination {
             get {
                 object obj = ResourceManager.GetObject("hallucination", resourceCulture);
@@ -1833,6 +1843,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mastela_fruit {
+            get {
+                object obj = ResourceManager.GetObject("mastela_fruit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mc_loud {
             get {
                 object obj = ResourceManager.GetObject("mc_loud", resourceCulture);
@@ -2163,6 +2183,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap royal_jelly {
+            get {
+                object obj = ResourceManager.GetObject("royal_jelly", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sa_autospell {
             get {
                 object obj = ResourceManager.GetObject("sa_autospell", resourceCulture);
@@ -2316,6 +2346,26 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap solar_miracle {
             get {
                 object obj = ResourceManager.GetObject("solar_miracle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sort_arrow_down {
+            get {
+                object obj = ResourceManager.GetObject("sort_arrow_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sort_arrow_up {
+            get {
+                object obj = ResourceManager.GetObject("sort_arrow_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2693,6 +2743,16 @@ namespace _4RTools.Resources._4RTools {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap white_potion_slim {
+            get {
+                object obj = ResourceManager.GetObject("white_potion_slim", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ws_cartboost {
             get {
                 object obj = ResourceManager.GetObject("ws_cartboost", resourceCulture);
@@ -2746,6 +2806,16 @@ namespace _4RTools.Resources._4RTools {
         internal static System.Drawing.Bitmap ygg {
             get {
                 object obj = ResourceManager.GetObject("ygg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ygg_seed {
+            get {
+                object obj = ResourceManager.GetObject("ygg_seed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

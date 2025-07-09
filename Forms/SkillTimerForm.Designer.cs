@@ -30,6 +30,7 @@ namespace _4RTools.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtAutoRefreshDelay1 = new System.Windows.Forms.NumericUpDown();
             this.txtSkillTimerKey1 = new System.Windows.Forms.TextBox();
             this.txtAutoRefreshDelay4 = new System.Windows.Forms.NumericUpDown();
@@ -115,6 +116,11 @@ namespace _4RTools.Forms
             this.SkillTimerClick10_1 = new System.Windows.Forms.RadioButton();
             this.txtSkillTimerKey10 = new System.Windows.Forms.TextBox();
             this.txtAutoRefreshDelay10 = new System.Windows.Forms.NumericUpDown();
+            this.toolTipSkillTimerLegendClickOff = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSkillTimerLegendClickOn = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipSkillTimerLegendClickCenter = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTiptxtSkillTimerKeyLabel = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTiptxtAutoRefreshDelayLabel = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay3)).BeginInit();
@@ -419,7 +425,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel3.Controls.Add(this.SkillTimerClick3_1);
             this.SkillTimerPanel3.Controls.Add(this.txtSkillTimerKey3);
             this.SkillTimerPanel3.Controls.Add(this.txtAutoRefreshDelay3);
-            this.SkillTimerPanel3.Location = new System.Drawing.Point(-3, 70);
+            this.SkillTimerPanel3.Location = new System.Drawing.Point(-3, 69);
             this.SkillTimerPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel3.Name = "SkillTimerPanel3";
             this.SkillTimerPanel3.Size = new System.Drawing.Size(322, 27);
@@ -489,7 +495,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel4.Controls.Add(this.SkillTimerClick4_1);
             this.SkillTimerPanel4.Controls.Add(this.txtSkillTimerKey4);
             this.SkillTimerPanel4.Controls.Add(this.txtAutoRefreshDelay4);
-            this.SkillTimerPanel4.Location = new System.Drawing.Point(-3, 96);
+            this.SkillTimerPanel4.Location = new System.Drawing.Point(-3, 94);
             this.SkillTimerPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel4.Name = "SkillTimerPanel4";
             this.SkillTimerPanel4.Size = new System.Drawing.Size(322, 27);
@@ -559,7 +565,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel5.Controls.Add(this.SkillTimerClick5_1);
             this.SkillTimerPanel5.Controls.Add(this.txtSkillTimerKey5);
             this.SkillTimerPanel5.Controls.Add(this.txtAutoRefreshDelay5);
-            this.SkillTimerPanel5.Location = new System.Drawing.Point(-3, 122);
+            this.SkillTimerPanel5.Location = new System.Drawing.Point(-3, 119);
             this.SkillTimerPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel5.Name = "SkillTimerPanel5";
             this.SkillTimerPanel5.Size = new System.Drawing.Size(322, 27);
@@ -582,7 +588,7 @@ namespace _4RTools.Forms
             this.SkillTimerAltKey5.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SkillTimerAltKey5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SkillTimerAltKey5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SkillTimerAltKey5.Location = new System.Drawing.Point(64, 1);
+            this.SkillTimerAltKey5.Location = new System.Drawing.Point(64, 3);
             this.SkillTimerAltKey5.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerAltKey5.Name = "SkillTimerAltKey5";
             this.SkillTimerAltKey5.Size = new System.Drawing.Size(34, 24);
@@ -631,6 +637,7 @@ namespace _4RTools.Forms
             this.SkillTimerLegendClickOff.Size = new System.Drawing.Size(16, 16);
             this.SkillTimerLegendClickOff.TabIndex = 66;
             this.SkillTimerLegendClickOff.TabStop = false;
+            this.toolTipSkillTimerLegendClickOff.SetToolTip(this.SkillTimerLegendClickOff, "No Clicks");
             // 
             // SkillTimerLegendClickOn
             // 
@@ -640,6 +647,7 @@ namespace _4RTools.Forms
             this.SkillTimerLegendClickOn.Size = new System.Drawing.Size(16, 16);
             this.SkillTimerLegendClickOn.TabIndex = 67;
             this.SkillTimerLegendClickOn.TabStop = false;
+            this.toolTipSkillTimerLegendClickOn.SetToolTip(this.SkillTimerLegendClickOn, "Click mouse at cursor position");
             // 
             // SkillTimerLegendClickCenter
             // 
@@ -649,6 +657,7 @@ namespace _4RTools.Forms
             this.SkillTimerLegendClickCenter.Size = new System.Drawing.Size(16, 16);
             this.SkillTimerLegendClickCenter.TabIndex = 68;
             this.SkillTimerLegendClickCenter.TabStop = false;
+            this.toolTipSkillTimerLegendClickOn.SetToolTip(this.SkillTimerLegendClickCenter, "Click mouse at center of window");
             // 
             // txtAutoRefreshDelayLabel
             // 
@@ -659,6 +668,7 @@ namespace _4RTools.Forms
             this.txtAutoRefreshDelayLabel.TabIndex = 64;
             this.txtAutoRefreshDelayLabel.Text = "Delay (ms)";
             this.txtAutoRefreshDelayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTiptxtAutoRefreshDelayLabel.SetToolTip(this.txtAutoRefreshDelayLabel, "Delay time in ms. 1000 ms = 1 second");
             // 
             // txtSkillTimerKeyLabel
             // 
@@ -668,6 +678,7 @@ namespace _4RTools.Forms
             this.txtSkillTimerKeyLabel.Name = "txtSkillTimerKeyLabel";
             this.txtSkillTimerKeyLabel.Size = new System.Drawing.Size(25, 24);
             this.txtSkillTimerKeyLabel.TabIndex = 64;
+            this.toolTiptxtSkillTimerKeyLabel.SetToolTip(this.txtSkillTimerKeyLabel, "Key");
             // 
             // SkillTimerPanel6
             // 
@@ -678,7 +689,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel6.Controls.Add(this.SkillTimerClick6_1);
             this.SkillTimerPanel6.Controls.Add(this.txtSkillTimerKey6);
             this.SkillTimerPanel6.Controls.Add(this.txtAutoRefreshDelay6);
-            this.SkillTimerPanel6.Location = new System.Drawing.Point(-3, 148);
+            this.SkillTimerPanel6.Location = new System.Drawing.Point(-3, 144);
             this.SkillTimerPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel6.Name = "SkillTimerPanel6";
             this.SkillTimerPanel6.Size = new System.Drawing.Size(322, 27);
@@ -701,7 +712,7 @@ namespace _4RTools.Forms
             this.SkillTimerAltKey6.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SkillTimerAltKey6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SkillTimerAltKey6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SkillTimerAltKey6.Location = new System.Drawing.Point(64, 1);
+            this.SkillTimerAltKey6.Location = new System.Drawing.Point(64, 3);
             this.SkillTimerAltKey6.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerAltKey6.Name = "SkillTimerAltKey6";
             this.SkillTimerAltKey6.Size = new System.Drawing.Size(34, 24);
@@ -777,7 +788,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel7.Controls.Add(this.SkillTimerClick7_1);
             this.SkillTimerPanel7.Controls.Add(this.txtSkillTimerKey7);
             this.SkillTimerPanel7.Controls.Add(this.txtAutoRefreshDelay7);
-            this.SkillTimerPanel7.Location = new System.Drawing.Point(-3, 174);
+            this.SkillTimerPanel7.Location = new System.Drawing.Point(-3, 169);
             this.SkillTimerPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel7.Name = "SkillTimerPanel7";
             this.SkillTimerPanel7.Size = new System.Drawing.Size(322, 27);
@@ -800,7 +811,7 @@ namespace _4RTools.Forms
             this.SkillTimerAltKey7.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SkillTimerAltKey7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SkillTimerAltKey7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SkillTimerAltKey7.Location = new System.Drawing.Point(64, 1);
+            this.SkillTimerAltKey7.Location = new System.Drawing.Point(64, 3);
             this.SkillTimerAltKey7.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerAltKey7.Name = "SkillTimerAltKey7";
             this.SkillTimerAltKey7.Size = new System.Drawing.Size(34, 24);
@@ -876,7 +887,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel8.Controls.Add(this.SkillTimerClick8_1);
             this.SkillTimerPanel8.Controls.Add(this.txtSkillTimerKey8);
             this.SkillTimerPanel8.Controls.Add(this.txtAutoRefreshDelay8);
-            this.SkillTimerPanel8.Location = new System.Drawing.Point(-3, 200);
+            this.SkillTimerPanel8.Location = new System.Drawing.Point(-3, 194);
             this.SkillTimerPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel8.Name = "SkillTimerPanel8";
             this.SkillTimerPanel8.Size = new System.Drawing.Size(322, 27);
@@ -899,7 +910,7 @@ namespace _4RTools.Forms
             this.SkillTimerAltKey8.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SkillTimerAltKey8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SkillTimerAltKey8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SkillTimerAltKey8.Location = new System.Drawing.Point(64, 1);
+            this.SkillTimerAltKey8.Location = new System.Drawing.Point(64, 3);
             this.SkillTimerAltKey8.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerAltKey8.Name = "SkillTimerAltKey8";
             this.SkillTimerAltKey8.Size = new System.Drawing.Size(34, 24);
@@ -975,7 +986,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel9.Controls.Add(this.SkillTimerClick9_1);
             this.SkillTimerPanel9.Controls.Add(this.txtSkillTimerKey9);
             this.SkillTimerPanel9.Controls.Add(this.txtAutoRefreshDelay9);
-            this.SkillTimerPanel9.Location = new System.Drawing.Point(-3, 226);
+            this.SkillTimerPanel9.Location = new System.Drawing.Point(-3, 219);
             this.SkillTimerPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel9.Name = "SkillTimerPanel9";
             this.SkillTimerPanel9.Size = new System.Drawing.Size(322, 27);
@@ -998,7 +1009,7 @@ namespace _4RTools.Forms
             this.SkillTimerAltKey9.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SkillTimerAltKey9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SkillTimerAltKey9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SkillTimerAltKey9.Location = new System.Drawing.Point(64, 1);
+            this.SkillTimerAltKey9.Location = new System.Drawing.Point(64, 3);
             this.SkillTimerAltKey9.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerAltKey9.Name = "SkillTimerAltKey9";
             this.SkillTimerAltKey9.Size = new System.Drawing.Size(34, 24);
@@ -1074,7 +1085,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel10.Controls.Add(this.SkillTimerClick10_1);
             this.SkillTimerPanel10.Controls.Add(this.txtSkillTimerKey10);
             this.SkillTimerPanel10.Controls.Add(this.txtAutoRefreshDelay10);
-            this.SkillTimerPanel10.Location = new System.Drawing.Point(-3, 252);
+            this.SkillTimerPanel10.Location = new System.Drawing.Point(-3, 244);
             this.SkillTimerPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel10.Name = "SkillTimerPanel10";
             this.SkillTimerPanel10.Size = new System.Drawing.Size(322, 27);
@@ -1097,7 +1108,7 @@ namespace _4RTools.Forms
             this.SkillTimerAltKey10.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SkillTimerAltKey10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SkillTimerAltKey10.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.SkillTimerAltKey10.Location = new System.Drawing.Point(64, 1);
+            this.SkillTimerAltKey10.Location = new System.Drawing.Point(64, 3);
             this.SkillTimerAltKey10.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerAltKey10.Name = "SkillTimerAltKey10";
             this.SkillTimerAltKey10.Size = new System.Drawing.Size(34, 24);
@@ -1314,5 +1325,10 @@ namespace _4RTools.Forms
         private System.Windows.Forms.RadioButton SkillTimerClick10_1;
         private System.Windows.Forms.TextBox txtSkillTimerKey10;
         private System.Windows.Forms.NumericUpDown txtAutoRefreshDelay10;
+        private System.Windows.Forms.ToolTip toolTipSkillTimerLegendClickOff;
+        private System.Windows.Forms.ToolTip toolTipSkillTimerLegendClickOn;
+        private System.Windows.Forms.ToolTip toolTipSkillTimerLegendClickCenter;
+        private System.Windows.Forms.ToolTip toolTiptxtSkillTimerKeyLabel;
+        private System.Windows.Forms.ToolTip toolTiptxtAutoRefreshDelayLabel;
     }
 }

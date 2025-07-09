@@ -46,8 +46,7 @@ namespace _4RTools.Forms
             this.labelProfile = new System.Windows.Forms.Label();
             this.profileCB = new System.Windows.Forms.ComboBox();
             this.tabControlAutopot = new System.Windows.Forms.TabControl();
-            this.tabPageAutopot = new System.Windows.Forms.TabPage();
-            this.tabPageYggAutopot = new System.Windows.Forms.TabPage();
+            this.tabPageAutopotHP = new System.Windows.Forms.TabPage();
             this.tabPageSkillTimer = new System.Windows.Forms.TabPage();
             this.tabPageAutoOff = new System.Windows.Forms.TabPage();
             this.topSplitterPanel = new System.Windows.Forms.Panel();
@@ -222,8 +221,7 @@ namespace _4RTools.Forms
             // 
             // tabControlAutopot
             // 
-            this.tabControlAutopot.Controls.Add(this.tabPageAutopot);
-            this.tabControlAutopot.Controls.Add(this.tabPageYggAutopot);
+            this.tabControlAutopot.Controls.Add(this.tabPageAutopotHP);
             this.tabControlAutopot.Controls.Add(this.tabPageSkillTimer);
             this.tabControlAutopot.Controls.Add(this.tabPageAutoOff);
             this.tabControlAutopot.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,37 +229,27 @@ namespace _4RTools.Forms
             this.tabControlAutopot.Location = new System.Drawing.Point(15, 83);
             this.tabControlAutopot.Multiline = true;
             this.tabControlAutopot.Name = "tabControlAutopot";
-            this.tabControlAutopot.Padding = new System.Drawing.Point(12, 3);
+            this.tabControlAutopot.Padding = new System.Drawing.Point(8, 3);
             this.tabControlAutopot.SelectedIndex = 0;
             this.tabControlAutopot.Size = new System.Drawing.Size(350, 180);
             this.tabControlAutopot.TabIndex = 25;
             // 
-            // tabPageAutopot
+            // tabPageAutopotHP
             // 
-            this.tabPageAutopot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.tabPageAutopot.Location = new System.Drawing.Point(4, 24);
-            this.tabPageAutopot.Name = "tabPageAutopot";
-            this.tabPageAutopot.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAutopot.Size = new System.Drawing.Size(342, 152);
-            this.tabPageAutopot.TabIndex = 0;
-            this.tabPageAutopot.Text = "Autopot";
-            // 
-            // tabPageYggAutopot
-            // 
-            this.tabPageYggAutopot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.tabPageYggAutopot.Location = new System.Drawing.Point(4, 24);
-            this.tabPageYggAutopot.Name = "tabPageYggAutopot";
-            this.tabPageYggAutopot.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageYggAutopot.Size = new System.Drawing.Size(342, 152);
-            this.tabPageYggAutopot.TabIndex = 1;
-            this.tabPageYggAutopot.Text = "Yggdrasil";
+            this.tabPageAutopotHP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.tabPageAutopotHP.Location = new System.Drawing.Point(4, 24);
+            this.tabPageAutopotHP.Name = "tabPageAutopotHP";
+            this.tabPageAutopotHP.Padding = new System.Windows.Forms.Padding(1);
+            this.tabPageAutopotHP.Size = new System.Drawing.Size(342, 152);
+            this.tabPageAutopotHP.TabIndex = 0;
+            this.tabPageAutopotHP.Text = "Autopot HP";
             // 
             // tabPageSkillTimer
             // 
             this.tabPageSkillTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.tabPageSkillTimer.Location = new System.Drawing.Point(4, 24);
             this.tabPageSkillTimer.Name = "tabPageSkillTimer";
-            this.tabPageSkillTimer.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSkillTimer.Padding = new System.Windows.Forms.Padding(1);
             this.tabPageSkillTimer.Size = new System.Drawing.Size(342, 152);
             this.tabPageSkillTimer.TabIndex = 2;
             this.tabPageSkillTimer.Text = "Skill Timer";
@@ -323,8 +311,7 @@ namespace _4RTools.Forms
         private System.Windows.Forms.TabPage tabPageMacroSongs;
         private System.Windows.Forms.TabPage atkDef;
         private System.Windows.Forms.TabControl tabControlAutopot;
-        private System.Windows.Forms.TabPage tabPageAutopot;
-        private System.Windows.Forms.TabPage tabPageYggAutopot;
+        private System.Windows.Forms.TabPage tabPageAutopotHP;
         private System.Windows.Forms.TabPage tabPageProfiles;
         private System.Windows.Forms.TabPage tabMacroSwitch;
         private System.Windows.Forms.TabPage tabPageSkillTimer;

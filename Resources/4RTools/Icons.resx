@@ -42,11 +42,20 @@
   <data name="blue_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\autopot\blue_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mastela_fruit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\autopot\mastela_fruit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="white_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\autopot\white_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="white_potion_slim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\autopot\white_potion_slim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ygg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\autopot\ygg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ygg_seed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\autopot\ygg_seed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\common\arrow_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -90,6 +99,9 @@
   <data name="frozen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\debuff\frozen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="green_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\debuff\green_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="hallucination" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\debuff\hallucination.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -98,6 +110,9 @@
   </data>
   <data name="poison_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\debuff\poison_status.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="royal_jelly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\debuff\royal_jelly.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="silence" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\debuff\silence.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -803,6 +818,12 @@
   </data>
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
 	<value>..\..\assets\image\icon\ui\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sort_arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\sort_arrow_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sort_arrow_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\sort_arrow_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="systray_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\systray_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
