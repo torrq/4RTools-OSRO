@@ -127,7 +127,7 @@ namespace _4RTools.Model
                 if (frmToggleApplication != null)
                 {
                     frmToggleApplication.toggleStatus();
-                    OverweightMacro.SendOverweightMacro("90", 2, 5000);
+                    OverweightMacro.SendOverweightMacro();
                 }
                 else
                 {

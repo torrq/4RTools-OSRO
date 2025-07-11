@@ -35,13 +35,14 @@
             // 
             // characterNameLabel
             // 
-            this.characterNameLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.characterNameLabel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.characterNameLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.characterNameLabel.Location = new System.Drawing.Point(-1, 3);
+            this.characterNameLabel.Location = new System.Drawing.Point(-1, 1);
             this.characterNameLabel.Name = "characterNameLabel";
             this.characterNameLabel.Size = new System.Drawing.Size(141, 22);
             this.characterNameLabel.TabIndex = 21;
             this.characterNameLabel.Text = "Name";
+            this.characterNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // characterInfoLabel
             // 
@@ -59,14 +60,14 @@
             // 
             // characterMapLabel
             // 
-            this.characterMapLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Italic);
+            this.characterMapLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.characterMapLabel.ForeColor = System.Drawing.Color.Green;
-            this.characterMapLabel.Location = new System.Drawing.Point(129, 3);
+            this.characterMapLabel.Location = new System.Drawing.Point(129, 1);
             this.characterMapLabel.Name = "characterMapLabel";
             this.characterMapLabel.Size = new System.Drawing.Size(109, 20);
             this.characterMapLabel.TabIndex = 28;
             this.characterMapLabel.Text = "Map";
-            this.characterMapLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.characterMapLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.characterMapLabel.Click += new System.EventHandler(this.characterMapLabel_Click_1);
             // 
             // CharacterInfo

@@ -87,7 +87,10 @@ namespace _4RTools.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbDeactivatedLabel = new System.Windows.Forms.Label();
             this.cbDeactivated = new _4RTools.Controls.BorderedCheckBox();
+            this.cbWithNoClickLabel = new System.Windows.Forms.Label();
+            this.cbWithClickLabel = new System.Windows.Forms.Label();
             this.cbWithNoClick = new _4RTools.Controls.BorderedCheckBox();
             this.cbWithClick = new _4RTools.Controls.BorderedCheckBox();
             this.keysDividerPanel = new System.Windows.Forms.Panel();
@@ -100,16 +103,10 @@ namespace _4RTools.Forms
             this.OSROMRBox = new System.Windows.Forms.PictureBox();
             this.MRWebsiteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRWebsiteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.LRWebsiteButton = new System.Windows.Forms.Button();
             this.MRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.LRDiscordButton = new System.Windows.Forms.Button();
             this.GitHubButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.skillSpammerModeGroup = new System.Windows.Forms.GroupBox();
-            this.OSROLRBox = new System.Windows.Forms.PictureBox();
-            this.cbWithClickLabel = new System.Windows.Forms.Label();
-            this.cbWithNoClickLabel = new System.Windows.Forms.Label();
-            this.cbDeactivatedLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -119,7 +116,6 @@ namespace _4RTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).BeginInit();
             this.skillSpammerModeGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OSROLRBox)).BeginInit();
             this.SuspendLayout();
             // 
             // chkF9
@@ -888,6 +884,17 @@ namespace _4RTools.Forms
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Legend";
             // 
+            // cbDeactivatedLabel
+            // 
+            this.cbDeactivatedLabel.Image = global::_4RTools.Resources._4RTools.Icons.spammer_off;
+            this.cbDeactivatedLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbDeactivatedLabel.Location = new System.Drawing.Point(32, 64);
+            this.cbDeactivatedLabel.Name = "cbDeactivatedLabel";
+            this.cbDeactivatedLabel.Size = new System.Drawing.Size(70, 16);
+            this.cbDeactivatedLabel.TabIndex = 52;
+            this.cbDeactivatedLabel.Text = "Disabled";
+            this.cbDeactivatedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // cbDeactivated
             // 
             this.cbDeactivated.AutoCheck = false;
@@ -900,6 +907,28 @@ namespace _4RTools.Forms
             this.cbDeactivated.TabIndex = 2;
             this.cbDeactivated.ThreeState = true;
             this.cbDeactivated.UseVisualStyleBackColor = true;
+            // 
+            // cbWithNoClickLabel
+            // 
+            this.cbWithNoClickLabel.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_off;
+            this.cbWithNoClickLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbWithNoClickLabel.Location = new System.Drawing.Point(32, 44);
+            this.cbWithNoClickLabel.Name = "cbWithNoClickLabel";
+            this.cbWithNoClickLabel.Size = new System.Drawing.Size(70, 16);
+            this.cbWithNoClickLabel.TabIndex = 51;
+            this.cbWithNoClickLabel.Text = "No click";
+            this.cbWithNoClickLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbWithClickLabel
+            // 
+            this.cbWithClickLabel.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_on;
+            this.cbWithClickLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbWithClickLabel.Location = new System.Drawing.Point(32, 24);
+            this.cbWithClickLabel.Name = "cbWithClickLabel";
+            this.cbWithClickLabel.Size = new System.Drawing.Size(70, 16);
+            this.cbWithClickLabel.TabIndex = 50;
+            this.cbWithClickLabel.Text = "With click";
+            this.cbWithClickLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbWithNoClick
             // 
@@ -966,7 +995,7 @@ namespace _4RTools.Forms
             this.HRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRDiscordButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
-            this.HRDiscordButton.Location = new System.Drawing.Point(518, 406);
+            this.HRDiscordButton.Location = new System.Drawing.Point(413, 406);
             this.HRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRDiscordButton.Name = "HRDiscordButton";
             this.HRDiscordButton.Size = new System.Drawing.Size(83, 32);
@@ -986,7 +1015,7 @@ namespace _4RTools.Forms
             this.MRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRDiscordButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
-            this.MRDiscordButton.Location = new System.Drawing.Point(311, 406);
+            this.MRDiscordButton.Location = new System.Drawing.Point(206, 406);
             this.MRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRDiscordButton.Name = "MRDiscordButton";
             this.MRDiscordButton.Size = new System.Drawing.Size(83, 32);
@@ -1006,7 +1035,7 @@ namespace _4RTools.Forms
             this.HRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRWebsiteButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
-            this.HRWebsiteButton.Location = new System.Drawing.Point(433, 406);
+            this.HRWebsiteButton.Location = new System.Drawing.Point(328, 406);
             this.HRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRWebsiteButton.Name = "HRWebsiteButton";
             this.HRWebsiteButton.Size = new System.Drawing.Size(83, 32);
@@ -1026,7 +1055,7 @@ namespace _4RTools.Forms
             this.MRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRWebsiteButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
-            this.MRWebsiteButton.Location = new System.Drawing.Point(226, 406);
+            this.MRWebsiteButton.Location = new System.Drawing.Point(121, 406);
             this.MRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRWebsiteButton.Name = "MRWebsiteButton";
             this.MRWebsiteButton.Size = new System.Drawing.Size(83, 32);
@@ -1041,7 +1070,7 @@ namespace _4RTools.Forms
             // 
             this.OSROHRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.OSROHRBox.Image = global::_4RTools.Resources._4RTools.Icons.osro_logo_hr;
-            this.OSROHRBox.Location = new System.Drawing.Point(415, 308);
+            this.OSROHRBox.Location = new System.Drawing.Point(310, 308);
             this.OSROHRBox.Name = "OSROHRBox";
             this.OSROHRBox.Size = new System.Drawing.Size(200, 88);
             this.OSROHRBox.TabIndex = 37;
@@ -1051,51 +1080,11 @@ namespace _4RTools.Forms
             // 
             this.OSROMRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.OSROMRBox.Image = global::_4RTools.Resources._4RTools.Icons.osro_logo_mr;
-            this.OSROMRBox.Location = new System.Drawing.Point(208, 308);
+            this.OSROMRBox.Location = new System.Drawing.Point(103, 308);
             this.OSROMRBox.Name = "OSROMRBox";
             this.OSROMRBox.Size = new System.Drawing.Size(200, 88);
             this.OSROMRBox.TabIndex = 36;
             this.OSROMRBox.TabStop = false;
-            // 
-            // LRWebsiteButton
-            // 
-            this.LRWebsiteButton.BackColor = System.Drawing.Color.White;
-            this.LRWebsiteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LRWebsiteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LRWebsiteButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.LRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LRWebsiteButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
-            this.LRWebsiteButton.Location = new System.Drawing.Point(21, 406);
-            this.LRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
-            this.LRWebsiteButton.Name = "LRWebsiteButton";
-            this.LRWebsiteButton.Size = new System.Drawing.Size(83, 32);
-            this.LRWebsiteButton.TabIndex = 48;
-            this.LRWebsiteButton.Text = "Website";
-            this.LRWebsiteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRWebsiteButtonToolTip.SetToolTip(this.LRWebsiteButton, "Link to OSRO Revo (LR) website");
-            this.LRWebsiteButton.UseVisualStyleBackColor = false;
-            this.LRWebsiteButton.Click += new System.EventHandler(this.LRWebsiteButton_Click);
-            // 
-            // LRDiscordButton
-            // 
-            this.LRDiscordButton.BackColor = System.Drawing.Color.White;
-            this.LRDiscordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LRDiscordButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LRDiscordButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.LRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LRDiscordButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
-            this.LRDiscordButton.Location = new System.Drawing.Point(106, 406);
-            this.LRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
-            this.LRDiscordButton.Name = "LRDiscordButton";
-            this.LRDiscordButton.Size = new System.Drawing.Size(83, 32);
-            this.LRDiscordButton.TabIndex = 49;
-            this.LRDiscordButton.Text = "Discord";
-            this.LRDiscordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRDiscordButtonToolTip.SetToolTip(this.LRDiscordButton, "Link to OSRO Revo (LR) Discord group");
-            this.LRDiscordButton.UseVisualStyleBackColor = false;
-            this.LRDiscordButton.Click += new System.EventHandler(this.LRDiscordButton_Click);
             // 
             // skillSpammerModeGroup
             // 
@@ -1108,58 +1097,12 @@ namespace _4RTools.Forms
             this.skillSpammerModeGroup.TabStop = false;
             this.skillSpammerModeGroup.Text = "Spammer Mode";
             // 
-            // OSROLRBox
-            // 
-            this.OSROLRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OSROLRBox.Image = global::_4RTools.Resources._4RTools.Icons.osro_logo_lr;
-            this.OSROLRBox.Location = new System.Drawing.Point(1, 308);
-            this.OSROLRBox.Name = "OSROLRBox";
-            this.OSROLRBox.Size = new System.Drawing.Size(200, 88);
-            this.OSROLRBox.TabIndex = 47;
-            this.OSROLRBox.TabStop = false;
-            // 
-            // cbWithClickLabel
-            // 
-            this.cbWithClickLabel.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_on;
-            this.cbWithClickLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbWithClickLabel.Location = new System.Drawing.Point(32, 24);
-            this.cbWithClickLabel.Name = "cbWithClickLabel";
-            this.cbWithClickLabel.Size = new System.Drawing.Size(70, 16);
-            this.cbWithClickLabel.TabIndex = 50;
-            this.cbWithClickLabel.Text = "With click";
-            this.cbWithClickLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbWithNoClickLabel
-            // 
-            this.cbWithNoClickLabel.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_off;
-            this.cbWithNoClickLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbWithNoClickLabel.Location = new System.Drawing.Point(32, 44);
-            this.cbWithNoClickLabel.Name = "cbWithNoClickLabel";
-            this.cbWithNoClickLabel.Size = new System.Drawing.Size(70, 16);
-            this.cbWithNoClickLabel.TabIndex = 51;
-            this.cbWithNoClickLabel.Text = "No click";
-            this.cbWithNoClickLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbDeactivatedLabel
-            // 
-            this.cbDeactivatedLabel.Image = global::_4RTools.Resources._4RTools.Icons.spammer_off;
-            this.cbDeactivatedLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbDeactivatedLabel.Location = new System.Drawing.Point(32, 64);
-            this.cbDeactivatedLabel.Name = "cbDeactivatedLabel";
-            this.cbDeactivatedLabel.Size = new System.Drawing.Size(70, 16);
-            this.cbDeactivatedLabel.TabIndex = 52;
-            this.cbDeactivatedLabel.Text = "Disabled";
-            this.cbDeactivatedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // SkillSpammerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(620, 454);
-            this.Controls.Add(this.LRDiscordButton);
-            this.Controls.Add(this.LRWebsiteButton);
-            this.Controls.Add(this.OSROLRBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.skillSpammerModeGroup);
             this.Controls.Add(this.groupBox4);
@@ -1233,7 +1176,6 @@ namespace _4RTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).EndInit();
             this.skillSpammerModeGroup.ResumeLayout(false);
             this.skillSpammerModeGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OSROLRBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1310,9 +1252,6 @@ namespace _4RTools.Forms
         private ToolTip HRDiscordButtonToolTip;
         private ToolTip GitHubButtonToolTip;
         private GroupBox skillSpammerModeGroup;
-        private Button LRDiscordButton;
-        private Button LRWebsiteButton;
-        private PictureBox OSROLRBox;
         private Label cbWithClickLabel;
         private Label cbWithNoClickLabel;
         private Label cbDeactivatedLabel;

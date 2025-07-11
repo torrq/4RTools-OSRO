@@ -120,7 +120,11 @@ namespace _4RTools.Forms
             this.toolTipSkillTimerLegendClickOn = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipSkillTimerLegendClickCenter = new System.Windows.Forms.ToolTip(this.components);
             this.toolTiptxtSkillTimerKeyLabel = new System.Windows.Forms.ToolTip(this.components);
+            this.SkillTimerAltKeyLabel = new System.Windows.Forms.Label();
             this.toolTiptxtAutoRefreshDelayLabel = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAltKeyLabel = new System.Windows.Forms.ToolTip(this.components);
+            this.SkillTimerEnabledLegendLabel = new System.Windows.Forms.Label();
+            this.SkillTimerEnabledToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay3)).BeginInit();
@@ -270,7 +274,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel1.Controls.Add(this.txtSkillTimerKey1);
             this.SkillTimerPanel1.Controls.Add(this.txtAutoRefreshDelay1);
             this.SkillTimerPanel1.Controls.Add(this.SkillTimerClick1_1);
-            this.SkillTimerPanel1.Location = new System.Drawing.Point(-3, 19);
+            this.SkillTimerPanel1.Location = new System.Drawing.Point(-3, 23);
             this.SkillTimerPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel1.Name = "SkillTimerPanel1";
             this.SkillTimerPanel1.Size = new System.Drawing.Size(322, 27);
@@ -329,7 +333,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel2.Controls.Add(this.SkillTimerClick2_2);
             this.SkillTimerPanel2.Controls.Add(this.SkillTimerClick2_1);
             this.SkillTimerPanel2.Controls.Add(this.txtAutoRefreshDelay2);
-            this.SkillTimerPanel2.Location = new System.Drawing.Point(-3, 44);
+            this.SkillTimerPanel2.Location = new System.Drawing.Point(-3, 48);
             this.SkillTimerPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel2.Name = "SkillTimerPanel2";
             this.SkillTimerPanel2.Size = new System.Drawing.Size(322, 27);
@@ -425,7 +429,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel3.Controls.Add(this.SkillTimerClick3_1);
             this.SkillTimerPanel3.Controls.Add(this.txtSkillTimerKey3);
             this.SkillTimerPanel3.Controls.Add(this.txtAutoRefreshDelay3);
-            this.SkillTimerPanel3.Location = new System.Drawing.Point(-3, 69);
+            this.SkillTimerPanel3.Location = new System.Drawing.Point(-3, 73);
             this.SkillTimerPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel3.Name = "SkillTimerPanel3";
             this.SkillTimerPanel3.Size = new System.Drawing.Size(322, 27);
@@ -495,7 +499,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel4.Controls.Add(this.SkillTimerClick4_1);
             this.SkillTimerPanel4.Controls.Add(this.txtSkillTimerKey4);
             this.SkillTimerPanel4.Controls.Add(this.txtAutoRefreshDelay4);
-            this.SkillTimerPanel4.Location = new System.Drawing.Point(-3, 94);
+            this.SkillTimerPanel4.Location = new System.Drawing.Point(-3, 98);
             this.SkillTimerPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel4.Name = "SkillTimerPanel4";
             this.SkillTimerPanel4.Size = new System.Drawing.Size(322, 27);
@@ -565,7 +569,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel5.Controls.Add(this.SkillTimerClick5_1);
             this.SkillTimerPanel5.Controls.Add(this.txtSkillTimerKey5);
             this.SkillTimerPanel5.Controls.Add(this.txtAutoRefreshDelay5);
-            this.SkillTimerPanel5.Location = new System.Drawing.Point(-3, 119);
+            this.SkillTimerPanel5.Location = new System.Drawing.Point(-3, 123);
             this.SkillTimerPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel5.Name = "SkillTimerPanel5";
             this.SkillTimerPanel5.Size = new System.Drawing.Size(322, 27);
@@ -631,8 +635,9 @@ namespace _4RTools.Forms
             // 
             // SkillTimerLegendClickOff
             // 
+            this.SkillTimerLegendClickOff.Cursor = System.Windows.Forms.Cursors.Help;
             this.SkillTimerLegendClickOff.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_off;
-            this.SkillTimerLegendClickOff.Location = new System.Drawing.Point(254, 2);
+            this.SkillTimerLegendClickOff.Location = new System.Drawing.Point(254, 4);
             this.SkillTimerLegendClickOff.Name = "SkillTimerLegendClickOff";
             this.SkillTimerLegendClickOff.Size = new System.Drawing.Size(16, 16);
             this.SkillTimerLegendClickOff.TabIndex = 66;
@@ -641,8 +646,9 @@ namespace _4RTools.Forms
             // 
             // SkillTimerLegendClickOn
             // 
+            this.SkillTimerLegendClickOn.Cursor = System.Windows.Forms.Cursors.Help;
             this.SkillTimerLegendClickOn.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_on;
-            this.SkillTimerLegendClickOn.Location = new System.Drawing.Point(274, 2);
+            this.SkillTimerLegendClickOn.Location = new System.Drawing.Point(274, 4);
             this.SkillTimerLegendClickOn.Name = "SkillTimerLegendClickOn";
             this.SkillTimerLegendClickOn.Size = new System.Drawing.Size(16, 16);
             this.SkillTimerLegendClickOn.TabIndex = 67;
@@ -651,34 +657,37 @@ namespace _4RTools.Forms
             // 
             // SkillTimerLegendClickCenter
             // 
+            this.SkillTimerLegendClickCenter.Cursor = System.Windows.Forms.Cursors.Help;
             this.SkillTimerLegendClickCenter.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_center;
-            this.SkillTimerLegendClickCenter.Location = new System.Drawing.Point(294, 2);
+            this.SkillTimerLegendClickCenter.Location = new System.Drawing.Point(294, 4);
             this.SkillTimerLegendClickCenter.Name = "SkillTimerLegendClickCenter";
             this.SkillTimerLegendClickCenter.Size = new System.Drawing.Size(16, 16);
             this.SkillTimerLegendClickCenter.TabIndex = 68;
             this.SkillTimerLegendClickCenter.TabStop = false;
-            this.toolTipSkillTimerLegendClickOn.SetToolTip(this.SkillTimerLegendClickCenter, "Click mouse at center of window");
+            this.toolTipSkillTimerLegendClickCenter.SetToolTip(this.SkillTimerLegendClickCenter, "Click mouse at center of window");
             // 
             // txtAutoRefreshDelayLabel
             // 
+            this.txtAutoRefreshDelayLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.txtAutoRefreshDelayLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelayLabel.Location = new System.Drawing.Point(159, 4);
+            this.txtAutoRefreshDelayLabel.Location = new System.Drawing.Point(157, 5);
             this.txtAutoRefreshDelayLabel.Name = "txtAutoRefreshDelayLabel";
             this.txtAutoRefreshDelayLabel.Size = new System.Drawing.Size(85, 13);
             this.txtAutoRefreshDelayLabel.TabIndex = 64;
             this.txtAutoRefreshDelayLabel.Text = "Delay (ms)";
             this.txtAutoRefreshDelayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTiptxtAutoRefreshDelayLabel.SetToolTip(this.txtAutoRefreshDelayLabel, "Delay time in ms. 1000 ms = 1 second");
+            this.toolTiptxtAutoRefreshDelayLabel.SetToolTip(this.txtAutoRefreshDelayLabel, "1000 ms = 1 second");
             // 
             // txtSkillTimerKeyLabel
             // 
+            this.txtSkillTimerKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.txtSkillTimerKeyLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSkillTimerKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
-            this.txtSkillTimerKeyLabel.Location = new System.Drawing.Point(115, -2);
+            this.txtSkillTimerKeyLabel.Location = new System.Drawing.Point(115, 0);
             this.txtSkillTimerKeyLabel.Name = "txtSkillTimerKeyLabel";
             this.txtSkillTimerKeyLabel.Size = new System.Drawing.Size(25, 24);
             this.txtSkillTimerKeyLabel.TabIndex = 64;
-            this.toolTiptxtSkillTimerKeyLabel.SetToolTip(this.txtSkillTimerKeyLabel, "Key");
+            this.toolTiptxtSkillTimerKeyLabel.SetToolTip(this.txtSkillTimerKeyLabel, "Tap your key here");
             // 
             // SkillTimerPanel6
             // 
@@ -689,7 +698,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel6.Controls.Add(this.SkillTimerClick6_1);
             this.SkillTimerPanel6.Controls.Add(this.txtSkillTimerKey6);
             this.SkillTimerPanel6.Controls.Add(this.txtAutoRefreshDelay6);
-            this.SkillTimerPanel6.Location = new System.Drawing.Point(-3, 144);
+            this.SkillTimerPanel6.Location = new System.Drawing.Point(-3, 148);
             this.SkillTimerPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel6.Name = "SkillTimerPanel6";
             this.SkillTimerPanel6.Size = new System.Drawing.Size(322, 27);
@@ -788,7 +797,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel7.Controls.Add(this.SkillTimerClick7_1);
             this.SkillTimerPanel7.Controls.Add(this.txtSkillTimerKey7);
             this.SkillTimerPanel7.Controls.Add(this.txtAutoRefreshDelay7);
-            this.SkillTimerPanel7.Location = new System.Drawing.Point(-3, 169);
+            this.SkillTimerPanel7.Location = new System.Drawing.Point(-3, 173);
             this.SkillTimerPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel7.Name = "SkillTimerPanel7";
             this.SkillTimerPanel7.Size = new System.Drawing.Size(322, 27);
@@ -887,7 +896,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel8.Controls.Add(this.SkillTimerClick8_1);
             this.SkillTimerPanel8.Controls.Add(this.txtSkillTimerKey8);
             this.SkillTimerPanel8.Controls.Add(this.txtAutoRefreshDelay8);
-            this.SkillTimerPanel8.Location = new System.Drawing.Point(-3, 194);
+            this.SkillTimerPanel8.Location = new System.Drawing.Point(-3, 198);
             this.SkillTimerPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel8.Name = "SkillTimerPanel8";
             this.SkillTimerPanel8.Size = new System.Drawing.Size(322, 27);
@@ -986,7 +995,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel9.Controls.Add(this.SkillTimerClick9_1);
             this.SkillTimerPanel9.Controls.Add(this.txtSkillTimerKey9);
             this.SkillTimerPanel9.Controls.Add(this.txtAutoRefreshDelay9);
-            this.SkillTimerPanel9.Location = new System.Drawing.Point(-3, 219);
+            this.SkillTimerPanel9.Location = new System.Drawing.Point(-3, 223);
             this.SkillTimerPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel9.Name = "SkillTimerPanel9";
             this.SkillTimerPanel9.Size = new System.Drawing.Size(322, 27);
@@ -1085,7 +1094,7 @@ namespace _4RTools.Forms
             this.SkillTimerPanel10.Controls.Add(this.SkillTimerClick10_1);
             this.SkillTimerPanel10.Controls.Add(this.txtSkillTimerKey10);
             this.SkillTimerPanel10.Controls.Add(this.txtAutoRefreshDelay10);
-            this.SkillTimerPanel10.Location = new System.Drawing.Point(-3, 244);
+            this.SkillTimerPanel10.Location = new System.Drawing.Point(-3, 248);
             this.SkillTimerPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.SkillTimerPanel10.Name = "SkillTimerPanel10";
             this.SkillTimerPanel10.Size = new System.Drawing.Size(322, 27);
@@ -1175,6 +1184,81 @@ namespace _4RTools.Forms
             this.txtAutoRefreshDelay10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay10.ThousandsSeparator = true;
             // 
+            // toolTipSkillTimerLegendClickOff
+            // 
+            this.toolTipSkillTimerLegendClickOff.AutoPopDelay = 15000;
+            this.toolTipSkillTimerLegendClickOff.InitialDelay = 500;
+            this.toolTipSkillTimerLegendClickOff.ReshowDelay = 100;
+            this.toolTipSkillTimerLegendClickOff.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipSkillTimerLegendClickOff.ToolTipTitle = "Click Mode Off";
+            // 
+            // toolTipSkillTimerLegendClickOn
+            // 
+            this.toolTipSkillTimerLegendClickOn.AutoPopDelay = 15000;
+            this.toolTipSkillTimerLegendClickOn.InitialDelay = 500;
+            this.toolTipSkillTimerLegendClickOn.ReshowDelay = 100;
+            this.toolTipSkillTimerLegendClickOn.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipSkillTimerLegendClickOn.ToolTipTitle = "Click Mode On";
+            // 
+            // toolTipSkillTimerLegendClickCenter
+            // 
+            this.toolTipSkillTimerLegendClickCenter.AutoPopDelay = 15000;
+            this.toolTipSkillTimerLegendClickCenter.InitialDelay = 500;
+            this.toolTipSkillTimerLegendClickCenter.ReshowDelay = 100;
+            this.toolTipSkillTimerLegendClickCenter.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipSkillTimerLegendClickCenter.ToolTipTitle = "Click Mode On (Center)";
+            // 
+            // toolTiptxtSkillTimerKeyLabel
+            // 
+            this.toolTiptxtSkillTimerKeyLabel.AutoPopDelay = 15000;
+            this.toolTiptxtSkillTimerKeyLabel.InitialDelay = 500;
+            this.toolTiptxtSkillTimerKeyLabel.ReshowDelay = 100;
+            this.toolTiptxtSkillTimerKeyLabel.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTiptxtSkillTimerKeyLabel.ToolTipTitle = "Key";
+            // 
+            // SkillTimerAltKeyLabel
+            // 
+            this.SkillTimerAltKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
+            this.SkillTimerAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SkillTimerAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
+            this.SkillTimerAltKeyLabel.Location = new System.Drawing.Point(62, 0);
+            this.SkillTimerAltKeyLabel.Name = "SkillTimerAltKeyLabel";
+            this.SkillTimerAltKeyLabel.Size = new System.Drawing.Size(34, 24);
+            this.SkillTimerAltKeyLabel.TabIndex = 80;
+            this.toolTipAltKeyLabel.SetToolTip(this.SkillTimerAltKeyLabel, "Send an Alt + # macro (useful for @refresh, @aaoff, etc)");
+            // 
+            // toolTiptxtAutoRefreshDelayLabel
+            // 
+            this.toolTiptxtAutoRefreshDelayLabel.AutoPopDelay = 15000;
+            this.toolTiptxtAutoRefreshDelayLabel.InitialDelay = 500;
+            this.toolTiptxtAutoRefreshDelayLabel.ReshowDelay = 100;
+            this.toolTiptxtAutoRefreshDelayLabel.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTiptxtAutoRefreshDelayLabel.ToolTipTitle = "Delay time in ms";
+            // 
+            // toolTipAltKeyLabel
+            // 
+            this.toolTipAltKeyLabel.AutoPopDelay = 15000;
+            this.toolTipAltKeyLabel.InitialDelay = 500;
+            this.toolTipAltKeyLabel.ReshowDelay = 100;
+            this.toolTipAltKeyLabel.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipAltKeyLabel.ToolTipTitle = "Alt+key macro";
+            // 
+            // SkillTimerEnabledLegendLabel
+            // 
+            this.SkillTimerEnabledLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
+            this.SkillTimerEnabledLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SkillTimerEnabledLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.toggle_on_small;
+            this.SkillTimerEnabledLegendLabel.Location = new System.Drawing.Point(22, 0);
+            this.SkillTimerEnabledLegendLabel.Name = "SkillTimerEnabledLegendLabel";
+            this.SkillTimerEnabledLegendLabel.Size = new System.Drawing.Size(24, 24);
+            this.SkillTimerEnabledLegendLabel.TabIndex = 81;
+            this.SkillTimerEnabledToolTip.SetToolTip(this.SkillTimerEnabledLegendLabel, "Enables/disables skill timers");
+            // 
+            // SkillTimerEnabledToolTip
+            // 
+            this.SkillTimerEnabledToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.SkillTimerEnabledToolTip.ToolTipTitle = "Toggle Switch";
+            // 
             // SkillTimerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1182,6 +1266,8 @@ namespace _4RTools.Forms
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(319, 280);
+            this.Controls.Add(this.SkillTimerEnabledLegendLabel);
+            this.Controls.Add(this.SkillTimerAltKeyLabel);
             this.Controls.Add(this.SkillTimerPanel10);
             this.Controls.Add(this.SkillTimerPanel9);
             this.Controls.Add(this.SkillTimerPanel8);
@@ -1330,5 +1416,9 @@ namespace _4RTools.Forms
         private System.Windows.Forms.ToolTip toolTipSkillTimerLegendClickCenter;
         private System.Windows.Forms.ToolTip toolTiptxtSkillTimerKeyLabel;
         private System.Windows.Forms.ToolTip toolTiptxtAutoRefreshDelayLabel;
+        private System.Windows.Forms.Label SkillTimerAltKeyLabel;
+        private System.Windows.Forms.ToolTip toolTipAltKeyLabel;
+        private System.Windows.Forms.Label SkillTimerEnabledLegendLabel;
+        private System.Windows.Forms.ToolTip SkillTimerEnabledToolTip;
     }
 }

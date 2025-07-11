@@ -123,6 +123,9 @@
   <metadata name="toolTipSkillTimerLegendClickOn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>241, 17</value>
   </metadata>
+  <metadata name="toolTipSkillTimerLegendClickCenter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>464, 17</value>
+  </metadata>
   <metadata name="toolTiptxtAutoRefreshDelayLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>909, 17</value>
   </metadata>
@@ -141,7 +144,16 @@
   <metadata name="toolTiptxtSkillTimerKeyLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>706, 17</value>
   </metadata>
-  <metadata name="toolTiptxtAutoRefreshDelayLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>909, 17</value>
+  <metadata name="toolTipAltKeyLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1136, 17</value>
+  </metadata>
+  <metadata name="toolTipAltKeyLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1136, 17</value>
+  </metadata>
+  <metadata name="SkillTimerEnabledToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 54</value>
+  </metadata>
+  <metadata name="SkillTimerEnabledToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 54</value>
   </metadata>
 </root>

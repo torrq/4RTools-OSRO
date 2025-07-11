@@ -146,7 +146,7 @@ namespace _4RTools.Forms
             // 
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(39, 17);
-            this.statusLabel.Text = "Ready";
+            this.statusLabel.Text = "";
             // 
             // ProfileForm
             // 

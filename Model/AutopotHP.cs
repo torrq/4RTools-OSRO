@@ -1,6 +1,8 @@
 ﻿using _4RTools.Utils;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -11,26 +13,10 @@ namespace _4RTools.Model
     {
         public static string ACTION_NAME_AUTOPOT_HP = "AutopotHP";
 
-        // HP Keys
-        public Key HPKey1 { get; set; } = Key.None;
-        public Key HPKey2 { get; set; } = Key.None;
-        public Key HPKey3 { get; set; } = Key.None;
-        public Key HPKey4 { get; set; } = Key.None;
-        public Key HPKey5 { get; set; } = Key.None;
+        private static readonly int AUTOPOT_HP_ROWS = 5;
 
-        // HP Percentages - consistent int type
-        public int HPPercent1 { get; set; } = 0;
-        public int HPPercent2 { get; set; } = 0;
-        public int HPPercent3 { get; set; } = 0;
-        public int HPPercent4 { get; set; } = 0;
-        public int HPPercent5 { get; set; } = 0;
-
-        // HP Enabled flags
-        public bool HPEnabled1 { get; set; } = false;
-        public bool HPEnabled2 { get; set; } = false;
-        public bool HPEnabled3 { get; set; } = false;
-        public bool HPEnabled4 { get; set; } = false;
-        public bool HPEnabled5 { get; set; } = false;
+        // New data structure using a list of objects. This allows for reordering.
+        public List<HPSlot> HPSlots { get; set; } = new List<HPSlot>();
 
         private int _delay = AppConfig.AutoPotDefaultDelay;
         public int Delay
@@ -48,6 +34,36 @@ namespace _4RTools.Model
         public AutopotHP(string actionName)
         {
             this.ActionName = actionName;
+            InitializeSlots();
+        }
+
+        /// <summary>
+        /// This method is called by Newtonsoft.Json after deserialization.
+        /// It checks if the new HPSlots list is empty. If so, it means we're loading an old profile.
+        /// It then migrates the data from the old flat properties to the new list structure.
+        /// </summary>
+        [System.Runtime.Serialization.OnDeserialized]
+        private void OnDeserialized(System.Runtime.Serialization.StreamingContext context)
+        {
+            if (HPSlots == null || HPSlots.Count == 0)
+            {
+                InitializeSlots(); // Make sure list is created
+            }
+        }
+
+        /// <summary>
+        /// Creates the initial 5 HP slots.
+        /// </summary>
+        private void InitializeSlots()
+        {
+            if (this.HPSlots == null || this.HPSlots.Count == 0)
+            {
+                this.HPSlots = new List<HPSlot>();
+                for (int i = 1; i <= AUTOPOT_HP_ROWS; i++)
+                {
+                    this.HPSlots.Add(new HPSlot { Id = i });
+                }
+            }
         }
 
         public void Start()
@@ -78,25 +94,21 @@ namespace _4RTools.Model
 
         private void ProcessHPHealing(Client roClient, bool hasCriticalWound)
         {
-            // Check if we should stop due to critical injury
             if (this.StopOnCriticalInjury && hasCriticalWound)
                 return;
 
-            // Process HP healing in order of priority (1-5)
-            var hpSlots = new[]
-            {
-                new { Key = HPKey1, Percent = HPPercent1, Enabled = HPEnabled1 },
-                new { Key = HPKey2, Percent = HPPercent2, Enabled = HPEnabled2 },
-                new { Key = HPKey3, Percent = HPPercent3, Enabled = HPEnabled3 },
-                new { Key = HPKey4, Percent = HPPercent4, Enabled = HPEnabled4 },
-                new { Key = HPKey5, Percent = HPPercent5, Enabled = HPEnabled5 }
-            };
+            // Check the global pot cooldown before attempting to use a pot.
+            if (!PotManager.CanUsePot())
+                return;
 
-            foreach (var slot in hpSlots)
+            // The healing logic now iterates through the HPSlots list.
+            // Since the list is ordered by the user via drag-and-drop, the priority is automatically handled.
+            foreach (var slot in HPSlots)
             {
-                if (slot.Enabled && slot.Percent > 0 && roClient.IsHpBelow(slot.Percent))
+                if (slot.Enabled && slot.HPPercent > 0 && roClient.IsHpBelow(slot.HPPercent))
                 {
                     UsePot(slot.Key);
+                    PotManager.RecordPotUsage(); // Notify the manager that a pot was used.
                     break; // Only use one pot per cycle
                 }
             }
@@ -127,6 +139,7 @@ namespace _4RTools.Model
 
         public string GetConfiguration()
         {
+            // Now serializes the entire AutopotHP object, including the ordered HPSlots list.
             return JsonConvert.SerializeObject(this);
         }
 

@@ -40,7 +40,7 @@ namespace _4RTools.Forms
             FormUtils.ApplyColorToButtons(this, new[] { "btnRenameProfile" }, AppConfig.RenameButtonBackColor);
 
             // Set initial status message
-            UpdateStatus("Ready");
+            UpdateStatus("");
         }
 
         // Custom drawing for ListBox items (no icon drawing here anymore)

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -12,18 +13,10 @@ namespace _4RTools.Model
     {
         public static string ACTION_NAME_AUTOPOT_SP = "AutopotSP";
 
-        public Key SPKey1 { get; set; }
-        public Key SPKey2 { get; set; }
-        public Key SPKey3 { get; set; }
-        public Key SPKey4 { get; set; }
-        public Key SPKey5 { get; set; }
+        private static readonly int AUTOPOT_SP_ROWS = 5;
 
-
-        public int SPPercent1 { get; set; }
-        public int SPPercent2 { get; set; }
-        public int SPPercent3 { get; set; }
-        public int SPPercent4 { get; set; }
-        public int SPPercent5 { get; set; }
+        // New data structure using a list of objects. This allows for reordering.
+        public List<SPSlot> SPSlots { get; set; } = new List<SPSlot>();
 
         private int _delay = AppConfig.AutoPotDefaultDelay;
         public int Delay
@@ -32,37 +25,44 @@ namespace _4RTools.Model
             set => _delay = value;
         }
 
-
         public string ActionName { get; set; }
         private ThreadRunner thread;
 
         public AutopotSP() { }
+
         public AutopotSP(string actionName)
         {
             this.ActionName = actionName;
+            InitializeSlots();
         }
 
-        public AutopotSP(
-            Key spKey1, Key spKey2, Key spKey3, Key spKey4, Key spKey5,
-            int spPercent1, int spPercent2, int spPercent3, int spPercent4, int spPercent5,
-            int delay)
+        /// <summary>
+        /// Creates the initial 5 SP slots.
+        /// </summary>
+        private void InitializeSlots()
         {
-            this.Delay = delay;
+            if (this.SPSlots == null || this.SPSlots.Count == 0)
+            {
+                this.SPSlots = new List<SPSlot>();
+                for (int i = 1; i <= AUTOPOT_SP_ROWS; i++)
+                {
+                    this.SPSlots.Add(new SPSlot { Id = i });
+                }
+            }
+        }
 
-            this.SPKey1 = spKey1;
-            this.SPPercent1 = spPercent1;
-
-            this.SPKey2 = spKey2;
-            this.SPPercent2 = spPercent2;
-
-            this.SPKey3 = spKey3;
-            this.SPPercent3 = spPercent3;
-
-            this.SPKey4 = spKey4;
-            this.SPPercent4 = spPercent4;
-
-            this.SPKey5 = spKey5;
-            this.SPPercent5 = spPercent5;
+        /// <summary>
+        /// This method is called by Newtonsoft.Json after deserialization.
+        /// It checks if the new HPSlots list is empty. If so, it means we're loading an old profile.
+        /// It then migrates the data from the old flat properties to the new list structure.
+        /// </summary>
+        [System.Runtime.Serialization.OnDeserialized]
+        private void OnDeserialized(System.Runtime.Serialization.StreamingContext context)
+        {
+            if (SPSlots == null || SPSlots.Count == 0)
+            {
+                InitializeSlots(); // Make sure list is created
+            }
         }
 
         public void Start()
@@ -74,40 +74,52 @@ namespace _4RTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                int spPotCount = 0;
-                this.thread = new ThreadRunner(_ => AutopotThreadExecution(roClient, spPotCount));
+                this.thread = new ThreadRunner(_ => AutopotThreadExecution(roClient));
                 ThreadRunner.Start(this.thread);
             }
         }
 
-        private int AutopotThreadExecution(Client roClient, int spPotCount)
+        private int AutopotThreadExecution(Client roClient)
         {
             string currentMap = roClient.ReadCurrentMap();
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
-                healSPFirst(roClient, spPotCount);
+                ProcessSPHealing(roClient);
             }
             Thread.Sleep(this.Delay);
             return 0;
         }
 
-        private void healSPFirst(Client roClient, int spPotCount)
+        private void ProcessSPHealing(Client roClient)
         {
-            if (roClient.IsSpBelow(SPPercent1))
-            {
-                Pot(this.SPKey1);
-                spPotCount++;
-            }
 
+            // Check the global pot cooldown before attempting to use a pot.
+            if (!PotManager.CanUsePot())
+                return;
+
+            // The healing logic now iterates through the SPSlots list.
+            // Since the list is ordered by the user via drag-and-drop, the priority is automatically handled.
+            foreach (var slot in SPSlots)
+            {
+                if (slot.Enabled && slot.SPPercent > 0 && roClient.IsSpBelow(slot.SPPercent))
+                {
+                    UsePot(slot.Key);
+                    PotManager.RecordPotUsage(); // Notify the manager that a pot was used.
+                    break; // Only use one pot per cycle
+                }
+            }
         }
 
-        private void Pot(Key key)
+        private void UsePot(Key key)
         {
+            if (key == Key.None) return;
+
             Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
-            if ((k != Keys.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+            if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
             {
-                Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, k, 0); // keydown
-                Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYUP_MSG_ID, k, 0); // keyup
+                var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
+                Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
+                Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
             }
         }
 
@@ -123,6 +135,7 @@ namespace _4RTools.Model
 
         public string GetConfiguration()
         {
+            // Now serializes the entire AutopotSP object, including the ordered SPSlots list.
             return JsonConvert.SerializeObject(this);
         }
 

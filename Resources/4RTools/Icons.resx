@@ -45,6 +45,9 @@
   <data name="mastela_fruit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\autopot\mastela_fruit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="strawberry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\autopot\strawberry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="white_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\autopot\white_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -813,11 +816,20 @@
   <data name="minimode_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\minimode_more.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="potion_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\potion_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="potion_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\potion_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="profile_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\profile_active.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-	<value>..\..\assets\image\icon\ui\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\ui\reorder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sort" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\sort.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sort_arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\sort_arrow_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -839,6 +851,9 @@
   </data>
   <data name="toggle_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\toggle_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toggle_on_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\assets\image\icon\ui\toggle_on_small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="url_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\ui\url_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

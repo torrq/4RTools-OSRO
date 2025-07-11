@@ -79,7 +79,7 @@ namespace _4RTools.Model
                     textBox.Name = "in" + ((int)skill.EffectStatusID);
                     textBox.Location = new Point(pb.Location.X + ICON_TEXT_SPACING, pb.Location.Y + 3 - TEXTBOX_VERTICAL_ADJUSTMENT);
                     textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    textBox.Text = BUFF_KEYLESS; // Set default value
+                    textBox.Text = BUFF_KEYLESS;
 
                     bk.Container.Controls.Add(textBox);
                     bk.Container.Controls.Add(pb);

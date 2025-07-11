@@ -232,6 +232,7 @@ namespace _4RTools.Forms
             // 
             // btnResetAtkDef1
             // 
+            this.btnResetAtkDef1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetAtkDef1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAtkDef1.Location = new System.Drawing.Point(521, 151);
             this.btnResetAtkDef1.Name = "btnResetAtkDef1";
@@ -622,6 +623,7 @@ namespace _4RTools.Forms
             // 
             // btnResetAtkDef2
             // 
+            this.btnResetAtkDef2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetAtkDef2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAtkDef2.Location = new System.Drawing.Point(521, 152);
             this.btnResetAtkDef2.Name = "btnResetAtkDef2";

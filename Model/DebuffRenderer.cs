@@ -16,6 +16,7 @@ namespace _4RTools.Model
         private readonly int ICON_SPACING = 180;
         private readonly int DEBUFFS_Y_MARGIN = 35;
         private readonly int DEBUFFS_X_MARGIN_OFFSET = 0;
+        private readonly int DEBUFFS_Y_MARGIN_OFFSET = 10;
         private readonly int LABEL_SIZE_WIDTH = 85;
         private readonly int LABEL_X_OFFSET = 6;
         private readonly int LABEL_Y_OFFSET = -11;
@@ -40,7 +41,7 @@ namespace _4RTools.Model
             for (int i = 0; i < _containers.Count; i++)
             {
                 BuffContainer bk = _containers[i];
-                Point lastLocation = new Point(bk.Container.Location.X + DEBUFFS_X_MARGIN_OFFSET, DEBUFFS_Y_MARGIN);
+                Point lastLocation = new Point(bk.Container.Location.X + DEBUFFS_X_MARGIN_OFFSET, DEBUFFS_Y_MARGIN + DEBUFFS_Y_MARGIN_OFFSET);
                 int colCount = 0;
 
                 if (i > 0)

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 using _4RTools.Model;
+using System.Drawing.Imaging;
 
 namespace _4RTools.Utils
 {
@@ -39,31 +40,62 @@ namespace _4RTools.Utils
             return key.ToString().ToLower();
         }
 
-        public static void SendOverweightMacro(string percentage, int timesToSend = 2, int intervalMs = 5000)
+        public static void SendOverweightMacro()
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
-            if (!string.IsNullOrEmpty(prefs.OverweightKey.ToString()) && prefs.OverweightKey.ToString() != "None")
+            int timesToSend = 2;
+            int intervalMs = 5000;
+            string keyToSend;
+            bool sendKey1 = (!string.IsNullOrEmpty(prefs.AutoOffKey1.ToString()) && prefs.AutoOffKey1.ToString() != "None");
+            bool sendKey2 = (!string.IsNullOrEmpty(prefs.AutoOffKey2.ToString()) && prefs.AutoOffKey2.ToString() != "None");
+
+            if (sendKey1 || sendKey2)
             {
                 IntPtr hWnd = ClientSingleton.GetClient().Process.MainWindowHandle;
+
                 // Only focus the window if it's not already focused
-                if (GetForegroundWindow() != hWnd)
-                {
-                    SetForegroundWindow(hWnd);
-                }
+                if (GetForegroundWindow() != hWnd) { SetForegroundWindow(hWnd); }
 
                 Thread.Sleep(1000);
 
-                string keyToSend = "%" + ToSendKeysFormat(prefs.OverweightKey);
-                for (int i = 0; i < timesToSend; i++)
+                if (sendKey1)
                 {
-                    SendKeys.SendWait(keyToSend);
-                    DebugLogger.Info($"Sent macro {i + 1}/{timesToSend}: Alt + {prefs.OverweightKey} (Overweight {percentage}%)");
-
-                    if (i < timesToSend - 1)
+                    keyToSend = "%" + ToSendKeysFormat(prefs.AutoOffKey1);
+                    for (int i = 0; i < timesToSend; i++)
                     {
-                        Thread.Sleep(intervalMs);
+                        SendKeys.SendWait(keyToSend);
+                        DebugLogger.Info($"Sent macro {i + 1}/{timesToSend}: Alt + {prefs.AutoOffKey1} (Auto-off, key 1)");
+
+                        if (i < timesToSend - 1)
+                        {
+                            Thread.Sleep(intervalMs);
+                        }
                     }
                 }
+
+                if(sendKey1 && sendKey2)
+                {
+                    // Add a small delay between the two keys if both are sent
+                    Thread.Sleep(1000);
+                }
+
+                if (sendKey2)
+                {
+                    keyToSend = "%" + ToSendKeysFormat(prefs.AutoOffKey2);
+                    for (int i = 0; i < timesToSend; i++)
+                    {
+                        SendKeys.SendWait(keyToSend);
+                        DebugLogger.Info($"Sent macro {i + 1}/{timesToSend}: Alt + {prefs.AutoOffKey2} (Auto-off, key 2)");
+
+                        if (i < timesToSend - 1)
+                        {
+                            Thread.Sleep(intervalMs);
+                        }
+                    }
+                }
+
+
+
             }
         }
     }

@@ -22,13 +22,21 @@ namespace _4RTools.Forms
             this.AutoOffOverweightCB = new System.Windows.Forms.CheckBox();
             this.overweightAltKeyPlusLabel = new System.Windows.Forms.Label();
             this.overweightAltKeyLabel = new System.Windows.Forms.Label();
-            this.arrowDown = new System.Windows.Forms.PictureBox();
+            this.arrowDown1 = new System.Windows.Forms.PictureBox();
             this.arrowRight = new System.Windows.Forms.PictureBox();
-            this.overweightKey = new System.Windows.Forms.TextBox();
+            this.AutoOffKey1 = new System.Windows.Forms.TextBox();
+            this.arrowDown2 = new System.Windows.Forms.PictureBox();
+            this.overweightAltKey2Label = new System.Windows.Forms.Label();
+            this.AutoOffKey2 = new System.Windows.Forms.TextBox();
+            this.arrowDown3 = new System.Windows.Forms.PictureBox();
+            this.AutoOffKillClientChk = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // trackBarTime
@@ -141,14 +149,14 @@ namespace _4RTools.Forms
             this.overweightAltKeyLabel.Text = "Then send";
             this.overweightAltKeyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // arrowDown
+            // arrowDown1
             // 
-            this.arrowDown.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
-            this.arrowDown.Location = new System.Drawing.Point(238, 102);
-            this.arrowDown.Name = "arrowDown";
-            this.arrowDown.Size = new System.Drawing.Size(11, 14);
-            this.arrowDown.TabIndex = 319;
-            this.arrowDown.TabStop = false;
+            this.arrowDown1.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.arrowDown1.Location = new System.Drawing.Point(238, 102);
+            this.arrowDown1.Name = "arrowDown1";
+            this.arrowDown1.Size = new System.Drawing.Size(11, 14);
+            this.arrowDown1.TabIndex = 319;
+            this.arrowDown1.TabStop = false;
             // 
             // arrowRight
             // 
@@ -159,15 +167,78 @@ namespace _4RTools.Forms
             this.arrowRight.TabIndex = 320;
             this.arrowRight.TabStop = false;
             // 
-            // overweightKey
+            // AutoOffKey1
             // 
-            this.overweightKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.overweightKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightKey.Location = new System.Drawing.Point(278, 119);
-            this.overweightKey.Name = "overweightKey";
-            this.overweightKey.Size = new System.Drawing.Size(41, 23);
-            this.overweightKey.TabIndex = 311;
-            this.overweightKey.TextChanged += new System.EventHandler(this.OverweightKey_TextChanged);
+            this.AutoOffKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AutoOffKey1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffKey1.Location = new System.Drawing.Point(278, 119);
+            this.AutoOffKey1.Name = "AutoOffKey1";
+            this.AutoOffKey1.Size = new System.Drawing.Size(41, 23);
+            this.AutoOffKey1.TabIndex = 311;
+            this.AutoOffKey1.TextChanged += new System.EventHandler(this.AutoOffKey1_TextChanged);
+            // 
+            // arrowDown2
+            // 
+            this.arrowDown2.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.arrowDown2.Location = new System.Drawing.Point(238, 153);
+            this.arrowDown2.Name = "arrowDown2";
+            this.arrowDown2.Size = new System.Drawing.Size(11, 14);
+            this.arrowDown2.TabIndex = 322;
+            this.arrowDown2.TabStop = false;
+            // 
+            // overweightAltKey2Label
+            // 
+            this.overweightAltKey2Label.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overweightAltKey2Label.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
+            this.overweightAltKey2Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.overweightAltKey2Label.Location = new System.Drawing.Point(157, 175);
+            this.overweightAltKey2Label.Name = "overweightAltKey2Label";
+            this.overweightAltKey2Label.Size = new System.Drawing.Size(107, 24);
+            this.overweightAltKey2Label.TabIndex = 323;
+            this.overweightAltKey2Label.Text = "Then send";
+            this.overweightAltKey2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // AutoOffKey2
+            // 
+            this.AutoOffKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AutoOffKey2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffKey2.Location = new System.Drawing.Point(278, 176);
+            this.AutoOffKey2.Name = "AutoOffKey2";
+            this.AutoOffKey2.Size = new System.Drawing.Size(41, 23);
+            this.AutoOffKey2.TabIndex = 324;
+            this.AutoOffKey2.TextChanged += new System.EventHandler(this.AutoOffKey2_TextChanged);
+            // 
+            // arrowDown3
+            // 
+            this.arrowDown3.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.arrowDown3.Location = new System.Drawing.Point(238, 206);
+            this.arrowDown3.Name = "arrowDown3";
+            this.arrowDown3.Size = new System.Drawing.Size(11, 14);
+            this.arrowDown3.TabIndex = 326;
+            this.arrowDown3.TabStop = false;
+            // 
+            // AutoOffKillClientChk
+            // 
+            this.AutoOffKillClientChk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AutoOffKillClientChk.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffKillClientChk.Location = new System.Drawing.Point(140, 218);
+            this.AutoOffKillClientChk.Name = "AutoOffKillClientChk";
+            this.AutoOffKillClientChk.Size = new System.Drawing.Size(179, 33);
+            this.AutoOffKillClientChk.TabIndex = 328;
+            this.AutoOffKillClientChk.Text = "Then stop running client";
+            this.AutoOffKillClientChk.UseVisualStyleBackColor = true;
+            this.AutoOffKillClientChk.CheckedChanged += new System.EventHandler(this.AutoOffKillClientChk_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(262, 174);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 24);
+            this.label1.TabIndex = 329;
+            this.label1.Text = "+";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AutoOffForm
             // 
@@ -175,14 +246,20 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(335, 280);
+            this.ClientSize = new System.Drawing.Size(335, 263);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.arrowDown3);
+            this.Controls.Add(this.AutoOffKillClientChk);
+            this.Controls.Add(this.AutoOffKey2);
+            this.Controls.Add(this.overweightAltKey2Label);
+            this.Controls.Add(this.arrowDown2);
             this.Controls.Add(this.arrowRight);
-            this.Controls.Add(this.arrowDown);
+            this.Controls.Add(this.arrowDown1);
             this.Controls.Add(this.AutoOffOverweightCB);
             this.Controls.Add(this.overweightAltKeyPlusLabel);
             this.Controls.Add(this.animatedClockImage);
             this.Controls.Add(this.overweightAltKeyLabel);
-            this.Controls.Add(this.overweightKey);
+            this.Controls.Add(this.AutoOffKey1);
             this.Controls.Add(this.lblSelectedTimeText);
             this.Controls.Add(this.btnToggleTimer);
             this.Controls.Add(this.lblSelectedTime);
@@ -196,8 +273,10 @@ namespace _4RTools.Forms
             this.Load += new System.EventHandler(this.AutoOffForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowDown3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,8 +294,14 @@ namespace _4RTools.Forms
         private System.Windows.Forms.CheckBox AutoOffOverweightCB;
         private System.Windows.Forms.Label overweightAltKeyPlusLabel;
         private System.Windows.Forms.Label overweightAltKeyLabel;
-        private System.Windows.Forms.PictureBox arrowDown;
+        private System.Windows.Forms.PictureBox arrowDown1;
         private System.Windows.Forms.PictureBox arrowRight;
-        private System.Windows.Forms.TextBox overweightKey;
+        private System.Windows.Forms.TextBox AutoOffKey1;
+        private System.Windows.Forms.PictureBox arrowDown2;
+        private System.Windows.Forms.Label overweightAltKey2Label;
+        private System.Windows.Forms.TextBox AutoOffKey2;
+        private System.Windows.Forms.PictureBox arrowDown3;
+        private System.Windows.Forms.CheckBox AutoOffKillClientChk;
+        private System.Windows.Forms.Label label1;
     }
 }

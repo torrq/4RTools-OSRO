@@ -52,9 +52,13 @@ namespace _4RTools.Forms
         {
             InitializeComponent();
 
-            this.overweightKey.KeyDown += FormUtils.OnKeyDown;
-            this.overweightKey.KeyPress += FormUtils.OnKeyPress;
-            this.overweightKey.TextChanged += this.OverweightKey_TextChanged;
+            this.AutoOffKey1.KeyDown += FormUtils.OnKeyDown;
+            this.AutoOffKey1.KeyPress += FormUtils.OnKeyPress;
+            this.AutoOffKey1.TextChanged += this.AutoOffKey1_TextChanged;
+
+            this.AutoOffKey2.KeyDown += FormUtils.OnKeyDown;
+            this.AutoOffKey2.KeyPress += FormUtils.OnKeyPress;
+            this.AutoOffKey2.TextChanged += this.AutoOffKey2_TextChanged;
 
             subject.Attach(this);
             this.frmToggleApplication = toggleStateForm;
@@ -110,7 +114,7 @@ namespace _4RTools.Forms
             if (frmToggleApplication != null)
             {
                 frmToggleApplication.toggleStatus();
-                OverweightMacro.SendOverweightMacro("90", 2, 5000);
+                OverweightMacro.SendOverweightMacro();
             }
             else
             {
@@ -169,8 +173,10 @@ namespace _4RTools.Forms
                     autoOffModel.LoadFromProfile();
                     trackBarTime.Value = autoOffModel.SelectedMinutes;
                     UpdateUI();
-                    this.overweightKey.Text = prefs.OverweightKey.ToString();
+                    this.AutoOffKey1.Text = prefs.AutoOffKey1.ToString();
+                    this.AutoOffKey2.Text = prefs.AutoOffKey2.ToString();
                     this.AutoOffOverweightCB.Checked = prefs.AutoOffOverweight;
+                    this.AutoOffKillClientChk.Checked = prefs.AutoOffKillClient;
                     break;
             }
         }
@@ -237,7 +243,7 @@ namespace _4RTools.Forms
             UpdateUI();
         }
 
-        private void OverweightKey_TextChanged(object sender, EventArgs e)
+        private void AutoOffKey1_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -245,17 +251,39 @@ namespace _4RTools.Forms
                 if (txtBox.Text.ToString() != string.Empty)
                 {
                     Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
-                    ProfileSingleton.GetCurrent().UserPreferences.OverweightKey = key;
+                    ProfileSingleton.GetCurrent().UserPreferences.AutoOffKey1= key;
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
             catch (ArgumentException ex)
             {
-                DebugLogger.Error("Invalid key entered for OverweightKey: " + ex.Message);
+                DebugLogger.Error("Invalid key entered for AutoOffKey1: " + ex.Message);
             }
             catch (Exception ex)
             {
-                DebugLogger.Error("Unexpected error in OverweightKey_TextChanged: " + ex.Message);
+                DebugLogger.Error("Unexpected error in AutoOffKey1_TextChanged: " + ex.Message);
+            }
+        }
+
+        private void AutoOffKey2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox txtBox = (TextBox)sender;
+                if (txtBox.Text.ToString() != string.Empty)
+                {
+                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
+                    ProfileSingleton.GetCurrent().UserPreferences.AutoOffKey2= key;
+                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error("Invalid key entered for AutoOffKey2" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Unexpected error in AutoOffKey2_TextChanged: " + ex.Message);
             }
         }
 
@@ -265,6 +293,14 @@ namespace _4RTools.Forms
             ProfileSingleton.GetCurrent().UserPreferences.AutoOffOverweight = chk.Checked;
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
         }
+
+        private void AutoOffKillClientChk_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            ProfileSingleton.GetCurrent().UserPreferences.AutoOffKillClient = chk.Checked;
+            ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+        }
+
         #endregion
 
         #region Private Methods
@@ -380,10 +416,6 @@ namespace _4RTools.Forms
 
         #region Unused Event Handlers (kept for Designer compatibility)
         private void AutoOffForm_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void groupOverweight_Enter(object sender, EventArgs e)
         {
         }
         #endregion

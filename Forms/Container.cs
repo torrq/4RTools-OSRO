@@ -108,7 +108,7 @@ namespace _4RTools.Forms
             frmToggleApplication = SetToggleApplicationStateWindow();
             trayManager = frmToggleApplication.GetTrayManager();
             SetAutopotHPWindow();
-            //SetAutopotSPWindow();
+            SetAutopotSPWindow();
             SetSkillTimerWindow();
             SetAutoOffWindow();
             SetCustomButtonsWindow();
@@ -823,6 +823,17 @@ namespace _4RTools.Forms
             };
             frm.Show();
             Addform(this.tabPageAutopotHP, frm);
+        }
+
+        public void SetAutopotSPWindow()
+        {
+            AutopotSPForm frm = new AutopotSPForm(subject)
+            {
+                FormBorderStyle = FormBorderStyle.None,
+                MdiParent = this
+            };
+            frm.Show();
+            Addform(this.tabPageAutopotSP, frm);
         }
 
         public void SetSkillTimerWindow()

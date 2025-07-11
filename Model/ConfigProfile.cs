@@ -14,7 +14,9 @@ namespace _4RTools.Model
         public bool StopBuffsCity { get; set; } = false;
         public bool SoundEnabled { get; set; } = false;
         public bool AutoOffOverweight { get; set; } = false;
-        public Key OverweightKey { get; set; }
+        public Key AutoOffKey1 { get; set; }
+        public Key AutoOffKey2 { get; set; }
+        public bool AutoOffKillClient { get; set; } = false;
         public bool SwitchAmmo { get; set; } = false;
         public Key Ammo1Key { get; set; }
         public Key Ammo2Key { get; set; }

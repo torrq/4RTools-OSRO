@@ -1,6 +1,7 @@
 ﻿using _4RTools.Forms;
 using _4RTools.Utils;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,13 +9,27 @@ using System.Windows.Input;
 
 namespace _4RTools.Model
 {
+    public class HPSlot
+    {
+        public int Id { get; set; }
+        public Key Key { get; set; } = Key.None;
+        public int HPPercent { get; set; } = 0;
+        public bool Enabled { get; set; } = false;
+    }
+
+    public class SPSlot
+    {
+        public int Id { get; set; }
+        public Key Key { get; set; } = Key.None;
+        public int SPPercent { get; set; } = 0;
+        public bool Enabled { get; set; } = false;
+    }
+
     public class Profile
     {
         public string Name { get; set; }
         public ConfigProfile UserPreferences { get; set; }
         public SkillSpammer SkillSpammer { get; set; }
-        public Autopot Autopot { get; set; }
-        public Autopot AutopotYgg { get; set; }
         public AutopotHP AutopotHP { get; set; }
         public AutopotSP AutopotSP { get; set; }
         public SkillTimer SkillTimer { get; set; }
@@ -33,8 +48,6 @@ namespace _4RTools.Model
 
             this.UserPreferences = new ConfigProfile();
             this.SkillSpammer = new SkillSpammer();
-            this.Autopot = new Autopot(Autopot.ACTION_NAME_AUTOPOT);
-            this.AutopotYgg = new Autopot(Autopot.ACTION_NAME_AUTOPOT_YGG);
             this.AutopotHP = new AutopotHP(AutopotHP.ACTION_NAME_AUTOPOT_HP);
             this.AutopotSP = new AutopotSP(AutopotSP.ACTION_NAME_AUTOPOT_SP);
             this.SkillTimer = new SkillTimer();
@@ -127,7 +140,7 @@ namespace _4RTools.Model
                     }
                     catch (Exception ex)
                     {
-                        DebugLogger.Error($"Failed to migrate Custom to TransferHelper: {ex.Message}");
+                        DebugLogger.Error(ex, $"Failed to migrate Custom to TransferHelper: {ex.Message}");
                         rawObject["TransferHelper"] = JsonConvert.SerializeObject(new TransferHelper());
                         rawObject.Property("Custom").Remove();
                         File.WriteAllText(filePath, JsonConvert.SerializeObject(rawObject, Formatting.Indented));
@@ -139,8 +152,6 @@ namespace _4RTools.Model
                     profile.Name = profileName;
                     profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));
                     profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
-                    profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
-                    profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
                     profile.AutopotHP = JsonConvert.DeserializeObject<AutopotHP>(Profile.GetByAction(rawObject, profile.AutopotHP));
                     profile.AutopotSP = JsonConvert.DeserializeObject<AutopotSP>(Profile.GetByAction(rawObject, profile.AutopotSP));
 
@@ -152,7 +163,7 @@ namespace _4RTools.Model
                     }
                     catch (Exception ex)
                     {
-                        DebugLogger.Error($"Failed to load StatusRecovery configuration: {ex.Message}");
+                        DebugLogger.Error(ex, $"Failed to load StatusRecovery configuration: {ex.Message}");
                         profile.StatusRecovery = new StatusRecovery(); // Use default if loading fails
                     }
                     profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
@@ -175,8 +186,8 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error($"Failed to load profile '{profileName}': {ex.Message}");
-                throw new Exception($"There was a problem loading the profile: {ex.Message}. Delete the Profiles folder and try again.");
+                DebugLogger.Error(ex, $"Failed to load profile '{profileName}': {ex.Message}");
+                throw new Exception($"There was a problem loading the profile: {ex.Message}. Delete the Profiles folder and try again.", ex);
             }
         }
 
@@ -210,7 +221,7 @@ namespace _4RTools.Model
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.Error($"Failed to create profile '{profileName}': {ex.Message}");
+                    DebugLogger.Error(ex, $"Failed to create profile '{profileName}': {ex.Message}");
                 }
             }
         }
@@ -223,7 +234,7 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error($"Failed to delete profile '{profileName}': {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to delete profile '{profileName}': {ex.Message}");
             }
         }
 
@@ -259,8 +270,8 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error($"Failed to rename profile from '{oldProfileName}' to '{newProfileName}': {ex.Message}");
-                throw new Exception($"Failed to rename profile: {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to rename profile from '{oldProfileName}' to '{newProfileName}': {ex.Message}");
+                throw new Exception($"Failed to rename profile: {ex.Message}", ex);
             }
         }
 
@@ -277,19 +288,31 @@ namespace _4RTools.Model
                         Create(profile.Name);
                     }
 
-                    // Read existing JSON
+                    // Read existing JSON into a JObject
                     string jsonData = File.ReadAllText(filePath);
-                    dynamic jsonObj = JsonConvert.DeserializeObject(jsonData) ?? new Newtonsoft.Json.Linq.JObject();
-                    jsonObj[action.GetActionName()] = action.GetConfiguration();
+                    var jsonObj = !string.IsNullOrEmpty(jsonData) ?
+                        JsonConvert.DeserializeObject<JObject>(jsonData) :
+                        new JObject();
+
+                    // Get the configuration from the action as a JSON string
+                    string actionConfigString = action.GetConfiguration();
+
+                    // Parse the string into a JToken (which will be a JObject)
+                    JToken actionConfigToken = JToken.Parse(actionConfigString);
+
+                    // Assign the parsed JToken to the property of the main JObject
+                    jsonObj[action.GetActionName()] = actionConfigToken;
+
                     string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
                     File.WriteAllText(filePath, output);
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.Error($"Failed to save configuration for action '{action.GetActionName()}' to profile '{profile.Name}': {ex.Message}");
+                    DebugLogger.Error(ex, $"Failed to save configuration for action '{action.GetActionName()}' to profile '{profile.Name}': {ex.Message}");
                 }
             }
         }
+
 
         public static Profile GetCurrent()
         {
@@ -336,7 +359,7 @@ namespace _4RTools.Model
             }
             catch (Exception ex)
             {
-                DebugLogger.Error($"Failed to copy profile from '{sourceProfileName}' to '{destinationProfileName}': {ex.Message}");
+                DebugLogger.Error(ex, $"Failed to copy profile from '{sourceProfileName}' to '{destinationProfileName}': {ex.Message}");
                 throw new Exception($"Error copying profile file: {ex.Message}", ex);
             }
         }
