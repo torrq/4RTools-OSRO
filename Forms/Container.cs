@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static _4RTools.Utils.FormUtils;
 
 namespace _4RTools.Forms
 {
@@ -121,6 +122,7 @@ namespace _4RTools.Forms
             SetATKDEFWindow();
             SetMacroSwitchWindow();
             SetConfigWindow();
+            SetTopTabIcons();
 
             SetMiniMode(ConfigGlobal.GetConfig().MiniMode);
         }
@@ -163,6 +165,19 @@ namespace _4RTools.Forms
                 ConfigGlobal.GetConfig().MiniMode = isMiniMode;
                 ConfigGlobal.SaveConfig();
             }
+        }
+
+        private void SetTopTabIcons()
+        {
+            var icons = new List<Image>
+            {
+                global::_4RTools.Resources._4RTools.Icons.tab_autopot_hp,
+                global::_4RTools.Resources._4RTools.Icons.tab_autopot_sp,
+                global::_4RTools.Resources._4RTools.Icons.tab_skill_timer,
+                global::_4RTools.Resources._4RTools.Icons.tab_auto_off,
+            };
+
+            TabIconHelper.SetTabIcons(tabControlTop, icons);
         }
 
         private void BtnToggleMiniMode_Click(object sender, EventArgs e)
@@ -332,27 +347,41 @@ namespace _4RTools.Forms
             }
         }
 
-        private void TabControlAutopot_DrawItem(object sender, DrawItemEventArgs e)
+        private void TabControlTop_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (!(sender is TabControl tabControl)) return;
 
             e.Graphics.FillRectangle(new SolidBrush(AppConfig.AccentBackColor), e.Bounds);
 
             bool isActiveTab = (e.Index == tabControl.SelectedIndex);
-
             Font tabFont = isActiveTab ? new Font(e.Font, FontStyle.Bold) : e.Font;
-
             Color textColor = Color.Black;
 
             string text = tabControl.TabPages[e.Index].Text;
+            Image icon = tabControl.ImageList?.Images[tabControl.TabPages[e.Index].ImageIndex];
+
+            float textX = e.Bounds.X;
+            float textY = e.Bounds.Y;
+
+            // Draw icon (if any)
+            int spacing = 7;
+            if (icon != null)
+            {
+                int iconX = e.Bounds.X + spacing;
+                int iconY = e.Bounds.Y + (e.Bounds.Height - icon.Height - 1) / 2;
+                e.Graphics.DrawImage(icon, iconX, iconY);
+                textX += icon.Width + 9; // shift text to the right of the icon
+            }
+
+            SizeF textSize = e.Graphics.MeasureString(text, tabFont);
+            float adjustedTextY = e.Bounds.Y + (e.Bounds.Height - textSize.Height) / 2;
+
             using (Brush textBrush = new SolidBrush(textColor))
             {
-                SizeF textSize = e.Graphics.MeasureString(text, tabFont);
-                float textX = e.Bounds.X + (e.Bounds.Width - textSize.Width) / 2;
-                float textY = e.Bounds.Y + (e.Bounds.Height - textSize.Height) / 2;
-                e.Graphics.DrawString(text, tabFont, textBrush, textX, textY);
+                e.Graphics.DrawString(text, tabFont, textBrush, textX, adjustedTextY);
             }
         }
+
 
         private void PositionDebugLogWindow()
         {
@@ -487,7 +516,7 @@ namespace _4RTools.Forms
             LoadProfile(profileToLoad);
             this.profileCB.SelectedItem = profileToLoad;
 
-            ConfigureTabControl(tabControlAutopot);
+            ConfigureTabControl(tabControlTop);
 
             if (debugLogWindow != null && !debugLogWindow.IsDisposed)
             {
@@ -498,7 +527,7 @@ namespace _4RTools.Forms
         private void ConfigureTabControl(TabControl tabControl)
         {
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
-            tabControl.DrawItem += TabControlAutopot_DrawItem;
+            tabControl.DrawItem += TabControlTop_DrawItem;
             tabControl.BackColor = AppConfig.AccentBackColor;
             tabControl.ForeColor = Color.Black;
             tabControl.Appearance = TabAppearance.Normal;

@@ -68,7 +68,6 @@ namespace _4RTools.Forms
             this.spKeyColumnLabel = new System.Windows.Forms.Label();
             this.AutoPotSPEnabledLegendLabel = new System.Windows.Forms.Label();
             this.AutoPotSPSortLegendLabel = new System.Windows.Forms.Label();
-            this.picBoxSPLegendLabel = new System.Windows.Forms.Label();
             this.AutoPotSPEnabledLegendLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AutoPotSPSortLegendLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.spKeyColumnLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -102,7 +101,7 @@ namespace _4RTools.Forms
             // 
             this.spPct1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spPct1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spPct1.Location = new System.Drawing.Point(178, 2);
+            this.spPct1.Location = new System.Drawing.Point(143, 2);
             this.spPct1.Name = "spPct1";
             this.spPct1.Size = new System.Drawing.Size(55, 22);
             this.spPct1.TabIndex = 39;
@@ -114,7 +113,7 @@ namespace _4RTools.Forms
             this.labelPercent.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelPercent.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPercent.ForeColor = System.Drawing.Color.DarkBlue;
-            this.labelPercent.Location = new System.Drawing.Point(185, 3);
+            this.labelPercent.Location = new System.Drawing.Point(160, 4);
             this.labelPercent.Name = "labelPercent";
             this.labelPercent.Size = new System.Drawing.Size(46, 18);
             this.labelPercent.TabIndex = 37;
@@ -142,7 +141,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxSP1.BackColor = System.Drawing.Color.Transparent;
             this.picBoxSP1.Image = global::_4RTools.Resources._4RTools.Icons.ygg;
-            this.picBoxSP1.Location = new System.Drawing.Point(80, -1);
+            this.picBoxSP1.Location = new System.Drawing.Point(18, -2);
             this.picBoxSP1.Name = "picBoxSP1";
             this.picBoxSP1.Size = new System.Drawing.Size(24, 24);
             this.picBoxSP1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -164,9 +163,9 @@ namespace _4RTools.Forms
             // 
             this.txtSPKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSPKey1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSPKey1.Location = new System.Drawing.Point(114, 2);
+            this.txtSPKey1.Location = new System.Drawing.Point(74, 2);
             this.txtSPKey1.Name = "txtSPKey1";
-            this.txtSPKey1.Size = new System.Drawing.Size(55, 22);
+            this.txtSPKey1.Size = new System.Drawing.Size(60, 22);
             this.txtSPKey1.TabIndex = 43;
             this.txtSPKey1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -177,7 +176,7 @@ namespace _4RTools.Forms
             this.spPanel1.Controls.Add(this.picBoxSP1);
             this.spPanel1.Controls.Add(this.txtSPKey1);
             this.spPanel1.Controls.Add(this.spPct1);
-            this.spPanel1.Location = new System.Drawing.Point(1, 24);
+            this.spPanel1.Location = new System.Drawing.Point(11, 24);
             this.spPanel1.Name = "spPanel1";
             this.spPanel1.Size = new System.Drawing.Size(240, 24);
             this.spPanel1.TabIndex = 51;
@@ -185,9 +184,9 @@ namespace _4RTools.Forms
             // reorderSP1
             // 
             this.reorderSP1.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderSP1.Location = new System.Drawing.Point(13, 0);
+            this.reorderSP1.Location = new System.Drawing.Point(207, 3);
             this.reorderSP1.Name = "reorderSP1";
-            this.reorderSP1.Size = new System.Drawing.Size(24, 24);
+            this.reorderSP1.Size = new System.Drawing.Size(24, 20);
             this.reorderSP1.TabIndex = 45;
             this.reorderSP1.TabStop = false;
             // 
@@ -195,7 +194,7 @@ namespace _4RTools.Forms
             // 
             this.SPEnabled1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SPEnabled1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SPEnabled1.Location = new System.Drawing.Point(50, 1);
+            this.SPEnabled1.Location = new System.Drawing.Point(45, 1);
             this.SPEnabled1.Name = "SPEnabled1";
             this.SPEnabled1.Size = new System.Drawing.Size(24, 24);
             this.SPEnabled1.TabIndex = 44;
@@ -208,7 +207,7 @@ namespace _4RTools.Forms
             this.spPanel2.Controls.Add(this.picBoxSP2);
             this.spPanel2.Controls.Add(this.txtSPKey2);
             this.spPanel2.Controls.Add(this.spPct2);
-            this.spPanel2.Location = new System.Drawing.Point(1, 48);
+            this.spPanel2.Location = new System.Drawing.Point(11, 48);
             this.spPanel2.Name = "spPanel2";
             this.spPanel2.Size = new System.Drawing.Size(240, 24);
             this.spPanel2.TabIndex = 52;
@@ -216,9 +215,9 @@ namespace _4RTools.Forms
             // reorderSP2
             // 
             this.reorderSP2.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderSP2.Location = new System.Drawing.Point(13, 0);
+            this.reorderSP2.Location = new System.Drawing.Point(207, 3);
             this.reorderSP2.Name = "reorderSP2";
-            this.reorderSP2.Size = new System.Drawing.Size(24, 24);
+            this.reorderSP2.Size = new System.Drawing.Size(24, 20);
             this.reorderSP2.TabIndex = 46;
             this.reorderSP2.TabStop = false;
             // 
@@ -226,7 +225,7 @@ namespace _4RTools.Forms
             // 
             this.SPEnabled2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SPEnabled2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SPEnabled2.Location = new System.Drawing.Point(50, 1);
+            this.SPEnabled2.Location = new System.Drawing.Point(45, 1);
             this.SPEnabled2.Name = "SPEnabled2";
             this.SPEnabled2.Size = new System.Drawing.Size(24, 24);
             this.SPEnabled2.TabIndex = 45;
@@ -236,7 +235,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxSP2.BackColor = System.Drawing.Color.Transparent;
             this.picBoxSP2.Image = global::_4RTools.Resources._4RTools.Icons.ygg_seed;
-            this.picBoxSP2.Location = new System.Drawing.Point(80, 0);
+            this.picBoxSP2.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP2.Name = "picBoxSP2";
             this.picBoxSP2.Size = new System.Drawing.Size(24, 24);
             this.picBoxSP2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -247,9 +246,9 @@ namespace _4RTools.Forms
             // 
             this.txtSPKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSPKey2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSPKey2.Location = new System.Drawing.Point(114, 2);
+            this.txtSPKey2.Location = new System.Drawing.Point(74, 2);
             this.txtSPKey2.Name = "txtSPKey2";
-            this.txtSPKey2.Size = new System.Drawing.Size(55, 22);
+            this.txtSPKey2.Size = new System.Drawing.Size(60, 22);
             this.txtSPKey2.TabIndex = 43;
             this.txtSPKey2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -257,7 +256,7 @@ namespace _4RTools.Forms
             // 
             this.spPct2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spPct2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spPct2.Location = new System.Drawing.Point(178, 2);
+            this.spPct2.Location = new System.Drawing.Point(143, 2);
             this.spPct2.Name = "spPct2";
             this.spPct2.Size = new System.Drawing.Size(55, 22);
             this.spPct2.TabIndex = 39;
@@ -270,7 +269,7 @@ namespace _4RTools.Forms
             this.spPanel3.Controls.Add(this.picBoxSP3);
             this.spPanel3.Controls.Add(this.txtSPKey3);
             this.spPanel3.Controls.Add(this.spPct3);
-            this.spPanel3.Location = new System.Drawing.Point(1, 72);
+            this.spPanel3.Location = new System.Drawing.Point(11, 72);
             this.spPanel3.Name = "spPanel3";
             this.spPanel3.Size = new System.Drawing.Size(240, 24);
             this.spPanel3.TabIndex = 53;
@@ -278,9 +277,9 @@ namespace _4RTools.Forms
             // reorderSP3
             // 
             this.reorderSP3.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderSP3.Location = new System.Drawing.Point(13, 0);
+            this.reorderSP3.Location = new System.Drawing.Point(207, 3);
             this.reorderSP3.Name = "reorderSP3";
-            this.reorderSP3.Size = new System.Drawing.Size(24, 24);
+            this.reorderSP3.Size = new System.Drawing.Size(24, 20);
             this.reorderSP3.TabIndex = 47;
             this.reorderSP3.TabStop = false;
             // 
@@ -288,7 +287,7 @@ namespace _4RTools.Forms
             // 
             this.SPEnabled3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SPEnabled3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SPEnabled3.Location = new System.Drawing.Point(50, 1);
+            this.SPEnabled3.Location = new System.Drawing.Point(45, 1);
             this.SPEnabled3.Name = "SPEnabled3";
             this.SPEnabled3.Size = new System.Drawing.Size(24, 24);
             this.SPEnabled3.TabIndex = 46;
@@ -298,7 +297,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxSP3.BackColor = System.Drawing.Color.Transparent;
             this.picBoxSP3.Image = global::_4RTools.Resources._4RTools.Icons.blue_potion;
-            this.picBoxSP3.Location = new System.Drawing.Point(80, 0);
+            this.picBoxSP3.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP3.Name = "picBoxSP3";
             this.picBoxSP3.Size = new System.Drawing.Size(24, 24);
             this.picBoxSP3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -309,9 +308,9 @@ namespace _4RTools.Forms
             // 
             this.txtSPKey3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSPKey3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSPKey3.Location = new System.Drawing.Point(114, 2);
+            this.txtSPKey3.Location = new System.Drawing.Point(74, 2);
             this.txtSPKey3.Name = "txtSPKey3";
-            this.txtSPKey3.Size = new System.Drawing.Size(55, 22);
+            this.txtSPKey3.Size = new System.Drawing.Size(60, 22);
             this.txtSPKey3.TabIndex = 43;
             this.txtSPKey3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -319,7 +318,7 @@ namespace _4RTools.Forms
             // 
             this.spPct3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spPct3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spPct3.Location = new System.Drawing.Point(178, 2);
+            this.spPct3.Location = new System.Drawing.Point(143, 2);
             this.spPct3.Name = "spPct3";
             this.spPct3.Size = new System.Drawing.Size(55, 22);
             this.spPct3.TabIndex = 39;
@@ -332,7 +331,7 @@ namespace _4RTools.Forms
             this.spPanel4.Controls.Add(this.picBoxSP4);
             this.spPanel4.Controls.Add(this.txtSPKey4);
             this.spPanel4.Controls.Add(this.spPct4);
-            this.spPanel4.Location = new System.Drawing.Point(1, 96);
+            this.spPanel4.Location = new System.Drawing.Point(11, 96);
             this.spPanel4.Name = "spPanel4";
             this.spPanel4.Size = new System.Drawing.Size(240, 24);
             this.spPanel4.TabIndex = 54;
@@ -340,9 +339,9 @@ namespace _4RTools.Forms
             // reorderSP4
             // 
             this.reorderSP4.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderSP4.Location = new System.Drawing.Point(13, 0);
+            this.reorderSP4.Location = new System.Drawing.Point(207, 3);
             this.reorderSP4.Name = "reorderSP4";
-            this.reorderSP4.Size = new System.Drawing.Size(24, 24);
+            this.reorderSP4.Size = new System.Drawing.Size(24, 20);
             this.reorderSP4.TabIndex = 48;
             this.reorderSP4.TabStop = false;
             // 
@@ -350,7 +349,7 @@ namespace _4RTools.Forms
             // 
             this.SPEnabled4.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SPEnabled4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SPEnabled4.Location = new System.Drawing.Point(50, 1);
+            this.SPEnabled4.Location = new System.Drawing.Point(45, 1);
             this.SPEnabled4.Name = "SPEnabled4";
             this.SPEnabled4.Size = new System.Drawing.Size(24, 24);
             this.SPEnabled4.TabIndex = 47;
@@ -360,7 +359,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxSP4.BackColor = System.Drawing.Color.Transparent;
             this.picBoxSP4.Image = global::_4RTools.Resources._4RTools.Icons.royal_jelly;
-            this.picBoxSP4.Location = new System.Drawing.Point(80, 0);
+            this.picBoxSP4.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP4.Name = "picBoxSP4";
             this.picBoxSP4.Size = new System.Drawing.Size(24, 24);
             this.picBoxSP4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -371,9 +370,9 @@ namespace _4RTools.Forms
             // 
             this.txtSPKey4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSPKey4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSPKey4.Location = new System.Drawing.Point(114, 2);
+            this.txtSPKey4.Location = new System.Drawing.Point(74, 2);
             this.txtSPKey4.Name = "txtSPKey4";
-            this.txtSPKey4.Size = new System.Drawing.Size(55, 22);
+            this.txtSPKey4.Size = new System.Drawing.Size(60, 22);
             this.txtSPKey4.TabIndex = 43;
             this.txtSPKey4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -381,7 +380,7 @@ namespace _4RTools.Forms
             // 
             this.spPct4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spPct4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spPct4.Location = new System.Drawing.Point(178, 2);
+            this.spPct4.Location = new System.Drawing.Point(143, 2);
             this.spPct4.Name = "spPct4";
             this.spPct4.Size = new System.Drawing.Size(55, 22);
             this.spPct4.TabIndex = 39;
@@ -391,7 +390,7 @@ namespace _4RTools.Forms
             // 
             this.delayPanelSP.Controls.Add(this.numAutopotSPDelay);
             this.delayPanelSP.Controls.Add(this.delayLabel);
-            this.delayPanelSP.Location = new System.Drawing.Point(258, 5);
+            this.delayPanelSP.Location = new System.Drawing.Point(278, 5);
             this.delayPanelSP.Name = "delayPanelSP";
             this.delayPanelSP.Size = new System.Drawing.Size(71, 46);
             this.delayPanelSP.TabIndex = 56;
@@ -403,7 +402,7 @@ namespace _4RTools.Forms
             this.spPanel5.Controls.Add(this.picBoxSP5);
             this.spPanel5.Controls.Add(this.txtSPKey5);
             this.spPanel5.Controls.Add(this.spPct5);
-            this.spPanel5.Location = new System.Drawing.Point(1, 120);
+            this.spPanel5.Location = new System.Drawing.Point(11, 120);
             this.spPanel5.Name = "spPanel5";
             this.spPanel5.Size = new System.Drawing.Size(240, 24);
             this.spPanel5.TabIndex = 55;
@@ -411,9 +410,9 @@ namespace _4RTools.Forms
             // reorderSP5
             // 
             this.reorderSP5.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderSP5.Location = new System.Drawing.Point(13, 0);
+            this.reorderSP5.Location = new System.Drawing.Point(207, 3);
             this.reorderSP5.Name = "reorderSP5";
-            this.reorderSP5.Size = new System.Drawing.Size(24, 24);
+            this.reorderSP5.Size = new System.Drawing.Size(24, 20);
             this.reorderSP5.TabIndex = 49;
             this.reorderSP5.TabStop = false;
             // 
@@ -421,7 +420,7 @@ namespace _4RTools.Forms
             // 
             this.SPEnabled5.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SPEnabled5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SPEnabled5.Location = new System.Drawing.Point(50, 1);
+            this.SPEnabled5.Location = new System.Drawing.Point(45, 1);
             this.SPEnabled5.Name = "SPEnabled5";
             this.SPEnabled5.Size = new System.Drawing.Size(24, 24);
             this.SPEnabled5.TabIndex = 48;
@@ -431,7 +430,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxSP5.BackColor = System.Drawing.Color.Transparent;
             this.picBoxSP5.Image = global::_4RTools.Resources._4RTools.Icons.strawberry;
-            this.picBoxSP5.Location = new System.Drawing.Point(80, 0);
+            this.picBoxSP5.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP5.Name = "picBoxSP5";
             this.picBoxSP5.Size = new System.Drawing.Size(24, 24);
             this.picBoxSP5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -442,9 +441,9 @@ namespace _4RTools.Forms
             // 
             this.txtSPKey5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSPKey5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSPKey5.Location = new System.Drawing.Point(114, 2);
+            this.txtSPKey5.Location = new System.Drawing.Point(74, 2);
             this.txtSPKey5.Name = "txtSPKey5";
-            this.txtSPKey5.Size = new System.Drawing.Size(55, 22);
+            this.txtSPKey5.Size = new System.Drawing.Size(60, 22);
             this.txtSPKey5.TabIndex = 43;
             this.txtSPKey5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -452,7 +451,7 @@ namespace _4RTools.Forms
             // 
             this.spPct5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spPct5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spPct5.Location = new System.Drawing.Point(178, 2);
+            this.spPct5.Location = new System.Drawing.Point(143, 2);
             this.spPct5.Name = "spPct5";
             this.spPct5.Size = new System.Drawing.Size(55, 22);
             this.spPct5.TabIndex = 39;
@@ -463,7 +462,7 @@ namespace _4RTools.Forms
             this.spKeyColumnLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.spKeyColumnLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spKeyColumnLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
-            this.spKeyColumnLabel.Location = new System.Drawing.Point(131, 0);
+            this.spKeyColumnLabel.Location = new System.Drawing.Point(103, 0);
             this.spKeyColumnLabel.Name = "spKeyColumnLabel";
             this.spKeyColumnLabel.Size = new System.Drawing.Size(25, 24);
             this.spKeyColumnLabel.TabIndex = 65;
@@ -474,7 +473,7 @@ namespace _4RTools.Forms
             this.AutoPotSPEnabledLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotSPEnabledLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoPotSPEnabledLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.toggle_on_small;
-            this.AutoPotSPEnabledLegendLabel.Location = new System.Drawing.Point(51, 0);
+            this.AutoPotSPEnabledLegendLabel.Location = new System.Drawing.Point(56, 0);
             this.AutoPotSPEnabledLegendLabel.Name = "AutoPotSPEnabledLegendLabel";
             this.AutoPotSPEnabledLegendLabel.Size = new System.Drawing.Size(24, 24);
             this.AutoPotSPEnabledLegendLabel.TabIndex = 83;
@@ -485,20 +484,11 @@ namespace _4RTools.Forms
             this.AutoPotSPSortLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotSPSortLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoPotSPSortLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.sort;
-            this.AutoPotSPSortLegendLabel.Location = new System.Drawing.Point(16, 2);
+            this.AutoPotSPSortLegendLabel.Location = new System.Drawing.Point(218, 2);
             this.AutoPotSPSortLegendLabel.Name = "AutoPotSPSortLegendLabel";
             this.AutoPotSPSortLegendLabel.Size = new System.Drawing.Size(20, 20);
             this.AutoPotSPSortLegendLabel.TabIndex = 84;
             this.AutoPotSPSortLegendLabelToolTip.SetToolTip(this.AutoPotSPSortLegendLabel, "Adjust order and use priority");
-            // 
-            // picBoxSPLegendLabel
-            // 
-            this.picBoxSPLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.picBoxSPLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.potion_blue;
-            this.picBoxSPLegendLabel.Location = new System.Drawing.Point(87, 3);
-            this.picBoxSPLegendLabel.Name = "picBoxSPLegendLabel";
-            this.picBoxSPLegendLabel.Size = new System.Drawing.Size(14, 16);
-            this.picBoxSPLegendLabel.TabIndex = 85;
             // 
             // AutoPotSPEnabledLegendLabelToolTip
             // 
@@ -546,8 +536,7 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(347, 151);
-            this.Controls.Add(this.picBoxSPLegendLabel);
+            this.ClientSize = new System.Drawing.Size(370, 151);
             this.Controls.Add(this.AutoPotSPSortLegendLabel);
             this.Controls.Add(this.AutoPotSPEnabledLegendLabel);
             this.Controls.Add(this.delayPanelSP);
@@ -634,7 +623,6 @@ namespace _4RTools.Forms
         private System.Windows.Forms.PictureBox reorderSP5;
         private System.Windows.Forms.Label AutoPotSPEnabledLegendLabel;
         private System.Windows.Forms.Label AutoPotSPSortLegendLabel;
-        private System.Windows.Forms.Label picBoxSPLegendLabel;
         private System.Windows.Forms.ToolTip AutoPotSPEnabledLegendLabelToolTip;
         private System.Windows.Forms.ToolTip AutoPotSPSortLegendLabelToolTip;
         private System.Windows.Forms.ToolTip spKeyColumnLabelToolTip;

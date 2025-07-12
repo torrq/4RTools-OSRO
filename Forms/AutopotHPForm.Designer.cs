@@ -71,7 +71,6 @@ namespace _4RTools.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.AutoPotHPEnabledLegendLabel = new System.Windows.Forms.Label();
             this.AutoPotHPSortLegendLabel = new System.Windows.Forms.Label();
-            this.picBoxHPLegendLabel = new System.Windows.Forms.Label();
             this.AutoPotHPEnabledLegendLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AutoPotHPSortLegendLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.hpKeyColumnLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -107,7 +106,7 @@ namespace _4RTools.Forms
             // 
             this.hpPct1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.hpPct1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hpPct1.Location = new System.Drawing.Point(178, 2);
+            this.hpPct1.Location = new System.Drawing.Point(143, 2);
             this.hpPct1.Name = "hpPct1";
             this.hpPct1.Size = new System.Drawing.Size(55, 22);
             this.hpPct1.TabIndex = 39;
@@ -119,7 +118,7 @@ namespace _4RTools.Forms
             this.labelPercent1.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelPercent1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPercent1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelPercent1.Location = new System.Drawing.Point(185, 3);
+            this.labelPercent1.Location = new System.Drawing.Point(160, 4);
             this.labelPercent1.Name = "labelPercent1";
             this.labelPercent1.Size = new System.Drawing.Size(47, 18);
             this.labelPercent1.TabIndex = 37;
@@ -147,7 +146,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxHP1.BackColor = System.Drawing.Color.Transparent;
             this.picBoxHP1.Image = global::_4RTools.Resources._4RTools.Icons.ygg;
-            this.picBoxHP1.Location = new System.Drawing.Point(80, -1);
+            this.picBoxHP1.Location = new System.Drawing.Point(18, -2);
             this.picBoxHP1.Name = "picBoxHP1";
             this.picBoxHP1.Size = new System.Drawing.Size(24, 24);
             this.picBoxHP1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -169,9 +168,9 @@ namespace _4RTools.Forms
             // 
             this.txtHPKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHPKey1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHPKey1.Location = new System.Drawing.Point(114, 2);
+            this.txtHPKey1.Location = new System.Drawing.Point(74, 2);
             this.txtHPKey1.Name = "txtHPKey1";
-            this.txtHPKey1.Size = new System.Drawing.Size(55, 22);
+            this.txtHPKey1.Size = new System.Drawing.Size(60, 22);
             this.txtHPKey1.TabIndex = 43;
             this.txtHPKey1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -194,7 +193,7 @@ namespace _4RTools.Forms
             this.hpPanel1.Controls.Add(this.picBoxHP1);
             this.hpPanel1.Controls.Add(this.txtHPKey1);
             this.hpPanel1.Controls.Add(this.hpPct1);
-            this.hpPanel1.Location = new System.Drawing.Point(1, 24);
+            this.hpPanel1.Location = new System.Drawing.Point(11, 24);
             this.hpPanel1.Name = "hpPanel1";
             this.hpPanel1.Size = new System.Drawing.Size(240, 24);
             this.hpPanel1.TabIndex = 51;
@@ -202,9 +201,9 @@ namespace _4RTools.Forms
             // reorderHP1
             // 
             this.reorderHP1.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderHP1.Location = new System.Drawing.Point(13, 0);
+            this.reorderHP1.Location = new System.Drawing.Point(207, 3);
             this.reorderHP1.Name = "reorderHP1";
-            this.reorderHP1.Size = new System.Drawing.Size(24, 24);
+            this.reorderHP1.Size = new System.Drawing.Size(24, 20);
             this.reorderHP1.TabIndex = 45;
             this.reorderHP1.TabStop = false;
             // 
@@ -212,7 +211,7 @@ namespace _4RTools.Forms
             // 
             this.HPEnabled1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.HPEnabled1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HPEnabled1.Location = new System.Drawing.Point(50, 1);
+            this.HPEnabled1.Location = new System.Drawing.Point(45, 1);
             this.HPEnabled1.Name = "HPEnabled1";
             this.HPEnabled1.Size = new System.Drawing.Size(24, 24);
             this.HPEnabled1.TabIndex = 44;
@@ -225,7 +224,7 @@ namespace _4RTools.Forms
             this.hpPanel2.Controls.Add(this.picBoxHP2);
             this.hpPanel2.Controls.Add(this.txtHPKey2);
             this.hpPanel2.Controls.Add(this.hpPct2);
-            this.hpPanel2.Location = new System.Drawing.Point(1, 48);
+            this.hpPanel2.Location = new System.Drawing.Point(11, 48);
             this.hpPanel2.Name = "hpPanel2";
             this.hpPanel2.Size = new System.Drawing.Size(240, 24);
             this.hpPanel2.TabIndex = 52;
@@ -233,9 +232,9 @@ namespace _4RTools.Forms
             // reorderHP2
             // 
             this.reorderHP2.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderHP2.Location = new System.Drawing.Point(13, 0);
+            this.reorderHP2.Location = new System.Drawing.Point(207, 3);
             this.reorderHP2.Name = "reorderHP2";
-            this.reorderHP2.Size = new System.Drawing.Size(24, 24);
+            this.reorderHP2.Size = new System.Drawing.Size(24, 20);
             this.reorderHP2.TabIndex = 46;
             this.reorderHP2.TabStop = false;
             // 
@@ -243,7 +242,7 @@ namespace _4RTools.Forms
             // 
             this.HPEnabled2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.HPEnabled2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HPEnabled2.Location = new System.Drawing.Point(50, 1);
+            this.HPEnabled2.Location = new System.Drawing.Point(45, 1);
             this.HPEnabled2.Name = "HPEnabled2";
             this.HPEnabled2.Size = new System.Drawing.Size(24, 24);
             this.HPEnabled2.TabIndex = 45;
@@ -253,7 +252,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxHP2.BackColor = System.Drawing.Color.Transparent;
             this.picBoxHP2.Image = global::_4RTools.Resources._4RTools.Icons.ygg_seed;
-            this.picBoxHP2.Location = new System.Drawing.Point(80, 0);
+            this.picBoxHP2.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP2.Name = "picBoxHP2";
             this.picBoxHP2.Size = new System.Drawing.Size(24, 24);
             this.picBoxHP2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -264,9 +263,9 @@ namespace _4RTools.Forms
             // 
             this.txtHPKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHPKey2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHPKey2.Location = new System.Drawing.Point(114, 2);
+            this.txtHPKey2.Location = new System.Drawing.Point(74, 2);
             this.txtHPKey2.Name = "txtHPKey2";
-            this.txtHPKey2.Size = new System.Drawing.Size(55, 22);
+            this.txtHPKey2.Size = new System.Drawing.Size(60, 22);
             this.txtHPKey2.TabIndex = 43;
             this.txtHPKey2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -274,7 +273,7 @@ namespace _4RTools.Forms
             // 
             this.hpPct2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.hpPct2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hpPct2.Location = new System.Drawing.Point(178, 2);
+            this.hpPct2.Location = new System.Drawing.Point(143, 2);
             this.hpPct2.Name = "hpPct2";
             this.hpPct2.Size = new System.Drawing.Size(55, 22);
             this.hpPct2.TabIndex = 39;
@@ -287,7 +286,7 @@ namespace _4RTools.Forms
             this.hpPanel3.Controls.Add(this.picBoxHP3);
             this.hpPanel3.Controls.Add(this.txtHPKey3);
             this.hpPanel3.Controls.Add(this.hpPct3);
-            this.hpPanel3.Location = new System.Drawing.Point(1, 72);
+            this.hpPanel3.Location = new System.Drawing.Point(11, 72);
             this.hpPanel3.Name = "hpPanel3";
             this.hpPanel3.Size = new System.Drawing.Size(240, 24);
             this.hpPanel3.TabIndex = 53;
@@ -295,9 +294,9 @@ namespace _4RTools.Forms
             // reorderHP3
             // 
             this.reorderHP3.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderHP3.Location = new System.Drawing.Point(13, 0);
+            this.reorderHP3.Location = new System.Drawing.Point(207, 3);
             this.reorderHP3.Name = "reorderHP3";
-            this.reorderHP3.Size = new System.Drawing.Size(24, 24);
+            this.reorderHP3.Size = new System.Drawing.Size(24, 20);
             this.reorderHP3.TabIndex = 47;
             this.reorderHP3.TabStop = false;
             // 
@@ -305,7 +304,7 @@ namespace _4RTools.Forms
             // 
             this.HPEnabled3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.HPEnabled3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HPEnabled3.Location = new System.Drawing.Point(50, 1);
+            this.HPEnabled3.Location = new System.Drawing.Point(45, 1);
             this.HPEnabled3.Name = "HPEnabled3";
             this.HPEnabled3.Size = new System.Drawing.Size(24, 24);
             this.HPEnabled3.TabIndex = 46;
@@ -315,7 +314,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxHP3.BackColor = System.Drawing.Color.Transparent;
             this.picBoxHP3.Image = global::_4RTools.Resources._4RTools.Icons.white_potion;
-            this.picBoxHP3.Location = new System.Drawing.Point(80, 0);
+            this.picBoxHP3.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP3.Name = "picBoxHP3";
             this.picBoxHP3.Size = new System.Drawing.Size(24, 24);
             this.picBoxHP3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -326,9 +325,9 @@ namespace _4RTools.Forms
             // 
             this.txtHPKey3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHPKey3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHPKey3.Location = new System.Drawing.Point(114, 2);
+            this.txtHPKey3.Location = new System.Drawing.Point(74, 2);
             this.txtHPKey3.Name = "txtHPKey3";
-            this.txtHPKey3.Size = new System.Drawing.Size(55, 22);
+            this.txtHPKey3.Size = new System.Drawing.Size(60, 22);
             this.txtHPKey3.TabIndex = 43;
             this.txtHPKey3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -336,7 +335,7 @@ namespace _4RTools.Forms
             // 
             this.hpPct3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.hpPct3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hpPct3.Location = new System.Drawing.Point(178, 2);
+            this.hpPct3.Location = new System.Drawing.Point(143, 2);
             this.hpPct3.Name = "hpPct3";
             this.hpPct3.Size = new System.Drawing.Size(55, 22);
             this.hpPct3.TabIndex = 39;
@@ -349,7 +348,7 @@ namespace _4RTools.Forms
             this.hpPanel4.Controls.Add(this.picBoxHP4);
             this.hpPanel4.Controls.Add(this.txtHPKey4);
             this.hpPanel4.Controls.Add(this.hpPct4);
-            this.hpPanel4.Location = new System.Drawing.Point(1, 96);
+            this.hpPanel4.Location = new System.Drawing.Point(11, 96);
             this.hpPanel4.Name = "hpPanel4";
             this.hpPanel4.Size = new System.Drawing.Size(240, 24);
             this.hpPanel4.TabIndex = 54;
@@ -357,9 +356,9 @@ namespace _4RTools.Forms
             // reorderHP4
             // 
             this.reorderHP4.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderHP4.Location = new System.Drawing.Point(13, 0);
+            this.reorderHP4.Location = new System.Drawing.Point(207, 3);
             this.reorderHP4.Name = "reorderHP4";
-            this.reorderHP4.Size = new System.Drawing.Size(24, 24);
+            this.reorderHP4.Size = new System.Drawing.Size(24, 20);
             this.reorderHP4.TabIndex = 48;
             this.reorderHP4.TabStop = false;
             // 
@@ -367,7 +366,7 @@ namespace _4RTools.Forms
             // 
             this.HPEnabled4.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.HPEnabled4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HPEnabled4.Location = new System.Drawing.Point(50, 1);
+            this.HPEnabled4.Location = new System.Drawing.Point(45, 1);
             this.HPEnabled4.Name = "HPEnabled4";
             this.HPEnabled4.Size = new System.Drawing.Size(24, 24);
             this.HPEnabled4.TabIndex = 47;
@@ -377,7 +376,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxHP4.BackColor = System.Drawing.Color.Transparent;
             this.picBoxHP4.Image = global::_4RTools.Resources._4RTools.Icons.white_potion_slim;
-            this.picBoxHP4.Location = new System.Drawing.Point(80, 0);
+            this.picBoxHP4.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP4.Name = "picBoxHP4";
             this.picBoxHP4.Size = new System.Drawing.Size(24, 24);
             this.picBoxHP4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -388,9 +387,9 @@ namespace _4RTools.Forms
             // 
             this.txtHPKey4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHPKey4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHPKey4.Location = new System.Drawing.Point(114, 2);
+            this.txtHPKey4.Location = new System.Drawing.Point(74, 2);
             this.txtHPKey4.Name = "txtHPKey4";
-            this.txtHPKey4.Size = new System.Drawing.Size(55, 22);
+            this.txtHPKey4.Size = new System.Drawing.Size(60, 22);
             this.txtHPKey4.TabIndex = 43;
             this.txtHPKey4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -398,7 +397,7 @@ namespace _4RTools.Forms
             // 
             this.hpPct4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.hpPct4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hpPct4.Location = new System.Drawing.Point(178, 2);
+            this.hpPct4.Location = new System.Drawing.Point(143, 2);
             this.hpPct4.Name = "hpPct4";
             this.hpPct4.Size = new System.Drawing.Size(55, 22);
             this.hpPct4.TabIndex = 39;
@@ -408,7 +407,7 @@ namespace _4RTools.Forms
             // 
             this.delayPanel.Controls.Add(this.numAutopotHPDelay);
             this.delayPanel.Controls.Add(this.delayLabel);
-            this.delayPanel.Location = new System.Drawing.Point(258, 5);
+            this.delayPanel.Location = new System.Drawing.Point(278, 5);
             this.delayPanel.Name = "delayPanel";
             this.delayPanel.Size = new System.Drawing.Size(71, 46);
             this.delayPanel.TabIndex = 56;
@@ -420,7 +419,7 @@ namespace _4RTools.Forms
             this.hpPanel5.Controls.Add(this.picBoxHP5);
             this.hpPanel5.Controls.Add(this.txtHPKey5);
             this.hpPanel5.Controls.Add(this.hpPct5);
-            this.hpPanel5.Location = new System.Drawing.Point(1, 120);
+            this.hpPanel5.Location = new System.Drawing.Point(11, 120);
             this.hpPanel5.Name = "hpPanel5";
             this.hpPanel5.Size = new System.Drawing.Size(240, 24);
             this.hpPanel5.TabIndex = 55;
@@ -428,9 +427,9 @@ namespace _4RTools.Forms
             // reorderHP5
             // 
             this.reorderHP5.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
-            this.reorderHP5.Location = new System.Drawing.Point(13, 0);
+            this.reorderHP5.Location = new System.Drawing.Point(207, 3);
             this.reorderHP5.Name = "reorderHP5";
-            this.reorderHP5.Size = new System.Drawing.Size(24, 24);
+            this.reorderHP5.Size = new System.Drawing.Size(24, 20);
             this.reorderHP5.TabIndex = 49;
             this.reorderHP5.TabStop = false;
             // 
@@ -438,7 +437,7 @@ namespace _4RTools.Forms
             // 
             this.HPEnabled5.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.HPEnabled5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HPEnabled5.Location = new System.Drawing.Point(50, 1);
+            this.HPEnabled5.Location = new System.Drawing.Point(45, 1);
             this.HPEnabled5.Name = "HPEnabled5";
             this.HPEnabled5.Size = new System.Drawing.Size(24, 24);
             this.HPEnabled5.TabIndex = 48;
@@ -448,7 +447,7 @@ namespace _4RTools.Forms
             // 
             this.picBoxHP5.BackColor = System.Drawing.Color.Transparent;
             this.picBoxHP5.Image = global::_4RTools.Resources._4RTools.Icons.mastela_fruit;
-            this.picBoxHP5.Location = new System.Drawing.Point(80, 0);
+            this.picBoxHP5.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP5.Name = "picBoxHP5";
             this.picBoxHP5.Size = new System.Drawing.Size(24, 24);
             this.picBoxHP5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -459,9 +458,9 @@ namespace _4RTools.Forms
             // 
             this.txtHPKey5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHPKey5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHPKey5.Location = new System.Drawing.Point(114, 2);
+            this.txtHPKey5.Location = new System.Drawing.Point(74, 2);
             this.txtHPKey5.Name = "txtHPKey5";
-            this.txtHPKey5.Size = new System.Drawing.Size(55, 22);
+            this.txtHPKey5.Size = new System.Drawing.Size(60, 22);
             this.txtHPKey5.TabIndex = 43;
             this.txtHPKey5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -469,7 +468,7 @@ namespace _4RTools.Forms
             // 
             this.hpPct5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.hpPct5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hpPct5.Location = new System.Drawing.Point(178, 2);
+            this.hpPct5.Location = new System.Drawing.Point(143, 2);
             this.hpPct5.Name = "hpPct5";
             this.hpPct5.Size = new System.Drawing.Size(55, 22);
             this.hpPct5.TabIndex = 39;
@@ -480,7 +479,7 @@ namespace _4RTools.Forms
             this.hpKeyColumnLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.hpKeyColumnLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hpKeyColumnLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
-            this.hpKeyColumnLabel.Location = new System.Drawing.Point(131, 0);
+            this.hpKeyColumnLabel.Location = new System.Drawing.Point(103, 0);
             this.hpKeyColumnLabel.Name = "hpKeyColumnLabel";
             this.hpKeyColumnLabel.Size = new System.Drawing.Size(25, 24);
             this.hpKeyColumnLabel.TabIndex = 65;
@@ -499,7 +498,7 @@ namespace _4RTools.Forms
             // 
             this.panel1.Controls.Add(this.criticalWoundsLabel);
             this.panel1.Controls.Add(this.chkStopOnCriticalInjury);
-            this.panel1.Location = new System.Drawing.Point(258, 81);
+            this.panel1.Location = new System.Drawing.Point(278, 81);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(74, 67);
             this.panel1.TabIndex = 67;
@@ -509,7 +508,7 @@ namespace _4RTools.Forms
             this.AutoPotHPEnabledLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotHPEnabledLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoPotHPEnabledLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.toggle_on_small;
-            this.AutoPotHPEnabledLegendLabel.Location = new System.Drawing.Point(51, 0);
+            this.AutoPotHPEnabledLegendLabel.Location = new System.Drawing.Point(56, 0);
             this.AutoPotHPEnabledLegendLabel.Name = "AutoPotHPEnabledLegendLabel";
             this.AutoPotHPEnabledLegendLabel.Size = new System.Drawing.Size(24, 24);
             this.AutoPotHPEnabledLegendLabel.TabIndex = 82;
@@ -520,20 +519,11 @@ namespace _4RTools.Forms
             this.AutoPotHPSortLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotHPSortLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoPotHPSortLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.sort;
-            this.AutoPotHPSortLegendLabel.Location = new System.Drawing.Point(16, 2);
+            this.AutoPotHPSortLegendLabel.Location = new System.Drawing.Point(218, 2);
             this.AutoPotHPSortLegendLabel.Name = "AutoPotHPSortLegendLabel";
             this.AutoPotHPSortLegendLabel.Size = new System.Drawing.Size(20, 20);
             this.AutoPotHPSortLegendLabel.TabIndex = 83;
             this.AutoPotHPSortLegendLabelToolTip.SetToolTip(this.AutoPotHPSortLegendLabel, "Adjust order and use priority");
-            // 
-            // picBoxHPLegendLabel
-            // 
-            this.picBoxHPLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.picBoxHPLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.potion_red;
-            this.picBoxHPLegendLabel.Location = new System.Drawing.Point(87, 3);
-            this.picBoxHPLegendLabel.Name = "picBoxHPLegendLabel";
-            this.picBoxHPLegendLabel.Size = new System.Drawing.Size(14, 16);
-            this.picBoxHPLegendLabel.TabIndex = 84;
             // 
             // AutoPotHPEnabledLegendLabelToolTip
             // 
@@ -586,8 +576,7 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(347, 151);
-            this.Controls.Add(this.picBoxHPLegendLabel);
+            this.ClientSize = new System.Drawing.Size(375, 151);
             this.Controls.Add(this.AutoPotHPSortLegendLabel);
             this.Controls.Add(this.AutoPotHPEnabledLegendLabel);
             this.Controls.Add(this.panel1);
@@ -679,7 +668,6 @@ namespace _4RTools.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label AutoPotHPEnabledLegendLabel;
         private System.Windows.Forms.Label AutoPotHPSortLegendLabel;
-        private System.Windows.Forms.Label picBoxHPLegendLabel;
         private System.Windows.Forms.ToolTip AutoPotHPEnabledLegendLabelToolTip;
         private System.Windows.Forms.ToolTip AutoPotHPSortLegendLabelToolTip;
         private System.Windows.Forms.ToolTip hpKeyColumnLabelToolTip;

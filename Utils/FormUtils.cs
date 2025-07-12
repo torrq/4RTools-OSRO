@@ -238,6 +238,28 @@ namespace _4RTools.Utils
             }
         }
 
+        public static class TabIconHelper
+        {
+            public static void SetTabIcons(TabControl tabControl, List<Image> images)
+            {
+                if (tabControl.TabPages.Count != images.Count)
+                    throw new ArgumentException("The number of images must match the number of tab pages.");
+
+                ImageList imageList = new ImageList
+                {
+                    ImageSize = new Size(10, 12)
+                };
+
+                for (int i = 0; i < images.Count; i++)
+                {
+                    imageList.Images.Add(images[i]);
+                    tabControl.TabPages[i].ImageIndex = i;
+                }
+
+                tabControl.ImageList = imageList;
+            }
+        }
+
         private static IEnumerable<Control> GetAllControls(Control container)
         {
             var controls = container.Controls.Cast<Control>();

@@ -17,7 +17,7 @@ namespace _4RTools.Forms
         private AutopotHP autopotHP;
         private List<Panel> hpPanels; // List to manage UI panels for sorting
         private readonly Dictionary<int, Panel> panelMap = new Dictionary<int, Panel>(); // Maps a Slot ID to its original panel
-        private readonly Point startPoint = new Point(1, 25); // Define a constant starting position for the panels
+        private readonly Point startPoint = new Point(11, 25); // Define a constant starting position for the panels
 
         public AutopotHPForm(Subject subject)
         {

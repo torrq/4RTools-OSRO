@@ -17,7 +17,7 @@ namespace _4RTools.Forms
         private AutopotSP autopotSP;
         private List<Panel> spPanels; // List to manage UI panels for sorting
         private readonly Dictionary<int, Panel> panelMap = new Dictionary<int, Panel>(); // Maps a Slot ID to its original panel
-        private readonly Point startPoint = new Point(1, 25); // Define a constant starting position for the panels
+        private readonly Point startPoint = new Point(11, 25); // Define a constant starting position for the panels
 
         public AutopotSPForm(Subject subject)
         {
@@ -211,7 +211,7 @@ namespace _4RTools.Forms
             {
                 try
                 {
-                    DebugLogger.Debug($"OnSPKeyChanged: TextBox Text = {txt.Text}, Index = {index}");
+                    //DebugLogger.Debug($"OnSPKeyChanged: TextBox Text = {txt.Text}, Index = {index}");
                     Key key = (Key)Enum.Parse(typeof(Key), txt.Text);
                     autopotSP.SPSlots[index].Key = key;
                     ProfileSingleton.SetConfiguration(autopotSP);

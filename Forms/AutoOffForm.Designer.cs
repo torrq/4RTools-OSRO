@@ -107,7 +107,7 @@ namespace _4RTools.Forms
             // animatedClockImage
             // 
             this.animatedClockImage.Image = global::_4RTools.Resources._4RTools.Icons.clock_animated;
-            this.animatedClockImage.Location = new System.Drawing.Point(295, 2);
+            this.animatedClockImage.Location = new System.Drawing.Point(325, 2);
             this.animatedClockImage.Name = "animatedClockImage";
             this.animatedClockImage.Size = new System.Drawing.Size(24, 24);
             this.animatedClockImage.TabIndex = 5;
@@ -130,7 +130,7 @@ namespace _4RTools.Forms
             // 
             this.overweightAltKeyPlusLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyPlusLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyPlusLabel.Location = new System.Drawing.Point(262, 118);
+            this.overweightAltKeyPlusLabel.Location = new System.Drawing.Point(287, 118);
             this.overweightAltKeyPlusLabel.Name = "overweightAltKeyPlusLabel";
             this.overweightAltKeyPlusLabel.Size = new System.Drawing.Size(16, 24);
             this.overweightAltKeyPlusLabel.TabIndex = 317;
@@ -142,7 +142,7 @@ namespace _4RTools.Forms
             this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyLabel.Location = new System.Drawing.Point(157, 119);
+            this.overweightAltKeyLabel.Location = new System.Drawing.Point(182, 119);
             this.overweightAltKeyLabel.Name = "overweightAltKeyLabel";
             this.overweightAltKeyLabel.Size = new System.Drawing.Size(107, 24);
             this.overweightAltKeyLabel.TabIndex = 316;
@@ -152,7 +152,7 @@ namespace _4RTools.Forms
             // arrowDown1
             // 
             this.arrowDown1.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
-            this.arrowDown1.Location = new System.Drawing.Point(238, 102);
+            this.arrowDown1.Location = new System.Drawing.Point(263, 102);
             this.arrowDown1.Name = "arrowDown1";
             this.arrowDown1.Size = new System.Drawing.Size(11, 14);
             this.arrowDown1.TabIndex = 319;
@@ -161,7 +161,7 @@ namespace _4RTools.Forms
             // arrowRight
             // 
             this.arrowRight.Image = global::_4RTools.Resources._4RTools.Icons.arrow_right;
-            this.arrowRight.Location = new System.Drawing.Point(131, 127);
+            this.arrowRight.Location = new System.Drawing.Point(147, 127);
             this.arrowRight.Name = "arrowRight";
             this.arrowRight.Size = new System.Drawing.Size(19, 11);
             this.arrowRight.TabIndex = 320;
@@ -171,7 +171,7 @@ namespace _4RTools.Forms
             // 
             this.AutoOffKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AutoOffKey1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoOffKey1.Location = new System.Drawing.Point(278, 119);
+            this.AutoOffKey1.Location = new System.Drawing.Point(303, 119);
             this.AutoOffKey1.Name = "AutoOffKey1";
             this.AutoOffKey1.Size = new System.Drawing.Size(41, 23);
             this.AutoOffKey1.TabIndex = 311;
@@ -180,7 +180,7 @@ namespace _4RTools.Forms
             // arrowDown2
             // 
             this.arrowDown2.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
-            this.arrowDown2.Location = new System.Drawing.Point(238, 153);
+            this.arrowDown2.Location = new System.Drawing.Point(263, 153);
             this.arrowDown2.Name = "arrowDown2";
             this.arrowDown2.Size = new System.Drawing.Size(11, 14);
             this.arrowDown2.TabIndex = 322;
@@ -191,7 +191,7 @@ namespace _4RTools.Forms
             this.overweightAltKey2Label.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKey2Label.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKey2Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKey2Label.Location = new System.Drawing.Point(157, 175);
+            this.overweightAltKey2Label.Location = new System.Drawing.Point(182, 175);
             this.overweightAltKey2Label.Name = "overweightAltKey2Label";
             this.overweightAltKey2Label.Size = new System.Drawing.Size(107, 24);
             this.overweightAltKey2Label.TabIndex = 323;
@@ -202,7 +202,7 @@ namespace _4RTools.Forms
             // 
             this.AutoOffKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AutoOffKey2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoOffKey2.Location = new System.Drawing.Point(278, 176);
+            this.AutoOffKey2.Location = new System.Drawing.Point(303, 176);
             this.AutoOffKey2.Name = "AutoOffKey2";
             this.AutoOffKey2.Size = new System.Drawing.Size(41, 23);
             this.AutoOffKey2.TabIndex = 324;
@@ -211,7 +211,7 @@ namespace _4RTools.Forms
             // arrowDown3
             // 
             this.arrowDown3.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
-            this.arrowDown3.Location = new System.Drawing.Point(238, 206);
+            this.arrowDown3.Location = new System.Drawing.Point(263, 206);
             this.arrowDown3.Name = "arrowDown3";
             this.arrowDown3.Size = new System.Drawing.Size(11, 14);
             this.arrowDown3.TabIndex = 326;
@@ -221,9 +221,9 @@ namespace _4RTools.Forms
             // 
             this.AutoOffKillClientChk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AutoOffKillClientChk.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoOffKillClientChk.Location = new System.Drawing.Point(140, 218);
+            this.AutoOffKillClientChk.Location = new System.Drawing.Point(185, 218);
             this.AutoOffKillClientChk.Name = "AutoOffKillClientChk";
-            this.AutoOffKillClientChk.Size = new System.Drawing.Size(179, 33);
+            this.AutoOffKillClientChk.Size = new System.Drawing.Size(161, 33);
             this.AutoOffKillClientChk.TabIndex = 328;
             this.AutoOffKillClientChk.Text = "Then stop running client";
             this.AutoOffKillClientChk.UseVisualStyleBackColor = true;
@@ -233,7 +233,7 @@ namespace _4RTools.Forms
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(262, 174);
+            this.label1.Location = new System.Drawing.Point(287, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 24);
             this.label1.TabIndex = 329;
@@ -246,7 +246,7 @@ namespace _4RTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(335, 263);
+            this.ClientSize = new System.Drawing.Size(350, 263);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.arrowDown3);
             this.Controls.Add(this.AutoOffKillClientChk);
