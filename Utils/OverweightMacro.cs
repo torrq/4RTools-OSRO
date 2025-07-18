@@ -46,10 +46,13 @@ namespace _4RTools.Utils
             int timesToSend = 2;
             int intervalMs = 5000;
             string keyToSend;
-            bool sendKey1 = (!string.IsNullOrEmpty(prefs.AutoOffKey1.ToString()) && prefs.AutoOffKey1.ToString() != "None");
-            bool sendKey2 = (!string.IsNullOrEmpty(prefs.AutoOffKey2.ToString()) && prefs.AutoOffKey2.ToString() != "None");
+            bool ShouldSendKey1 = (!string.IsNullOrEmpty(prefs.AutoOffKey1.ToString()) && prefs.AutoOffKey1.ToString() != "None");
+            bool ShouldSendKey2 = (!string.IsNullOrEmpty(prefs.AutoOffKey2.ToString()) && prefs.AutoOffKey2.ToString() != "None");
+            bool ShouldKillClient = prefs.AutoOffKillClient;
 
-            if (sendKey1 || sendKey2)
+            DebugLogger.Debug($"OverweightMacro: ShouldSendKey1={ShouldSendKey1}, ShouldSendKey2={ShouldSendKey2}, ShouldKillClient={ShouldKillClient}");
+
+            if (ShouldSendKey1 || ShouldSendKey2)
             {
                 IntPtr hWnd = ClientSingleton.GetClient().Process.MainWindowHandle;
 
@@ -58,7 +61,7 @@ namespace _4RTools.Utils
 
                 Thread.Sleep(1000);
 
-                if (sendKey1)
+                if (ShouldSendKey1)
                 {
                     keyToSend = "%" + ToSendKeysFormat(prefs.AutoOffKey1);
                     for (int i = 0; i < timesToSend; i++)
@@ -73,13 +76,13 @@ namespace _4RTools.Utils
                     }
                 }
 
-                if(sendKey1 && sendKey2)
+                if(ShouldSendKey1 && ShouldSendKey2)
                 {
                     // Add a small delay between the two keys if both are sent
                     Thread.Sleep(1000);
                 }
 
-                if (sendKey2)
+                if (ShouldSendKey2)
                 {
                     keyToSend = "%" + ToSendKeysFormat(prefs.AutoOffKey2);
                     for (int i = 0; i < timesToSend; i++)
@@ -94,8 +97,13 @@ namespace _4RTools.Utils
                     }
                 }
 
-
-
+                if(ShouldKillClient)
+                {
+                    // Add a small delay before killing the client
+                    Thread.Sleep(1000);
+                    DebugLogger.Info($"Killing the client (Auto-off)");
+                    ClientSingleton.GetClient().Kill();
+                }
             }
         }
     }

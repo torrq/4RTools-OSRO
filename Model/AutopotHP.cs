@@ -12,10 +12,9 @@ namespace _4RTools.Model
     public class AutopotHP : IAction
     {
         public static string ACTION_NAME_AUTOPOT_HP = "AutopotHP";
-
         private static readonly int AUTOPOT_HP_ROWS = 5;
+        private static readonly int MIN_CYCLE_DELAY = 1; // Minimum 1ms between cycles
 
-        // New data structure using a list of objects. This allows for reordering.
         public List<HPSlot> HPSlots { get; set; } = new List<HPSlot>();
 
         private int _delay = AppConfig.AutoPotDefaultDelay;
@@ -28,6 +27,12 @@ namespace _4RTools.Model
         public bool StopOnCriticalInjury { get; set; } = false;
         public string ActionName { get; set; }
         private ThreadRunner thread;
+        private volatile bool _hasCriticalWound = false;
+        private long _lastCriticalWoundCheck = 0;
+        private readonly long _criticalWoundCheckInterval = TimeSpan.FromMilliseconds(100).Ticks; // Check every 100ms
+
+        // Track last used slot globally for proper cycling across all available slots
+        private int _lastUsedSlotIndex = -1;
 
         public AutopotHP() { }
 
@@ -37,23 +42,15 @@ namespace _4RTools.Model
             InitializeSlots();
         }
 
-        /// <summary>
-        /// This method is called by Newtonsoft.Json after deserialization.
-        /// It checks if the new HPSlots list is empty. If so, it means we're loading an old profile.
-        /// It then migrates the data from the old flat properties to the new list structure.
-        /// </summary>
         [System.Runtime.Serialization.OnDeserialized]
         private void OnDeserialized(System.Runtime.Serialization.StreamingContext context)
         {
             if (HPSlots == null || HPSlots.Count == 0)
             {
-                InitializeSlots(); // Make sure list is created
+                InitializeSlots();
             }
         }
 
-        /// <summary>
-        /// Creates the initial 5 HP slots.
-        /// </summary>
         private void InitializeSlots()
         {
             if (this.HPSlots == null || this.HPSlots.Count == 0)
@@ -82,49 +79,142 @@ namespace _4RTools.Model
 
         private int AutopotThreadExecution(Client roClient)
         {
-            string currentMap = roClient.ReadCurrentMap();
-            if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
+            bool potUsed = false;
+
+            try
             {
-                bool hasCriticalWound = HasCriticalWound(roClient);
-                ProcessHPHealing(roClient, hasCriticalWound);
+                string currentMap = roClient.ReadCurrentMap();
+                bool isInCity = ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity &&
+                               Server.GetCityList().Contains(currentMap);
+
+                if (!isInCity)
+                {
+                    // Only check critical wound if the setting is enabled and enough time has passed
+                    if (StopOnCriticalInjury)
+                    {
+                        long currentTicks = DateTime.UtcNow.Ticks;
+                        if (currentTicks - _lastCriticalWoundCheck >= _criticalWoundCheckInterval)
+                        {
+                            _hasCriticalWound = HasCriticalWound(roClient);
+                            _lastCriticalWoundCheck = currentTicks;
+                        }
+                    }
+
+                    potUsed = ProcessHPHealing(roClient);
+                }
             }
-            Thread.Sleep(this.Delay);
+            catch (Exception ex)
+            {
+                // Log exception if needed, but don't crash the thread
+                System.Diagnostics.Debug.WriteLine($"Autopot HP error: {ex.Message}");
+            }
+
+            // Use minimal delay for fast response, user-configured delay if pot was used
+            int sleepTime = potUsed ? this.Delay : MIN_CYCLE_DELAY;
+            Thread.Sleep(sleepTime);
+
             return 0;
         }
 
-        private void ProcessHPHealing(Client roClient, bool hasCriticalWound)
+        private bool ProcessHPHealing(Client roClient)
         {
-            if (this.StopOnCriticalInjury && hasCriticalWound)
-                return;
+            // Early exit if we should stop on critical injury and have one
+            if (StopOnCriticalInjury && _hasCriticalWound)
+                return false;
 
-            // Check the global pot cooldown before attempting to use a pot.
+            // Check the global pot cooldown before attempting to use a pot
             if (!PotManager.CanUsePot())
-                return;
+                return false;
 
-            // The healing logic now iterates through the HPSlots list.
-            // Since the list is ordered by the user via drag-and-drop, the priority is automatically handled.
-            foreach (var slot in HPSlots)
+            // Find all enabled slots that meet the HP threshold, grouped by HP percentage
+            var slotsByHPPercent = new Dictionary<int, List<int>>();
+            for (int i = 0; i < HPSlots.Count; i++)
             {
+                var slot = HPSlots[i];
                 if (slot.Enabled && slot.HPPercent > 0 && roClient.IsHpBelow(slot.HPPercent))
                 {
-                    UsePot(slot.Key);
-                    PotManager.RecordPotUsage(); // Notify the manager that a pot was used.
-                    break; // Only use one pot per cycle
+                    if (!slotsByHPPercent.ContainsKey(slot.HPPercent))
+                        slotsByHPPercent[slot.HPPercent] = new List<int>();
+
+                    slotsByHPPercent[slot.HPPercent].Add(i);
                 }
             }
+
+            if (slotsByHPPercent.Count == 0)
+                return false;
+
+            // Get ALL HP percentages that we're below, sorted by priority (highest first)
+            var sortedHPPercentages = slotsByHPPercent.Keys.OrderByDescending(x => x).ToList();
+
+            // Collect all available slots from all applicable HP percentages
+            var allAvailableSlots = new List<int>();
+            foreach (var hpPercent in sortedHPPercentages)
+            {
+                allAvailableSlots.AddRange(slotsByHPPercent[hpPercent]);
+            }
+
+            // Sort the slots by their original slot index to maintain priority order
+            allAvailableSlots.Sort();
+
+            // Find the highest HP percentage that we have slots for (for cycling tracking)
+            int primaryHPPercent = sortedHPPercentages[0];
+
+            // Use the next slot in the cycling order across all available slots
+            int nextSlotIndex = GetNextSlotIndex(allAvailableSlots);
+            if (nextSlotIndex != -1 && UsePot(HPSlots[nextSlotIndex].Key))
+            {
+                _lastUsedSlotIndex = nextSlotIndex;
+                PotManager.RecordPotUsage();
+                return true;
+            }
+
+            return false; // No pot was used
         }
 
-        private void UsePot(Key key)
+        /// <summary>
+        /// Gets the next slot index to use based on global cycling logic.
+        /// </summary>
+        private int GetNextSlotIndex(List<int> availableSlots)
         {
-            if (key == Key.None) return;
-
-            Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
-            if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+            // If no previous slot was used or it's not in the current available slots, start with the first available
+            if (_lastUsedSlotIndex == -1 || !availableSlots.Contains(_lastUsedSlotIndex))
             {
-                var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
-                Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
-                Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
+                return availableSlots[0];
             }
+
+            // Find the current slot in the available list and get the next one
+            int currentPosition = availableSlots.IndexOf(_lastUsedSlotIndex);
+            int nextPosition = (currentPosition + 1) % availableSlots.Count;
+
+            return availableSlots[nextPosition];
+        }
+
+        private bool UsePot(Key key)
+        {
+            if (key == Key.None) return false;
+
+            try
+            {
+                // Only send if Alt is not pressed (prevents conflicts with alt+key combinations)
+                if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+                {
+                    Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
+                    var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
+
+                    // Send key press and release
+                    Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
+                    Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log parse errors but don't crash
+                System.Diagnostics.Debug.WriteLine($"Failed to use pot key {key}: {ex.Message}");
+            }
+
+            return false;
         }
 
         public void Stop()
@@ -139,13 +229,13 @@ namespace _4RTools.Model
 
         public string GetConfiguration()
         {
-            // Now serializes the entire AutopotHP object, including the ordered HPSlots list.
             return JsonConvert.SerializeObject(this);
         }
 
         public string GetActionName() => ActionName ?? ACTION_NAME_AUTOPOT_HP;
 
-        public bool HasCriticalWound(Client c)
+        // Optimized critical wound check - only called when needed
+        private bool HasCriticalWound(Client c)
         {
             for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
             {

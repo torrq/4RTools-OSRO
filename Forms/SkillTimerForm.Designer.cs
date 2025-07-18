@@ -153,15 +153,15 @@ namespace _4RTools.Forms
             // txtAutoRefreshDelay1
             // 
             this.txtAutoRefreshDelay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay1.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay1.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay1.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay1.Name = "txtAutoRefreshDelay1";
-            this.txtAutoRefreshDelay1.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay1.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay1.TabIndex = 34;
             this.txtAutoRefreshDelay1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay1.ThousandsSeparator = true;
@@ -169,25 +169,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey1
             // 
             this.txtSkillTimerKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey1.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey1.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey1.Name = "txtSkillTimerKey1";
-            this.txtSkillTimerKey1.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey1.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey1.TabIndex = 4;
             this.txtSkillTimerKey1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay4
             // 
             this.txtAutoRefreshDelay4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay4.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay4.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay4.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay4.Name = "txtAutoRefreshDelay4";
-            this.txtAutoRefreshDelay4.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay4.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay4.TabIndex = 49;
             this.txtAutoRefreshDelay4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay4.ThousandsSeparator = true;
@@ -195,25 +195,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey4
             // 
             this.txtSkillTimerKey4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey4.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey4.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey4.Name = "txtSkillTimerKey4";
-            this.txtSkillTimerKey4.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey4.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey4.TabIndex = 47;
             this.txtSkillTimerKey4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay3
             // 
             this.txtAutoRefreshDelay3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay3.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay3.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay3.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay3.Name = "txtAutoRefreshDelay3";
-            this.txtAutoRefreshDelay3.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay3.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay3.TabIndex = 44;
             this.txtAutoRefreshDelay3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay3.ThousandsSeparator = true;
@@ -221,25 +221,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey3
             // 
             this.txtSkillTimerKey3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey3.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey3.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey3.Name = "txtSkillTimerKey3";
-            this.txtSkillTimerKey3.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey3.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey3.TabIndex = 42;
             this.txtSkillTimerKey3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay5
             // 
             this.txtAutoRefreshDelay5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay5.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay5.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay5.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay5.Name = "txtAutoRefreshDelay5";
-            this.txtAutoRefreshDelay5.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay5.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay5.TabIndex = 54;
             this.txtAutoRefreshDelay5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay5.ThousandsSeparator = true;
@@ -247,10 +247,10 @@ namespace _4RTools.Forms
             // txtSkillTimerKey5
             // 
             this.txtSkillTimerKey5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey5.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey5.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey5.Name = "txtSkillTimerKey5";
-            this.txtSkillTimerKey5.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey5.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey5.TabIndex = 52;
             this.txtSkillTimerKey5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -375,10 +375,10 @@ namespace _4RTools.Forms
             // txtSkillTimerKey2
             // 
             this.txtSkillTimerKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey2.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey2.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey2.Name = "txtSkillTimerKey2";
-            this.txtSkillTimerKey2.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey2.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey2.TabIndex = 4;
             this.txtSkillTimerKey2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -407,15 +407,15 @@ namespace _4RTools.Forms
             // txtAutoRefreshDelay2
             // 
             this.txtAutoRefreshDelay2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay2.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay2.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay2.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay2.Name = "txtAutoRefreshDelay2";
-            this.txtAutoRefreshDelay2.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay2.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay2.TabIndex = 34;
             this.txtAutoRefreshDelay2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay2.ThousandsSeparator = true;
@@ -669,21 +669,21 @@ namespace _4RTools.Forms
             // txtAutoRefreshDelayLabel
             // 
             this.txtAutoRefreshDelayLabel.Cursor = System.Windows.Forms.Cursors.Help;
-            this.txtAutoRefreshDelayLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelayLabel.Location = new System.Drawing.Point(173, 6);
+            this.txtAutoRefreshDelayLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelayLabel.Location = new System.Drawing.Point(178, 4);
             this.txtAutoRefreshDelayLabel.Name = "txtAutoRefreshDelayLabel";
-            this.txtAutoRefreshDelayLabel.Size = new System.Drawing.Size(85, 13);
+            this.txtAutoRefreshDelayLabel.Size = new System.Drawing.Size(85, 20);
             this.txtAutoRefreshDelayLabel.TabIndex = 64;
             this.txtAutoRefreshDelayLabel.Text = "Delay (ms)";
             this.txtAutoRefreshDelayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTiptxtAutoRefreshDelayLabel.SetToolTip(this.txtAutoRefreshDelayLabel, "1000 ms = 1 second");
+            this.toolTiptxtAutoRefreshDelayLabel.SetToolTip(this.txtAutoRefreshDelayLabel, "1,000 ms = 1 second");
             // 
             // txtSkillTimerKeyLabel
             // 
             this.txtSkillTimerKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.txtSkillTimerKeyLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSkillTimerKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
-            this.txtSkillTimerKeyLabel.Location = new System.Drawing.Point(115, 1);
+            this.txtSkillTimerKeyLabel.Location = new System.Drawing.Point(120, 1);
             this.txtSkillTimerKeyLabel.Name = "txtSkillTimerKeyLabel";
             this.txtSkillTimerKeyLabel.Size = new System.Drawing.Size(25, 24);
             this.txtSkillTimerKeyLabel.TabIndex = 64;
@@ -765,25 +765,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey6
             // 
             this.txtSkillTimerKey6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey6.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey6.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey6.Name = "txtSkillTimerKey6";
-            this.txtSkillTimerKey6.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey6.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey6.TabIndex = 52;
             this.txtSkillTimerKey6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay6
             // 
             this.txtAutoRefreshDelay6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay6.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay6.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay6.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay6.Name = "txtAutoRefreshDelay6";
-            this.txtAutoRefreshDelay6.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay6.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay6.TabIndex = 54;
             this.txtAutoRefreshDelay6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay6.ThousandsSeparator = true;
@@ -864,25 +864,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey7
             // 
             this.txtSkillTimerKey7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey7.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey7.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey7.Name = "txtSkillTimerKey7";
-            this.txtSkillTimerKey7.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey7.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey7.TabIndex = 52;
             this.txtSkillTimerKey7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay7
             // 
             this.txtAutoRefreshDelay7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay7.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay7.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay7.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay7.Name = "txtAutoRefreshDelay7";
-            this.txtAutoRefreshDelay7.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay7.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay7.TabIndex = 54;
             this.txtAutoRefreshDelay7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay7.ThousandsSeparator = true;
@@ -963,25 +963,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey8
             // 
             this.txtSkillTimerKey8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey8.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey8.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey8.Name = "txtSkillTimerKey8";
-            this.txtSkillTimerKey8.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey8.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey8.TabIndex = 52;
             this.txtSkillTimerKey8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay8
             // 
             this.txtAutoRefreshDelay8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay8.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay8.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay8.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay8.Name = "txtAutoRefreshDelay8";
-            this.txtAutoRefreshDelay8.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay8.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay8.TabIndex = 54;
             this.txtAutoRefreshDelay8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay8.ThousandsSeparator = true;
@@ -1062,25 +1062,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey9
             // 
             this.txtSkillTimerKey9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey9.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey9.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey9.Name = "txtSkillTimerKey9";
-            this.txtSkillTimerKey9.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey9.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey9.TabIndex = 52;
             this.txtSkillTimerKey9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay9
             // 
             this.txtAutoRefreshDelay9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay9.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay9.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay9.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay9.Name = "txtAutoRefreshDelay9";
-            this.txtAutoRefreshDelay9.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay9.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay9.TabIndex = 54;
             this.txtAutoRefreshDelay9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay9.ThousandsSeparator = true;
@@ -1161,25 +1161,25 @@ namespace _4RTools.Forms
             // txtSkillTimerKey10
             // 
             this.txtSkillTimerKey10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSkillTimerKey10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKey10.Location = new System.Drawing.Point(108, 4);
+            this.txtSkillTimerKey10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillTimerKey10.Location = new System.Drawing.Point(108, 3);
             this.txtSkillTimerKey10.Name = "txtSkillTimerKey10";
-            this.txtSkillTimerKey10.Size = new System.Drawing.Size(45, 21);
+            this.txtSkillTimerKey10.Size = new System.Drawing.Size(55, 22);
             this.txtSkillTimerKey10.TabIndex = 52;
             this.txtSkillTimerKey10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutoRefreshDelay10
             // 
             this.txtAutoRefreshDelay10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAutoRefreshDelay10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutoRefreshDelay10.Location = new System.Drawing.Point(162, 4);
+            this.txtAutoRefreshDelay10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoRefreshDelay10.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay10.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.txtAutoRefreshDelay10.Name = "txtAutoRefreshDelay10";
-            this.txtAutoRefreshDelay10.Size = new System.Drawing.Size(115, 21);
+            this.txtAutoRefreshDelay10.Size = new System.Drawing.Size(110, 22);
             this.txtAutoRefreshDelay10.TabIndex = 54;
             this.txtAutoRefreshDelay10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAutoRefreshDelay10.ThousandsSeparator = true;

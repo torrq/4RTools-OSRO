@@ -269,6 +269,7 @@ namespace _4RTools.Forms
             this.in8mac1.Name = "in8mac1";
             this.in8mac1.Size = new System.Drawing.Size(47, 21);
             this.in8mac1.TabIndex = 285;
+            this.in8mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac1.TextChanged += new System.EventHandler(this.In8mac1_TextChanged);
             // 
             // in7mac1
@@ -278,6 +279,7 @@ namespace _4RTools.Forms
             this.in7mac1.Name = "in7mac1";
             this.in7mac1.Size = new System.Drawing.Size(47, 21);
             this.in7mac1.TabIndex = 284;
+            this.in7mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac1.TextChanged += new System.EventHandler(this.In7mac1_TextChanged);
             // 
             // pictureBox1
@@ -346,6 +348,7 @@ namespace _4RTools.Forms
             this.inInstrumentMacro1.Size = new System.Drawing.Size(47, 21);
             this.inInstrumentMacro1.TabIndex = 277;
             this.inInstrumentMacro1.Tag = "1:Instrument";
+            this.inInstrumentMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inInstrumentMacro1.TextChanged += new System.EventHandler(this.InInstrumentMacro1_TextChanged);
             // 
             // pictureBox5
@@ -366,6 +369,7 @@ namespace _4RTools.Forms
             this.inDaggerMacro1.Size = new System.Drawing.Size(47, 21);
             this.inDaggerMacro1.TabIndex = 211;
             this.inDaggerMacro1.Tag = "1:Dagger";
+            this.inDaggerMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inDaggerMacro1.TextChanged += new System.EventHandler(this.InDaggerMacro1_TextChanged);
             // 
             // btnResMac1
@@ -387,6 +391,7 @@ namespace _4RTools.Forms
             this.in6mac1.Name = "in6mac1";
             this.in6mac1.Size = new System.Drawing.Size(47, 21);
             this.in6mac1.TabIndex = 75;
+            this.in6mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac1.TextChanged += new System.EventHandler(this.In6mac1_TextChanged);
             // 
             // in5mac1
@@ -396,6 +401,7 @@ namespace _4RTools.Forms
             this.in5mac1.Name = "in5mac1";
             this.in5mac1.Size = new System.Drawing.Size(47, 21);
             this.in5mac1.TabIndex = 74;
+            this.in5mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac1.TextChanged += new System.EventHandler(this.In5mac1_TextChanged);
             // 
             // in4mac1
@@ -405,6 +411,7 @@ namespace _4RTools.Forms
             this.in4mac1.Name = "in4mac1";
             this.in4mac1.Size = new System.Drawing.Size(47, 21);
             this.in4mac1.TabIndex = 73;
+            this.in4mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac1.TextChanged += new System.EventHandler(this.In4mac1_TextChanged);
             // 
             // in3mac1
@@ -414,6 +421,7 @@ namespace _4RTools.Forms
             this.in3mac1.Name = "in3mac1";
             this.in3mac1.Size = new System.Drawing.Size(47, 21);
             this.in3mac1.TabIndex = 72;
+            this.in3mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac1.TextChanged += new System.EventHandler(this.In3mac1_TextChanged);
             // 
             // in2mac1
@@ -423,6 +431,7 @@ namespace _4RTools.Forms
             this.in2mac1.Name = "in2mac1";
             this.in2mac1.Size = new System.Drawing.Size(47, 21);
             this.in2mac1.TabIndex = 71;
+            this.in2mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac1.TextChanged += new System.EventHandler(this.In2mac1_TextChanged);
             // 
             // in1mac1
@@ -432,6 +441,7 @@ namespace _4RTools.Forms
             this.in1mac1.Name = "in1mac1";
             this.in1mac1.Size = new System.Drawing.Size(47, 21);
             this.in1mac1.TabIndex = 70;
+            this.in1mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac1.TextChanged += new System.EventHandler(this.In1mac1_TextChanged);
             // 
             // inTriggerMacro1
@@ -442,6 +452,7 @@ namespace _4RTools.Forms
             this.inTriggerMacro1.Size = new System.Drawing.Size(47, 21);
             this.inTriggerMacro1.TabIndex = 69;
             this.inTriggerMacro1.Tag = "1:Trigger";
+            this.inTriggerMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inTriggerMacro1.TextChanged += new System.EventHandler(this.InTriggerMacro1_TextChanged);
             // 
             // delayMac1
@@ -456,6 +467,7 @@ namespace _4RTools.Forms
             this.delayMac1.Name = "delayMac1";
             this.delayMac1.Size = new System.Drawing.Size(47, 21);
             this.delayMac1.TabIndex = 68;
+            this.delayMac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -566,6 +578,7 @@ namespace _4RTools.Forms
             this.in8mac2.Name = "in8mac2";
             this.in8mac2.Size = new System.Drawing.Size(47, 21);
             this.in8mac2.TabIndex = 300;
+            this.in8mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac2.TextChanged += new System.EventHandler(this.In8mac2_TextChanged);
             // 
             // in7mac2
@@ -575,6 +588,7 @@ namespace _4RTools.Forms
             this.in7mac2.Name = "in7mac2";
             this.in7mac2.Size = new System.Drawing.Size(47, 21);
             this.in7mac2.TabIndex = 299;
+            this.in7mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac2.TextChanged += new System.EventHandler(this.In7mac2_TextChanged);
             // 
             // pictureBox15
@@ -624,6 +638,7 @@ namespace _4RTools.Forms
             this.in6mac2.Name = "in6mac2";
             this.in6mac2.Size = new System.Drawing.Size(47, 21);
             this.in6mac2.TabIndex = 294;
+            this.in6mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac2.TextChanged += new System.EventHandler(this.In6mac2_TextChanged);
             // 
             // in5mac2
@@ -633,6 +648,7 @@ namespace _4RTools.Forms
             this.in5mac2.Name = "in5mac2";
             this.in5mac2.Size = new System.Drawing.Size(47, 21);
             this.in5mac2.TabIndex = 293;
+            this.in5mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac2.TextChanged += new System.EventHandler(this.In5mac2_TextChanged);
             // 
             // in4mac2
@@ -642,6 +658,7 @@ namespace _4RTools.Forms
             this.in4mac2.Name = "in4mac2";
             this.in4mac2.Size = new System.Drawing.Size(47, 21);
             this.in4mac2.TabIndex = 292;
+            this.in4mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac2.TextChanged += new System.EventHandler(this.In4mac2_TextChanged);
             // 
             // in3mac2
@@ -651,6 +668,7 @@ namespace _4RTools.Forms
             this.in3mac2.Name = "in3mac2";
             this.in3mac2.Size = new System.Drawing.Size(47, 21);
             this.in3mac2.TabIndex = 291;
+            this.in3mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac2.TextChanged += new System.EventHandler(this.In3mac2_TextChanged);
             // 
             // in2mac2
@@ -660,6 +678,7 @@ namespace _4RTools.Forms
             this.in2mac2.Name = "in2mac2";
             this.in2mac2.Size = new System.Drawing.Size(47, 21);
             this.in2mac2.TabIndex = 290;
+            this.in2mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac2.TextChanged += new System.EventHandler(this.In2mac2_TextChanged);
             // 
             // in1mac2
@@ -669,6 +688,7 @@ namespace _4RTools.Forms
             this.in1mac2.Name = "in1mac2";
             this.in1mac2.Size = new System.Drawing.Size(47, 21);
             this.in1mac2.TabIndex = 289;
+            this.in1mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac2.TextChanged += new System.EventHandler(this.In1mac2_TextChanged);
             // 
             // panel4
@@ -708,6 +728,7 @@ namespace _4RTools.Forms
             this.inInstrumentMacro2.Size = new System.Drawing.Size(47, 21);
             this.inInstrumentMacro2.TabIndex = 282;
             this.inInstrumentMacro2.Tag = "2:Instrument";
+            this.inInstrumentMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inInstrumentMacro2.TextChanged += new System.EventHandler(this.InInstrumentMacro2_TextChanged);
             // 
             // inTriggerMacro2
@@ -718,6 +739,7 @@ namespace _4RTools.Forms
             this.inTriggerMacro2.Size = new System.Drawing.Size(47, 21);
             this.inTriggerMacro2.TabIndex = 70;
             this.inTriggerMacro2.Tag = "2:Trigger";
+            this.inTriggerMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inTriggerMacro2.TextChanged += new System.EventHandler(this.InTriggerMacro2_TextChanged);
             // 
             // pictureBox11
@@ -742,6 +764,7 @@ namespace _4RTools.Forms
             this.delayMac2.Name = "delayMac2";
             this.delayMac2.Size = new System.Drawing.Size(47, 21);
             this.delayMac2.TabIndex = 69;
+            this.delayMac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // inDaggerMacro2
             // 
@@ -751,6 +774,7 @@ namespace _4RTools.Forms
             this.inDaggerMacro2.Size = new System.Drawing.Size(47, 21);
             this.inDaggerMacro2.TabIndex = 280;
             this.inDaggerMacro2.Tag = "2:Dagger";
+            this.inDaggerMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inDaggerMacro2.TextChanged += new System.EventHandler(this.InDaggerMacro2_TextChanged);
             // 
             // label1
@@ -861,6 +885,7 @@ namespace _4RTools.Forms
             this.in8mac3.Name = "in8mac3";
             this.in8mac3.Size = new System.Drawing.Size(47, 21);
             this.in8mac3.TabIndex = 315;
+            this.in8mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac3.TextChanged += new System.EventHandler(this.In8mac3_TextChanged);
             // 
             // in7mac3
@@ -870,6 +895,7 @@ namespace _4RTools.Forms
             this.in7mac3.Name = "in7mac3";
             this.in7mac3.Size = new System.Drawing.Size(47, 21);
             this.in7mac3.TabIndex = 314;
+            this.in7mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac3.TextChanged += new System.EventHandler(this.In7mac3_TextChanged);
             // 
             // pictureBox24
@@ -919,6 +945,7 @@ namespace _4RTools.Forms
             this.in6mac3.Name = "in6mac3";
             this.in6mac3.Size = new System.Drawing.Size(47, 21);
             this.in6mac3.TabIndex = 309;
+            this.in6mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac3.TextChanged += new System.EventHandler(this.In6mac3_TextChanged);
             // 
             // in5mac3
@@ -928,6 +955,7 @@ namespace _4RTools.Forms
             this.in5mac3.Name = "in5mac3";
             this.in5mac3.Size = new System.Drawing.Size(47, 21);
             this.in5mac3.TabIndex = 308;
+            this.in5mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac3.TextChanged += new System.EventHandler(this.In5mac3_TextChanged);
             // 
             // in4mac3
@@ -937,6 +965,7 @@ namespace _4RTools.Forms
             this.in4mac3.Name = "in4mac3";
             this.in4mac3.Size = new System.Drawing.Size(47, 21);
             this.in4mac3.TabIndex = 307;
+            this.in4mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac3.TextChanged += new System.EventHandler(this.In4mac3_TextChanged);
             // 
             // in3mac3
@@ -946,6 +975,7 @@ namespace _4RTools.Forms
             this.in3mac3.Name = "in3mac3";
             this.in3mac3.Size = new System.Drawing.Size(47, 21);
             this.in3mac3.TabIndex = 306;
+            this.in3mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac3.TextChanged += new System.EventHandler(this.In3mac3_TextChanged);
             // 
             // in2mac3
@@ -955,6 +985,7 @@ namespace _4RTools.Forms
             this.in2mac3.Name = "in2mac3";
             this.in2mac3.Size = new System.Drawing.Size(47, 21);
             this.in2mac3.TabIndex = 305;
+            this.in2mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac3.TextChanged += new System.EventHandler(this.In2mac3_TextChanged);
             // 
             // in1mac3
@@ -964,6 +995,7 @@ namespace _4RTools.Forms
             this.in1mac3.Name = "in1mac3";
             this.in1mac3.Size = new System.Drawing.Size(47, 21);
             this.in1mac3.TabIndex = 304;
+            this.in1mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac3.TextChanged += new System.EventHandler(this.In1mac3_TextChanged);
             // 
             // panel6
@@ -992,6 +1024,7 @@ namespace _4RTools.Forms
             this.inInstrumentMacro3.Size = new System.Drawing.Size(47, 21);
             this.inInstrumentMacro3.TabIndex = 287;
             this.inInstrumentMacro3.Tag = "3:Instrument";
+            this.inInstrumentMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inInstrumentMacro3.TextChanged += new System.EventHandler(this.InInstrumentMacro3_TextChanged);
             // 
             // pictureBox20
@@ -1012,6 +1045,7 @@ namespace _4RTools.Forms
             this.inDaggerMacro3.Size = new System.Drawing.Size(47, 21);
             this.inDaggerMacro3.TabIndex = 285;
             this.inDaggerMacro3.Tag = "3:Dagger";
+            this.inDaggerMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inDaggerMacro3.TextChanged += new System.EventHandler(this.InDaggerMacro3_TextChanged);
             // 
             // btnResMac3
@@ -1034,6 +1068,7 @@ namespace _4RTools.Forms
             this.inTriggerMacro3.Size = new System.Drawing.Size(47, 21);
             this.inTriggerMacro3.TabIndex = 71;
             this.inTriggerMacro3.Tag = "3:Trigger";
+            this.inTriggerMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inTriggerMacro3.TextChanged += new System.EventHandler(this.InTriggerMacro3_TextChanged);
             // 
             // delayMac3
@@ -1048,6 +1083,7 @@ namespace _4RTools.Forms
             this.delayMac3.Name = "delayMac3";
             this.delayMac3.Size = new System.Drawing.Size(47, 21);
             this.delayMac3.TabIndex = 70;
+            this.delayMac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -1158,6 +1194,7 @@ namespace _4RTools.Forms
             this.in8mac4.Name = "in8mac4";
             this.in8mac4.Size = new System.Drawing.Size(47, 21);
             this.in8mac4.TabIndex = 335;
+            this.in8mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac4.TextChanged += new System.EventHandler(this.In8mac4_TextChanged);
             // 
             // in7mac4
@@ -1167,6 +1204,7 @@ namespace _4RTools.Forms
             this.in7mac4.Name = "in7mac4";
             this.in7mac4.Size = new System.Drawing.Size(47, 21);
             this.in7mac4.TabIndex = 334;
+            this.in7mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac4.TextChanged += new System.EventHandler(this.In7mac4_TextChanged);
             // 
             // pictureBox31
@@ -1216,6 +1254,7 @@ namespace _4RTools.Forms
             this.in6mac4.Name = "in6mac4";
             this.in6mac4.Size = new System.Drawing.Size(47, 21);
             this.in6mac4.TabIndex = 329;
+            this.in6mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac4.TextChanged += new System.EventHandler(this.In6mac4_TextChanged);
             // 
             // in5mac4
@@ -1225,6 +1264,7 @@ namespace _4RTools.Forms
             this.in5mac4.Name = "in5mac4";
             this.in5mac4.Size = new System.Drawing.Size(47, 21);
             this.in5mac4.TabIndex = 328;
+            this.in5mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac4.TextChanged += new System.EventHandler(this.In5mac4_TextChanged);
             // 
             // in4mac4
@@ -1234,6 +1274,7 @@ namespace _4RTools.Forms
             this.in4mac4.Name = "in4mac4";
             this.in4mac4.Size = new System.Drawing.Size(47, 21);
             this.in4mac4.TabIndex = 327;
+            this.in4mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac4.TextChanged += new System.EventHandler(this.In4mac4_TextChanged);
             // 
             // in3mac4
@@ -1243,6 +1284,7 @@ namespace _4RTools.Forms
             this.in3mac4.Name = "in3mac4";
             this.in3mac4.Size = new System.Drawing.Size(47, 21);
             this.in3mac4.TabIndex = 326;
+            this.in3mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac4.TextChanged += new System.EventHandler(this.In3mac4_TextChanged);
             // 
             // in2mac4
@@ -1252,6 +1294,7 @@ namespace _4RTools.Forms
             this.in2mac4.Name = "in2mac4";
             this.in2mac4.Size = new System.Drawing.Size(47, 21);
             this.in2mac4.TabIndex = 325;
+            this.in2mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac4.TextChanged += new System.EventHandler(this.In2mac4_TextChanged);
             // 
             // in1mac4
@@ -1261,6 +1304,7 @@ namespace _4RTools.Forms
             this.in1mac4.Name = "in1mac4";
             this.in1mac4.Size = new System.Drawing.Size(47, 21);
             this.in1mac4.TabIndex = 324;
+            this.in1mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac4.TextChanged += new System.EventHandler(this.In1mac4_TextChanged);
             // 
             // panel8
@@ -1289,6 +1333,7 @@ namespace _4RTools.Forms
             this.inInstrumentMacro4.Size = new System.Drawing.Size(47, 21);
             this.inInstrumentMacro4.TabIndex = 321;
             this.inInstrumentMacro4.Tag = "4:Instrument";
+            this.inInstrumentMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inInstrumentMacro4.TextChanged += new System.EventHandler(this.InInstrumentMacro4_TextChanged);
             // 
             // pictureBox36
@@ -1309,6 +1354,7 @@ namespace _4RTools.Forms
             this.inDaggerMacro4.Size = new System.Drawing.Size(47, 21);
             this.inDaggerMacro4.TabIndex = 319;
             this.inDaggerMacro4.Tag = "4:Dagger";
+            this.inDaggerMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnResMac4
             // 
@@ -1329,6 +1375,7 @@ namespace _4RTools.Forms
             this.inTriggerMacro4.Size = new System.Drawing.Size(47, 21);
             this.inTriggerMacro4.TabIndex = 72;
             this.inTriggerMacro4.Tag = "4:Trigger";
+            this.inTriggerMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inTriggerMacro4.TextChanged += new System.EventHandler(this.InTriggerMacro4_TextChanged);
             // 
             // delayMac4
@@ -1343,6 +1390,7 @@ namespace _4RTools.Forms
             this.delayMac4.Name = "delayMac4";
             this.delayMac4.Size = new System.Drawing.Size(47, 21);
             this.delayMac4.TabIndex = 71;
+            this.delayMac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 

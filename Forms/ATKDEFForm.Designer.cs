@@ -270,6 +270,7 @@ namespace _4RTools.Forms
             this.in1Atk6.Size = new System.Drawing.Size(60, 21);
             this.in1Atk6.TabIndex = 35;
             this.in1Atk6.Tag = "1:Atk6";
+            this.in1Atk6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in1Def6
             // 
@@ -279,6 +280,7 @@ namespace _4RTools.Forms
             this.in1Def6.Size = new System.Drawing.Size(60, 21);
             this.in1Def6.TabIndex = 34;
             this.in1Def6.Tag = "1:Def6";
+            this.in1Def6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in1Atk2
             // 
@@ -288,6 +290,7 @@ namespace _4RTools.Forms
             this.in1Atk2.Size = new System.Drawing.Size(60, 21);
             this.in1Atk2.TabIndex = 9;
             this.in1Atk2.Tag = "1:Atk2";
+            this.in1Atk2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDef
             // 
@@ -306,6 +309,7 @@ namespace _4RTools.Forms
             this.in1Def1.Size = new System.Drawing.Size(60, 21);
             this.in1Def1.TabIndex = 1;
             this.in1Def1.Tag = "1:Def1";
+            this.in1Def1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in1Def2
             // 
@@ -315,6 +319,7 @@ namespace _4RTools.Forms
             this.in1Def2.Size = new System.Drawing.Size(60, 21);
             this.in1Def2.TabIndex = 2;
             this.in1Def2.Tag = "1:Def2";
+            this.in1Def2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in1Def3
             // 
@@ -324,6 +329,7 @@ namespace _4RTools.Forms
             this.in1Def3.Size = new System.Drawing.Size(60, 21);
             this.in1Def3.TabIndex = 3;
             this.in1Def3.Tag = "1:Def3";
+            this.in1Def3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox6
             // 
@@ -343,6 +349,7 @@ namespace _4RTools.Forms
             this.in1Def4.Size = new System.Drawing.Size(60, 21);
             this.in1Def4.TabIndex = 4;
             this.in1Def4.Tag = "1:Def4";
+            this.in1Def4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox7
             // 
@@ -362,6 +369,7 @@ namespace _4RTools.Forms
             this.in1Def5.Size = new System.Drawing.Size(60, 21);
             this.in1Def5.TabIndex = 5;
             this.in1Def5.Tag = "1:Def5";
+            this.in1Def5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox8
             // 
@@ -419,6 +427,7 @@ namespace _4RTools.Forms
             this.in1Atk1.Size = new System.Drawing.Size(60, 21);
             this.in1Atk1.TabIndex = 8;
             this.in1Atk1.Tag = "1:Atk1";
+            this.in1Atk1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox5
             // 
@@ -438,6 +447,7 @@ namespace _4RTools.Forms
             this.in1Atk3.Size = new System.Drawing.Size(60, 21);
             this.in1Atk3.TabIndex = 10;
             this.in1Atk3.Tag = "1:Atk3";
+            this.in1Atk3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox4
             // 
@@ -457,6 +467,7 @@ namespace _4RTools.Forms
             this.in1Atk4.Size = new System.Drawing.Size(60, 21);
             this.in1Atk4.TabIndex = 11;
             this.in1Atk4.Tag = "1:Atk4";
+            this.in1Atk4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
             // 
@@ -476,6 +487,7 @@ namespace _4RTools.Forms
             this.in1Atk5.Size = new System.Drawing.Size(60, 21);
             this.in1Atk5.TabIndex = 12;
             this.in1Atk5.Tag = "1:Atk5";
+            this.in1Atk5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox2
             // 
@@ -536,6 +548,7 @@ namespace _4RTools.Forms
             this.in1SpammerKey.Size = new System.Drawing.Size(60, 21);
             this.in1SpammerKey.TabIndex = 23;
             this.in1SpammerKey.Tag = "1:spammerKey";
+            this.in1SpammerKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in1SwitchDelay
             // 
@@ -550,6 +563,7 @@ namespace _4RTools.Forms
             this.in1SwitchDelay.Size = new System.Drawing.Size(60, 21);
             this.in1SwitchDelay.TabIndex = 27;
             this.in1SwitchDelay.Tag = "1:switchDelay";
+            this.in1SwitchDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -573,6 +587,7 @@ namespace _4RTools.Forms
             this.in1SpammerDelay.Size = new System.Drawing.Size(60, 21);
             this.in1SpammerDelay.TabIndex = 25;
             this.in1SpammerDelay.Tag = "1:spammerDelay";
+            this.in1SpammerDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // equipGroup2
             // 
@@ -661,6 +676,7 @@ namespace _4RTools.Forms
             this.in2Atk6.Size = new System.Drawing.Size(60, 21);
             this.in2Atk6.TabIndex = 35;
             this.in2Atk6.Tag = "2:Atk6";
+            this.in2Atk6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2Def6
             // 
@@ -670,6 +686,7 @@ namespace _4RTools.Forms
             this.in2Def6.Size = new System.Drawing.Size(60, 21);
             this.in2Def6.TabIndex = 34;
             this.in2Def6.Tag = "2:Def6";
+            this.in2Def6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2Atk2
             // 
@@ -679,6 +696,7 @@ namespace _4RTools.Forms
             this.in2Atk2.Size = new System.Drawing.Size(60, 21);
             this.in2Atk2.TabIndex = 9;
             this.in2Atk2.Tag = "2:Atk2";
+            this.in2Atk2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -697,6 +715,7 @@ namespace _4RTools.Forms
             this.in2Def1.Size = new System.Drawing.Size(60, 21);
             this.in2Def1.TabIndex = 1;
             this.in2Def1.Tag = "2:Def1";
+            this.in2Def1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2Def2
             // 
@@ -706,6 +725,7 @@ namespace _4RTools.Forms
             this.in2Def2.Size = new System.Drawing.Size(60, 21);
             this.in2Def2.TabIndex = 2;
             this.in2Def2.Tag = "2:Def2";
+            this.in2Def2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2Def3
             // 
@@ -715,6 +735,7 @@ namespace _4RTools.Forms
             this.in2Def3.Size = new System.Drawing.Size(60, 21);
             this.in2Def3.TabIndex = 3;
             this.in2Def3.Tag = "2:Def3";
+            this.in2Def3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox15
             // 
@@ -734,6 +755,7 @@ namespace _4RTools.Forms
             this.in2Def4.Size = new System.Drawing.Size(60, 21);
             this.in2Def4.TabIndex = 4;
             this.in2Def4.Tag = "2:Def4";
+            this.in2Def4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox16
             // 
@@ -753,6 +775,7 @@ namespace _4RTools.Forms
             this.in2Def5.Size = new System.Drawing.Size(60, 21);
             this.in2Def5.TabIndex = 5;
             this.in2Def5.Tag = "2:Def5";
+            this.in2Def5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox17
             // 
@@ -809,6 +832,7 @@ namespace _4RTools.Forms
             this.in2Atk1.Size = new System.Drawing.Size(60, 21);
             this.in2Atk1.TabIndex = 8;
             this.in2Atk1.Tag = "2:Atk1";
+            this.in2Atk1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox20
             // 
@@ -828,6 +852,7 @@ namespace _4RTools.Forms
             this.in2Atk3.Size = new System.Drawing.Size(60, 21);
             this.in2Atk3.TabIndex = 10;
             this.in2Atk3.Tag = "2:Atk3";
+            this.in2Atk3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox21
             // 
@@ -847,6 +872,7 @@ namespace _4RTools.Forms
             this.in2Atk4.Size = new System.Drawing.Size(60, 21);
             this.in2Atk4.TabIndex = 11;
             this.in2Atk4.Tag = "2:Atk4";
+            this.in2Atk4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox22
             // 
@@ -866,6 +892,7 @@ namespace _4RTools.Forms
             this.in2Atk5.Size = new System.Drawing.Size(60, 21);
             this.in2Atk5.TabIndex = 12;
             this.in2Atk5.Tag = "2:Atk5";
+            this.in2Atk5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox23
             // 
@@ -926,6 +953,7 @@ namespace _4RTools.Forms
             this.in2SpammerKey.Size = new System.Drawing.Size(60, 21);
             this.in2SpammerKey.TabIndex = 23;
             this.in2SpammerKey.Tag = "2:spammerKey";
+            this.in2SpammerKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2SwitchDelay
             // 
@@ -940,6 +968,7 @@ namespace _4RTools.Forms
             this.in2SwitchDelay.Size = new System.Drawing.Size(60, 21);
             this.in2SwitchDelay.TabIndex = 27;
             this.in2SwitchDelay.Tag = "2:switchDelay";
+            this.in2SwitchDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -963,6 +992,7 @@ namespace _4RTools.Forms
             this.in2SpammerDelay.Size = new System.Drawing.Size(60, 21);
             this.in2SpammerDelay.TabIndex = 25;
             this.in2SpammerDelay.Tag = "2:spammerDelay";
+            this.in2SpammerDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ATKDEFForm
             // 

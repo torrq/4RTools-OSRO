@@ -42,7 +42,7 @@ namespace _4RTools.Forms
             // trackBarTime
             // 
             this.trackBarTime.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.trackBarTime.Location = new System.Drawing.Point(0, 21);
+            this.trackBarTime.Location = new System.Drawing.Point(0, 22);
             this.trackBarTime.Maximum = 480;
             this.trackBarTime.Minimum = 1;
             this.trackBarTime.Name = "trackBarTime";
@@ -66,7 +66,7 @@ namespace _4RTools.Forms
             this.btnToggleTimer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnToggleTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToggleTimer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToggleTimer.Location = new System.Drawing.Point(11, 66);
+            this.btnToggleTimer.Location = new System.Drawing.Point(11, 68);
             this.btnToggleTimer.Name = "btnToggleTimer";
             this.btnToggleTimer.Size = new System.Drawing.Size(86, 24);
             this.btnToggleTimer.TabIndex = 2;
@@ -115,22 +115,25 @@ namespace _4RTools.Forms
             // 
             // AutoOffOverweightCB
             // 
+            this.AutoOffOverweightCB.BackColor = System.Drawing.Color.Pink;
             this.AutoOffOverweightCB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AutoOffOverweightCB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AutoOffOverweightCB.Image = global::_4RTools.Resources._4RTools.Icons.weight90;
             this.AutoOffOverweightCB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AutoOffOverweightCB.Location = new System.Drawing.Point(10, 112);
+            this.AutoOffOverweightCB.Location = new System.Drawing.Point(2, 110);
             this.AutoOffOverweightCB.Name = "AutoOffOverweightCB";
-            this.AutoOffOverweightCB.Size = new System.Drawing.Size(116, 40);
+            this.AutoOffOverweightCB.Padding = new System.Windows.Forms.Padding(6, 0, 2, 0);
+            this.AutoOffOverweightCB.Size = new System.Drawing.Size(131, 40);
             this.AutoOffOverweightCB.TabIndex = 318;
             this.AutoOffOverweightCB.Text = "Overweight Auto-off";
-            this.AutoOffOverweightCB.UseVisualStyleBackColor = true;
+            this.AutoOffOverweightCB.UseVisualStyleBackColor = false;
             this.AutoOffOverweightCB.CheckedChanged += new System.EventHandler(this.AutoOffOverweight_CheckedChanged);
             // 
             // overweightAltKeyPlusLabel
             // 
             this.overweightAltKeyPlusLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyPlusLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyPlusLabel.Location = new System.Drawing.Point(287, 118);
+            this.overweightAltKeyPlusLabel.Location = new System.Drawing.Point(287, 122);
             this.overweightAltKeyPlusLabel.Name = "overweightAltKeyPlusLabel";
             this.overweightAltKeyPlusLabel.Size = new System.Drawing.Size(16, 24);
             this.overweightAltKeyPlusLabel.TabIndex = 317;
@@ -142,7 +145,7 @@ namespace _4RTools.Forms
             this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKeyLabel.Location = new System.Drawing.Point(182, 119);
+            this.overweightAltKeyLabel.Location = new System.Drawing.Point(182, 123);
             this.overweightAltKeyLabel.Name = "overweightAltKeyLabel";
             this.overweightAltKeyLabel.Size = new System.Drawing.Size(107, 24);
             this.overweightAltKeyLabel.TabIndex = 316;
@@ -161,7 +164,7 @@ namespace _4RTools.Forms
             // arrowRight
             // 
             this.arrowRight.Image = global::_4RTools.Resources._4RTools.Icons.arrow_right;
-            this.arrowRight.Location = new System.Drawing.Point(147, 127);
+            this.arrowRight.Location = new System.Drawing.Point(148, 130);
             this.arrowRight.Name = "arrowRight";
             this.arrowRight.Size = new System.Drawing.Size(19, 11);
             this.arrowRight.TabIndex = 320;
@@ -171,10 +174,11 @@ namespace _4RTools.Forms
             // 
             this.AutoOffKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AutoOffKey1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoOffKey1.Location = new System.Drawing.Point(303, 119);
+            this.AutoOffKey1.Location = new System.Drawing.Point(303, 123);
             this.AutoOffKey1.Name = "AutoOffKey1";
             this.AutoOffKey1.Size = new System.Drawing.Size(41, 23);
             this.AutoOffKey1.TabIndex = 311;
+            this.AutoOffKey1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AutoOffKey1.TextChanged += new System.EventHandler(this.AutoOffKey1_TextChanged);
             // 
             // arrowDown2
@@ -191,7 +195,7 @@ namespace _4RTools.Forms
             this.overweightAltKey2Label.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKey2Label.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKey2Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.overweightAltKey2Label.Location = new System.Drawing.Point(182, 175);
+            this.overweightAltKey2Label.Location = new System.Drawing.Point(182, 174);
             this.overweightAltKey2Label.Name = "overweightAltKey2Label";
             this.overweightAltKey2Label.Size = new System.Drawing.Size(107, 24);
             this.overweightAltKey2Label.TabIndex = 323;
@@ -206,6 +210,7 @@ namespace _4RTools.Forms
             this.AutoOffKey2.Name = "AutoOffKey2";
             this.AutoOffKey2.Size = new System.Drawing.Size(41, 23);
             this.AutoOffKey2.TabIndex = 324;
+            this.AutoOffKey2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AutoOffKey2.TextChanged += new System.EventHandler(this.AutoOffKey2_TextChanged);
             // 
             // arrowDown3

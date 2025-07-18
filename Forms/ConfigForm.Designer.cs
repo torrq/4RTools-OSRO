@@ -143,6 +143,7 @@ namespace _4RTools.Forms
             this.ammoTrigger.Name = "ammoTrigger";
             this.ammoTrigger.Size = new System.Drawing.Size(45, 23);
             this.ammoTrigger.TabIndex = 318;
+            this.ammoTrigger.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTipAmmoTrigger.SetToolTip(this.ammoTrigger, "Ammo Swap key");
             // 
             // chkSoundEnabled
@@ -167,6 +168,7 @@ namespace _4RTools.Forms
             this.ammo2textBox.Name = "ammo2textBox";
             this.ammo2textBox.Size = new System.Drawing.Size(45, 23);
             this.ammo2textBox.TabIndex = 309;
+            this.ammo2textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTipAmmo2.SetToolTip(this.ammo2textBox, "Ammo #2");
             // 
             // ammo1textBox
@@ -177,6 +179,7 @@ namespace _4RTools.Forms
             this.ammo1textBox.Name = "ammo1textBox";
             this.ammo1textBox.Size = new System.Drawing.Size(45, 23);
             this.ammo1textBox.TabIndex = 308;
+            this.ammo1textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTipAmmo1.SetToolTip(this.ammo1textBox, "Ammo #1");
             // 
             // switchAmmoCheckBox

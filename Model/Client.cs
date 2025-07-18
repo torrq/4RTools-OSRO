@@ -360,5 +360,24 @@ namespace _4RTools.Model
             }
         }
 
+        public void Kill()
+        {
+            try
+            {
+                if (this.Process != null && !this.Process.HasExited)
+                {
+                    this.Process.Kill();
+                    DebugLogger.Info($"Successfully killed client process: {this.Process.ProcessName} (PID: {this.Process.Id})");
+                }
+                else
+                {
+                    DebugLogger.Info("Process was already exited or null.");
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Info($"Failed to kill client process: {ex.Message}");
+            }
+        }
     }
 }

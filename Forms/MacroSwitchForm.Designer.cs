@@ -74,7 +74,6 @@ namespace _4RTools.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.in6mac2delay = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.in1mac2delay = new System.Windows.Forms.NumericUpDown();
@@ -92,6 +91,7 @@ namespace _4RTools.Forms
             this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.chainGroup3 = new System.Windows.Forms.GroupBox();
             this.btnResMac3 = new System.Windows.Forms.Button();
             this.in1mac3 = new System.Windows.Forms.TextBox();
@@ -105,7 +105,6 @@ namespace _4RTools.Forms
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
             this.pictureBox28 = new System.Windows.Forms.PictureBox();
             this.in6mac3delay = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.in1mac3delay = new System.Windows.Forms.NumericUpDown();
@@ -123,6 +122,7 @@ namespace _4RTools.Forms
             this.pictureBox37 = new System.Windows.Forms.PictureBox();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.pictureBox39 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.chainGroup4 = new System.Windows.Forms.GroupBox();
             this.btnResMac4 = new System.Windows.Forms.Button();
             this.in1mac4 = new System.Windows.Forms.TextBox();
@@ -136,7 +136,6 @@ namespace _4RTools.Forms
             this.pictureBox40 = new System.Windows.Forms.PictureBox();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
             this.in6mac4delay = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
             this.in1mac4delay = new System.Windows.Forms.NumericUpDown();
@@ -154,6 +153,7 @@ namespace _4RTools.Forms
             this.pictureBox50 = new System.Windows.Forms.PictureBox();
             this.pictureBox51 = new System.Windows.Forms.PictureBox();
             this.pictureBox52 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.chainGroup5 = new System.Windows.Forms.GroupBox();
             this.btnResMac5 = new System.Windows.Forms.Button();
             this.in1mac5 = new System.Windows.Forms.TextBox();
@@ -167,7 +167,6 @@ namespace _4RTools.Forms
             this.pictureBox53 = new System.Windows.Forms.PictureBox();
             this.pictureBox54 = new System.Windows.Forms.PictureBox();
             this.in6mac5delay = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox55 = new System.Windows.Forms.PictureBox();
             this.in1mac5delay = new System.Windows.Forms.NumericUpDown();
@@ -185,6 +184,7 @@ namespace _4RTools.Forms
             this.pictureBox63 = new System.Windows.Forms.PictureBox();
             this.pictureBox64 = new System.Windows.Forms.PictureBox();
             this.pictureBox65 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.in1mac1delay)).BeginInit();
@@ -299,6 +299,7 @@ namespace _4RTools.Forms
             this.in1mac1.Name = "in1mac1";
             this.in1mac1.Size = new System.Drawing.Size(49, 21);
             this.in1mac1.TabIndex = 182;
+            this.in1mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox2
             // 
@@ -350,6 +351,7 @@ namespace _4RTools.Forms
             this.in1mac1delay.Name = "in1mac1delay";
             this.in1mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac1delay.TabIndex = 254;
+            this.in1mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2mac1delay
             // 
@@ -363,6 +365,7 @@ namespace _4RTools.Forms
             this.in2mac1delay.Name = "in2mac1delay";
             this.in2mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac1delay.TabIndex = 260;
+            this.in2mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox4
             // 
@@ -391,6 +394,7 @@ namespace _4RTools.Forms
             this.in2mac1.Name = "in2mac1";
             this.in2mac1.Size = new System.Drawing.Size(49, 21);
             this.in2mac1.TabIndex = 257;
+            this.in2mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac1delay
             // 
@@ -404,6 +408,7 @@ namespace _4RTools.Forms
             this.in4mac1delay.Name = "in4mac1delay";
             this.in4mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac1delay.TabIndex = 268;
+            this.in4mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox6
             // 
@@ -432,6 +437,7 @@ namespace _4RTools.Forms
             this.in4mac1.Name = "in4mac1";
             this.in4mac1.Size = new System.Drawing.Size(49, 21);
             this.in4mac1.TabIndex = 265;
+            this.in4mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in3mac1delay
             // 
@@ -445,6 +451,7 @@ namespace _4RTools.Forms
             this.in3mac1delay.Name = "in3mac1delay";
             this.in3mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac1delay.TabIndex = 264;
+            this.in3mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox8
             // 
@@ -473,6 +480,7 @@ namespace _4RTools.Forms
             this.in3mac1.Name = "in3mac1";
             this.in3mac1.Size = new System.Drawing.Size(49, 21);
             this.in3mac1.TabIndex = 261;
+            this.in3mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac1delay
             // 
@@ -486,6 +494,7 @@ namespace _4RTools.Forms
             this.in7mac1delay.Name = "in7mac1delay";
             this.in7mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac1delay.TabIndex = 280;
+            this.in7mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox11
             // 
@@ -504,6 +513,7 @@ namespace _4RTools.Forms
             this.in7mac1.Name = "in7mac1";
             this.in7mac1.Size = new System.Drawing.Size(49, 21);
             this.in7mac1.TabIndex = 277;
+            this.in7mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in6mac1delay
             // 
@@ -517,6 +527,7 @@ namespace _4RTools.Forms
             this.in6mac1delay.Name = "in6mac1delay";
             this.in6mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac1delay.TabIndex = 276;
+            this.in6mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox12
             // 
@@ -545,6 +556,7 @@ namespace _4RTools.Forms
             this.in6mac1.Name = "in6mac1";
             this.in6mac1.Size = new System.Drawing.Size(49, 21);
             this.in6mac1.TabIndex = 273;
+            this.in6mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac1delay
             // 
@@ -558,6 +570,7 @@ namespace _4RTools.Forms
             this.in5mac1delay.Name = "in5mac1delay";
             this.in5mac1delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac1delay.TabIndex = 272;
+            this.in5mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox14
             // 
@@ -586,6 +599,7 @@ namespace _4RTools.Forms
             this.in5mac1.Name = "in5mac1";
             this.in5mac1.Size = new System.Drawing.Size(49, 21);
             this.in5mac1.TabIndex = 269;
+            this.in5mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // chainGroup1
             // 
@@ -696,6 +710,7 @@ namespace _4RTools.Forms
             this.in1mac2.Name = "in1mac2";
             this.in1mac2.Size = new System.Drawing.Size(49, 21);
             this.in1mac2.TabIndex = 182;
+            this.in1mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac2
             // 
@@ -704,6 +719,7 @@ namespace _4RTools.Forms
             this.in7mac2.Name = "in7mac2";
             this.in7mac2.Size = new System.Drawing.Size(49, 21);
             this.in7mac2.TabIndex = 277;
+            this.in7mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in6mac2
             // 
@@ -712,6 +728,7 @@ namespace _4RTools.Forms
             this.in6mac2.Name = "in6mac2";
             this.in6mac2.Size = new System.Drawing.Size(49, 21);
             this.in6mac2.TabIndex = 273;
+            this.in6mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2mac2
             // 
@@ -720,6 +737,7 @@ namespace _4RTools.Forms
             this.in2mac2.Name = "in2mac2";
             this.in2mac2.Size = new System.Drawing.Size(49, 21);
             this.in2mac2.TabIndex = 257;
+            this.in2mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac2
             // 
@@ -728,6 +746,7 @@ namespace _4RTools.Forms
             this.in5mac2.Name = "in5mac2";
             this.in5mac2.Size = new System.Drawing.Size(49, 21);
             this.in5mac2.TabIndex = 269;
+            this.in5mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in3mac2
             // 
@@ -736,6 +755,7 @@ namespace _4RTools.Forms
             this.in3mac2.Name = "in3mac2";
             this.in3mac2.Size = new System.Drawing.Size(49, 21);
             this.in3mac2.TabIndex = 261;
+            this.in3mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac2
             // 
@@ -744,6 +764,7 @@ namespace _4RTools.Forms
             this.in4mac2.Name = "in4mac2";
             this.in4mac2.Size = new System.Drawing.Size(49, 21);
             this.in4mac2.TabIndex = 265;
+            this.in4mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac2delay
             // 
@@ -757,6 +778,7 @@ namespace _4RTools.Forms
             this.in7mac2delay.Name = "in7mac2delay";
             this.in7mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac2delay.TabIndex = 280;
+            this.in7mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
@@ -790,15 +812,7 @@ namespace _4RTools.Forms
             this.in6mac2delay.Name = "in6mac2delay";
             this.in6mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac2delay.TabIndex = 276;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 248;
-            this.label1.Text = "Delays(ms):";
+            this.in6mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -831,6 +845,7 @@ namespace _4RTools.Forms
             this.in1mac2delay.Name = "in1mac2delay";
             this.in1mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac2delay.TabIndex = 254;
+            this.in1mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac2delay
             // 
@@ -844,6 +859,7 @@ namespace _4RTools.Forms
             this.in5mac2delay.Name = "in5mac2delay";
             this.in5mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac2delay.TabIndex = 272;
+            this.in5mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox17
             // 
@@ -877,6 +893,7 @@ namespace _4RTools.Forms
             this.in2mac2delay.Name = "in2mac2delay";
             this.in2mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac2delay.TabIndex = 260;
+            this.in2mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac2delay
             // 
@@ -890,6 +907,7 @@ namespace _4RTools.Forms
             this.in4mac2delay.Name = "in4mac2delay";
             this.in4mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac2delay.TabIndex = 268;
+            this.in4mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox19
             // 
@@ -923,6 +941,7 @@ namespace _4RTools.Forms
             this.in3mac2delay.Name = "in3mac2delay";
             this.in3mac2delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac2delay.TabIndex = 264;
+            this.in3mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox21
             // 
@@ -984,6 +1003,15 @@ namespace _4RTools.Forms
             this.pictureBox26.TabIndex = 275;
             this.pictureBox26.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 248;
+            this.label1.Text = "Delays(ms):";
+            // 
             // chainGroup3
             // 
             this.chainGroup3.Controls.Add(this.btnResMac3);
@@ -1042,6 +1070,7 @@ namespace _4RTools.Forms
             this.in1mac3.Name = "in1mac3";
             this.in1mac3.Size = new System.Drawing.Size(49, 21);
             this.in1mac3.TabIndex = 182;
+            this.in1mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac3
             // 
@@ -1050,6 +1079,7 @@ namespace _4RTools.Forms
             this.in7mac3.Name = "in7mac3";
             this.in7mac3.Size = new System.Drawing.Size(49, 21);
             this.in7mac3.TabIndex = 277;
+            this.in7mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in6mac3
             // 
@@ -1058,6 +1088,7 @@ namespace _4RTools.Forms
             this.in6mac3.Name = "in6mac3";
             this.in6mac3.Size = new System.Drawing.Size(49, 21);
             this.in6mac3.TabIndex = 273;
+            this.in6mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2mac3
             // 
@@ -1066,6 +1097,7 @@ namespace _4RTools.Forms
             this.in2mac3.Name = "in2mac3";
             this.in2mac3.Size = new System.Drawing.Size(49, 21);
             this.in2mac3.TabIndex = 257;
+            this.in2mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac3
             // 
@@ -1074,6 +1106,7 @@ namespace _4RTools.Forms
             this.in5mac3.Name = "in5mac3";
             this.in5mac3.Size = new System.Drawing.Size(49, 21);
             this.in5mac3.TabIndex = 269;
+            this.in5mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in3mac3
             // 
@@ -1082,6 +1115,7 @@ namespace _4RTools.Forms
             this.in3mac3.Name = "in3mac3";
             this.in3mac3.Size = new System.Drawing.Size(49, 21);
             this.in3mac3.TabIndex = 261;
+            this.in3mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac3
             // 
@@ -1090,6 +1124,7 @@ namespace _4RTools.Forms
             this.in4mac3.Name = "in4mac3";
             this.in4mac3.Size = new System.Drawing.Size(49, 21);
             this.in4mac3.TabIndex = 265;
+            this.in4mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac3delay
             // 
@@ -1103,6 +1138,7 @@ namespace _4RTools.Forms
             this.in7mac3delay.Name = "in7mac3delay";
             this.in7mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac3delay.TabIndex = 280;
+            this.in7mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox27
             // 
@@ -1136,15 +1172,7 @@ namespace _4RTools.Forms
             this.in6mac3delay.Name = "in6mac3delay";
             this.in6mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac3delay.TabIndex = 276;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 248;
-            this.label3.Text = "Delays(ms):";
+            this.in6mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -1177,6 +1205,7 @@ namespace _4RTools.Forms
             this.in1mac3delay.Name = "in1mac3delay";
             this.in1mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac3delay.TabIndex = 254;
+            this.in1mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac3delay
             // 
@@ -1190,6 +1219,7 @@ namespace _4RTools.Forms
             this.in5mac3delay.Name = "in5mac3delay";
             this.in5mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac3delay.TabIndex = 272;
+            this.in5mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox30
             // 
@@ -1223,6 +1253,7 @@ namespace _4RTools.Forms
             this.in2mac3delay.Name = "in2mac3delay";
             this.in2mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac3delay.TabIndex = 260;
+            this.in2mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac3delay
             // 
@@ -1236,6 +1267,7 @@ namespace _4RTools.Forms
             this.in4mac3delay.Name = "in4mac3delay";
             this.in4mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac3delay.TabIndex = 268;
+            this.in4mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox32
             // 
@@ -1269,6 +1301,7 @@ namespace _4RTools.Forms
             this.in3mac3delay.Name = "in3mac3delay";
             this.in3mac3delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac3delay.TabIndex = 264;
+            this.in3mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox34
             // 
@@ -1330,6 +1363,15 @@ namespace _4RTools.Forms
             this.pictureBox39.TabIndex = 275;
             this.pictureBox39.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(2, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 248;
+            this.label3.Text = "Delays(ms):";
+            // 
             // chainGroup4
             // 
             this.chainGroup4.Controls.Add(this.btnResMac4);
@@ -1388,6 +1430,7 @@ namespace _4RTools.Forms
             this.in1mac4.Name = "in1mac4";
             this.in1mac4.Size = new System.Drawing.Size(49, 21);
             this.in1mac4.TabIndex = 182;
+            this.in1mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac4
             // 
@@ -1396,6 +1439,7 @@ namespace _4RTools.Forms
             this.in7mac4.Name = "in7mac4";
             this.in7mac4.Size = new System.Drawing.Size(49, 21);
             this.in7mac4.TabIndex = 277;
+            this.in7mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in6mac4
             // 
@@ -1404,6 +1448,7 @@ namespace _4RTools.Forms
             this.in6mac4.Name = "in6mac4";
             this.in6mac4.Size = new System.Drawing.Size(49, 21);
             this.in6mac4.TabIndex = 273;
+            this.in6mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2mac4
             // 
@@ -1412,6 +1457,7 @@ namespace _4RTools.Forms
             this.in2mac4.Name = "in2mac4";
             this.in2mac4.Size = new System.Drawing.Size(49, 21);
             this.in2mac4.TabIndex = 257;
+            this.in2mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac4
             // 
@@ -1420,6 +1466,7 @@ namespace _4RTools.Forms
             this.in5mac4.Name = "in5mac4";
             this.in5mac4.Size = new System.Drawing.Size(49, 21);
             this.in5mac4.TabIndex = 269;
+            this.in5mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in3mac4
             // 
@@ -1428,6 +1475,7 @@ namespace _4RTools.Forms
             this.in3mac4.Name = "in3mac4";
             this.in3mac4.Size = new System.Drawing.Size(49, 21);
             this.in3mac4.TabIndex = 261;
+            this.in3mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac4
             // 
@@ -1436,6 +1484,7 @@ namespace _4RTools.Forms
             this.in4mac4.Name = "in4mac4";
             this.in4mac4.Size = new System.Drawing.Size(49, 21);
             this.in4mac4.TabIndex = 265;
+            this.in4mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac4delay
             // 
@@ -1449,6 +1498,7 @@ namespace _4RTools.Forms
             this.in7mac4delay.Name = "in7mac4delay";
             this.in7mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac4delay.TabIndex = 280;
+            this.in7mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox40
             // 
@@ -1480,15 +1530,7 @@ namespace _4RTools.Forms
             this.in6mac4delay.Name = "in6mac4delay";
             this.in6mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac4delay.TabIndex = 276;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 51);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
-            this.label7.TabIndex = 248;
-            this.label7.Text = "Delays(ms):";
+            this.in6mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -1520,6 +1562,7 @@ namespace _4RTools.Forms
             this.in1mac4delay.Name = "in1mac4delay";
             this.in1mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac4delay.TabIndex = 254;
+            this.in1mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac4delay
             // 
@@ -1533,6 +1576,7 @@ namespace _4RTools.Forms
             this.in5mac4delay.Name = "in5mac4delay";
             this.in5mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac4delay.TabIndex = 272;
+            this.in5mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox43
             // 
@@ -1564,6 +1608,7 @@ namespace _4RTools.Forms
             this.in2mac4delay.Name = "in2mac4delay";
             this.in2mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac4delay.TabIndex = 260;
+            this.in2mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac4delay
             // 
@@ -1577,6 +1622,7 @@ namespace _4RTools.Forms
             this.in4mac4delay.Name = "in4mac4delay";
             this.in4mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac4delay.TabIndex = 268;
+            this.in4mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox45
             // 
@@ -1608,6 +1654,7 @@ namespace _4RTools.Forms
             this.in3mac4delay.Name = "in3mac4delay";
             this.in3mac4delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac4delay.TabIndex = 264;
+            this.in3mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox47
             // 
@@ -1669,6 +1716,15 @@ namespace _4RTools.Forms
             this.pictureBox52.TabIndex = 275;
             this.pictureBox52.TabStop = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(2, 51);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 248;
+            this.label7.Text = "Delays(ms):";
+            // 
             // chainGroup5
             // 
             this.chainGroup5.Controls.Add(this.btnResMac5);
@@ -1727,6 +1783,7 @@ namespace _4RTools.Forms
             this.in1mac5.Name = "in1mac5";
             this.in1mac5.Size = new System.Drawing.Size(49, 21);
             this.in1mac5.TabIndex = 182;
+            this.in1mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac5
             // 
@@ -1735,6 +1792,7 @@ namespace _4RTools.Forms
             this.in7mac5.Name = "in7mac5";
             this.in7mac5.Size = new System.Drawing.Size(49, 21);
             this.in7mac5.TabIndex = 277;
+            this.in7mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in6mac5
             // 
@@ -1743,6 +1801,7 @@ namespace _4RTools.Forms
             this.in6mac5.Name = "in6mac5";
             this.in6mac5.Size = new System.Drawing.Size(49, 21);
             this.in6mac5.TabIndex = 273;
+            this.in6mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in2mac5
             // 
@@ -1751,6 +1810,7 @@ namespace _4RTools.Forms
             this.in2mac5.Name = "in2mac5";
             this.in2mac5.Size = new System.Drawing.Size(49, 21);
             this.in2mac5.TabIndex = 257;
+            this.in2mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac5
             // 
@@ -1759,6 +1819,7 @@ namespace _4RTools.Forms
             this.in5mac5.Name = "in5mac5";
             this.in5mac5.Size = new System.Drawing.Size(49, 21);
             this.in5mac5.TabIndex = 269;
+            this.in5mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in3mac5
             // 
@@ -1767,6 +1828,7 @@ namespace _4RTools.Forms
             this.in3mac5.Name = "in3mac5";
             this.in3mac5.Size = new System.Drawing.Size(49, 21);
             this.in3mac5.TabIndex = 261;
+            this.in3mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac5
             // 
@@ -1775,6 +1837,7 @@ namespace _4RTools.Forms
             this.in4mac5.Name = "in4mac5";
             this.in4mac5.Size = new System.Drawing.Size(49, 21);
             this.in4mac5.TabIndex = 265;
+            this.in4mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in7mac5delay
             // 
@@ -1788,6 +1851,7 @@ namespace _4RTools.Forms
             this.in7mac5delay.Name = "in7mac5delay";
             this.in7mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in7mac5delay.TabIndex = 280;
+            this.in7mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox53
             // 
@@ -1819,15 +1883,7 @@ namespace _4RTools.Forms
             this.in6mac5delay.Name = "in6mac5delay";
             this.in6mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in6mac5delay.TabIndex = 276;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(2, 51);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 13);
-            this.label9.TabIndex = 248;
-            this.label9.Text = "Delays(ms):";
+            this.in6mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -1859,6 +1915,7 @@ namespace _4RTools.Forms
             this.in1mac5delay.Name = "in1mac5delay";
             this.in1mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in1mac5delay.TabIndex = 254;
+            this.in1mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in5mac5delay
             // 
@@ -1872,6 +1929,7 @@ namespace _4RTools.Forms
             this.in5mac5delay.Name = "in5mac5delay";
             this.in5mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in5mac5delay.TabIndex = 272;
+            this.in5mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox56
             // 
@@ -1903,6 +1961,7 @@ namespace _4RTools.Forms
             this.in2mac5delay.Name = "in2mac5delay";
             this.in2mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in2mac5delay.TabIndex = 260;
+            this.in2mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // in4mac5delay
             // 
@@ -1916,6 +1975,7 @@ namespace _4RTools.Forms
             this.in4mac5delay.Name = "in4mac5delay";
             this.in4mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in4mac5delay.TabIndex = 268;
+            this.in4mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox58
             // 
@@ -1947,6 +2007,7 @@ namespace _4RTools.Forms
             this.in3mac5delay.Name = "in3mac5delay";
             this.in3mac5delay.Size = new System.Drawing.Size(47, 21);
             this.in3mac5delay.TabIndex = 264;
+            this.in3mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox60
             // 
@@ -2007,6 +2068,15 @@ namespace _4RTools.Forms
             this.pictureBox65.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox65.TabIndex = 275;
             this.pictureBox65.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(2, 51);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 13);
+            this.label9.TabIndex = 248;
+            this.label9.Text = "Delays(ms):";
             // 
             // MacroSwitchForm
             // 

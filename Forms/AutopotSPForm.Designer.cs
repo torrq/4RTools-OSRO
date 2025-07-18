@@ -157,7 +157,7 @@ namespace _4RTools.Forms
             this.delayLabel.Size = new System.Drawing.Size(70, 18);
             this.delayLabel.TabIndex = 41;
             this.delayLabel.Text = "Delay (ms)";
-            this.delayToolTip.SetToolTip(this.delayLabel, "1000 ms = 1 second");
+            this.delayToolTip.SetToolTip(this.delayLabel, "1,000 ms = 1 second");
             // 
             // txtSPKey1
             // 
