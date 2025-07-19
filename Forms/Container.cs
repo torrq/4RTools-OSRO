@@ -496,7 +496,7 @@ namespace _4RTools.Forms
             characterInfoForm.CharacterNameLabel = client.ReadCharacterName() ?? "";
             characterInfoForm.CharacterInfoLabel = clientDebugInfo;
             characterInfoForm.CharacterMapLabel = client.ReadCurrentMap() ?? "";
-            characterInfoForm.MapLink = "https://ratemyserver.net/index.php?page=npc_shop_warp&map=" + (client.ReadCurrentMap() ?? "");
+            characterInfoForm.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + (client.ReadCurrentMap() ?? "");
             subject.Notify(new Utils.Message(MessageCode.PROCESS_CHANGED, null));
         }
 

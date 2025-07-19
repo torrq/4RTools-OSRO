@@ -2,22 +2,36 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
+using Label = System.Windows.Forms.Label;
 
 namespace _4RTools.Model
 {
     internal class BuffRenderer
     {
-        private readonly int BUFFS_PER_ROW = 8;
-        private readonly int DISTANCE_BETWEEN_CONTAINERS = 2;
-        private readonly int DISTANCE_BETWEEN_ROWS = 28;
-        private readonly int ICON_TEXT_SPACING = 27;
-        private readonly int ICON_SPACING = 70;
-        private readonly Size TEXTBOX_SIZE = new Size(35, 20);
-        private const int TEXTBOX_VERTICAL_ADJUSTMENT = 2;
-        public const string BUFF_KEYLESS = "None";
+        // Configuration
+        private readonly int GroupsPerRow = 2;
+
+        private readonly int ElementSpacing = 2;          // Between icon, textbox, label
+        private readonly int GroupSpacing = 8;            // Between two groups in a row
+        private readonly int RowSpacing = 2;              // Between rows
+        private readonly int ContainerSpacing = 10;       // Between BuffContainer blocks
+        private readonly int LabelVerticalAdjust = 3;     // For label vertical alignment
+        private readonly int TextboxVerticalAdjust = 2;
+        private readonly int ContainerPaddingLeft = 10;
+        private readonly int ContainerPaddingTop = 18;
+        private readonly int ContainerPaddingBottom = 10;
+
+        private readonly Size IconSize = new Size(26, 26);
+        private readonly Size TextBoxSize = new Size(55, 26);
+        private readonly Size LabelSize = new Size(190, 26);
+
+        private readonly Font LabelFont = new Font("Tahoma", 9, FontStyle.Regular);
+        private readonly Font LabelFontSmall = new Font("Tahoma", 8, FontStyle.Regular);
 
         private readonly List<BuffContainer> _containers;
         private readonly ToolTip _toolTip;
@@ -37,7 +51,7 @@ namespace _4RTools.Model
         private void ConfigureToolTipDelays()
         {
             this._toolTip.InitialDelay = 50;
-            this._toolTip.AutoPopDelay = 5000;
+            this._toolTip.AutoPopDelay = 15000;
             this._toolTip.ReshowDelay = 50;
         }
 
@@ -48,55 +62,92 @@ namespace _4RTools.Model
                 BuffContainer bk = _containers[i];
                 bk.Container.Controls.Clear();
 
-                Point lastLocation = new Point(bk.Container.Location.X, 20);
-                int colCount = 0;
-                int maxRowHeight = 0;
-                int lastElementY = 0;
-
+                // Position container vertically
                 if (i > 0)
                 {
-                    bk.Container.Location = new Point(_containers[i - 1].Container.Location.X, _containers[i - 1].Container.Location.Y + _containers[i - 1].Container.Height + DISTANCE_BETWEEN_CONTAINERS);
+                    var prev = _containers[i - 1];
+                    bk.Container.Location = new Point(prev.Container.Location.X, prev.Container.Location.Y + prev.Container.Height + ContainerSpacing);
                 }
+
+                Point currentPos = new Point(ContainerPaddingLeft, ContainerPaddingTop);
+                int groupCount = 0;
 
                 foreach (Buff skill in bk.Skills)
                 {
-                    PictureBox pb = new PictureBox();
-                    TextBox textBox = new TextBox();
+                    int groupOffsetX = groupCount % GroupsPerRow *
+                        (IconSize.Width + TextBoxSize.Width + LabelSize.Width + (ElementSpacing * 2) + GroupSpacing);
 
-                    pb.Image = skill.Icon;
-                    pb.BackgroundImageLayout = ImageLayout.Center;
-                    pb.Location = new Point(lastLocation.X + (colCount * ICON_SPACING), lastLocation.Y);
-                    pb.Name = "pbox" + ((int)skill.EffectStatusID);
-                    pb.Size = new Size(26, 26);
+                    int rowOffsetY = (groupCount / GroupsPerRow) *
+                        (Math.Max(IconSize.Height, TextBoxSize.Height) + RowSpacing);
+
+                    int baseX = currentPos.X + groupOffsetX;
+                    int baseY = currentPos.Y + rowOffsetY;
+
+                    PictureBox pb = new PictureBox
+                    {
+                        Image = skill.Icon,
+                        BackgroundImageLayout = ImageLayout.Center,
+                        Location = new Point(baseX, baseY),
+                        Name = "pbox" + (int)skill.EffectStatusID,
+                        Size = IconSize
+                    };
                     _toolTip.SetToolTip(pb, skill.Name);
 
+                    TextBox textBox = new TextBox
+                    {
+                        Size = TextBoxSize,
+                        Location = new Point(pb.Right + ElementSpacing, baseY + TextboxVerticalAdjust),
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Tag = (int)skill.EffectStatusID,
+                        Name = "in" + (int)skill.EffectStatusID,
+                        Text = AppConfig.TEXT_NONE,
+                        Font = new Font("Tahoma", 9, FontStyle.Regular),
+                        TextAlign = HorizontalAlignment.Center
+                    };
                     textBox.KeyDown += FormUtils.OnKeyDown;
                     textBox.KeyPress += FormUtils.OnKeyPress;
                     textBox.GotFocus += TextBox_GotFocus;
                     textBox.TextChanged += OnTextChange;
-                    textBox.Size = TEXTBOX_SIZE;
-                    textBox.Tag = ((int)skill.EffectStatusID);
-                    textBox.Name = "in" + ((int)skill.EffectStatusID);
-                    textBox.Location = new Point(pb.Location.X + ICON_TEXT_SPACING, pb.Location.Y + 3 - TEXTBOX_VERTICAL_ADJUSTMENT);
-                    textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                    textBox.Text = BUFF_KEYLESS;
 
-                    bk.Container.Controls.Add(textBox);
-                    bk.Container.Controls.Add(pb);
+                    string SkillName = skill.Name;
 
-                    colCount++;
-                    maxRowHeight = Math.Max(maxRowHeight, pb.Height + textBox.Height);
-                    lastElementY = Math.Max(lastElementY, pb.Location.Y + pb.Height);
-
-                    if (colCount == BUFFS_PER_ROW)
+                    if (SkillName.Length > 33)
                     {
-                        colCount = 0;
-                        lastLocation = new Point(bk.Container.Location.X, lastLocation.Y + DISTANCE_BETWEEN_ROWS);
-                        maxRowHeight = 0;
+                        int breakIndex = SkillName.LastIndexOf(' ', 33);
+                        if (breakIndex > 0)
+                            SkillName = SkillName.Substring(0, breakIndex) + "\r\n" + SkillName.Substring(breakIndex + 1);
+                        else
+                            SkillName = SkillName.Insert(33, "\r\n"); // fallback if no space
                     }
+
+                    Label label = new Label
+                    {
+                        Size = LabelSize,
+                        Location = new Point(textBox.Right + ElementSpacing, baseY + LabelVerticalAdjust),
+                        Tag = (int)skill.EffectStatusID,
+                        Name = "inl" + (int)skill.EffectStatusID,
+                        Text = SkillName,
+                    };
+
+                    if (skill.Name.Length > 33)
+                    {
+                        label.Font = LabelFontSmall;
+                        label.Location = new Point(label.Location.X, label.Location.Y - 4);
+                    } else {
+                        label.Font = LabelFont;
+                    }
+
+                    bk.Container.Controls.Add(pb);
+                    bk.Container.Controls.Add(textBox);
+                    bk.Container.Controls.Add(label);
+
+                    groupCount++;
                 }
-                int desiredHeight = lastElementY + 10;
-                bk.Container.Height = desiredHeight;
+
+                // Final height calculation includes vertical padding
+                int totalRows = (int)Math.Ceiling(groupCount / (double)GroupsPerRow);
+                int contentHeight = totalRows * (Math.Max(IconSize.Height, TextBoxSize.Height) + RowSpacing);
+                bk.Container.Height = ContainerPaddingTop + contentHeight - RowSpacing + ContainerPaddingBottom;
             }
         }
 
@@ -156,7 +207,7 @@ namespace _4RTools.Model
             {
                 if (c is TextBox textBox && textBox.Name.StartsWith("in") && string.IsNullOrEmpty(textBox.Text))
                 {
-                    textBox.Text = BUFF_KEYLESS;
+                    textBox.Text = AppConfig.TEXT_NONE;
                 }
                 if (c.HasChildren)
                 {

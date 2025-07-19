@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.characterNameLabel = new System.Windows.Forms.Label();
             this.characterInfoLabel = new System.Windows.Forms.Label();
             this.characterMapLabel = new System.Windows.Forms.Label();
+            this.MapLinkToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // characterNameLabel
             // 
             this.characterNameLabel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.characterNameLabel.ForeColor = System.Drawing.Color.ForestGreen;
+            this.characterNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
             this.characterNameLabel.Location = new System.Drawing.Point(-1, 1);
             this.characterNameLabel.Name = "characterNameLabel";
             this.characterNameLabel.Size = new System.Drawing.Size(141, 22);
@@ -60,15 +62,26 @@
             // 
             // characterMapLabel
             // 
-            this.characterMapLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.characterMapLabel.ForeColor = System.Drawing.Color.Green;
+            this.characterMapLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.characterMapLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.characterMapLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
             this.characterMapLabel.Location = new System.Drawing.Point(129, 1);
             this.characterMapLabel.Name = "characterMapLabel";
             this.characterMapLabel.Size = new System.Drawing.Size(109, 20);
             this.characterMapLabel.TabIndex = 28;
             this.characterMapLabel.Text = "Map";
             this.characterMapLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.MapLinkToolTip.SetToolTip(this.characterMapLabel, "Link to https://ro.kokotewa.com info on this map");
             this.characterMapLabel.Click += new System.EventHandler(this.characterMapLabel_Click_1);
+            // 
+            // MapLinkToolTip
+            // 
+            this.MapLinkToolTip.AutomaticDelay = 300;
+            this.MapLinkToolTip.AutoPopDelay = 15000;
+            this.MapLinkToolTip.InitialDelay = 300;
+            this.MapLinkToolTip.ReshowDelay = 60;
+            this.MapLinkToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.MapLinkToolTip.ToolTipTitle = "Map Info Link (Kokotewa)";
             // 
             // CharacterInfo
             // 
@@ -93,5 +106,6 @@
         private System.Windows.Forms.Label characterNameLabel;
         private System.Windows.Forms.Label characterInfoLabel;
         private System.Windows.Forms.Label characterMapLabel;
+        private System.Windows.Forms.ToolTip MapLinkToolTip;
     }
 }

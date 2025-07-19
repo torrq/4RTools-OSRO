@@ -144,7 +144,7 @@ namespace _4RTools.Forms
             {
                 key = parsedKey;
             }
-            else if (string.IsNullOrWhiteSpace(textBox.Text) || textBox.Text.Equals("None", StringComparison.OrdinalIgnoreCase))
+            else if (string.IsNullOrWhiteSpace(textBox.Text) || textBox.Text.Equals(AppConfig.TEXT_NONE, StringComparison.OrdinalIgnoreCase))
             {
                 key = Key.None;
             }

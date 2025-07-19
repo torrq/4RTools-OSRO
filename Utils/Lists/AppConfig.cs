@@ -176,6 +176,12 @@ namespace _4RTools.Utils
 
         #endregion
 
+        #region String Constants
+
+        public const string TEXT_NONE = "None";
+
+        #endregion
+
         #region DebugLog
 
         public static Color LogColor_INFO = Color.LightSkyBlue;

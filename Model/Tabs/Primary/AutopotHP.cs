@@ -29,7 +29,7 @@ namespace _4RTools.Model
         private ThreadRunner thread;
         private volatile bool _hasCriticalWound = false;
         private long _lastCriticalWoundCheck = 0;
-        private readonly long _criticalWoundCheckInterval = TimeSpan.FromMilliseconds(100).Ticks; // Check every 100ms
+        private readonly long _criticalWoundCheckInterval = TimeSpan.FromMilliseconds(200).Ticks; // Check every 200ms
 
         // Track last used slot globally for proper cycling across all available slots
         private int _lastUsedSlotIndex = -1;

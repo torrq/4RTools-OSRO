@@ -419,5 +419,10 @@ namespace _4RTools.Forms
         {
         }
         #endregion
+
+        private void toolTip2_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
 }

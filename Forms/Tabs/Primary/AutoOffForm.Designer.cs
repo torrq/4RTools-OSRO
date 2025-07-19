@@ -12,6 +12,7 @@ namespace _4RTools.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.trackBarTime = new System.Windows.Forms.TrackBar();
             this.lblSelectedTime = new System.Windows.Forms.Label();
             this.btnToggleTimer = new System.Windows.Forms.Button();
@@ -31,6 +32,11 @@ namespace _4RTools.Forms
             this.arrowDown3 = new System.Windows.Forms.PictureBox();
             this.AutoOffKillClientChk = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.overweightToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ToggleTimerToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AltKey1ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AltKey2ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.StopClientToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown1)).BeginInit();
@@ -71,6 +77,7 @@ namespace _4RTools.Forms
             this.btnToggleTimer.Size = new System.Drawing.Size(86, 24);
             this.btnToggleTimer.TabIndex = 2;
             this.btnToggleTimer.Text = "Start Timer";
+            this.ToggleTimerToolTip.SetToolTip(this.btnToggleTimer, "Starts auto-off timer with the selected time");
             this.btnToggleTimer.UseVisualStyleBackColor = true;
             this.btnToggleTimer.Click += new System.EventHandler(this.BtnToggleTimer_Click);
             // 
@@ -126,6 +133,7 @@ namespace _4RTools.Forms
             this.AutoOffOverweightCB.Size = new System.Drawing.Size(131, 40);
             this.AutoOffOverweightCB.TabIndex = 318;
             this.AutoOffOverweightCB.Text = "Overweight Auto-off";
+            this.overweightToolTip.SetToolTip(this.AutoOffOverweightCB, "Enable this to toggle off when at 90% weight");
             this.AutoOffOverweightCB.UseVisualStyleBackColor = false;
             this.AutoOffOverweightCB.CheckedChanged += new System.EventHandler(this.AutoOffOverweight_CheckedChanged);
             // 
@@ -142,6 +150,7 @@ namespace _4RTools.Forms
             // 
             // overweightAltKeyLabel
             // 
+            this.overweightAltKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -151,6 +160,7 @@ namespace _4RTools.Forms
             this.overweightAltKeyLabel.TabIndex = 316;
             this.overweightAltKeyLabel.Text = "Then send";
             this.overweightAltKeyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AltKey1ToolTip.SetToolTip(this.overweightAltKeyLabel, "Sends an Alt + # key, to use RO\'s Alt-M macros");
             // 
             // arrowDown1
             // 
@@ -192,6 +202,7 @@ namespace _4RTools.Forms
             // 
             // overweightAltKey2Label
             // 
+            this.overweightAltKey2Label.Cursor = System.Windows.Forms.Cursors.Help;
             this.overweightAltKey2Label.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweightAltKey2Label.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
             this.overweightAltKey2Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -201,6 +212,7 @@ namespace _4RTools.Forms
             this.overweightAltKey2Label.TabIndex = 323;
             this.overweightAltKey2Label.Text = "Then send";
             this.overweightAltKey2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AltKey2ToolTip.SetToolTip(this.overweightAltKey2Label, "Sends an Alt + # key, to use RO\'s Alt-M macros");
             // 
             // AutoOffKey2
             // 
@@ -231,6 +243,7 @@ namespace _4RTools.Forms
             this.AutoOffKillClientChk.Size = new System.Drawing.Size(161, 33);
             this.AutoOffKillClientChk.TabIndex = 328;
             this.AutoOffKillClientChk.Text = "Then stop running client";
+            this.StopClientToolTip.SetToolTip(this.AutoOffKillClientChk, "Stops the associated game client");
             this.AutoOffKillClientChk.UseVisualStyleBackColor = true;
             this.AutoOffKillClientChk.CheckedChanged += new System.EventHandler(this.AutoOffKillClientChk_CheckedChanged);
             // 
@@ -244,6 +257,48 @@ namespace _4RTools.Forms
             this.label1.TabIndex = 329;
             this.label1.Text = "+";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // overweightToolTip
+            // 
+            this.overweightToolTip.AutoPopDelay = 15000;
+            this.overweightToolTip.InitialDelay = 300;
+            this.overweightToolTip.ReshowDelay = 100;
+            this.overweightToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.overweightToolTip.ToolTipTitle = "Overweight Auto-off";
+            // 
+            // ToggleTimerToolTip
+            // 
+            this.ToggleTimerToolTip.AutomaticDelay = 300;
+            this.ToggleTimerToolTip.AutoPopDelay = 15000;
+            this.ToggleTimerToolTip.InitialDelay = 300;
+            this.ToggleTimerToolTip.ReshowDelay = 60;
+            this.ToggleTimerToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ToggleTimerToolTip.ToolTipTitle = "Start Timer";
+            // 
+            // AltKey1ToolTip
+            // 
+            this.AltKey1ToolTip.AutoPopDelay = 15000;
+            this.AltKey1ToolTip.InitialDelay = 300;
+            this.AltKey1ToolTip.ReshowDelay = 100;
+            this.AltKey1ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.AltKey1ToolTip.ToolTipTitle = "Send ALT + __";
+            this.AltKey1ToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip2_Popup);
+            // 
+            // AltKey2ToolTip
+            // 
+            this.AltKey2ToolTip.AutoPopDelay = 15000;
+            this.AltKey2ToolTip.InitialDelay = 300;
+            this.AltKey2ToolTip.ReshowDelay = 100;
+            this.AltKey2ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.AltKey2ToolTip.ToolTipTitle = "Send ALT + __";
+            // 
+            // StopClientToolTip
+            // 
+            this.StopClientToolTip.AutoPopDelay = 15000;
+            this.StopClientToolTip.InitialDelay = 300;
+            this.StopClientToolTip.ReshowDelay = 100;
+            this.StopClientToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.StopClientToolTip.ToolTipTitle = "Kill Client";
             // 
             // AutoOffForm
             // 
@@ -308,5 +363,11 @@ namespace _4RTools.Forms
         private System.Windows.Forms.PictureBox arrowDown3;
         private System.Windows.Forms.CheckBox AutoOffKillClientChk;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip overweightToolTip;
+        private System.ComponentModel.IContainer components;
+        private System.Windows.Forms.ToolTip ToggleTimerToolTip;
+        private System.Windows.Forms.ToolTip AltKey1ToolTip;
+        private System.Windows.Forms.ToolTip AltKey2ToolTip;
+        private System.Windows.Forms.ToolTip StopClientToolTip;
     }
 }

@@ -92,7 +92,7 @@ namespace _4RTools.Forms
                 TextBox textBox = kvp.Value;
 
                 Key key = statusRecovery.GetKeyForList(listName);
-                textBox.Text = key != Key.None ? key.ToString() : "None";
+                textBox.Text = key != Key.None ? key.ToString() : AppConfig.TEXT_NONE;
             }
         }
 
@@ -117,7 +117,7 @@ namespace _4RTools.Forms
                 }
                 else
                 {
-                    txt.Text = "None";
+                    txt.Text = AppConfig.TEXT_NONE;
                 }
             }
         }

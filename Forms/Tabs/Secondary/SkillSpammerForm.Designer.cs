@@ -746,6 +746,7 @@ namespace _4RTools.Forms
             this.txtSpammerDelay.Name = "txtSpammerDelay";
             this.txtSpammerDelay.Size = new System.Drawing.Size(65, 22);
             this.txtSpammerDelay.TabIndex = 31;
+            this.txtSpammerDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSpammerDelay.ValueChanged += new System.EventHandler(this.TxtSpammerDelay_TextChanged);
             // 
             // chkS
