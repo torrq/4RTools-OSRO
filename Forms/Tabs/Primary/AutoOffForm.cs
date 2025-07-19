@@ -52,12 +52,12 @@ namespace _4RTools.Forms
         {
             InitializeComponent();
 
-            this.AutoOffKey1.KeyDown += FormUtils.OnKeyDown;
-            this.AutoOffKey1.KeyPress += FormUtils.OnKeyPress;
+            this.AutoOffKey1.KeyDown += FormHelper.OnKeyDown;
+            this.AutoOffKey1.KeyPress += FormHelper.OnKeyPress;
             this.AutoOffKey1.TextChanged += this.AutoOffKey1_TextChanged;
 
-            this.AutoOffKey2.KeyDown += FormUtils.OnKeyDown;
-            this.AutoOffKey2.KeyPress += FormUtils.OnKeyPress;
+            this.AutoOffKey2.KeyDown += FormHelper.OnKeyDown;
+            this.AutoOffKey2.KeyPress += FormHelper.OnKeyPress;
             this.AutoOffKey2.TextChanged += this.AutoOffKey2_TextChanged;
 
             subject.Attach(this);
@@ -91,7 +91,7 @@ namespace _4RTools.Forms
         private void AutoOffModel_TimerStarted(object sender, AutoOffEventArgs e)
         {
             btnToggleTimer.Text = BUTTON_TIMER_STOP;
-            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.ResetButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.ResetButtonBackColor);
             animatedClockImage.Image = _4RTools.Resources._4RTools.Icons.clock_animated;
             UpdateUI();
         }
@@ -99,7 +99,7 @@ namespace _4RTools.Forms
         private void AutoOffModel_TimerStopped(object sender, AutoOffEventArgs e)
         {
             btnToggleTimer.Text = BUTTON_TIMER_START;
-            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
             animatedClockImage.Image = null;
             UpdateUI();
         }
@@ -114,7 +114,7 @@ namespace _4RTools.Forms
             if (frmToggleApplication != null)
             {
                 frmToggleApplication.toggleStatus();
-                OverweightMacro.SendOverweightMacro();
+                WeightLimitMacro.SendOverweightMacro();
             }
             else
             {
@@ -387,14 +387,14 @@ namespace _4RTools.Forms
 
         private void ApplyFormColors()
         {
-            FormUtils.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.CreateButtonBackColor);
             var dynamicButtonNames = new List<string>();
             if (btnSet1Hours != null) dynamicButtonNames.Add("btnSet1Hours");
             if (btnSet2Hours != null) dynamicButtonNames.Add("btnSet2Hours");
             if (btnSet3Hours != null) dynamicButtonNames.Add("btnSet3Hours");
             if (btnSet4Hours != null) dynamicButtonNames.Add("btnSet4Hours");
             if (btnSet8Hours != null) dynamicButtonNames.Add("btnSet8Hours");
-            FormUtils.ApplyColorToButtons(this, dynamicButtonNames.ToArray(), AppConfig.CopyButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, dynamicButtonNames.ToArray(), AppConfig.CopyButtonBackColor);
         }
         #endregion
 

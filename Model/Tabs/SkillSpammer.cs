@@ -43,7 +43,7 @@ namespace _4RTools.Model
 
         private const string ACTION_NAME = "AHK";
         private ThreadRunner thread;
-        private AmmoSwapHandler ammoSwapHandler = new AmmoSwapHandler();
+        private AmmoSwapper ammoSwapHandler = new AmmoSwapper();
         public const string COMPATIBILITY = "ahkCompatibility";
         public const string SPEED_BOOST = "ahkSpeedBoost";
         public Dictionary<string, KeyConfig> AhkEntries { get; set; } = new Dictionary<string, KeyConfig>();
@@ -119,15 +119,15 @@ namespace _4RTools.Model
         {
             Func<int, int> send_click = (evt) =>
             {
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
                 Thread.Sleep(1);
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
                 return 0;
             };
 
             while (Keyboard.IsKeyDown(config.Key))
             {
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                 if (this.MouseFlick)
                 {
                     System.Windows.Forms.Cursor.Position = new Point(System.Windows.Forms.Cursor.Position.X - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK, System.Windows.Forms.Cursor.Position.Y - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK);
@@ -146,7 +146,7 @@ namespace _4RTools.Model
         {
             while (Keyboard.IsKeyDown(config.Key))
             {
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                 if (config.ClickActive)
                 {
                     Point cursorPos = System.Windows.Forms.Cursor.Position;
@@ -162,7 +162,7 @@ namespace _4RTools.Model
         {
             while (Keyboard.IsKeyDown(config.Key))
             {
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                 Thread.Sleep(this.AhkDelay);
             }
         }

@@ -127,7 +127,7 @@ namespace _4RTools.Model
                         {
                             foreach (Key key in equipConfig.AtkKeys.Values)
                             {
-                                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip ATK Items
+                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip ATK Items
                                 Thread.Sleep(equipConfig.SwitchDelay);
                             }
                             equipAtkItems = true;
@@ -135,16 +135,16 @@ namespace _4RTools.Model
 
                         if (equipConfig.KeySpammerWithClick)
                         {
-                            Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
-                            Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
                             AutoSwitchAmmo(roClient, ref ammo);
                             Thread.Sleep(1);
-                            Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
                             Thread.Sleep(equipConfig.AHKDelay);
                         }
                         else
                         {
-                            Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                             Thread.Sleep(equipConfig.AHKDelay);
                         }
                     }
@@ -152,7 +152,7 @@ namespace _4RTools.Model
                     {
                         foreach (Key key in equipConfig.DefKeys.Values)
                         {
-                            Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip DEF Items
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip DEF Items
                             Thread.Sleep(equipConfig.SwitchDelay);
                         }
                         equipDefItems = true;
@@ -172,13 +172,13 @@ namespace _4RTools.Model
                     if (ammo == false)
                     {
                         Key key = prefs.Ammo1Key;
-                        Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = true;
                     }
                     else
                     {
                         Key key = prefs.Ammo2Key;
-                        Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = false;
                     }
                 }

@@ -212,7 +212,7 @@ namespace _4RTools.Model
         {
             if (statusLists.ContainsKey(listName))
             {
-                statusLists[listName].Key = FormUtils.IsValidKey(key) ? key : Key.None;
+                statusLists[listName].Key = FormHelper.IsValidKey(key) ? key : Key.None;
             }
         }
 
@@ -252,7 +252,7 @@ namespace _4RTools.Model
         {
             if ((key != Key.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
             {
-                Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
+                Win32Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
             }
         }
     }

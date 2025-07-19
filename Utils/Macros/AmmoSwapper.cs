@@ -8,7 +8,7 @@ using _4RTools.Model;
 
 namespace _4RTools.Utils
 {
-    public class AmmoSwapHandler
+    public class AmmoSwapper
     {
         private ThreadRunner thread;
         private bool ammoToggle = false; // false = next press should send Ammo1Key, true = next press should send Ammo2Key
@@ -21,7 +21,7 @@ namespace _4RTools.Utils
         private const int WM_KEYUP = 0x0101;
         private static LowLevelKeyboardProc _proc;
         private static IntPtr _hookID = IntPtr.Zero;
-        private static AmmoSwapHandler _instance;
+        private static AmmoSwapper _instance;
 
         public delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 

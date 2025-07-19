@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static _4RTools.Utils.FormUtils;
+using static _4RTools.Utils.FormHelper;
 
 namespace _4RTools.Forms
 {
@@ -16,7 +16,7 @@ namespace _4RTools.Forms
         private string currentProfile;
         List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleStateForm frmToggleApplication = new ToggleStateForm();
-        private NotificationTrayManager trayManager;
+        private TrayManager trayManager;
         private DebugLogWindow debugLogWindow;
         private bool isShuttingDown;
         private DebugLogger.LogMessageHandler debugLogHandler;
@@ -230,7 +230,7 @@ namespace _4RTools.Forms
         {
             if (e.Index < 0) return;
 
-            if (!(processCB.Items[e.Index] is ProcessDisplayItem item)) return;
+            if (!(processCB.Items[e.Index] is GameProcessInfo item)) return;
 
             int lineHeight = processCB.Font.Height;
             e.ItemHeight = lineHeight * 2;
@@ -267,7 +267,7 @@ namespace _4RTools.Forms
         {
             if (e.Index < 0) return;
 
-            var item = processCB.Items[e.Index] as ProcessDisplayItem;
+            var item = processCB.Items[e.Index] as GameProcessInfo;
             if (item == null) return;
 
             Brush backgroundBrush = null;
@@ -450,7 +450,7 @@ namespace _4RTools.Forms
         {
             if (processCB.SelectedIndex < 0) return;
 
-            string selectedProcessString = (processCB.SelectedItem as ProcessDisplayItem)?.ProcessText;
+            string selectedProcessString = (processCB.SelectedItem as GameProcessInfo)?.ProcessText;
             if (string.IsNullOrEmpty(selectedProcessString)) return;
 
             Client client = new Client(selectedProcessString);
@@ -576,57 +576,94 @@ namespace _4RTools.Forms
 
         private void RefreshProcessList()
         {
-            this.Invoke((MethodInvoker)delegate ()
+            // Avoid modifying ComboBox while it is open
+            if (processCB.DroppedDown)
             {
-                this.processCB.Items.Clear();
+                DebugLogger.Warning("ComboBox is dropped down. Skipping RefreshProcessList to avoid crash.");
+                return;
+            }
+
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)RefreshProcessList);
+                return;
+            }
+
+            try
+            {
+                processCB.BeginUpdate();
+                processCB.Items.Clear();
                 this.maxDropDownWidth = 150;
 
-                var processItems = new List<ProcessDisplayItem>();
+                var processItems = new List<GameProcessInfo>();
+
                 foreach (Process p in Process.GetProcesses())
                 {
                     if (p.MainWindowTitle != "" && ClientListSingleton.ExistsByProcessName(p.ProcessName))
                     {
-                        Client client = new Client($"{p.ProcessName}.exe - {p.Id}");
                         string processText = $"{p.ProcessName}.exe - {p.Id}";
+                        Client client = new Client(processText);
+
                         string characterName = client.ReadCharacterName() ?? "- -";
                         string currentMap = client.ReadCurrentMap() ?? "- -";
-                        int currentLevel = (int)client.ReadCurrentLevel();
-                        int currentJobId = (int)client.ReadCurrentJob();
-                        int currentExp = (int)client.ReadCurrentExp();
-                        int currentExpToLevel = (int)client.ReadCurrentExpToLevel();
-                        int currentHP = (int)client.ReadCurrentHp();
-                        int currentMaxHP = (int)client.ReadMaxHp();
-                        int currentSP = (int)client.ReadCurrentSp();
-                        int currentMaxSP = (int)client.ReadMaxSp();
+
+                        uint? level = client.ReadCurrentLevel();
+                        int currentLevel = (int)(level.HasValue ? level.Value : 0);
+
+                        uint? jobID = client.ReadCurrentJob();
+                        int currentJobId = (int)(jobID.HasValue ? jobID.Value : 0);
+
+                        uint? exp = client.ReadCurrentExp();
+                        int currentExp = (int)(exp.HasValue ? exp.Value : 0);
+
+                        uint? expToLevel = client.ReadCurrentExpToLevel();
+                        int currentExpToLevel = (int)(expToLevel.HasValue ? expToLevel.Value : 0);
+
+                        uint? HP = client.ReadCurrentHp();
+                        int currentHP = (int)(HP.HasValue ? HP.Value : 0);
+
+                        uint? maxHP = client.ReadMaxHp();
+                        int currentMaxHP = (int)(maxHP.HasValue ? maxHP.Value : 0);
+
+                        uint? SP = client.ReadCurrentSp();
+                        int currentSP = (int)(SP.HasValue ? SP.Value : 0);
+
+                        uint? maxSP = client.ReadMaxSp();
+                        int currentMaxSP = (int)(maxSP.HasValue ? maxSP.Value : 0);
 
                         string jobName = JobList.GetNameById(currentJobId);
 
-                        string clientDebugInfo =
-                            $"  {characterName} / {jobName} / Lv.{currentLevel} / Exp. {currentExp}\n" +
-                            $"  HP. {currentHP} / {currentMaxHP} | Sp. {currentSP} / {currentMaxSP}\n +" +
-                            $"  currentExp: {currentExp} / currentExpToLevel: {currentExpToLevel}";
-
-                        processItems.Add(new ProcessDisplayItem(processText, characterName, currentMap));
-                        //DebugLogger.Debug("CLIENT:\n" + clientDebugInfo);
+                        processItems.Add(new GameProcessInfo(processText, characterName, currentMap));
                     }
                 }
 
-                var sortedItems = processItems.OrderBy(item =>
-                    (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
-                    (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0)
+                var sortedItems = processItems
+                    .OrderBy(item =>
+                        (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
+                        (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0)
                     .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName)
                     .ThenBy(item =>
                     {
-                        string idPart = item.ProcessText.Split('-').Last().Trim();
+                        string[] parts = item.ProcessText.Split('-');
+                        string idPart = parts.Length >= 2 ? parts.Last().Trim() : "-1";
                         return int.TryParse(idPart, out int id) ? id : int.MaxValue;
                     });
 
                 foreach (var item in sortedItems)
                 {
-                    this.processCB.Items.Add(item);
+                    processCB.Items.Add(item);
                 }
-            });
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error("Failed to refresh process list: " + ex.Message);
+            }
+            finally
+            {
+                processCB.EndUpdate();
+            }
         }
+
 
         protected override void OnClosed(EventArgs e)
         {

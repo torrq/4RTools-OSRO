@@ -34,10 +34,10 @@ namespace _4RTools.Forms
             RefreshProfileList(); // Initial load with sorting
             UpdateIconPosition(); // Ensure icon is drawn on launch
 
-            FormUtils.ApplyColorToButtons(this, new[] { "btnSave" }, AppConfig.CreateButtonBackColor);
-            FormUtils.ApplyColorToButtons(this, new[] { "btnCopyProfile" }, AppConfig.CopyButtonBackColor);
-            FormUtils.ApplyColorToButtons(this, new[] { "btnRemoveProfile" }, AppConfig.RemoveButtonBackColor);
-            FormUtils.ApplyColorToButtons(this, new[] { "btnRenameProfile" }, AppConfig.RenameButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnSave" }, AppConfig.CreateButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnCopyProfile" }, AppConfig.CopyButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnRemoveProfile" }, AppConfig.RemoveButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnRenameProfile" }, AppConfig.RenameButtonBackColor);
 
             // Set initial status message
             UpdateStatus("");

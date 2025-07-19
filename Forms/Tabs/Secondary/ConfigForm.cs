@@ -28,14 +28,14 @@ namespace _4RTools.Forms
 
             isInitializing = false; // Initialization complete
 
-            this.ammo1textBox.KeyDown += FormUtils.OnKeyDown;
-            this.ammo1textBox.KeyPress += FormUtils.OnKeyPress;
+            this.ammo1textBox.KeyDown += FormHelper.OnKeyDown;
+            this.ammo1textBox.KeyPress += FormHelper.OnKeyPress;
             this.ammo1textBox.TextChanged += this.TextAmmo1_TextChanged;
-            this.ammo2textBox.KeyDown += FormUtils.OnKeyDown;
-            this.ammo2textBox.KeyPress += FormUtils.OnKeyPress;
+            this.ammo2textBox.KeyDown += FormHelper.OnKeyDown;
+            this.ammo2textBox.KeyPress += FormHelper.OnKeyPress;
             this.ammo2textBox.TextChanged += this.TextAmmo2_TextChanged;
-            this.ammoTrigger.KeyDown += FormUtils.OnKeyDown;
-            this.ammoTrigger.KeyPress += FormUtils.OnKeyPress;
+            this.ammoTrigger.KeyDown += FormHelper.OnKeyDown;
+            this.ammoTrigger.KeyPress += FormHelper.OnKeyPress;
             this.ammoTrigger.TextChanged += this.TextAmmoTrigger_TextChanged;
 
             var newListBuff = ProfileSingleton.GetCurrent().UserPreferences.AutoBuffOrder;

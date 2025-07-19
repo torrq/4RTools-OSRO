@@ -47,9 +47,9 @@ namespace _4RTools.Model
         {
             Func<int, int> send_click = (evt) =>
             {
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_RBUTTONDOWN, 0, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_RBUTTONDOWN, 0, 0);
                 Thread.Sleep(1);
-                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_RBUTTONUP, 0, 0);
+                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_RBUTTONUP, 0, 0);
                 return 0;
             };
 

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace _4RTools.Utils
 {
-    public class NotificationTrayManager : IObserver, IDisposable
+    public class TrayManager : IObserver, IDisposable
     {
         private readonly ContextMenuStrip contextMenu;
         private readonly ToolStripMenuItem menuItemToggle;
@@ -17,7 +17,7 @@ namespace _4RTools.Utils
         private readonly Subject subject;
         private bool isApplicationOn;
 
-        public NotificationTrayManager(Subject subject, bool initialState = false)
+        public TrayManager(Subject subject, bool initialState = false)
         {
             this.subject = subject;
             this.isApplicationOn = initialState;

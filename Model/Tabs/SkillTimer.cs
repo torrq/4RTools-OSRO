@@ -161,7 +161,7 @@ namespace _4RTools.Model
                         SendKeys.SendWait("%" + ToSendKeysFormat(macro.Key));
                         //DebugLogger.Info($"Sent ALT Skilltimer key: " + macro.Key);
                     } else {
-                        Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, (Keys)KeyInterop.VirtualKeyFromKey(macro.Key), 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, (Keys)KeyInterop.VirtualKeyFromKey(macro.Key), 0);
                     }
                 }
 

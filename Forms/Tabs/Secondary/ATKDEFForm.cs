@@ -18,7 +18,7 @@ namespace _4RTools.Forms
             InitializeComponent();
             SetupInputs();
             InitializeResetButtonTooltips();
-            FormUtils.ApplyColorToButtons(this, new[] { "btnResetAtkDef1", "btnResetAtkDef2" }, AppConfig.ResetButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnResetAtkDef1", "btnResetAtkDef2" }, AppConfig.ResetButtonBackColor);
         }
 
         public void Update(ISubject subject)
@@ -194,26 +194,26 @@ namespace _4RTools.Forms
                 {
                     if (group == null) continue;
 
-                    foreach (Control c in FormUtils.GetAll(group, typeof(TextBox)))
+                    foreach (Control c in FormHelper.GetAll(group, typeof(TextBox)))
                     {
                         TextBox textBox = (TextBox)c;
-                        textBox.KeyDown -= FormUtils.OnKeyDown;
-                        textBox.KeyPress -= FormUtils.OnKeyPress;
+                        textBox.KeyDown -= FormHelper.OnKeyDown;
+                        textBox.KeyPress -= FormHelper.OnKeyPress;
                         textBox.TextChanged -= this.onTextChange;
 
-                        textBox.KeyDown += FormUtils.OnKeyDown;
-                        textBox.KeyPress += FormUtils.OnKeyPress;
+                        textBox.KeyDown += FormHelper.OnKeyDown;
+                        textBox.KeyPress += FormHelper.OnKeyPress;
                         textBox.TextChanged += this.onTextChange;
                     }
 
-                    foreach (Control c in FormUtils.GetAll(group, typeof(NumericUpDown)))
+                    foreach (Control c in FormHelper.GetAll(group, typeof(NumericUpDown)))
                     {
                         NumericUpDown numericUpDown = (NumericUpDown)c;
                         numericUpDown.ValueChanged -= this.onDelayChange;
                         numericUpDown.ValueChanged += this.onDelayChange;
                     }
 
-                    foreach (Control c in FormUtils.GetAll(group, typeof(CheckBox)))
+                    foreach (Control c in FormHelper.GetAll(group, typeof(CheckBox)))
                     {
                         CheckBox checkBox = (CheckBox)c;
                         checkBox.CheckedChanged -= this.ChkBox_CheckedChanged;

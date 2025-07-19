@@ -81,8 +81,8 @@ namespace _4RTools.Forms
             try
             {
                 TextBox textBox = (TextBox)Controls.Find("txtSkillTimerKey" + id, true)[0];
-                textBox.KeyDown += FormUtils.OnKeyDown;
-                textBox.KeyPress += FormUtils.OnKeyPress;
+                textBox.KeyDown += FormHelper.OnKeyDown;
+                textBox.KeyPress += FormHelper.OnKeyPress;
                 textBox.TextChanged += OnTextChange;
 
                 NumericUpDown txtAutoRefreshDelay = (NumericUpDown)Controls.Find("txtAutoRefreshDelay" + id, true)[0];

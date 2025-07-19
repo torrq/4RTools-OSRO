@@ -22,7 +22,7 @@ namespace _4RTools.Forms
 
             RenderSkillBuffs();
 
-            FormUtils.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
+            FormHelper.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
             //FormUtils.SetNumericUpDownMinimumDelays(this);
 
             subject.Attach(this);
@@ -61,7 +61,7 @@ namespace _4RTools.Forms
                     else
                     {
                         // Consider what should happen if AutobuffSkill is null.  For now, clear the form.
-                        FormUtils.ResetForm(this);
+                        FormHelper.ResetForm(this);
                     }
                     break;
                 case MessageCode.TURN_OFF:

@@ -65,7 +65,7 @@ namespace _4RTools.Model
                     }
                 }
 
-                StatusIdLogger.LogAllStatuses(statusList);
+                StatusEffectLogger.LogAllStatuses(statusList);
 
                 if (!prefs.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
                 {
@@ -126,7 +126,7 @@ namespace _4RTools.Model
                         }
                     }
 
-                    StatusIdLogger.LogAllStatuses(statusList);
+                    StatusEffectLogger.LogAllStatuses(statusList);
                 }
 
                 Thread.Sleep(300);
@@ -143,7 +143,7 @@ namespace _4RTools.Model
                 buffMapping.Remove(status);
             }
 
-            if (FormUtils.IsValidKey(key))
+            if (FormHelper.IsValidKey(key))
             {
                 buffMapping.Add(status, key);
             }
@@ -177,7 +177,7 @@ namespace _4RTools.Model
         private void UseAutobuff(Key key)
         {
             if ((key != Key.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
-                Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
+                Win32Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
         }
     }
 }

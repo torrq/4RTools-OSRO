@@ -11,7 +11,7 @@ namespace _4RTools.Forms
     public partial class ToggleStateForm : Form, IObserver
     {
         private Subject subject;
-        private NotificationTrayManager trayManager;
+        private TrayManager trayManager;
         private Keys lastKey;
         private bool isApplicationOn = false;
 
@@ -37,8 +37,8 @@ namespace _4RTools.Forms
             lastKey = initialToggleKey;
 
             this.txtStatusToggleKey.Text = ProfileSingleton.GetCurrent().UserPreferences.ToggleStateKey;
-            this.txtStatusToggleKey.KeyDown += new KeyEventHandler(FormUtils.OnKeyDown);
-            this.txtStatusToggleKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
+            this.txtStatusToggleKey.KeyDown += new KeyEventHandler(FormHelper.OnKeyDown);
+            this.txtStatusToggleKey.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
             this.txtStatusToggleKey.TextChanged += new EventHandler(this.onStatusToggleKeyChange);
 
             if (lastKey != Keys.None)
@@ -48,10 +48,10 @@ namespace _4RTools.Forms
 
             SetVisualState(isApplicationOn);
 
-            trayManager = new NotificationTrayManager(subject, isApplicationOn);
+            trayManager = new TrayManager(subject, isApplicationOn);
         }
 
-        public NotificationTrayManager GetTrayManager()
+        public TrayManager GetTrayManager()
         {
             return trayManager;
         }

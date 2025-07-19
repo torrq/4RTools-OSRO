@@ -202,15 +202,6 @@ namespace _4RTools.Model
             return BitConverter.ToUInt32(PMR.ReadProcessMemory((IntPtr)address, 4u, out _num), 0);
         }
 
-        public void WriteMemory(int address, uint intToWrite)
-        {
-            PMR.WriteProcessMemory((IntPtr)address, BitConverter.GetBytes(intToWrite), out _num);
-        }
-
-        public void WriteMemory(int address, byte[] bytesToWrite)
-        {
-            PMR.WriteProcessMemory((IntPtr)address, bytesToWrite, out _num);
-        }
 
         public bool IsHpBelow(int percent)
         {
@@ -338,10 +329,10 @@ namespace _4RTools.Model
         {
             try
             {
-                IntPtr activeWindowHandle = Interop.GetForegroundWindow();
+                IntPtr activeWindowHandle = Win32Interop.GetForegroundWindow();
 
                 uint activeProcessId;
-                Interop.GetWindowThreadProcessId(activeWindowHandle, out activeProcessId);
+                Win32Interop.GetWindowThreadProcessId(activeWindowHandle, out activeProcessId);
 
                 Process activeProcess = Process.GetProcessById((int)activeProcessId);
                 return activeProcess.ProcessName.Equals(ClientSingleton.GetClient().Process.ProcessName, StringComparison.OrdinalIgnoreCase);
@@ -356,7 +347,7 @@ namespace _4RTools.Model
         {
             if (IsClientWindowActive())
             {
-                Interop.keybd_event(bVk, bScan, dwFlags, dwExtraInfo);
+                Win32Interop.keybd_event(bVk, bScan, dwFlags, dwExtraInfo);
             }
         }
 

@@ -152,19 +152,19 @@ namespace _4RTools.Model
                             {
                                 //Press instrument key if exists.
                                 Keys instrumentKey = (Keys)Enum.Parse(typeof(Keys), chainConfig.InstrumentKey.ToString());
-                                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, instrumentKey, 0);
+                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, instrumentKey, 0);
                                 Thread.Sleep(30);
                             }
 
                             Keys thisk = (Keys)Enum.Parse(typeof(Keys), macroKey.Key.ToString());
-                            Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                             Thread.Sleep(macroKey.Delay); // Delay after key rather than before
 
                             if (chainConfig.DaggerKey != Key.None)
                             {
                                 //Press instrument key if exists.
                                 Keys daggerKey = (Keys)Enum.Parse(typeof(Keys), chainConfig.DaggerKey.ToString());
-                                Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, daggerKey, 0);
+                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, daggerKey, 0);
                                 Thread.Sleep(30);
                             }
 

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace _4RTools.Utils
 {
-    public class ProcessDisplayItem
+    public class GameProcessInfo
     {
         public string ProcessText { get; set; }
         public string CharacterName { get; set; }
         public string CurrentMap { get; set; }
 
-        public ProcessDisplayItem(string processText, string characterName, string currentMap)
+        public GameProcessInfo(string processText, string characterName, string currentMap)
         {
             ProcessText = processText;
             CharacterName = characterName;

@@ -15,8 +15,8 @@ namespace _4RTools.Forms
             subject.Attach(this);
             InitializeComponent();
             string[] resetButtonNames = { "btnResMac1", "btnResMac2", "btnResMac3", "btnResMac4" };
-            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
-            FormUtils.SetNumericUpDownMinimumDelays(this);
+            FormHelper.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+            FormHelper.SetNumericUpDownMinimumDelays(this);
             ConfigureMacroLanes();
             AddCommonResetButtonTooltip();
         }
@@ -63,7 +63,7 @@ namespace _4RTools.Forms
                 Macro songMacro = ProfileSingleton.GetCurrent().SongMacro;
                 GroupBox p = (GroupBox)this.Controls.Find("panelMacro" + id, true)[0];
                 ChainConfig chainConfig = new ChainConfig(songMacro.ChainConfigs[id - 1]);
-                FormUtils.ResetForm(p);
+                FormHelper.ResetForm(p);
 
                 //Update Trigger Macro Value
                 Control[] c = p.Controls.Find("inTriggerMacro" + chainConfig.id, true);
@@ -241,8 +241,8 @@ namespace _4RTools.Forms
                 {
                     if (c is TextBox textBox)
                     {
-                        textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-                        textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
+                        textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormHelper.OnKeyDown);
+                        textBox.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
                         textBox.TextChanged += new EventHandler(this.OnTextChange);
                     }
 

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace _4RTools.Utils
 {
-    internal class Interop
+    internal static class Win32Interop
     {
         // PINVOKES
         [DllImport("user32.dll", SetLastError = true)]

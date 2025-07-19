@@ -123,7 +123,7 @@ namespace _4RTools.Model
                 return false;
 
             // Check the global pot cooldown before attempting to use a pot
-            if (!PotManager.CanUsePot())
+            if (!PotionManager.CanUsePot())
                 return false;
 
             // Find all enabled slots that meet the HP threshold, grouped by HP percentage
@@ -164,7 +164,7 @@ namespace _4RTools.Model
             if (nextSlotIndex != -1 && UsePot(HPSlots[nextSlotIndex].Key))
             {
                 _lastUsedSlotIndex = nextSlotIndex;
-                PotManager.RecordPotUsage();
+                PotionManager.RecordPotUsage();
                 return true;
             }
 
@@ -202,8 +202,8 @@ namespace _4RTools.Model
                     var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
 
                     // Send key press and release
-                    Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
-                    Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
+                    Win32Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
+                    Win32Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
 
                     return true;
                 }

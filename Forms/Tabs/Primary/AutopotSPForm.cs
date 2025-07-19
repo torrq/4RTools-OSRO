@@ -67,13 +67,13 @@ namespace _4RTools.Forms
                     if (control is CheckBox chk) chk.CheckedChanged += OnSPEnabledChanged;
                     if (control is TextBox txt)
                     {
-                        txt.KeyDown += FormUtils.OnKeyDown;
-                        txt.KeyPress += FormUtils.OnKeyPress;
+                        txt.KeyDown += FormHelper.OnKeyDown;
+                        txt.KeyPress += FormHelper.OnKeyPress;
                         txt.TextChanged += OnSPKeyChanged;
                     }
                     if (control is NumericUpDown num)
                     {
-                        FormUtils.AttachBlankFix(num);
+                        FormHelper.AttachBlankFix(num);
                         num.ValueChanged += OnSPPercentChanged;
                     }
                 }

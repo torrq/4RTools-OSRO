@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public static class StatusIdLogger
+public static class StatusEffectLogger
 {
     private static Dictionary<uint, string> knownStatusIds = null;
     private static string lastStatusesLog = null;
 
-    static StatusIdLogger()
+    static StatusEffectLogger()
     {
         InitializeStatusDictionaries();
     }

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace _4RTools.Utils
 {
-    public static class FormUtils
+    public static class FormHelper
     {
         public static void ApplyColorToButtons(Control parentControl, string[] buttonNames, Color color)
         {

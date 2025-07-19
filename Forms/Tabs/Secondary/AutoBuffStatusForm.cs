@@ -35,8 +35,8 @@ namespace _4RTools.Forms
 
         private void SetupPanaceaTextBox()
         {
-            txtPanaceaKey.KeyDown += FormUtils.OnKeyDown;
-            txtPanaceaKey.KeyPress += FormUtils.OnKeyPress;
+            txtPanaceaKey.KeyDown += FormHelper.OnKeyDown;
+            txtPanaceaKey.KeyPress += FormHelper.OnKeyPress;
             txtPanaceaKey.TextChanged += (sender, e) => OnStatusListKeyChange("Panacea", sender, e);
             txtPanaceaKey.TextAlign = HorizontalAlignment.Center;
             statusListTextBoxes["Panacea"] = txtPanaceaKey;
@@ -46,8 +46,8 @@ namespace _4RTools.Forms
         {
             if (txtGreenPotionKey != null)
             {
-                txtGreenPotionKey.KeyDown += FormUtils.OnKeyDown;
-                txtGreenPotionKey.KeyPress += FormUtils.OnKeyPress;
+                txtGreenPotionKey.KeyDown += FormHelper.OnKeyDown;
+                txtGreenPotionKey.KeyPress += FormHelper.OnKeyPress;
                 txtGreenPotionKey.TextChanged += (sender, e) => OnStatusListKeyChange("GreenPotion", sender, e);
                 txtGreenPotionKey.TextAlign = HorizontalAlignment.Center;
                 statusListTextBoxes["GreenPotion"] = txtGreenPotionKey;
@@ -55,8 +55,8 @@ namespace _4RTools.Forms
 
             if (txtRoyalJellyKey != null)
             {
-                txtRoyalJellyKey.KeyDown += FormUtils.OnKeyDown;
-                txtRoyalJellyKey.KeyPress += FormUtils.OnKeyPress;
+                txtRoyalJellyKey.KeyDown += FormHelper.OnKeyDown;
+                txtRoyalJellyKey.KeyPress += FormHelper.OnKeyPress;
                 txtRoyalJellyKey.TextChanged += (sender, e) => OnStatusListKeyChange("RoyalJelly", sender, e);
                 txtRoyalJellyKey.TextAlign = HorizontalAlignment.Center;
                 statusListTextBoxes["RoyalJelly"] = txtRoyalJellyKey;

@@ -104,8 +104,8 @@ namespace _4RTools.Model
                         Font = new Font("Tahoma", 9, FontStyle.Regular),
                         TextAlign = HorizontalAlignment.Center
                     };
-                    textBox.KeyDown += FormUtils.OnKeyDown;
-                    textBox.KeyPress += FormUtils.OnKeyPress;
+                    textBox.KeyDown += FormHelper.OnKeyDown;
+                    textBox.KeyPress += FormHelper.OnKeyPress;
                     textBox.GotFocus += TextBox_GotFocus;
                     textBox.TextChanged += OnTextChange;
 

@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace _4RTools.Utils
 {
-    public static class PotManager
+    public static class PotionManager
     {
         private static long _lastPotTicks = 0;
         private static readonly long _cooldownTicks = TimeSpan.FromMilliseconds(10).Ticks; // Slightly increased for safety

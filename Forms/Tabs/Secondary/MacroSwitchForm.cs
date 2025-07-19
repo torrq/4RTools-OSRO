@@ -17,8 +17,8 @@ namespace _4RTools.Forms
             subject.Attach(this);
             InitializeComponent();
             string[] resetButtonNames = { "btnResMac1", "btnResMac2", "btnResMac3", "btnResMac4", "btnResMac5" };
-            FormUtils.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
-            FormUtils.SetNumericUpDownMinimumDelays(this);
+            FormHelper.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
+            FormHelper.SetNumericUpDownMinimumDelays(this);
             ConfigureMacroLanes();
             AddCommonResetButtonTooltip();
         }
@@ -244,8 +244,8 @@ namespace _4RTools.Forms
                 {
                     if (control is TextBox textBox)
                     {
-                        textBox.KeyDown += FormUtils.OnKeyDown;
-                        textBox.KeyPress += FormUtils.OnKeyPress;
+                        textBox.KeyDown += FormHelper.OnKeyDown;
+                        textBox.KeyPress += FormHelper.OnKeyPress;
                         textBox.TextChanged += this.OnTextChange;
                     }
 

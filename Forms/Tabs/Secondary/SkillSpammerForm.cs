@@ -17,7 +17,7 @@ namespace _4RTools.Forms
         {
             subject.Attach(this);
             InitializeComponent();
-            FormUtils.SetNumericUpDownMinimumDelays(this);
+            FormHelper.SetNumericUpDownMinimumDelays(this);
         }
 
         public void Update(ISubject subject)
@@ -40,7 +40,7 @@ namespace _4RTools.Forms
         private void InitializeApplicationForm()
         {
             RemoveHandlers();
-            FormUtils.ResetCheckboxForm(this);
+            FormHelper.ResetCheckboxForm(this);
             SetLegendDefaultValues();
             this.ahk = ProfileSingleton.GetCurrent().SkillSpammer;
             InitializeCheckAsThreeState();

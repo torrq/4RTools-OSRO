@@ -37,8 +37,8 @@ namespace _4RTools.Forms
             this.transferHelper = ProfileSingleton.GetCurrent().TransferHelper;
             this.txtTransferKey.Text = transferHelper.TransferKey.ToString();
 
-            this.txtTransferKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-            this.txtTransferKey.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
+            this.txtTransferKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormHelper.OnKeyDown);
+            this.txtTransferKey.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
             this.txtTransferKey.TextChanged += new EventHandler(OnTransferKeyChange);
             this.ActiveControl = null;
         }

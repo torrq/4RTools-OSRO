@@ -71,8 +71,8 @@ namespace _4RTools.Model
                     pb.Size = PICTUREBOX_SIZE;
                     _toolTip.SetToolTip(pb, skill.Name);
 
-                    textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormUtils.OnKeyDown);
-                    textBox.KeyPress += new KeyPressEventHandler(FormUtils.OnKeyPress);
+                    textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(FormHelper.OnKeyDown);
+                    textBox.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
                     textBox.TextChanged += new EventHandler(OnTextChange);
                     textBox.Size = TEXTBOX_SIZE;
                     textBox.Tag = ((int)skill.EffectStatusID);

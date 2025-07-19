@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 
 namespace _4RTools.Utils
 {
-    public static class OverweightMacro
+    public static class WeightLimitMacro
     {
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr GetForegroundWindow();

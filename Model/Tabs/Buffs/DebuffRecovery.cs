@@ -91,7 +91,7 @@ namespace _4RTools.Model
             {
                 buffMapping.Remove(status);
             }
-            if (FormUtils.IsValidKey(key))
+            if (FormHelper.IsValidKey(key))
             {
                 buffMapping.Add(status, key);
             }
@@ -111,7 +111,7 @@ namespace _4RTools.Model
         {
             if ((key != Key.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
             {
-                Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
+                Win32Interop.PostMessage(ClientSingleton.GetClient().Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
             }
         }
 
