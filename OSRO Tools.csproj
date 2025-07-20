@@ -434,11 +434,14 @@
     <Compile Include="Utils\Lists\AppConfig.cs" />
     <Compile Include="Utils\Lists\Constants.cs" />
     <Compile Include="Utils\Lists\EffectStatusIDs.cs" />
-    <Compile Include="Utils\FormHelper.cs" />
+    <Compile Include="Utils\UI\CharacterInfoLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utils\UI\FormHelper.cs" />
     <Compile Include="Utils\Win32Interop.cs" />
     <Compile Include="Utils\Lists\JobList.cs" />
     <Compile Include="Utils\KeyboardHook.cs" />
-    <Compile Include="Utils\TrayManager.cs" />
+    <Compile Include="Utils\UI\TrayManager.cs" />
     <Compile Include="Utils\Macros\WeightLimitMacro.cs" />
     <Compile Include="Utils\Macros\PotionManager.cs" />
     <Compile Include="Utils\Memory\GameProcessInfo.cs" />

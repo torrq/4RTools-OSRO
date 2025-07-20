@@ -240,8 +240,8 @@ namespace _4RTools.Forms
                 float processWidth = g.MeasureString(item.ProcessText, processCB.Font).Width + 2;
 
                 float contextWidth;
-                bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
-                                     (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
+                bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName)) &&
+                                     (string.IsNullOrEmpty(item.CurrentMap));
 
                 if (isNotLoggedIn)
                 {
@@ -294,8 +294,8 @@ namespace _4RTools.Forms
             e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             e.Graphics.DrawString(item.ProcessText, e.Font, foregroundBrush, e.Bounds.Left + 2, e.Bounds.Top + 2);
 
-            bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
-                                 (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -");
+            bool isNotLoggedIn = (string.IsNullOrEmpty(item.CharacterName)) &&
+                                 (string.IsNullOrEmpty(item.CurrentMap));
 
             int lineHeight = e.Font.Height;
             float xOffset = e.Bounds.Left + 10;
@@ -449,7 +449,6 @@ namespace _4RTools.Forms
         private void ProcessCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (processCB.SelectedIndex < 0) return;
-
             string selectedProcessString = (processCB.SelectedItem as GameProcessInfo)?.ProcessText;
             if (string.IsNullOrEmpty(selectedProcessString)) return;
 
@@ -465,38 +464,9 @@ namespace _4RTools.Forms
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
 
-            string characterName = client.ReadCharacterName() ?? "- -";
-            int currentLevel = (int)client.ReadCurrentLevel();
-            int currentJobLevel = (int)client.ReadCurrentJobLevel();
-            int currentJobId = (int)client.ReadCurrentJob();
-            int currentExpToLevel = (int)client.ReadCurrentExpToLevel();
-            int currentExp = (int)client.ReadCurrentExp();
-            string currentExpPercent;
-            if (currentExpToLevel > 0)
-            {
-                double ratio = (double)currentExp / currentExpToLevel;
-                currentExpPercent = $"{(ratio * 100):0.00}%";
-            }
-            else
-            {
-                currentExpPercent = "100%";
-            }
+            // Use the new method to update character info with formatting
+            characterInfoForm.UpdateCharacterInfo(client);
 
-            int currentHP = (int)client.ReadCurrentHp();
-            int currentMaxHP = (int)client.ReadMaxHp();
-            int currentSP = (int)client.ReadCurrentSp();
-            int currentMaxSP = (int)client.ReadMaxSp();
-
-            string jobName = JobList.GetNameById(currentJobId);
-
-            string clientDebugInfo =
-                $"Lv{currentLevel} / {jobName} / Lv{currentJobLevel} / Exp{currentExpPercent}\n" +
-                $"HP {currentHP} / {currentMaxHP} | SP {currentSP} / {currentMaxSP}";
-
-            characterInfoForm.CharacterNameLabel = client.ReadCharacterName() ?? "";
-            characterInfoForm.CharacterInfoLabel = clientDebugInfo;
-            characterInfoForm.CharacterMapLabel = client.ReadCurrentMap() ?? "";
-            characterInfoForm.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + (client.ReadCurrentMap() ?? "");
             subject.Notify(new Utils.Message(MessageCode.PROCESS_CHANGED, null));
         }
 
@@ -601,53 +571,63 @@ namespace _4RTools.Forms
                 {
                     if (p.MainWindowTitle != "" && ClientListSingleton.ExistsByProcessName(p.ProcessName))
                     {
-                        string processText = $"{p.ProcessName}.exe - {p.Id}";
-                        Client client = new Client(processText);
+                        try
+                        {
+                            string processText = $"{p.ProcessName}.exe - {p.Id}";
+                            Client client = new Client(processText);
 
-                        string characterName = client.ReadCharacterName() ?? "- -";
-                        string currentMap = client.ReadCurrentMap() ?? "- -";
+                            string characterName = client.ReadCharacterName();
+                            string currentMap = client.ReadCurrentMap();
+                            uint? level = client.ReadCurrentLevel();
+                            int currentLevel = (int)(level.HasValue ? level.Value : 0);
+                            uint? jobID = client.ReadCurrentJob();
+                            int currentJobId = (int)(jobID.HasValue ? jobID.Value : 0);
+                            uint? exp = client.ReadCurrentExp();
+                            int currentExp = (int)(exp.HasValue ? exp.Value : 0);
+                            uint? expToLevel = client.ReadCurrentExpToLevel();
+                            int currentExpToLevel = (int)(expToLevel.HasValue ? expToLevel.Value : 0);
+                            uint? HP = client.ReadCurrentHp();
+                            int currentHP = (int)(HP.HasValue ? HP.Value : 0);
+                            uint? maxHP = client.ReadMaxHp();
+                            int currentMaxHP = (int)(maxHP.HasValue ? maxHP.Value : 0);
+                            uint? SP = client.ReadCurrentSp();
+                            int currentSP = (int)(SP.HasValue ? SP.Value : 0);
+                            uint? maxSP = client.ReadMaxSp();
+                            int currentMaxSP = (int)(maxSP.HasValue ? maxSP.Value : 0);
+                            string jobName = JobList.GetNameById(currentJobId);
 
-                        uint? level = client.ReadCurrentLevel();
-                        int currentLevel = (int)(level.HasValue ? level.Value : 0);
-
-                        uint? jobID = client.ReadCurrentJob();
-                        int currentJobId = (int)(jobID.HasValue ? jobID.Value : 0);
-
-                        uint? exp = client.ReadCurrentExp();
-                        int currentExp = (int)(exp.HasValue ? exp.Value : 0);
-
-                        uint? expToLevel = client.ReadCurrentExpToLevel();
-                        int currentExpToLevel = (int)(expToLevel.HasValue ? expToLevel.Value : 0);
-
-                        uint? HP = client.ReadCurrentHp();
-                        int currentHP = (int)(HP.HasValue ? HP.Value : 0);
-
-                        uint? maxHP = client.ReadMaxHp();
-                        int currentMaxHP = (int)(maxHP.HasValue ? maxHP.Value : 0);
-
-                        uint? SP = client.ReadCurrentSp();
-                        int currentSP = (int)(SP.HasValue ? SP.Value : 0);
-
-                        uint? maxSP = client.ReadMaxSp();
-                        int currentMaxSP = (int)(maxSP.HasValue ? maxSP.Value : 0);
-
-                        string jobName = JobList.GetNameById(currentJobId);
-
-                        processItems.Add(new GameProcessInfo(processText, characterName, currentMap));
+                            processItems.Add(new GameProcessInfo(processText, characterName, currentMap));
+                        }
+                        catch (Exception ex)
+                        {
+                            DebugLogger.Warning($"Skipped process due to error: {p.ProcessName} ({p.Id}) - {ex.Message}");
+                        }
                     }
                 }
 
                 var sortedItems = processItems
                     .OrderBy(item =>
-                        (string.IsNullOrEmpty(item.CharacterName) || item.CharacterName == "- -") &&
-                        (string.IsNullOrEmpty(item.CurrentMap) || item.CurrentMap == "- -") ? 1 : 0)
-                    .ThenBy(item => item.CharacterName == "- -" ? "" : item.CharacterName)
+                        (string.IsNullOrEmpty(item.CharacterName)) &&
+                        (string.IsNullOrEmpty(item.CurrentMap)) ? 1 : 0)
                     .ThenBy(item =>
                     {
-                        string[] parts = item.ProcessText.Split('-');
-                        string idPart = parts.Length >= 2 ? parts.Last().Trim() : "-1";
-                        return int.TryParse(idPart, out int id) ? id : int.MaxValue;
+                        try
+                        {
+                            string[] parts = item.ProcessText.Split('-');
+                            if (parts.Length >= 2)
+                            {
+                                string idPart = parts.Last().Trim();
+                                if (int.TryParse(idPart, out int id))
+                                    return id;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            DebugLogger.Warning($"Failed to parse process ID from: {item.ProcessText}. Error: {ex.Message}");
+                        }
+                        return int.MaxValue;
                     });
+
 
                 foreach (var item in sortedItems)
                 {

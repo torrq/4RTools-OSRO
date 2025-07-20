@@ -1,4 +1,6 @@
-﻿namespace _4RTools.Forms
+﻿using _4RTools.Utils;
+
+namespace _4RTools.Forms
 {
     partial class CharacterInfo
     {
@@ -30,7 +32,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.characterNameLabel = new System.Windows.Forms.Label();
-            this.characterInfoLabel = new System.Windows.Forms.Label();
+            this.characterInfoLabel = new _4RTools.Utils.CharacterInfoLabel();
             this.characterMapLabel = new System.Windows.Forms.Label();
             this.MapLinkToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
@@ -49,7 +51,7 @@
             // characterInfoLabel
             // 
             this.characterInfoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.characterInfoLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.characterInfoLabel.Font = new System.Drawing.Font("Tahoma", 9, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.characterInfoLabel.ForeColor = System.Drawing.Color.Black;
             this.characterInfoLabel.Location = new System.Drawing.Point(-1, 23);
             this.characterInfoLabel.Margin = new System.Windows.Forms.Padding(0);
@@ -104,8 +106,8 @@
         #endregion
 
         private System.Windows.Forms.Label characterNameLabel;
-        private System.Windows.Forms.Label characterInfoLabel;
         private System.Windows.Forms.Label characterMapLabel;
+        private _4RTools.Utils.CharacterInfoLabel characterInfoLabel;
         private System.Windows.Forms.ToolTip MapLinkToolTip;
     }
 }
