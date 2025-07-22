@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GenericObjectDataSource
+    DisplayName="ClientDTO"
+    Version="1.0"
+    xmlns="urn:schemas-microsoft-com:xml-msdatasource"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TypeInfo>_ORTools.Model.ClientDTO, OSRO Tools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+</GenericObjectDataSource>

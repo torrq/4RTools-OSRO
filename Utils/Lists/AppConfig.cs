@@ -11,15 +11,8 @@ namespace _ORTools.Utils
         public static string Name = "OSRO Tools";
         public static string Version = "v1.0.8";
 
-#if MR_BUILD
-        public static int ServerMode = 0; // Mid-rate
-#elif HR_BUILD
-        public static int ServerMode = 1; // High-rate
-#elif LR_BUILD
-        public static int ServerMode = 2; // Low-rate
-#else
+        // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
         public static int ServerMode = 0;
-#endif
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";

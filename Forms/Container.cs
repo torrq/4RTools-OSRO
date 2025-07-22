@@ -14,7 +14,7 @@ namespace _ORTools.Forms
     {
         private Subject subject = new Subject();
         private string currentProfile;
-        List<ClientDTO> clients = new List<ClientDTO>();
+        private List<ClientDTO> clients = new List<ClientDTO>();
         private ToggleStateForm frmToggleApplication = new ToggleStateForm();
         private TrayManager trayManager;
         private DebugLogWindow debugLogWindow;
@@ -382,7 +382,6 @@ namespace _ORTools.Forms
             }
         }
 
-
         private void PositionDebugLogWindow()
         {
             if (debugLogWindow != null && !debugLogWindow.IsDisposed)
@@ -646,7 +645,6 @@ namespace _ORTools.Forms
             }
         }
 
-
         protected override void OnClosed(EventArgs e)
         {
             if (!isShuttingDown)
@@ -773,14 +771,17 @@ namespace _ORTools.Forms
                         LoadProfile(newProfileName);
                     }
                     break;
+
                 case MessageCode.SERVER_LIST_CHANGED:
                     this.RefreshProcessList();
                     DebugLogger.Info("Server list refreshed.");
                     break;
+
                 case MessageCode.CLICK_ICON_TRAY:
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                     break;
+
                 case MessageCode.DEBUG_MODE_CHANGED:
                     bool newDebugMode = (bool)((subject as Subject).Message.Data);
                     DebugLogger.Info($"Received DEBUG_MODE_CHANGED notification. New DebugMode: {newDebugMode}");
@@ -810,6 +811,7 @@ namespace _ORTools.Forms
                         debugLogWindow.Show();
                     }
                     break;
+
                 case MessageCode.SHUTDOWN_APPLICATION:
                     if (!isShuttingDown)
                     {
@@ -1013,7 +1015,7 @@ namespace _ORTools.Forms
             frm.Show();
         }
 
-        #endregion
+        #endregion Frames
     }
 
     /// <summary>

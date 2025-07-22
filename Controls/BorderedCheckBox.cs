@@ -71,6 +71,7 @@ namespace _ORTools.Controls
                 case CheckState.Checked:
                     DrawCheckMark(graphics, boxRect, markColor);
                     break;
+
                 case CheckState.Indeterminate:
                     DrawIndeterminateMark(graphics, boxRect);
                     break;
@@ -92,10 +93,12 @@ namespace _ORTools.Controls
                     return (AppConfig.CheckBoxCheckedBorderColor,
                            AppConfig.CheckBoxCheckedBorderColor,
                            Color.White);
+
                 case CheckState.Indeterminate:
                     return (AppConfig.CheckBoxIndeterminateBorderColor,
                            AppConfig.CheckBoxIndeterminateBorderColor,
                            Color.White);
+
                 default:
                     return (AppConfig.CheckBoxUncheckedBorderColor, Color.White, Color.White);
             }

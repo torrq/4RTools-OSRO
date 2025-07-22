@@ -408,7 +408,7 @@
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="assets\image\logos\applogo.psd" />
-    <None Include="Properties\DataSources\_4RTools.Model.ClientDTO.datasource" />
+    <None Include="Properties\DataSources\_ORTools.Model.ClientDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

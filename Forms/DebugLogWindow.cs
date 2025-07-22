@@ -78,18 +78,23 @@ namespace _ORTools.Forms
                 case DebugLogger.LogLevel.INFO:
                     defaultLineColor = AppConfig.LogColor_INFO;
                     break;
+
                 case DebugLogger.LogLevel.WARNING:
                     defaultLineColor = AppConfig.LogColor_WARNING;
                     break;
+
                 case DebugLogger.LogLevel.ERROR:
                     defaultLineColor = AppConfig.LogColor_ERROR;
                     break;
+
                 case DebugLogger.LogLevel.DEBUG:
                     defaultLineColor = AppConfig.LogColor_DEBUG;
                     break;
+
                 case DebugLogger.LogLevel.STATUS:
                     defaultLineColor = AppConfig.LogColor_STATUS;
                     break;
+
                 default:
                     defaultLineColor = debugConsole.ForeColor;
                     break;
