@@ -238,6 +238,7 @@ namespace _ORTools.Forms
             this.btnResetAtkDef1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetAtkDef1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAtkDef1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetAtkDef1.ForeColor = System.Drawing.Color.DarkRed;
             this.btnResetAtkDef1.Location = new System.Drawing.Point(521, 151);
             this.btnResetAtkDef1.Name = "btnResetAtkDef1";
             this.btnResetAtkDef1.Size = new System.Drawing.Size(61, 23);
@@ -663,6 +664,7 @@ namespace _ORTools.Forms
             this.btnResetAtkDef2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetAtkDef2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetAtkDef2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetAtkDef2.ForeColor = System.Drawing.Color.DarkRed;
             this.btnResetAtkDef2.Location = new System.Drawing.Point(521, 152);
             this.btnResetAtkDef2.Name = "btnResetAtkDef2";
             this.btnResetAtkDef2.Size = new System.Drawing.Size(61, 23);

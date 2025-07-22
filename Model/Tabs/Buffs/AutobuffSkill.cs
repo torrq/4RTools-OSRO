@@ -111,7 +111,7 @@ namespace _ORTools.Model
                 }
                 Thread.Sleep(300);
                 return 0;
-            });
+            }, "AutobuffSkill");
 
             return autobuffItemThread;
         }

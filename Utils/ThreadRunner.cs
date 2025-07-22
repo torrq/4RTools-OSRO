@@ -9,7 +9,7 @@ namespace _ORTools.Utils
         private readonly ManualResetEventSlim suspendEvent = new ManualResetEventSlim(true); // Initially set
         private volatile bool running = true;
 
-        public ThreadRunner(Func<int, int> toRun)
+        public ThreadRunner(Func<int, int> toRun, string name = "Unnamed ThreadRunner")
         {
             this.thread = new Thread(() =>
             {
@@ -22,7 +22,7 @@ namespace _ORTools.Utils
                     }
                     catch (Exception ex)
                     {
-                        DebugLogger.Error("[ThreadRunner Exception] Error while executing thread method: " + ex.Message);
+                        DebugLogger.Error($"[ThreadRunner Exception on '{Thread.CurrentThread.Name}'] Error while executing thread method: {ex.Message}");
                     }
                     finally
                     {
@@ -31,6 +31,7 @@ namespace _ORTools.Utils
                 }
             });
 
+            this.thread.Name = name;
             this.thread.IsBackground = true;
             this.thread.SetApartmentState(ApartmentState.STA);
         }

@@ -638,5 +638,25 @@ namespace _ORTools.Forms
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelMacro3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelMacro1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

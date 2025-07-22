@@ -702,7 +702,7 @@ namespace _ORTools.Forms
             }
             catch (Exception ex)
             {
-                DebugLogger.Error(ex, "Failed to shutdown application cleanly");
+                DebugLogger.Error($"Failed to shutdown application cleanly: {ex.Message}");
                 Environment.Exit(1);
             }
         }

@@ -118,6 +118,7 @@ namespace _ORTools.Forms
             this.btnResetAutobuff.BackColor = System.Drawing.Color.White;
             this.btnResetAutobuff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetAutobuff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetAutobuff.ForeColor = System.Drawing.Color.DarkRed;
             this.btnResetAutobuff.Location = new System.Drawing.Point(532, 8);
             this.btnResetAutobuff.Name = "btnResetAutobuff";
             this.btnResetAutobuff.Size = new System.Drawing.Size(60, 23);

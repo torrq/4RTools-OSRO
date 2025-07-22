@@ -136,7 +136,7 @@ namespace _ORTools.Model
             return JsonConvert.SerializeObject(this);
         }
 
-        private int MacroExecutionThread(Client roClient)
+        private int MacroThread(Client roClient)
         {
             foreach (ChainConfig chainConfig in this.ChainConfigs)
             {
@@ -185,7 +185,7 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new ThreadRunner((_) => MacroExecutionThread(roClient));
+                this.thread = new ThreadRunner((_) => MacroThread(roClient), "Macro");
                 ThreadRunner.Start(this.thread);
             }
         }

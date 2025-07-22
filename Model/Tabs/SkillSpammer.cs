@@ -71,7 +71,7 @@ namespace _ORTools.Model
                     ThreadRunner.Stop(this.thread);
                 }
 
-                this.thread = new ThreadRunner(_ => SkillSpammerThreadExecution(roClient));
+                this.thread = new ThreadRunner(_ => SkillSpammerThread(roClient), "SkillSpammer");
 
                 ThreadRunner.Start(this.thread);
 
@@ -79,7 +79,7 @@ namespace _ORTools.Model
             }
         }
 
-        private int SkillSpammerThreadExecution(Client roClient)
+        private int SkillSpammerThread(Client roClient)
         {
             if (AHKMode.Equals(COMPATIBILITY))
             {

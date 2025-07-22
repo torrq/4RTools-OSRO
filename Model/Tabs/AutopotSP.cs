@@ -68,12 +68,12 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new ThreadRunner(_ => AutopotThreadExecution(roClient));
+                this.thread = new ThreadRunner(_ => AutopotSPThread(roClient), "AutopotSP");
                 ThreadRunner.Start(this.thread);
             }
         }
 
-        private int AutopotThreadExecution(Client roClient)
+        private int AutopotSPThread(Client roClient)
         {
             bool potUsed = false;
 

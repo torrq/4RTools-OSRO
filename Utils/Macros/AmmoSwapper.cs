@@ -61,7 +61,7 @@ namespace _ORTools.Utils
             _proc = HookCallback; // Initialize the delegate here
             _hookID = SetHook(_proc);
 
-            thread = new ThreadRunner(_ => Run());
+            thread = new ThreadRunner(_ => Run(), "AmmoSwapper");
             ThreadRunner.Start(thread);
         }
 

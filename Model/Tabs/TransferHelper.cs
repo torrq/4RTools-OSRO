@@ -31,19 +31,19 @@ namespace _ORTools.Model
             return JsonConvert.SerializeObject(this);
         }
 
-        private int TransferExecutionThread(Client roClient)
+        private int TransferHelperThread(Client roClient)
         {
             var transferKey = ProfileSingleton.GetCurrent().TransferHelper.TransferKey;
             if (transferKey != Key.None && Keyboard.IsKeyDown(transferKey))
             {
-                AHKTransferBoost(roClient, new KeyConfig(transferKey, true), (Keys)Enum.Parse(typeof(Keys), transferKey.ToString()));
+                TransferHelperMacro(roClient, new KeyConfig(transferKey, true), (Keys)Enum.Parse(typeof(Keys), transferKey.ToString()));
                 return 0;
             }
             Thread.Sleep(100);
             return 0;
         }
 
-        private void AHKTransferBoost(Client roClient, KeyConfig config, Keys thisk)
+        private void TransferHelperMacro(Client roClient, KeyConfig config, Keys thisk)
         {
             Func<int, int> send_click = (evt) =>
             {
@@ -72,7 +72,7 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new ThreadRunner((_) => TransferExecutionThread(roClient));
+                this.thread = new ThreadRunner((_) => TransferHelperThread(roClient), "TransferHelper");
                 ThreadRunner.Start(this.thread);
             }
         }

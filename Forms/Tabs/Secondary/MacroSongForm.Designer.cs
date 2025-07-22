@@ -139,9 +139,9 @@ namespace _ORTools.Forms
             this.btnResMac4 = new System.Windows.Forms.Button();
             this.inTriggerMacro4 = new System.Windows.Forms.TextBox();
             this.delayMac4 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panelMacro1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -217,25 +217,27 @@ namespace _ORTools.Forms
             this.panelMacro1.Controls.Add(this.label4);
             this.panelMacro1.Controls.Add(this.label5);
             this.panelMacro1.Controls.Add(this.label6);
-            this.panelMacro1.Location = new System.Drawing.Point(12, 10);
+            this.panelMacro1.Location = new System.Drawing.Point(3, 10);
             this.panelMacro1.Name = "panelMacro1";
-            this.panelMacro1.Size = new System.Drawing.Size(600, 100);
+            this.panelMacro1.Size = new System.Drawing.Size(610, 100);
             this.panelMacro1.TabIndex = 21;
             this.panelMacro1.TabStop = false;
             this.panelMacro1.Text = "Song 1";
+            this.panelMacro1.Enter += new System.EventHandler(this.panelMacro1_Enter);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel1.Location = new System.Drawing.Point(122, 23);
+            this.panel1.Location = new System.Drawing.Point(119, 20);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2, 70);
             this.panel1.TabIndex = 289;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox9
             // 
             this.pictureBox9.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox9.Location = new System.Drawing.Point(372, 53);
+            this.pictureBox9.Location = new System.Drawing.Point(386, 50);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(11, 14);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -245,7 +247,7 @@ namespace _ORTools.Forms
             // pictureBox7
             // 
             this.pictureBox7.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox7.Location = new System.Drawing.Point(301, 52);
+            this.pictureBox7.Location = new System.Drawing.Point(309, 49);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(11, 14);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -255,7 +257,7 @@ namespace _ORTools.Forms
             // pictureBox8
             // 
             this.pictureBox8.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox8.Location = new System.Drawing.Point(331, 36);
+            this.pictureBox8.Location = new System.Drawing.Point(343, 34);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(20, 40);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -265,9 +267,10 @@ namespace _ORTools.Forms
             // in8mac1
             // 
             this.in8mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac1.Location = new System.Drawing.Point(354, 68);
+            this.in8mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in8mac1.Location = new System.Drawing.Point(364, 65);
             this.in8mac1.Name = "in8mac1";
-            this.in8mac1.Size = new System.Drawing.Size(47, 21);
+            this.in8mac1.Size = new System.Drawing.Size(55, 22);
             this.in8mac1.TabIndex = 285;
             this.in8mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac1.TextChanged += new System.EventHandler(this.In8mac1_TextChanged);
@@ -275,9 +278,10 @@ namespace _ORTools.Forms
             // in7mac1
             // 
             this.in7mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac1.Location = new System.Drawing.Point(354, 30);
+            this.in7mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in7mac1.Location = new System.Drawing.Point(364, 27);
             this.in7mac1.Name = "in7mac1";
-            this.in7mac1.Size = new System.Drawing.Size(47, 21);
+            this.in7mac1.Size = new System.Drawing.Size(55, 22);
             this.in7mac1.TabIndex = 284;
             this.in7mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac1.TextChanged += new System.EventHandler(this.In7mac1_TextChanged);
@@ -285,7 +289,7 @@ namespace _ORTools.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox1.Location = new System.Drawing.Point(231, 52);
+            this.pictureBox1.Location = new System.Drawing.Point(232, 49);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(11, 14);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -295,7 +299,7 @@ namespace _ORTools.Forms
             // pictureBox4
             // 
             this.pictureBox4.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox4.Location = new System.Drawing.Point(261, 36);
+            this.pictureBox4.Location = new System.Drawing.Point(266, 34);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(20, 40);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -305,7 +309,7 @@ namespace _ORTools.Forms
             // pictureBox2
             // 
             this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox2.Location = new System.Drawing.Point(160, 52);
+            this.pictureBox2.Location = new System.Drawing.Point(155, 49);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(11, 14);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -315,7 +319,7 @@ namespace _ORTools.Forms
             // pictureBox3
             // 
             this.pictureBox3.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox3.Location = new System.Drawing.Point(190, 36);
+            this.pictureBox3.Location = new System.Drawing.Point(189, 34);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -325,7 +329,7 @@ namespace _ORTools.Forms
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel3.Location = new System.Drawing.Point(416, 23);
+            this.panel3.Location = new System.Drawing.Point(433, 20);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 70);
             this.panel3.TabIndex = 279;
@@ -334,7 +338,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox6.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox6.Location = new System.Drawing.Point(435, 59);
+            this.pictureBox6.Location = new System.Drawing.Point(443, 62);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(25, 26);
             this.pictureBox6.TabIndex = 278;
@@ -343,9 +347,10 @@ namespace _ORTools.Forms
             // inInstrumentMacro1
             // 
             this.inInstrumentMacro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro1.Location = new System.Drawing.Point(465, 62);
+            this.inInstrumentMacro1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inInstrumentMacro1.Location = new System.Drawing.Point(469, 65);
             this.inInstrumentMacro1.Name = "inInstrumentMacro1";
-            this.inInstrumentMacro1.Size = new System.Drawing.Size(47, 21);
+            this.inInstrumentMacro1.Size = new System.Drawing.Size(55, 22);
             this.inInstrumentMacro1.TabIndex = 277;
             this.inInstrumentMacro1.Tag = "1:Instrument";
             this.inInstrumentMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -355,7 +360,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox5.BackgroundImage = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(434, 28);
+            this.pictureBox5.Location = new System.Drawing.Point(443, 24);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(25, 27);
             this.pictureBox5.TabIndex = 276;
@@ -364,9 +369,10 @@ namespace _ORTools.Forms
             // inDaggerMacro1
             // 
             this.inDaggerMacro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro1.Location = new System.Drawing.Point(465, 31);
+            this.inDaggerMacro1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inDaggerMacro1.Location = new System.Drawing.Point(469, 27);
             this.inDaggerMacro1.Name = "inDaggerMacro1";
-            this.inDaggerMacro1.Size = new System.Drawing.Size(47, 21);
+            this.inDaggerMacro1.Size = new System.Drawing.Size(55, 22);
             this.inDaggerMacro1.TabIndex = 211;
             this.inDaggerMacro1.Tag = "1:Dagger";
             this.inDaggerMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -376,9 +382,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac1.Location = new System.Drawing.Point(525, 44);
+            this.btnResMac1.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac1.Location = new System.Drawing.Point(543, 44);
             this.btnResMac1.Name = "btnResMac1";
-            this.btnResMac1.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac1.Size = new System.Drawing.Size(50, 23);
             this.btnResMac1.TabIndex = 210;
             this.btnResMac1.Text = "Reset";
             this.btnResMac1.UseVisualStyleBackColor = false;
@@ -387,9 +394,10 @@ namespace _ORTools.Forms
             // in6mac1
             // 
             this.in6mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac1.Location = new System.Drawing.Point(283, 67);
+            this.in6mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in6mac1.Location = new System.Drawing.Point(287, 64);
             this.in6mac1.Name = "in6mac1";
-            this.in6mac1.Size = new System.Drawing.Size(47, 21);
+            this.in6mac1.Size = new System.Drawing.Size(55, 22);
             this.in6mac1.TabIndex = 75;
             this.in6mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac1.TextChanged += new System.EventHandler(this.In6mac1_TextChanged);
@@ -397,9 +405,10 @@ namespace _ORTools.Forms
             // in5mac1
             // 
             this.in5mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac1.Location = new System.Drawing.Point(283, 29);
+            this.in5mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in5mac1.Location = new System.Drawing.Point(287, 26);
             this.in5mac1.Name = "in5mac1";
-            this.in5mac1.Size = new System.Drawing.Size(47, 21);
+            this.in5mac1.Size = new System.Drawing.Size(55, 22);
             this.in5mac1.TabIndex = 74;
             this.in5mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac1.TextChanged += new System.EventHandler(this.In5mac1_TextChanged);
@@ -407,9 +416,10 @@ namespace _ORTools.Forms
             // in4mac1
             // 
             this.in4mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac1.Location = new System.Drawing.Point(213, 67);
+            this.in4mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in4mac1.Location = new System.Drawing.Point(210, 64);
             this.in4mac1.Name = "in4mac1";
-            this.in4mac1.Size = new System.Drawing.Size(47, 21);
+            this.in4mac1.Size = new System.Drawing.Size(55, 22);
             this.in4mac1.TabIndex = 73;
             this.in4mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac1.TextChanged += new System.EventHandler(this.In4mac1_TextChanged);
@@ -417,9 +427,10 @@ namespace _ORTools.Forms
             // in3mac1
             // 
             this.in3mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac1.Location = new System.Drawing.Point(213, 29);
+            this.in3mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in3mac1.Location = new System.Drawing.Point(210, 26);
             this.in3mac1.Name = "in3mac1";
-            this.in3mac1.Size = new System.Drawing.Size(47, 21);
+            this.in3mac1.Size = new System.Drawing.Size(55, 22);
             this.in3mac1.TabIndex = 72;
             this.in3mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac1.TextChanged += new System.EventHandler(this.In3mac1_TextChanged);
@@ -427,9 +438,10 @@ namespace _ORTools.Forms
             // in2mac1
             // 
             this.in2mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac1.Location = new System.Drawing.Point(141, 67);
+            this.in2mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in2mac1.Location = new System.Drawing.Point(133, 64);
             this.in2mac1.Name = "in2mac1";
-            this.in2mac1.Size = new System.Drawing.Size(47, 21);
+            this.in2mac1.Size = new System.Drawing.Size(55, 22);
             this.in2mac1.TabIndex = 71;
             this.in2mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac1.TextChanged += new System.EventHandler(this.In2mac1_TextChanged);
@@ -437,9 +449,10 @@ namespace _ORTools.Forms
             // in1mac1
             // 
             this.in1mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac1.Location = new System.Drawing.Point(141, 29);
+            this.in1mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in1mac1.Location = new System.Drawing.Point(133, 26);
             this.in1mac1.Name = "in1mac1";
-            this.in1mac1.Size = new System.Drawing.Size(47, 21);
+            this.in1mac1.Size = new System.Drawing.Size(55, 22);
             this.in1mac1.TabIndex = 70;
             this.in1mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac1.TextChanged += new System.EventHandler(this.In1mac1_TextChanged);
@@ -447,9 +460,10 @@ namespace _ORTools.Forms
             // inTriggerMacro1
             // 
             this.inTriggerMacro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro1.Location = new System.Drawing.Point(41, 31);
+            this.inTriggerMacro1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inTriggerMacro1.Location = new System.Drawing.Point(44, 26);
             this.inTriggerMacro1.Name = "inTriggerMacro1";
-            this.inTriggerMacro1.Size = new System.Drawing.Size(47, 21);
+            this.inTriggerMacro1.Size = new System.Drawing.Size(55, 22);
             this.inTriggerMacro1.TabIndex = 69;
             this.inTriggerMacro1.Tag = "1:Trigger";
             this.inTriggerMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -458,41 +472,45 @@ namespace _ORTools.Forms
             // delayMac1
             // 
             this.delayMac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac1.Location = new System.Drawing.Point(41, 60);
+            this.delayMac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delayMac1.Location = new System.Drawing.Point(44, 64);
             this.delayMac1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.delayMac1.Name = "delayMac1";
-            this.delayMac1.Size = new System.Drawing.Size(47, 21);
+            this.delayMac1.Size = new System.Drawing.Size(47, 22);
             this.delayMac1.TabIndex = 68;
             this.delayMac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(90, 62);
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(92, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 13);
+            this.label4.Size = new System.Drawing.Size(22, 14);
             this.label4.TabIndex = 20;
             this.label4.Text = "ms";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 62);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(8, 67);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.Size = new System.Drawing.Size(36, 14);
             this.label5.TabIndex = 18;
             this.label5.Text = "Delay";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 35);
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(16, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 13);
+            this.label6.Size = new System.Drawing.Size(27, 14);
             this.label6.TabIndex = 16;
             this.label6.Text = "Key";
             // 
@@ -525,9 +543,9 @@ namespace _ORTools.Forms
             this.panelMacro2.Controls.Add(this.label1);
             this.panelMacro2.Controls.Add(this.label2);
             this.panelMacro2.Controls.Add(this.label3);
-            this.panelMacro2.Location = new System.Drawing.Point(12, 115);
+            this.panelMacro2.Location = new System.Drawing.Point(3, 118);
             this.panelMacro2.Name = "panelMacro2";
-            this.panelMacro2.Size = new System.Drawing.Size(600, 100);
+            this.panelMacro2.Size = new System.Drawing.Size(610, 100);
             this.panelMacro2.TabIndex = 68;
             this.panelMacro2.TabStop = false;
             this.panelMacro2.Text = "Song 2";
@@ -536,15 +554,16 @@ namespace _ORTools.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel2.Location = new System.Drawing.Point(122, 23);
+            this.panel2.Location = new System.Drawing.Point(119, 20);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 70);
             this.panel2.TabIndex = 304;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox12
             // 
             this.pictureBox12.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox12.Location = new System.Drawing.Point(372, 53);
+            this.pictureBox12.Location = new System.Drawing.Point(384, 50);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(11, 14);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -554,7 +573,7 @@ namespace _ORTools.Forms
             // pictureBox13
             // 
             this.pictureBox13.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox13.Location = new System.Drawing.Point(301, 52);
+            this.pictureBox13.Location = new System.Drawing.Point(307, 49);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(11, 14);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -564,7 +583,7 @@ namespace _ORTools.Forms
             // pictureBox14
             // 
             this.pictureBox14.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox14.Location = new System.Drawing.Point(331, 36);
+            this.pictureBox14.Location = new System.Drawing.Point(341, 34);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(20, 40);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -574,9 +593,10 @@ namespace _ORTools.Forms
             // in8mac2
             // 
             this.in8mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac2.Location = new System.Drawing.Point(354, 68);
+            this.in8mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in8mac2.Location = new System.Drawing.Point(362, 65);
             this.in8mac2.Name = "in8mac2";
-            this.in8mac2.Size = new System.Drawing.Size(47, 21);
+            this.in8mac2.Size = new System.Drawing.Size(55, 22);
             this.in8mac2.TabIndex = 300;
             this.in8mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac2.TextChanged += new System.EventHandler(this.In8mac2_TextChanged);
@@ -584,9 +604,10 @@ namespace _ORTools.Forms
             // in7mac2
             // 
             this.in7mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac2.Location = new System.Drawing.Point(354, 30);
+            this.in7mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in7mac2.Location = new System.Drawing.Point(362, 27);
             this.in7mac2.Name = "in7mac2";
-            this.in7mac2.Size = new System.Drawing.Size(47, 21);
+            this.in7mac2.Size = new System.Drawing.Size(55, 22);
             this.in7mac2.TabIndex = 299;
             this.in7mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac2.TextChanged += new System.EventHandler(this.In7mac2_TextChanged);
@@ -594,7 +615,7 @@ namespace _ORTools.Forms
             // pictureBox15
             // 
             this.pictureBox15.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox15.Location = new System.Drawing.Point(231, 52);
+            this.pictureBox15.Location = new System.Drawing.Point(226, 49);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(11, 14);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -604,7 +625,7 @@ namespace _ORTools.Forms
             // pictureBox16
             // 
             this.pictureBox16.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox16.Location = new System.Drawing.Point(261, 36);
+            this.pictureBox16.Location = new System.Drawing.Point(264, 34);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(20, 40);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -614,7 +635,7 @@ namespace _ORTools.Forms
             // pictureBox17
             // 
             this.pictureBox17.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox17.Location = new System.Drawing.Point(160, 52);
+            this.pictureBox17.Location = new System.Drawing.Point(152, 49);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(11, 14);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -624,7 +645,7 @@ namespace _ORTools.Forms
             // pictureBox18
             // 
             this.pictureBox18.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox18.Location = new System.Drawing.Point(190, 36);
+            this.pictureBox18.Location = new System.Drawing.Point(186, 34);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(20, 40);
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -634,9 +655,10 @@ namespace _ORTools.Forms
             // in6mac2
             // 
             this.in6mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac2.Location = new System.Drawing.Point(283, 67);
+            this.in6mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in6mac2.Location = new System.Drawing.Point(285, 64);
             this.in6mac2.Name = "in6mac2";
-            this.in6mac2.Size = new System.Drawing.Size(47, 21);
+            this.in6mac2.Size = new System.Drawing.Size(55, 22);
             this.in6mac2.TabIndex = 294;
             this.in6mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac2.TextChanged += new System.EventHandler(this.In6mac2_TextChanged);
@@ -644,9 +666,10 @@ namespace _ORTools.Forms
             // in5mac2
             // 
             this.in5mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac2.Location = new System.Drawing.Point(283, 29);
+            this.in5mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in5mac2.Location = new System.Drawing.Point(285, 26);
             this.in5mac2.Name = "in5mac2";
-            this.in5mac2.Size = new System.Drawing.Size(47, 21);
+            this.in5mac2.Size = new System.Drawing.Size(55, 22);
             this.in5mac2.TabIndex = 293;
             this.in5mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac2.TextChanged += new System.EventHandler(this.In5mac2_TextChanged);
@@ -654,9 +677,10 @@ namespace _ORTools.Forms
             // in4mac2
             // 
             this.in4mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac2.Location = new System.Drawing.Point(213, 67);
+            this.in4mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in4mac2.Location = new System.Drawing.Point(208, 64);
             this.in4mac2.Name = "in4mac2";
-            this.in4mac2.Size = new System.Drawing.Size(47, 21);
+            this.in4mac2.Size = new System.Drawing.Size(55, 22);
             this.in4mac2.TabIndex = 292;
             this.in4mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac2.TextChanged += new System.EventHandler(this.In4mac2_TextChanged);
@@ -664,9 +688,10 @@ namespace _ORTools.Forms
             // in3mac2
             // 
             this.in3mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac2.Location = new System.Drawing.Point(213, 29);
+            this.in3mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in3mac2.Location = new System.Drawing.Point(208, 26);
             this.in3mac2.Name = "in3mac2";
-            this.in3mac2.Size = new System.Drawing.Size(47, 21);
+            this.in3mac2.Size = new System.Drawing.Size(55, 22);
             this.in3mac2.TabIndex = 291;
             this.in3mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac2.TextChanged += new System.EventHandler(this.In3mac2_TextChanged);
@@ -674,9 +699,10 @@ namespace _ORTools.Forms
             // in2mac2
             // 
             this.in2mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac2.Location = new System.Drawing.Point(141, 67);
+            this.in2mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in2mac2.Location = new System.Drawing.Point(130, 64);
             this.in2mac2.Name = "in2mac2";
-            this.in2mac2.Size = new System.Drawing.Size(47, 21);
+            this.in2mac2.Size = new System.Drawing.Size(55, 22);
             this.in2mac2.TabIndex = 290;
             this.in2mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac2.TextChanged += new System.EventHandler(this.In2mac2_TextChanged);
@@ -684,9 +710,10 @@ namespace _ORTools.Forms
             // in1mac2
             // 
             this.in1mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac2.Location = new System.Drawing.Point(141, 29);
+            this.in1mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in1mac2.Location = new System.Drawing.Point(130, 26);
             this.in1mac2.Name = "in1mac2";
-            this.in1mac2.Size = new System.Drawing.Size(47, 21);
+            this.in1mac2.Size = new System.Drawing.Size(55, 22);
             this.in1mac2.TabIndex = 289;
             this.in1mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac2.TextChanged += new System.EventHandler(this.In1mac2_TextChanged);
@@ -694,7 +721,7 @@ namespace _ORTools.Forms
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel4.Location = new System.Drawing.Point(416, 25);
+            this.panel4.Location = new System.Drawing.Point(433, 20);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 70);
             this.panel4.TabIndex = 284;
@@ -703,7 +730,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox10.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox10.Location = new System.Drawing.Point(435, 61);
+            this.pictureBox10.Location = new System.Drawing.Point(443, 62);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(25, 26);
             this.pictureBox10.TabIndex = 283;
@@ -713,9 +740,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac2.Location = new System.Drawing.Point(525, 44);
+            this.btnResMac2.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac2.Location = new System.Drawing.Point(543, 44);
             this.btnResMac2.Name = "btnResMac2";
-            this.btnResMac2.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac2.Size = new System.Drawing.Size(50, 23);
             this.btnResMac2.TabIndex = 209;
             this.btnResMac2.Text = "Reset";
             this.btnResMac2.UseVisualStyleBackColor = false;
@@ -723,9 +751,10 @@ namespace _ORTools.Forms
             // inInstrumentMacro2
             // 
             this.inInstrumentMacro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro2.Location = new System.Drawing.Point(465, 64);
+            this.inInstrumentMacro2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inInstrumentMacro2.Location = new System.Drawing.Point(469, 65);
             this.inInstrumentMacro2.Name = "inInstrumentMacro2";
-            this.inInstrumentMacro2.Size = new System.Drawing.Size(47, 21);
+            this.inInstrumentMacro2.Size = new System.Drawing.Size(55, 22);
             this.inInstrumentMacro2.TabIndex = 282;
             this.inInstrumentMacro2.Tag = "2:Instrument";
             this.inInstrumentMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -734,9 +763,10 @@ namespace _ORTools.Forms
             // inTriggerMacro2
             // 
             this.inTriggerMacro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro2.Location = new System.Drawing.Point(41, 33);
+            this.inTriggerMacro2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inTriggerMacro2.Location = new System.Drawing.Point(44, 26);
             this.inTriggerMacro2.Name = "inTriggerMacro2";
-            this.inTriggerMacro2.Size = new System.Drawing.Size(47, 21);
+            this.inTriggerMacro2.Size = new System.Drawing.Size(55, 22);
             this.inTriggerMacro2.TabIndex = 70;
             this.inTriggerMacro2.Tag = "2:Trigger";
             this.inTriggerMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -746,7 +776,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox11.BackgroundImage = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox11.Location = new System.Drawing.Point(434, 30);
+            this.pictureBox11.Location = new System.Drawing.Point(443, 24);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(25, 27);
             this.pictureBox11.TabIndex = 281;
@@ -755,23 +785,25 @@ namespace _ORTools.Forms
             // delayMac2
             // 
             this.delayMac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac2.Location = new System.Drawing.Point(41, 62);
+            this.delayMac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delayMac2.Location = new System.Drawing.Point(44, 64);
             this.delayMac2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.delayMac2.Name = "delayMac2";
-            this.delayMac2.Size = new System.Drawing.Size(47, 21);
+            this.delayMac2.Size = new System.Drawing.Size(47, 22);
             this.delayMac2.TabIndex = 69;
             this.delayMac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // inDaggerMacro2
             // 
             this.inDaggerMacro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro2.Location = new System.Drawing.Point(465, 33);
+            this.inDaggerMacro2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inDaggerMacro2.Location = new System.Drawing.Point(469, 27);
             this.inDaggerMacro2.Name = "inDaggerMacro2";
-            this.inDaggerMacro2.Size = new System.Drawing.Size(47, 21);
+            this.inDaggerMacro2.Size = new System.Drawing.Size(55, 22);
             this.inDaggerMacro2.TabIndex = 280;
             this.inDaggerMacro2.Tag = "2:Dagger";
             this.inDaggerMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -780,27 +812,30 @@ namespace _ORTools.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(90, 64);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(92, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.Size = new System.Drawing.Size(22, 14);
             this.label1.TabIndex = 20;
             this.label1.Text = "ms";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 64);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(36, 14);
             this.label2.TabIndex = 18;
             this.label2.Text = "Delay";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 37);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.Size = new System.Drawing.Size(27, 14);
             this.label3.TabIndex = 16;
             this.label3.Text = "Key";
             // 
@@ -833,17 +868,18 @@ namespace _ORTools.Forms
             this.panelMacro3.Controls.Add(this.label7);
             this.panelMacro3.Controls.Add(this.label8);
             this.panelMacro3.Controls.Add(this.label9);
-            this.panelMacro3.Location = new System.Drawing.Point(12, 220);
+            this.panelMacro3.Location = new System.Drawing.Point(3, 228);
             this.panelMacro3.Name = "panelMacro3";
-            this.panelMacro3.Size = new System.Drawing.Size(600, 100);
+            this.panelMacro3.Size = new System.Drawing.Size(610, 100);
             this.panelMacro3.TabIndex = 68;
             this.panelMacro3.TabStop = false;
             this.panelMacro3.Text = "Song 3";
+            this.panelMacro3.Enter += new System.EventHandler(this.panelMacro3_Enter);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel5.Location = new System.Drawing.Point(122, 23);
+            this.panel5.Location = new System.Drawing.Point(119, 20);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(2, 70);
             this.panel5.TabIndex = 319;
@@ -851,7 +887,7 @@ namespace _ORTools.Forms
             // pictureBox21
             // 
             this.pictureBox21.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox21.Location = new System.Drawing.Point(372, 53);
+            this.pictureBox21.Location = new System.Drawing.Point(386, 50);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(11, 14);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -861,7 +897,7 @@ namespace _ORTools.Forms
             // pictureBox22
             // 
             this.pictureBox22.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox22.Location = new System.Drawing.Point(301, 52);
+            this.pictureBox22.Location = new System.Drawing.Point(309, 49);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(11, 14);
             this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -871,7 +907,7 @@ namespace _ORTools.Forms
             // pictureBox23
             // 
             this.pictureBox23.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox23.Location = new System.Drawing.Point(331, 36);
+            this.pictureBox23.Location = new System.Drawing.Point(343, 34);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(20, 40);
             this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -881,9 +917,10 @@ namespace _ORTools.Forms
             // in8mac3
             // 
             this.in8mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac3.Location = new System.Drawing.Point(354, 68);
+            this.in8mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in8mac3.Location = new System.Drawing.Point(364, 65);
             this.in8mac3.Name = "in8mac3";
-            this.in8mac3.Size = new System.Drawing.Size(47, 21);
+            this.in8mac3.Size = new System.Drawing.Size(55, 22);
             this.in8mac3.TabIndex = 315;
             this.in8mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac3.TextChanged += new System.EventHandler(this.In8mac3_TextChanged);
@@ -891,9 +928,10 @@ namespace _ORTools.Forms
             // in7mac3
             // 
             this.in7mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac3.Location = new System.Drawing.Point(354, 30);
+            this.in7mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in7mac3.Location = new System.Drawing.Point(364, 27);
             this.in7mac3.Name = "in7mac3";
-            this.in7mac3.Size = new System.Drawing.Size(47, 21);
+            this.in7mac3.Size = new System.Drawing.Size(55, 22);
             this.in7mac3.TabIndex = 314;
             this.in7mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac3.TextChanged += new System.EventHandler(this.In7mac3_TextChanged);
@@ -901,7 +939,7 @@ namespace _ORTools.Forms
             // pictureBox24
             // 
             this.pictureBox24.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox24.Location = new System.Drawing.Point(231, 52);
+            this.pictureBox24.Location = new System.Drawing.Point(232, 49);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(11, 14);
             this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -911,7 +949,7 @@ namespace _ORTools.Forms
             // pictureBox25
             // 
             this.pictureBox25.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox25.Location = new System.Drawing.Point(261, 36);
+            this.pictureBox25.Location = new System.Drawing.Point(266, 34);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(20, 40);
             this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -921,7 +959,7 @@ namespace _ORTools.Forms
             // pictureBox26
             // 
             this.pictureBox26.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox26.Location = new System.Drawing.Point(160, 52);
+            this.pictureBox26.Location = new System.Drawing.Point(155, 49);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(11, 14);
             this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -931,7 +969,7 @@ namespace _ORTools.Forms
             // pictureBox27
             // 
             this.pictureBox27.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox27.Location = new System.Drawing.Point(190, 36);
+            this.pictureBox27.Location = new System.Drawing.Point(189, 34);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(20, 40);
             this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -941,9 +979,10 @@ namespace _ORTools.Forms
             // in6mac3
             // 
             this.in6mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac3.Location = new System.Drawing.Point(283, 67);
+            this.in6mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in6mac3.Location = new System.Drawing.Point(287, 64);
             this.in6mac3.Name = "in6mac3";
-            this.in6mac3.Size = new System.Drawing.Size(47, 21);
+            this.in6mac3.Size = new System.Drawing.Size(55, 22);
             this.in6mac3.TabIndex = 309;
             this.in6mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac3.TextChanged += new System.EventHandler(this.In6mac3_TextChanged);
@@ -951,9 +990,10 @@ namespace _ORTools.Forms
             // in5mac3
             // 
             this.in5mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac3.Location = new System.Drawing.Point(283, 29);
+            this.in5mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in5mac3.Location = new System.Drawing.Point(287, 26);
             this.in5mac3.Name = "in5mac3";
-            this.in5mac3.Size = new System.Drawing.Size(47, 21);
+            this.in5mac3.Size = new System.Drawing.Size(55, 22);
             this.in5mac3.TabIndex = 308;
             this.in5mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac3.TextChanged += new System.EventHandler(this.In5mac3_TextChanged);
@@ -961,9 +1001,10 @@ namespace _ORTools.Forms
             // in4mac3
             // 
             this.in4mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac3.Location = new System.Drawing.Point(213, 67);
+            this.in4mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in4mac3.Location = new System.Drawing.Point(210, 64);
             this.in4mac3.Name = "in4mac3";
-            this.in4mac3.Size = new System.Drawing.Size(47, 21);
+            this.in4mac3.Size = new System.Drawing.Size(55, 22);
             this.in4mac3.TabIndex = 307;
             this.in4mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac3.TextChanged += new System.EventHandler(this.In4mac3_TextChanged);
@@ -971,9 +1012,10 @@ namespace _ORTools.Forms
             // in3mac3
             // 
             this.in3mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac3.Location = new System.Drawing.Point(213, 29);
+            this.in3mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in3mac3.Location = new System.Drawing.Point(210, 26);
             this.in3mac3.Name = "in3mac3";
-            this.in3mac3.Size = new System.Drawing.Size(47, 21);
+            this.in3mac3.Size = new System.Drawing.Size(55, 22);
             this.in3mac3.TabIndex = 306;
             this.in3mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac3.TextChanged += new System.EventHandler(this.In3mac3_TextChanged);
@@ -981,9 +1023,10 @@ namespace _ORTools.Forms
             // in2mac3
             // 
             this.in2mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac3.Location = new System.Drawing.Point(141, 67);
+            this.in2mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in2mac3.Location = new System.Drawing.Point(133, 64);
             this.in2mac3.Name = "in2mac3";
-            this.in2mac3.Size = new System.Drawing.Size(47, 21);
+            this.in2mac3.Size = new System.Drawing.Size(55, 22);
             this.in2mac3.TabIndex = 305;
             this.in2mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac3.TextChanged += new System.EventHandler(this.In2mac3_TextChanged);
@@ -991,9 +1034,10 @@ namespace _ORTools.Forms
             // in1mac3
             // 
             this.in1mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac3.Location = new System.Drawing.Point(141, 29);
+            this.in1mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in1mac3.Location = new System.Drawing.Point(133, 26);
             this.in1mac3.Name = "in1mac3";
-            this.in1mac3.Size = new System.Drawing.Size(47, 21);
+            this.in1mac3.Size = new System.Drawing.Size(55, 22);
             this.in1mac3.TabIndex = 304;
             this.in1mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac3.TextChanged += new System.EventHandler(this.In1mac3_TextChanged);
@@ -1001,7 +1045,7 @@ namespace _ORTools.Forms
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel6.Location = new System.Drawing.Point(416, 22);
+            this.panel6.Location = new System.Drawing.Point(433, 20);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(2, 70);
             this.panel6.TabIndex = 289;
@@ -1010,7 +1054,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox19.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
             this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox19.Location = new System.Drawing.Point(435, 58);
+            this.pictureBox19.Location = new System.Drawing.Point(443, 62);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(25, 26);
             this.pictureBox19.TabIndex = 288;
@@ -1019,9 +1063,10 @@ namespace _ORTools.Forms
             // inInstrumentMacro3
             // 
             this.inInstrumentMacro3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro3.Location = new System.Drawing.Point(465, 61);
+            this.inInstrumentMacro3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inInstrumentMacro3.Location = new System.Drawing.Point(469, 65);
             this.inInstrumentMacro3.Name = "inInstrumentMacro3";
-            this.inInstrumentMacro3.Size = new System.Drawing.Size(47, 21);
+            this.inInstrumentMacro3.Size = new System.Drawing.Size(55, 22);
             this.inInstrumentMacro3.TabIndex = 287;
             this.inInstrumentMacro3.Tag = "3:Instrument";
             this.inInstrumentMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1031,7 +1076,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox20.BackgroundImage = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox20.Location = new System.Drawing.Point(434, 27);
+            this.pictureBox20.Location = new System.Drawing.Point(443, 24);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(25, 27);
             this.pictureBox20.TabIndex = 286;
@@ -1040,9 +1085,10 @@ namespace _ORTools.Forms
             // inDaggerMacro3
             // 
             this.inDaggerMacro3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro3.Location = new System.Drawing.Point(465, 30);
+            this.inDaggerMacro3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inDaggerMacro3.Location = new System.Drawing.Point(469, 27);
             this.inDaggerMacro3.Name = "inDaggerMacro3";
-            this.inDaggerMacro3.Size = new System.Drawing.Size(47, 21);
+            this.inDaggerMacro3.Size = new System.Drawing.Size(55, 22);
             this.inDaggerMacro3.TabIndex = 285;
             this.inDaggerMacro3.Tag = "3:Dagger";
             this.inDaggerMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1052,9 +1098,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac3.Location = new System.Drawing.Point(525, 44);
+            this.btnResMac3.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac3.Location = new System.Drawing.Point(543, 44);
             this.btnResMac3.Name = "btnResMac3";
-            this.btnResMac3.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac3.Size = new System.Drawing.Size(50, 23);
             this.btnResMac3.TabIndex = 208;
             this.btnResMac3.Text = "Reset";
             this.btnResMac3.UseVisualStyleBackColor = false;
@@ -1063,9 +1110,10 @@ namespace _ORTools.Forms
             // inTriggerMacro3
             // 
             this.inTriggerMacro3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro3.Location = new System.Drawing.Point(41, 30);
+            this.inTriggerMacro3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inTriggerMacro3.Location = new System.Drawing.Point(44, 26);
             this.inTriggerMacro3.Name = "inTriggerMacro3";
-            this.inTriggerMacro3.Size = new System.Drawing.Size(47, 21);
+            this.inTriggerMacro3.Size = new System.Drawing.Size(55, 22);
             this.inTriggerMacro3.TabIndex = 71;
             this.inTriggerMacro3.Tag = "3:Trigger";
             this.inTriggerMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1074,41 +1122,45 @@ namespace _ORTools.Forms
             // delayMac3
             // 
             this.delayMac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac3.Location = new System.Drawing.Point(41, 59);
+            this.delayMac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delayMac3.Location = new System.Drawing.Point(44, 64);
             this.delayMac3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.delayMac3.Name = "delayMac3";
-            this.delayMac3.Size = new System.Drawing.Size(47, 21);
+            this.delayMac3.Size = new System.Drawing.Size(47, 22);
             this.delayMac3.TabIndex = 70;
             this.delayMac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(90, 61);
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(92, 67);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.Size = new System.Drawing.Size(22, 14);
             this.label7.TabIndex = 20;
             this.label7.Text = "ms";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 61);
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(8, 67);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.Size = new System.Drawing.Size(36, 14);
             this.label8.TabIndex = 18;
             this.label8.Text = "Delay";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 34);
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(16, 27);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 13);
+            this.label9.Size = new System.Drawing.Size(27, 14);
             this.label9.TabIndex = 16;
             this.label9.Text = "Key";
             // 
@@ -1141,9 +1193,9 @@ namespace _ORTools.Forms
             this.panelMacro4.Controls.Add(this.label10);
             this.panelMacro4.Controls.Add(this.label11);
             this.panelMacro4.Controls.Add(this.label12);
-            this.panelMacro4.Location = new System.Drawing.Point(12, 325);
+            this.panelMacro4.Location = new System.Drawing.Point(3, 338);
             this.panelMacro4.Name = "panelMacro4";
-            this.panelMacro4.Size = new System.Drawing.Size(600, 100);
+            this.panelMacro4.Size = new System.Drawing.Size(610, 100);
             this.panelMacro4.TabIndex = 68;
             this.panelMacro4.TabStop = false;
             this.panelMacro4.Text = "Song 4";
@@ -1152,7 +1204,7 @@ namespace _ORTools.Forms
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel7.Location = new System.Drawing.Point(122, 23);
+            this.panel7.Location = new System.Drawing.Point(119, 20);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(2, 70);
             this.panel7.TabIndex = 339;
@@ -1160,7 +1212,7 @@ namespace _ORTools.Forms
             // pictureBox28
             // 
             this.pictureBox28.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox28.Location = new System.Drawing.Point(372, 52);
+            this.pictureBox28.Location = new System.Drawing.Point(386, 49);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(11, 14);
             this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1170,7 +1222,7 @@ namespace _ORTools.Forms
             // pictureBox29
             // 
             this.pictureBox29.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox29.Location = new System.Drawing.Point(301, 51);
+            this.pictureBox29.Location = new System.Drawing.Point(309, 48);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(11, 14);
             this.pictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1180,7 +1232,7 @@ namespace _ORTools.Forms
             // pictureBox30
             // 
             this.pictureBox30.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox30.Location = new System.Drawing.Point(331, 36);
+            this.pictureBox30.Location = new System.Drawing.Point(343, 34);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(20, 40);
             this.pictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1190,9 +1242,10 @@ namespace _ORTools.Forms
             // in8mac4
             // 
             this.in8mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac4.Location = new System.Drawing.Point(354, 67);
+            this.in8mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in8mac4.Location = new System.Drawing.Point(364, 64);
             this.in8mac4.Name = "in8mac4";
-            this.in8mac4.Size = new System.Drawing.Size(47, 21);
+            this.in8mac4.Size = new System.Drawing.Size(55, 22);
             this.in8mac4.TabIndex = 335;
             this.in8mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in8mac4.TextChanged += new System.EventHandler(this.In8mac4_TextChanged);
@@ -1200,9 +1253,10 @@ namespace _ORTools.Forms
             // in7mac4
             // 
             this.in7mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac4.Location = new System.Drawing.Point(354, 29);
+            this.in7mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in7mac4.Location = new System.Drawing.Point(364, 26);
             this.in7mac4.Name = "in7mac4";
-            this.in7mac4.Size = new System.Drawing.Size(47, 21);
+            this.in7mac4.Size = new System.Drawing.Size(55, 22);
             this.in7mac4.TabIndex = 334;
             this.in7mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in7mac4.TextChanged += new System.EventHandler(this.In7mac4_TextChanged);
@@ -1210,7 +1264,7 @@ namespace _ORTools.Forms
             // pictureBox31
             // 
             this.pictureBox31.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox31.Location = new System.Drawing.Point(231, 52);
+            this.pictureBox31.Location = new System.Drawing.Point(232, 49);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(11, 14);
             this.pictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1220,7 +1274,7 @@ namespace _ORTools.Forms
             // pictureBox32
             // 
             this.pictureBox32.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox32.Location = new System.Drawing.Point(261, 36);
+            this.pictureBox32.Location = new System.Drawing.Point(266, 34);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(20, 40);
             this.pictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1230,7 +1284,7 @@ namespace _ORTools.Forms
             // pictureBox33
             // 
             this.pictureBox33.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
-            this.pictureBox33.Location = new System.Drawing.Point(160, 52);
+            this.pictureBox33.Location = new System.Drawing.Point(155, 49);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(11, 14);
             this.pictureBox33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1240,7 +1294,7 @@ namespace _ORTools.Forms
             // pictureBox34
             // 
             this.pictureBox34.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
-            this.pictureBox34.Location = new System.Drawing.Point(190, 36);
+            this.pictureBox34.Location = new System.Drawing.Point(189, 34);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(20, 40);
             this.pictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1250,9 +1304,10 @@ namespace _ORTools.Forms
             // in6mac4
             // 
             this.in6mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac4.Location = new System.Drawing.Point(283, 66);
+            this.in6mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in6mac4.Location = new System.Drawing.Point(287, 63);
             this.in6mac4.Name = "in6mac4";
-            this.in6mac4.Size = new System.Drawing.Size(47, 21);
+            this.in6mac4.Size = new System.Drawing.Size(55, 22);
             this.in6mac4.TabIndex = 329;
             this.in6mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in6mac4.TextChanged += new System.EventHandler(this.In6mac4_TextChanged);
@@ -1260,9 +1315,10 @@ namespace _ORTools.Forms
             // in5mac4
             // 
             this.in5mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac4.Location = new System.Drawing.Point(283, 28);
+            this.in5mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in5mac4.Location = new System.Drawing.Point(287, 25);
             this.in5mac4.Name = "in5mac4";
-            this.in5mac4.Size = new System.Drawing.Size(47, 21);
+            this.in5mac4.Size = new System.Drawing.Size(55, 22);
             this.in5mac4.TabIndex = 328;
             this.in5mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in5mac4.TextChanged += new System.EventHandler(this.In5mac4_TextChanged);
@@ -1270,9 +1326,10 @@ namespace _ORTools.Forms
             // in4mac4
             // 
             this.in4mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac4.Location = new System.Drawing.Point(213, 67);
+            this.in4mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in4mac4.Location = new System.Drawing.Point(210, 64);
             this.in4mac4.Name = "in4mac4";
-            this.in4mac4.Size = new System.Drawing.Size(47, 21);
+            this.in4mac4.Size = new System.Drawing.Size(55, 22);
             this.in4mac4.TabIndex = 327;
             this.in4mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in4mac4.TextChanged += new System.EventHandler(this.In4mac4_TextChanged);
@@ -1280,9 +1337,10 @@ namespace _ORTools.Forms
             // in3mac4
             // 
             this.in3mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac4.Location = new System.Drawing.Point(213, 29);
+            this.in3mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in3mac4.Location = new System.Drawing.Point(210, 26);
             this.in3mac4.Name = "in3mac4";
-            this.in3mac4.Size = new System.Drawing.Size(47, 21);
+            this.in3mac4.Size = new System.Drawing.Size(55, 22);
             this.in3mac4.TabIndex = 326;
             this.in3mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in3mac4.TextChanged += new System.EventHandler(this.In3mac4_TextChanged);
@@ -1290,9 +1348,10 @@ namespace _ORTools.Forms
             // in2mac4
             // 
             this.in2mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac4.Location = new System.Drawing.Point(141, 67);
+            this.in2mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in2mac4.Location = new System.Drawing.Point(133, 64);
             this.in2mac4.Name = "in2mac4";
-            this.in2mac4.Size = new System.Drawing.Size(47, 21);
+            this.in2mac4.Size = new System.Drawing.Size(55, 22);
             this.in2mac4.TabIndex = 325;
             this.in2mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in2mac4.TextChanged += new System.EventHandler(this.In2mac4_TextChanged);
@@ -1300,9 +1359,10 @@ namespace _ORTools.Forms
             // in1mac4
             // 
             this.in1mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac4.Location = new System.Drawing.Point(141, 29);
+            this.in1mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.in1mac4.Location = new System.Drawing.Point(133, 26);
             this.in1mac4.Name = "in1mac4";
-            this.in1mac4.Size = new System.Drawing.Size(47, 21);
+            this.in1mac4.Size = new System.Drawing.Size(55, 22);
             this.in1mac4.TabIndex = 324;
             this.in1mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.in1mac4.TextChanged += new System.EventHandler(this.In1mac4_TextChanged);
@@ -1310,7 +1370,7 @@ namespace _ORTools.Forms
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(231)))), ((int)(((byte)(247)))));
-            this.panel8.Location = new System.Drawing.Point(416, 21);
+            this.panel8.Location = new System.Drawing.Point(433, 20);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(2, 70);
             this.panel8.TabIndex = 323;
@@ -1319,7 +1379,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox35.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
             this.pictureBox35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox35.Location = new System.Drawing.Point(435, 57);
+            this.pictureBox35.Location = new System.Drawing.Point(443, 61);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(25, 26);
             this.pictureBox35.TabIndex = 322;
@@ -1328,9 +1388,10 @@ namespace _ORTools.Forms
             // inInstrumentMacro4
             // 
             this.inInstrumentMacro4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro4.Location = new System.Drawing.Point(465, 60);
+            this.inInstrumentMacro4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inInstrumentMacro4.Location = new System.Drawing.Point(469, 64);
             this.inInstrumentMacro4.Name = "inInstrumentMacro4";
-            this.inInstrumentMacro4.Size = new System.Drawing.Size(47, 21);
+            this.inInstrumentMacro4.Size = new System.Drawing.Size(55, 22);
             this.inInstrumentMacro4.TabIndex = 321;
             this.inInstrumentMacro4.Tag = "4:Instrument";
             this.inInstrumentMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1340,7 +1401,7 @@ namespace _ORTools.Forms
             // 
             this.pictureBox36.BackgroundImage = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox36.Location = new System.Drawing.Point(434, 26);
+            this.pictureBox36.Location = new System.Drawing.Point(443, 23);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(25, 27);
             this.pictureBox36.TabIndex = 320;
@@ -1349,9 +1410,10 @@ namespace _ORTools.Forms
             // inDaggerMacro4
             // 
             this.inDaggerMacro4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro4.Location = new System.Drawing.Point(465, 29);
+            this.inDaggerMacro4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inDaggerMacro4.Location = new System.Drawing.Point(469, 26);
             this.inDaggerMacro4.Name = "inDaggerMacro4";
-            this.inDaggerMacro4.Size = new System.Drawing.Size(47, 21);
+            this.inDaggerMacro4.Size = new System.Drawing.Size(55, 22);
             this.inDaggerMacro4.TabIndex = 319;
             this.inDaggerMacro4.Tag = "4:Dagger";
             this.inDaggerMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1360,9 +1422,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac4.Location = new System.Drawing.Point(525, 43);
+            this.btnResMac4.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac4.Location = new System.Drawing.Point(543, 44);
             this.btnResMac4.Name = "btnResMac4";
-            this.btnResMac4.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac4.Size = new System.Drawing.Size(50, 23);
             this.btnResMac4.TabIndex = 207;
             this.btnResMac4.Text = "Reset";
             this.btnResMac4.UseVisualStyleBackColor = false;
@@ -1370,9 +1433,10 @@ namespace _ORTools.Forms
             // inTriggerMacro4
             // 
             this.inTriggerMacro4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro4.Location = new System.Drawing.Point(41, 29);
+            this.inTriggerMacro4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inTriggerMacro4.Location = new System.Drawing.Point(44, 26);
             this.inTriggerMacro4.Name = "inTriggerMacro4";
-            this.inTriggerMacro4.Size = new System.Drawing.Size(47, 21);
+            this.inTriggerMacro4.Size = new System.Drawing.Size(55, 22);
             this.inTriggerMacro4.TabIndex = 72;
             this.inTriggerMacro4.Tag = "4:Trigger";
             this.inTriggerMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1381,43 +1445,47 @@ namespace _ORTools.Forms
             // delayMac4
             // 
             this.delayMac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac4.Location = new System.Drawing.Point(41, 58);
+            this.delayMac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delayMac4.Location = new System.Drawing.Point(44, 64);
             this.delayMac4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.delayMac4.Name = "delayMac4";
-            this.delayMac4.Size = new System.Drawing.Size(47, 21);
+            this.delayMac4.Size = new System.Drawing.Size(47, 22);
             this.delayMac4.TabIndex = 71;
             this.delayMac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(90, 60);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(20, 13);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "ms";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 60);
+            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(8, 67);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.Size = new System.Drawing.Size(36, 14);
             this.label11.TabIndex = 18;
             this.label11.Text = "Delay";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 33);
+            this.label12.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(16, 27);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(25, 13);
+            this.label12.Size = new System.Drawing.Size(27, 14);
             this.label12.TabIndex = 16;
             this.label12.Text = "Key";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(92, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(22, 14);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "ms";
             // 
             // MacroSongForm
             // 
@@ -1425,7 +1493,7 @@ namespace _ORTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(625, 450);
+            this.ClientSize = new System.Drawing.Size(617, 450);
             this.Controls.Add(this.panelMacro4);
             this.Controls.Add(this.panelMacro3);
             this.Controls.Add(this.panelMacro2);
@@ -1500,7 +1568,6 @@ namespace _ORTools.Forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox panelMacro4;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown delayMac1;
@@ -1599,5 +1666,6 @@ namespace _ORTools.Forms
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox21;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label10;
     }
 }

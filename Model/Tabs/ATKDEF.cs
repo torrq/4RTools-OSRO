@@ -103,12 +103,12 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new ThreadRunner(_ => AHKThreadExecution(roClient));
+                this.thread = new ThreadRunner(_ => ATKDEFThread(roClient), "ATKDEF");
                 ThreadRunner.Start(this.thread);
             }
         }
 
-        private int AHKThreadExecution(Client roClient)
+        private int ATKDEFThread(Client roClient)
         {
             foreach (EquipConfig equipConfig in this.EquipConfigs)
             {

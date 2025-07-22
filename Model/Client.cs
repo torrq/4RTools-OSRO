@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -128,8 +129,6 @@ namespace _ORTools.Model
         public int CurrentJobAddress { get; set; }
         public int CurrentOnlineAddress { get; set; }
         private int StatusBufferAddress { get; set; }
-
-        private int _num = 0;
 
         // Caching for login status
         private bool? _cachedLoginStatus = null;
@@ -267,8 +266,8 @@ namespace _ORTools.Model
                 if (choosenPID == process.Id)
                 {
                     this.Process = process;
-                    PMR.ReadProcess = process;
-                    PMR.OpenProcess();
+                    // OPEN handle with the process ID
+                    PMR.OpenProcess(process.Id);
 
                     try
                     {
@@ -296,19 +295,18 @@ namespace _ORTools.Model
 
         private string ReadMemoryAsString(int address)
         {
-            byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 40u, out _num);
-            List<byte> buffer = new List<byte>();
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                if (bytes[i] == 0) break;
-                buffer.Add(bytes[i]);
-            }
-            return Encoding.Default.GetString(buffer.ToArray());
+            // use the convenience overload (no out param)
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 40u);
+            int len = Array.IndexOf(bytes, (byte)0);
+            if (len< 0) len = bytes.Length;
+            return Encoding.Default.GetString(bytes, 0, len);
         }
 
         private uint ReadMemory(int address)
         {
-            return BitConverter.ToUInt32(PMR.ReadProcessMemory((IntPtr)address, 4u, out _num), 0);
+            // use the convenience overload
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 4u);
+            return BitConverter.ToUInt32(bytes, 0);
         }
 
         public bool IsHpBelow(int percent)

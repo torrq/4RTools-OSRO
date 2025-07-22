@@ -645,9 +645,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac1.Location = new System.Drawing.Point(532, 33);
+            this.btnResMac1.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac1.Location = new System.Drawing.Point(539, 33);
             this.btnResMac1.Name = "btnResMac1";
-            this.btnResMac1.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac1.Size = new System.Drawing.Size(50, 23);
             this.btnResMac1.TabIndex = 281;
             this.btnResMac1.Text = "Reset";
             this.btnResMac1.UseVisualStyleBackColor = false;
@@ -696,9 +697,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac2.Location = new System.Drawing.Point(531, 34);
+            this.btnResMac2.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac2.Location = new System.Drawing.Point(538, 34);
             this.btnResMac2.Name = "btnResMac2";
-            this.btnResMac2.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac2.Size = new System.Drawing.Size(50, 23);
             this.btnResMac2.TabIndex = 282;
             this.btnResMac2.Text = "Reset";
             this.btnResMac2.UseVisualStyleBackColor = false;
@@ -1056,9 +1058,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac3.Location = new System.Drawing.Point(531, 33);
+            this.btnResMac3.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac3.Location = new System.Drawing.Point(538, 33);
             this.btnResMac3.Name = "btnResMac3";
-            this.btnResMac3.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac3.Size = new System.Drawing.Size(50, 23);
             this.btnResMac3.TabIndex = 283;
             this.btnResMac3.Text = "Reset";
             this.btnResMac3.UseVisualStyleBackColor = false;
@@ -1416,9 +1419,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac4.Location = new System.Drawing.Point(531, 33);
+            this.btnResMac4.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac4.Location = new System.Drawing.Point(538, 33);
             this.btnResMac4.Name = "btnResMac4";
-            this.btnResMac4.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac4.Size = new System.Drawing.Size(50, 23);
             this.btnResMac4.TabIndex = 284;
             this.btnResMac4.Text = "Reset";
             this.btnResMac4.UseVisualStyleBackColor = false;
@@ -1769,9 +1773,10 @@ namespace _ORTools.Forms
             // 
             this.btnResMac5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResMac5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac5.Location = new System.Drawing.Point(531, 33);
+            this.btnResMac5.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResMac5.Location = new System.Drawing.Point(538, 33);
             this.btnResMac5.Name = "btnResMac5";
-            this.btnResMac5.Size = new System.Drawing.Size(62, 23);
+            this.btnResMac5.Size = new System.Drawing.Size(50, 23);
             this.btnResMac5.TabIndex = 285;
             this.btnResMac5.Text = "Reset";
             this.btnResMac5.UseVisualStyleBackColor = false;

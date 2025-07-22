@@ -37,7 +37,7 @@ namespace _ORTools.Model
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public ThreadRunner RestoreStatusThread(Client c)
+        public ThreadRunner DebuffRecoveryThread(Client c)
         {
             Client roClient = ClientSingleton.GetClient();
             ThreadRunner statusEffectsThread = new ThreadRunner(_ =>
@@ -59,7 +59,7 @@ namespace _ORTools.Model
                 }
                 Thread.Sleep(this.Delay);
                 return 0;
-            })
+            }, "DebuffRecovery")
             {
 
             };
@@ -80,7 +80,7 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = RestoreStatusThread(roClient);
+                this.thread = DebuffRecoveryThread(roClient);
                 ThreadRunner.Start(this.thread);
             }
         }

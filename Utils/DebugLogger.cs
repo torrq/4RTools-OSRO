@@ -177,19 +177,9 @@ namespace _ORTools.Utils
                 ? "Exception: " + ex.Message
                 : context + ": " + ex.Message;
             Log(LogLevel.ERROR, msg);
-
-            /*
-            if (_debugMode)
-                Log(LogLevel.DEBUG, "Stack trace: " + ex.StackTrace);
-            */
         }
 
         public static void Debug(string message) => Log(LogLevel.DEBUG, message);
-
-        public static void LogMemoryValue(string desc, IntPtr addr, object val)
-        {
-            Log(LogLevel.DEBUG, "Memory " + desc + ": Addr=" + addr.ToInt64().ToString("X8") + ", Val=" + val);
-        }
 
         public static void Shutdown()
         {

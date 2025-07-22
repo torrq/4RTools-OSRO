@@ -84,7 +84,7 @@ namespace _ORTools.Model
                 if (skillTimer.TryGetValue(i, out var macro) && macro.Enabled)
                 {
                     int skillIndex = i; // Capture loop variable
-                    threads[i] = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[skillIndex]));
+                    threads[i] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[skillIndex]), $"SkillTimer-{i}");
                     ThreadRunner.Start(threads[i]);
                 }
             }
@@ -114,7 +114,7 @@ namespace _ORTools.Model
                     return;
                 }
 
-                threads[timerId] = new ThreadRunner((_) => AutoRefreshThreadExecution(roClient, skillTimer[timerId]));
+                threads[timerId] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[timerId]));
                 ThreadRunner.Start(threads[timerId]);
             }
         }
@@ -142,7 +142,7 @@ namespace _ORTools.Model
             threads.Clear();
         }
 
-        private int AutoRefreshThreadExecution(Client roClient, MacroKey macro)
+        private int SkillTimerThread(Client roClient, MacroKey macro)
         {
             string currentMap = roClient.ReadCurrentMap();
 

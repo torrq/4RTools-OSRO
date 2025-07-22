@@ -99,7 +99,7 @@ namespace _ORTools.Model
             return ACTION_NAME_PANACEA_AUTOBUFF;
         }
 
-        public ThreadRunner RestoreStatusThread(Client c)
+        public ThreadRunner StatusRecoveryThread(Client c)
         {
             Client roClient = ClientSingleton.GetClient();
             ThreadRunner statusEffectsThread = new ThreadRunner(_ =>
@@ -124,7 +124,7 @@ namespace _ORTools.Model
                 }
                 Thread.Sleep(this.Delay);
                 return 0;
-            });
+            }, "StatusRecovery");
 
             return statusEffectsThread;
         }
@@ -203,7 +203,7 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = RestoreStatusThread(roClient);
+                this.thread = StatusRecoveryThread(roClient);
                 ThreadRunner.Start(this.thread);
             }
         }
