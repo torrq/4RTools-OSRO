@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class AutopotHPForm
     {
@@ -145,7 +145,7 @@ namespace _4RTools.Forms
             // picBoxHP1
             // 
             this.picBoxHP1.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxHP1.Image = global::_4RTools.Resources._4RTools.Icons.ygg;
+            this.picBoxHP1.Image = global::_ORTools.Resources.Media.Icons.ygg;
             this.picBoxHP1.Location = new System.Drawing.Point(18, -2);
             this.picBoxHP1.Name = "picBoxHP1";
             this.picBoxHP1.Size = new System.Drawing.Size(24, 24);
@@ -177,7 +177,7 @@ namespace _4RTools.Forms
             // chkStopOnCriticalInjury
             // 
             this.chkStopOnCriticalInjury.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkStopOnCriticalInjury.Image = global::_4RTools.Resources._4RTools.Icons.critical_wound;
+            this.chkStopOnCriticalInjury.Image = global::_ORTools.Resources.Media.Icons.critical_wound;
             this.chkStopOnCriticalInjury.Location = new System.Drawing.Point(7, 0);
             this.chkStopOnCriticalInjury.Name = "chkStopOnCriticalInjury";
             this.chkStopOnCriticalInjury.Size = new System.Drawing.Size(49, 46);
@@ -200,7 +200,7 @@ namespace _4RTools.Forms
             // 
             // reorderHP1
             // 
-            this.reorderHP1.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderHP1.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderHP1.Location = new System.Drawing.Point(207, 3);
             this.reorderHP1.Name = "reorderHP1";
             this.reorderHP1.Size = new System.Drawing.Size(24, 20);
@@ -231,7 +231,7 @@ namespace _4RTools.Forms
             // 
             // reorderHP2
             // 
-            this.reorderHP2.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderHP2.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderHP2.Location = new System.Drawing.Point(207, 3);
             this.reorderHP2.Name = "reorderHP2";
             this.reorderHP2.Size = new System.Drawing.Size(24, 20);
@@ -251,7 +251,7 @@ namespace _4RTools.Forms
             // picBoxHP2
             // 
             this.picBoxHP2.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxHP2.Image = global::_4RTools.Resources._4RTools.Icons.ygg_seed;
+            this.picBoxHP2.Image = global::_ORTools.Resources.Media.Icons.ygg_seed;
             this.picBoxHP2.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP2.Name = "picBoxHP2";
             this.picBoxHP2.Size = new System.Drawing.Size(24, 24);
@@ -293,7 +293,7 @@ namespace _4RTools.Forms
             // 
             // reorderHP3
             // 
-            this.reorderHP3.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderHP3.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderHP3.Location = new System.Drawing.Point(207, 3);
             this.reorderHP3.Name = "reorderHP3";
             this.reorderHP3.Size = new System.Drawing.Size(24, 20);
@@ -313,7 +313,7 @@ namespace _4RTools.Forms
             // picBoxHP3
             // 
             this.picBoxHP3.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxHP3.Image = global::_4RTools.Resources._4RTools.Icons.white_potion;
+            this.picBoxHP3.Image = global::_ORTools.Resources.Media.Icons.white_potion;
             this.picBoxHP3.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP3.Name = "picBoxHP3";
             this.picBoxHP3.Size = new System.Drawing.Size(24, 24);
@@ -355,7 +355,7 @@ namespace _4RTools.Forms
             // 
             // reorderHP4
             // 
-            this.reorderHP4.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderHP4.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderHP4.Location = new System.Drawing.Point(207, 3);
             this.reorderHP4.Name = "reorderHP4";
             this.reorderHP4.Size = new System.Drawing.Size(24, 20);
@@ -375,7 +375,7 @@ namespace _4RTools.Forms
             // picBoxHP4
             // 
             this.picBoxHP4.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxHP4.Image = global::_4RTools.Resources._4RTools.Icons.white_potion_slim;
+            this.picBoxHP4.Image = global::_ORTools.Resources.Media.Icons.white_potion_slim;
             this.picBoxHP4.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP4.Name = "picBoxHP4";
             this.picBoxHP4.Size = new System.Drawing.Size(24, 24);
@@ -426,7 +426,7 @@ namespace _4RTools.Forms
             // 
             // reorderHP5
             // 
-            this.reorderHP5.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderHP5.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderHP5.Location = new System.Drawing.Point(207, 3);
             this.reorderHP5.Name = "reorderHP5";
             this.reorderHP5.Size = new System.Drawing.Size(24, 20);
@@ -446,7 +446,7 @@ namespace _4RTools.Forms
             // picBoxHP5
             // 
             this.picBoxHP5.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxHP5.Image = global::_4RTools.Resources._4RTools.Icons.mastela_fruit;
+            this.picBoxHP5.Image = global::_ORTools.Resources.Media.Icons.mastela_fruit;
             this.picBoxHP5.Location = new System.Drawing.Point(18, -1);
             this.picBoxHP5.Name = "picBoxHP5";
             this.picBoxHP5.Size = new System.Drawing.Size(24, 24);
@@ -478,7 +478,7 @@ namespace _4RTools.Forms
             // 
             this.hpKeyColumnLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.hpKeyColumnLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hpKeyColumnLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
+            this.hpKeyColumnLabel.Image = global::_ORTools.Resources.Media.Icons.key_question;
             this.hpKeyColumnLabel.Location = new System.Drawing.Point(103, 0);
             this.hpKeyColumnLabel.Name = "hpKeyColumnLabel";
             this.hpKeyColumnLabel.Size = new System.Drawing.Size(25, 24);
@@ -507,7 +507,7 @@ namespace _4RTools.Forms
             // 
             this.AutoPotHPEnabledLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotHPEnabledLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoPotHPEnabledLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.toggle_on_small;
+            this.AutoPotHPEnabledLegendLabel.Image = global::_ORTools.Resources.Media.Icons.toggle_on_small;
             this.AutoPotHPEnabledLegendLabel.Location = new System.Drawing.Point(56, 0);
             this.AutoPotHPEnabledLegendLabel.Name = "AutoPotHPEnabledLegendLabel";
             this.AutoPotHPEnabledLegendLabel.Size = new System.Drawing.Size(24, 24);
@@ -518,7 +518,7 @@ namespace _4RTools.Forms
             // 
             this.AutoPotHPSortLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotHPSortLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoPotHPSortLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.sort;
+            this.AutoPotHPSortLegendLabel.Image = global::_ORTools.Resources.Media.Icons.sort;
             this.AutoPotHPSortLegendLabel.Location = new System.Drawing.Point(218, 2);
             this.AutoPotHPSortLegendLabel.Name = "AutoPotHPSortLegendLabel";
             this.AutoPotHPSortLegendLabel.Size = new System.Drawing.Size(20, 20);

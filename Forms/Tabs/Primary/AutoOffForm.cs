@@ -1,5 +1,5 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class AutoOffForm : Form, IObserver
     {
@@ -92,7 +92,7 @@ namespace _4RTools.Forms
         {
             btnToggleTimer.Text = BUTTON_TIMER_STOP;
             FormHelper.ApplyColorToButtons(this, new[] { "btnToggleTimer" }, AppConfig.ResetButtonBackColor);
-            animatedClockImage.Image = _4RTools.Resources._4RTools.Icons.clock_animated;
+            animatedClockImage.Image = _ORTools.Resources.Media.Icons.clock_animated;
             UpdateUI();
         }
 

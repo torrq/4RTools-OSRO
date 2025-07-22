@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     public class AutopotSP : IAction
     {

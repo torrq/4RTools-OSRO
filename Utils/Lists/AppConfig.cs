@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     internal static class AppConfig
     {
@@ -64,6 +64,7 @@ namespace _4RTools.Utils
                                 nameAddress   = "00E91C00",
                                 mapAddress    = "00E8ABD4",
                                 jobAddress    = "00E8BA54",
+                                onlineAddress = "00E884B1"
                             }
                         };
 
@@ -78,6 +79,7 @@ namespace _4RTools.Utils
                                 nameAddress   = "010DF5D8",
                                 mapAddress    = "010D856C",
                                 jobAddress    = "010D93D8",
+                                onlineAddress = "010A2FB0"
                             }
                         };
 
@@ -91,7 +93,7 @@ namespace _4RTools.Utils
                                 hpAddress     = "00000000",
                                 nameAddress   = "00000000",
                                 mapAddress    = "00000000",
-                                jobAddress    = "00000000",
+                                jobAddress    = "00000000"
                             }
                         };
 

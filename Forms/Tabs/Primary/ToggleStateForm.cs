@@ -1,12 +1,12 @@
-﻿using _4RTools.Model;
-using _4RTools.Resources._4RTools;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Resources.Media;
+using _ORTools.Utils;
 using System;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class ToggleStateForm : Form, IObserver
     {

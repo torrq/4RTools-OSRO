@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class CharacterInfo
     {
@@ -32,7 +32,7 @@ namespace _4RTools.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.characterNameLabel = new System.Windows.Forms.Label();
-            this.characterInfoLabel = new _4RTools.Utils.CharacterInfoLabel();
+            this.characterInfoLabel = new _ORTools.Utils.CharacterInfoLabel();
             this.characterMapLabel = new System.Windows.Forms.Label();
             this.MapLinkToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
@@ -107,7 +107,7 @@ namespace _4RTools.Forms
 
         private System.Windows.Forms.Label characterNameLabel;
         private System.Windows.Forms.Label characterMapLabel;
-        private _4RTools.Utils.CharacterInfoLabel characterInfoLabel;
+        private _ORTools.Utils.CharacterInfoLabel characterInfoLabel;
         private System.Windows.Forms.ToolTip MapLinkToolTip;
     }
 }

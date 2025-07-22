@@ -1,4 +1,4 @@
-﻿namespace _4RTools.Forms
+﻿namespace _ORTools.Forms
 {
     partial class DialogConfirmDelete
     {

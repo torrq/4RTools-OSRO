@@ -1,9 +1,9 @@
-﻿using _4RTools.Model;
+﻿using _ORTools.Model;
 using System;
 using System.IO;
 using System.Text;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public static class DebugLogger
     {

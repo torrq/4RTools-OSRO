@@ -1,9 +1,9 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Windows.Forms;
 using System.Windows.Input;
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver
     {
@@ -110,7 +110,7 @@ namespace _4RTools.Forms
                 altKeyCheckbox.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
                 altKeyCheckbox.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
                 altKeyCheckbox.BackColor = System.Drawing.Color.Transparent;
-                altKeyCheckbox.Image = global::_4RTools.Resources._4RTools.Icons.key_alt_off;
+                altKeyCheckbox.Image = global::_ORTools.Resources.Media.Icons.key_alt_off;
             }
             catch (Exception ex)
             {
@@ -175,8 +175,8 @@ namespace _4RTools.Forms
                     altKeyCheckbox.CheckedChanged -= SkillTimerAltKey_CheckedChanged;
                     altKeyCheckbox.Checked = skillTimer.AltKey;
                     altKeyCheckbox.Image = skillTimer.AltKey ?
-                        global::_4RTools.Resources._4RTools.Icons.key_alt :
-                        global::_4RTools.Resources._4RTools.Icons.key_alt_off;
+                        global::_ORTools.Resources.Media.Icons.key_alt :
+                        global::_ORTools.Resources.Media.Icons.key_alt_off;
                     altKeyCheckbox.CheckedChanged += SkillTimerAltKey_CheckedChanged;
                 }
             }
@@ -209,8 +209,8 @@ namespace _4RTools.Forms
 
                     // Update the image based on checked state
                     checkBox.Image = checkBox.Checked ?
-                        global::_4RTools.Resources._4RTools.Icons.key_alt :
-                        global::_4RTools.Resources._4RTools.Icons.key_alt_off;
+                        global::_ORTools.Resources.Media.Icons.key_alt :
+                        global::_ORTools.Resources.Media.Icons.key_alt_off;
                 }
                 catch (Exception ex)
                 {

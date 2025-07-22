@@ -4,10 +4,10 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
-using _4RTools.Model;
+using _ORTools.Model;
 using System.Drawing.Imaging;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public static class WeightLimitMacro
     {

@@ -1,10 +1,10 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     internal static class Server
     {
@@ -69,7 +69,8 @@ namespace _4RTools.Model
                         server.hpAddress,
                         server.nameAddress,
                         server.mapAddress,
-                        server.jobAddress
+                        server.jobAddress,
+                        server.onlineAddress
                     ));
                 }
                 return clients;

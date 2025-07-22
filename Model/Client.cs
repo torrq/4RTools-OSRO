@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     public class ClientDTO
     {
@@ -17,14 +17,16 @@ namespace _4RTools.Model
         public string NameAddress { get; set; }
         public string MapAddress { get; set; }
         public string JobAdress { get; set; }
+        public string OnlineAddress { get; set; }
         public int HPAddressPointer { get; set; }
         public int NameAddressPointer { get; set; }
         public int MapAddressPointer { get; set; }
         public int JobAddressPointer { get; set; }
+        public int OnlineAddressPointer { get; set; }
 
         public ClientDTO() { }
 
-        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress)
+        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress, string onlineAddress)
         {
             this.Name = name;
             this.Description = description;
@@ -32,11 +34,13 @@ namespace _4RTools.Model
             this.NameAddress = nameAddress;
             this.MapAddress = mapAddress;
             this.JobAdress = jobAddress;
+            this.OnlineAddress = onlineAddress;
 
             this.HPAddressPointer = Convert.ToInt32(hpAddress, 16);
             this.NameAddressPointer = Convert.ToInt32(nameAddress, 16);
             this.MapAddressPointer = Convert.ToInt32(mapAddress, 16);
             this.JobAddressPointer = Convert.ToInt32(jobAddress, 16);
+            this.OnlineAddressPointer = Convert.ToInt32(onlineAddress, 16);
         }
     }
 
@@ -62,6 +66,34 @@ namespace _4RTools.Model
         public static bool ExistsByProcessName(string processName)
         {
             return Clients.Exists(client => client.ProcessName == processName);
+        }
+
+        // Check if any client is logged in
+        public static bool IsLoggedIn()
+        {
+            return Clients.Any(client => client.IsLoggedIn);
+        }
+
+        // Check if a specific client is logged in by process name
+        public static bool IsLoggedIn(string processName)
+        {
+            Client client = Clients.FirstOrDefault(c => c.ProcessName == processName);
+            return client?.IsLoggedIn ?? false;
+        }
+
+        // Get all logged in clients
+        public static List<Client> GetLoggedInClients()
+        {
+            return Clients.Where(client => client.IsLoggedIn).ToList();
+        }
+
+        // Force refresh login status cache for all clients
+        public static void RefreshAllLoginStatus()
+        {
+            foreach (Client client in Clients)
+            {
+                client.RefreshLoginStatus();
+            }
         }
     }
 
@@ -94,15 +126,89 @@ namespace _4RTools.Model
         public int CurrentHPBaseAddress { get; set; }
         public int CurrentMapAddress { get; set; }
         public int CurrentJobAddress { get; set; }
+        public int CurrentOnlineAddress { get; set; }
         private int StatusBufferAddress { get; set; }
+
         private int _num = 0;
 
-        public Client(string processName, int currentHPBaseAddress, int currentNameAddress, int currentMapAddress, int currentJobAddress)
+        // Caching for login status
+        private bool? _cachedLoginStatus = null;
+        private DateTime _lastLoginStatusCheck = DateTime.MinValue;
+        private readonly TimeSpan _loginStatusCacheTimeout = TimeSpan.FromMilliseconds(500); // Cache for 500ms
+
+        public bool IsLoggedIn
+        {
+            get
+            {
+                if (Process == null || Process.HasExited)
+                {
+                    DebugLogger.Debug($"IsLoggedIn: Process is null or has exited for {ProcessName}.");
+                    _cachedLoginStatus = false;
+                    return false;
+                }
+
+                // Check if we have a valid cached value
+                if (_cachedLoginStatus.HasValue &&
+                    DateTime.Now - _lastLoginStatusCheck < _loginStatusCacheTimeout)
+                {
+                    return _cachedLoginStatus.Value;
+                }
+
+                // Read the login status from memory
+                bool loginStatus = ReadLoginStatus();
+
+                // Update cache
+                _cachedLoginStatus = loginStatus;
+                _lastLoginStatusCheck = DateTime.Now;
+
+                return loginStatus;
+            }
+        }
+
+        // Method to force refresh the login status cache
+        public void RefreshLoginStatus()
+        {
+            _cachedLoginStatus = null;
+            _lastLoginStatusCheck = DateTime.MinValue;
+        }
+
+        private bool ReadLoginStatus()
+        {
+            bool isLoggedIn = false;
+            try
+            {
+                // HR
+                if (AppConfig.ServerMode == 1)
+                {
+                    uint loginValue = ReadMemory(CurrentOnlineAddress);
+                    isLoggedIn = loginValue > 0;
+                    return isLoggedIn;
+                }
+                // LR
+                else if (AppConfig.ServerMode == 2) { return isLoggedIn; }
+                // MR
+                else
+                {
+                    uint loginValue = ReadMemory(CurrentOnlineAddress);
+                    isLoggedIn = loginValue == 3571961;
+                    return isLoggedIn;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Debug($"Error reading login status for {ProcessName}: {ex.Message}");
+                return false; // Assume not logged in if we can't read the value
+            }
+        }
+
+        public Client(string processName, int currentHPBaseAddress, int currentNameAddress, int currentMapAddress, int currentJobAddress, int currentOnlineAddress)
         {
             this.CurrentNameAddress = currentNameAddress;
             this.CurrentHPBaseAddress = currentHPBaseAddress;
             this.CurrentMapAddress = currentMapAddress;
             this.CurrentJobAddress = currentJobAddress;
+            this.CurrentOnlineAddress = currentOnlineAddress;
             this.ProcessName = processName;
 
             if (AppConfig.ServerMode == 1) // HR
@@ -121,7 +227,7 @@ namespace _4RTools.Model
                 //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for MR client.");
             }
 
-            CurrentJobAddress = currentJobAddress;
+            //CurrentJobAddress = currentJobAddress;
         }
 
         public Client(ClientDTO dto)
@@ -131,6 +237,7 @@ namespace _4RTools.Model
             this.CurrentNameAddress = Convert.ToInt32(dto.NameAddress, 16);
             this.CurrentMapAddress = Convert.ToInt32(dto.MapAddress, 16);
             this.CurrentJobAddress = Convert.ToInt32(dto.JobAdress, 16);
+            this.CurrentOnlineAddress = Convert.ToInt32(dto.OnlineAddress, 16);
 
             if (AppConfig.ServerMode == 1) // HR
             {
@@ -170,6 +277,7 @@ namespace _4RTools.Model
                         this.CurrentNameAddress = c.CurrentNameAddress;
                         this.CurrentMapAddress = c.CurrentMapAddress;
                         this.CurrentJobAddress = c.CurrentJobAddress;
+                        this.CurrentOnlineAddress = c.CurrentOnlineAddress;
                         this.StatusBufferAddress = c.StatusBufferAddress;
                     }
                     catch
@@ -179,6 +287,7 @@ namespace _4RTools.Model
                         this.CurrentNameAddress = 0;
                         this.CurrentMapAddress = 0;
                         this.CurrentJobAddress = 0;
+                        this.CurrentOnlineAddress = 0;
                         this.StatusBufferAddress = 0;
                     }
                 }
@@ -201,7 +310,6 @@ namespace _4RTools.Model
         {
             return BitConverter.ToUInt32(PMR.ReadProcessMemory((IntPtr)address, 4u, out _num), 0);
         }
-
 
         public bool IsHpBelow(int percent)
         {
@@ -250,7 +358,8 @@ namespace _4RTools.Model
 
         public uint ReadCurrentExp()
         {
-            switch (AppConfig.ServerMode) {
+            switch (AppConfig.ServerMode)
+            {
                 case 1: // HR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 2));
                 case 2: // LR #FIXME
@@ -272,6 +381,7 @@ namespace _4RTools.Model
                     return ReadMemory(this.CurrentJobAddress + (4 * 3));
             }
         }
+
         public uint ReadCurrentLevel()
         {
             switch (AppConfig.ServerMode)
@@ -284,6 +394,7 @@ namespace _4RTools.Model
                     return ReadMemory(this.CurrentJobAddress + (4 * 9));
             }
         }
+
         public uint ReadCurrentJobLevel()
         {
             switch (AppConfig.ServerMode)
@@ -322,6 +433,7 @@ namespace _4RTools.Model
                 .Where(c => c.CurrentHPBaseAddress == dto.HPAddressPointer)
                 .Where(c => c.CurrentNameAddress == dto.NameAddressPointer)
                 .Where(c => c.CurrentJobAddress == dto.JobAddressPointer)
+                .Where(c => c.CurrentOnlineAddress == dto.OnlineAddressPointer)
                 .FirstOrDefault();
         }
 

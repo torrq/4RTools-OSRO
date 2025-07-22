@@ -1,5 +1,5 @@
-﻿using _4RTools.Forms;
-using _4RTools.Utils;
+﻿using _ORTools.Forms;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     public class AutoBuffSkill : IAction
     {

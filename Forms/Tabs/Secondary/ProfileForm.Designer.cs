@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using _4RTools.Utils;
+using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class ProfileForm
     {
@@ -78,7 +78,7 @@ namespace _4RTools.Forms
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::_4RTools.Resources._4RTools.Icons.add;
+            this.btnSave.Image = global::_ORTools.Resources.Media.Icons.add;
             this.btnSave.Location = new System.Drawing.Point(496, 33);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(48, 32);
@@ -93,7 +93,7 @@ namespace _4RTools.Forms
             this.btnCopyProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCopyProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCopyProfile.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCopyProfile.Image = global::_4RTools.Resources._4RTools.Icons.copy;
+            this.btnCopyProfile.Image = global::_ORTools.Resources.Media.Icons.copy;
             this.btnCopyProfile.Location = new System.Drawing.Point(496, 109);
             this.btnCopyProfile.Name = "btnCopyProfile";
             this.btnCopyProfile.Size = new System.Drawing.Size(48, 32);
@@ -108,7 +108,7 @@ namespace _4RTools.Forms
             this.btnRenameProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRenameProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRenameProfile.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenameProfile.Image = global::_4RTools.Resources._4RTools.Icons.edit;
+            this.btnRenameProfile.Image = global::_ORTools.Resources.Media.Icons.edit;
             this.btnRenameProfile.Location = new System.Drawing.Point(496, 71);
             this.btnRenameProfile.Name = "btnRenameProfile";
             this.btnRenameProfile.Size = new System.Drawing.Size(48, 32);
@@ -123,7 +123,7 @@ namespace _4RTools.Forms
             this.btnRemoveProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveProfile.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveProfile.Image = global::_4RTools.Resources._4RTools.Icons.delete;
+            this.btnRemoveProfile.Image = global::_ORTools.Resources.Media.Icons.delete;
             this.btnRemoveProfile.Location = new System.Drawing.Point(496, 147);
             this.btnRemoveProfile.Name = "btnRemoveProfile";
             this.btnRemoveProfile.Size = new System.Drawing.Size(48, 32);

@@ -1,11 +1,11 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class ProfileForm : Form
     {
@@ -88,7 +88,7 @@ namespace _4RTools.Forms
 
             if (iconY >= 0) // Only draw if iconY is set (i.e., there’s an active profile)
             {
-                Image icon = global::_4RTools.Resources._4RTools.Icons.profile_active;
+                Image icon = global::_ORTools.Resources.Media.Icons.profile_active;
                 e.Graphics.DrawImage(icon, iconX, iconY, iconSize, iconSize);
             }
         }

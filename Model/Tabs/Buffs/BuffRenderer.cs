@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
 using Label = System.Windows.Forms.Label;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     internal class BuffRenderer
     {

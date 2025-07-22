@@ -1,9 +1,9 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     public class Config
     {

@@ -1,5 +1,5 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Windows.Input;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using Cursors = System.Windows.Forms.Cursors;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class AutopotHPForm : Form, IObserver
     {

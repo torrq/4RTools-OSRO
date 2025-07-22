@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public class GameProcessInfo
     {

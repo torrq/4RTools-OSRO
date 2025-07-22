@@ -1,9 +1,9 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace _4RTools.Controls
+namespace _ORTools.Controls
 {
     public class BorderedCheckBox : CheckBox
     {

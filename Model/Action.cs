@@ -1,4 +1,4 @@
-﻿namespace _4RTools.Model
+﻿namespace _ORTools.Model
 {
     public interface IAction
     {

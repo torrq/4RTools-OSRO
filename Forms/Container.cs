@@ -1,14 +1,14 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static _4RTools.Utils.FormHelper;
+using static _ORTools.Utils.FormHelper;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class Container : Form, IObserver
     {
@@ -138,24 +138,24 @@ namespace _4RTools.Forms
                 if (isMiniMode)
                 {
                     atkDef.Visible = false;
-                    btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_more;
+                    btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_more;
                     ClientSize = miniModeClientSize;
                 }
                 else
                 {
                     atkDef.Visible = true;
-                    btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
+                    btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
 
                     if (isMiniMode)
                     {
                         atkDef.Visible = false;
-                        btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_more;
+                        btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_more;
                         ClientSize = miniModeClientSize;
                     }
                     else
                     {
                         atkDef.Visible = true;
-                        btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
+                        btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
                         ClientSize = fullModeClientSize;
                     }
                 }
@@ -171,10 +171,10 @@ namespace _4RTools.Forms
         {
             var icons = new List<Image>
             {
-                global::_4RTools.Resources._4RTools.Icons.tab_autopot_hp,
-                global::_4RTools.Resources._4RTools.Icons.tab_autopot_sp,
-                global::_4RTools.Resources._4RTools.Icons.tab_skill_timer,
-                global::_4RTools.Resources._4RTools.Icons.tab_auto_off,
+                global::_ORTools.Resources.Media.Icons.tab_autopot_hp,
+                global::_ORTools.Resources.Media.Icons.tab_autopot_sp,
+                global::_ORTools.Resources.Media.Icons.tab_skill_timer,
+                global::_ORTools.Resources.Media.Icons.tab_auto_off,
             };
 
             TabIconHelper.SetTabIcons(tabControlTop, icons);
@@ -452,7 +452,18 @@ namespace _4RTools.Forms
             string selectedProcessString = (processCB.SelectedItem as GameProcessInfo)?.ProcessText;
             if (string.IsNullOrEmpty(selectedProcessString)) return;
 
+            // Create Client to check login status
             Client client = new Client(selectedProcessString);
+
+            // Check if the client is logged in
+            if (!client.IsLoggedIn)
+            {
+                DebugLogger.Warning($"Process selected: {selectedProcessString} - No logged-in memory found.");
+                processCB.SelectedIndex = -1; // Deselect the combo box
+                return;
+            }
+
+            // Proceed with client selection
             ClientSingleton.Instance(client);
 
             if (client.Process != null)
@@ -464,7 +475,7 @@ namespace _4RTools.Forms
                 DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
             }
 
-            // Use the new method to update character info with formatting
+            // Update character info with formatting
             characterInfoForm.UpdateCharacterInfo(client);
 
             subject.Notify(new Utils.Message(MessageCode.PROCESS_CHANGED, null));
@@ -576,27 +587,18 @@ namespace _4RTools.Forms
                             string processText = $"{p.ProcessName}.exe - {p.Id}";
                             Client client = new Client(processText);
 
-                            string characterName = client.ReadCharacterName();
-                            string currentMap = client.ReadCurrentMap();
-                            uint? level = client.ReadCurrentLevel();
-                            int currentLevel = (int)(level.HasValue ? level.Value : 0);
-                            uint? jobID = client.ReadCurrentJob();
-                            int currentJobId = (int)(jobID.HasValue ? jobID.Value : 0);
-                            uint? exp = client.ReadCurrentExp();
-                            int currentExp = (int)(exp.HasValue ? exp.Value : 0);
-                            uint? expToLevel = client.ReadCurrentExpToLevel();
-                            int currentExpToLevel = (int)(expToLevel.HasValue ? expToLevel.Value : 0);
-                            uint? HP = client.ReadCurrentHp();
-                            int currentHP = (int)(HP.HasValue ? HP.Value : 0);
-                            uint? maxHP = client.ReadMaxHp();
-                            int currentMaxHP = (int)(maxHP.HasValue ? maxHP.Value : 0);
-                            uint? SP = client.ReadCurrentSp();
-                            int currentSP = (int)(SP.HasValue ? SP.Value : 0);
-                            uint? maxSP = client.ReadMaxSp();
-                            int currentMaxSP = (int)(maxSP.HasValue ? maxSP.Value : 0);
-                            string jobName = JobList.GetNameById(currentJobId);
-
-                            processItems.Add(new GameProcessInfo(processText, characterName, currentMap));
+                            // Only add processes with valid logged-in memory
+                            if (client.IsLoggedIn)
+                            {
+                                string characterName = client.ReadCharacterName();
+                                string currentMap = client.ReadCurrentMap();
+                                processItems.Add(new GameProcessInfo(processText, characterName, currentMap));
+                                DebugLogger.Info($"Added process to list: {processText} (Character: {characterName}, Map: {currentMap})");
+                            }
+                            else
+                            {
+                                DebugLogger.Warning($"Skipped process: {processText} - No logged-in memory found.");
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -607,8 +609,7 @@ namespace _4RTools.Forms
 
                 var sortedItems = processItems
                     .OrderBy(item =>
-                        (string.IsNullOrEmpty(item.CharacterName)) &&
-                        (string.IsNullOrEmpty(item.CurrentMap)) ? 1 : 0)
+                        (string.IsNullOrEmpty(item.CharacterName) && string.IsNullOrEmpty(item.CurrentMap)) ? 1 : 0)
                     .ThenBy(item =>
                     {
                         try
@@ -628,15 +629,16 @@ namespace _4RTools.Forms
                         return int.MaxValue;
                     });
 
-
                 foreach (var item in sortedItems)
                 {
                     processCB.Items.Add(item);
                 }
+
+                DebugLogger.Info($"Process list refreshed with {processCB.Items.Count} items.");
             }
             catch (Exception ex)
             {
-                DebugLogger.Error("Failed to refresh process list: " + ex.Message);
+                DebugLogger.Error($"Failed to refresh process list: {ex.Message}");
             }
             finally
             {
@@ -841,7 +843,7 @@ namespace _4RTools.Forms
             ToggleStateForm frm = new ToggleStateForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(390, 80),
+                Location = new Point(400, 80),
                 MdiParent = this
             };
             frm.Show();
@@ -909,7 +911,7 @@ namespace _4RTools.Forms
             TransferHelperForm form = new TransferHelperForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(460, 230),
+                Location = new Point(420, 230),
                 MdiParent = this
             };
             form.Show();

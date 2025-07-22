@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Runtime.InteropServices;
 using Cursor = System.Windows.Forms.Cursor;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     public class MacroKey
     {

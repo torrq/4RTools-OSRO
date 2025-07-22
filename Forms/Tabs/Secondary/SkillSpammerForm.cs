@@ -1,6 +1,6 @@
-﻿using _4RTools.Controls;
-using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Controls;
+using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class SkillSpammerForm : Form, IObserver
     {

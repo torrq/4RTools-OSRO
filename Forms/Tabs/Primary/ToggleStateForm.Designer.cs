@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class ToggleStateForm
     {
@@ -88,7 +88,7 @@ namespace _4RTools.Forms
             this.btnStatusToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatusToggle.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatusToggle.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnStatusToggle.Image = global::_4RTools.Resources._4RTools.Icons.toggle_off;
+            this.btnStatusToggle.Image = global::_ORTools.Resources.Media.Icons.toggle_off;
             this.btnStatusToggle.Location = new System.Drawing.Point(18, 22);
             this.btnStatusToggle.Margin = new System.Windows.Forms.Padding(0);
             this.btnStatusToggle.Name = "btnStatusToggle";

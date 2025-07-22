@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class AutopotSPForm
     {
@@ -140,7 +140,7 @@ namespace _4RTools.Forms
             // picBoxSP1
             // 
             this.picBoxSP1.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxSP1.Image = global::_4RTools.Resources._4RTools.Icons.ygg;
+            this.picBoxSP1.Image = global::_ORTools.Resources.Media.Icons.ygg;
             this.picBoxSP1.Location = new System.Drawing.Point(18, -2);
             this.picBoxSP1.Name = "picBoxSP1";
             this.picBoxSP1.Size = new System.Drawing.Size(24, 24);
@@ -183,7 +183,7 @@ namespace _4RTools.Forms
             // 
             // reorderSP1
             // 
-            this.reorderSP1.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderSP1.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderSP1.Location = new System.Drawing.Point(207, 3);
             this.reorderSP1.Name = "reorderSP1";
             this.reorderSP1.Size = new System.Drawing.Size(24, 20);
@@ -214,7 +214,7 @@ namespace _4RTools.Forms
             // 
             // reorderSP2
             // 
-            this.reorderSP2.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderSP2.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderSP2.Location = new System.Drawing.Point(207, 3);
             this.reorderSP2.Name = "reorderSP2";
             this.reorderSP2.Size = new System.Drawing.Size(24, 20);
@@ -234,7 +234,7 @@ namespace _4RTools.Forms
             // picBoxSP2
             // 
             this.picBoxSP2.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxSP2.Image = global::_4RTools.Resources._4RTools.Icons.ygg_seed;
+            this.picBoxSP2.Image = global::_ORTools.Resources.Media.Icons.ygg_seed;
             this.picBoxSP2.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP2.Name = "picBoxSP2";
             this.picBoxSP2.Size = new System.Drawing.Size(24, 24);
@@ -276,7 +276,7 @@ namespace _4RTools.Forms
             // 
             // reorderSP3
             // 
-            this.reorderSP3.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderSP3.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderSP3.Location = new System.Drawing.Point(207, 3);
             this.reorderSP3.Name = "reorderSP3";
             this.reorderSP3.Size = new System.Drawing.Size(24, 20);
@@ -296,7 +296,7 @@ namespace _4RTools.Forms
             // picBoxSP3
             // 
             this.picBoxSP3.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxSP3.Image = global::_4RTools.Resources._4RTools.Icons.blue_potion;
+            this.picBoxSP3.Image = global::_ORTools.Resources.Media.Icons.blue_potion;
             this.picBoxSP3.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP3.Name = "picBoxSP3";
             this.picBoxSP3.Size = new System.Drawing.Size(24, 24);
@@ -338,7 +338,7 @@ namespace _4RTools.Forms
             // 
             // reorderSP4
             // 
-            this.reorderSP4.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderSP4.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderSP4.Location = new System.Drawing.Point(207, 3);
             this.reorderSP4.Name = "reorderSP4";
             this.reorderSP4.Size = new System.Drawing.Size(24, 20);
@@ -358,7 +358,7 @@ namespace _4RTools.Forms
             // picBoxSP4
             // 
             this.picBoxSP4.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxSP4.Image = global::_4RTools.Resources._4RTools.Icons.royal_jelly;
+            this.picBoxSP4.Image = global::_ORTools.Resources.Media.Icons.royal_jelly;
             this.picBoxSP4.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP4.Name = "picBoxSP4";
             this.picBoxSP4.Size = new System.Drawing.Size(24, 24);
@@ -409,7 +409,7 @@ namespace _4RTools.Forms
             // 
             // reorderSP5
             // 
-            this.reorderSP5.Image = global::_4RTools.Resources._4RTools.Icons.reorder;
+            this.reorderSP5.Image = global::_ORTools.Resources.Media.Icons.reorder;
             this.reorderSP5.Location = new System.Drawing.Point(207, 3);
             this.reorderSP5.Name = "reorderSP5";
             this.reorderSP5.Size = new System.Drawing.Size(24, 20);
@@ -429,7 +429,7 @@ namespace _4RTools.Forms
             // picBoxSP5
             // 
             this.picBoxSP5.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxSP5.Image = global::_4RTools.Resources._4RTools.Icons.strawberry;
+            this.picBoxSP5.Image = global::_ORTools.Resources.Media.Icons.strawberry;
             this.picBoxSP5.Location = new System.Drawing.Point(18, -1);
             this.picBoxSP5.Name = "picBoxSP5";
             this.picBoxSP5.Size = new System.Drawing.Size(24, 24);
@@ -461,7 +461,7 @@ namespace _4RTools.Forms
             // 
             this.spKeyColumnLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.spKeyColumnLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spKeyColumnLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
+            this.spKeyColumnLabel.Image = global::_ORTools.Resources.Media.Icons.key_question;
             this.spKeyColumnLabel.Location = new System.Drawing.Point(103, 0);
             this.spKeyColumnLabel.Name = "spKeyColumnLabel";
             this.spKeyColumnLabel.Size = new System.Drawing.Size(25, 24);
@@ -472,7 +472,7 @@ namespace _4RTools.Forms
             // 
             this.AutoPotSPEnabledLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotSPEnabledLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoPotSPEnabledLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.toggle_on_small;
+            this.AutoPotSPEnabledLegendLabel.Image = global::_ORTools.Resources.Media.Icons.toggle_on_small;
             this.AutoPotSPEnabledLegendLabel.Location = new System.Drawing.Point(56, 0);
             this.AutoPotSPEnabledLegendLabel.Name = "AutoPotSPEnabledLegendLabel";
             this.AutoPotSPEnabledLegendLabel.Size = new System.Drawing.Size(24, 24);
@@ -483,7 +483,7 @@ namespace _4RTools.Forms
             // 
             this.AutoPotSPSortLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.AutoPotSPSortLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoPotSPSortLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.sort;
+            this.AutoPotSPSortLegendLabel.Image = global::_ORTools.Resources.Media.Icons.sort;
             this.AutoPotSPSortLegendLabel.Location = new System.Drawing.Point(218, 2);
             this.AutoPotSPSortLegendLabel.Name = "AutoPotSPSortLegendLabel";
             this.AutoPotSPSortLegendLabel.Size = new System.Drawing.Size(20, 20);

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public interface IObserver
     {

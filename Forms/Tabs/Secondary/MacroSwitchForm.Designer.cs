@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class MacroSwitchForm
     {
@@ -303,7 +303,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox2.Location = new System.Drawing.Point(81, 33);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(11, 14);
@@ -313,7 +313,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox3.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox3.Location = new System.Drawing.Point(111, 17);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 40);
@@ -369,7 +369,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox4.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox4.Location = new System.Drawing.Point(180, 17);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(20, 40);
@@ -379,7 +379,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox5.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox5.Location = new System.Drawing.Point(150, 33);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(11, 14);
@@ -412,7 +412,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox6.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox6.Location = new System.Drawing.Point(318, 17);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(20, 40);
@@ -422,7 +422,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox7.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox7.Location = new System.Drawing.Point(288, 33);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(11, 14);
@@ -455,7 +455,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox8.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox8.Location = new System.Drawing.Point(249, 17);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(20, 40);
@@ -465,7 +465,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox9.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox9.Location = new System.Drawing.Point(219, 33);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(11, 14);
@@ -498,7 +498,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox11.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox11.Location = new System.Drawing.Point(495, 33);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(11, 14);
@@ -531,7 +531,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox12.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox12.Location = new System.Drawing.Point(456, 17);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(20, 40);
@@ -541,7 +541,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox13.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox13.Location = new System.Drawing.Point(426, 33);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(11, 14);
@@ -574,7 +574,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox14.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox14.Location = new System.Drawing.Point(387, 17);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(20, 40);
@@ -584,7 +584,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox15.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox15.Location = new System.Drawing.Point(357, 33);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(11, 14);
@@ -782,7 +782,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox1.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox1.Location = new System.Drawing.Point(495, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(11, 14);
@@ -792,7 +792,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox10.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox10.Location = new System.Drawing.Point(81, 33);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(11, 14);
@@ -825,7 +825,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox16.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox16.Location = new System.Drawing.Point(426, 33);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(11, 14);
@@ -863,7 +863,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox17.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox17.Location = new System.Drawing.Point(150, 33);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(11, 14);
@@ -873,7 +873,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox18.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox18.Location = new System.Drawing.Point(357, 33);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(11, 14);
@@ -911,7 +911,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox19
             // 
-            this.pictureBox19.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox19.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox19.Location = new System.Drawing.Point(219, 33);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(11, 14);
@@ -921,7 +921,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox20
             // 
-            this.pictureBox20.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox20.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox20.Location = new System.Drawing.Point(288, 33);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(11, 14);
@@ -945,7 +945,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox21
             // 
-            this.pictureBox21.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox21.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox21.Location = new System.Drawing.Point(111, 17);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(20, 40);
@@ -955,7 +955,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox22
             // 
-            this.pictureBox22.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox22.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox22.Location = new System.Drawing.Point(180, 17);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(20, 40);
@@ -965,7 +965,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox23.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox23.Location = new System.Drawing.Point(249, 17);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(20, 40);
@@ -975,7 +975,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox24
             // 
-            this.pictureBox24.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox24.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox24.Location = new System.Drawing.Point(318, 17);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(20, 40);
@@ -985,7 +985,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox25
             // 
-            this.pictureBox25.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox25.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox25.Location = new System.Drawing.Point(387, 17);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(20, 40);
@@ -995,7 +995,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox26
             // 
-            this.pictureBox26.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox26.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox26.Location = new System.Drawing.Point(456, 17);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(20, 40);
@@ -1142,7 +1142,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox27
             // 
-            this.pictureBox27.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox27.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox27.Location = new System.Drawing.Point(495, 33);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(11, 14);
@@ -1152,7 +1152,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox28
             // 
-            this.pictureBox28.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox28.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox28.Location = new System.Drawing.Point(81, 33);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(11, 14);
@@ -1185,7 +1185,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox29
             // 
-            this.pictureBox29.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox29.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox29.Location = new System.Drawing.Point(426, 33);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(11, 14);
@@ -1223,7 +1223,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox30
             // 
-            this.pictureBox30.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox30.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox30.Location = new System.Drawing.Point(150, 33);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(11, 14);
@@ -1233,7 +1233,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox31
             // 
-            this.pictureBox31.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox31.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox31.Location = new System.Drawing.Point(357, 33);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(11, 14);
@@ -1271,7 +1271,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox32
             // 
-            this.pictureBox32.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox32.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox32.Location = new System.Drawing.Point(219, 33);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(11, 14);
@@ -1281,7 +1281,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox33
             // 
-            this.pictureBox33.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox33.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.pictureBox33.Location = new System.Drawing.Point(288, 33);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(11, 14);
@@ -1305,7 +1305,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox34
             // 
-            this.pictureBox34.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox34.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox34.Location = new System.Drawing.Point(111, 17);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(20, 40);
@@ -1315,7 +1315,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox35
             // 
-            this.pictureBox35.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox35.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox35.Location = new System.Drawing.Point(180, 17);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(20, 40);
@@ -1325,7 +1325,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox36
             // 
-            this.pictureBox36.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox36.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox36.Location = new System.Drawing.Point(249, 17);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(20, 40);
@@ -1335,7 +1335,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox37
             // 
-            this.pictureBox37.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox37.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox37.Location = new System.Drawing.Point(318, 17);
             this.pictureBox37.Name = "pictureBox37";
             this.pictureBox37.Size = new System.Drawing.Size(20, 40);
@@ -1345,7 +1345,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox38
             // 
-            this.pictureBox38.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox38.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox38.Location = new System.Drawing.Point(387, 17);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(20, 40);
@@ -1355,7 +1355,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox39
             // 
-            this.pictureBox39.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox39.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox39.Location = new System.Drawing.Point(456, 17);
             this.pictureBox39.Name = "pictureBox39";
             this.pictureBox39.Size = new System.Drawing.Size(20, 40);
@@ -1658,7 +1658,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox47
             // 
-            this.pictureBox47.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox47.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox47.Location = new System.Drawing.Point(111, 17);
             this.pictureBox47.Name = "pictureBox47";
             this.pictureBox47.Size = new System.Drawing.Size(20, 40);
@@ -1668,7 +1668,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox48
             // 
-            this.pictureBox48.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox48.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox48.Location = new System.Drawing.Point(180, 17);
             this.pictureBox48.Name = "pictureBox48";
             this.pictureBox48.Size = new System.Drawing.Size(20, 40);
@@ -1678,7 +1678,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox49
             // 
-            this.pictureBox49.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox49.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox49.Location = new System.Drawing.Point(249, 17);
             this.pictureBox49.Name = "pictureBox49";
             this.pictureBox49.Size = new System.Drawing.Size(20, 40);
@@ -1688,7 +1688,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox50
             // 
-            this.pictureBox50.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox50.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox50.Location = new System.Drawing.Point(318, 17);
             this.pictureBox50.Name = "pictureBox50";
             this.pictureBox50.Size = new System.Drawing.Size(20, 40);
@@ -1698,7 +1698,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox51
             // 
-            this.pictureBox51.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox51.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox51.Location = new System.Drawing.Point(387, 17);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(20, 40);
@@ -1708,7 +1708,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox52
             // 
-            this.pictureBox52.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox52.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox52.Location = new System.Drawing.Point(456, 17);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(20, 40);
@@ -2011,7 +2011,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox60
             // 
-            this.pictureBox60.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox60.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox60.Location = new System.Drawing.Point(111, 17);
             this.pictureBox60.Name = "pictureBox60";
             this.pictureBox60.Size = new System.Drawing.Size(20, 40);
@@ -2021,7 +2021,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox61
             // 
-            this.pictureBox61.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox61.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox61.Location = new System.Drawing.Point(180, 17);
             this.pictureBox61.Name = "pictureBox61";
             this.pictureBox61.Size = new System.Drawing.Size(20, 40);
@@ -2031,7 +2031,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox62
             // 
-            this.pictureBox62.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox62.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox62.Location = new System.Drawing.Point(249, 17);
             this.pictureBox62.Name = "pictureBox62";
             this.pictureBox62.Size = new System.Drawing.Size(20, 40);
@@ -2041,7 +2041,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox63
             // 
-            this.pictureBox63.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox63.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox63.Location = new System.Drawing.Point(318, 17);
             this.pictureBox63.Name = "pictureBox63";
             this.pictureBox63.Size = new System.Drawing.Size(20, 40);
@@ -2051,7 +2051,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox64
             // 
-            this.pictureBox64.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox64.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox64.Location = new System.Drawing.Point(387, 17);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(20, 40);
@@ -2061,7 +2061,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox65
             // 
-            this.pictureBox65.Image = global::_4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox65.Image = global::_ORTools.Resources.Media.Icons.arrow_up;
             this.pictureBox65.Location = new System.Drawing.Point(456, 17);
             this.pictureBox65.Name = "pictureBox65";
             this.pictureBox65.Size = new System.Drawing.Size(20, 40);

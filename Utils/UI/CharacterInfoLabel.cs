@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public class CharacterInfoLabel : Label
     {

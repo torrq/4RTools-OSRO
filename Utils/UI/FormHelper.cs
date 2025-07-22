@@ -1,4 +1,4 @@
-﻿using _4RTools.Controls;
+﻿using _ORTools.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public static class FormHelper
     {

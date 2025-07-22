@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using _4RTools.Utils;
+using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class Container
     {
@@ -52,7 +52,7 @@ namespace _4RTools.Forms
             this.tabPageAutoOff = new System.Windows.Forms.TabPage();
             this.topSplitterPanel = new System.Windows.Forms.Panel();
             this.tabControlBottom = new System.Windows.Forms.TabControl();
-            this.btnToggleMiniMode = new _4RTools.Forms.NoFocusButton();
+            this.btnToggleMiniMode = new _ORTools.Forms.NoFocusButton();
             this.tabControlTop.SuspendLayout();
             this.tabControlBottom.SuspendLayout();
             this.SuspendLayout();
@@ -269,7 +269,7 @@ namespace _4RTools.Forms
             this.btnToggleMiniMode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnToggleMiniMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnToggleMiniMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToggleMiniMode.Image = global::_4RTools.Resources._4RTools.Icons.minimode_less;
+            this.btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
             this.btnToggleMiniMode.Location = new System.Drawing.Point(2, 266);
             this.btnToggleMiniMode.Name = "btnToggleMiniMode";
             this.btnToggleMiniMode.Size = new System.Drawing.Size(636, 18);

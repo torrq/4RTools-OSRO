@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
-using _4RTools.Model;
+using _ORTools.Model;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public class AmmoSwapper
     {

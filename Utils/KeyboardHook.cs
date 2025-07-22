@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public static class KeyboardHook
     {

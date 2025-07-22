@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     internal class BuffContainer
     {

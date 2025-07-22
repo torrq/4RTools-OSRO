@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class DialogInput : Form
     {

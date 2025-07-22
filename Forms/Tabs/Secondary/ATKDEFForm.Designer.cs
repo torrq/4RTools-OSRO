@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class ATKDEFForm
     {
@@ -248,7 +248,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
+            this.pictureBox12.Image = global::_ORTools.Resources.Media.Icons.armor_head;
             this.pictureBox12.InitialImage = null;
             this.pictureBox12.Location = new System.Drawing.Point(469, 28);
             this.pictureBox12.Name = "pictureBox12";
@@ -258,7 +258,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
+            this.pictureBox11.Image = global::_ORTools.Resources.Media.Icons.armor_head;
             this.pictureBox11.InitialImage = null;
             this.pictureBox11.Location = new System.Drawing.Point(258, 28);
             this.pictureBox11.Name = "pictureBox11";
@@ -343,7 +343,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
+            this.pictureBox6.Image = global::_ORTools.Resources.Media.Icons.armor_shield;
             this.pictureBox6.InitialImage = null;
             this.pictureBox6.Location = new System.Drawing.Point(469, 100);
             this.pictureBox6.Name = "pictureBox6";
@@ -364,7 +364,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
+            this.pictureBox7.Image = global::_ORTools.Resources.Media.Icons.armor_shoes;
             this.pictureBox7.InitialImage = null;
             this.pictureBox7.Location = new System.Drawing.Point(469, 148);
             this.pictureBox7.Name = "pictureBox7";
@@ -385,7 +385,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
+            this.pictureBox8.Image = global::_ORTools.Resources.Media.Icons.armor_robe;
             this.pictureBox8.InitialImage = null;
             this.pictureBox8.Location = new System.Drawing.Point(469, 124);
             this.pictureBox8.Name = "pictureBox8";
@@ -404,7 +404,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox9.Image = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox9.InitialImage = null;
             this.pictureBox9.Location = new System.Drawing.Point(469, 76);
             this.pictureBox9.Name = "pictureBox9";
@@ -423,7 +423,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
+            this.pictureBox10.Image = global::_ORTools.Resources.Media.Icons.armor_body;
             this.pictureBox10.InitialImage = null;
             this.pictureBox10.Location = new System.Drawing.Point(469, 52);
             this.pictureBox10.Name = "pictureBox10";
@@ -444,7 +444,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
+            this.pictureBox5.Image = global::_ORTools.Resources.Media.Icons.armor_shield;
             this.pictureBox5.InitialImage = null;
             this.pictureBox5.Location = new System.Drawing.Point(258, 99);
             this.pictureBox5.Name = "pictureBox5";
@@ -465,7 +465,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
+            this.pictureBox4.Image = global::_ORTools.Resources.Media.Icons.armor_shoes;
             this.pictureBox4.InitialImage = null;
             this.pictureBox4.Location = new System.Drawing.Point(258, 147);
             this.pictureBox4.Name = "pictureBox4";
@@ -486,7 +486,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
+            this.pictureBox3.Image = global::_ORTools.Resources.Media.Icons.armor_robe;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(258, 123);
             this.pictureBox3.Name = "pictureBox3";
@@ -507,7 +507,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox2.InitialImage = null;
             this.pictureBox2.Location = new System.Drawing.Point(258, 75);
             this.pictureBox2.Name = "pictureBox2";
@@ -517,7 +517,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
+            this.pictureBox1.Image = global::_ORTools.Resources.Media.Icons.armor_body;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(258, 52);
             this.pictureBox1.Name = "pictureBox1";
@@ -673,7 +673,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
+            this.pictureBox13.Image = global::_ORTools.Resources.Media.Icons.armor_head;
             this.pictureBox13.InitialImage = null;
             this.pictureBox13.Location = new System.Drawing.Point(469, 28);
             this.pictureBox13.Name = "pictureBox13";
@@ -683,7 +683,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = global::_4RTools.Resources._4RTools.Icons.armor_head;
+            this.pictureBox14.Image = global::_ORTools.Resources.Media.Icons.armor_head;
             this.pictureBox14.InitialImage = null;
             this.pictureBox14.Location = new System.Drawing.Point(258, 28);
             this.pictureBox14.Name = "pictureBox14";
@@ -769,7 +769,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
+            this.pictureBox15.Image = global::_ORTools.Resources.Media.Icons.armor_shield;
             this.pictureBox15.InitialImage = null;
             this.pictureBox15.Location = new System.Drawing.Point(469, 100);
             this.pictureBox15.Name = "pictureBox15";
@@ -790,7 +790,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
+            this.pictureBox16.Image = global::_ORTools.Resources.Media.Icons.armor_shoes;
             this.pictureBox16.InitialImage = null;
             this.pictureBox16.Location = new System.Drawing.Point(469, 148);
             this.pictureBox16.Name = "pictureBox16";
@@ -811,7 +811,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
+            this.pictureBox17.Image = global::_ORTools.Resources.Media.Icons.armor_robe;
             this.pictureBox17.InitialImage = null;
             this.pictureBox17.Location = new System.Drawing.Point(469, 124);
             this.pictureBox17.Name = "pictureBox17";
@@ -829,7 +829,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox18.Image = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox18.InitialImage = null;
             this.pictureBox18.Location = new System.Drawing.Point(469, 76);
             this.pictureBox18.Name = "pictureBox18";
@@ -849,7 +849,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox19
             // 
-            this.pictureBox19.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
+            this.pictureBox19.Image = global::_ORTools.Resources.Media.Icons.armor_body;
             this.pictureBox19.InitialImage = null;
             this.pictureBox19.Location = new System.Drawing.Point(469, 52);
             this.pictureBox19.Name = "pictureBox19";
@@ -870,7 +870,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox20
             // 
-            this.pictureBox20.Image = global::_4RTools.Resources._4RTools.Icons.armor_shield;
+            this.pictureBox20.Image = global::_ORTools.Resources.Media.Icons.armor_shield;
             this.pictureBox20.InitialImage = null;
             this.pictureBox20.Location = new System.Drawing.Point(258, 99);
             this.pictureBox20.Name = "pictureBox20";
@@ -891,7 +891,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox21
             // 
-            this.pictureBox21.Image = global::_4RTools.Resources._4RTools.Icons.armor_shoes;
+            this.pictureBox21.Image = global::_ORTools.Resources.Media.Icons.armor_shoes;
             this.pictureBox21.InitialImage = null;
             this.pictureBox21.Location = new System.Drawing.Point(258, 147);
             this.pictureBox21.Name = "pictureBox21";
@@ -912,7 +912,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox22
             // 
-            this.pictureBox22.Image = global::_4RTools.Resources._4RTools.Icons.armor_robe;
+            this.pictureBox22.Image = global::_ORTools.Resources.Media.Icons.armor_robe;
             this.pictureBox22.InitialImage = null;
             this.pictureBox22.Location = new System.Drawing.Point(258, 123);
             this.pictureBox22.Name = "pictureBox22";
@@ -933,7 +933,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Image = global::_4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox23.Image = global::_ORTools.Resources.Media.Icons.dagger;
             this.pictureBox23.InitialImage = null;
             this.pictureBox23.Location = new System.Drawing.Point(258, 75);
             this.pictureBox23.Name = "pictureBox23";
@@ -943,7 +943,7 @@ namespace _4RTools.Forms
             // 
             // pictureBox24
             // 
-            this.pictureBox24.Image = global::_4RTools.Resources._4RTools.Icons.armor_body;
+            this.pictureBox24.Image = global::_ORTools.Resources.Media.Icons.armor_body;
             this.pictureBox24.InitialImage = null;
             this.pictureBox24.Location = new System.Drawing.Point(258, 52);
             this.pictureBox24.Name = "pictureBox24";

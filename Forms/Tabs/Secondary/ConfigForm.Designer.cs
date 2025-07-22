@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using _4RTools.Utils;
+using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class ConfigForm
     {
@@ -254,7 +254,7 @@ namespace _4RTools.Forms
             // 
             // clientDTOBindingSource
             // 
-            this.clientDTOBindingSource.DataSource = typeof(_4RTools.Model.ClientDTO);
+            this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
             // 
             // ConfigForm
             // 

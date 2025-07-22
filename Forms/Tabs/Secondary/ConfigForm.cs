@@ -1,5 +1,5 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class ConfigForm : Form, IObserver
     {
@@ -44,7 +44,7 @@ namespace _4RTools.Forms
             this.skillsListBox.DragOver += this.SkillsListBox_DragOver;
             this.skillsListBox.DragDrop += this.SkillsListBox_DragDrop;
 
-            string cityName = _4RTools.Model.Server.GetCitiesFile();
+            string cityName = _ORTools.Model.Server.GetCitiesFile();
 
             toolTipchkStopBuffsOnCity.SetToolTip(chkStopBuffsOnCity, "Pause when in a city (cities defined in " + cityName + ")");
 

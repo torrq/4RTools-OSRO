@@ -1,10 +1,10 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class CharacterInfo : Form
     {
@@ -51,7 +51,16 @@ namespace _4RTools.Forms
         /// </summary>
         public void UpdateCharacterInfo(Client client)
         {
-            if (client?.Process == null) return;
+            // Check if client is null, has no process, or is not logged in
+            if (client?.Process == null || !IsClientLoggedIn(client))
+            {
+                // Clear UI labels when no valid client is logged in
+                this.CharacterNameLabel = "";
+                this.CharacterInfoLabel = "";
+                this.CharacterMapLabel = "";
+                this.MapLink = "";
+                return;
+            }
 
             // Read character data
             string characterName = client.ReadCharacterName();
@@ -64,6 +73,17 @@ namespace _4RTools.Forms
             int currentMaxHP = (int)client.ReadMaxHp();
             int currentSP = (int)client.ReadCurrentSp();
             int currentMaxSP = (int)client.ReadMaxSp();
+
+            // Validate data (example: check if level is reasonable)
+            if (!IsValidCharacterData(currentLevel, currentJobLevel, currentHP, currentMaxHP))
+            {
+                // Clear UI labels if data is invalid
+                this.CharacterNameLabel = "";
+                this.CharacterInfoLabel = "";
+                this.CharacterMapLabel = "";
+                this.MapLink = "";
+                return;
+            }
 
             // Calculate experience percentage
             string currentExpPercent;
@@ -80,7 +100,7 @@ namespace _4RTools.Forms
             // Get job name
             string jobName = JobList.GetNameById(currentJobId);
 
-            // Format the multi-line info text (let CrispLabel handle centering)
+            // Format the multi-line info text
             string line1 = $"Lv{currentLevel} / {jobName} / Lv{currentJobLevel} / Exp {currentExpPercent}";
             string line2 = $"HP {currentHP} / {currentMaxHP} | SP {currentSP} / {currentMaxSP}";
 
@@ -91,6 +111,26 @@ namespace _4RTools.Forms
             this.CharacterInfoLabel = clientDebugInfo;
             this.CharacterMapLabel = client.ReadCurrentMap() ?? "";
             this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + (client.ReadCurrentMap() ?? "");
+        }
+
+        // Helper method to check if client is logged in
+        private bool IsClientLoggedIn(Client client)
+        {
+            // Replace with actual logic to check if client is logged in
+            // Example: return client.IsLoggedIn; // Assuming Client has an IsLoggedIn property
+            // If no such property exists, you might check if characterName is non-empty or other indicators
+            return true;
+            //!string.IsNullOrEmpty(client.ReadCharacterName());
+        }
+
+        // Helper method to validate character data
+        private bool IsValidCharacterData(int level, int jobLevel, int hp, int maxHP)
+        {
+            DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
+            // Example validation: ensure level and HP are within reasonable ranges
+            return level > 0 && level <= 255 && // Adjust max level based on game
+                   jobLevel > 0 && jobLevel <= 255 && // Adjust max job level based on game
+                   hp >= 0 && maxHP > 0 && hp <= maxHP;
         }
 
         private void CharacterMapLabel_Click(object sender, EventArgs e)

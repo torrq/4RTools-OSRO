@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class SkillTimerForm
     {
@@ -636,7 +636,7 @@ namespace _4RTools.Forms
             // SkillTimerLegendClickOff
             // 
             this.SkillTimerLegendClickOff.Cursor = System.Windows.Forms.Cursors.Help;
-            this.SkillTimerLegendClickOff.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_off;
+            this.SkillTimerLegendClickOff.Image = global::_ORTools.Resources.Media.Icons.spammer_mouse_off;
             this.SkillTimerLegendClickOff.Location = new System.Drawing.Point(285, 5);
             this.SkillTimerLegendClickOff.Name = "SkillTimerLegendClickOff";
             this.SkillTimerLegendClickOff.Size = new System.Drawing.Size(16, 16);
@@ -647,7 +647,7 @@ namespace _4RTools.Forms
             // SkillTimerLegendClickOn
             // 
             this.SkillTimerLegendClickOn.Cursor = System.Windows.Forms.Cursors.Help;
-            this.SkillTimerLegendClickOn.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_on;
+            this.SkillTimerLegendClickOn.Image = global::_ORTools.Resources.Media.Icons.spammer_mouse_on;
             this.SkillTimerLegendClickOn.Location = new System.Drawing.Point(305, 5);
             this.SkillTimerLegendClickOn.Name = "SkillTimerLegendClickOn";
             this.SkillTimerLegendClickOn.Size = new System.Drawing.Size(16, 16);
@@ -658,7 +658,7 @@ namespace _4RTools.Forms
             // SkillTimerLegendClickCenter
             // 
             this.SkillTimerLegendClickCenter.Cursor = System.Windows.Forms.Cursors.Help;
-            this.SkillTimerLegendClickCenter.Image = global::_4RTools.Resources._4RTools.Icons.spammer_mouse_center;
+            this.SkillTimerLegendClickCenter.Image = global::_ORTools.Resources.Media.Icons.spammer_mouse_center;
             this.SkillTimerLegendClickCenter.Location = new System.Drawing.Point(325, 5);
             this.SkillTimerLegendClickCenter.Name = "SkillTimerLegendClickCenter";
             this.SkillTimerLegendClickCenter.Size = new System.Drawing.Size(16, 16);
@@ -682,7 +682,7 @@ namespace _4RTools.Forms
             // 
             this.txtSkillTimerKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.txtSkillTimerKeyLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillTimerKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_question;
+            this.txtSkillTimerKeyLabel.Image = global::_ORTools.Resources.Media.Icons.key_question;
             this.txtSkillTimerKeyLabel.Location = new System.Drawing.Point(120, 1);
             this.txtSkillTimerKeyLabel.Name = "txtSkillTimerKeyLabel";
             this.txtSkillTimerKeyLabel.Size = new System.Drawing.Size(25, 24);
@@ -1220,7 +1220,7 @@ namespace _4RTools.Forms
             // 
             this.SkillTimerAltKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.SkillTimerAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SkillTimerAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
+            this.SkillTimerAltKeyLabel.Image = global::_ORTools.Resources.Media.Icons.key_alt;
             this.SkillTimerAltKeyLabel.Location = new System.Drawing.Point(62, 1);
             this.SkillTimerAltKeyLabel.Name = "SkillTimerAltKeyLabel";
             this.SkillTimerAltKeyLabel.Size = new System.Drawing.Size(34, 24);
@@ -1247,7 +1247,7 @@ namespace _4RTools.Forms
             // 
             this.SkillTimerEnabledLegendLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.SkillTimerEnabledLegendLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SkillTimerEnabledLegendLabel.Image = global::_4RTools.Resources._4RTools.Icons.toggle_on_small;
+            this.SkillTimerEnabledLegendLabel.Image = global::_ORTools.Resources.Media.Icons.toggle_on_small;
             this.SkillTimerEnabledLegendLabel.Location = new System.Drawing.Point(22, 1);
             this.SkillTimerEnabledLegendLabel.Name = "SkillTimerEnabledLegendLabel";
             this.SkillTimerEnabledLegendLabel.Size = new System.Drawing.Size(24, 24);

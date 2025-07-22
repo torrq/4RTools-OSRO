@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     internal static class Win32Interop
     {

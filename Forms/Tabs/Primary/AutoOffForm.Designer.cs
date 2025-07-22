@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class AutoOffForm
     {
@@ -113,7 +113,7 @@ namespace _4RTools.Forms
             // 
             // animatedClockImage
             // 
-            this.animatedClockImage.Image = global::_4RTools.Resources._4RTools.Icons.clock_animated;
+            this.animatedClockImage.Image = global::_ORTools.Resources.Media.Icons.clock_animated;
             this.animatedClockImage.Location = new System.Drawing.Point(325, 2);
             this.animatedClockImage.Name = "animatedClockImage";
             this.animatedClockImage.Size = new System.Drawing.Size(24, 24);
@@ -125,7 +125,7 @@ namespace _4RTools.Forms
             this.AutoOffOverweightCB.BackColor = System.Drawing.Color.Pink;
             this.AutoOffOverweightCB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AutoOffOverweightCB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoOffOverweightCB.Image = global::_4RTools.Resources._4RTools.Icons.weight90;
+            this.AutoOffOverweightCB.Image = global::_ORTools.Resources.Media.Icons.weight90;
             this.AutoOffOverweightCB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AutoOffOverweightCB.Location = new System.Drawing.Point(2, 110);
             this.AutoOffOverweightCB.Name = "AutoOffOverweightCB";
@@ -152,7 +152,7 @@ namespace _4RTools.Forms
             // 
             this.overweightAltKeyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.overweightAltKeyLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightAltKeyLabel.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
+            this.overweightAltKeyLabel.Image = global::_ORTools.Resources.Media.Icons.key_alt;
             this.overweightAltKeyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.overweightAltKeyLabel.Location = new System.Drawing.Point(182, 123);
             this.overweightAltKeyLabel.Name = "overweightAltKeyLabel";
@@ -164,7 +164,7 @@ namespace _4RTools.Forms
             // 
             // arrowDown1
             // 
-            this.arrowDown1.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.arrowDown1.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.arrowDown1.Location = new System.Drawing.Point(263, 102);
             this.arrowDown1.Name = "arrowDown1";
             this.arrowDown1.Size = new System.Drawing.Size(11, 14);
@@ -173,7 +173,7 @@ namespace _4RTools.Forms
             // 
             // arrowRight
             // 
-            this.arrowRight.Image = global::_4RTools.Resources._4RTools.Icons.arrow_right;
+            this.arrowRight.Image = global::_ORTools.Resources.Media.Icons.arrow_right;
             this.arrowRight.Location = new System.Drawing.Point(148, 130);
             this.arrowRight.Name = "arrowRight";
             this.arrowRight.Size = new System.Drawing.Size(19, 11);
@@ -193,7 +193,7 @@ namespace _4RTools.Forms
             // 
             // arrowDown2
             // 
-            this.arrowDown2.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.arrowDown2.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.arrowDown2.Location = new System.Drawing.Point(263, 153);
             this.arrowDown2.Name = "arrowDown2";
             this.arrowDown2.Size = new System.Drawing.Size(11, 14);
@@ -204,7 +204,7 @@ namespace _4RTools.Forms
             // 
             this.overweightAltKey2Label.Cursor = System.Windows.Forms.Cursors.Help;
             this.overweightAltKey2Label.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overweightAltKey2Label.Image = global::_4RTools.Resources._4RTools.Icons.key_alt;
+            this.overweightAltKey2Label.Image = global::_ORTools.Resources.Media.Icons.key_alt;
             this.overweightAltKey2Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.overweightAltKey2Label.Location = new System.Drawing.Point(182, 174);
             this.overweightAltKey2Label.Name = "overweightAltKey2Label";
@@ -227,7 +227,7 @@ namespace _4RTools.Forms
             // 
             // arrowDown3
             // 
-            this.arrowDown3.Image = global::_4RTools.Resources._4RTools.Icons.arrow_down;
+            this.arrowDown3.Image = global::_ORTools.Resources.Media.Icons.arrow_down;
             this.arrowDown3.Location = new System.Drawing.Point(263, 206);
             this.arrowDown3.Name = "arrowDown3";
             this.arrowDown3.Size = new System.Drawing.Size(11, 14);

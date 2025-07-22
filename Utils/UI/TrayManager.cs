@@ -1,11 +1,11 @@
-﻿using _4RTools.Model;
-using _4RTools.Resources._4RTools;
+﻿using _ORTools.Model;
+using _ORTools.Resources.Media;
 using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace _4RTools.Utils
+namespace _ORTools.Utils
 {
     public class TrayManager : IObserver, IDisposable
     {

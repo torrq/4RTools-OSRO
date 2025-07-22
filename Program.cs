@@ -1,8 +1,8 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using System;
 using System.Windows.Forms;
 
-namespace _4RTools
+namespace _ORTools
 {
     internal static class Program
     {

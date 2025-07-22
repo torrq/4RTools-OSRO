@@ -1,5 +1,5 @@
-﻿using _4RTools.Forms;
-using _4RTools.Utils;
+﻿using _ORTools.Forms;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
 
-namespace _4RTools.Model
+namespace _ORTools.Model
 {
     public class HPSlot
     {

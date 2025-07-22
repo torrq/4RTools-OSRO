@@ -1,6 +1,6 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     partial class AutoBuffStatusForm
     {
@@ -91,7 +91,7 @@ namespace _4RTools.Forms
             // 
             this.GreenPotionLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.GreenPotionLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GreenPotionLabel.Image = global::_4RTools.Resources._4RTools.Icons.green_potion;
+            this.GreenPotionLabel.Image = global::_ORTools.Resources.Media.Icons.green_potion;
             this.GreenPotionLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.GreenPotionLabel.Location = new System.Drawing.Point(2, 0);
             this.GreenPotionLabel.Name = "GreenPotionLabel";
@@ -123,7 +123,7 @@ namespace _4RTools.Forms
             // 
             this.PanaceaLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.PanaceaLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanaceaLabel.Image = global::_4RTools.Resources._4RTools.Icons.panacea;
+            this.PanaceaLabel.Image = global::_ORTools.Resources.Media.Icons.panacea;
             this.PanaceaLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.PanaceaLabel.Location = new System.Drawing.Point(4, 0);
             this.PanaceaLabel.Name = "PanaceaLabel";
@@ -155,7 +155,7 @@ namespace _4RTools.Forms
             // 
             this.RoyalJellyLabel.Cursor = System.Windows.Forms.Cursors.Help;
             this.RoyalJellyLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoyalJellyLabel.Image = global::_4RTools.Resources._4RTools.Icons.royal_jelly;
+            this.RoyalJellyLabel.Image = global::_ORTools.Resources.Media.Icons.royal_jelly;
             this.RoyalJellyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RoyalJellyLabel.Location = new System.Drawing.Point(3, 0);
             this.RoyalJellyLabel.Name = "RoyalJellyLabel";

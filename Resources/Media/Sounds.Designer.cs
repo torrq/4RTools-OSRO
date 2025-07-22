@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _4RTools.Resources._4RTools {
+namespace _ORTools.Resources.Media {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace _4RTools.Resources._4RTools {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("_4RTools.Resources._4RTools.Sounds", typeof(Sounds).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("_ORTools.Resources.Media.Sounds", typeof(Sounds).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

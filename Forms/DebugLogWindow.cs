@@ -1,10 +1,10 @@
-﻿using _4RTools.Utils;
+﻿using _ORTools.Utils;
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace _ORTools.Forms
 {
     public partial class DebugLogWindow : Form
     {

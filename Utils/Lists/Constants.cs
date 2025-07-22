@@ -1,4 +1,4 @@
-﻿namespace _4RTools.Utils
+﻿namespace _ORTools.Utils
 {
     internal static class Constants
     {
