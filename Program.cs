@@ -21,9 +21,8 @@ namespace _ORTools
             }
             catch (Exception ex)
             {
-                DebugLogger.Error("Unhandled exception:\n" + ex.ToString());
-                MessageBox.Show("An unexpected error occurred. Please check the logs.", "Application Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DebugLogger.Error("Unhandled exception:\n" + ex.Message);
+                MessageBox.Show("An unexpected error occurred. Please check the logs.", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

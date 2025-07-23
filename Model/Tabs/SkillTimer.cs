@@ -114,7 +114,7 @@ namespace _ORTools.Model
                     return;
                 }
 
-                threads[timerId] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[timerId]));
+                threads[timerId] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[timerId]), $"SkillTimer-{timerId}");
                 ThreadRunner.Start(threads[timerId]);
             }
         }
@@ -194,15 +194,9 @@ namespace _ORTools.Model
 
         private void TryClickAtCurrentPosition(IntPtr hWnd)
         {
-            // Method 1: Try SendMessage first (works for some games when unfocused)
             SendMessage(hWnd, WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
             Thread.Sleep(25);
             SendMessage(hWnd, WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
-
-            // Method 2: If that doesn't work, try PostMessage as backup
-            // PostMessage(hWnd, WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
-            // Thread.Sleep(25);
-            // PostMessage(hWnd, WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
         }
 
         private void TryClickAtCenter(IntPtr hWnd)
