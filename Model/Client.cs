@@ -1,4 +1,5 @@
-﻿using _ORTools.Utils;
+﻿using _ORTools.Forms;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -48,6 +49,8 @@ namespace _ORTools.Model
     public sealed class ClientListSingleton
     {
         private static List<Client> Clients = new List<Client>();
+        private static DateTime _lastCleanup = DateTime.MinValue;
+        private static readonly TimeSpan _cleanupInterval = TimeSpan.FromSeconds(30);
 
         public static void AddClient(Client c)
         {
@@ -61,7 +64,58 @@ namespace _ORTools.Model
 
         public static List<Client> GetAll()
         {
+            // Note: Automatic cleanup disabled to prevent removing clients with temporary memory read issues
+            // Use ForceCleanup() manually if needed
             return Clients;
+        }
+
+        /// <summary>
+        /// Removes clients whose processes have actually exited (not just having memory read issues).
+        /// </summary>
+        public static void RemoveDeadClients()
+        {
+            var deadClients = new List<Client>();
+
+            foreach (var client in Clients)
+            {
+                try
+                {
+                    // Only remove if process is truly null or has actually exited
+                    if (client.Process == null)
+                    {
+                        deadClients.Add(client);
+                        continue;
+                    }
+
+                    // Double check - only remove if process has actually exited
+                    if (client.Process.HasExited)
+                    {
+                        deadClients.Add(client);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // If we can't check the process state, assume it's dead
+                    DebugLogger.Debug($"Exception checking process state for {client.ProcessName}: {ex.Message}");
+                    deadClients.Add(client);
+                }
+            }
+
+            foreach (var deadClient in deadClients)
+            {
+                DebugLogger.Debug($"Removing truly dead client: {deadClient.ProcessName}");
+                Clients.Remove(deadClient);
+                deadClient.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Forces cleanup of dead clients immediately.
+        /// </summary>
+        public static void ForceCleanup()
+        {
+            RemoveDeadClients();
+            _lastCleanup = DateTime.Now;
         }
 
         public static bool ExistsByProcessName(string processName)
@@ -117,7 +171,7 @@ namespace _ORTools.Model
         }
     }
 
-    public class Client
+    public class Client : IDisposable
     {
         public Process Process { get; }
 
@@ -135,6 +189,75 @@ namespace _ORTools.Model
         private DateTime _lastLoginStatusCheck = DateTime.MinValue;
         private readonly TimeSpan _loginStatusCacheTimeout = TimeSpan.FromMilliseconds(500); // Cache for 500ms
 
+        // Process validity caching
+        private bool? _cachedProcessValid = null;
+        private DateTime _lastProcessValidCheck = DateTime.MinValue;
+        private readonly TimeSpan _processValidCacheTimeout = TimeSpan.FromMilliseconds(1000); // Cache for 1 second
+
+        private bool _disposed = false;
+
+        /// <summary>
+        /// Checks if the process is valid and accessible for memory operations.
+        /// Only checks basic process state, not memory accessibility.
+        /// </summary>
+        private bool IsProcessValid()
+        {
+            // Check if we have a valid cached value
+            if (_cachedProcessValid.HasValue &&
+                DateTime.Now - _lastProcessValidCheck < _processValidCacheTimeout)
+            {
+                return _cachedProcessValid.Value;
+            }
+
+            // Perform basic process validity check only
+            bool isValid = false;
+            try
+            {
+                if (Process != null && !Process.HasExited)
+                {
+                    isValid = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Debug($"IsProcessValid check failed for {ProcessName}: {ex.Message}");
+                isValid = false;
+            }
+
+            // Update cache
+            _cachedProcessValid = isValid;
+            _lastProcessValidCheck = DateTime.Now;
+
+            return isValid;
+        }
+
+        /// <summary>
+        /// Safely reads a 4-byte unsigned integer from memory with error handling.
+        /// This is an alternative to ReadMemory() for cases where you want graceful failure.
+        /// </summary>
+        private uint ReadMemorySafe(int address)
+        {
+            try
+            {
+                if (!IsProcessValid() || address == 0)
+                    return 0;
+
+                // Use non-throwing version
+                byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 4u, throwOnError: false);
+                if (bytes == null || bytes.Length < 4)
+                {
+                    return 0;
+                }
+                return BitConverter.ToUInt32(bytes, 0);
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Debug($"ReadMemorySafe failed for {ProcessName}: {ex.Message}");
+                _cachedProcessValid = false;
+                return 0;
+            }
+        }
+
         public bool IsLoggedIn
         {
             get
@@ -143,7 +266,7 @@ namespace _ORTools.Model
                 {
                     DebugLogger.Debug($"IsLoggedIn: Process is null or has exited for {ProcessName}.");
                     _cachedLoginStatus = false;
-                    return false;
+                    return _cachedLoginStatus.Value;
                 }
 
                 // Check if we have a valid cached value
@@ -169,6 +292,8 @@ namespace _ORTools.Model
         {
             _cachedLoginStatus = null;
             _lastLoginStatusCheck = DateTime.MinValue;
+            _cachedProcessValid = null;
+            _lastProcessValidCheck = DateTime.MinValue;
         }
 
         private bool ReadLoginStatus()
@@ -293,12 +418,13 @@ namespace _ORTools.Model
             }
         }
 
+        // ORIGINAL WORKING METHODS - Keep these unchanged
         private string ReadMemoryAsString(int address)
         {
             // use the convenience overload (no out param)
             byte[] bytes = PMR.ReadProcessMemory((IntPtr)address, 40u);
             int len = Array.IndexOf(bytes, (byte)0);
-            if (len< 0) len = bytes.Length;
+            if (len < 0) len = bytes.Length;
             return Encoding.Default.GetString(bytes, 0, len);
         }
 
@@ -478,6 +604,29 @@ namespace _ORTools.Model
             catch (Exception ex)
             {
                 DebugLogger.Info($"Failed to kill client process: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Disposes the client and releases all resources.
+        /// </summary>
+        public void Dispose()
+        {
+            if (!_disposed)
+            {
+                try
+                {
+                    PMR?.Dispose();
+                    Process?.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Debug($"Error disposing client {ProcessName}: {ex.Message}");
+                }
+                finally
+                {
+                    _disposed = true;
+                }
             }
         }
     }

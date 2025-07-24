@@ -8,7 +8,8 @@ namespace _ORTools.Model
     public class Config
     {
         public bool DebugMode { get; set; } = false;
-        public string LastUsedProfile { get; set; } = "Default"; // Default to "Default" profile
+        public bool DebugModeShowLog { get; set; } = true;
+        public string LastUsedProfile { get; set; } = "Default";
         public bool MiniMode { get; set; } = false;
     }
 

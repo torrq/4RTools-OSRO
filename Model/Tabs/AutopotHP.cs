@@ -79,6 +79,13 @@ namespace _ORTools.Model
 
         private int AutopotHPThread(Client roClient)
         {
+            if (roClient?.Process == null || roClient.Process.HasExited)
+            {
+                DebugLogger.Debug("AutopotHP: Client process is null or has exited, stopping thread.");
+                FormHelper.ToggleStateOff("AutopotHP");
+                return -1;
+            }
+
             bool potUsed = false;
 
             try

@@ -36,28 +36,16 @@ namespace _ORTools.Forms
             this.skillsListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupSettings = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ammoTriggerLabel = new System.Windows.Forms.Label();
-            this.ammoTrigger = new System.Windows.Forms.TextBox();
             this.chkSoundEnabled = new System.Windows.Forms.CheckBox();
-            this.ammo2textBox = new System.Windows.Forms.TextBox();
-            this.ammo1textBox = new System.Windows.Forms.TextBox();
-            this.switchAmmoCheckBox = new System.Windows.Forms.CheckBox();
             this.chkStopBuffsOnCity = new System.Windows.Forms.CheckBox();
             this.toolTipDebugMode = new System.Windows.Forms.ToolTip(this.components);
-            this.chkDebugMode = new System.Windows.Forms.CheckBox();
+            this.DebugMode = new System.Windows.Forms.CheckBox();
+            this.DebugModeShowLog = new System.Windows.Forms.CheckBox();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
             this.toolTipchkSoundEnabled = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipAmmo1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipAmmo2 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipOverweightKey = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipWeight90 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipSwitchAmmoCB = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipAmmoTrigger = new System.Windows.Forms.ToolTip(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
@@ -84,18 +72,10 @@ namespace _ORTools.Forms
             this.label2.Size = new System.Drawing.Size(132, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Autobuff skill order";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // groupSettings
             // 
-            this.groupSettings.Controls.Add(this.label4);
-            this.groupSettings.Controls.Add(this.label3);
-            this.groupSettings.Controls.Add(this.ammoTriggerLabel);
-            this.groupSettings.Controls.Add(this.ammoTrigger);
             this.groupSettings.Controls.Add(this.chkSoundEnabled);
-            this.groupSettings.Controls.Add(this.ammo2textBox);
-            this.groupSettings.Controls.Add(this.ammo1textBox);
-            this.groupSettings.Controls.Add(this.switchAmmoCheckBox);
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
@@ -103,48 +83,6 @@ namespace _ORTools.Forms
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Profile Settings";
-            this.groupSettings.Enter += new System.EventHandler(this.groupSettings_Enter);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(239, 135);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 321;
-            this.label4.Text = "Ammo 2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(189, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 320;
-            this.label3.Text = "Ammo 1";
-            // 
-            // ammoTriggerLabel
-            // 
-            this.ammoTriggerLabel.AutoSize = true;
-            this.ammoTriggerLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ammoTriggerLabel.Location = new System.Drawing.Point(140, 135);
-            this.ammoTriggerLabel.Name = "ammoTriggerLabel";
-            this.ammoTriggerLabel.Size = new System.Drawing.Size(41, 13);
-            this.ammoTriggerLabel.TabIndex = 319;
-            this.ammoTriggerLabel.Text = "Trigger";
-            // 
-            // ammoTrigger
-            // 
-            this.ammoTrigger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ammoTrigger.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ammoTrigger.Location = new System.Drawing.Point(141, 107);
-            this.ammoTrigger.Name = "ammoTrigger";
-            this.ammoTrigger.Size = new System.Drawing.Size(45, 23);
-            this.ammoTrigger.TabIndex = 318;
-            this.ammoTrigger.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTipAmmoTrigger.SetToolTip(this.ammoTrigger, "Ammo Swap key");
             // 
             // chkSoundEnabled
             // 
@@ -160,42 +98,6 @@ namespace _ORTools.Forms
             this.chkSoundEnabled.UseVisualStyleBackColor = true;
             this.chkSoundEnabled.CheckedChanged += new System.EventHandler(this.ChkSoundEnabled_CheckedChanged);
             // 
-            // ammo2textBox
-            // 
-            this.ammo2textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ammo2textBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ammo2textBox.Location = new System.Drawing.Point(243, 107);
-            this.ammo2textBox.Name = "ammo2textBox";
-            this.ammo2textBox.Size = new System.Drawing.Size(45, 23);
-            this.ammo2textBox.TabIndex = 309;
-            this.ammo2textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTipAmmo2.SetToolTip(this.ammo2textBox, "Ammo #2");
-            // 
-            // ammo1textBox
-            // 
-            this.ammo1textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ammo1textBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ammo1textBox.Location = new System.Drawing.Point(192, 107);
-            this.ammo1textBox.Name = "ammo1textBox";
-            this.ammo1textBox.Size = new System.Drawing.Size(45, 23);
-            this.ammo1textBox.TabIndex = 308;
-            this.ammo1textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTipAmmo1.SetToolTip(this.ammo1textBox, "Ammo #1");
-            // 
-            // switchAmmoCheckBox
-            // 
-            this.switchAmmoCheckBox.AutoSize = true;
-            this.switchAmmoCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.switchAmmoCheckBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchAmmoCheckBox.Location = new System.Drawing.Point(13, 107);
-            this.switchAmmoCheckBox.Name = "switchAmmoCheckBox";
-            this.switchAmmoCheckBox.Size = new System.Drawing.Size(116, 20);
-            this.switchAmmoCheckBox.TabIndex = 307;
-            this.switchAmmoCheckBox.Text = "Ammo swapper";
-            this.toolTipSwitchAmmoCB.SetToolTip(this.switchAmmoCheckBox, "Switch between ammunition");
-            this.switchAmmoCheckBox.UseVisualStyleBackColor = true;
-            this.switchAmmoCheckBox.CheckedChanged += new System.EventHandler(this.SwitchAmmoCheckBox_CheckedChanged);
-            // 
             // chkStopBuffsOnCity
             // 
             this.chkStopBuffsOnCity.AutoSize = true;
@@ -209,48 +111,64 @@ namespace _ORTools.Forms
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
             this.chkStopBuffsOnCity.CheckedChanged += new System.EventHandler(this.ChkStopBuffsOnCity_CheckedChanged);
             // 
-            // chkDebugMode
+            // toolTipDebugMode
             // 
-            this.chkDebugMode.AutoSize = true;
-            this.chkDebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkDebugMode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDebugMode.Location = new System.Drawing.Point(94, 21);
-            this.chkDebugMode.Name = "chkDebugMode";
-            this.chkDebugMode.Size = new System.Drawing.Size(120, 18);
-            this.chkDebugMode.TabIndex = 320;
-            this.chkDebugMode.Text = "Debug Log Mode";
-            this.toolTipDebugMode.SetToolTip(this.chkDebugMode, "Toggles debug mode, which logs info to a text file");
-            this.chkDebugMode.UseVisualStyleBackColor = true;
-            this.chkDebugMode.CheckedChanged += new System.EventHandler(this.chkDebugMode_CheckedChanged);
+            this.toolTipDebugMode.AutoPopDelay = 15000;
+            this.toolTipDebugMode.InitialDelay = 300;
+            this.toolTipDebugMode.ReshowDelay = 100;
+            this.toolTipDebugMode.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDebugMode.ToolTipTitle = "Debug Mode";
+            // 
+            // DebugMode
+            // 
+            this.DebugMode.AutoSize = true;
+            this.DebugMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DebugMode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DebugMode.Location = new System.Drawing.Point(62, 21);
+            this.DebugMode.Name = "DebugMode";
+            this.DebugMode.Size = new System.Drawing.Size(96, 18);
+            this.DebugMode.TabIndex = 320;
+            this.DebugMode.Text = "Debug Mode";
+            this.toolTipDebugMode.SetToolTip(this.DebugMode, "Toggles Debug Mode, which logs useful dev info to debug.log");
+            this.DebugMode.UseVisualStyleBackColor = true;
+            this.DebugMode.CheckedChanged += new System.EventHandler(this.DebugMode_CheckedChanged);
+            // 
+            // DebugModeShowLog
+            // 
+            this.DebugModeShowLog.AutoSize = true;
+            this.DebugModeShowLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DebugModeShowLog.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DebugModeShowLog.Location = new System.Drawing.Point(173, 21);
+            this.DebugModeShowLog.Name = "DebugModeShowLog";
+            this.DebugModeShowLog.Size = new System.Drawing.Size(81, 18);
+            this.DebugModeShowLog.TabIndex = 321;
+            this.DebugModeShowLog.Text = "Show Log";
+            this.toolTipDebugModeShowLog.SetToolTip(this.DebugModeShowLog, "Adds a debug/console log to the bottom of the app");
+            this.DebugModeShowLog.UseVisualStyleBackColor = true;
             // 
             // groupGlobalSettings
             // 
-            this.groupGlobalSettings.Controls.Add(this.chkDebugMode);
+            this.groupGlobalSettings.Controls.Add(this.DebugModeShowLog);
+            this.groupGlobalSettings.Controls.Add(this.DebugMode);
             this.groupGlobalSettings.Location = new System.Drawing.Point(309, 367);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
             this.groupGlobalSettings.Size = new System.Drawing.Size(300, 53);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
-            this.groupGlobalSettings.Enter += new System.EventHandler(this.groupGlobalSettings_Enter);
             // 
-            // toolTipAmmo1
+            // toolTipReqRestart
             // 
-            this.toolTipAmmo1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip3_Popup);
+            this.toolTipReqRestart.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipReqRestart.ToolTipTitle = "Debug Mode";
             // 
-            // toolTipOverweightKey
+            // toolTipDebugModeShowLog
             // 
-            this.toolTipOverweightKey.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip5_Popup);
-            // 
-            // toolTipWeight90
-            // 
-            this.toolTipWeight90.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipWeight90_Popup);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.toolTipDebugModeShowLog.AutoPopDelay = 15000;
+            this.toolTipDebugModeShowLog.InitialDelay = 300;
+            this.toolTipDebugModeShowLog.ReshowDelay = 100;
+            this.toolTipDebugModeShowLog.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDebugModeShowLog.ToolTipTitle = "Show Debug Log";
             // 
             // clientDTOBindingSource
             // 
@@ -287,26 +205,14 @@ namespace _ORTools.Forms
         private Label label2;
         private GroupBox groupSettings;
         private CheckBox chkStopBuffsOnCity;
-        private TextBox ammo2textBox;
-        private TextBox ammo1textBox;
-        private CheckBox switchAmmoCheckBox;
         private ToolTip toolTipDebugMode;
         private ToolTip toolTipchkSoundEnabled;
-        private ToolTip toolTipAmmo1;
-        private ToolTip toolTipAmmo2;
-        private ToolTip toolTipOverweightKey;
         private ToolTip toolTipchkStopBuffsOnCity;
         private CheckBox chkSoundEnabled;
         private GroupBox groupGlobalSettings;
-        private CheckBox chkDebugMode;
+        private CheckBox DebugMode;
         private ToolTip toolTipReqRestart;
-        private ToolTip toolTipWeight90;
-        private ToolTip toolTipSwitchAmmoCB;
-        private TextBox ammoTrigger;
-        private Label label4;
-        private Label label3;
-        private Label ammoTriggerLabel;
-        private ToolTip toolTipAmmoTrigger;
-        private ImageList imageList1;
+        private CheckBox DebugModeShowLog;
+        private ToolTip toolTipDebugModeShowLog;
     }
 }

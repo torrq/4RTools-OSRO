@@ -21,22 +21,15 @@ namespace _ORTools.Forms
             InitializeComponent();
 
             // Detach event handler before setting initial state
-            this.chkDebugMode.CheckedChanged -= this.chkDebugMode_CheckedChanged;
-            this.chkDebugMode.Checked = cfg.DebugMode;
+            this.DebugMode.CheckedChanged -= this.DebugMode_CheckedChanged;
+            this.DebugMode.Checked = cfg.DebugMode;
+            this.DebugModeShowLog.CheckedChanged -= this.DebugModeShowLog_CheckedChanged;
+            this.DebugModeShowLog.Checked = cfg.DebugModeShowLog;
             // Reattach event handler after setting initial state
-            this.chkDebugMode.CheckedChanged += this.chkDebugMode_CheckedChanged;
+            this.DebugMode.CheckedChanged += this.DebugMode_CheckedChanged;
+            this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
 
             isInitializing = false; // Initialization complete
-
-            this.ammo1textBox.KeyDown += FormHelper.OnKeyDown;
-            this.ammo1textBox.KeyPress += FormHelper.OnKeyPress;
-            this.ammo1textBox.TextChanged += this.TextAmmo1_TextChanged;
-            this.ammo2textBox.KeyDown += FormHelper.OnKeyDown;
-            this.ammo2textBox.KeyPress += FormHelper.OnKeyPress;
-            this.ammo2textBox.TextChanged += this.TextAmmo2_TextChanged;
-            this.ammoTrigger.KeyDown += FormHelper.OnKeyDown;
-            this.ammoTrigger.KeyPress += FormHelper.OnKeyPress;
-            this.ammoTrigger.TextChanged += this.TextAmmoTrigger_TextChanged;
 
             var newListBuff = ProfileSingleton.GetCurrent().UserPreferences.AutoBuffOrder;
             this.skillsListBox.MouseLeave += this.SkillsListBox_MouseLeave;
@@ -47,6 +40,8 @@ namespace _ORTools.Forms
             string cityName = _ORTools.Model.Server.GetCitiesFile();
 
             toolTipchkStopBuffsOnCity.SetToolTip(chkStopBuffsOnCity, "Pause when in a city (cities defined in " + cityName + ")");
+
+            DebugModeShowLog.Enabled = DebugMode.Checked;
 
             _subject = subject;
             subject.Attach(this);
@@ -81,21 +76,17 @@ namespace _ORTools.Forms
                 // Temporarily detach to avoid triggering logic during UI update
                 this.chkStopBuffsOnCity.CheckedChanged -= ChkStopBuffsOnCity_CheckedChanged;
                 this.chkSoundEnabled.CheckedChanged -= ChkSoundEnabled_CheckedChanged;
-                this.switchAmmoCheckBox.CheckedChanged -= SwitchAmmoCheckBox_CheckedChanged;
-                this.chkDebugMode.CheckedChanged -= chkDebugMode_CheckedChanged; // Detach DebugMode handler as well
+                this.DebugMode.CheckedChanged -= DebugMode_CheckedChanged;
+                this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
 
                 this.chkStopBuffsOnCity.Checked = prefs.StopBuffsCity;
                 this.chkSoundEnabled.Checked = prefs.SoundEnabled;
-                this.switchAmmoCheckBox.Checked = prefs.SwitchAmmo;
-                this.ammo1textBox.Text = prefs.Ammo1Key.ToString();
-                this.ammo2textBox.Text = prefs.Ammo2Key.ToString();
-                this.ammoTrigger.Text = prefs.AmmoTriggerKey.ToString();
 
                 // Reattach event handlers
                 this.chkStopBuffsOnCity.CheckedChanged += ChkStopBuffsOnCity_CheckedChanged;
                 this.chkSoundEnabled.CheckedChanged += ChkSoundEnabled_CheckedChanged;
-                this.switchAmmoCheckBox.CheckedChanged += SwitchAmmoCheckBox_CheckedChanged;
-                this.chkDebugMode.CheckedChanged += chkDebugMode_CheckedChanged; // Reattach DebugMode handler
+                this.DebugMode.CheckedChanged += DebugMode_CheckedChanged;
+                this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
 
             }
             catch (Exception ex)
@@ -192,97 +183,15 @@ namespace _ORTools.Forms
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
         }
 
-        private void SwitchAmmoCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox chk = sender as CheckBox;
-            ProfileSingleton.GetCurrent().UserPreferences.SwitchAmmo = chk.Checked;
-            ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-        }
-
-        private void TextAmmo1_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text != string.Empty)
-                {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text);
-                    ProfileSingleton.GetCurrent().UserPreferences.Ammo1Key = key;
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                DebugLogger.Error("Invalid key entered for Ammo1: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error("Unexpected error in TextAmmo1_TextChanged: " + ex.Message);
-            }
-        }
-
-        private void TextAmmo2_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text != string.Empty)
-                {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text);
-                    ProfileSingleton.GetCurrent().UserPreferences.Ammo2Key = key;
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                DebugLogger.Error("Invalid key entered for Ammo2: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error("Unexpected error in TextAmmo2_TextChanged: " + ex.Message);
-            }
-        }
-
-        private void TextAmmoTrigger_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                TextBox txtBox = (TextBox)sender;
-                if (txtBox.Text != string.Empty)
-                {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text);
-                    ProfileSingleton.GetCurrent().UserPreferences.AmmoTriggerKey = key;
-                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                DebugLogger.Error("Invalid key entered for AmmoTrigger: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error("Unexpected error in TextAmmoTrigger_TextChanged: " + ex.Message);
-            }
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupSettings_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkDebugMode_CheckedChanged(object sender, EventArgs e)
+        private void DebugMode_CheckedChanged(object sender, EventArgs e)
         {
             // Prevent this logic from running during form initialization
-            if (isInitializing)
-                return;
+            if (isInitializing) return;
+
+            DebugModeShowLog.Enabled = DebugMode.Checked;
 
             Config cfg = ConfigGlobal.GetConfig();
-            bool newValue = chkDebugMode.Checked;
+            bool newValue = DebugMode.Checked;
             bool currentValue = cfg.DebugMode;
 
             // Only proceed if the checkbox state actually changed from the saved config
@@ -317,9 +226,10 @@ namespace _ORTools.Forms
                     DebugLogger.Info("User cancelled application restart.");
                     // Revert the checkbox to the original value if the user cancels
                     // Detach temporarily to prevent triggering the event again
-                    this.chkDebugMode.CheckedChanged -= chkDebugMode_CheckedChanged;
-                    chkDebugMode.Checked = currentValue;
-                    this.chkDebugMode.CheckedChanged += chkDebugMode_CheckedChanged;
+                    this.DebugMode.CheckedChanged -= DebugMode_CheckedChanged;
+                    DebugMode.Checked = currentValue;
+                    this.DebugMode.CheckedChanged += DebugMode_CheckedChanged;
+                    DebugModeShowLog.Enabled = DebugMode.Checked;
                 }
             }
             else
@@ -328,26 +238,56 @@ namespace _ORTools.Forms
                 // This handles cases where the event might fire without a logical change.
                 // DebugLogger.Info($"DebugMode checkbox checked changed, but value is already {newValue}. No action needed.");
             }
-        }
-
-
-        private void groupGlobalSettings_Enter(object sender, EventArgs e)
-        {
 
         }
 
-        private void toolTip5_Popup(object sender, PopupEventArgs e)
+        private void DebugModeShowLog_CheckedChanged(object sender, EventArgs e)
         {
+            // Prevent this logic from running during form initialization
+            if (isInitializing) return;
 
-        }
+            Config cfg = ConfigGlobal.GetConfig();
+            bool newValue = DebugModeShowLog.Checked;
+            bool currentValue = cfg.DebugModeShowLog;
 
-        private void toolTip3_Popup(object sender, PopupEventArgs e)
-        {
+            // Only proceed if the checkbox state actually changed from the saved config
+            if (newValue != currentValue)
+            {
+                string action = newValue ? "display" : "hide";
+                string message = $"Restart to {action} debug mode log now?";
 
-        }
+                // Prompt for restart confirmation
+                bool confirmRestart = DialogConfirm.ShowDialog(message, "App Restart Required");
 
-        private void toolTipWeight90_Popup(object sender, PopupEventArgs e)
-        {
+                // Check if the user confirmed the restart
+                if (confirmRestart)
+                {
+                    if (cfg.DebugModeShowLog != newValue)
+                    {
+                        cfg.DebugModeShowLog = newValue; // Update the setting
+                        ConfigGlobal.SaveConfig(); // Save the updated config
+                        DebugLogger.Info($"DebugModeShowLog changed to {newValue}. Initiating application restart...");
+                        DebugLogger.Info("Attempting Application.Restart()...");
+                        Application.Restart();
+                        Environment.Exit(0);
+                    }
+                }
+                else // User cancelled restart
+                {
+                    DebugLogger.Info("User cancelled application restart.");
+                    // Revert the checkbox to the original value if the user cancels
+                    // Detach temporarily to prevent triggering the event again
+                    this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
+                    DebugModeShowLog.Checked = currentValue;
+                    this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
+                }
+            }
+            else
+            {
+                // If the checkbox state matches the saved config, do nothing.
+                // This handles cases where the event might fire without a logical change.
+                // DebugLogger.Info($"DebugMode checkbox checked changed, but value is already {newValue}. No action needed.");
+            }
 
         }
 

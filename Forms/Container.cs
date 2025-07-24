@@ -88,22 +88,23 @@ namespace _ORTools.Forms
             IsMdiContainer = true;
             SetBackGroundColorOfMDIForm();
 
-            if (ConfigGlobal.GetConfig().DebugMode)
-            {
-                DebugLogger.Info("DebugMode is true: Creating and showing DebugLogWindow");
-                debugLogWindow = new DebugLogWindow(Icon)
-                {
-                    Owner = this
-                };
-                debugLogWindow.Show();
-                SubscribeToDebugLogger();
+            Config GlobalConfig = ConfigGlobal.GetConfig();
 
-                this.LocationChanged += Container_LocationOrSizeChanged;
-                this.SizeChanged += Container_LocationOrSizeChanged;
-            }
-            else
+            if (GlobalConfig.DebugMode)
             {
-                DebugLogger.Info("DebugMode is false: No debug log window created");
+                DebugLogger.Info("DebugMode is ON");
+
+                if (GlobalConfig.DebugModeShowLog) {
+                    DebugLogger.Info("DebugModeShowLog is ON: Creating and showing DebugLogWindow");
+                    debugLogWindow = new DebugLogWindow(Icon)
+                    {
+                        Owner = this
+                    };
+                    debugLogWindow.Show();
+                    SubscribeToDebugLogger();
+                    this.LocationChanged += Container_LocationOrSizeChanged;
+                    this.SizeChanged += Container_LocationOrSizeChanged;
+                }
             }
 
             frmToggleApplication = SetToggleApplicationStateWindow();

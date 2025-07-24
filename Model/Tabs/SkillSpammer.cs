@@ -43,7 +43,6 @@ namespace _ORTools.Model
 
         private const string ACTION_NAME = "AHK";
         private ThreadRunner thread;
-        private AmmoSwapper ammoSwapHandler = new AmmoSwapper();
         public const string COMPATIBILITY = "ahkCompatibility";
         public const string SPEED_BOOST = "ahkSpeedBoost";
         public Dictionary<string, KeyConfig> AhkEntries { get; set; } = new Dictionary<string, KeyConfig>();
@@ -74,8 +73,6 @@ namespace _ORTools.Model
                 this.thread = new ThreadRunner(_ => SkillSpammerThread(roClient), "SkillSpammer");
 
                 ThreadRunner.Start(this.thread);
-
-                ammoSwapHandler.Start();
             }
         }
 
@@ -189,8 +186,6 @@ namespace _ORTools.Model
                 this.thread.Terminate();
                 this.thread = null;
             }
-
-            ammoSwapHandler.Stop();
         }
 
         public string GetConfiguration()

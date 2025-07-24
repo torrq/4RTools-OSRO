@@ -1,4 +1,5 @@
 ﻿using _ORTools.Controls;
+using _ORTools.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,19 @@ namespace _ORTools.Utils
                     button.FlatAppearance.BorderSize = 1; // Ensure border is visible
                 }
                 else { DebugLogger.Warning($"Button '{buttonName}' not found in {parentControl.Name}."); }
+            }
+        }
+
+        public static void ToggleStateOff(string DebugLogType = "FormHelper")
+        {
+            var frmToggleApplication = (ToggleStateForm)Application.OpenForms["ToggleApplicationStateForm"];
+            if (frmToggleApplication != null)
+            {
+                frmToggleApplication.TurnOFF();
+            }
+            else
+            {
+                DebugLogger.Error($"{DebugLogType}: Could not find 'ToggleApplicationStateForm' to toggle status.");
             }
         }
 
@@ -139,6 +153,8 @@ namespace _ORTools.Utils
                                  .Where(c => c.GetType() == type);
         }
 
+        private static readonly string KeyNoneString = Key.None.ToString();
+
         private static void resetForm(Control control)
         {
             IEnumerable<Control> texts = GetAll(control, typeof(TextBox));
@@ -149,7 +165,7 @@ namespace _ORTools.Utils
             foreach (Control c in texts)
             {
                 TextBox textBox = (TextBox)c;
-                textBox.Text = Key.None.ToString();
+                textBox.Text = KeyNoneString;
             }
 
             foreach (Control c in checks)

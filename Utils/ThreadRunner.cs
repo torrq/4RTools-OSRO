@@ -18,7 +18,13 @@ namespace _ORTools.Utils
                     try
                     {
                         suspendEvent.Wait(); // This will "pause" execution when Reset() is called
-                        toRun(0);
+                        int result = toRun(0);
+                        if (result < 0)
+                        {
+                            DebugLogger.Debug($"[ThreadRunner] '{Thread.CurrentThread.Name ?? "Unnamed"}' requested termination (code {result})");
+                            running = false;
+                            break;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -29,6 +35,7 @@ namespace _ORTools.Utils
                         Thread.Sleep(5);
                     }
                 }
+
             });
 
             this.thread.Name = name;
