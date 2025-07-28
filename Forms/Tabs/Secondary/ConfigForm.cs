@@ -32,7 +32,6 @@ namespace _ORTools.Forms
             isInitializing = false; // Initialization complete
 
             var newListBuff = ProfileSingleton.GetCurrent().UserPreferences.AutoBuffOrder;
-            this.skillsListBox.MouseLeave += this.SkillsListBox_MouseLeave;
             this.skillsListBox.MouseDown += this.SkillsListBox_MouseDown;
             this.skillsListBox.DragOver += this.SkillsListBox_DragOver;
             this.skillsListBox.DragDrop += this.SkillsListBox_DragDrop;
@@ -59,6 +58,23 @@ namespace _ORTools.Forms
             }
         }
 
+        public class BuffListItem
+        {
+            public EffectStatusIDs BuffId { get; set; }
+            public string DisplayText { get; set; }
+
+            public BuffListItem(EffectStatusIDs buffId)
+            {
+                BuffId = buffId;
+                DisplayText = buffId.ToDescriptionString();
+            }
+
+            public override string ToString()
+            {
+                return DisplayText;
+            }
+        }
+
         public void UpdateUI(ISubject subject)
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
@@ -70,7 +86,7 @@ namespace _ORTools.Forms
 
                 foreach (var buff in buffsList)
                 {
-                    skillsListBox.Items.Add(buff.ToDescriptionString());
+                    skillsListBox.Items.Add(new BuffListItem(buff));
                 }
 
                 // Temporarily detach to avoid triggering logic during UI update
@@ -95,60 +111,6 @@ namespace _ORTools.Forms
             }
         }
 
-        private void SkillsListBox_MouseLeave(object sender, EventArgs e)
-        {
-            try
-            {
-                var profile = ProfileSingleton.GetCurrent();
-                var autoBuffSkill = profile.AutobuffSkill;
-                var currentBuffMapping = autoBuffSkill.buffMapping;
-
-                if (currentBuffMapping == null || currentBuffMapping.Count == 0)
-                {
-                    return; // Nothing to process
-                }
-
-                var newOrderList = new List<EffectStatusIDs>();
-                var newOrderedBuffList = new Dictionary<EffectStatusIDs, Key>();
-                var processedBuffIds = new HashSet<EffectStatusIDs>(); // Track processed IDs to avoid duplicates
-
-                foreach (var item in skillsListBox.Items)
-                {
-                    var buffId = item.ToString().ToEffectStatusId();
-
-                    // Skip if we've already processed this buff ID
-                    if (processedBuffIds.Contains(buffId))
-                    {
-                        continue;
-                    }
-
-                    // Check if this buff exists in the current mapping
-                    if (currentBuffMapping.TryGetValue(buffId, out Key keyValue))
-                    {
-                        newOrderList.Add(buffId);
-                        newOrderedBuffList.Add(buffId, keyValue);
-                        processedBuffIds.Add(buffId);
-                    }
-                }
-
-                // Only update if we have items to process
-                if (newOrderList.Count > 0)
-                {
-                    // Update configurations
-                    profile.UserPreferences.SetAutoBuffOrder(newOrderList);
-                    ProfileSingleton.SetConfiguration(profile.UserPreferences);
-
-                    autoBuffSkill.ClearKeyMapping();
-                    autoBuffSkill.SetBuffMapping(newOrderedBuffList);
-                    ProfileSingleton.SetConfiguration(autoBuffSkill);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error($"Error in SkillsListBox_MouseLeave: {ex.Message}");
-            }
-        }
-
         private void SkillsListBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (this.skillsListBox.SelectedItem == null) return;
@@ -168,7 +130,59 @@ namespace _ORTools.Forms
             object data = skillsListBox.SelectedItem;
             this.skillsListBox.Items.Remove(data);
             this.skillsListBox.Items.Insert(index, data);
+
+            // Save immediately after successful drag-drop
+            SaveBuffOrder();
         }
+
+        private void SaveBuffOrder()
+        {
+            try
+            {
+                var profile = ProfileSingleton.GetCurrent();
+                var autoBuffSkill = profile.AutobuffSkill;
+                var currentBuffMapping = autoBuffSkill.buffMapping;
+
+                if (currentBuffMapping == null || currentBuffMapping.Count == 0)
+                {
+                    return; // Nothing to process
+                }
+
+                var newOrderList = new List<EffectStatusIDs>();
+                var newOrderedBuffList = new Dictionary<EffectStatusIDs, Key>();
+
+                foreach (BuffListItem item in skillsListBox.Items)
+                {
+                    EffectStatusIDs buffId = item.BuffId;
+
+                    // Check if this buff exists in the current mapping and we haven't processed it yet
+                    if (currentBuffMapping.TryGetValue(buffId, out Key keyValue) && !newOrderList.Contains(buffId))
+                    {
+                        newOrderList.Add(buffId);
+                        newOrderedBuffList.Add(buffId, keyValue);
+                    }
+                }
+
+                // Only update if we have items to process
+                if (newOrderList.Count > 0)
+                {
+                    // Update configurations
+                    profile.UserPreferences.SetAutoBuffOrder(newOrderList);
+                    ProfileSingleton.SetConfiguration(profile.UserPreferences);
+
+                    autoBuffSkill.ClearKeyMapping();
+                    autoBuffSkill.SetBuffMapping(newOrderedBuffList);
+                    ProfileSingleton.SetConfiguration(autoBuffSkill);
+
+                    DebugLogger.Info($"Buff order saved after drag-drop. New order: {string.Join(", ", newOrderList)}");
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Error saving buff order: {ex.Message}");
+            }
+        }
+
         private void ChkStopBuffsOnCity_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox chk = sender as CheckBox;

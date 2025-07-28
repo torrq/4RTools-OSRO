@@ -253,7 +253,7 @@ namespace _ORTools.Model
         public void ClearAllMappings()
         {
             buffMapping.Clear();
-            DebugLogger.Debug("DebuffRecovery: Cleared all status mappings");
+            //DebugLogger.Debug("DebuffRecovery: Cleared all status mappings");
         }
 
         public bool HasMappingForStatus(EffectStatusIDs status)

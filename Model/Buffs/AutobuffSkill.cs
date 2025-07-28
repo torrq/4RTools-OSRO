@@ -291,7 +291,7 @@ namespace _ORTools.Model
         public void ClearKeyMapping()
         {
             buffMapping.Clear();
-            DebugLogger.Debug("AutoBuffSkill: Cleared all key mappings");
+            //DebugLogger.Debug("AutoBuffSkill: Cleared all key mappings");
         }
 
         public bool HasMappingForStatus(EffectStatusIDs status)
