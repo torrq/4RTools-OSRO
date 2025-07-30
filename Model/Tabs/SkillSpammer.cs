@@ -31,14 +31,36 @@ namespace _ORTools.Model
         [DllImport("user32.dll", SetLastError = true)] public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")] static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll", SetLastError = true)] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
 
-        public bool IsGameWindowActive()
+        public static bool IsGameWindowActive()
         {
-            IntPtr foreground = GetForegroundWindow();
-            return
-                foreground == FindWindow(AppConfig.WindowClassLR, null) ||
-                foreground == FindWindow(AppConfig.WindowClassMR, null) ||
-                foreground == FindWindow(AppConfig.WindowClassHR, null);
+            try
+            {
+                Client currentClient = ClientSingleton.GetClient();
+                if (currentClient?.Process == null || currentClient.Process.HasExited)
+                {
+                    return false;
+                }
+
+                IntPtr activeWindowHandle = GetForegroundWindow();
+                if (activeWindowHandle == IntPtr.Zero)
+                {
+                    return false;
+                }
+
+                // Get the process ID of the active window
+                uint activeProcessId;
+                GetWindowThreadProcessId(activeWindowHandle, out activeProcessId);
+
+                // Compare with our client's process ID
+                return activeProcessId == currentClient.Process.Id;
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Debug($"Error checking if game window is active: {ex.Message}");
+                return false;
+            }
         }
 
         private const string ACTION_NAME = "AHK";
@@ -83,7 +105,7 @@ namespace _ORTools.Model
                 foreach (KeyConfig config in AhkEntries.Values)
                 {
                     Keys thisk = (Keys)Enum.Parse(typeof(Keys), config.Key.ToString());
-                    if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt) && this.IsGameWindowActive())
+                    if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt) && SkillSpammer.IsGameWindowActive())
                     {
                         if (config.ClickActive && Keyboard.IsKeyDown(config.Key))
                         {
@@ -100,7 +122,7 @@ namespace _ORTools.Model
             }
             else
             {
-                if (this.IsGameWindowActive())
+                if (SkillSpammer.IsGameWindowActive())
                 {
                     foreach (KeyConfig config in AhkEntries.Values)
                     {
