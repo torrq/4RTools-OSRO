@@ -2,23 +2,46 @@
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Input;
+using static _ORTools.Utils.FormHelper;
 
 namespace _ORTools.Forms
 {
+    public class ResourceLoader : IResourceLoader
+    {
+        public Bitmap LoadIcon(string iconName)
+        {
+            return Resources.Media.Icons.ResourceManager.GetObject(iconName) as Bitmap;
+        }
+    }
+
+    public class Logger : ILogger
+    {
+        public void Error(string message) => DebugLogger.Error(message);
+        public void Error(Exception ex, string message) => DebugLogger.Error(ex, message);
+        public void Warn(string message) => DebugLogger.Error(message); // Using Error for Warn as a fallback
+    }
+
     public partial class AutobuffSkillForm : Form, IObserver
     {
-
         private List<BuffContainer> skillContainers = new List<BuffContainer>();
         private Subject _subject; // Store the subject
+
+        // Static constructor to initialize BuffService
+        static AutobuffSkillForm()
+        {
+            BuffService.Initialize(new ResourceLoader(), new Logger());
+        }
 
         public AutobuffSkillForm(Subject subject)
         {
             this.KeyPreview = true;
             InitializeComponent();
             _subject = subject; // Store the subject
-            InitializeSkillContainers(); //Extract this method
+            InitializeSkillContainers(); // Extract this method
 
             RenderSkillBuffs();
 
@@ -26,20 +49,20 @@ namespace _ORTools.Forms
             //FormUtils.SetNumericUpDownMinimumDelays(this);
 
             subject.Attach(this);
-
         }
+
         private void InitializeSkillContainers()
         {
-            skillContainers.Add(new BuffContainer(this.ArcherSkillsGP, Buff.GetArcherBuffs()));
-            skillContainers.Add(new BuffContainer(this.SwordmanSkillGP, Buff.GetSwordmanBuffs()));
-            skillContainers.Add(new BuffContainer(this.MageSkillGP, Buff.GetMageBuffs()));
-            skillContainers.Add(new BuffContainer(this.MerchantSkillsGP, Buff.GetMerchantBuffs()));
-            skillContainers.Add(new BuffContainer(this.ThiefSkillsGP, Buff.GetThiefBuffs()));
-            skillContainers.Add(new BuffContainer(this.AcolyteSkillsGP, Buff.GetAcolyteBuffs()));
-            skillContainers.Add(new BuffContainer(this.TKSkillGroupBox, Buff.GetTaekwonBuffs()));
-            skillContainers.Add(new BuffContainer(this.NinjaSkillsGP, Buff.GetNinjaBuffs()));
-            skillContainers.Add(new BuffContainer(this.GunsSkillsGP, Buff.GetGunslingerBuffs()));
-            skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, Buff.GetPadawanBuffs()));
+            skillContainers.Add(new BuffContainer(this.ArcherSkillsGP, BuffService.GetArcherBuffs()));
+            skillContainers.Add(new BuffContainer(this.SwordmanSkillGP, BuffService.GetSwordmanBuffs()));
+            skillContainers.Add(new BuffContainer(this.MageSkillGP, BuffService.GetMageBuffs()));
+            skillContainers.Add(new BuffContainer(this.MerchantSkillsGP, BuffService.GetMerchantBuffs()));
+            skillContainers.Add(new BuffContainer(this.ThiefSkillsGP, BuffService.GetThiefBuffs()));
+            skillContainers.Add(new BuffContainer(this.AcolyteSkillsGP, BuffService.GetAcolyteBuffs()));
+            skillContainers.Add(new BuffContainer(this.TKSkillGroupBox, BuffService.GetTaekwonBuffs()));
+            skillContainers.Add(new BuffContainer(this.NinjaSkillsGP, BuffService.GetNinjaBuffs()));
+            skillContainers.Add(new BuffContainer(this.GunsSkillsGP, BuffService.GetGunslingerBuffs()));
+            skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, BuffService.GetPadawanBuffs()));
         }
 
         private void RenderSkillBuffs()

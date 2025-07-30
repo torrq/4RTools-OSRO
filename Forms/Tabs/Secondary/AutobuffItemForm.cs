@@ -2,25 +2,36 @@
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Input;
+using static _ORTools.Utils.FormHelper;
 
 namespace _ORTools.Forms
 {
     public partial class AutobuffItemForm : Form, IObserver
     {
         private List<BuffContainer> itemContainers = new List<BuffContainer>();
+        private Subject _subject; // Store the subject
+
+        // Static constructor to initialize BuffService
+        static AutobuffItemForm()
+        {
+            BuffService.Initialize(new ResourceLoader(), new Logger());
+        }
 
         public AutobuffItemForm(Subject subject)
         {
             InitializeComponent();
+            _subject = subject; // Store the subject
 
-            itemContainers.Add(new BuffContainer(this.PotionsGP, Buff.GetPotionsBuffs()));
-            itemContainers.Add(new BuffContainer(this.ElementalsGP, Buff.GetElementBuffs()));
-            itemContainers.Add(new BuffContainer(this.BoxesGP, Buff.GetBoxBuffs()));
-            itemContainers.Add(new BuffContainer(this.FoodsGP, Buff.GetFoodBuffs()));
-            itemContainers.Add(new BuffContainer(this.ScrollBuffsGP, Buff.GetScrollBuffs()));
-            itemContainers.Add(new BuffContainer(this.EtcGP, Buff.GetEtcBuffs()));
+            itemContainers.Add(new BuffContainer(this.PotionsGP, BuffService.GetPotionsBuffs()));
+            itemContainers.Add(new BuffContainer(this.ElementalsGP, BuffService.GetElementBuffs()));
+            itemContainers.Add(new BuffContainer(this.BoxesGP, BuffService.GetBoxBuffs()));
+            itemContainers.Add(new BuffContainer(this.FoodsGP, BuffService.GetFoodBuffs()));
+            itemContainers.Add(new BuffContainer(this.ScrollBuffsGP, BuffService.GetScrollBuffs()));
+            itemContainers.Add(new BuffContainer(this.EtcGP, BuffService.GetEtcBuffs()));
 
             new BuffRenderer(itemContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffItem.ActionName, subject).DoRender();
 

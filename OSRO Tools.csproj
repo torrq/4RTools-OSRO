@@ -253,9 +253,7 @@
     <EmbeddedResource Include="Forms\Tabs\Secondary\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Secondary\AutobuffSkillForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Tabs\Secondary\AutobuffSkillForm.cs" />
     <Compile Include="Forms\Tabs\Secondary\AutobuffSkillForm.Designer.cs">
       <DependentUpon>AutobuffSkillForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

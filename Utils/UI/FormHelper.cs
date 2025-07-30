@@ -1,5 +1,6 @@
 ﻿using _ORTools.Controls;
 using _ORTools.Forms;
+using _ORTools.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -309,6 +310,33 @@ namespace _ORTools.Utils
             }
         }
 
+        public class ResourceLoader : IResourceLoader
+        {
+            public Bitmap LoadIcon(string iconName)
+            {
+                return Resources.Media.Icons.ResourceManager.GetObject(iconName) as Bitmap;
+            }
+        }
+
+        public class Logger : ILogger
+        {
+            public void Error(string message) => DebugLogger.Error(message);
+            public void Error(Exception ex, string message) => DebugLogger.Error(ex, message);
+            public void Warn(string message) => DebugLogger.Error(message); // Using Error for Warn as a fallback
+        }
+
+        // Interface for resource loading
+        public interface IResourceLoader
+        {
+            Bitmap LoadIcon(string iconName);
+        }
+
+        // Interface for logging
+        public interface ILogger
+        {
+            void Error(string message);
+            void Error(Exception ex, string message);
+        }
     }
 
     public static class EnumExtensions

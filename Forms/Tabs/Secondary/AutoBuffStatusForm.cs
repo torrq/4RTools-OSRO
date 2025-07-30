@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
+using static _ORTools.Utils.FormHelper;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using TextBox = System.Windows.Forms.TextBox;
 
@@ -14,20 +15,24 @@ namespace _ORTools.Forms
     public partial class AutoBuffStatusForm : Form, IObserver
     {
         private List<BuffContainer> debuffContainers = new List<BuffContainer>();
-
-        // Add controls for multiple status lists
         private Dictionary<string, TextBox> statusListTextBoxes = new Dictionary<string, TextBox>();
+
+        // Static constructor to initialize BuffService
+        static AutoBuffStatusForm()
+        {
+            BuffService.Initialize(new ResourceLoader(), new Logger());
+        }
 
         public AutoBuffStatusForm(Subject subject)
         {
             InitializeComponent();
-            debuffContainers.Add(new BuffContainer(this.DebuffsGP, Buff.GetDebuffs()));
+            debuffContainers.Add(new BuffContainer(this.DebuffsGP, BuffService.GetDebuffs()));
             new DebuffRenderer(debuffContainers, toolTipPanacea).DoRender();
 
             // Setup the main Panacea textbox
             SetupPanaceaTextBox();
 
-            // Setup additional status list textboxes (you'll need to add these to your form)
+            // Setup additional status list textboxes
             SetupStatusListTextBoxes();
 
             subject.Attach(this);
