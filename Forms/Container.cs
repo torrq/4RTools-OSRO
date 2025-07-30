@@ -130,39 +130,26 @@ namespace _ORTools.Forms
 
         public void SetMiniMode(bool isMiniMode)
         {
-            if (this.isMiniMode != isMiniMode)
-            {
+            if (this.isMiniMode != isMiniMode) {
                 this.isMiniMode = isMiniMode;
 
                 SuspendLayout();
 
-                if (isMiniMode)
-                {
-                    atkDef.Visible = false;
+                if (isMiniMode) {
                     btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_more;
                     ClientSize = miniModeClientSize;
-                }
-                else
-                {
-                    atkDef.Visible = true;
+                } else {
                     btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
-
-                    if (isMiniMode)
-                    {
-                        atkDef.Visible = false;
+                    if (isMiniMode) {
                         btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_more;
                         ClientSize = miniModeClientSize;
-                    }
-                    else
-                    {
-                        atkDef.Visible = true;
+                    } else {
                         btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
                         ClientSize = fullModeClientSize;
                     }
                 }
 
                 ResumeLayout(true);
-
                 ConfigGlobal.GetConfig().MiniMode = isMiniMode;
                 ConfigGlobal.SaveConfig();
             }
