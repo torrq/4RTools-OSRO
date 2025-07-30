@@ -38,7 +38,7 @@ namespace _ORTools.Forms
             skillContainers.Add(new BuffContainer(this.AcolyteSkillsGP, Buff.GetAcolyteBuffs()));
             skillContainers.Add(new BuffContainer(this.TKSkillGroupBox, Buff.GetTaekwonBuffs()));
             skillContainers.Add(new BuffContainer(this.NinjaSkillsGP, Buff.GetNinjaBuffs()));
-            skillContainers.Add(new BuffContainer(this.GunsSkillsGP, Buff.GetGunsBuffs()));
+            skillContainers.Add(new BuffContainer(this.GunsSkillsGP, Buff.GetGunslingerBuffs()));
             skillContainers.Add(new BuffContainer(this.PadawanSkillsGP, Buff.GetPadawanBuffs()));
         }
 

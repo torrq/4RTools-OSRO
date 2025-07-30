@@ -16,11 +16,11 @@ namespace _ORTools.Forms
             InitializeComponent();
 
             itemContainers.Add(new BuffContainer(this.PotionsGP, Buff.GetPotionsBuffs()));
-            itemContainers.Add(new BuffContainer(this.ElementalsGP, Buff.GetElementalsBuffs()));
-            itemContainers.Add(new BuffContainer(this.BoxesGP, Buff.GetBoxesBuffs()));
+            itemContainers.Add(new BuffContainer(this.ElementalsGP, Buff.GetElementBuffs()));
+            itemContainers.Add(new BuffContainer(this.BoxesGP, Buff.GetBoxBuffs()));
             itemContainers.Add(new BuffContainer(this.FoodsGP, Buff.GetFoodBuffs()));
             itemContainers.Add(new BuffContainer(this.ScrollBuffsGP, Buff.GetScrollBuffs()));
-            itemContainers.Add(new BuffContainer(this.EtcGP, Buff.GetETCBuffs()));
+            itemContainers.Add(new BuffContainer(this.EtcGP, Buff.GetEtcBuffs()));
 
             new BuffRenderer(itemContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffItem.ActionName, subject).DoRender();
 
