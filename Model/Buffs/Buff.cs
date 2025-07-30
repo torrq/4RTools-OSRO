@@ -19,6 +19,8 @@ namespace _ORTools.Model
             this.Icon = icon;
         }
 
+        #region Buff Lists
+
         private static class SkillBuffDefinitions
         {
             // ARCHER buffs
@@ -371,6 +373,8 @@ namespace _ORTools.Model
             };
         }
 
+        #endregion
+
         #region Public Getters
         //--------------------- SKILL BUFFS ------------------------------
         public static List<Buff> GetArcherBuffs() => BuffFactory.CreateServerSpecificBuffList(SkillBuffDefinitions.ArcherServerBuffs);
@@ -396,7 +400,7 @@ namespace _ORTools.Model
         public static List<Buff> GetDebuffs() => new List<Buff>(DebuffDefinitions.Debuffs);
         #endregion
 
-        #region Create & Factory
+        #region Processors
 
         /// <summary>
         /// A single, centralized factory method to create Buff instances.
