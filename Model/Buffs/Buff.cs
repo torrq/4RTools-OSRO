@@ -20,45 +20,6 @@ namespace _ORTools.Model
             this.Icon = icon;
         }
 
-        // Server-specific configuration
-        private static class ServerConfig
-        {
-            public static bool IsHighRate => AppConfig.ServerMode == 1;
-            public static bool IsMidOrLowRate => AppConfig.ServerMode == 0 || AppConfig.ServerMode == 2;
-        }
-
-        // Buff creation with server-specific overrides
-        private static class BuffFactory
-        {
-            public static List<Buff> CreateBuffList(List<Buff> baseBuffs, Dictionary<int, List<Buff>> serverOverrides = null)
-            {
-                var result = new List<Buff>(baseBuffs);
-
-                if (serverOverrides?.ContainsKey(AppConfig.ServerMode) == true)
-                {
-                    result.AddRange(serverOverrides[AppConfig.ServerMode]);
-                }
-
-                return result;
-            }
-
-            public static List<Buff> CreateServerSpecificBuffList(Dictionary<int, List<Buff>> serverBuffs)
-            {
-                if (serverBuffs.TryGetValue(AppConfig.ServerMode, out var buffs))
-                {
-                    return new List<Buff>(buffs);
-                }
-
-                // Fallback to MR for unsupported modes
-                if (serverBuffs.TryGetValue(0, out var fallbackBuffs))
-                {
-                    return new List<Buff>(fallbackBuffs);
-                }
-
-                throw new InvalidOperationException($"Unsupported ServerMode value: {AppConfig.ServerMode}");
-            }
-        }
-
         private static class SkillBuffDefinitions
         {
 
@@ -518,6 +479,45 @@ namespace _ORTools.Model
         public static List<Buff> GetDebuffs()
         {
             return new List<Buff>(DebuffDefinitions.Debuffs);
+        }
+
+        // Server-specific configuration
+        private static class ServerConfig
+        {
+            public static bool IsHighRate => AppConfig.ServerMode == 1;
+            public static bool IsMidOrLowRate => AppConfig.ServerMode == 0 || AppConfig.ServerMode == 2;
+        }
+
+        // Buff creation with server-specific overrides
+        private static class BuffFactory
+        {
+            public static List<Buff> CreateBuffList(List<Buff> baseBuffs, Dictionary<int, List<Buff>> serverOverrides = null)
+            {
+                var result = new List<Buff>(baseBuffs);
+
+                if (serverOverrides?.ContainsKey(AppConfig.ServerMode) == true)
+                {
+                    result.AddRange(serverOverrides[AppConfig.ServerMode]);
+                }
+
+                return result;
+            }
+
+            public static List<Buff> CreateServerSpecificBuffList(Dictionary<int, List<Buff>> serverBuffs)
+            {
+                if (serverBuffs.TryGetValue(AppConfig.ServerMode, out var buffs))
+                {
+                    return new List<Buff>(buffs);
+                }
+
+                // Fallback to MR for unsupported modes
+                if (serverBuffs.TryGetValue(0, out var fallbackBuffs))
+                {
+                    return new List<Buff>(fallbackBuffs);
+                }
+
+                throw new InvalidOperationException($"Unsupported ServerMode value: {AppConfig.ServerMode}");
+            }
         }
 
     }
