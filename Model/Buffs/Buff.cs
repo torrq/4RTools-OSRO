@@ -76,7 +76,7 @@ namespace _ORTools.Model
             // SWORDMAN buffs
             public static readonly Dictionary<int, List<Buff>> SwordmanServerBuffs = new Dictionary<int, List<Buff>>
             {
-                [0] = new List<Buff> // MR/LR base buffs
+                [0] = new List<Buff> // Mid-rate
                 {
                     new Buff("Endure",                      EffectStatusIDs.ENDURE,                 Resources.Media.Icons.sm_endure),
                     new Buff("Auto Berserk",                EffectStatusIDs.AUTOBERSERK,            Resources.Media.Icons.sm_autoberserk),
@@ -95,7 +95,7 @@ namespace _ORTools.Model
                     new Buff("Provoke",                     EffectStatusIDs.PROVOKE,                Resources.Media.Icons.provoke),
                     new Buff("Providence",                  EffectStatusIDs.PROVIDENCE,             Resources.Media.Icons.providence)
                 },
-                [1] = new List<Buff> // HR includes all base buffs plus Royal Guard skill
+                [1] = new List<Buff> // High-rate includes all base buffs plus Royal Guard skill
                 {
                     new Buff("Endure",                      EffectStatusIDs.ENDURE,                 Resources.Media.Icons.sm_endure),
                     new Buff("Auto Berserk",                EffectStatusIDs.AUTOBERSERK,            Resources.Media.Icons.sm_autoberserk),
@@ -135,7 +135,7 @@ namespace _ORTools.Model
             // MERCHANT buffs
             public static readonly Dictionary<int, List<Buff>> MerchantServerBuffs = new Dictionary<int, List<Buff>>
             {
-                [0] = new List<Buff> // MR
+                [0] = new List<Buff> // Mid-rate
                 {
                     new Buff("Crazy Uproar",                EffectStatusIDs.CRAZY_UPROAR,           Resources.Media.Icons.mc_loud),
                     new Buff("Overthrust",                  EffectStatusIDs.OVERTHRUST,             Resources.Media.Icons.bs_overthrust),
@@ -148,7 +148,7 @@ namespace _ORTools.Model
                     new Buff("Maximum Overthrust",          EffectStatusIDs.OVERTHRUSTMAX,          Resources.Media.Icons.ws_overthrustmax),
                     new Buff("Greed Parry",                 EffectStatusIDs.GREED_PARRY,            Resources.Media.Icons.ws_greedparry)
                 },
-                [1] = new List<Buff> // HR
+                [1] = new List<Buff> // High-rate
                 {
                     new Buff("Crazy Uproar",                EffectStatusIDs.CRAZY_UPROAR,           Resources.Media.Icons.mc_loud),
                     new Buff("Overthrust",                  EffectStatusIDs.OVERTHRUST,             Resources.Media.Icons.bs_overthrust),
@@ -166,7 +166,7 @@ namespace _ORTools.Model
             // THIEF buffs
             public static readonly Dictionary<int, List<Buff>> ThiefServerBuffs = new Dictionary<int, List<Buff>>
             {
-                [0] = new List<Buff> // MR/LR base buffs
+                [0] = new List<Buff> // Mid-rate
                 {
                     new Buff("Poison React",                EffectStatusIDs.POISONREACT,            Resources.Media.Icons.as_poisonreact),
                     new Buff("Reject Sword",                EffectStatusIDs.SWORDREJECT,            Resources.Media.Icons.st_rejectsword),
@@ -176,7 +176,7 @@ namespace _ORTools.Model
                     new Buff("Cloaking",                    EffectStatusIDs.CLOAKING,               Resources.Media.Icons.cloaking),
                     new Buff("Chase Walk",                  EffectStatusIDs.CHASEWALK,              Resources.Media.Icons.chase_walk)
                 },
-                [1] = new List<Buff> // HR includes all base buffs plus Guillotine Cross skill
+                [1] = new List<Buff> // High-rate includes all base buffs plus Guillotine Cross skill
                 {
                     new Buff("Poison React",                EffectStatusIDs.POISONREACT,            Resources.Media.Icons.as_poisonreact),
                     new Buff("Reject Sword",                EffectStatusIDs.SWORDREJECT,            Resources.Media.Icons.st_rejectsword),
@@ -192,7 +192,7 @@ namespace _ORTools.Model
             // ACOLYTE buffs
             public static readonly Dictionary<int, List<Buff>> AcolyteServerBuffs = new Dictionary<int, List<Buff>>
             {
-                [0] = new List<Buff> // MR/LR base buffs
+                [0] = new List<Buff> // Mid-rate
                 {
                     new Buff("Blessing",                    EffectStatusIDs.BLESSING,               Resources.Media.Icons.al_blessing1),
                     new Buff("Increase Agility",            EffectStatusIDs.INC_AGI,                Resources.Media.Icons.al_incagi1),
@@ -203,7 +203,7 @@ namespace _ORTools.Model
                     new Buff("Impositio Manus",             EffectStatusIDs.IMPOSITIO,              Resources.Media.Icons.impositio_manus),
                     new Buff("Basilica",                    EffectStatusIDs.BASILICA,               Resources.Media.Icons.basilica)
                 },
-                [1] = new List<Buff> // HR includes all base buffs plus Arch Bishop skills
+                [1] = new List<Buff> // High-rate includes all base buffs plus Arch Bishop skills
                 {
                     new Buff("Blessing",                    EffectStatusIDs.BLESSING,               Resources.Media.Icons.al_blessing1),
                     new Buff("Increase Agility",            EffectStatusIDs.INC_AGI,                Resources.Media.Icons.al_incagi1),
@@ -287,7 +287,7 @@ namespace _ORTools.Model
                     new Buff("Force Sacrifice",             EffectStatusIDs.HR_FORCESACRIFICE,      Resources.Media.Icons.hr_forcesacrifice),
                     new Buff("Jedi Frenzy",                 EffectStatusIDs.HR_JEDIFRENZY,          Resources.Media.Icons.hr_jedifrenzy)
                 },
-                [0] = new List<Buff> // Mid-rate (also used for Low-rate)
+                [0] = new List<Buff> // Mid-rate
                 {
                     new Buff("Force Element (Earth)",       EffectStatusIDs.ELEMENT_EARTH,          Resources.Media.Icons.forceelement_earth),
                     new Buff("Force Element (Wind)",        EffectStatusIDs.ELEMENT_WIND,           Resources.Media.Icons.forceelement_wind),
@@ -381,9 +381,9 @@ namespace _ORTools.Model
             // ETC buffs
             public static readonly List<Buff> EtcBuffs = new List<Buff>
             {
-                new Buff("VIP Ticket",  EffectStatusIDs.VIP_BONUS, Resources.Media.Icons.vip_ticket),
-                new Buff("Field Manual 100% / 300%", EffectStatusIDs.FIELD_MANUAL, Resources.Media.Icons.fieldmanual),
-                new Buff("Bubble Gum / HE Bubble Gum", EffectStatusIDs.CASH_RECEIVEITEM, Resources.Media.Icons.he_bubble_gum)
+                new Buff("VIP Ticket",                      EffectStatusIDs.VIP_BONUS,              Resources.Media.Icons.vip_ticket),
+                new Buff("Field Manual 100% / 300%",        EffectStatusIDs.FIELD_MANUAL,           Resources.Media.Icons.fieldmanual),
+                new Buff("Bubble Gum / HE Bubble Gum",      EffectStatusIDs.CASH_RECEIVEITEM,       Resources.Media.Icons.he_bubble_gum)
             };
         }
 
