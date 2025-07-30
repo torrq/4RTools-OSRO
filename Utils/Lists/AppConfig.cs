@@ -9,7 +9,7 @@ namespace _ORTools.Utils
         #region General
 
         public static string Name = "OSRO Tools";
-        public static string Version = "v1.0.8";
+        public static string Version = "v1.0.9";
 
         // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
         public static int ServerMode = 0;
