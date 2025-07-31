@@ -30,9 +30,11 @@ OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools),
 
 ## Screenshots
 
-<img width="1926" height="316" alt="image" src="https://github.com/user-attachments/assets/89e5c2ed-2fc3-4eb0-a717-4bb4deae39ba" />
+<div align="center">
+<p><img width="1926" height="316" alt="image" src="https://github.com/user-attachments/assets/89e5c2ed-2fc3-4eb0-a717-4bb4deae39ba" /></p>
+<p><img width="1926" height="802" alt="image" src="https://github.com/user-attachments/assets/a3ae326d-98f5-40dd-b71c-8a193b52f4c7" /></p>
 
-<img width="1926" height="802" alt="image" src="https://github.com/user-attachments/assets/a3ae326d-98f5-40dd-b71c-8a193b52f4c7" />
+#### Debug Mode
 
 <img width="640" height="200" alt="image" src="https://github.com/user-attachments/assets/0f3f4ffd-83ef-4a9f-8c3b-1c14a7df98f9" />
-
+</div>
