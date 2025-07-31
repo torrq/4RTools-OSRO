@@ -12,7 +12,7 @@ namespace _ORTools.Utils
         public static string Version = "v1.0.9";
 
         // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
-        public static int ServerMode = 0;
+        public static int ServerMode = 1;
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";

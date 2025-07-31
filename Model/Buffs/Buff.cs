@@ -339,6 +339,14 @@ public static class BuffDefinitions
 
     private static void InitializeItemBuffs(IBuffFactory b)
     {
+        // Clear collections before adding to prevent duplicates
+        PotionBuffs.Clear();
+        ElementBuffs.Clear();
+        FoodBuffs.Clear();
+        BoxBuffs.Clear();
+        ScrollBuffs.Clear();
+        EtcBuffs.Clear();
+
         PotionBuffs.AddRange(new[]
         {
             b.CreateBuff("Concentration Potion", "CONCENTRATION_POTION", "concentration_potion"),
@@ -409,6 +417,9 @@ public static class BuffDefinitions
 
     private static void InitializeDebuffs(IBuffFactory b)
     {
+        // Clear collection before adding to prevent duplicates
+        Debuffs.Clear();
+
         Debuffs.AddRange(new[]
         {
             b.CreateBuff("Bleeding", "BLEEDING", "bleeding"),
