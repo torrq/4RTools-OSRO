@@ -31,7 +31,13 @@ OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools),
 ## Screenshots
 
 <div align="center">
+
+#### Autopot HP / Skill Timer / Auto-Off
+  
 <p><img width="1926" height="316" alt="image" src="https://github.com/user-attachments/assets/89e5c2ed-2fc3-4eb0-a717-4bb4deae39ba" /></p>
+
+#### Skill Spammer / AutoBuff Items / Songs
+
 <p><img width="1926" height="802" alt="image" src="https://github.com/user-attachments/assets/a3ae326d-98f5-40dd-b71c-8a193b52f4c7" /></p>
 
 #### Debug Mode
