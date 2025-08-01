@@ -2463,6 +2463,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap steel_body {
+            get {
+                object obj = ResourceManager.GetObject("steel_body", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap stonecurse1 {
             get {
                 object obj = ResourceManager.GetObject("stonecurse1", resourceCulture);

@@ -169,6 +169,9 @@ namespace _ORTools.Utils
         [Description("Fury")]
         FURY = 86,
 
+        [Description("Steel Body")]
+        STEEL_BODY = 87,
+
         [Description("Elemental Converter (Fire)")]
         PROPERTYFIRE = 90,
 

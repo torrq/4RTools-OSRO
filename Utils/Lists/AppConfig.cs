@@ -12,7 +12,7 @@ namespace _ORTools.Utils
         public static string Version = "v1.0.9";
 
         // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
-        public static int ServerMode = 1;
+        public static int ServerMode = 0;
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";
@@ -27,14 +27,6 @@ namespace _ORTools.Utils
         public static string ServersFile = ConfigFolder + "servers.json";
         public static string CitiesFile = ConfigFolder + "cities.json";
         public static string DebugLogFile = "debug.log";
-
-        #endregion
-
-        #region Window Classes
-
-        public static string WindowClassMR = "Oldschool RO - Midrate | www.osro.mr";
-        public static string WindowClassHR = "Oldschool RO | www.osro.gg";
-        public static string WindowClassLR = "Oldschool RO | dunno";
 
         #endregion
 

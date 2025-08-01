@@ -243,9 +243,10 @@ public static class BuffDefinitions
             b.CreateBuff("Gloria", "GLORIA", "pr_gloria"),
             b.CreateBuff("Magnificat", "MAGNIFICAT", "pr_magnificat"),
             b.CreateBuff("Angelus", "ANGELUS", "al_angelus"),
-            b.CreateBuff("Fury", "FURY", "fury"),
             b.CreateBuff("Impositio Manus", "IMPOSITIO", "impositio_manus"),
-            b.CreateBuff("Basilica", "BASILICA", "basilica")
+            b.CreateBuff("Basilica", "BASILICA", "basilica"),
+            b.CreateBuff("Fury", "FURY", "fury"),
+            b.CreateBuff("Steel Body", "STEEL_BODY", "steel_body"),
         };
         AcolyteBuffs[1] = new List<Buff>
         {
@@ -254,9 +255,10 @@ public static class BuffDefinitions
             b.CreateBuff("Gloria", "GLORIA", "pr_gloria"),
             b.CreateBuff("Magnificat", "MAGNIFICAT", "pr_magnificat"),
             b.CreateBuff("Angelus", "ANGELUS", "al_angelus"),
-            b.CreateBuff("Fury", "FURY", "fury"),
             b.CreateBuff("Impositio Manus", "IMPOSITIO", "impositio_manus"),
             b.CreateBuff("Basilica", "BASILICA", "basilica"),
+            b.CreateBuff("Fury", "FURY", "fury"),
+            b.CreateBuff("Steel Body", "STEEL_BODY", "steel_body"),
             b.CreateBuff("Refraction", "REFRACTION", "refraction"),
             b.CreateBuff("Shallow Grave", "KAIZEL", "shallowgrave")
         };
