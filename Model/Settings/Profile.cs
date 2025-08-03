@@ -5,26 +5,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
-    public class HPSlot
-    {
-        public int Id { get; set; }
-        public Key Key { get; set; } = Key.None;
-        public int HPPercent { get; set; } = 0;
-        public bool Enabled { get; set; } = false;
-    }
-
-    public class SPSlot
-    {
-        public int Id { get; set; }
-        public Key Key { get; set; } = Key.None;
-        public int SPPercent { get; set; } = 0;
-        public bool Enabled { get; set; } = false;
-    }
-
     public class Profile
     {
         public string Name { get; set; }
@@ -94,13 +77,6 @@ namespace _ORTools.Model
     {
         private static Profile profile = new Profile("Default");
 
-        // Temporary class to deserialize old "Custom" data
-        private class LegacyCustom
-        {
-            public string ActionName { get; set; }
-            public Key tiMode { get; set; }
-        }
-
         public static void Load(string profileName)
         {
             try
@@ -114,38 +90,6 @@ namespace _ORTools.Model
 
                 string json = File.ReadAllText(filePath);
                 dynamic rawObject = JsonConvert.DeserializeObject(json);
-
-                // Migrate old "Custom" key to "TransferHelper"
-                if (rawObject != null && rawObject["Custom"] != null && rawObject["TransferHelper"] == null)
-                {
-                    try
-                    {
-                        // Deserialize the old "Custom" data
-                        string customJson = rawObject["Custom"].ToString();
-                        LegacyCustom legacyCustom = JsonConvert.DeserializeObject<LegacyCustom>(customJson);
-
-                        // Create new TransferHelper data
-                        TransferHelper newTransferHelper = new TransferHelper
-                        {
-                            ActionName = TransferHelper.ACTION_NAME_TRANSFER,
-                            TransferKey = legacyCustom.tiMode
-                        };
-
-                        // Update the JSON object
-                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(newTransferHelper);
-                        rawObject.Property("Custom").Remove();
-
-                        // Save the updated JSON back to the file
-                        File.WriteAllText(filePath, JsonConvert.SerializeObject(rawObject, Formatting.Indented));
-                    }
-                    catch (Exception ex)
-                    {
-                        DebugLogger.Error(ex, $"Failed to migrate Custom to TransferHelper: {ex.Message}");
-                        rawObject["TransferHelper"] = JsonConvert.SerializeObject(new TransferHelper());
-                        rawObject.Property("Custom").Remove();
-                        File.WriteAllText(filePath, JsonConvert.SerializeObject(rawObject, Formatting.Indented));
-                    }
-                }
 
                 if (rawObject != null)
                 {
@@ -312,7 +256,6 @@ namespace _ORTools.Model
                 }
             }
         }
-
 
         public static Profile GetCurrent()
         {

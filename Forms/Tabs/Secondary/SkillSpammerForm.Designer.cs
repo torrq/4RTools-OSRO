@@ -38,15 +38,15 @@ namespace _ORTools.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.chkNoShift = new System.Windows.Forms.CheckBox();
             this.chkMouseFlick = new System.Windows.Forms.CheckBox();
-            this.ahkSpeedBoost = new System.Windows.Forms.RadioButton();
-            this.ahkCompatibility = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbDeactivatedLabel = new System.Windows.Forms.Label();
+            this.cbDeactivated = new _ORTools.Controls.BorderedCheckBox();
             this.cbWithNoClickLabel = new System.Windows.Forms.Label();
             this.cbWithClickLabel = new System.Windows.Forms.Label();
+            this.cbWithNoClick = new _ORTools.Controls.BorderedCheckBox();
+            this.cbWithClick = new _ORTools.Controls.BorderedCheckBox();
             this.keysDividerPanel = new System.Windows.Forms.Panel();
             this.GitHubButton = new System.Windows.Forms.Button();
             this.HRDiscordButton = new System.Windows.Forms.Button();
@@ -60,10 +60,6 @@ namespace _ORTools.Forms
             this.MRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.GitHubButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.skillSpammerModeGroup = new System.Windows.Forms.GroupBox();
-            this.cbDeactivated = new _ORTools.Controls.BorderedCheckBox();
-            this.cbWithNoClick = new _ORTools.Controls.BorderedCheckBox();
-            this.cbWithClick = new _ORTools.Controls.BorderedCheckBox();
             this.chkS = new _ORTools.Controls.BorderedCheckBox();
             this.chkM = new _ORTools.Controls.BorderedCheckBox();
             this.chk9 = new _ORTools.Controls.BorderedCheckBox();
@@ -109,13 +105,11 @@ namespace _ORTools.Forms
             this.chkW = new _ORTools.Controls.BorderedCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).BeginInit();
-            this.skillSpammerModeGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSpammerDelay
@@ -138,7 +132,7 @@ namespace _ORTools.Forms
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtSpammerDelay);
-            this.groupBox2.Location = new System.Drawing.Point(479, 240);
+            this.groupBox2.Location = new System.Drawing.Point(491, 189);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(115, 49);
             this.groupBox2.TabIndex = 32;
@@ -157,87 +151,32 @@ namespace _ORTools.Forms
             // 
             // chkNoShift
             // 
-            this.chkNoShift.AutoSize = true;
-            this.chkNoShift.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkNoShift.Location = new System.Drawing.Point(123, 21);
-            this.chkNoShift.Margin = new System.Windows.Forms.Padding(0);
+            this.chkNoShift.Location = new System.Drawing.Point(0, 0);
             this.chkNoShift.Name = "chkNoShift";
-            this.chkNoShift.Size = new System.Drawing.Size(64, 17);
-            this.chkNoShift.TabIndex = 39;
-            this.chkNoShift.Text = "No Shift";
-            this.chkNoShift.UseVisualStyleBackColor = true;
-            this.chkNoShift.CheckedChanged += new System.EventHandler(this.ChkNoShift_CheckedChanged);
+            this.chkNoShift.Size = new System.Drawing.Size(104, 24);
+            this.chkNoShift.TabIndex = 0;
             // 
             // chkMouseFlick
             // 
-            this.chkMouseFlick.AutoSize = true;
-            this.chkMouseFlick.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkMouseFlick.Location = new System.Drawing.Point(12, 21);
+            this.chkMouseFlick.Location = new System.Drawing.Point(0, 0);
             this.chkMouseFlick.Name = "chkMouseFlick";
-            this.chkMouseFlick.Size = new System.Drawing.Size(80, 17);
-            this.chkMouseFlick.TabIndex = 38;
-            this.chkMouseFlick.Text = "Mouse Flick";
-            this.chkMouseFlick.UseVisualStyleBackColor = true;
-            this.chkMouseFlick.CheckedChanged += new System.EventHandler(this.ChkMouseFlick_CheckedChanged);
-            // 
-            // ahkSpeedBoost
-            // 
-            this.ahkSpeedBoost.AutoSize = true;
-            this.ahkSpeedBoost.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ahkSpeedBoost.Location = new System.Drawing.Point(113, 19);
-            this.ahkSpeedBoost.Name = "ahkSpeedBoost";
-            this.ahkSpeedBoost.Size = new System.Drawing.Size(85, 17);
-            this.ahkSpeedBoost.TabIndex = 37;
-            this.ahkSpeedBoost.TabStop = true;
-            this.ahkSpeedBoost.Text = "Speed Boost";
-            this.ahkSpeedBoost.UseVisualStyleBackColor = true;
-            this.ahkSpeedBoost.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // ahkCompatibility
-            // 
-            this.ahkCompatibility.AutoSize = true;
-            this.ahkCompatibility.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ahkCompatibility.Location = new System.Drawing.Point(12, 19);
-            this.ahkCompatibility.Name = "ahkCompatibility";
-            this.ahkCompatibility.Size = new System.Drawing.Size(86, 17);
-            this.ahkCompatibility.TabIndex = 35;
-            this.ahkCompatibility.TabStop = true;
-            this.ahkCompatibility.Text = "Compatibility";
-            this.ahkCompatibility.UseVisualStyleBackColor = true;
-            this.ahkCompatibility.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Controls.Add(this.pbUpAndDownArrow);
-            this.groupBox4.Controls.Add(this.chkMouseFlick);
-            this.groupBox4.Controls.Add(this.chkNoShift);
-            this.groupBox4.Location = new System.Drawing.Point(250, 240);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(218, 49);
-            this.groupBox4.TabIndex = 33;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Key Config";
+            this.chkMouseFlick.Size = new System.Drawing.Size(104, 24);
+            this.chkMouseFlick.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_ORTools.Resources.Media.Icons.shift;
-            this.pictureBox1.Location = new System.Drawing.Point(188, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // pbUpAndDownArrow
             // 
-            this.pbUpAndDownArrow.Image = global::_ORTools.Resources.Media.Icons.up_and_down_arrow;
-            this.pbUpAndDownArrow.Location = new System.Drawing.Point(95, 20);
+            this.pbUpAndDownArrow.Location = new System.Drawing.Point(0, 0);
             this.pbUpAndDownArrow.Name = "pbUpAndDownArrow";
-            this.pbUpAndDownArrow.Size = new System.Drawing.Size(16, 16);
-            this.pbUpAndDownArrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbUpAndDownArrow.TabIndex = 35;
+            this.pbUpAndDownArrow.Size = new System.Drawing.Size(100, 50);
+            this.pbUpAndDownArrow.TabIndex = 0;
             this.pbUpAndDownArrow.TabStop = false;
             // 
             // groupBox3
@@ -267,6 +206,19 @@ namespace _ORTools.Forms
             this.cbDeactivatedLabel.Text = "Disabled";
             this.cbDeactivatedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // cbDeactivated
+            // 
+            this.cbDeactivated.AutoCheck = false;
+            this.cbDeactivated.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDeactivated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbDeactivated.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbDeactivated.Location = new System.Drawing.Point(10, 60);
+            this.cbDeactivated.Name = "cbDeactivated";
+            this.cbDeactivated.Size = new System.Drawing.Size(24, 24);
+            this.cbDeactivated.TabIndex = 2;
+            this.cbDeactivated.ThreeState = true;
+            this.cbDeactivated.UseVisualStyleBackColor = true;
+            // 
             // cbWithNoClickLabel
             // 
             this.cbWithNoClickLabel.Image = global::_ORTools.Resources.Media.Icons.spammer_mouse_off;
@@ -288,6 +240,32 @@ namespace _ORTools.Forms
             this.cbWithClickLabel.TabIndex = 50;
             this.cbWithClickLabel.Text = "With click";
             this.cbWithClickLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbWithNoClick
+            // 
+            this.cbWithNoClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWithNoClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbWithNoClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbWithNoClick.Location = new System.Drawing.Point(10, 40);
+            this.cbWithNoClick.Name = "cbWithNoClick";
+            this.cbWithNoClick.Size = new System.Drawing.Size(24, 24);
+            this.cbWithNoClick.TabIndex = 1;
+            this.cbWithNoClick.ThreeState = true;
+            this.cbWithNoClick.UseVisualStyleBackColor = true;
+            // 
+            // cbWithClick
+            // 
+            this.cbWithClick.Checked = true;
+            this.cbWithClick.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbWithClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWithClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbWithClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbWithClick.Location = new System.Drawing.Point(10, 20);
+            this.cbWithClick.Name = "cbWithClick";
+            this.cbWithClick.Size = new System.Drawing.Size(24, 24);
+            this.cbWithClick.TabIndex = 0;
+            this.cbWithClick.ThreeState = true;
+            this.cbWithClick.UseVisualStyleBackColor = true;
             // 
             // keysDividerPanel
             // 
@@ -419,56 +397,6 @@ namespace _ORTools.Forms
             this.OSROMRBox.TabIndex = 36;
             this.OSROMRBox.TabStop = false;
             // 
-            // skillSpammerModeGroup
-            // 
-            this.skillSpammerModeGroup.Controls.Add(this.ahkSpeedBoost);
-            this.skillSpammerModeGroup.Controls.Add(this.ahkCompatibility);
-            this.skillSpammerModeGroup.Location = new System.Drawing.Point(28, 240);
-            this.skillSpammerModeGroup.Name = "skillSpammerModeGroup";
-            this.skillSpammerModeGroup.Size = new System.Drawing.Size(209, 49);
-            this.skillSpammerModeGroup.TabIndex = 43;
-            this.skillSpammerModeGroup.TabStop = false;
-            this.skillSpammerModeGroup.Text = "Spammer Mode";
-            // 
-            // cbDeactivated
-            // 
-            this.cbDeactivated.AutoCheck = false;
-            this.cbDeactivated.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDeactivated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.cbDeactivated.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbDeactivated.Location = new System.Drawing.Point(10, 60);
-            this.cbDeactivated.Name = "cbDeactivated";
-            this.cbDeactivated.Size = new System.Drawing.Size(24, 24);
-            this.cbDeactivated.TabIndex = 2;
-            this.cbDeactivated.ThreeState = true;
-            this.cbDeactivated.UseVisualStyleBackColor = true;
-            // 
-            // cbWithNoClick
-            // 
-            this.cbWithNoClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWithNoClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.cbWithNoClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbWithNoClick.Location = new System.Drawing.Point(10, 40);
-            this.cbWithNoClick.Name = "cbWithNoClick";
-            this.cbWithNoClick.Size = new System.Drawing.Size(24, 24);
-            this.cbWithNoClick.TabIndex = 1;
-            this.cbWithNoClick.ThreeState = true;
-            this.cbWithNoClick.UseVisualStyleBackColor = true;
-            // 
-            // cbWithClick
-            // 
-            this.cbWithClick.Checked = true;
-            this.cbWithClick.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbWithClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWithClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.cbWithClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbWithClick.Location = new System.Drawing.Point(10, 20);
-            this.cbWithClick.Name = "cbWithClick";
-            this.cbWithClick.Size = new System.Drawing.Size(24, 24);
-            this.cbWithClick.TabIndex = 0;
-            this.cbWithClick.ThreeState = true;
-            this.cbWithClick.UseVisualStyleBackColor = true;
-            // 
             // chkS
             // 
             this.chkS.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -541,7 +469,6 @@ namespace _ORTools.Forms
             this.chkF9.Tag = "F9";
             this.chkF9.ThreeState = true;
             this.chkF9.UseVisualStyleBackColor = true;
-            this.chkF9.CheckedChanged += new System.EventHandler(this.ChkF9_CheckedChanged);
             // 
             // chkB
             // 
@@ -571,7 +498,6 @@ namespace _ORTools.Forms
             this.chk8.Tag = "D8";
             this.chk8.ThreeState = true;
             this.chk8.UseVisualStyleBackColor = true;
-            this.chk8.CheckedChanged += new System.EventHandler(this.Chk8_CheckedChanged);
             // 
             // chkV
             // 
@@ -614,7 +540,6 @@ namespace _ORTools.Forms
             this.chk7.Tag = "D7";
             this.chk7.ThreeState = true;
             this.chk7.UseVisualStyleBackColor = true;
-            this.chk7.CheckedChanged += new System.EventHandler(this.Chk7_CheckedChanged);
             // 
             // chkX
             // 
@@ -644,7 +569,6 @@ namespace _ORTools.Forms
             this.chkF8.Tag = "F8";
             this.chkF8.ThreeState = true;
             this.chkF8.UseVisualStyleBackColor = true;
-            this.chkF8.CheckedChanged += new System.EventHandler(this.ChkF8_CheckedChanged);
             // 
             // chkZ
             // 
@@ -673,7 +597,6 @@ namespace _ORTools.Forms
             this.chk6.Tag = "D6";
             this.chk6.ThreeState = true;
             this.chk6.UseVisualStyleBackColor = true;
-            this.chk6.CheckedChanged += new System.EventHandler(this.Chk6_CheckedChanged);
             // 
             // chkL
             // 
@@ -689,7 +612,6 @@ namespace _ORTools.Forms
             this.chkL.Tag = "L";
             this.chkL.ThreeState = true;
             this.chkL.UseVisualStyleBackColor = true;
-            this.chkL.CheckedChanged += new System.EventHandler(this.ChkL_CheckedChanged);
             // 
             // chkF7
             // 
@@ -704,7 +626,6 @@ namespace _ORTools.Forms
             this.chkF7.Tag = "F7";
             this.chkF7.ThreeState = true;
             this.chkF7.UseVisualStyleBackColor = true;
-            this.chkF7.CheckedChanged += new System.EventHandler(this.ChkF7_CheckedChanged);
             // 
             // chkK
             // 
@@ -733,7 +654,6 @@ namespace _ORTools.Forms
             this.chk5.Tag = "D5";
             this.chk5.ThreeState = true;
             this.chk5.UseVisualStyleBackColor = true;
-            this.chk5.CheckedChanged += new System.EventHandler(this.Chk5_CheckedChanged);
             // 
             // chkJ
             // 
@@ -776,7 +696,6 @@ namespace _ORTools.Forms
             this.chk4.Tag = "D4";
             this.chk4.ThreeState = true;
             this.chk4.UseVisualStyleBackColor = true;
-            this.chk4.CheckedChanged += new System.EventHandler(this.Chk4_CheckedChanged);
             // 
             // chkG
             // 
@@ -805,7 +724,6 @@ namespace _ORTools.Forms
             this.chkF6.Tag = "F6";
             this.chkF6.ThreeState = true;
             this.chkF6.UseVisualStyleBackColor = true;
-            this.chkF6.CheckedChanged += new System.EventHandler(this.ChkF6_CheckedChanged);
             // 
             // chkF
             // 
@@ -834,7 +752,6 @@ namespace _ORTools.Forms
             this.chk3.Tag = "D2";
             this.chk3.ThreeState = true;
             this.chk3.UseVisualStyleBackColor = true;
-            this.chk3.CheckedChanged += new System.EventHandler(this.Chk3_CheckedChanged);
             // 
             // chkD
             // 
@@ -863,7 +780,6 @@ namespace _ORTools.Forms
             this.chkF5.Tag = "F5";
             this.chkF5.ThreeState = true;
             this.chkF5.UseVisualStyleBackColor = true;
-            this.chkF5.CheckedChanged += new System.EventHandler(this.ChkF5_CheckedChanged);
             // 
             // chkA
             // 
@@ -892,7 +808,6 @@ namespace _ORTools.Forms
             this.chk2.Tag = "D2";
             this.chk2.ThreeState = true;
             this.chk2.UseVisualStyleBackColor = true;
-            this.chk2.CheckedChanged += new System.EventHandler(this.Chk2_CheckedChanged);
             // 
             // chkO
             // 
@@ -922,7 +837,6 @@ namespace _ORTools.Forms
             this.chk1.Tag = "D1";
             this.chk1.ThreeState = true;
             this.chk1.UseVisualStyleBackColor = true;
-            this.chk1.CheckedChanged += new System.EventHandler(this.Chk1_CheckedChanged);
             // 
             // chkI
             // 
@@ -966,7 +880,6 @@ namespace _ORTools.Forms
             this.chkF4.Tag = "F4";
             this.chkF4.ThreeState = true;
             this.chkF4.UseVisualStyleBackColor = true;
-            this.chkF4.CheckedChanged += new System.EventHandler(this.ChkF4_CheckedChanged);
             // 
             // chkY
             // 
@@ -995,7 +908,6 @@ namespace _ORTools.Forms
             this.chkF3.Tag = "F3";
             this.chkF3.ThreeState = true;
             this.chkF3.UseVisualStyleBackColor = true;
-            this.chkF3.CheckedChanged += new System.EventHandler(this.ChkF3_CheckedChanged);
             // 
             // chkT
             // 
@@ -1025,7 +937,6 @@ namespace _ORTools.Forms
             this.chkF1.Tag = "F1";
             this.chkF1.ThreeState = true;
             this.chkF1.UseVisualStyleBackColor = true;
-            this.chkF1.CheckedChanged += new System.EventHandler(this.ChkF1_CheckedChanged);
             // 
             // chkR
             // 
@@ -1054,7 +965,6 @@ namespace _ORTools.Forms
             this.chkF2.Tag = "F2";
             this.chkF2.ThreeState = true;
             this.chkF2.UseVisualStyleBackColor = true;
-            this.chkF2.CheckedChanged += new System.EventHandler(this.ChkF2_CheckedChanged);
             // 
             // chkE
             // 
@@ -1105,8 +1015,6 @@ namespace _ORTools.Forms
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(620, 454);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.skillSpammerModeGroup);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.GitHubButton);
             this.Controls.Add(this.HRDiscordButton);
             this.Controls.Add(this.MRDiscordButton);
@@ -1164,19 +1072,15 @@ namespace _ORTools.Forms
             this.Name = "SkillSpammerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "AHKForm";
-            this.Load += new System.EventHandler(this.AHKForm_Load);
+            this.Load += new System.EventHandler(this.SkillSpammerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).EndInit();
-            this.skillSpammerModeGroup.ResumeLayout(false);
-            this.skillSpammerModeGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1232,13 +1136,10 @@ namespace _ORTools.Forms
         private _ORTools.Controls.BorderedCheckBox cbDeactivated;
         private _ORTools.Controls.BorderedCheckBox cbWithNoClick;
         private _ORTools.Controls.BorderedCheckBox cbWithClick;
-        private System.Windows.Forms.RadioButton ahkSpeedBoost;
         private System.Windows.Forms.PictureBox pbUpAndDownArrow;
         private CheckBox chkNoShift;
         private CheckBox chkMouseFlick;
         private PictureBox pictureBox1;
-        private RadioButton ahkCompatibility;
-        private GroupBox groupBox4;
         private Panel keysDividerPanel;
         private PictureBox OSROMRBox;
         private PictureBox OSROHRBox;
@@ -1252,7 +1153,6 @@ namespace _ORTools.Forms
         private ToolTip MRDiscordButtonToolTip;
         private ToolTip HRDiscordButtonToolTip;
         private ToolTip GitHubButtonToolTip;
-        private GroupBox skillSpammerModeGroup;
         private Label cbWithClickLabel;
         private Label cbWithNoClickLabel;
         private Label cbDeactivatedLabel;

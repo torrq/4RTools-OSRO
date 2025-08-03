@@ -124,7 +124,7 @@ namespace _ORTools.Forms
             for (int i = 0; i < hpPanels.Count; i++)
             {
                 Panel panel = hpPanels[i];
-                HPSlot slot = autopotHP.HPSlots[i];
+                AutopotHP.HPSlot slot = autopotHP.HPSlots[i];
 
                 // 1. Update Panel Position using a fixed start point and adding a small margin
                 panel.Location = new Point(startPoint.X, startPoint.Y + (i * (panel.Height + 1)));

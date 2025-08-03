@@ -123,7 +123,7 @@ namespace _ORTools.Forms
             for (int i = 0; i < spPanels.Count; i++)
             {
                 Panel panel = spPanels[i];
-                SPSlot slot = autopotSP.SPSlots[i];
+                AutopotSP.SPSlot slot = autopotSP.SPSlots[i];
 
                 // 1. Update Panel Position using a fixed start point and adding a small margin
                 panel.Location = new Point(startPoint.X, startPoint.Y + (i * (panel.Height + 1)));

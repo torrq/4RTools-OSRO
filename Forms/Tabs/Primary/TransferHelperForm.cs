@@ -47,7 +47,7 @@ namespace _ORTools.Forms
         {
             try
             {
-                Key key = (Key)Enum.Parse(typeof(Key), this.txtTransferKey.Text.ToString());
+                Keys key = (Keys)Enum.Parse(typeof(Keys), this.txtTransferKey.Text.ToString());
                 this.transferHelper.TransferKey = key;
                 ProfileSingleton.SetConfiguration(this.transferHelper);
             }

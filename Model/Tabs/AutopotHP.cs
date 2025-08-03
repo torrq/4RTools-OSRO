@@ -11,6 +11,14 @@ namespace _ORTools.Model
 {
     public class AutopotHP : IAction
     {
+        public class HPSlot
+        {
+            public int Id { get; set; }
+            public System.Windows.Input.Key Key { get; set; } = System.Windows.Input.Key.None;
+            public int HPPercent { get; set; } = 0;
+            public bool Enabled { get; set; } = false;
+        }
+
         public static string ACTION_NAME_AUTOPOT_HP = "AutopotHP";
         private static readonly int AUTOPOT_HP_ROWS = 5;
         private static readonly int MIN_CYCLE_DELAY = 1; // Minimum 1ms between cycles

@@ -14,8 +14,11 @@ namespace _ORTools.Utils
         // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
         public static int ServerMode = 0;
 
-        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
-        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";
+        // Set to true for pre-release versions, false for stable releases
+        public static bool preRelease = true;
+
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA {DateTime.Now:yyyyMMdd})" : "")}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA {DateTime.Now:yyyyMMdd})" : "")}";
 
         #endregion
 

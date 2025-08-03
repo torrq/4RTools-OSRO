@@ -4,7 +4,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -18,8 +17,14 @@ namespace _ORTools.Model
 
         [DllImport("user32.dll")]
         public static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+        [DllImport("user32.dll")] private static extern short GetAsyncKeyState(Keys vKey);
 
-        public Key TransferKey { get; set; } = Key.None;
+        private bool IsKeyPressed(Keys key)
+        {
+            return (GetAsyncKeyState(key) & 0x8000) != 0;
+        }
+
+        public Keys TransferKey { get; set; } = Keys.None;
 
         public string GetActionName()
         {
@@ -34,7 +39,7 @@ namespace _ORTools.Model
         private int TransferHelperThread(Client roClient)
         {
             var transferKey = ProfileSingleton.GetCurrent().TransferHelper.TransferKey;
-            if (transferKey != Key.None && Keyboard.IsKeyDown(transferKey))
+            if (transferKey != Keys.None && IsKeyPressed(transferKey))
             {
                 TransferHelperMacro(roClient, new KeyConfig(transferKey, true), (Keys)Enum.Parse(typeof(Keys), transferKey.ToString()));
                 return 0;
@@ -55,7 +60,7 @@ namespace _ORTools.Model
 
             keybd_event(Constants.VK_LMENU, 0xA4, Constants.KEYEVENTF_EXTENDEDKEY, 0);
 
-            while (Keyboard.IsKeyDown(config.Key))
+            while (IsKeyPressed(config.Key))
             {
                 send_click(0);
                 Thread.Sleep(10);
