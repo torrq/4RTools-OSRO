@@ -3,7 +3,6 @@ using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Forms
 {
@@ -120,7 +119,7 @@ namespace _ORTools.Forms
         {
             Macro SongMacro = ProfileSingleton.GetCurrent().SongMacro;
             TextBox textBox = (TextBox)sender;
-            Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
+            Keys key = (Keys)Enum.Parse(typeof(Keys), textBox.Text.ToString());
 
             if (textBox.Tag != null)
             {
@@ -149,7 +148,7 @@ namespace _ORTools.Forms
                 ChainConfig chainConfig = SongMacro.ChainConfigs.Find(songMacro => songMacro.id == macroID);
                 if (chainConfig == null)
                 {
-                    SongMacro.ChainConfigs.Add(new ChainConfig(macroID, Key.None));
+                    SongMacro.ChainConfigs.Add(new ChainConfig(macroID, Keys.None));
                     chainConfig = SongMacro.ChainConfigs.Find(songMacro => songMacro.id == macroID);
                 }
                 chainConfig.macroEntries[textBox.Name] = new MacroKey(key, chainConfig.Delay);
@@ -186,9 +185,9 @@ namespace _ORTools.Forms
             if (chainConfig != null)
             {
                 // Reset all chain config properties
-                chainConfig.Trigger = Key.None;
-                chainConfig.DaggerKey = Key.None;
-                chainConfig.InstrumentKey = Key.None;
+                chainConfig.Trigger = Keys.None;
+                chainConfig.DaggerKey = Keys.None;
+                chainConfig.InstrumentKey = Keys.None;
                 chainConfig.Delay = AppConfig.MacroDefaultDelay; // Assuming there's a default delay constant
                 chainConfig.macroEntries.Clear();
 
@@ -201,7 +200,7 @@ namespace _ORTools.Forms
                     {
                         if (c is TextBox textBox)
                         {
-                            textBox.Text = Key.None.ToString();
+                            textBox.Text = Keys.None.ToString();
                         }
                         else if (c is NumericUpDown numericUpDown)
                         {

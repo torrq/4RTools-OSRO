@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -14,7 +13,7 @@ namespace _ORTools.Model
         public class SPSlot
         {
             public int Id { get; set; }
-            public System.Windows.Input.Key Key { get; set; } = System.Windows.Input.Key.None;
+            public Keys Key { get; set; } = Keys.None;
             public int SPPercent { get; set; } = 0;
             public bool Enabled { get; set; } = false;
         }
@@ -182,14 +181,14 @@ namespace _ORTools.Model
             return availableSlots[nextPosition];
         }
 
-        private bool UsePot(Key key)
+        private bool UsePot(Keys key)
         {
-            if (key == Key.None) return false;
+            if (key == Keys.None) return false;
 
             try
             {
                 // Only send if Alt is not pressed (prevents conflicts with alt+key combinations)
-                if (!Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+                if (!Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
                     Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
                     var handle = ClientSingleton.GetClient().Process.MainWindowHandle;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _ORTools.Utils
 {
@@ -161,7 +163,7 @@ namespace _ORTools.Utils
         public static Color CharacterColor = Color.DarkGreen;
         public static Color MapColor = Color.DarkCyan;
         public static Color ActiveKeyColor = Color.FromArgb(0, 0, 0);
-        public static Color InactiveKeyColor = Color.FromArgb(100, 100, 100);
+        public static Color InactiveKeyColor = Color.FromArgb(150, 150, 150);
         public static int ProfileButtonBorderDarkenAmount = 60;
 
         #endregion

@@ -5,9 +5,11 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Reflection.Emit;
 using System.Windows.Forms;
-using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Label = System.Windows.Forms.Label;
+using TextBox = System.Windows.Forms.TextBox;
+using ToolTip = System.Windows.Forms.ToolTip;
 
 namespace _ORTools.Model
 {
@@ -160,7 +162,7 @@ namespace _ORTools.Model
 
                 if ((txtBox.Text.ToString() != string.Empty) && textChanged)
                 {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
+                    Keys key = (Keys)Enum.Parse(typeof(Keys), txtBox.Text.ToString());
                     EffectStatusIDs statusID = (EffectStatusIDs)short.Parse(txtBox.Name.Split(new[] { "in" }, StringSplitOptions.None)[1]);
 
                     if (this._typeAutoBuff == ProfileSingleton.GetCurrent().AutobuffSkill.ActionName)
@@ -176,6 +178,15 @@ namespace _ORTools.Model
                         _autoBuffItem.AddKeyToBuff(statusID, key);
                         ProfileSingleton.SetConfiguration(_autoBuffItem);
                     }
+
+                    if (key != Keys.None)
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtBox, true);
+                    }
+                    else
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtBox, false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -184,7 +195,7 @@ namespace _ORTools.Model
             }
         }
 
-        public static void DoUpdate(Dictionary<EffectStatusIDs, Key> autobuffDict, Control control)
+        public static void DoUpdate(Dictionary<EffectStatusIDs, Keys> autobuffDict, Control control)
         {
             if (control == null || autobuffDict == null)
             {
@@ -200,6 +211,7 @@ namespace _ORTools.Model
                 {
                     TextBox textBox = (TextBox)c[0];
                     textBox.Text = autobuffDict[effect].ToString();
+                    FormHelper.ApplyInputKeyStyle(textBox, true);
                 }
             }
             // Set unmapped TextBoxes back to "None"
@@ -208,6 +220,7 @@ namespace _ORTools.Model
                 if (c is TextBox textBox && textBox.Name.StartsWith("in") && string.IsNullOrEmpty(textBox.Text))
                 {
                     textBox.Text = AppConfig.TEXT_NONE;
+                    FormHelper.ApplyInputKeyStyle(textBox, false);
                 }
                 if (c.HasChildren)
                 {

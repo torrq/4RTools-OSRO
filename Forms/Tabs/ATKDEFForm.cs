@@ -3,7 +3,6 @@ using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Linq;
 
 namespace _ORTools.Forms
@@ -50,7 +49,7 @@ namespace _ORTools.Forms
                 EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
                 if (equipConfig == null)
                 {
-                    equipConfig = new EquipConfig(id, Key.None);
+                    equipConfig = new EquipConfig(id, Keys.None);
                     currentMode.EquipConfigs.Add(equipConfig);
                 }
 
@@ -83,13 +82,13 @@ namespace _ORTools.Forms
                     Control[] equipDefCtrl = group.Controls.Find("in" + id + "Def" + i, true);
                     if (equipDefCtrl.Length > 0 && equipDefCtrl[0] is TextBox tbDef)
                     {
-                        tbDef.Text = equipConfig.DefKeys.ContainsKey(tbDef.Name) ? equipConfig.DefKeys[tbDef.Name].ToString() : Key.None.ToString();
+                        tbDef.Text = equipConfig.DefKeys.ContainsKey(tbDef.Name) ? equipConfig.DefKeys[tbDef.Name].ToString() : Keys.None.ToString();
                     }
 
                     Control[] equipAtkCtrl = group.Controls.Find("in" + id + "Atk" + i, true);
                     if (equipAtkCtrl.Length > 0 && equipAtkCtrl[0] is TextBox tbAtk)
                     {
-                        tbAtk.Text = equipConfig.AtkKeys.ContainsKey(tbAtk.Name) ? equipConfig.AtkKeys[tbAtk.Name].ToString() : Key.None.ToString();
+                        tbAtk.Text = equipConfig.AtkKeys.ContainsKey(tbAtk.Name) ? equipConfig.AtkKeys[tbAtk.Name].ToString() : Keys.None.ToString();
                     }
                 }
             }
@@ -139,14 +138,14 @@ namespace _ORTools.Forms
         private void onTextChange(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            Key key = Key.None;
-            if (Enum.TryParse<Key>(textBox.Text, true, out Key parsedKey))
+            Keys key = Keys.None;
+            if (Enum.TryParse<Keys>(textBox.Text, true, out Keys parsedKey))
             {
                 key = parsedKey;
             }
             else if (string.IsNullOrWhiteSpace(textBox.Text) || textBox.Text.Equals(AppConfig.TEXT_NONE, StringComparison.OrdinalIgnoreCase))
             {
-                key = Key.None;
+                key = Keys.None;
             }
 
             string[] inputTag = textBox.Tag.ToString().Split(new[] { ":" }, StringSplitOptions.None);
@@ -259,7 +258,7 @@ namespace _ORTools.Forms
             int groupIndex = currentAtkDefMode.EquipConfigs.FindIndex(ec => ec.id == configIdToReset);
             if (groupIndex == -1)
             {
-                Console.WriteLine("Config ID " + configIdToReset + " not found for reset.");
+                DebugLogger.Debug("Config ID " + configIdToReset + " not found for reset.");
                 EquipConfig newDefaultConfig = new EquipConfig(configIdToReset);
                 currentAtkDefMode.EquipConfigs.Add(newDefaultConfig); // Add if missing
                                                                       // Find index again after adding, though UpdatePanelData might create it too.

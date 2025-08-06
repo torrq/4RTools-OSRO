@@ -109,30 +109,30 @@
     <Compile Include="Controls\BorderedCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\AutoOffForm.cs">
+    <Compile Include="Forms\Tabs\AutoOffForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\AutoOffForm.Designer.cs">
+    <Compile Include="Forms\Tabs\AutoOffForm.Designer.cs">
       <DependentUpon>AutoOffForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\AutopotSPForm.cs">
+    <Compile Include="Forms\Tabs\AutopotSPForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\AutopotSPForm.Designer.cs">
+    <Compile Include="Forms\Tabs\AutopotSPForm.Designer.cs">
       <DependentUpon>AutopotSPForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\AutopotHPForm.cs">
+    <Compile Include="Forms\Tabs\AutopotHPForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\AutopotHPForm.Designer.cs">
+    <Compile Include="Forms\Tabs\AutopotHPForm.Designer.cs">
       <DependentUpon>AutopotHPForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\CharacterInfo.cs">
+    <Compile Include="Forms\Tabs\CharacterInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\CharacterInfo.Designer.cs">
+    <Compile Include="Forms\Tabs\CharacterInfo.Designer.cs">
       <DependentUpon>CharacterInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\DialogOK.cs">
@@ -141,28 +141,28 @@
     <Compile Include="Forms\Dialogs\DialogOK.Designer.cs">
       <DependentUpon>DialogOK.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\SkillSpammerForm.cs">
+    <Compile Include="Forms\Tabs\SkillSpammerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\SkillSpammerForm.Designer.cs">
+    <Compile Include="Forms\Tabs\SkillSpammerForm.Designer.cs">
       <DependentUpon>SkillSpammerForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\ATKDEFForm.cs">
+    <Compile Include="Forms\Tabs\ATKDEFForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Primary\AutoOffForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\AutoOffForm.resx">
       <DependentUpon>AutoOffForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Primary\AutopotSPForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\AutopotSPForm.resx">
       <DependentUpon>AutopotSPForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Primary\AutopotHPForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\AutopotHPForm.resx">
       <DependentUpon>AutopotHPForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Primary\CharacterInfo.resx">
+    <EmbeddedResource Include="Forms\Tabs\CharacterInfo.resx">
       <DependentUpon>CharacterInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\DialogOK.resx">
@@ -177,15 +177,15 @@
     <EmbeddedResource Include="Forms\Dialogs\DialogInput.resx">
       <DependentUpon>DialogInput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\SkillSpammerForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\SkillSpammerForm.resx">
       <DependentUpon>SkillSpammerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Secondary\ATKDEFForm.Designer.cs">
+    <Compile Include="Forms\Tabs\ATKDEFForm.Designer.cs">
       <DependentUpon>ATKDEFForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\ATKDEFForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\ATKDEFForm.resx">
       <DependentUpon>ATKDEFForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -213,77 +213,77 @@
     <Compile Include="Forms\Dialogs\DialogInput.Designer.cs">
       <DependentUpon>DialogInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\MacroSongForm.cs">
+    <Compile Include="Forms\Tabs\MacroSongForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Forms\Container.resx">
       <DependentUpon>Container.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Secondary\MacroSongForm.Designer.cs">
+    <Compile Include="Forms\Tabs\MacroSongForm.Designer.cs">
       <DependentUpon>MacroSongForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\MacroSwitchForm.cs">
+    <Compile Include="Forms\Tabs\MacroSwitchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\MacroSongForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\MacroSongForm.resx">
       <DependentUpon>MacroSongForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Secondary\MacroSwitchForm.Designer.cs">
+    <Compile Include="Forms\Tabs\MacroSwitchForm.Designer.cs">
       <DependentUpon>MacroSwitchForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\ConfigForm.cs">
+    <Compile Include="Forms\Tabs\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\ConfigForm.Designer.cs">
+    <Compile Include="Forms\Tabs\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\MacroSwitchForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\MacroSwitchForm.resx">
       <DependentUpon>MacroSwitchForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\ConfigForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\ProfileForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Secondary\AutobuffSkillForm.cs" />
-    <Compile Include="Forms\Tabs\Secondary\AutobuffSkillForm.Designer.cs">
+    <Compile Include="Forms\Tabs\AutobuffSkillForm.cs" />
+    <Compile Include="Forms\Tabs\AutobuffSkillForm.Designer.cs">
       <DependentUpon>AutobuffSkillForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\SkillTimerForm.cs">
+    <Compile Include="Forms\Tabs\SkillTimerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\AutobuffSkillForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\AutobuffSkillForm.resx">
       <DependentUpon>AutobuffSkillForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Primary\SkillTimerForm.Designer.cs">
+    <Compile Include="Forms\Tabs\SkillTimerForm.Designer.cs">
       <DependentUpon>SkillTimerForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\AutoBuffStatusForm.cs">
+    <Compile Include="Forms\Tabs\DebuffForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\AutoBuffStatusForm.Designer.cs">
-      <DependentUpon>AutoBuffStatusForm.cs</DependentUpon>
+    <Compile Include="Forms\Tabs\DebuffForm.Designer.cs">
+      <DependentUpon>DebuffForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\AutobuffItemForm.cs">
+    <Compile Include="Forms\Tabs\AutobuffItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Primary\SkillTimerForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\SkillTimerForm.resx">
       <DependentUpon>SkillTimerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Secondary\AutobuffItemForm.Designer.cs">
+    <Compile Include="Forms\Tabs\AutobuffItemForm.Designer.cs">
       <DependentUpon>AutobuffItemForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
@@ -294,32 +294,32 @@
       <DependentUpon>Container.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\ProfileForm.cs">
+    <Compile Include="Forms\Tabs\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Secondary\ProfileForm.Designer.cs">
+    <Compile Include="Forms\Tabs\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\ToggleStateForm.cs">
+    <Compile Include="Forms\Tabs\ToggleStateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\AutoBuffStatusForm.resx">
-      <DependentUpon>AutoBuffStatusForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tabs\DebuffForm.resx">
+      <DependentUpon>DebuffForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Secondary\AutobuffItemForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\AutobuffItemForm.resx">
       <DependentUpon>AutobuffItemForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\Primary\ToggleStateForm.Designer.cs">
+    <Compile Include="Forms\Tabs\ToggleStateForm.Designer.cs">
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\TransferHelperForm.cs">
+    <Compile Include="Forms\Tabs\TransferHelperForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\Primary\TransferHelperForm.Designer.cs">
+    <Compile Include="Forms\Tabs\TransferHelperForm.Designer.cs">
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Tabs\AutoOff.cs" />
@@ -381,11 +381,11 @@
     <Compile Include="Utils\Memory\StatusEffectLogger.cs" />
     <Compile Include="Utils\Memory\StatusUtils.cs" />
     <Compile Include="Utils\ThreadRunner.cs" />
-    <EmbeddedResource Include="Forms\Tabs\Primary\ToggleStateForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\ToggleStateForm.resx">
       <DependentUpon>ToggleStateForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\Primary\TransferHelperForm.resx">
+    <EmbeddedResource Include="Forms\Tabs\TransferHelperForm.resx">
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -791,5 +791,13 @@
       <FilesToPackage Include="$(OutputPath)**\*.*" Exclude="$(OutputPath)$(TargetName).exe.config" />
     </ItemGroup>
     <Copy SourceFiles="@(FilesToPackage)" DestinationFolder="$(PackageDir)" SkipUnchangedFiles="true" Condition=" '$(PackageDir)' != '' " />
+  </Target>
+  <!-- Only rename executable during Release builds -->
+  <Target Name="RenameExecutableWithAppConfig" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Message Text="Renaming executable based on AppConfig settings (Release build only)..." Importance="high" />
+    <PropertyGroup>
+      <PowerShellScriptPath>$(ProjectDir)\Scripts\RenameExe.ps1</PowerShellScriptPath>
+    </PropertyGroup>
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; '$(PowerShellScriptPath)' -OutputPath '$(OutputPath)' -AssemblyName '$(AssemblyName)' -ProjectDir '$(ProjectDir.TrimEnd('\'))'&quot;" ContinueOnError="true" IgnoreStandardErrorWarningFormat="true" />
   </Target>
 </Project>

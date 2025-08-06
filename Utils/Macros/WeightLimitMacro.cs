@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Windows.Input;
 using _ORTools.Model;
-using System.Drawing.Imaging;
 
 namespace _ORTools.Utils
 {
@@ -14,24 +12,24 @@ namespace _ORTools.Utils
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr GetForegroundWindow();
 
-        private static readonly Dictionary<Key, string> _sendKeysMap = new Dictionary<Key, string>()
+        private static readonly Dictionary<Keys, string> _sendKeysMap = new Dictionary<Keys, string>()
         {
-             { Key.D0, "0" },
-             { Key.D1, "1" },
-             { Key.D2, "2" },
-             { Key.D3, "3" },
-             { Key.D4, "4" },
-             { Key.D5, "5" },
-             { Key.D6, "6" },
-             { Key.D7, "7" },
-             { Key.D8, "8" },
-             { Key.D9, "9" }
+             { Keys.D0, "0" },
+             { Keys.D1, "1" },
+             { Keys.D2, "2" },
+             { Keys.D3, "3" },
+             { Keys.D4, "4" },
+             { Keys.D5, "5" },
+             { Keys.D6, "6" },
+             { Keys.D7, "7" },
+             { Keys.D8, "8" },
+             { Keys.D9, "9" }
         };
 
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public static string ToSendKeysFormat(Key key)
+        public static string ToSendKeysFormat(Keys key)
         {
             if (_sendKeysMap.TryGetValue(key, out string value))
             {

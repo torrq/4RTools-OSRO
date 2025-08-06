@@ -21,5 +21,12 @@ namespace _ORTools.Utils
 
         [DllImport("user32.dll")]
         public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+        [DllImport("user32.dll")] private static extern short GetAsyncKeyState(Keys vKey);
+
+        public static bool IsKeyPressed(Keys key)
+        {
+            return (GetAsyncKeyState(key) & 0x8000) != 0;
+        }
     }
 }

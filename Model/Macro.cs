@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Runtime.InteropServices;
 using Cursor = System.Windows.Forms.Cursor;
 
@@ -12,7 +11,7 @@ namespace _ORTools.Model
 {
     public class MacroKey
     {
-        public Key Key { get; set; }
+        public Keys Key { get; set; }
         public bool AltKey { get; set; }
         public bool Enabled { get; set; }
 
@@ -40,7 +39,7 @@ namespace _ORTools.Model
         /// <summary>
         /// Constructor for creating new instances programmatically.
         /// </summary>
-        public MacroKey(Key key, int delay, int clickMode = 0)
+        public MacroKey(Keys key, int delay, int clickMode = 0)
         {
             this.Key = key;
             this.Delay = delay;
@@ -52,7 +51,7 @@ namespace _ORTools.Model
         /// This allows loading profiles that may or may not contain the click-related properties.
         /// </summary>
         [JsonConstructor]
-        public MacroKey(Key key, int delay)
+        public MacroKey(Keys key, int delay)
         {
             this.Key = key;
             this.Delay = delay;
@@ -64,9 +63,9 @@ namespace _ORTools.Model
     public class ChainConfig
     {
         public int id;
-        public Key Trigger { get; set; }
-        public Key DaggerKey { get; set; }
-        public Key InstrumentKey { get; set; }
+        public Keys Trigger { get; set; }
+        public Keys DaggerKey { get; set; }
+        public Keys InstrumentKey { get; set; }
         public int Delay { get; set; } = AppConfig.MacroDefaultDelay;
         public Dictionary<string, MacroKey> macroEntries { get; set; } = new Dictionary<string, MacroKey>();
 
@@ -86,7 +85,7 @@ namespace _ORTools.Model
             this.InstrumentKey = macro.InstrumentKey;
             this.macroEntries = new Dictionary<string, MacroKey>(macro.macroEntries);
         }
-        public ChainConfig(int id, Key trigger)
+        public ChainConfig(int id, Keys trigger)
         {
             this.id = id;
             this.Trigger = trigger;
@@ -108,7 +107,7 @@ namespace _ORTools.Model
             this.ActionName = macroname;
             for (int i = 1; i <= macroLanes; i++)
             {
-                ChainConfigs.Add(new ChainConfig(i, Key.None));
+                ChainConfigs.Add(new ChainConfig(i, Keys.None));
 
             }
         }
@@ -140,15 +139,15 @@ namespace _ORTools.Model
         {
             foreach (ChainConfig chainConfig in this.ChainConfigs)
             {
-                if (chainConfig.Trigger != Key.None && Keyboard.IsKeyDown(chainConfig.Trigger))
+                if (chainConfig.Trigger != Keys.None && Win32Interop.IsKeyPressed(chainConfig.Trigger))
                 {
                     Dictionary<string, MacroKey> macro = chainConfig.macroEntries;
                     for (int i = 1; i <= macro.Count; i++)//Ensure to execute keys in Order
                     {
                         MacroKey macroKey = macro["in" + i + "mac" + chainConfig.id];
-                        if (macroKey.Key != Key.None)
+                        if (macroKey.Key != Keys.None)
                         {
-                            if (chainConfig.InstrumentKey != Key.None)
+                            if (chainConfig.InstrumentKey != Keys.None)
                             {
                                 //Press instrument key if exists.
                                 Keys instrumentKey = (Keys)Enum.Parse(typeof(Keys), chainConfig.InstrumentKey.ToString());
@@ -160,7 +159,7 @@ namespace _ORTools.Model
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                             Thread.Sleep(macroKey.Delay); // Delay after key rather than before
 
-                            if (chainConfig.DaggerKey != Key.None)
+                            if (chainConfig.DaggerKey != Keys.None)
                             {
                                 //Press instrument key if exists.
                                 Keys daggerKey = (Keys)Enum.Parse(typeof(Keys), chainConfig.DaggerKey.ToString());

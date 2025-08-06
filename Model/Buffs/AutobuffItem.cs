@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -22,7 +21,7 @@ namespace _ORTools.Model
             set => _delay = value;
         }
 
-        public Dictionary<EffectStatusIDs, Key> buffMapping = new Dictionary<EffectStatusIDs, Key>();
+        public Dictionary<EffectStatusIDs, Keys> buffMapping = new Dictionary<EffectStatusIDs, Keys>();
 
         // Add error tracking
         private int consecutiveErrors = 0;
@@ -143,7 +142,7 @@ namespace _ORTools.Model
                             {
                                 // Process buffs
                                 List<EffectStatusIDs> buffs = new List<EffectStatusIDs>();
-                                Dictionary<EffectStatusIDs, Key> bmClone = new Dictionary<EffectStatusIDs, Key>(this.buffMapping);
+                                Dictionary<EffectStatusIDs, Keys> bmClone = new Dictionary<EffectStatusIDs, Keys>(this.buffMapping);
 
                                 foreach (var (i, currentStatus) in statusList)
                                 {
@@ -258,7 +257,7 @@ namespace _ORTools.Model
             return autobuffItemThread;
         }
 
-        public void AddKeyToBuff(EffectStatusIDs status, Key key)
+        public void AddKeyToBuff(EffectStatusIDs status, Keys key)
         {
             if (buffMapping.ContainsKey(status))
             {
@@ -291,14 +290,14 @@ namespace _ORTools.Model
             return buffMapping.ContainsKey(status);
         }
 
-        public Key GetKeyForStatus(EffectStatusIDs status)
+        public Keys GetKeyForStatus(EffectStatusIDs status)
         {
-            return buffMapping.ContainsKey(status) ? buffMapping[status] : Key.None;
+            return buffMapping.ContainsKey(status) ? buffMapping[status] : Keys.None;
         }
 
-        public Dictionary<EffectStatusIDs, Key> GetAllMappings()
+        public Dictionary<EffectStatusIDs, Keys> GetAllMappings()
         {
-            return new Dictionary<EffectStatusIDs, Key>(buffMapping);
+            return new Dictionary<EffectStatusIDs, Keys>(buffMapping);
         }
 
         public int GetMappingCount()
@@ -345,7 +344,7 @@ namespace _ORTools.Model
                     // Load buff mapping
                     if (configData.ContainsKey("BuffMapping"))
                     {
-                        var mappingData = JsonConvert.DeserializeObject<Dictionary<EffectStatusIDs, Key>>(configData["BuffMapping"].ToString());
+                        var mappingData = JsonConvert.DeserializeObject<Dictionary<EffectStatusIDs, Keys>>(configData["BuffMapping"].ToString());
                         if (mappingData != null)
                         {
                             this.buffMapping = mappingData;
@@ -398,11 +397,11 @@ namespace _ORTools.Model
             return this.ActionName;
         }
 
-        private void UseAutobuff(Key key)
+        private void UseAutobuff(Keys key)
         {
             try
             {
-                if ((key != Key.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+                if ((key != Keys.None) && !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
                     var client = ClientSingleton.GetClient();
                     if (client?.Process != null && !client.Process.HasExited)

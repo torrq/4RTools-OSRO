@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -14,12 +13,12 @@ namespace _ORTools.Model
         public bool StopBuffsCity { get; set; } = false;
         public bool SoundEnabled { get; set; } = false;
         public bool AutoOffOverweight { get; set; } = false;
-        public Key AutoOffKey1 { get; set; }
-        public Key AutoOffKey2 { get; set; }
+        public Keys AutoOffKey1 { get; set; }
+        public Keys AutoOffKey2 { get; set; }
         public bool AutoOffKillClient { get; set; } = false;
         public bool SwitchAmmo { get; set; } = false;
-        public Key Ammo1Key { get; set; }
-        public Key Ammo2Key { get; set; }
+        public Keys Ammo1Key { get; set; }
+        public Keys Ammo2Key { get; set; }
         public int AutoOffTime { get; set; } = 1;
 
         public ConfigProfile()

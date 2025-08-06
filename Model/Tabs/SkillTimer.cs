@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -145,14 +144,13 @@ namespace _ORTools.Model
         private int SkillTimerThread(Client roClient, MacroKey macro)
         {
             string currentMap = roClient.ReadCurrentMap();
-
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
                 IntPtr hWnd = roClient.Process.MainWindowHandle;
-
-                if (macro.Key != Key.None)
+                if (macro.Key != Keys.None)
                 {
-                    if (macro.AltKey) {
+                    if (macro.AltKey)
+                    {
                         // Only focus the window if it's not already focused
                         if (GetForegroundWindow() != hWnd)
                         {
@@ -160,11 +158,13 @@ namespace _ORTools.Model
                         }
                         SendKeys.SendWait("%" + ToSendKeysFormat(macro.Key));
                         //DebugLogger.Info($"Sent ALT Skilltimer key: " + macro.Key);
-                    } else {
-                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, (Keys)KeyInterop.VirtualKeyFromKey(macro.Key), 0);
+                    }
+                    else
+                    {
+                        // Remove the KeyInterop conversion since macro.Key is already Keys enum
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, macro.Key, 0);
                     }
                 }
-
                 // Handle clicking based on the ClickMode
                 switch (macro.ClickMode)
                 {
@@ -177,7 +177,6 @@ namespace _ORTools.Model
                         // case 0: No click, do nothing.
                 }
             }
-
             Thread.Sleep(macro.Delay);
             return 0;
         }
@@ -227,21 +226,21 @@ namespace _ORTools.Model
             SetCursorPos(originalPos.X, originalPos.Y);
         }
 
-        private static readonly Dictionary<Key, string> _sendKeysMap = new Dictionary<Key, string>()
+        private static readonly Dictionary<Keys, string> _sendKeysMap = new Dictionary<Keys, string>()
         {
-             { Key.D0, "0" },
-             { Key.D1, "1" },
-             { Key.D2, "2" },
-             { Key.D3, "3" },
-             { Key.D4, "4" },
-             { Key.D5, "5" },
-             { Key.D6, "6" },
-             { Key.D7, "7" },
-             { Key.D8, "8" },
-             { Key.D9, "9" }
+             { Keys.D0, "0" },
+             { Keys.D1, "1" },
+             { Keys.D2, "2" },
+             { Keys.D3, "3" },
+             { Keys.D4, "4" },
+             { Keys.D5, "5" },
+             { Keys.D6, "6" },
+             { Keys.D7, "7" },
+             { Keys.D8, "8" },
+             { Keys.D9, "9" }
         };
 
-        public static string ToSendKeysFormat(Key key)
+        public static string ToSendKeysFormat(Keys key)
         {
             if (_sendKeysMap.TryGetValue(key, out string value))
             {

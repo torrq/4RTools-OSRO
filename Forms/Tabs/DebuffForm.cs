@@ -5,50 +5,46 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Input;
 using static _ORTools.Utils.FormHelper;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using TextBox = System.Windows.Forms.TextBox;
 
 namespace _ORTools.Forms
 {
-    public partial class AutoBuffStatusForm : Form, IObserver
+    public partial class DebuffForm : Form, IObserver
     {
         private List<BuffContainer> debuffContainers = new List<BuffContainer>();
         private Dictionary<string, TextBox> statusListTextBoxes = new Dictionary<string, TextBox>();
 
         // Static constructor to initialize BuffService
-        static AutoBuffStatusForm()
+        static DebuffForm()
         {
             BuffService.Initialize(new ResourceLoader(), new Logger());
         }
 
-        public AutoBuffStatusForm(Subject subject)
+        public DebuffForm(Subject subject)
         {
             InitializeComponent();
             debuffContainers.Add(new BuffContainer(this.DebuffsGP, BuffService.GetDebuffs()));
             new DebuffRenderer(debuffContainers, toolTipPanacea).DoRender();
 
-            // Setup the main Panacea textbox
-            SetupPanaceaTextBox();
-
-            // Setup additional status list textboxes
+            // Setup status list textboxes
             SetupStatusListTextBoxes();
 
             subject.Attach(this);
         }
 
-        private void SetupPanaceaTextBox()
-        {
-            txtPanaceaKey.KeyDown += FormHelper.OnKeyDown;
-            txtPanaceaKey.KeyPress += FormHelper.OnKeyPress;
-            txtPanaceaKey.TextChanged += (sender, e) => OnStatusListKeyChange("Panacea", sender, e);
-            txtPanaceaKey.TextAlign = HorizontalAlignment.Center;
-            statusListTextBoxes["Panacea"] = txtPanaceaKey;
-        }
-
         private void SetupStatusListTextBoxes()
         {
+            if (txtPanaceaKey != null)
+            {
+                txtPanaceaKey.KeyDown += FormHelper.OnKeyDown;
+                txtPanaceaKey.KeyPress += FormHelper.OnKeyPress;
+                txtPanaceaKey.TextChanged += (sender, e) => OnStatusListKeyChange("Panacea", sender, e);
+                txtPanaceaKey.TextAlign = HorizontalAlignment.Center;
+                statusListTextBoxes["Panacea"] = txtPanaceaKey;
+            }
+
             if (txtGreenPotionKey != null)
             {
                 txtGreenPotionKey.KeyDown += FormHelper.OnKeyDown;
@@ -96,8 +92,8 @@ namespace _ORTools.Forms
                 string listName = kvp.Key;
                 TextBox textBox = kvp.Value;
 
-                Key key = statusRecovery.GetKeyForList(listName);
-                textBox.Text = key != Key.None ? key.ToString() : AppConfig.TEXT_NONE;
+                Keys key = statusRecovery.GetKeyForList(listName);
+                textBox.Text = key != Keys.None ? key.ToString() : AppConfig.TEXT_NONE;
             }
         }
 
@@ -133,11 +129,11 @@ namespace _ORTools.Forms
             TextBox textBox = sender as TextBox;
             if (textBox == null) return;
 
-            Key k;
+            Keys k;
             // Safely parse the key, defaulting to None if invalid.
             if (!Enum.TryParse(textBox.Text, out k))
             {
-                k = Key.None;
+                k = Keys.None;
             }
 
             // Set the key for the specific list
@@ -147,24 +143,14 @@ namespace _ORTools.Forms
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().StatusRecovery);
 
             // Update the font style for the textbox
-            if (k != Key.None)
+            if (k != Keys.None)
             {
-                textBox.Font = new System.Drawing.Font(textBox.Font, System.Drawing.FontStyle.Bold);
-                textBox.ForeColor = AppConfig.ActiveKeyColor;
-            }
-            else
-            {
-                textBox.Font = new System.Drawing.Font(textBox.Font, System.Drawing.FontStyle.Regular);
-                textBox.ForeColor = AppConfig.InactiveKeyColor;
+                FormHelper.ApplyInputKeyStyle(textBox, true);
+            } else {
+                FormHelper.ApplyInputKeyStyle(textBox, false);
             }
 
             this.ActiveControl = null;
-        }
-
-        // Legacy method for backward compatibility (if needed)
-        private void OnPanaceaKeyChange(object sender, EventArgs e)
-        {
-            OnStatusListKeyChange("Panacea", sender, e);
         }
 
         private void AutoBuffStatusForm_Load(object sender, EventArgs e)

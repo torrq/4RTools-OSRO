@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -35,10 +34,10 @@ namespace _ORTools.Model
             set => _switchdelay = value;
         }
 
-        public Key KeySpammer { get; set; }
+        public Keys KeySpammer { get; set; }
         public bool KeySpammerWithClick { get; set; } = true;
-        public Dictionary<string, Key> DefKeys { get; set; } = new Dictionary<string, Key>();
-        public Dictionary<string, Key> AtkKeys { get; set; } = new Dictionary<string, Key>();
+        public Dictionary<string, Keys> DefKeys { get; set; } = new Dictionary<string, Keys>();
+        public Dictionary<string, Keys> AtkKeys { get; set; } = new Dictionary<string, Keys>();
 
         public EquipConfig()
         { }
@@ -46,8 +45,8 @@ namespace _ORTools.Model
         public EquipConfig(int id)
         {
             this.id = id;
-            this.DefKeys = new Dictionary<string, Key>();
-            this.AtkKeys = new Dictionary<string, Key>();
+            this.DefKeys = new Dictionary<string, Keys>();
+            this.AtkKeys = new Dictionary<string, Keys>();
         }
 
         public EquipConfig(EquipConfig macro)
@@ -57,16 +56,16 @@ namespace _ORTools.Model
             this.SwitchDelay = macro.SwitchDelay;
             this.KeySpammer = macro.KeySpammer;
             this.KeySpammerWithClick = macro.KeySpammerWithClick;
-            this.DefKeys = new Dictionary<string, Key>(macro.DefKeys);
-            this.AtkKeys = new Dictionary<string, Key>(macro.AtkKeys);
+            this.DefKeys = new Dictionary<string, Keys>(macro.DefKeys);
+            this.AtkKeys = new Dictionary<string, Keys>(macro.AtkKeys);
         }
 
-        public EquipConfig(int id, Key trigger)
+        public EquipConfig(int id, Keys trigger)
         {
             this.id = id;
             this.KeySpammer = trigger;
-            this.DefKeys = new Dictionary<string, Key>();
-            this.AtkKeys = new Dictionary<string, Key>();
+            this.DefKeys = new Dictionary<string, Keys>();
+            this.AtkKeys = new Dictionary<string, Keys>();
         }
     }
 
@@ -80,7 +79,7 @@ namespace _ORTools.Model
         {
             for (int i = 1; i <= macroLanes; i++)
             {
-                EquipConfigs.Add(new EquipConfig(i, Key.None));
+                EquipConfigs.Add(new EquipConfig(i, Keys.None));
             }
         }
 
@@ -116,16 +115,16 @@ namespace _ORTools.Model
                 bool equipDefItems = false;
                 bool ammo = false;
 
-                if (equipConfig.KeySpammer != Key.None && Keyboard.IsKeyDown(equipConfig.KeySpammer)
-                    && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+                if (equipConfig.KeySpammer != Keys.None && Win32Interop.IsKeyPressed(equipConfig.KeySpammer)
+                    && !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
                     Keys thisk = toKeys(equipConfig.KeySpammer);
 
-                    while (Keyboard.IsKeyDown(equipConfig.KeySpammer))
+                    while (Win32Interop.IsKeyPressed(equipConfig.KeySpammer))
                     {
                         if (!equipAtkItems)
                         {
-                            foreach (Key key in equipConfig.AtkKeys.Values)
+                            foreach (Keys key in equipConfig.AtkKeys.Values)
                             {
                                 Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip ATK Items
                                 Thread.Sleep(equipConfig.SwitchDelay);
@@ -150,7 +149,7 @@ namespace _ORTools.Model
                     }
                     if (!equipDefItems)
                     {
-                        foreach (Key key in equipConfig.DefKeys.Values)
+                        foreach (Keys key in equipConfig.DefKeys.Values)
                         {
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip DEF Items
                             Thread.Sleep(equipConfig.SwitchDelay);
@@ -171,13 +170,13 @@ namespace _ORTools.Model
                 {
                     if (ammo == false)
                     {
-                        Key key = prefs.Ammo1Key;
+                        Keys key = prefs.Ammo1Key;
                         Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = true;
                     }
                     else
                     {
-                        Key key = prefs.Ammo2Key;
+                        Keys key = prefs.Ammo2Key;
                         Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = false;
                     }
@@ -185,18 +184,18 @@ namespace _ORTools.Model
             }
         }
 
-        public void AddSwitchItem(int id, string dictKey, Key k, string type)
+        public void AddSwitchItem(int id, string dictKey, Keys k, string type)
         {
             var equips = EquipConfigs.FirstOrDefault(x => x.id == id);
 
-            Dictionary<string, Key> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
+            Dictionary<string, Keys> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
 
             if (copy.ContainsKey(dictKey))
             {
                 RemoveSwitchEntry(id, dictKey, type);
             }
 
-            if (k != Key.None)
+            if (k != Keys.None)
             {
                 copy.Add(dictKey, k);
             }
@@ -205,11 +204,11 @@ namespace _ORTools.Model
         public void RemoveSwitchEntry(int id, string dictKey, string type)
         {
             var equips = EquipConfigs.FirstOrDefault(x => x.id == id);
-            Dictionary<string, Key> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
+            Dictionary<string, Keys> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
             copy.Remove(dictKey);
         }
 
-        private Keys toKeys(Key k)
+        private Keys toKeys(Keys k)
         {
             return (Keys)Enum.Parse(typeof(Keys), k.ToString());
         }

@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Utils
 {
@@ -55,70 +54,70 @@ namespace _ORTools.Utils
             try
             {
                 TextBox textBox = (TextBox)sender;
-                Key thisk;
+                Keys thisk;
 
                 if (e.KeyCode == Keys.Oemplus)
                 {
-                    thisk = Key.OemPlus;
+                    thisk = Keys.Oemplus;
                 }
                 else if (e.KeyCode == Keys.Oemtilde)
                 {
-                    thisk = Key.OemTilde;
+                    thisk = Keys.Oemtilde;
                 }
                 else if (e.KeyCode == Keys.Oemcomma)
                 {
-                    thisk = Key.OemComma;
+                    thisk = Keys.Oemcomma;
                 }
                 else if (e.KeyCode == Keys.D0)
                 {
-                    thisk = Key.D0;
+                    thisk = Keys.D0;
                 }
                 else if (e.KeyCode == Keys.D1)
                 {
-                    thisk = Key.D1;
+                    thisk = Keys.D1;
                 }
                 else if (e.KeyCode == Keys.D2)
                 {
-                    thisk = Key.D2;
+                    thisk = Keys.D2;
                 }
                 else if (e.KeyCode == Keys.D3)
                 {
-                    thisk = Key.D3;
+                    thisk = Keys.D3;
                 }
                 else if (e.KeyCode == Keys.D4)
                 {
-                    thisk = Key.D4;
+                    thisk = Keys.D4;
                 }
                 else if (e.KeyCode == Keys.D5)
                 {
-                    thisk = Key.D5;
+                    thisk = Keys.D5;
                 }
                 else if (e.KeyCode == Keys.D6)
                 {
-                    thisk = Key.D6;
+                    thisk = Keys.D6;
                 }
                 else if (e.KeyCode == Keys.D7)
                 {
-                    thisk = Key.D7;
+                    thisk = Keys.D7;
                 }
                 else if (e.KeyCode == Keys.D8)
                 {
-                    thisk = Key.D8;
+                    thisk = Keys.D8;
                 }
                 else if (e.KeyCode == Keys.D9)
                 {
-                    thisk = Key.D9;
+                    thisk = Keys.D9;
                 }
                 else
                 {
-                    thisk = (Key)Enum.Parse(typeof(Key), e.KeyCode.ToString());
+                    thisk = (Keys)Enum.Parse(typeof(Keys), e.KeyCode.ToString());
                 }
 
                 switch (thisk)
                 {
-                    case Key.Escape:
-                    case Key.Back:
-                        textBox.Text = Key.None.ToString();
+                    case Keys.Escape:
+                    case Keys.Back:
+                        textBox.Text = Keys.None.ToString();
                         break;
 
                     default:
@@ -135,9 +134,9 @@ namespace _ORTools.Utils
             }
         }
 
-        public static bool IsValidKey(Key key)
+        public static bool IsValidKey(Keys key)
         {
-            return (key != Key.Back && key != Key.Escape && key != Key.None);
+            return (key != Keys.Back && key != Keys.Escape && key != Keys.None);
         }
 
         public static void OnKeyPress(object sender, KeyPressEventArgs e)
@@ -154,7 +153,7 @@ namespace _ORTools.Utils
                                  .Where(c => c.GetType() == type);
         }
 
-        private static readonly string KeyNoneString = Key.None.ToString();
+        private static readonly string KeyNoneString = Keys.None.ToString();
 
         private static void resetForm(Control control)
         {
@@ -336,6 +335,51 @@ namespace _ORTools.Utils
         {
             void Error(string message);
             void Error(Exception ex, string message);
+        }
+
+        public static void ApplyInputKeyStyle(TextBox textBox, bool hasKey = false)
+        {
+            if (textBox == null)
+            {
+                DebugLogger.Error("ApplyInputKeyStyle: TextBox is null");
+                return;
+            }
+
+            try
+            {
+                if (hasKey)
+                {
+                    // Apply active style
+                    if (textBox.Font != null)
+                    {
+                        textBox.Font = new Font(textBox.Font, FontStyle.Bold);
+                        textBox.ForeColor = AppConfig.ActiveKeyColor; // Black (0, 0, 0)
+                        //DebugLogger.Debug($"Applied active style to TextBox: Bold, ForeColor={AppConfig.ActiveKeyColor}");
+                    }
+                    else
+                    {
+                        DebugLogger.Error("ApplyInputKeyStyle: TextBox.Font is null, cannot apply active style");
+                    }
+                }
+                else
+                {
+                    // Apply inactive style
+                    if (textBox.Font != null)
+                    {
+                        textBox.Font = new Font(textBox.Font, FontStyle.Regular);
+                        textBox.ForeColor = AppConfig.InactiveKeyColor; // Gray (150, 150, 150)
+                        //DebugLogger.Debug($"Applied inactive style to TextBox: Regular, ForeColor={AppConfig.InactiveKeyColor}");
+                    }
+                    else
+                    {
+                        DebugLogger.Error("ApplyInputKeyStyle: TextBox.Font is null, cannot apply inactive style");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"ApplyInputKeyStyle: Failed to apply style to TextBox - {ex.Message}");
+            }
         }
     }
 

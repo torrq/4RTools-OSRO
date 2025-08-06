@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -104,12 +103,12 @@ namespace _ORTools.Model
 
             try
             {
-                Key key;
+                Keys key;
                 bool textChanged = this.OldText != string.Empty && this.OldText != txtBox.Text.ToString();
 
                 if (!Enum.TryParse(txtBox.Text, out key))
                 {
-                    key = Key.None;
+                    key = Keys.None;
                 }
 
                 if (txtBox.Text.ToString() != string.Empty)
@@ -119,7 +118,7 @@ namespace _ORTools.Model
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().DebuffsRecovery);
                 }
 
-                if (key != Key.None)
+                if (key != Keys.None)
                 {
                     txtBox.Font = new Font(txtBox.Font, FontStyle.Bold);
                     txtBox.ForeColor = AppConfig.ActiveKeyColor;

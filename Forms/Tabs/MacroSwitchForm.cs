@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Forms
 {
@@ -65,7 +64,7 @@ namespace _ORTools.Forms
                 ChainConfig exist = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == id);
                 if (exist == null)
                 {
-                    ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Add(new ChainConfig(id, Key.None));
+                    ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Add(new ChainConfig(id, Keys.None));
                     exist = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == id);
                 }
                 ChainConfig chainConfig = exist;
@@ -128,9 +127,9 @@ namespace _ORTools.Forms
                             textBox.TextChanged -= this.OnTextChange;
 
                             // Reset to default Key.None if not already set
-                            if (textBox.Text != Key.None.ToString())
+                            if (textBox.Text != Keys.None.ToString())
                             {
-                                textBox.Text = Key.None.ToString();
+                                textBox.Text = Keys.None.ToString();
                             }
 
                             textBox.TextChanged += this.OnTextChange;
@@ -169,7 +168,7 @@ namespace _ORTools.Forms
             GroupBox group = (GroupBox)this.Controls.Find("chainGroup" + chainID, true)[0];
             ChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Find(config => config.id == chainID);
 
-            Key key = Key.None;
+            Keys key = Keys.None;
             Enum.TryParse(textBox.Text.ToString(), out key);
             NumericUpDown delayInput = (NumericUpDown)group.Controls.Find($"{textBox.Name}delay", true)[0];
 
@@ -180,7 +179,7 @@ namespace _ORTools.Forms
 
                 // If a valid key was just entered, immediately update the delay
                 // in the new entry from the associated NumericUpDown control.
-                if (key != Key.None)
+                if (key != Keys.None)
                 {
                     chainConfig.macroEntries[textBox.Name].Delay = decimal.ToInt16(delayInput.Value);
                 }
@@ -209,7 +208,7 @@ namespace _ORTools.Forms
             string cbName = delayInput.Name.Split(new[] { "delay" }, StringSplitOptions.None)[0];
             if (!chainConfig.macroEntries.ContainsKey(cbName))
             {
-                chainConfig.macroEntries[cbName] = new MacroKey(Key.None, decimal.ToInt16(delayInput.Value));
+                chainConfig.macroEntries[cbName] = new MacroKey(Keys.None, decimal.ToInt16(delayInput.Value));
             }
             else
             {
@@ -278,7 +277,7 @@ namespace _ORTools.Forms
             if (chainConfig != null)
             {
                 // Reset all chain config properties
-                chainConfig.Trigger = Key.None;
+                chainConfig.Trigger = Keys.None;
                 chainConfig.Delay = AppConfig.MacroDefaultDelay; // Assuming there's a default delay constant
                 chainConfig.macroEntries.Clear();
 
@@ -291,7 +290,7 @@ namespace _ORTools.Forms
                     {
                         if (c is TextBox textBox)
                         {
-                            textBox.Text = Key.None.ToString();
+                            textBox.Text = Keys.None.ToString();
                         }
                         else if (c is NumericUpDown numericUpDown)
                         {

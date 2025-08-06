@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Forms
 {
@@ -149,14 +148,14 @@ namespace _ORTools.Forms
                 }
 
                 var newOrderList = new List<EffectStatusIDs>();
-                var newOrderedBuffList = new Dictionary<EffectStatusIDs, Key>();
+                var newOrderedBuffList = new Dictionary<EffectStatusIDs, Keys>();
 
                 foreach (BuffListItem item in skillsListBox.Items)
                 {
                     EffectStatusIDs buffId = item.BuffId;
 
                     // Check if this buff exists in the current mapping and we haven't processed it yet
-                    if (currentBuffMapping.TryGetValue(buffId, out Key keyValue) && !newOrderList.Contains(buffId))
+                    if (currentBuffMapping.TryGetValue(buffId, out Keys keyValue) && !newOrderList.Contains(buffId))
                     {
                         newOrderList.Add(buffId);
                         newOrderedBuffList.Add(buffId, keyValue);

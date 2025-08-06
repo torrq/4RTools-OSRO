@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
-using System.Windows.Input;
 using static _ORTools.Utils.FormHelper;
 
 namespace _ORTools.Forms
@@ -78,7 +77,7 @@ namespace _ORTools.Forms
                 case MessageCode.PROFILE_CHANGED:
                     if (ProfileSingleton.GetCurrent()?.AutobuffSkill != null)
                     {
-                        BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Key>(ProfileSingleton.GetCurrent().AutobuffSkill.buffMapping), this);
+                        BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Keys>(ProfileSingleton.GetCurrent().AutobuffSkill.buffMapping), this);
                         this.numericDelay.Value = ProfileSingleton.GetCurrent().AutobuffSkill.Delay;
                     }
                     else
@@ -102,7 +101,7 @@ namespace _ORTools.Forms
         {
             ProfileSingleton.GetCurrent().AutobuffSkill.ClearKeyMapping();
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffSkill);
-            BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Key>(ProfileSingleton.GetCurrent().AutobuffSkill.buffMapping), this);
+            BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Keys>(ProfileSingleton.GetCurrent().AutobuffSkill.buffMapping), this);
             this.numericDelay.Value = AppConfig.AutoBuffSkillsDefaultDelay;
         }
 

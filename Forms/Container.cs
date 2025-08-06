@@ -850,7 +850,7 @@ namespace _ORTools.Forms
 
         private void SetAutoBuffStatusWindow()
         {
-            AutoBuffStatusForm frm = new AutoBuffStatusForm(subject)
+            DebuffForm frm = new DebuffForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),

@@ -2,7 +2,8 @@
 using _ORTools.Utils;
 using System;
 using System.Windows.Forms;
-using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace _ORTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver
@@ -66,7 +67,7 @@ namespace _ORTools.Forms
 
                 if (!spammers.skillTimer.ContainsKey(id))
                 {
-                    spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
+                    spammers.skillTimer.Add(id, new MacroKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
                 }
             }
             catch (Exception ex)
@@ -225,7 +226,7 @@ namespace _ORTools.Forms
             {
                 SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
                 TextBox textBox = (TextBox)sender;
-                Key key = (Key)Enum.Parse(typeof(Key), textBox.Text.ToString());
+                Keys key = (Keys)Enum.Parse(typeof(Keys), textBox.Text.ToString());
                 var id = ExtractIdFromControlName(textBox.Name, "txtSkillTimerKey", SkillTimer.MAX_SKILL_TIMERS);
                 if (id == -1) return;
 
@@ -233,13 +234,24 @@ namespace _ORTools.Forms
                 {
                     MacroKey skillTimer = Spammers.skillTimer[id];
                     skillTimer.Key = key;
+
+
+                    if (key == Keys.None)
+                    {
+                        FormHelper.ApplyInputKeyStyle(textBox, false);
+                    }
+                    else
+                    {
+                        FormHelper.ApplyInputKeyStyle(textBox, true);
+                    }
                 }
                 else
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
+                    Spammers.skillTimer.Add(id, new MacroKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
-                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
+
+                    ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);
             }
             catch (Exception ex)
             {
@@ -346,7 +358,7 @@ namespace _ORTools.Forms
                 }
                 else
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Key.None, AppConfig.SkillTimerDefaultDelay));
+                    Spammers.skillTimer.Add(id, new MacroKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);

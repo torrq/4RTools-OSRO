@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace _ORTools.Model
 {
@@ -20,13 +19,13 @@ namespace _ORTools.Model
 
         // Legacy property for backward compatibility with old JSON format
         [JsonIgnore]
-        public Dictionary<EffectStatusIDs, Key> buffMapping
+        public Dictionary<EffectStatusIDs, Keys> buffMapping
         {
             get
             {
                 // Return the Panacea mapping for backward compatibility
-                var mapping = new Dictionary<EffectStatusIDs, Key>();
-                if (statusLists.ContainsKey("Panacea") && statusLists["Panacea"].Key != Key.None)
+                var mapping = new Dictionary<EffectStatusIDs, Keys>();
+                if (statusLists.ContainsKey("Panacea") && statusLists["Panacea"].Key != Keys.None)
                 {
                     var panaceaKey = statusLists["Panacea"].Key;
                     foreach (var status in statusLists["Panacea"].Statuses)
@@ -42,7 +41,7 @@ namespace _ORTools.Model
                 if (value != null && value.Count > 0)
                 {
                     var firstKey = value.Values.FirstOrDefault();
-                    if (firstKey != Key.None)
+                    if (firstKey != Keys.None)
                     {
                         SetKeyForList("Panacea", firstKey);
                     }
@@ -75,7 +74,7 @@ namespace _ORTools.Model
                 EffectStatusIDs.HALLUCINATION,
                 EffectStatusIDs.BLEEDING
             };
-            statusLists["Panacea"] = new StatusRecoveryList("Panacea", panaceaStatuses, Key.None);
+            statusLists["Panacea"] = new StatusRecoveryList("Panacea", panaceaStatuses, Keys.None);
 
             // Royal Jelly list - cures many major debuffs
             var royalJellyStatuses = new List<EffectStatusIDs>
@@ -88,7 +87,7 @@ namespace _ORTools.Model
                 EffectStatusIDs.HALLUCINATION,
                 EffectStatusIDs.BLEEDING
             };
-            statusLists["RoyalJelly"] = new StatusRecoveryList("RoyalJelly", royalJellyStatuses, Key.None);
+            statusLists["RoyalJelly"] = new StatusRecoveryList("RoyalJelly", royalJellyStatuses, Keys.None);
 
             // Green Potion list - cures Poison and Silence
             var greenPotionStatuses = new List<EffectStatusIDs>
@@ -96,7 +95,7 @@ namespace _ORTools.Model
                 EffectStatusIDs.POISON,
                 EffectStatusIDs.SILENCE,
             };
-            statusLists["GreenPotion"] = new StatusRecoveryList("GreenPotion", greenPotionStatuses, Key.None);
+            statusLists["GreenPotion"] = new StatusRecoveryList("GreenPotion", greenPotionStatuses, Keys.None);
         }
 
         public string GetActionName()
@@ -156,7 +155,7 @@ namespace _ORTools.Model
                             // Check each status list to see if any contains the current status
                             foreach (var statusList in statusLists.Values)
                             {
-                                if (statusList.ContainsStatus(status) && statusList.Key != Key.None)
+                                if (statusList.ContainsStatus(status) && statusList.Key != Keys.None)
                                 {
                                     this.UseStatusRecovery(statusList.Key);
                                     DebugLogger.Debug($"StatusRecovery: Used {statusList.Name} for status {status}");
@@ -225,7 +224,7 @@ namespace _ORTools.Model
                     // Load keys
                     if (configData.ContainsKey("Keys"))
                     {
-                        var keysData = JsonConvert.DeserializeObject<Dictionary<string, Key>>(configData["Keys"].ToString());
+                        var keysData = JsonConvert.DeserializeObject<Dictionary<string, Keys>>(configData["Keys"].ToString());
                         if (keysData != null)
                         {
                             foreach (var kvp in keysData)
@@ -257,7 +256,7 @@ namespace _ORTools.Model
             try
             {
                 // Try to deserialize as simple key mapping
-                var configData = JsonConvert.DeserializeObject<Dictionary<string, Key>>(config);
+                var configData = JsonConvert.DeserializeObject<Dictionary<string, Keys>>(config);
                 if (configData != null)
                 {
                     foreach (var kvp in configData)
@@ -285,7 +284,7 @@ namespace _ORTools.Model
                     if (oldStatusRecovery.buffMapping != null && oldStatusRecovery.buffMapping.Count > 0)
                     {
                         var firstKey = oldStatusRecovery.buffMapping.Values.FirstOrDefault();
-                        if (firstKey != Key.None)
+                        if (firstKey != Keys.None)
                         {
                             SetKeyForList("Panacea", firstKey);
                         }
@@ -323,17 +322,17 @@ namespace _ORTools.Model
             }
         }
 
-        public void SetKeyForList(string listName, Key key)
+        public void SetKeyForList(string listName, Keys key)
         {
             if (statusLists.ContainsKey(listName))
             {
-                statusLists[listName].Key = FormHelper.IsValidKey(key) ? key : Key.None;
+                statusLists[listName].Key = FormHelper.IsValidKey(key) ? key : Keys.None;
             }
         }
 
-        public Key GetKeyForList(string listName)
+        public Keys GetKeyForList(string listName)
         {
-            return statusLists.ContainsKey(listName) ? statusLists[listName].Key : Key.None;
+            return statusLists.ContainsKey(listName) ? statusLists[listName].Key : Keys.None;
         }
 
         public List<string> GetAvailableLists()
@@ -347,7 +346,7 @@ namespace _ORTools.Model
         }
 
         // Legacy method for backward compatibility
-        public void AddKeyToBuff(EffectStatusIDs status, Key key)
+        public void AddKeyToBuff(EffectStatusIDs status, Keys key)
         {
             // For backward compatibility, assume this is for Panacea
             SetKeyForList("Panacea", key);
@@ -363,11 +362,11 @@ namespace _ORTools.Model
             }
         }
 
-        private void UseStatusRecovery(Key key)
+        private void UseStatusRecovery(Keys key)
         {
             try
             {
-                if ((key != Key.None) && !Keyboard.IsKeyDown(Key.LeftAlt) && !Keyboard.IsKeyDown(Key.RightAlt))
+                if ((key != Keys.None) && !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
                     var client = ClientSingleton.GetClient();
                     if (client?.Process != null && !client.Process.HasExited)
@@ -388,9 +387,9 @@ namespace _ORTools.Model
     {
         public string Name { get; set; }
         public List<EffectStatusIDs> Statuses { get; set; }
-        public Key Key { get; set; }
+        public Keys Key { get; set; }
 
-        public StatusRecoveryList(string name, List<EffectStatusIDs> statuses, Key key)
+        public StatusRecoveryList(string name, List<EffectStatusIDs> statuses, Keys key)
         {
             Name = name;
             Statuses = statuses ?? new List<EffectStatusIDs>();

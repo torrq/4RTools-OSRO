@@ -31,11 +31,6 @@ namespace _ORTools.Model
         [DllImport("user32.dll", SetLastError = true)] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
         [DllImport("user32.dll")] private static extern short GetAsyncKeyState(Keys vKey);
 
-        private bool IsKeyPressed(Keys key)
-        {
-            return (GetAsyncKeyState(key) & 0x8000) != 0;
-        }
-
         public static bool IsGameWindowActive()
         {
             try
@@ -119,7 +114,7 @@ namespace _ORTools.Model
 
         private void SkillSpammerSpeedBoost(Client roClient, KeyConfig config, Keys thisk)
         {
-            while (IsKeyPressed(config.Key))
+            while (Win32Interop.IsKeyPressed(config.Key))
             {
                 Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
 

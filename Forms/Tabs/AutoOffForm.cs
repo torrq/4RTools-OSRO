@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace _ORTools.Forms
 {
@@ -177,6 +177,28 @@ namespace _ORTools.Forms
                     this.AutoOffKey2.Text = prefs.AutoOffKey2.ToString();
                     this.AutoOffOverweightCB.Checked = prefs.AutoOffOverweight;
                     this.AutoOffKillClientChk.Checked = prefs.AutoOffKillClient;
+
+                    TextBox txtKey1 = AutoOffKey1;
+                    TextBox txtKey2 = AutoOffKey2;
+
+                    if (!string.IsNullOrEmpty(txtKey1?.Text) && txtKey1.Text != "None")
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtKey1, true);
+                    }
+                    else if (txtKey1 != null)
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtKey1, false);
+                    }
+
+                    if (!string.IsNullOrEmpty(txtKey2?.Text) && txtKey2.Text != "None")
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtKey2, true);
+                    }
+                    else if (txtKey2 != null)
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtKey2, false);
+                    }
+
                     break;
             }
         }
@@ -250,9 +272,17 @@ namespace _ORTools.Forms
                 TextBox txtBox = (TextBox)sender;
                 if (txtBox.Text.ToString() != string.Empty)
                 {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
-                    ProfileSingleton.GetCurrent().UserPreferences.AutoOffKey1= key;
+                    Keys key = (Keys)Enum.Parse(typeof(Keys), txtBox.Text.ToString());
+                    ProfileSingleton.GetCurrent().UserPreferences.AutoOffKey1 = key;
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+                    if (key == Keys.None)
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtBox, false);
+                    }
+                    else
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtBox, true);
+                    }
                 }
             }
             catch (ArgumentException ex)
@@ -272,9 +302,17 @@ namespace _ORTools.Forms
                 TextBox txtBox = (TextBox)sender;
                 if (txtBox.Text.ToString() != string.Empty)
                 {
-                    Key key = (Key)Enum.Parse(typeof(Key), txtBox.Text.ToString());
-                    ProfileSingleton.GetCurrent().UserPreferences.AutoOffKey2= key;
+                    Keys key = (Keys)Enum.Parse(typeof(Keys), txtBox.Text.ToString());
+                    ProfileSingleton.GetCurrent().UserPreferences.AutoOffKey2 = key;
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+                    if (key == Keys.None)
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtBox, false);
+                    }
+                    else
+                    {
+                        FormHelper.ApplyInputKeyStyle(txtBox, true);
+                    }
                 }
             }
             catch (ArgumentException ex)
@@ -307,7 +345,6 @@ namespace _ORTools.Forms
         private void UpdateUI()
         {
             lblSelectedTime.Text = autoOffModel.SelectedTimeText;
-
             if (autoOffModel.IsTimerRunning)
             {
                 lblRemainingTime.Text = autoOffModel.RemainingTimeText;
