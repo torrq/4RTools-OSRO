@@ -415,6 +415,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Scripts\RenameExe.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

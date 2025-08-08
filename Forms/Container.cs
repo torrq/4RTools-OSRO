@@ -62,7 +62,7 @@ namespace _ORTools.Forms
             regularFont = profileCB.Font;
             italicFont = new Font(regularFont, FontStyle.Italic);
             boldFont = new Font(regularFont, FontStyle.Bold);
-            float smallerFontSize = regularFont.Size - 1;
+            float smallerFontSize = regularFont.Size;
             smallItalicFont = new Font(regularFont.FontFamily, smallerFontSize, FontStyle.Italic);
             smallBoldFont = new Font(regularFont.FontFamily, smallerFontSize, FontStyle.Bold);
             smallRegularFont = new Font(regularFont.FontFamily, smallerFontSize, FontStyle.Regular);

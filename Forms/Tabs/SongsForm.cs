@@ -3,6 +3,8 @@ using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace _ORTools.Forms
 {
@@ -97,6 +99,11 @@ namespace _ORTools.Forms
                     {
                         TextBox textBox = (TextBox)controls[0];
                         textBox.Text = chainConfig.macroEntries[cbName].Key.ToString();
+
+                        FormHelper.ApplyInputKeyStyle(
+                            textBox,
+                            !string.IsNullOrWhiteSpace(textBox.Text) && textBox.Text != AppConfig.TEXT_NONE
+                        );
                     }
                 }
 
@@ -129,6 +136,11 @@ namespace _ORTools.Forms
                 string type = inputTag[1];
                 ChainConfig chainConfig = ProfileSingleton.GetCurrent().SongMacro.ChainConfigs.Find(config => config.id == macroid);
 
+                FormHelper.ApplyInputKeyStyle(
+                    textBox,
+                    !string.IsNullOrWhiteSpace(key.ToString()) && key.ToString() != AppConfig.TEXT_NONE
+                );
+
                 switch (type)
                 {
                     case "Dagger":
@@ -151,7 +163,13 @@ namespace _ORTools.Forms
                     SongMacro.ChainConfigs.Add(new ChainConfig(macroID, Keys.None));
                     chainConfig = SongMacro.ChainConfigs.Find(songMacro => songMacro.id == macroID);
                 }
+
                 chainConfig.macroEntries[textBox.Name] = new MacroKey(key, chainConfig.Delay);
+
+                FormHelper.ApplyInputKeyStyle(
+                    textBox,
+                    !string.IsNullOrWhiteSpace(key.ToString()) && key.ToString() != AppConfig.TEXT_NONE
+                );
             }
 
             ProfileSingleton.SetConfiguration(SongMacro);

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace _ORTools.Forms
 {
@@ -151,6 +152,11 @@ namespace _ORTools.Forms
                                 delayInput.ValueChanged += this.OnDelayChange;
                             }
                         }
+
+                        FormHelper.ApplyInputKeyStyle(
+                            textBox,
+                            !string.IsNullOrWhiteSpace(textBox.Text) && textBox.Text != AppConfig.TEXT_NONE
+                        );
                     }
                 }
             }
@@ -190,6 +196,11 @@ namespace _ORTools.Forms
                 // Only update the Key property of the existing entry.
                 chainConfig.macroEntries[textBox.Name].Key = key;
             }
+
+            FormHelper.ApplyInputKeyStyle(
+                textBox,
+                !string.IsNullOrWhiteSpace(key.ToString()) && key.ToString() != AppConfig.TEXT_NONE
+            );
 
             // Update Trigger key if this is the first input
             bool isFirstInput = Regex.IsMatch(textBox.Name, $"in1mac{chainID}");
