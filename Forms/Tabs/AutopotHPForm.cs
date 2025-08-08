@@ -288,10 +288,5 @@ namespace _ORTools.Forms
             }
         }
         #endregion
-
-        private void AutopotHPForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

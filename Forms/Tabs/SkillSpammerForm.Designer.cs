@@ -749,7 +749,7 @@ namespace _ORTools.Forms
             this.chk3.Name = "chk3";
             this.chk3.Size = new System.Drawing.Size(44, 28);
             this.chk3.TabIndex = 3;
-            this.chk3.Tag = "D2";
+            this.chk3.Tag = "D3";
             this.chk3.ThreeState = true;
             this.chk3.UseVisualStyleBackColor = true;
             // 

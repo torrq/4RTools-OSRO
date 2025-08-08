@@ -147,19 +147,5 @@ namespace _ORTools.Forms
                 }
             }
         }
-
-        private void CharacterInfo_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void characterInfoLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void characterMapLabel_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

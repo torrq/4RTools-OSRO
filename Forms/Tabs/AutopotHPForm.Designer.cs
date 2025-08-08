@@ -593,7 +593,6 @@ namespace _ORTools.Forms
             this.Name = "AutopotHPForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "AutopotHPForm";
-            this.Load += new System.EventHandler(this.AutopotHPForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hpPct1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAutopotHPDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxHP1)).EndInit();

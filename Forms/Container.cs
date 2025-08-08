@@ -965,7 +965,7 @@ namespace _ORTools.Forms
 
         public void SetSongMacroWindow()
         {
-            MacroSongForm frm = new MacroSongForm(subject)
+            SongsForm frm = new SongsForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),

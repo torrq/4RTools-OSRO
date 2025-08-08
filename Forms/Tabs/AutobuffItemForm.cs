@@ -73,10 +73,5 @@ namespace _ORTools.Forms
             }
             catch { }
         }
-
-        private void toolTipDelayReset_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
     }
 }

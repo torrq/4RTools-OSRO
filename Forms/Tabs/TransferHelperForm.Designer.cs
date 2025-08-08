@@ -43,7 +43,6 @@
             this.txtTransferKey.Size = new System.Drawing.Size(55, 23);
             this.txtTransferKey.TabIndex = 11;
             this.txtTransferKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTransferKey.TextChanged += new System.EventHandler(this.TxtTransferKey_TextChanged);
             // 
             // TransferItemLabel
             // 
@@ -65,7 +64,6 @@
             this.tooltipTransferKey.ReshowDelay = 100;
             this.tooltipTransferKey.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.tooltipTransferKey.ToolTipTitle = "Item Transfer Helper";
-            this.tooltipTransferKey.Popup += new System.Windows.Forms.PopupEventHandler(this.tooltipTransferKey_Popup);
             // 
             // TransferHelperForm
             // 

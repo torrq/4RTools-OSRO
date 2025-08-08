@@ -115,10 +115,5 @@ namespace _ORTools.Forms
             }
             catch { }
         }
-
-        private void SkillAutoBuffForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

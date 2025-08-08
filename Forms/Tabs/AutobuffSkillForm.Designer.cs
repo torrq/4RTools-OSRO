@@ -246,7 +246,6 @@ namespace _ORTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AutobuffSkillForm";
             this.Text = "AutobuffSkillForm";
-            this.Load += new System.EventHandler(this.SkillAutoBuffForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).EndInit();
             this.ResumeLayout(false);

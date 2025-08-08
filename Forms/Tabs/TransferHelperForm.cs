@@ -109,18 +109,5 @@ namespace _ORTools.Forms
                 this.ActiveControl = null;
             }
         }
-
-        private void PictureBox2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void TxtTransferKey_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void tooltipTransferKey_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
     }
 }

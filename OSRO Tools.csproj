@@ -213,22 +213,22 @@
     <Compile Include="Forms\Dialogs\DialogInput.Designer.cs">
       <DependentUpon>DialogInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tabs\MacroSongForm.cs">
+    <Compile Include="Forms\Tabs\SongsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Forms\Container.resx">
       <DependentUpon>Container.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\MacroSongForm.Designer.cs">
-      <DependentUpon>MacroSongForm.cs</DependentUpon>
+    <Compile Include="Forms\Tabs\SongsForm.Designer.cs">
+      <DependentUpon>SongsForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
     <Compile Include="Forms\Tabs\MacroSwitchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\MacroSongForm.resx">
-      <DependentUpon>MacroSongForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tabs\SongsForm.resx">
+      <DependentUpon>SongsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Forms\Tabs\MacroSwitchForm.Designer.cs">

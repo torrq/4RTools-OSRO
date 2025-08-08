@@ -207,7 +207,6 @@ namespace _ORTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AutoBuffStatusForm";
             this.Text = "AutoBuffStatusForm";
-            this.Load += new System.EventHandler(this.AutoBuffStatusForm_Load);
             this.GreenPotionPanel.ResumeLayout(false);
             this.GreenPotionPanel.PerformLayout();
             this.PanaceaPanel.ResumeLayout(false);

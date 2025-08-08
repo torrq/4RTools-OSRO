@@ -1,10 +1,10 @@
-﻿using _ORTools.Utils;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using _ORTools.Utils;
+using Newtonsoft.Json;
 
 namespace _ORTools.Model
 {
@@ -88,7 +88,9 @@ namespace _ORTools.Model
         {
             if (roClient?.Process == null || roClient.Process.HasExited)
             {
-                DebugLogger.Debug("AutopotHP: Client process is null or has exited, stopping thread.");
+                DebugLogger.Debug(
+                    "AutopotHP: Client process is null or has exited, stopping thread."
+                );
                 FormHelper.ToggleStateOff("AutopotHP");
                 return -1;
             }
@@ -98,8 +100,9 @@ namespace _ORTools.Model
             try
             {
                 string currentMap = roClient.ReadCurrentMap();
-                bool isInCity = ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity &&
-                               Server.GetCityList().Contains(currentMap);
+                bool isInCity =
+                    ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity
+                    && Server.GetCityList().Contains(currentMap);
 
                 if (!isInCity)
                 {
@@ -205,12 +208,15 @@ namespace _ORTools.Model
 
         private bool UsePot(Keys key)
         {
-            if (key == Keys.None) return false;
+            if (key == Keys.None)
+                return false;
 
             try
             {
                 // Only send if Alt is not pressed (prevents conflicts with alt+key combinations)
-                if (!Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
+                if (
+                    !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu)
+                )
                 {
                     Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
                     var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
@@ -254,7 +260,8 @@ namespace _ORTools.Model
             for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
             {
                 uint currentStatus = c.CurrentBuffStatusCode(i);
-                if (currentStatus == uint.MaxValue) continue;
+                if (currentStatus == uint.MaxValue)
+                    continue;
 
                 if ((EffectStatusIDs)currentStatus == EffectStatusIDs.CRITICALWOUND)
                     return true;

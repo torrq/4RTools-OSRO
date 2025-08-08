@@ -46,7 +46,7 @@ namespace _ORTools.Forms
             this.groupBox1.Controls.Add(this.lblStatusToggle);
             this.groupBox1.Controls.Add(this.btnStatusToggle);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(11, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 112);
@@ -58,25 +58,23 @@ namespace _ORTools.Forms
             // 
             this.txtStatusToggleKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStatusToggleKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatusToggleKey.Location = new System.Drawing.Point(102, 34);
+            this.txtStatusToggleKey.Location = new System.Drawing.Point(100, 35);
             this.txtStatusToggleKey.Name = "txtStatusToggleKey";
-            this.txtStatusToggleKey.Size = new System.Drawing.Size(72, 23);
+            this.txtStatusToggleKey.Size = new System.Drawing.Size(85, 23);
             this.txtStatusToggleKey.TabIndex = 23;
             this.txtStatusToggleKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblStatusToggle
             // 
             this.lblStatusToggle.AllowDrop = true;
-            this.lblStatusToggle.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusToggle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatusToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblStatusToggle.Location = new System.Drawing.Point(4, 72);
-            this.lblStatusToggle.MaximumSize = new System.Drawing.Size(190, 18);
+            this.lblStatusToggle.Location = new System.Drawing.Point(4, 78);
             this.lblStatusToggle.Name = "lblStatusToggle";
-            this.lblStatusToggle.Size = new System.Drawing.Size(190, 18);
+            this.lblStatusToggle.Size = new System.Drawing.Size(190, 31);
             this.lblStatusToggle.TabIndex = 22;
             this.lblStatusToggle.Text = "Press the key to start!";
-            this.lblStatusToggle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStatusToggle.Click += new System.EventHandler(this.lblStatusToggle_Click);
+            this.lblStatusToggle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnStatusToggle
             // 

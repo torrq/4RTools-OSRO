@@ -152,9 +152,5 @@ namespace _ORTools.Forms
 
             this.ActiveControl = null;
         }
-
-        private void AutoBuffStatusForm_Load(object sender, EventArgs e)
-        {
-        }
     }
 }

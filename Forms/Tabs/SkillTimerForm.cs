@@ -368,12 +368,5 @@ namespace _ORTools.Forms
                 DebugLogger.Error($"TxtAutoRefreshDelayTextChanged failed: {ex}");
             }
         }
-
-        private void SkillTimerForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

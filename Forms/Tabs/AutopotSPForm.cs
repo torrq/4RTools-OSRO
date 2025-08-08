@@ -284,10 +284,5 @@ namespace _ORTools.Forms
         }
 
         #endregion
-
-        private void AutopotSPForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

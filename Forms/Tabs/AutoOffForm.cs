@@ -450,16 +450,5 @@ namespace _ORTools.Forms
             base.Dispose(disposing);
         }
         #endregion
-
-        #region Unused Event Handlers (kept for Designer compatibility)
-        private void AutoOffForm_Load(object sender, EventArgs e)
-        {
-        }
-        #endregion
-
-        private void toolTip2_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
     }
 }

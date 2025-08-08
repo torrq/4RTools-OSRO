@@ -1287,7 +1287,6 @@ namespace _ORTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SkillTimerForm";
             this.Text = "SkillTimerForm";
-            this.Load += new System.EventHandler(this.SkillTimerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAutoRefreshDelay3)).EndInit();

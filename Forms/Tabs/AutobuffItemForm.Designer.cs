@@ -136,7 +136,6 @@ namespace _ORTools.Forms
             this.toolTipDelayReset.ReshowDelay = 40;
             this.toolTipDelayReset.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.toolTipDelayReset.ToolTipTitle = "Reset to Defaults";
-            this.toolTipDelayReset.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipDelayReset_Popup);
             // 
             // numericDelay
             // 

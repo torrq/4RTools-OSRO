@@ -60,7 +60,6 @@ namespace _ORTools.Forms
             this.characterMapLabel.Text = "Map";
             this.characterMapLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.MapLinkToolTip.SetToolTip(this.characterMapLabel, "Link to https://ro.kokotewa.com info on this map");
-            this.characterMapLabel.Click += new System.EventHandler(this.characterMapLabel_Click_1);
             // 
             // MapLinkToolTip
             // 
@@ -84,7 +83,6 @@ namespace _ORTools.Forms
             this.characterInfoLabel.TabIndex = 27;
             this.characterInfoLabel.Text = "Info";
             this.characterInfoLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.characterInfoLabel.Click += new System.EventHandler(this.characterInfoLabel_Click);
             // 
             // CharacterInfo
             // 
@@ -99,7 +97,6 @@ namespace _ORTools.Forms
             this.Name = "CharacterInfo";
             this.ShowIcon = false;
             this.Text = "CharacterInfo";
-            this.Load += new System.EventHandler(this.CharacterInfo_Load);
             this.ResumeLayout(false);
 
         }

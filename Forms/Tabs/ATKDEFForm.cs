@@ -142,6 +142,11 @@ namespace _ORTools.Forms
             if (Enum.TryParse<Keys>(textBox.Text, true, out Keys parsedKey))
             {
                 key = parsedKey;
+                var keyString = key.ToString();
+                FormHelper.ApplyInputKeyStyle(
+                    textBox,
+                    !string.IsNullOrWhiteSpace(keyString) && keyString != AppConfig.TEXT_NONE
+                );
             }
             else if (string.IsNullOrWhiteSpace(textBox.Text) || textBox.Text.Equals(AppConfig.TEXT_NONE, StringComparison.OrdinalIgnoreCase))
             {

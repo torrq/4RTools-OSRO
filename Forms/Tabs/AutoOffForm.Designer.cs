@@ -282,7 +282,6 @@ namespace _ORTools.Forms
             this.AltKey1ToolTip.ReshowDelay = 100;
             this.AltKey1ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.AltKey1ToolTip.ToolTipTitle = "Send ALT + __";
-            this.AltKey1ToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip2_Popup);
             // 
             // AltKey2ToolTip
             // 
@@ -330,7 +329,6 @@ namespace _ORTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AutoOffForm";
             this.Text = "AutoOffForm";
-            this.Load += new System.EventHandler(this.AutoOffForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown1)).EndInit();
