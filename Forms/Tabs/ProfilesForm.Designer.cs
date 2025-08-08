@@ -4,7 +4,7 @@ using _ORTools.Utils;
 
 namespace _ORTools.Forms
 {
-    partial class ProfileForm
+    partial class ProfilesForm
     {
         /// <summary>
         /// Required designer variable.
