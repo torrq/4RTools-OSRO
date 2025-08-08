@@ -29,7 +29,7 @@ namespace _ORTools.Forms
 
         #region Private Fields
         private readonly AutoOff autoOffModel;
-        private readonly ToggleStateForm frmToggleApplication;
+        private readonly StateSwitchForm frmStateSwitch;
         private Button btnSet1Hours;
         private Button btnSet2Hours;
         private Button btnSet3Hours;
@@ -48,7 +48,7 @@ namespace _ORTools.Forms
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
         #region Constructor
-        public AutoOffForm(Subject subject, ToggleStateForm toggleStateForm)
+        public AutoOffForm(Subject subject, StateSwitchForm toggleStateForm)
         {
             InitializeComponent();
 
@@ -61,7 +61,7 @@ namespace _ORTools.Forms
             this.AutoOffKey2.TextChanged += this.AutoOffKey2_TextChanged;
 
             subject.Attach(this);
-            this.frmToggleApplication = toggleStateForm;
+            this.frmStateSwitch = toggleStateForm;
 
             // Initialize the AutoOff model
             autoOffModel = new AutoOff();
@@ -111,14 +111,14 @@ namespace _ORTools.Forms
 
         private void AutoOffModel_TimerCompleted(object sender, AutoOffEventArgs e)
         {
-            if (frmToggleApplication != null)
+            if (frmStateSwitch != null)
             {
-                frmToggleApplication.toggleStatus();
+                frmStateSwitch.toggleStatus();
                 WeightLimitMacro.SendOverweightMacro();
             }
             else
             {
-                DebugLogger.Error("AutoOffForm: Could not find 'ToggleApplicationStateForm' to toggle status.");
+                DebugLogger.Error("AutoOffForm: Could not find 'StateSwitchForm' to toggle status.");
             }
         }
         #endregion
@@ -137,7 +137,7 @@ namespace _ORTools.Forms
         /// </summary>
         public bool StartAutoOffTimer()
         {
-            if (!frmToggleApplication.IsApplicationOn())
+            if (!frmStateSwitch.IsApplicationOn())
             {
                 return false;
             }
@@ -219,7 +219,7 @@ namespace _ORTools.Forms
             }
             else
             {
-                if (!frmToggleApplication.IsApplicationOn())
+                if (!frmStateSwitch.IsApplicationOn())
                 {
                     DialogOK.ShowDialog(ERROR_NOT_ACTIVE, ERROR_NOT_ACTIVE_TITLE);
                 }

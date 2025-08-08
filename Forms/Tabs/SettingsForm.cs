@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace _ORTools.Forms
 {
-    public partial class ConfigForm : Form, IObserver
+    public partial class SettingsForm : Form, IObserver
     {
         private readonly Subject _subject;
         private bool isInitializing = true;
 
-        public ConfigForm(Subject subject)
+        public SettingsForm(Subject subject)
         {
             Config cfg = ConfigGlobal.GetConfig();
 

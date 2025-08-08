@@ -15,12 +15,12 @@ namespace _ORTools.Forms
         private Subject subject = new Subject();
         private string currentProfile;
         private List<ClientDTO> clients = new List<ClientDTO>();
-        private ToggleStateForm frmToggleApplication = new ToggleStateForm();
+        private StateSwitchForm frmStateSwitch = new StateSwitchForm();
         private TrayManager trayManager;
         private DebugLogWindow debugLogWindow;
         private bool isShuttingDown;
         private DebugLogger.LogMessageHandler debugLogHandler;
-        private ProfileForm profileForm;
+        private ProfilesForm profileForm;
         private Font italicFont;
         private Font regularFont;
         private Font boldFont;
@@ -108,8 +108,8 @@ namespace _ORTools.Forms
                 }
             }
 
-            frmToggleApplication = SetToggleApplicationStateWindow();
-            trayManager = frmToggleApplication.GetTrayManager();
+            frmStateSwitch = SetStateSwitchWindow();
+            trayManager = frmStateSwitch.GetTrayManager();
             SetAutopotHPWindow();
             SetAutopotSPWindow();
             SetSkillTimerWindow();
@@ -711,7 +711,7 @@ namespace _ORTools.Forms
                 {
                     if (currentProfile != null)
                     {
-                        this.frmToggleApplication.TurnOFF();
+                        this.frmStateSwitch.TurnOFF();
                     }
 
                     DebugLogger.Info($"Loading profile: {profileName}");
@@ -836,9 +836,9 @@ namespace _ORTools.Forms
 
         #region Frames
 
-        public ToggleStateForm SetToggleApplicationStateWindow()
+        public StateSwitchForm SetStateSwitchWindow()
         {
-            ToggleStateForm frm = new ToggleStateForm(subject)
+            StateSwitchForm frm = new StateSwitchForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(400, 80),
@@ -850,7 +850,7 @@ namespace _ORTools.Forms
 
         private void SetAutoBuffStatusWindow()
         {
-            DebuffForm frm = new DebuffForm(subject)
+            DebuffsForm frm = new DebuffsForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),
@@ -884,7 +884,7 @@ namespace _ORTools.Forms
 
         public void SetSkillTimerWindow()
         {
-            SkillTimerForm frm = new SkillTimerForm(subject, frmToggleApplication)
+            SkillTimerForm frm = new SkillTimerForm(subject, frmStateSwitch)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 MdiParent = this
@@ -895,7 +895,7 @@ namespace _ORTools.Forms
 
         public void SetAutoOffWindow()
         {
-            AutoOffForm frm = new AutoOffForm(subject, frmToggleApplication)
+            AutoOffForm frm = new AutoOffForm(subject, frmStateSwitch)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 MdiParent = this
@@ -929,7 +929,7 @@ namespace _ORTools.Forms
 
         public void SetProfileWindow()
         {
-            profileForm = new ProfileForm(this)
+            profileForm = new ProfilesForm(this)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),
@@ -1001,7 +1001,7 @@ namespace _ORTools.Forms
 
         public void SetConfigWindow()
         {
-            ConfigForm frm = new ConfigForm(subject)
+            SettingsForm frm = new SettingsForm(subject)
             {
                 FormBorderStyle = FormBorderStyle.None,
                 Location = new Point(0, 65),

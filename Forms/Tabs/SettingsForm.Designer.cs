@@ -4,7 +4,7 @@ using _ORTools.Utils;
 
 namespace _ORTools.Forms
 {
-    partial class ConfigForm
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.

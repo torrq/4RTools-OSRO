@@ -221,15 +221,15 @@ namespace _ORTools.Model
                 if (status == EffectStatusIDs.WEIGHT90 && prefs.AutoOffOverweight)
                 {
                     DebugLogger.Info("Overweight 90%, disable now");
-                    var frmToggleApplication = (ToggleStateForm)Application.OpenForms["ToggleApplicationStateForm"];
-                    if (frmToggleApplication != null)
+                    var frmStateSwitch = (StateSwitchForm)Application.OpenForms["StateSwitchForm"];
+                    if (frmStateSwitch != null)
                     {
-                        frmToggleApplication.toggleStatus();
+                        frmStateSwitch.toggleStatus();
                         WeightLimitMacro.SendOverweightMacro();
                     }
                     else
                     {
-                        DebugLogger.Error("HandleOverweightStatus: Could not find 'ToggleApplicationStateForm' to toggle status.");
+                        DebugLogger.Error("HandleOverweightStatus: Could not find 'StateSwitchForm' to toggle status.");
                     }
                 }
             }

@@ -8,14 +8,14 @@ namespace _ORTools.Forms
 {
     public partial class SkillTimerForm : Form, IObserver
     {
-        private readonly ToggleStateForm frmToggleApplication;
+        private readonly StateSwitchForm frmStateSwitch;
 
-        public SkillTimerForm(Subject subject, ToggleStateForm toggleStateForm)
+        public SkillTimerForm(Subject subject, StateSwitchForm toggleStateForm)
         {
             InitializeComponent();
             subject.Attach(this);
             ConfigureTimerLanes();
-            this.frmToggleApplication = toggleStateForm;
+            this.frmStateSwitch = toggleStateForm;
         }
 
         public void Update(ISubject subject)
@@ -291,7 +291,7 @@ namespace _ORTools.Forms
                         ProfileSingleton.SetConfiguration(skillTimer);
 
                         // Start or stop the individual timer based on checkbox state
-                        if (checkBox.Checked && frmToggleApplication.IsApplicationOn())
+                        if (checkBox.Checked && frmStateSwitch.IsApplicationOn())
                         {
                             skillTimer.StartTimer(id);
                         }

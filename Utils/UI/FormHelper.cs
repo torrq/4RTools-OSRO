@@ -38,14 +38,14 @@ namespace _ORTools.Utils
 
         public static void ToggleStateOff(string DebugLogType = "FormHelper")
         {
-            var frmToggleApplication = (ToggleStateForm)Application.OpenForms["ToggleApplicationStateForm"];
-            if (frmToggleApplication != null)
+            var frmStateSwitch = (StateSwitchForm)Application.OpenForms["StateSwitchForm"];
+            if (frmStateSwitch != null)
             {
-                frmToggleApplication.TurnOFF();
+                frmStateSwitch.TurnOFF();
             }
             else
             {
-                DebugLogger.Error($"{DebugLogType}: Could not find 'ToggleApplicationStateForm' to toggle status.");
+                DebugLogger.Error($"{DebugLogType}: Could not find 'StateSwitchForm' to toggle status.");
             }
         }
 

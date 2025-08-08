@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace _ORTools.Forms
 {
-    public partial class ProfileForm : Form
+    public partial class ProfilesForm : Form
     {
         private Container container;
         private Font italicFont; // Font for italic "Default" entry
@@ -16,7 +16,7 @@ namespace _ORTools.Forms
         private readonly int iconX = 105; // X-coordinate to the left of the ListBox (125 - 20)
         private readonly int iconSize = 16; // Icon size (16x16 pixels)
 
-        public ProfileForm(Container container)
+        public ProfilesForm(Container container)
         {
             InitializeComponent();
             this.container = container;

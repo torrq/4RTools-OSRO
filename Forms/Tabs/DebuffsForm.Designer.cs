@@ -2,7 +2,7 @@
 
 namespace _ORTools.Forms
 {
-    partial class DebuffForm
+    partial class DebuffsForm
     {
         /// <summary>
         /// Required designer variable.

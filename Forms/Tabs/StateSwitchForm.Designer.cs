@@ -2,7 +2,7 @@
 
 namespace _ORTools.Forms
 {
-    partial class ToggleStateForm
+    partial class StateSwitchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -94,7 +94,7 @@ namespace _ORTools.Forms
             this.btnStatusToggle.TabIndex = 21;
             this.toolTipStatusToggle.SetToolTip(this.btnStatusToggle, "Toggle application state ON/OFF");
             this.btnStatusToggle.UseVisualStyleBackColor = false;
-            this.btnStatusToggle.Click += new System.EventHandler(this.btnToggleStatusHandler);
+            this.btnStatusToggle.Click += new System.EventHandler(this.btnStateSwitchHandler);
             // 
             // ToggleStateForm
             // 
@@ -107,7 +107,6 @@ namespace _ORTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ToggleStateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "ToggleApplicationStateForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

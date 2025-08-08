@@ -11,18 +11,18 @@ using TextBox = System.Windows.Forms.TextBox;
 
 namespace _ORTools.Forms
 {
-    public partial class DebuffForm : Form, IObserver
+    public partial class DebuffsForm : Form, IObserver
     {
         private List<BuffContainer> debuffContainers = new List<BuffContainer>();
         private Dictionary<string, TextBox> statusListTextBoxes = new Dictionary<string, TextBox>();
 
         // Static constructor to initialize BuffService
-        static DebuffForm()
+        static DebuffsForm()
         {
             BuffService.Initialize(new ResourceLoader(), new Logger());
         }
 
-        public DebuffForm(Subject subject)
+        public DebuffsForm(Subject subject)
         {
             InitializeComponent();
             debuffContainers.Add(new BuffContainer(this.DebuffsGP, BuffService.GetDebuffs()));

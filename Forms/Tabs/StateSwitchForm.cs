@@ -8,20 +8,19 @@ using System.Windows.Forms;
 
 namespace _ORTools.Forms
 {
-    public partial class ToggleStateForm : Form, IObserver
+    public partial class StateSwitchForm : Form, IObserver
     {
         private Subject subject;
         private TrayManager trayManager;
         private Keys lastKey;
         private bool isApplicationOn = false;
 
-        public ToggleStateForm() { }
+        public StateSwitchForm() { }
 
-        public ToggleStateForm(Subject subject)
+        public StateSwitchForm(Subject subject)
         {
             InitializeComponent();
-
-            this.Name = "ToggleApplicationStateForm";
+            this.Name = "StateSwitchForm";
             this.subject = subject;
             subject.Attach(this);
             KeyboardHook.Enable();
@@ -59,7 +58,7 @@ namespace _ORTools.Forms
 
             this.txtStatusToggleKey.KeyDown += new KeyEventHandler(FormHelper.OnKeyDown);
             this.txtStatusToggleKey.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
-            this.txtStatusToggleKey.TextChanged += new EventHandler(this.onStatusToggleKeyChange);
+            this.txtStatusToggleKey.TextChanged += new EventHandler(this.onStateSwitchKeyChange);
 
             // Apply appropriate style
             FormHelper.ApplyInputKeyStyle(this.txtStatusToggleKey, initialToggleKey != Keys.None);
@@ -143,9 +142,9 @@ namespace _ORTools.Forms
             }
         }
 
-        private void btnToggleStatusHandler(object sender, EventArgs e) { this.toggleStatus(); }
+        private void btnStateSwitchHandler(object sender, EventArgs e) { this.toggleStatus(); }
 
-        private void onStatusToggleKeyChange(object sender, EventArgs e)
+        private void onStateSwitchKeyChange(object sender, EventArgs e)
         {
             try
             {

@@ -235,23 +235,23 @@
       <DependentUpon>MacroSwitchForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\ConfigForm.cs">
+    <Compile Include="Forms\Tabs\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\ConfigForm.Designer.cs">
-      <DependentUpon>ConfigForm.cs</DependentUpon>
+    <Compile Include="Forms\Tabs\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
     <EmbeddedResource Include="Forms\Tabs\MacroSwitchForm.resx">
       <DependentUpon>MacroSwitchForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\ConfigForm.resx">
-      <DependentUpon>ConfigForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tabs\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tabs\ProfileForm.resx">
-      <DependentUpon>ProfileForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tabs\ProfilesForm.resx">
+      <DependentUpon>ProfilesForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Forms\Tabs\AutobuffSkillForm.cs" />
     <Compile Include="Forms\Tabs\AutobuffSkillForm.Designer.cs">
@@ -269,11 +269,11 @@
       <DependentUpon>SkillTimerForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\DebuffForm.cs">
+    <Compile Include="Forms\Tabs\DebuffsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\DebuffForm.Designer.cs">
-      <DependentUpon>DebuffForm.cs</DependentUpon>
+    <Compile Include="Forms\Tabs\DebuffsForm.Designer.cs">
+      <DependentUpon>DebuffsForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
     <Compile Include="Forms\Tabs\AutobuffItemForm.cs">
@@ -294,26 +294,26 @@
       <DependentUpon>Container.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\ProfileForm.cs">
+    <Compile Include="Forms\Tabs\ProfilesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Tabs\ProfileForm.Designer.cs">
-      <DependentUpon>ProfileForm.cs</DependentUpon>
+    <Compile Include="Forms\Tabs\ProfilesForm.Designer.cs">
+      <DependentUpon>ProfilesForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
-    <Compile Include="Forms\Tabs\ToggleStateForm.cs">
+    <Compile Include="Forms\Tabs\StateSwitchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\Tabs\DebuffForm.resx">
-      <DependentUpon>DebuffForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tabs\DebuffsForm.resx">
+      <DependentUpon>DebuffsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tabs\AutobuffItemForm.resx">
       <DependentUpon>AutobuffItemForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Forms\Tabs\ToggleStateForm.Designer.cs">
-      <DependentUpon>ToggleStateForm.cs</DependentUpon>
+    <Compile Include="Forms\Tabs\StateSwitchForm.Designer.cs">
+      <DependentUpon>StateSwitchForm.cs</DependentUpon>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Compile>
     <Compile Include="Forms\Tabs\TransferHelperForm.cs">
@@ -381,8 +381,8 @@
     <Compile Include="Utils\Memory\StatusEffectLogger.cs" />
     <Compile Include="Utils\Memory\StatusUtils.cs" />
     <Compile Include="Utils\ThreadRunner.cs" />
-    <EmbeddedResource Include="Forms\Tabs\ToggleStateForm.resx">
-      <DependentUpon>ToggleStateForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Tabs\StateSwitchForm.resx">
+      <DependentUpon>StateSwitchForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tabs\TransferHelperForm.resx">
