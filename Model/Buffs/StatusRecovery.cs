@@ -71,8 +71,8 @@ namespace _ORTools.Model
                 EffectStatusIDs.BLIND,
                 EffectStatusIDs.CURSE,
                 EffectStatusIDs.CONFUSION,
-                EffectStatusIDs.HALLUCINATION,
-                EffectStatusIDs.BLEEDING
+                EffectStatusIDs.NPC_HALLUCINATION,
+                EffectStatusIDs.NPC_BLEEDING
             };
             statusLists["Panacea"] = new StatusRecoveryList("Panacea", panaceaStatuses, Keys.None);
 
@@ -84,8 +84,8 @@ namespace _ORTools.Model
                 EffectStatusIDs.BLIND,
                 EffectStatusIDs.CURSE,
                 EffectStatusIDs.CONFUSION,
-                EffectStatusIDs.HALLUCINATION,
-                EffectStatusIDs.BLEEDING
+                EffectStatusIDs.NPC_HALLUCINATION,
+                EffectStatusIDs.NPC_BLEEDING
             };
             statusLists["RoyalJelly"] = new StatusRecoveryList("RoyalJelly", royalJellyStatuses, Keys.None);
 

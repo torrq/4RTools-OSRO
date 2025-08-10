@@ -263,7 +263,7 @@ namespace _ORTools.Model
                 if (currentStatus == uint.MaxValue)
                     continue;
 
-                if ((EffectStatusIDs)currentStatus == EffectStatusIDs.CRITICALWOUND)
+                if ((EffectStatusIDs)currentStatus == EffectStatusIDs.NPC_CRITICALWOUND)
                     return true;
             }
             return false;

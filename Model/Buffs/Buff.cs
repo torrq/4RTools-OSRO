@@ -131,187 +131,187 @@ public static class BuffDefinitions
     {
         ArcherBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Improve Concentration", "CONCENTRATION", "ac_concentration"),
-            b.CreateBuff("True Sight", "TRUESIGHT", "sn_sight"),
-            b.CreateBuff("Wind Walk", "WINDWALK", "sn_windwalk")
+            b.CreateBuff("Improve Concentration", "AC_CONCENTRATION", "ac_concentration"),
+            b.CreateBuff("True Sight", "SN_SIGHT", "sn_sight"),
+            b.CreateBuff("Wind Walk", "SN_WINDWALK", "sn_windwalk")
         };
 
         SwordmanBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Endure", "ENDURE", "sm_endure"),
-            b.CreateBuff("Auto Berserk", "AUTOBERSERK", "sm_autoberserk"),
-            b.CreateBuff("Auto Guard", "AUTOGUARD", "cr_autoguard"),
-            b.CreateBuff("Reflect Shield", "REFLECTSHIELD", "cr_reflectshield"),
-            b.CreateBuff("Spear Quicken", "SPEARQUICKEN", "cr_spearquicken"),
-            b.CreateBuff("Defender", "DEFENDER", "cr_defender"),
-            b.CreateBuff("Concentration", "LKCONCENTRATION", "lk_concentration"),
-            b.CreateBuff("Berserk", "BERSERK", "lk_berserk"),
-            b.CreateBuff("Two-Hand Quicken", "TWOHANDQUICKEN", "mer_quicken"),
-            b.CreateBuff("Parry", "PARRYING", "ms_parrying"),
-            b.CreateBuff("Aura Blade", "AURABLADE", "lk_aurablade"),
+            b.CreateBuff("Endure", "SM_ENDURE", "sm_endure"),
+            b.CreateBuff("Auto Berserk", "SM_AUTOBERSERK", "sm_autoberserk"),
+            b.CreateBuff("Auto Guard", "CR_AUTOGUARD", "cr_autoguard"),
+            b.CreateBuff("Reflect Shield", "CR_REFLECTSHIELD", "cr_reflectshield"),
+            b.CreateBuff("Spear Quicken", "CR_SPEARQUICKEN", "cr_spearquicken"),
+            b.CreateBuff("Defender", "CR_DEFENDER", "cr_defender"),
+            b.CreateBuff("Concentration", "LK_CONCENTRATION", "lk_concentration"),
+            b.CreateBuff("Berserk", "LK_BERSERK", "lk_berserk"),
+            b.CreateBuff("Two-Hand Quicken", "KN_TWOHANDQUICKEN", "mer_quicken"),
+            b.CreateBuff("Parry", "LK_PARRYING", "ms_parrying"),
+            b.CreateBuff("Aura Blade", "LK_AURABLADE", "lk_aurablade"),
             b.CreateBuff("Shrink", "CR_SHRINK", "cr_shrink"),
-            b.CreateBuff("Magnum Break", "MAGNUM", "magnum"),
-            b.CreateBuff("One-Hand Quicken", "ONEHANDQUICKEN", "onehand"),
-            b.CreateBuff("Provoke", "PROVOKE", "provoke"),
-            b.CreateBuff("Providence", "PROVIDENCE", "providence")
+            b.CreateBuff("Magnum Break", "SM_MAGNUM", "magnum"),
+            b.CreateBuff("One-Hand Quicken", "KN_ONEHAND", "onehand"),
+            b.CreateBuff("Provoke", "SM_PROVOKE", "provoke"),
+            b.CreateBuff("Providence", "CR_PROVIDENCE", "providence")
         };
         SwordmanBuffs[1] = new List<Buff>
         {
-            b.CreateBuff("Endure", "ENDURE", "sm_endure"),
-            b.CreateBuff("Auto Berserk", "AUTOBERSERK", "sm_autoberserk"),
-            b.CreateBuff("Auto Guard", "AUTOGUARD", "cr_autoguard"),
-            b.CreateBuff("Reflect Shield", "REFLECTSHIELD", "cr_reflectshield"),
-            b.CreateBuff("Spear Quicken", "SPEARQUICKEN", "cr_spearquicken"),
-            b.CreateBuff("Defender", "DEFENDER", "cr_defender"),
-            b.CreateBuff("Concentration", "LKCONCENTRATION", "lk_concentration"),
-            b.CreateBuff("Berserk", "BERSERK", "lk_berserk"),
-            b.CreateBuff("Two-Hand Quicken", "TWOHANDQUICKEN", "mer_quicken"),
-            b.CreateBuff("Parry", "PARRYING", "ms_parrying"),
-            b.CreateBuff("Aura Blade", "AURABLADE", "lk_aurablade"),
+            b.CreateBuff("Endure", "SM_ENDURE", "sm_endure"),
+            b.CreateBuff("Auto Berserk", "SM_AUTOBERSERK", "sm_autoberserk"),
+            b.CreateBuff("Auto Guard", "CR_AUTOGUARD", "cr_autoguard"),
+            b.CreateBuff("Reflect Shield", "CR_REFLECTSHIELD", "cr_reflectshield"),
+            b.CreateBuff("Spear Quicken", "CR_SPEARQUICKEN", "cr_spearquicken"),
+            b.CreateBuff("Defender", "CR_DEFENDER", "cr_defender"),
+            b.CreateBuff("Concentration", "LK_CONCENTRATION", "lk_concentration"),
+            b.CreateBuff("Berserk", "LK_BERSERK", "lk_berserk"),
+            b.CreateBuff("Two-Hand Quicken", "KN_TWOHANDQUICKEN", "mer_quicken"),
+            b.CreateBuff("Parry", "LK_PARRYING", "ms_parrying"),
+            b.CreateBuff("Aura Blade", "LK_AURABLADE", "lk_aurablade"),
             b.CreateBuff("Shrink", "CR_SHRINK", "cr_shrink"),
-            b.CreateBuff("Magnum Break", "MAGNUM", "magnum"),
-            b.CreateBuff("One-Hand Quicken", "ONEHANDQUICKEN", "onehand"),
-            b.CreateBuff("Provoke", "PROVOKE", "provoke"),
-            b.CreateBuff("Providence", "PROVIDENCE", "providence"),
+            b.CreateBuff("Magnum Break", "SM_MAGNUM", "magnum"),
+            b.CreateBuff("One-Hand Quicken", "KN_ONEHAND", "onehand"),
+            b.CreateBuff("Provoke", "SM_PROVOKE", "provoke"),
+            b.CreateBuff("Providence", "CR_PROVIDENCE", "providence"),
             b.CreateBuff("Mana Shield", "MANA_SHIELD", "manashield")
         };
 
         MageBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Energy Coat", "ENERGYCOAT", "mg_energycoat"),
-            b.CreateBuff("Sight Blaster", "SIGHTBLASTER", "wz_sightblaster"),
-            b.CreateBuff("Autospell", "AUTOSPELL", "sa_autospell"),
-            b.CreateBuff("Double Casting", "DOUBLECASTING", "pf_doublecasting"),
-            b.CreateBuff("Memorize", "MEMORIZE", "pf_memorize"),
-            b.CreateBuff("Amplify Magic Power / Mystical Amplification", "MYST_AMPLIFY", "amplify"),
-            b.CreateBuff("Mind Breaker", "MINDBREAKER", "mindbreaker")
+            b.CreateBuff("Energy Coat", "MG_ENERGYCOAT", "mg_energycoat"),
+            b.CreateBuff("Sight Blaster", "WZ_SIGHTBLASTER", "wz_sightblaster"),
+            b.CreateBuff("Autospell", "SA_AUTOSPELL", "sa_autospell"),
+            b.CreateBuff("Double Casting", "PF_DOUBLECASTING", "pf_doublecasting"),
+            b.CreateBuff("Memorize", "PF_MEMORIZE", "pf_memorize"),
+            b.CreateBuff("Amplify Magic Power / Mystical Amplification", "HW_MAGICPOWER", "amplify"),
+            b.CreateBuff("Mind Breaker", "PF_MINDBREAKER", "mindbreaker")
         };
 
         MerchantBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Crazy Uproar", "CRAZY_UPROAR", "mc_loud"),
-            b.CreateBuff("Overthrust", "OVERTHRUST", "bs_overthrust"),
-            b.CreateBuff("Adrenaline Rush", "ADRENALINE", "bs_adrenaline"),
-            b.CreateBuff("Full Adrenaline Rush", "ADRENALINE2", "bs_adrenaline2"),
-            b.CreateBuff("Weapon Perfection", "WEAPONPERFECT", "bs_weaponperfect"),
-            b.CreateBuff("Maximize Power", "MAXIMIZE", "bs_maximize"),
-            b.CreateBuff("Cart Boost", "CARTBOOST", "ws_cartboost"),
-            b.CreateBuff("Meltdown", "MELTDOWN", "ws_meltdown"),
-            b.CreateBuff("Maximum Overthrust", "OVERTHRUSTMAX", "ws_overthrustmax"),
+            b.CreateBuff("Crazy Uproar", "MC_LOUD", "mc_loud"),
+            b.CreateBuff("Overthrust", "BS_OVERTHRUST", "bs_overthrust"),
+            b.CreateBuff("Adrenaline Rush", "BS_ADRENALINE", "bs_adrenaline"),
+            b.CreateBuff("Full Adrenaline Rush", "BS_ADRENALINE2", "bs_adrenaline2"),
+            b.CreateBuff("Weapon Perfection", "BS_WEAPONPERFECT", "bs_weaponperfect"),
+            b.CreateBuff("Maximize Power", "BS_MAXIMIZE", "bs_maximize"),
+            b.CreateBuff("Cart Boost", "WS_CARTBOOST", "ws_cartboost"),
+            b.CreateBuff("Meltdown", "WS_MELTDOWN", "ws_meltdown"),
+            b.CreateBuff("Maximum Overthrust", "WS_OVERTHRUSTMAX", "ws_overthrustmax"),
             b.CreateBuff("Greed Parry", "GREED_PARRY", "ws_greedparry")
         };
         MerchantBuffs[1] = new List<Buff>
         {
-            b.CreateBuff("Crazy Uproar", "CRAZY_UPROAR", "mc_loud"),
-            b.CreateBuff("Overthrust", "OVERTHRUST", "bs_overthrust"),
-            b.CreateBuff("Adrenaline Rush", "ADRENALINE", "bs_adrenaline"),
-            b.CreateBuff("Full Adrenaline Rush", "ADRENALINE2", "bs_adrenaline2"),
-            b.CreateBuff("Weapon Perfection", "WEAPONPERFECT", "bs_weaponperfect"),
-            b.CreateBuff("Maximize Power", "MAXIMIZE", "bs_maximize"),
-            b.CreateBuff("Cart Boost", "CARTBOOST", "ws_cartboost"),
-            b.CreateBuff("Meltdown", "MELTDOWN", "ws_meltdown"),
-            b.CreateBuff("Maximum Overthrust", "OVERTHRUSTMAX", "ws_overthrustmax"),
+            b.CreateBuff("Crazy Uproar", "MC_LOUD", "mc_loud"),
+            b.CreateBuff("Overthrust", "BS_OVERTHRUST", "bs_overthrust"),
+            b.CreateBuff("Adrenaline Rush", "BS_ADRENALINE", "bs_adrenaline"),
+            b.CreateBuff("Full Adrenaline Rush", "BS_ADRENALINE2", "bs_adrenaline2"),
+            b.CreateBuff("Weapon Perfection", "BS_WEAPONPERFECT", "bs_weaponperfect"),
+            b.CreateBuff("Maximize Power", "BS_MAXIMIZE", "bs_maximize"),
+            b.CreateBuff("Cart Boost", "WS_CARTBOOST", "ws_cartboost"),
+            b.CreateBuff("Meltdown", "WS_MELTDOWN", "ws_meltdown"),
+            b.CreateBuff("Maximum Overthrust", "WS_OVERTHRUSTMAX", "ws_overthrustmax"),
             b.CreateBuff("Greed Parry", "RESIST_PROPERTY_FIRE", "ws_greedparry")
         };
 
         ThiefBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Poison React", "POISONREACT", "as_poisonreact"),
-            b.CreateBuff("Reject Sword", "SWORDREJECT", "st_rejectsword"),
-            b.CreateBuff("Preserve", "PRESERVE", "st_preserve"),
-            b.CreateBuff("Enchant Deadly Poison", "EDP", "asc_edp"),
-            b.CreateBuff("Hiding", "HIDING", "hiding"),
-            b.CreateBuff("Cloaking", "CLOAKING", "cloaking"),
-            b.CreateBuff("Chase Walk", "CHASEWALK", "chase_walk")
+            b.CreateBuff("Poison React", "AS_POISONREACT", "as_poisonreact"),
+            b.CreateBuff("Reject Sword", "ST_REJECTSWORD", "st_rejectsword"),
+            b.CreateBuff("Preserve", "ST_PRESERVE", "st_preserve"),
+            b.CreateBuff("Enchant Deadly Poison", "ASC_EDP", "asc_edp"),
+            b.CreateBuff("Hide", "TF_HIDING", "hiding"),
+            b.CreateBuff("Cloak", "AS_CLOAKING", "cloaking"),
+            b.CreateBuff("Chase Walk", "ST_CHASEWALK", "chase_walk")
         };
         ThiefBuffs[1] = new List<Buff>
         {
-            b.CreateBuff("Poison React", "POISONREACT", "as_poisonreact"),
-            b.CreateBuff("Reject Sword", "SWORDREJECT", "st_rejectsword"),
-            b.CreateBuff("Preserve", "PRESERVE", "st_preserve"),
-            b.CreateBuff("Enchant Deadly Poison", "EDP", "asc_edp"),
-            b.CreateBuff("Hiding", "HIDING", "hiding"),
-            b.CreateBuff("Cloaking", "CLOAKING", "cloaking"),
-            b.CreateBuff("Chase Walk", "CHASEWALK", "chase_walk"),
+            b.CreateBuff("Poison React", "AS_POISONREACT", "as_poisonreact"),
+            b.CreateBuff("Reject Sword", "ST_REJECTSWORD", "st_rejectsword"),
+            b.CreateBuff("Preserve", "ST_PRESERVE", "st_preserve"),
+            b.CreateBuff("Enchant Deadly Poison", "ASC_EDP", "asc_edp"),
+            b.CreateBuff("Hide", "TF_HIDING", "hiding"),
+            b.CreateBuff("Cloak", "AS_CLOAKING", "cloaking"),
+            b.CreateBuff("Chase Walk", "ST_CHASEWALK", "chase_walk"),
             b.CreateBuff("Enchant Poison Armor", "ENCHANT_POISON_ARMOR", "enchantpoisonarmor")
         };
 
         AcolyteBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Blessing", "BLESSING", "al_blessing1"),
-            b.CreateBuff("Increase Agility", "INC_AGI", "al_incagi1"),
-            b.CreateBuff("Gloria", "GLORIA", "pr_gloria"),
-            b.CreateBuff("Magnificat", "MAGNIFICAT", "pr_magnificat"),
-            b.CreateBuff("Angelus", "ANGELUS", "al_angelus"),
-            b.CreateBuff("Impositio Manus", "IMPOSITIO", "impositio_manus"),
-            b.CreateBuff("Basilica", "BASILICA", "basilica"),
-            b.CreateBuff("Fury", "FURY", "fury"),
-            b.CreateBuff("Steel Body", "STEEL_BODY", "steel_body"),
+            b.CreateBuff("Blessing", "AL_BLESSING", "al_blessing1"),
+            b.CreateBuff("Increase Agility", "AL_INCAGI", "al_incagi1"),
+            b.CreateBuff("Gloria", "PR_GLORIA", "pr_gloria"),
+            b.CreateBuff("Magnificat", "PR_MAGNIFICAT", "pr_magnificat"),
+            b.CreateBuff("Angelus", "AL_ANGELUS", "al_angelus"),
+            b.CreateBuff("Impositio Manus", "PR_IMPOSITIO", "impositio_manus"),
+            b.CreateBuff("Basilica", "HP_BASILICA", "basilica"),
+            b.CreateBuff("Fury", "MO_EXPLOSIONSPIRITS", "fury"),
+            b.CreateBuff("Steel Body", "MO_STEELBODY", "steel_body"),
         };
         AcolyteBuffs[1] = new List<Buff>
         {
-            b.CreateBuff("Blessing", "BLESSING", "al_blessing1"),
-            b.CreateBuff("Increase Agility", "INC_AGI", "al_incagi1"),
-            b.CreateBuff("Gloria", "GLORIA", "pr_gloria"),
-            b.CreateBuff("Magnificat", "MAGNIFICAT", "pr_magnificat"),
-            b.CreateBuff("Angelus", "ANGELUS", "al_angelus"),
-            b.CreateBuff("Impositio Manus", "IMPOSITIO", "impositio_manus"),
-            b.CreateBuff("Basilica", "BASILICA", "basilica"),
-            b.CreateBuff("Fury", "FURY", "fury"),
-            b.CreateBuff("Steel Body", "STEEL_BODY", "steel_body"),
+            b.CreateBuff("Blessing", "AL_BLESSING", "al_blessing1"),
+            b.CreateBuff("Increase Agility", "AL_INCAGI", "al_incagi1"),
+            b.CreateBuff("Gloria", "PR_GLORIA", "pr_gloria"),
+            b.CreateBuff("Magnificat", "PR_MAGNIFICAT", "pr_magnificat"),
+            b.CreateBuff("Angelus", "AL_ANGELUS", "al_angelus"),
+            b.CreateBuff("Impositio Manus", "PR_IMPOSITIO", "impositio_manus"),
+            b.CreateBuff("Basilica", "HP_BASILICA", "basilica"),
+            b.CreateBuff("Fury", "MO_EXPLOSIONSPIRITS", "fury"),
+            b.CreateBuff("Steel Body", "MO_STEELBODY", "steel_body"),
             b.CreateBuff("Refraction", "REFRACTION", "refraction"),
-            b.CreateBuff("Shallow Grave", "KAIZEL", "shallowgrave")
+            b.CreateBuff("Shallow Grave", "SL_KAIZEL", "shallowgrave")
         };
 
         NinjaBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Ninja Aura", "NINJA_AURA", "nj_nen"),
-            b.CreateBuff("Cast-off Cicada / Cicada SS", "CICADA_SKIN_SHED", "nj_utsusemi"),
-            b.CreateBuff("Illusion Shadow / Mirror Image", "MIRROR_IMAGE", "bunsinjyutsu")
+            b.CreateBuff("Ninja Aura", "NJ_NEN", "nj_nen"),
+            b.CreateBuff("Cast-off Cicada / Cicada SS", "NJ_UTSUSEMI", "nj_utsusemi"),
+            b.CreateBuff("Illusion Shadow / Mirror Image", "NJ_BUNSINJYUTSU", "bunsinjyutsu")
         };
 
         TaekwonBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Mild Wind (Earth)", "PROPERTYGROUND", "tk_mild_earth"),
-            b.CreateBuff("Mild Wind (Fire)", "PROPERTYFIRE", "tk_mild_fire"),
-            b.CreateBuff("Mild Wind (Water)", "PROPERTYWATER", "tk_mild_water"),
-            b.CreateBuff("Mild Wind (Wind)", "PROPERTYWIND", "tk_mild_wind"),
+            b.CreateBuff("Mild Wind (Earth)", "SA_SEISMICWEAPON", "tk_mild_earth"),
+            b.CreateBuff("Mild Wind (Fire)", "SA_FLAMELAUNCHER", "tk_mild_fire"),
+            b.CreateBuff("Mild Wind (Water)", "SA_FROSTWEAPON", "tk_mild_water"),
+            b.CreateBuff("Mild Wind (Wind)", "SA_LIGHTNINGLOADER", "tk_mild_wind"),
             b.CreateBuff("Mild Wind (Ghost)", "PROPERTYTELEKINESIS", "tk_mild_ghost"),
-            b.CreateBuff("Mild Wind (Holy)", "ASPERSIO", "tk_mild_holy"),
+            b.CreateBuff("Mild Wind (Holy)", "PR_ASPERSIO", "tk_mild_holy"),
             b.CreateBuff("Mild Wind (Shadow)", "PROPERTYDARK", "tk_mild_shadow"),
-            b.CreateBuff("Tumbling", "DODGE_ON", "tumbling"),
+            b.CreateBuff("Tumbling", "MO_DODGE", "tumbling"),
             b.CreateBuff("Solar, Lunar, and Stellar Warmth", "WARM", "sun_warm"),
-            b.CreateBuff("Comfort of the Sun", "SUN_COMFORT", "sun_comfort"),
-            b.CreateBuff("Comfort of the Moon", "MOON_COMFORT", "moon_comfort"),
-            b.CreateBuff("Comfort of the Stars", "STAR_COMFORT", "star_comfort"),
-            b.CreateBuff("Kaupe", "KAUPE", "kaupe"),
-            b.CreateBuff("Kaite", "KAITE", "kaite"),
-            b.CreateBuff("Kaizel", "KAIZEL", "kaizel"),
-            b.CreateBuff("Kaahi", "KAAHI", "kaahi")
+            b.CreateBuff("Comfort of the Sun", "SG_SUN_COMFORT", "sun_comfort"),
+            b.CreateBuff("Comfort of the Moon", "SG_MOON_COMFORT", "moon_comfort"),
+            b.CreateBuff("Comfort of the Stars", "SG_STAR_COMFORT", "star_comfort"),
+            b.CreateBuff("Kaupe", "SL_KAUPE", "kaupe"),
+            b.CreateBuff("Kaite", "SL_KAITE", "kaite"),
+            b.CreateBuff("Kaizel", "SL_KAIZEL", "kaizel"),
+            b.CreateBuff("Kaahi", "SL_KAAHI", "kaahi")
         };
 
         GunslingerBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Gatling Fever", "GATLINGFEVER", "gatling_fever"),
-            b.CreateBuff("Last Stand", "MADNESSCANCEL", "madnesscancel"),
-            b.CreateBuff("Adjustment", "ADJUSTMENT", "adjustment"),
-            b.CreateBuff("Increased Accuracy", "ACCURACY", "increase_accuracy")
+            b.CreateBuff("Gatling Fever", "GS_GATLINGFEVER", "gatling_fever"),
+            b.CreateBuff("Last Stand", "GS_MADNESSCANCEL", "madnesscancel"),
+            b.CreateBuff("Adjustment", "GS_ADJUSTMENT", "adjustment"),
+            b.CreateBuff("Increased Accuracy", "GS_INCREASING", "increase_accuracy")
         };
 
         PadawanBuffs[1] = new List<Buff>
         {
-            b.CreateBuff("Force Element (Earth)", "PROPERTYGROUND", "forceelement_earth"),
-            b.CreateBuff("Force Element (Wind)", "PROPERTYWIND", "forceelement_wind"),
-            b.CreateBuff("Force Element (Water)", "PROPERTYWATER", "forceelement_water"),
-            b.CreateBuff("Force Element (Fire)", "PROPERTYFIRE", "forceelement_fire"),
+            b.CreateBuff("Force Element (Earth)", "SA_SEISMICWEAPON", "forceelement_earth"),
+            b.CreateBuff("Force Element (Wind)", "SA_LIGHTNINGLOADER", "forceelement_wind"),
+            b.CreateBuff("Force Element (Water)", "SA_FROSTWEAPON", "forceelement_water"),
+            b.CreateBuff("Force Element (Fire)", "SA_FLAMELAUNCHER", "forceelement_fire"),
             b.CreateBuff("Force Element (Ghost)", "PROPERTYTELEKINESIS", "forceelement_ghost"),
             b.CreateBuff("Force Element (Shadow)", "PROPERTYDARK", "forceelement_shadow"),
-            b.CreateBuff("Force Element (Holy)", "ASPERSIO", "forceelement_holy"),
+            b.CreateBuff("Force Element (Holy)", "PR_ASPERSIO", "forceelement_holy"),
             b.CreateBuff("Force Projection", "HR_PROJECTION", "hr_forceprojection"),
             b.CreateBuff("Cold Skin", "RESIST_PROPERTY_WATER", "hr_coldskin"),
             b.CreateBuff("Saber Parry", "HR_SABERPARRY", "hr_saberparry"),
             b.CreateBuff("Force Concentration", "HR_FORCECONCENTRATE", "hr_forceconcentrate"),
-            b.CreateBuff("Saber Thrust", "LKCONCENTRATION", "hr_saberthrust"),
+            b.CreateBuff("Saber Thrust", "LK_CONCENTRATION", "hr_saberthrust"),
             b.CreateBuff("Force Persuasion", "HR_FORCEPERSUASION", "hr_forcepersuasion"),
             b.CreateBuff("Force Haste", "HR_FORCEHASTE", "forcehaste"),
             b.CreateBuff("Force Sacrifice", "HR_FORCESACRIFICE", "hr_forcesacrifice"),
@@ -351,17 +351,17 @@ public static class BuffDefinitions
 
         PotionBuffs.AddRange(new[]
         {
-            b.CreateBuff("Concentration Potion", "CONCENTRATION_POTION", "concentration_potion"),
-            b.CreateBuff("Awakening Potion", "AWAKENING_POTION", "awakening_potion"),
-            b.CreateBuff("Berserk Potion", "BERSERK_POTION", "berserk_potion")
+            b.CreateBuff("Concentration Potion", "ATTHASTE_POTION1", "concentration_potion"),
+            b.CreateBuff("Awakening Potion", "ATTHASTE_POTION2", "awakening_potion"),
+            b.CreateBuff("Berserk Potion", "ATTHASTE_POTION3", "berserk_potion")
         });
 
         ElementBuffs.AddRange(new[]
         {
-            b.CreateBuff("Fire Elemental Converter", "PROPERTYFIRE", "ele_fire_converter"),
-            b.CreateBuff("Wind Elemental Converter", "PROPERTYWIND", "ele_wind_converter"),
-            b.CreateBuff("Earth Elemental Converter", "PROPERTYGROUND", "ele_earth_converter"),
-            b.CreateBuff("Water Elemental Converter", "PROPERTYWATER", "ele_water_converter"),
+            b.CreateBuff("Fire Elemental Converter", "SA_FLAMELAUNCHER", "ele_fire_converter"),
+            b.CreateBuff("Wind Elemental Converter", "SA_LIGHTNINGLOADER", "ele_wind_converter"),
+            b.CreateBuff("Earth Elemental Converter", "SA_SEISMICWEAPON", "ele_earth_converter"),
+            b.CreateBuff("Water Elemental Converter", "SA_FROSTWEAPON", "ele_water_converter"),
             b.CreateBuff("Box of Storms", "BOX_OF_STORMS", "boxofstorms"),
             b.CreateBuff("Cursed Water", "PROPERTYDARK", "cursed_water"),
             b.CreateBuff("Fireproof Potion", "RESIST_PROPERTY_FIRE", "fireproof"),
@@ -384,14 +384,14 @@ public static class BuffDefinitions
 
         BoxBuffs.AddRange(new[]
         {
-            b.CreateBuff("Box of Drowsiness / Tasty W. Ration", "DROWSINESS_BOX", "drowsiness"),
-            b.CreateBuff("Box of Resentment / Tasty P. Ration / Chewy Ricecake", "RESENTMENT_BOX", "resentment"),
+            b.CreateBuff("Box of Drowsiness / Tasty W. Ration", "PLUSMAGICPOWER", "drowsiness"),
+            b.CreateBuff("Box of Resentment / Tasty P. Ration / Chewy Ricecake", "PLUSATTACKPOWER", "resentment"),
             b.CreateBuff("Box of Sunlight", "SUNLIGHT_BOX", "sunbox"),
-            b.CreateBuff("Box of Gloom", "CONCENTRATION", "gloom"),
+            b.CreateBuff("Box of Gloom", "AC_CONCENTRATION", "gloom"),
             b.CreateBuff("Box of Thunder", "BOX_OF_THUNDER", "boxofthunder"),
-            b.CreateBuff("Speed Potion", "SPEED_POT", "speedpotion"),
-            b.CreateBuff("Anodyne", "ENDURE", "anodyne"),
-            b.CreateBuff("Aloe Vera", "PROVOKE", "aloevera"),
+            b.CreateBuff("Speed Potion", "MOVHASTE_POTION", "speedpotion"),
+            b.CreateBuff("Anodyne", "SM_ENDURE", "anodyne"),
+            b.CreateBuff("Aloe Vera", "SM_PROVOKE", "aloevera"),
             b.CreateBuff("Abrasive", "CRITICALPERCENT", "abrasive"),
             b.CreateBuff("Combat Pill", "COMBAT_PILL", "combat_pill"),
             b.CreateBuff("Enriched Celermine Juice", "ENRICH_CELERMINE_JUICE", "celermine"),
@@ -400,12 +400,12 @@ public static class BuffDefinitions
 
         ScrollBuffs.AddRange(new[]
         {
-            b.CreateBuff("Increase Agility Scroll", "INC_AGI", "al_incagi1"),
-            b.CreateBuff("Bless Scroll", "BLESSING", "al_blessing1"),
-            b.CreateBuff("Full Chemical Protection ", "PROTECTARMOR", "cr_fullprotection"),
+            b.CreateBuff("Increase Agility Scroll", "AL_INCAGI", "al_incagi1"),
+            b.CreateBuff("Bless Scroll", "AL_BLESSING", "al_blessing1"),
+            b.CreateBuff("Full Chemical Protection ", "AM_CP_ARMOR", "cr_fullprotection"),
             b.CreateBuff("Link Scroll", "SOULLINK", "sl_soullinker"),
-            b.CreateBuff("Assumptio", "ASSUMPTIO", "assumptio"),
-            b.CreateBuff("Flee Scroll / Spray of Flowers", "FLEE_SCROLL", "flee_scroll"),
+            b.CreateBuff("Assumptio", "HP_ASSUMPTIO", "assumptio"),
+            b.CreateBuff("Flee Scroll / Spray of Flowers", "FOOD_BASICAVOIDANCE", "flee_scroll"),
             b.CreateBuff("Accuracy Scroll", "ACCURACY_SCROLL", "accuracy_scroll")
         });
 
@@ -424,23 +424,23 @@ public static class BuffDefinitions
 
         Debuffs.AddRange(new[]
         {
-            b.CreateBuff("Bleeding", "BLEEDING", "bleeding"),
+            b.CreateBuff("Bleeding", "NPC_BLEEDING", "bleeding"),
             b.CreateBuff("Burning", "BURNING", "burning"),
             b.CreateBuff("Chaos / Confusion", "CONFUSION", "chaos"),
-            b.CreateBuff("Critical Wound", "CRITICALWOUND", "critical_wound"),
+            b.CreateBuff("Critical Wound", "NPC_CRITICALWOUND", "critical_wound"),
             b.CreateBuff("Curse", "CURSE", "curse"),
-            b.CreateBuff("Decrease AGI", "DECREASE_AGI", "decrease_agi"),
+            b.CreateBuff("Decrease AGI", "AL_DECAGI", "decrease_agi"),
             b.CreateBuff("Freezing", "FREEZING", "freezing"),
             b.CreateBuff("Frozen", "FROZEN", "frozen"),
-            b.CreateBuff("Hallucination", "HALLUCINATION_DEBUFF", "hallucination"),
+            b.CreateBuff("Hallucination", "NPC_HALLUCINATION", "hallucination"),
             b.CreateBuff("Poison", "POISON", "poison_status"),
             b.CreateBuff("Silence", "SILENCE", "silence"),
             b.CreateBuff("Sit", "SIT", "sit"),
             b.CreateBuff("Deep Sleep", "DEEP_SLEEP", "deep_sleep"),
             b.CreateBuff("Sleep", "SLEEP", "sleep"),
-            b.CreateBuff("Slow Cast", "SLOW_CAST", "slow_cast"),
-            b.CreateBuff("Stone Curse (initial stage)", "STONE", "stonecurse1"),
-            b.CreateBuff("Stone Curse (petrified)", "STONEWAIT", "stonecurse2"),
+            b.CreateBuff("Slow Cast", "NPC_SLOWCAST", "slow_cast"),
+            b.CreateBuff("Stone Curse (initial stage)", "STONECURSE_ING", "stonecurse1"),
+            b.CreateBuff("Stone Curse (petrified)", "STONECURSE", "stonecurse2"),
             b.CreateBuff("Stun", "STUN", "stun")
         });
     }

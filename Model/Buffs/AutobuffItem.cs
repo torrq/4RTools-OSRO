@@ -151,11 +151,11 @@ namespace _ORTools.Model
                                     buffs.Add((EffectStatusIDs)currentStatus);
                                     EffectStatusIDs status = (EffectStatusIDs)currentStatus;
 
-                                    if (status == EffectStatusIDs.OVERTHRUSTMAX)
+                                    if (status == EffectStatusIDs.WS_OVERTHRUSTMAX)
                                     {
-                                        if (buffMapping.ContainsKey(EffectStatusIDs.OVERTHRUST))
+                                        if (buffMapping.ContainsKey(EffectStatusIDs.BS_OVERTHRUST))
                                         {
-                                            bmClone.Remove(EffectStatusIDs.OVERTHRUST);
+                                            bmClone.Remove(EffectStatusIDs.BS_OVERTHRUST);
                                         }
                                     }
 
@@ -164,8 +164,8 @@ namespace _ORTools.Model
                                         bmClone.Remove(status);
                                     }
 
-                                    if (status == EffectStatusIDs.QUAGMIRE) foundQuag = true;
-                                    if (status == EffectStatusIDs.DECREASE_AGI) foundDecreaseAgi = true;
+                                    if (status == EffectStatusIDs.WZ_QUAGMIRE) foundQuag = true;
+                                    if (status == EffectStatusIDs.AL_DECAGI) foundDecreaseAgi = true;
                                 }
 
                                 buffs.Clear();
@@ -175,11 +175,11 @@ namespace _ORTools.Model
                                 {
                                     try
                                     {
-                                        if (foundQuag && (item.Key == EffectStatusIDs.CONCENTRATION || item.Key == EffectStatusIDs.INC_AGI || item.Key == EffectStatusIDs.TRUESIGHT || item.Key == EffectStatusIDs.ADRENALINE || item.Key == EffectStatusIDs.SPEARQUICKEN || item.Key == EffectStatusIDs.ONEHANDQUICKEN || item.Key == EffectStatusIDs.WINDWALK))
+                                        if (foundQuag && (item.Key == EffectStatusIDs.AC_CONCENTRATION || item.Key == EffectStatusIDs.AL_INCAGI || item.Key == EffectStatusIDs.SN_SIGHT || item.Key == EffectStatusIDs.BS_ADRENALINE || item.Key == EffectStatusIDs.CR_SPEARQUICKEN || item.Key == EffectStatusIDs.KN_ONEHAND || item.Key == EffectStatusIDs.SN_WINDWALK))
                                         {
                                             break;
                                         }
-                                        else if (foundDecreaseAgi && (item.Key == EffectStatusIDs.TWOHANDQUICKEN || item.Key == EffectStatusIDs.ADRENALINE || item.Key == EffectStatusIDs.ADRENALINE2 || item.Key == EffectStatusIDs.ONEHANDQUICKEN || item.Key == EffectStatusIDs.SPEARQUICKEN))
+                                        else if (foundDecreaseAgi && (item.Key == EffectStatusIDs.KN_TWOHANDQUICKEN || item.Key == EffectStatusIDs.BS_ADRENALINE || item.Key == EffectStatusIDs.BS_ADRENALINE2 || item.Key == EffectStatusIDs.KN_ONEHAND || item.Key == EffectStatusIDs.CR_SPEARQUICKEN))
                                         {
                                             break;
                                         }

@@ -127,9 +127,9 @@ namespace _ORTools.Model
 
                                     HandleOverweightStatus(c, status);
 
-                                    if (status == EffectStatusIDs.OVERTHRUSTMAX && buffsToApply.ContainsKey(EffectStatusIDs.OVERTHRUST))
+                                    if (status == EffectStatusIDs.WS_OVERTHRUSTMAX && buffsToApply.ContainsKey(EffectStatusIDs.BS_OVERTHRUST))
                                     {
-                                        buffsToApply.Remove(EffectStatusIDs.OVERTHRUST);
+                                        buffsToApply.Remove(EffectStatusIDs.BS_OVERTHRUST);
                                     }
 
                                     if (buffMapping.ContainsKey(status)) //CHECK IF STATUS EXISTS IN STATUS LIST AND DO ACTION
@@ -137,8 +137,8 @@ namespace _ORTools.Model
                                         buffsToApply.Remove(status);
                                     }
 
-                                    if (status == EffectStatusIDs.QUAGMIRE) foundQuag = true;
-                                    if (status == EffectStatusIDs.DECREASE_AGI) foundDecreaseAgi = true;
+                                    if (status == EffectStatusIDs.WZ_QUAGMIRE) foundQuag = true;
+                                    if (status == EffectStatusIDs.AL_DECAGI) foundDecreaseAgi = true;
                                 }
                                 catch (Exception ex)
                                 {
@@ -241,23 +241,23 @@ namespace _ORTools.Model
 
         private bool ShouldSkipBuffDueToQuag(bool foundQuag, EffectStatusIDs buffKey)
         {
-            return foundQuag && (buffKey == EffectStatusIDs.CONCENTRATION ||
-                                buffKey == EffectStatusIDs.INC_AGI ||
-                                buffKey == EffectStatusIDs.TRUESIGHT ||
-                                buffKey == EffectStatusIDs.ADRENALINE ||
-                                buffKey == EffectStatusIDs.SPEARQUICKEN ||
-                                buffKey == EffectStatusIDs.ONEHANDQUICKEN ||
-                                buffKey == EffectStatusIDs.WINDWALK ||
-                                buffKey == EffectStatusIDs.TWOHANDQUICKEN);
+            return foundQuag && (buffKey == EffectStatusIDs.AC_CONCENTRATION ||
+                                buffKey == EffectStatusIDs.AL_INCAGI ||
+                                buffKey == EffectStatusIDs.SN_SIGHT ||
+                                buffKey == EffectStatusIDs.BS_ADRENALINE ||
+                                buffKey == EffectStatusIDs.CR_SPEARQUICKEN ||
+                                buffKey == EffectStatusIDs.KN_ONEHAND ||
+                                buffKey == EffectStatusIDs.SN_WINDWALK ||
+                                buffKey == EffectStatusIDs.KN_TWOHANDQUICKEN);
         }
 
         private bool ShouldSkipBuffDueToDecreaseAgi(bool foundDecreaseAgi, EffectStatusIDs buffKey)
         {
-            return foundDecreaseAgi && (buffKey == EffectStatusIDs.TWOHANDQUICKEN ||
-                                       buffKey == EffectStatusIDs.ADRENALINE ||
-                                       buffKey == EffectStatusIDs.ADRENALINE2 ||
-                                       buffKey == EffectStatusIDs.ONEHANDQUICKEN ||
-                                       buffKey == EffectStatusIDs.SPEARQUICKEN);
+            return foundDecreaseAgi && (buffKey == EffectStatusIDs.KN_TWOHANDQUICKEN ||
+                                       buffKey == EffectStatusIDs.BS_ADRENALINE ||
+                                       buffKey == EffectStatusIDs.BS_ADRENALINE2 ||
+                                       buffKey == EffectStatusIDs.KN_ONEHAND ||
+                                       buffKey == EffectStatusIDs.CR_SPEARQUICKEN);
         }
 
         public void AddKeyToBuff(EffectStatusIDs status, Keys key)

@@ -7,91 +7,91 @@ namespace _ORTools.Utils
     public enum EffectStatusIDs : uint
     {
         [Description("Provoke")]
-        PROVOKE = 0,
+        SM_PROVOKE = 0,
 
         [Description("Endure")]
-        ENDURE = 1,
+        SM_ENDURE = 1,
 
         [Description("Two Hand Quicken")]
-        TWOHANDQUICKEN = 2,
+        KN_TWOHANDQUICKEN = 2,
 
         [Description("Concentration")]
-        CONCENTRATION = 3,
+        AC_CONCENTRATION = 3,
 
-        [Description("Hiding")]
-        HIDING = 4,
+        [Description("Hide")]
+        TF_HIDING = 4,
 
-        [Description("Cloaking")]
-        CLOAKING = 5,
+        [Description("Cloak")]
+        AS_CLOAKING = 5,
 
         [Description("Poison React")]
-        POISONREACT = 7,
+        AS_POISONREACT = 7,
 
         [Description("Quagmire")]
-        QUAGMIRE = 8,
+        WZ_QUAGMIRE = 8,
 
         [Description("Angelus")]
-        ANGELUS = 9,
+        AL_ANGELUS = 9,
 
         [Description("Blessing")]
-        BLESSING = 10,
+        AL_BLESSING = 10,
 
         [Description("Increase AGI")]
-        INC_AGI = 12,
+        AL_INCAGI = 12,
 
         [Description("Decrease AGI")]
-        DECREASE_AGI = 13,
+        AL_DECAGI = 13,
 
         [Description("Slow Poison")]
-        SLOWPOISON = 14,
+        PR_SLOWPOISON = 14,
 
         [Description("Impositio Manus")]
-        IMPOSITIO = 15,
+        PR_IMPOSITIO = 15,
 
         [Description("Suffragium")]
-        SUFFRAGIUM = 16,
+        PR_SUFFRAGIUM = 16,
 
         [Description("Aspersio")]
-        ASPERSIO = 17,
+        PR_ASPERSIO = 17,
 
         [Description("Benedictio Sanctissimi Sacramenti")]
-        BENEDICTIO = 18,
+        PR_BENEDICTIO = 18,
 
         [Description("Kyrie Eleison")]
-        KYRIE = 19,
+        PR_KYRIE = 19,
 
         [Description("Magnificat")]
-        MAGNIFICAT = 20,
+        PR_MAGNIFICAT = 20,
 
         [Description("Gloria")]
-        GLORIA = 21,
+        PR_GLORIA = 21,
 
         [Description("Lex Aeterna")]
-        LEXAETERNA = 22,
+        PR_LEXAETERNA = 22,
 
         [Description("Adrenaline Rush")]
-        ADRENALINE = 23,
+        BS_ADRENALINE = 23,
 
         [Description("Weapon Perfection")]
-        WEAPONPERFECT = 24,
+        BS_WEAPONPERFECT = 24,
 
         [Description("Overthrust")]
-        OVERTHRUST = 25,
+        BS_OVERTHRUST = 25,
 
         [Description("Maximize")]
-        MAXIMIZE = 26,
+        BS_MAXIMIZE = 26,
 
         [Description("Peco Riding")]
-        PECO_RIDING = 27,
+        KN_RIDING = 27,
 
         [Description("Falcon On")]
-        FALCON_ON = 28,
+        HT_FALCON = 28,
 
         [Description("Crazy Uproar")]
-        CRAZY_UPROAR = 30,
+        MC_LOUD = 30,
 
         [Description("Energy Coat")]
-        ENERGYCOAT = 31,
+        MG_ENERGYCOAT = 31,
 
         [Description("Hallucination")]
         HALLUCINATION = 34,
@@ -103,169 +103,169 @@ namespace _ORTools.Utils
         WEIGHT90 = 36,
 
         [Description("Concentration Potion")]
-        CONCENTRATION_POTION = 37,
+        ATTHASTE_POTION1 = 37,
 
         [Description("Awakening Potion")]
-        AWAKENING_POTION = 38,
+        ATTHASTE_POTION2 = 38,
 
         [Description("Berserk Potion")]
-        BERSERK_POTION = 39,
+        ATTHASTE_POTION3 = 39,
 
         ASPDPOTIONINFINITY = 40,
 
         [Description("Speed Potion")]
-        SPEED_POT = 41,
+        MOVHASTE_POTION = 41,
 
         [Description("Strip Weapon")]
-        STRIPWEAPON = 50,
+        RG_STRIPWEAPON = 50,
 
         [Description("Strip Shield")]
-        STRIPSHIELD = 51,
+        RG_STRIPSHIELD = 51,
 
         [Description("Strip Armor")]
-        STRIPARMOR = 52,
+        RG_STRIPARMOR = 52,
 
         [Description("Strip Helm")]
-        STRIPHELM = 53,
+        RG_STRIPHELM = 53,
 
         [Description("Chemical Protection Weapon")]
-        PROTECTWEAPON = 54,
+        AM_CP_WEAPON = 54,
 
         [Description("Chemical Protection Shield")]
-        PROTECTSHIELD = 55,
+        AM_CP_SHIELD = 55,
 
         [Description("Chemical Protection Armor")]
-        PROTECTARMOR = 56,
+        AM_CP_ARMOR = 56,
 
         [Description("Chemical Protection Helm")]
-        PROTECTHELM = 57,
+        AM_CP_HELM = 57,
 
         [Description("Autoguard")]
-        AUTOGUARD = 58,
+        CR_AUTOGUARD = 58,
 
         [Description("Reflect Shield")]
-        REFLECTSHIELD = 59,
+        CR_REFLECTSHIELD = 59,
 
         [Description("Providence")]
-        PROVIDENCE = 61,
+        CR_PROVIDENCE = 61,
 
         [Description("Defender")]
-        DEFENDER = 62,
+        CR_DEFENDER = 62,
 
         WEAPONPROPERTY = 64,
 
         [Description("Auto Spell")]
-        AUTOSPELL = 65,
+        SA_AUTOSPELL = 65,
 
         [Description("Spear Quicken")]
-        SPEARQUICKEN = 68,
+        CR_SPEARQUICKEN = 68,
 
         [Description("A Poem of Bragi")]
-        POEMBRAGI = 72,
+        BA_POEMBRAGI = 72,
 
         [Description("The Apple of Idun")]
-        APPLEIDUN = 73,
+        BA_APPLEIDUN = 73,
 
         [Description("Fury")]
-        FURY = 86,
+        MO_EXPLOSIONSPIRITS = 86,
 
         [Description("Steel Body")]
-        STEEL_BODY = 87,
+        MO_STEELBODY = 87,
 
-        [Description("Elemental Converter (Fire)")]
-        PROPERTYFIRE = 90,
+        [Description("Endow Weapon: Fire")]
+        SA_FLAMELAUNCHER = 90,
 
-        [Description("Elemental Converter (Water)")]
-        PROPERTYWATER = 91,
+        [Description("Endow Weapon: Water")]
+        SA_FROSTWEAPON = 91,
 
-        [Description("Elemental Converter (Wind)")]
-        PROPERTYWIND = 92,
+        [Description("Endow Weapon: Wind")]
+        SA_LIGHTNINGLOADER = 92,
 
-        [Description("Elemental Converter (Earth)")]
-        PROPERTYGROUND = 93,
+        [Description("Endow Weapon: Earth")]
+        SA_SEISMICWEAPON = 93,
 
-        [Description("Undead Property")]
+        [Description("Endow Weapon: Undead")]
         PROPERTYUNDEAD = 97,
 
         [Description("Aura Blade")]
-        AURABLADE = 103,
+        LK_AURABLADE = 103,
 
         [Description("Parrying")]
-        PARRYING = 104,
+        LK_PARRYING = 104,
 
         [Description("Concentration / Saber Thrust (HR)")]
-        LKCONCENTRATION = 105,
+        LK_CONCENTRATION = 105,
 
         [Description("Tension Relax")]
-        TENSIONRELAX = 106,
+        LK_TENSIONRELAX = 106,
 
         [Description("Berserk")]
-        BERSERK = 107,
+        LK_BERSERK = 107,
 
         [Description("Assumptio")]
-        ASSUMPTIO = 110,
+        HP_ASSUMPTIO = 110,
 
         [Description("Mystical Amplification")]
-        MYST_AMPLIFY = 113,
+        HW_MAGICPOWER = 113,
 
         [Description("Enchant Deadly Poison")]
-        EDP = 114,
+        ASC_EDP = 114,
 
         [Description("True Sight")]
-        TRUESIGHT = 115,
+        SN_SIGHT = 115,
 
         [Description("Wind Walk")]
-        WINDWALK = 116,
+        SN_WINDWALK = 116,
 
         [Description("Meltdown")]
-        MELTDOWN = 117,
+        WS_MELTDOWN = 117,
 
         [Description("Cart Boost")]
-        CARTBOOST = 118,
+        WS_CARTBOOST = 118,
 
         [Description("Reject Sword")]
-        SWORDREJECT = 120,
+        ST_REJECTSWORD = 120,
 
         [Description("Bleeding")]
-        BLEEDING = 124,
+        NPC_BLEEDING = 124,
 
         [Description("Mind Breaker")]
-        MINDBREAKER = 126,
+        PF_MINDBREAKER = 126,
 
         [Description("Memorize")]
-        MEMORIZE = 127,
+        PF_MEMORIZE = 127,
 
         [Description("Magnum Break")]
-        MAGNUM = 131,
+        SM_MAGNUM = 131,
 
         [Description("Autoberserk")]
-        AUTOBERSERK = 132,
+        SM_AUTOBERSERK = 132,
 
-        [Description("Tornado Kick Stance")]
-        TORNADO_KICK_STANCE=135,
+        [Description("Tornado Stance / Prepare Storm Kick")]
+        TK_READYSTORM = 135,
 
-        [Description("Axe Kick Stance")]
-        AXE_KICK_STANCE = 137,
+        [Description("Heel Drop Stance / Prepare Axe Kick")]
+        TK_READYDOWN = 137,
 
-        [Description("Round Kick Stance")]
-        ROUND_KICK_STANCE = 139,
+        [Description("Roundhouse Stance / Prepare Roundhouse Kick")]
+        TK_READYTURN = 139,
 
-        [Description("Counter Kick Stance")]
-        COUNTER_KICK_STANCE = 141,
+        [Description("Counter Kick Stance / Prepare Counter Kick")]
+        TK_READYCOUNTER = 141,
 
         [Description("Dodge On")]
-        DODGE_ON = 143,
+        MO_DODGE = 143,
 
         [Description("Running")]
-        RUN = 145,
+        TK_RUN = 145,
 
-        [Description("Elemental Converter (Dark)")]
+        [Description("Endow Weapon: Dark")]
         PROPERTYDARK = 146,
 
-        [Description("Full Adrenaline Rush")]
-        ADRENALINE2 = 147,
+        [Description("Advanced/Full Adrenaline Rush")]
+        BS_ADRENALINE2 = 147,
 
-        [Description("Elemental Converter (Ghost)")]
+        [Description("Endow Weapon: Ghost")]
         PROPERTYTELEKINESIS = 148,
 
         [Description("Soul Link")]
@@ -275,50 +275,51 @@ namespace _ORTools.Utils
         // - Tasty Pink Ration (10 min)
         // - Chewy Ricecake (30 min)
         [Description("Resentment Box / Tasty Pink Ration / Chewy Ricecake")]
-        RESENTMENT_BOX = 150,
+        PLUSATTACKPOWER = 150,
 
         // Drowisness Box is also:
         // - Tasty White Ration (10 mins)
         [Description("Drowsiness Box / Tasty White Ration")]
-        DROWSINESS_BOX = 151,
+        PLUSMAGICPOWER = 151,
 
         [Description("Kaizel")]
-        KAIZEL = 156,
+        SL_KAIZEL = 156,
 
         [Description("Kaahi")]
-        KAAHI = 157,
+        SL_KAAHI = 157,
 
         [Description("Kaupe")]
-        KAUPE = 158,
+        SL_KAUPE = 158,
 
         [Description("One Hand Quicken")]
-        ONEHANDQUICKEN = 161,
+        KN_ONEHAND = 161,
 
         [Description("Solar, Lunar, Stellar Heat")]
         WARM = 165,
 
-        [Description("Comfort of the Sun")]
-        SUN_COMFORT = 169,
+        [Description("Comfort of the Sun / Solar Protection")]
+        SG_SUN_COMFORT = 169,
 
-        [Description("Comfort of the Moon")]
-        MOON_COMFORT = 170,
+        [Description("Comfort of the Moon / Lunar Protection")]
+        SG_MOON_COMFORT = 170,
 
-        [Description("Comfort of the Stars")]
-        STAR_COMFORT = 171,
+        [Description("Comfort of the Stars / Stellar Protection")]
+        SG_STAR_COMFORT = 171,
 
         [Description("Preserve")]
-        PRESERVE = 181,
+        ST_PRESERVE = 181,
 
         [Description("Chase Walk")]
-        CHASEWALK = 182,
+        ST_CHASEWALK = 182,
 
+        [Description("Box of Sunlight")]
         SUNLIGHT_BOX = 184,
 
         [Description("Double Casting")]
-        DOUBLECASTING = 186,
+        PF_DOUBLECASTING = 186,
 
-        [Description("Maximum Overthrust")]
-        OVERTHRUSTMAX = 188,
+        [Description("Maximum Overthrust/Power Thrust")]
+        WS_OVERTHRUSTMAX = 188,
 
         [Description("Homunculus Avoid")]
         HOM_AVOID = 192,
@@ -327,28 +328,28 @@ namespace _ORTools.Utils
         CR_SHRINK = 197,
 
         [Description("Sight Blaster")]
-        SIGHTBLASTER = 198,
+        WZ_SIGHTBLASTER = 198,
 
         [Description("Madness Canceller")]
-        MADNESSCANCEL = 203,
+        GS_MADNESSCANCEL = 203,
 
         [Description("Gatling Fever")]
-        GATLINGFEVER = 204,
+        GS_GATLINGFEVER = 204,
 
         [Description("Cast-off Cicada Shell / Cicada Skin Shed")]
-        CICADA_SKIN_SHED = 206,
+        NJ_UTSUSEMI = 206,
 
         [Description("Illusionary Shadow / Mirror Image")]
-        MIRROR_IMAGE = 207,
+        NJ_BUNSINJYUTSU = 207,
 
         [Description("Ninja Aura")]
-        NINJA_AURA = 208,
+        NJ_NEN = 208,
 
         [Description("Adjustment")]
-        ADJUSTMENT = 209,
+        GS_ADJUSTMENT = 209,
 
-        [Description("Accuracy")]
-        ACCURACY = 210,
+        [Description("Increase Accuracy")]
+        GS_INCREASING = 210,
 
         [Description("Food STR+10")]
         FOOD_STR = 241,
@@ -371,7 +372,7 @@ namespace _ORTools.Utils
         // Flee Scroll is also:
         // -- Spray of Flowers (flee +10, 5 mins)
         [Description("Flee Scroll / Spray of Flowers")]
-        FLEE_SCROLL = 247,
+        FOOD_BASICAVOIDANCE = 247,
 
         [Description("Accuracy Scroll")]
         ACCURACY_SCROLL = 248,
@@ -385,10 +386,10 @@ namespace _ORTools.Utils
         FOOD_VIT_CASH = 273,
 
         [Description("Slow Cast")]
-        SLOW_CAST = 282,
+        NPC_SLOWCAST = 282,
 
         [Description("Critical Wound")]
-        CRITICALWOUND = 286,
+        NPC_CRITICALWOUND = 286,
 
         [Description("Box of Thunder")]
         BOX_OF_THUNDER = 289,
@@ -470,7 +471,7 @@ namespace _ORTools.Utils
         DEEP_SLEEP = 435,
 
         [Description("Venom Splasher")]
-        VENOM_SPLASHER = 440,
+        AS_SPLASHER = 440,
 
         [Description("Dances with Wargs")]
         DANCE_WITH_WUG = 441,
@@ -537,7 +538,7 @@ namespace _ORTools.Utils
         // Main Debuffs
 
         [Description("Stone Curse (petrified)")]
-        STONEWAIT = 875,
+        STONECURSE = 875,
 
         [Description("Frozen")]
         FROZEN = 876,
@@ -549,7 +550,7 @@ namespace _ORTools.Utils
         SLEEP = 878,
 
         [Description("Stone Curse (initial stage)")]
-        STONE = 880,
+        STONECURSE_ING = 880,
 
         [Description("Burning")]
         BURNING = 881,
@@ -594,7 +595,7 @@ namespace _ORTools.Utils
         HR_PROJECTION = 907,
 
         //HR_COLDSKIN = 908, // dupe of 908:RESIST_PROPERTY_WATER
-        //HR_SABERTHRUST = 105, // dupe of 105:LKCONCENTRATION
+        //HR_SABERTHRUST = 105, // dupe of 105:LK_CONCENTRATION
 
         [Description("Coldproof Potion / Cold Skin (HR)")]
         RESIST_PROPERTY_WATER = 908,
@@ -627,7 +628,7 @@ namespace _ORTools.Utils
         INFINITY_DRINK = 1065,
 
         [Description("Basílica")]
-        BASILICA = 1122,
+        HP_BASILICA = 1122,
 
         MISTY_FROST = 1141,
         LUX_AMINA = 1154,
@@ -654,25 +655,25 @@ namespace _ORTools.Utils
         VIP_BONUS = 1401,
 
         [Description("Kaite")]
-        KAITE = 1402,
+        SL_KAITE = 1402,
 
         [Description("Box of Storms")]
         BOX_OF_STORMS = 1405,
 
         [Description("Volcano")]
-        VOLCANO = 1412,
+        SA_VOLCANO = 1412,
 
         [Description("Deluge")]
-        DELUGE = 1413,
+        SA_DELUGE = 1413,
 
         [Description("Violent Gale")]
-        VIOLENTGALE = 1414,
+        SA_VIOLENTGALE = 1414,
 
         [Description("Land Protector")]
-        LANDPROTECTOR = 1415,
+        SA_LANDPROTECTOR = 1415,
 
         [Description("Hallucination")]
-        HALLUCINATION_DEBUFF = 1416,
+        NPC_HALLUCINATION = 1416,
 
         [Description("Force Element (Earth)")]
         ELEMENT_EARTH = 1423,
@@ -739,12 +740,12 @@ namespace _ORTools.Utils
         LUK_Biscuit_Stick = 2040,
 
         [Description("Union of the Sun, Moon and Stars")]
-        FUSION = 2063,
+        SG_FUSION = 2063,
 
         BOVINE = 2068,
         DRAGON = 2069,
 
         [Description("Solar, Lunar and Stellar Miracle")]
-        MIRACLE = 2113,
+        SG_MIRACLE = 2113,
     }
 }
