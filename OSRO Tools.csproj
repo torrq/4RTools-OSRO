@@ -322,7 +322,8 @@
     <Compile Include="Forms\Tabs\TransferHelperForm.Designer.cs">
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\SongMacro.cs" />
+    <Compile Include="Model\Tabs\SkillTimerKey.cs" />
+    <Compile Include="Model\Tabs\MacroSong.cs" />
     <Compile Include="Model\Tabs\AutoOff.cs" />
     <Compile Include="Model\Tabs\AutopotHP.cs" />
     <Compile Include="Model\Tabs\AutopotSP.cs" />
@@ -343,7 +344,7 @@
     <Compile Include="Model\Settings\ConfigProfile.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Action.cs" />
-    <Compile Include="Model\Macro.cs" />
+    <Compile Include="Model\Tabs\MacroSwitch.cs" />
     <Compile Include="Model\Settings\Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

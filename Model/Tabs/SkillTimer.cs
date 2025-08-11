@@ -66,7 +66,7 @@ namespace _ORTools.Model
         private static IntPtr MakeLParam(int low, int high) => (IntPtr)((high << 16) | (low & 0xFFFF));
 
         private readonly string ACTION_NAME = "SkillTimer";
-        public Dictionary<int, MacroKey> skillTimer = new Dictionary<int, MacroKey>();
+        public Dictionary<int, SkillTimerKey> skillTimer = new Dictionary<int, SkillTimerKey>();
 
         private readonly Dictionary<int, ThreadRunner> threads = new Dictionary<int, ThreadRunner>();
 
@@ -141,7 +141,7 @@ namespace _ORTools.Model
             threads.Clear();
         }
 
-        private int SkillTimerThread(Client roClient, MacroKey macro)
+        private int SkillTimerThread(Client roClient, SkillTimerKey macro)
         {
             string currentMap = roClient.ReadCurrentMap();
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))

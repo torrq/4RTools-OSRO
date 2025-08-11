@@ -67,7 +67,7 @@ namespace _ORTools.Forms
 
                 if (!spammers.skillTimer.ContainsKey(id))
                 {
-                    spammers.skillTimer.Add(id, new MacroKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
+                    spammers.skillTimer.Add(id, new SkillTimerKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
                 }
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace _ORTools.Forms
             {
                 SkillTimer Spammers = ProfileSingleton.GetCurrent().SkillTimer;
                 if (!Spammers.skillTimer.ContainsKey(id)) return;
-                MacroKey skillTimer = Spammers.skillTimer[id];
+                SkillTimerKey skillTimer = Spammers.skillTimer[id];
 
                 Control[] enabledControls = Controls.Find($"SkillTimerEnabled{id}", true);
                 if (enabledControls.Length > 0)
@@ -232,7 +232,7 @@ namespace _ORTools.Forms
 
                 if (Spammers.skillTimer.ContainsKey(id))
                 {
-                    MacroKey skillTimer = Spammers.skillTimer[id];
+                    SkillTimerKey skillTimer = Spammers.skillTimer[id];
                     skillTimer.Key = key;
 
 
@@ -247,7 +247,7 @@ namespace _ORTools.Forms
                 }
                 else
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
+                    Spammers.skillTimer.Add(id, new SkillTimerKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
 
@@ -358,7 +358,7 @@ namespace _ORTools.Forms
                 }
                 else
                 {
-                    Spammers.skillTimer.Add(id, new MacroKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
+                    Spammers.skillTimer.Add(id, new SkillTimerKey(Keys.None, AppConfig.SkillTimerDefaultDelay));
                 }
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().SkillTimer);

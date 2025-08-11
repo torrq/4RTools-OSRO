@@ -57,7 +57,7 @@ namespace _ORTools.Forms
         {
             try
             {
-                SongMacro songMacro = ProfileSingleton.GetCurrent().SongMacro;
+                MacroSong songMacro = ProfileSingleton.GetCurrent().SongMacro;
                 if (songMacro == null)
                 {
                     DebugLogger.Error($"SongMacro is null for rowId {rowId}");
@@ -150,7 +150,7 @@ namespace _ORTools.Forms
         {
             try
             {
-                SongMacro songMacro = ProfileSingleton.GetCurrent().SongMacro;
+                MacroSong songMacro = ProfileSingleton.GetCurrent().SongMacro;
                 TextBox textBox = (TextBox)sender;
 
                 if (!Enum.TryParse(textBox.Text, out Keys key))
@@ -221,7 +221,7 @@ namespace _ORTools.Forms
         {
             try
             {
-                SongMacro songMacro = ProfileSingleton.GetCurrent().SongMacro;
+                MacroSong songMacro = ProfileSingleton.GetCurrent().SongMacro;
                 NumericUpDown delayInput = (NumericUpDown)sender;
 
                 // Parse row ID from control name (numDelaySong1, numDelaySong2, etc.)
@@ -249,7 +249,7 @@ namespace _ORTools.Forms
                 // Parse row ID from button name (btnResetSong1, btnResetSong2, etc.)
                 int rowId = int.Parse(resetButton.Name.Replace("btnResetSong", ""));
 
-                SongMacro songMacro = ProfileSingleton.GetCurrent().SongMacro;
+                MacroSong songMacro = ProfileSingleton.GetCurrent().SongMacro;
                 songMacro.ResetSongRow(rowId);
 
                 // Update the UI for this row

@@ -12,8 +12,6 @@ namespace _ORTools.Model
     public class MacroKey
     {
         public Keys Key { get; set; }
-        public bool AltKey { get; set; }
-        public bool Enabled { get; set; }
 
         private int _delay = AppConfig.MacroDefaultDelay;
         public int Delay
@@ -29,12 +27,6 @@ namespace _ORTools.Model
         /// 2: Click at the center of the game window
         /// </summary>
         public int ClickMode { get; set; } = 0;
-
-        // This property is for backward compatibility. It catches the old "ClickActive" boolean
-        // during JSON deserialization and converts it to the new "ClickMode" integer value.
-        [JsonProperty("ClickActive", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        private bool ObsoleteClickActive { set { ClickMode = value ? 1 : 0; } }
-
 
         /// <summary>
         /// Constructor for creating new instances programmatically.
@@ -63,37 +55,41 @@ namespace _ORTools.Model
     public class ChainConfig
     {
         public int id;
-        public Keys Trigger { get; set; }
-        public Keys DaggerKey { get; set; }
-        public Keys InstrumentKey { get; set; }
-        public int Delay { get; set; } = AppConfig.MacroDefaultDelay;
-        public Dictionary<string, MacroKey> macroEntries { get; set; } = new Dictionary<string, MacroKey>();
+
+        public List<MacroKey> macroEntries { get; set; } = new List<MacroKey>();
 
         public ChainConfig() { }
+
         public ChainConfig(int id)
         {
             this.id = id;
-            this.macroEntries = new Dictionary<string, MacroKey>();
+            this.macroEntries = new List<MacroKey>();
+            for (int i = 0; i < 7; i++)
+            {
+                this.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+            }
         }
 
         public ChainConfig(ChainConfig macro)
         {
             this.id = macro.id;
-            this.Delay = macro.Delay;
-            this.Trigger = macro.Trigger;
-            this.DaggerKey = macro.DaggerKey;
-            this.InstrumentKey = macro.InstrumentKey;
-            this.macroEntries = new Dictionary<string, MacroKey>(macro.macroEntries);
+            this.macroEntries = new List<MacroKey>(macro.macroEntries);
         }
+
         public ChainConfig(int id, Keys trigger)
         {
             this.id = id;
-            this.Trigger = trigger;
-            this.macroEntries = new Dictionary<string, MacroKey>();
+            this.macroEntries = new List<MacroKey>();
+            for (int i = 0; i < 7; i++)
+            {
+                this.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+            }
         }
+
     }
 
-    public class Macro : IAction
+
+    public class MacroSwitch : IAction
     {
         public static string ACTION_NAME_MACRO_SWITCH = "MacroSwitch";
 
@@ -101,7 +97,7 @@ namespace _ORTools.Model
         private ThreadRunner thread;
         public List<ChainConfig> ChainConfigs { get; set; } = new List<ChainConfig>();
 
-        public Macro(string macroname, int macroLanes)
+        public MacroSwitch(string macroname, int macroLanes)
         {
             this.ActionName = macroname;
             for (int i = 1; i <= macroLanes; i++)
@@ -138,34 +134,19 @@ namespace _ORTools.Model
         {
             foreach (ChainConfig chainConfig in this.ChainConfigs)
             {
-                if (chainConfig.Trigger != Keys.None && Win32Interop.IsKeyPressed(chainConfig.Trigger))
+                // Determine the trigger key as the first non-None key in macroEntries
+                MacroKey triggerMacroKey = chainConfig.macroEntries.Find(k => k.Key != Keys.None);
+                if (triggerMacroKey == null)
+                    continue; // no valid keys, skip
+
+                if (Win32Interop.IsKeyPressed(triggerMacroKey.Key))
                 {
-                    Dictionary<string, MacroKey> macro = chainConfig.macroEntries;
-                    for (int i = 1; i <= macro.Count; i++)//Ensure to execute keys in Order
+                    foreach (var macroKey in chainConfig.macroEntries)
                     {
-                        MacroKey macroKey = macro["in" + i + "mac" + chainConfig.id];
                         if (macroKey.Key != Keys.None)
                         {
-                            if (chainConfig.InstrumentKey != Keys.None)
-                            {
-                                //Press instrument key if exists.
-                                Keys instrumentKey = (Keys)Enum.Parse(typeof(Keys), chainConfig.InstrumentKey.ToString());
-                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, instrumentKey, 0);
-                                Thread.Sleep(30);
-                            }
-
-                            Keys thisk = (Keys)Enum.Parse(typeof(Keys), macroKey.Key.ToString());
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
-                            Thread.Sleep(macroKey.Delay); // Delay after key rather than before
-
-                            if (chainConfig.DaggerKey != Keys.None)
-                            {
-                                //Press instrument key if exists.
-                                Keys daggerKey = (Keys)Enum.Parse(typeof(Keys), chainConfig.DaggerKey.ToString());
-                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, daggerKey, 0);
-                                Thread.Sleep(30);
-                            }
-
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, macroKey.Key, 0);
+                            Thread.Sleep(macroKey.Delay); // delay after sending key
                         }
                     }
                 }
@@ -183,7 +164,7 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                 }
-                this.thread = new ThreadRunner((_) => MacroThread(roClient), "Macro");
+                this.thread = new ThreadRunner((_) => MacroThread(roClient), "MacroSwitch");
                 ThreadRunner.Start(this.thread);
             }
         }

@@ -30,61 +30,61 @@ namespace _ORTools.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.in1mac1 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch1_1 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.in1mac1delay = new System.Windows.Forms.NumericUpDown();
-            this.in2mac1delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay1_1 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay1_2 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.in2mac1 = new System.Windows.Forms.TextBox();
-            this.in4mac1delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch1_2 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay1_4 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.in4mac1 = new System.Windows.Forms.TextBox();
-            this.in3mac1delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch1_4 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay1_3 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.in3mac1 = new System.Windows.Forms.TextBox();
-            this.in7mac1delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch1_3 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay1_7 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.in7mac1 = new System.Windows.Forms.TextBox();
-            this.in6mac1delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch1_7 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay1_6 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.in6mac1 = new System.Windows.Forms.TextBox();
-            this.in5mac1delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch1_6 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay1_5 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.in5mac1 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch1_5 = new System.Windows.Forms.TextBox();
             this.chainGroup1 = new System.Windows.Forms.GroupBox();
             this.btnResMac1 = new System.Windows.Forms.Button();
             this.chainGroup2 = new System.Windows.Forms.GroupBox();
             this.btnResMac2 = new System.Windows.Forms.Button();
-            this.in1mac2 = new System.Windows.Forms.TextBox();
-            this.in7mac2 = new System.Windows.Forms.TextBox();
-            this.in6mac2 = new System.Windows.Forms.TextBox();
-            this.in2mac2 = new System.Windows.Forms.TextBox();
-            this.in5mac2 = new System.Windows.Forms.TextBox();
-            this.in3mac2 = new System.Windows.Forms.TextBox();
-            this.in4mac2 = new System.Windows.Forms.TextBox();
-            this.in7mac2delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch2_1 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch2_7 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch2_6 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch2_2 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch2_5 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch2_3 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch2_4 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay2_7 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.in6mac2delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay2_6 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.in1mac2delay = new System.Windows.Forms.NumericUpDown();
-            this.in5mac2delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay2_1 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay2_5 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.in2mac2delay = new System.Windows.Forms.NumericUpDown();
-            this.in4mac2delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay2_2 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay2_4 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
-            this.in3mac2delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay2_3 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
@@ -94,28 +94,28 @@ namespace _ORTools.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.chainGroup3 = new System.Windows.Forms.GroupBox();
             this.btnResMac3 = new System.Windows.Forms.Button();
-            this.in1mac3 = new System.Windows.Forms.TextBox();
-            this.in7mac3 = new System.Windows.Forms.TextBox();
-            this.in6mac3 = new System.Windows.Forms.TextBox();
-            this.in2mac3 = new System.Windows.Forms.TextBox();
-            this.in5mac3 = new System.Windows.Forms.TextBox();
-            this.in3mac3 = new System.Windows.Forms.TextBox();
-            this.in4mac3 = new System.Windows.Forms.TextBox();
-            this.in7mac3delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch3_1 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch3_7 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch3_6 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch3_2 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch3_5 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch3_3 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch3_4 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay3_7 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
             this.pictureBox28 = new System.Windows.Forms.PictureBox();
-            this.in6mac3delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay3_6 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
-            this.in1mac3delay = new System.Windows.Forms.NumericUpDown();
-            this.in5mac3delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay3_1 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay3_5 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox31 = new System.Windows.Forms.PictureBox();
-            this.in2mac3delay = new System.Windows.Forms.NumericUpDown();
-            this.in4mac3delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay3_2 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay3_4 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox32 = new System.Windows.Forms.PictureBox();
             this.pictureBox33 = new System.Windows.Forms.PictureBox();
-            this.in3mac3delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay3_3 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox34 = new System.Windows.Forms.PictureBox();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
@@ -125,28 +125,28 @@ namespace _ORTools.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.chainGroup4 = new System.Windows.Forms.GroupBox();
             this.btnResMac4 = new System.Windows.Forms.Button();
-            this.in1mac4 = new System.Windows.Forms.TextBox();
-            this.in7mac4 = new System.Windows.Forms.TextBox();
-            this.in6mac4 = new System.Windows.Forms.TextBox();
-            this.in2mac4 = new System.Windows.Forms.TextBox();
-            this.in5mac4 = new System.Windows.Forms.TextBox();
-            this.in3mac4 = new System.Windows.Forms.TextBox();
-            this.in4mac4 = new System.Windows.Forms.TextBox();
-            this.in7mac4delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch4_1 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch4_7 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch4_6 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch4_2 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch4_5 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch4_3 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch4_4 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay4_7 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox40 = new System.Windows.Forms.PictureBox();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
-            this.in6mac4delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay4_6 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
-            this.in1mac4delay = new System.Windows.Forms.NumericUpDown();
-            this.in5mac4delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay4_1 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay4_5 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox43 = new System.Windows.Forms.PictureBox();
             this.pictureBox44 = new System.Windows.Forms.PictureBox();
-            this.in2mac4delay = new System.Windows.Forms.NumericUpDown();
-            this.in4mac4delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay4_2 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay4_4 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox45 = new System.Windows.Forms.PictureBox();
             this.pictureBox46 = new System.Windows.Forms.PictureBox();
-            this.in3mac4delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay4_3 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox47 = new System.Windows.Forms.PictureBox();
             this.pictureBox48 = new System.Windows.Forms.PictureBox();
             this.pictureBox49 = new System.Windows.Forms.PictureBox();
@@ -156,28 +156,28 @@ namespace _ORTools.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.chainGroup5 = new System.Windows.Forms.GroupBox();
             this.btnResMac5 = new System.Windows.Forms.Button();
-            this.in1mac5 = new System.Windows.Forms.TextBox();
-            this.in7mac5 = new System.Windows.Forms.TextBox();
-            this.in6mac5 = new System.Windows.Forms.TextBox();
-            this.in2mac5 = new System.Windows.Forms.TextBox();
-            this.in5mac5 = new System.Windows.Forms.TextBox();
-            this.in3mac5 = new System.Windows.Forms.TextBox();
-            this.in4mac5 = new System.Windows.Forms.TextBox();
-            this.in7mac5delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitch5_1 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch5_7 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch5_6 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch5_2 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch5_5 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch5_3 = new System.Windows.Forms.TextBox();
+            this.MacroSwitch5_4 = new System.Windows.Forms.TextBox();
+            this.MacroSwitchDelay5_7 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox53 = new System.Windows.Forms.PictureBox();
             this.pictureBox54 = new System.Windows.Forms.PictureBox();
-            this.in6mac5delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay5_6 = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox55 = new System.Windows.Forms.PictureBox();
-            this.in1mac5delay = new System.Windows.Forms.NumericUpDown();
-            this.in5mac5delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay5_1 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay5_5 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox56 = new System.Windows.Forms.PictureBox();
             this.pictureBox57 = new System.Windows.Forms.PictureBox();
-            this.in2mac5delay = new System.Windows.Forms.NumericUpDown();
-            this.in4mac5delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay5_2 = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay5_4 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox58 = new System.Windows.Forms.PictureBox();
             this.pictureBox59 = new System.Windows.Forms.PictureBox();
-            this.in3mac5delay = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchDelay5_3 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox60 = new System.Windows.Forms.PictureBox();
             this.pictureBox61 = new System.Windows.Forms.PictureBox();
             this.pictureBox62 = new System.Windows.Forms.PictureBox();
@@ -187,40 +187,40 @@ namespace _ORTools.Forms
             this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac1delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac1delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac1delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac1delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac1delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac1delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac1delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.chainGroup1.SuspendLayout();
             this.chainGroup2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac2delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac2delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac2delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac2delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac2delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac2delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac2delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
@@ -228,20 +228,20 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
             this.chainGroup3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac3delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac3delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac3delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac3delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac3delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac3delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac3delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
@@ -249,20 +249,20 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             this.chainGroup4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac4delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac4delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac4delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac4delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac4delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac4delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac4delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
@@ -270,20 +270,20 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
             this.chainGroup5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac5delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac5delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac5delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac5delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac5delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac5delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac5delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).BeginInit();
@@ -292,14 +292,14 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox65)).BeginInit();
             this.SuspendLayout();
             // 
-            // in1mac1
+            // MacroSwitch1_1
             // 
-            this.in1mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac1.Location = new System.Drawing.Point(62, 13);
-            this.in1mac1.Name = "in1mac1";
-            this.in1mac1.Size = new System.Drawing.Size(49, 21);
-            this.in1mac1.TabIndex = 182;
-            this.in1mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_1.Location = new System.Drawing.Point(62, 13);
+            this.MacroSwitch1_1.Name = "MacroSwitch1_1";
+            this.MacroSwitch1_1.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_1.TabIndex = 182;
+            this.MacroSwitch1_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox2
             // 
@@ -339,33 +339,33 @@ namespace _ORTools.Forms
             this.label4.TabIndex = 248;
             this.label4.Text = "Delays(ms):";
             // 
-            // in1mac1delay
+            // MacroSwitchDelay1_1
             // 
-            this.in1mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac1delay.Location = new System.Drawing.Point(65, 47);
-            this.in1mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_1.Location = new System.Drawing.Point(65, 47);
+            this.MacroSwitchDelay1_1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in1mac1delay.Name = "in1mac1delay";
-            this.in1mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in1mac1delay.TabIndex = 254;
-            this.in1mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_1.Name = "MacroSwitchDelay1_1";
+            this.MacroSwitchDelay1_1.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_1.TabIndex = 254;
+            this.MacroSwitchDelay1_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac1delay
+            // MacroSwitchDelay1_2
             // 
-            this.in2mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac1delay.Location = new System.Drawing.Point(134, 47);
-            this.in2mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_2.Location = new System.Drawing.Point(134, 47);
+            this.MacroSwitchDelay1_2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in2mac1delay.Name = "in2mac1delay";
-            this.in2mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in2mac1delay.TabIndex = 260;
-            this.in2mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_2.Name = "MacroSwitchDelay1_2";
+            this.MacroSwitchDelay1_2.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_2.TabIndex = 260;
+            this.MacroSwitchDelay1_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox4
             // 
@@ -387,28 +387,28 @@ namespace _ORTools.Forms
             this.pictureBox5.TabIndex = 258;
             this.pictureBox5.TabStop = false;
             // 
-            // in2mac1
+            // MacroSwitch1_2
             // 
-            this.in2mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac1.Location = new System.Drawing.Point(131, 13);
-            this.in2mac1.Name = "in2mac1";
-            this.in2mac1.Size = new System.Drawing.Size(49, 21);
-            this.in2mac1.TabIndex = 257;
-            this.in2mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_2.Location = new System.Drawing.Point(131, 13);
+            this.MacroSwitch1_2.Name = "MacroSwitch1_2";
+            this.MacroSwitch1_2.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_2.TabIndex = 257;
+            this.MacroSwitch1_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac1delay
+            // MacroSwitchDelay1_4
             // 
-            this.in4mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac1delay.Location = new System.Drawing.Point(272, 47);
-            this.in4mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_4.Location = new System.Drawing.Point(272, 47);
+            this.MacroSwitchDelay1_4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in4mac1delay.Name = "in4mac1delay";
-            this.in4mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in4mac1delay.TabIndex = 268;
-            this.in4mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_4.Name = "MacroSwitchDelay1_4";
+            this.MacroSwitchDelay1_4.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_4.TabIndex = 268;
+            this.MacroSwitchDelay1_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox6
             // 
@@ -430,28 +430,28 @@ namespace _ORTools.Forms
             this.pictureBox7.TabIndex = 266;
             this.pictureBox7.TabStop = false;
             // 
-            // in4mac1
+            // MacroSwitch1_4
             // 
-            this.in4mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac1.Location = new System.Drawing.Point(269, 13);
-            this.in4mac1.Name = "in4mac1";
-            this.in4mac1.Size = new System.Drawing.Size(49, 21);
-            this.in4mac1.TabIndex = 265;
-            this.in4mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_4.Location = new System.Drawing.Point(269, 13);
+            this.MacroSwitch1_4.Name = "MacroSwitch1_4";
+            this.MacroSwitch1_4.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_4.TabIndex = 265;
+            this.MacroSwitch1_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac1delay
+            // MacroSwitchDelay1_3
             // 
-            this.in3mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac1delay.Location = new System.Drawing.Point(203, 47);
-            this.in3mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_3.Location = new System.Drawing.Point(203, 47);
+            this.MacroSwitchDelay1_3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in3mac1delay.Name = "in3mac1delay";
-            this.in3mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in3mac1delay.TabIndex = 264;
-            this.in3mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_3.Name = "MacroSwitchDelay1_3";
+            this.MacroSwitchDelay1_3.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_3.TabIndex = 264;
+            this.MacroSwitchDelay1_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox8
             // 
@@ -473,28 +473,28 @@ namespace _ORTools.Forms
             this.pictureBox9.TabIndex = 262;
             this.pictureBox9.TabStop = false;
             // 
-            // in3mac1
+            // MacroSwitch1_3
             // 
-            this.in3mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac1.Location = new System.Drawing.Point(200, 13);
-            this.in3mac1.Name = "in3mac1";
-            this.in3mac1.Size = new System.Drawing.Size(49, 21);
-            this.in3mac1.TabIndex = 261;
-            this.in3mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_3.Location = new System.Drawing.Point(200, 13);
+            this.MacroSwitch1_3.Name = "MacroSwitch1_3";
+            this.MacroSwitch1_3.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_3.TabIndex = 261;
+            this.MacroSwitch1_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac1delay
+            // MacroSwitchDelay1_7
             // 
-            this.in7mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac1delay.Location = new System.Drawing.Point(479, 47);
-            this.in7mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_7.Location = new System.Drawing.Point(479, 47);
+            this.MacroSwitchDelay1_7.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in7mac1delay.Name = "in7mac1delay";
-            this.in7mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in7mac1delay.TabIndex = 280;
-            this.in7mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_7.Name = "MacroSwitchDelay1_7";
+            this.MacroSwitchDelay1_7.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_7.TabIndex = 280;
+            this.MacroSwitchDelay1_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox11
             // 
@@ -506,28 +506,28 @@ namespace _ORTools.Forms
             this.pictureBox11.TabIndex = 278;
             this.pictureBox11.TabStop = false;
             // 
-            // in7mac1
+            // MacroSwitch1_7
             // 
-            this.in7mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac1.Location = new System.Drawing.Point(476, 13);
-            this.in7mac1.Name = "in7mac1";
-            this.in7mac1.Size = new System.Drawing.Size(49, 21);
-            this.in7mac1.TabIndex = 277;
-            this.in7mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_7.Location = new System.Drawing.Point(476, 13);
+            this.MacroSwitch1_7.Name = "MacroSwitch1_7";
+            this.MacroSwitch1_7.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_7.TabIndex = 277;
+            this.MacroSwitch1_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in6mac1delay
+            // MacroSwitchDelay1_6
             // 
-            this.in6mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac1delay.Location = new System.Drawing.Point(410, 47);
-            this.in6mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_6.Location = new System.Drawing.Point(410, 47);
+            this.MacroSwitchDelay1_6.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in6mac1delay.Name = "in6mac1delay";
-            this.in6mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in6mac1delay.TabIndex = 276;
-            this.in6mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_6.Name = "MacroSwitchDelay1_6";
+            this.MacroSwitchDelay1_6.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_6.TabIndex = 276;
+            this.MacroSwitchDelay1_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox12
             // 
@@ -549,28 +549,28 @@ namespace _ORTools.Forms
             this.pictureBox13.TabIndex = 274;
             this.pictureBox13.TabStop = false;
             // 
-            // in6mac1
+            // MacroSwitch1_6
             // 
-            this.in6mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac1.Location = new System.Drawing.Point(407, 13);
-            this.in6mac1.Name = "in6mac1";
-            this.in6mac1.Size = new System.Drawing.Size(49, 21);
-            this.in6mac1.TabIndex = 273;
-            this.in6mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_6.Location = new System.Drawing.Point(407, 13);
+            this.MacroSwitch1_6.Name = "MacroSwitch1_6";
+            this.MacroSwitch1_6.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_6.TabIndex = 273;
+            this.MacroSwitch1_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac1delay
+            // MacroSwitchDelay1_5
             // 
-            this.in5mac1delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac1delay.Location = new System.Drawing.Point(341, 47);
-            this.in5mac1delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay1_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay1_5.Location = new System.Drawing.Point(341, 47);
+            this.MacroSwitchDelay1_5.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in5mac1delay.Name = "in5mac1delay";
-            this.in5mac1delay.Size = new System.Drawing.Size(47, 21);
-            this.in5mac1delay.TabIndex = 272;
-            this.in5mac1delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay1_5.Name = "MacroSwitchDelay1_5";
+            this.MacroSwitchDelay1_5.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay1_5.TabIndex = 272;
+            this.MacroSwitchDelay1_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox14
             // 
@@ -592,40 +592,40 @@ namespace _ORTools.Forms
             this.pictureBox15.TabIndex = 270;
             this.pictureBox15.TabStop = false;
             // 
-            // in5mac1
+            // MacroSwitch1_5
             // 
-            this.in5mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac1.Location = new System.Drawing.Point(338, 13);
-            this.in5mac1.Name = "in5mac1";
-            this.in5mac1.Size = new System.Drawing.Size(49, 21);
-            this.in5mac1.TabIndex = 269;
-            this.in5mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch1_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch1_5.Location = new System.Drawing.Point(338, 13);
+            this.MacroSwitch1_5.Name = "MacroSwitch1_5";
+            this.MacroSwitch1_5.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch1_5.TabIndex = 269;
+            this.MacroSwitch1_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // chainGroup1
             // 
             this.chainGroup1.Controls.Add(this.btnResMac1);
-            this.chainGroup1.Controls.Add(this.in1mac1);
-            this.chainGroup1.Controls.Add(this.in7mac1);
-            this.chainGroup1.Controls.Add(this.in6mac1);
-            this.chainGroup1.Controls.Add(this.in2mac1);
-            this.chainGroup1.Controls.Add(this.in5mac1);
-            this.chainGroup1.Controls.Add(this.in3mac1);
-            this.chainGroup1.Controls.Add(this.in4mac1);
-            this.chainGroup1.Controls.Add(this.in7mac1delay);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_1);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_7);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_6);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_2);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_5);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_3);
+            this.chainGroup1.Controls.Add(this.MacroSwitch1_4);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_7);
             this.chainGroup1.Controls.Add(this.pictureBox11);
             this.chainGroup1.Controls.Add(this.pictureBox2);
-            this.chainGroup1.Controls.Add(this.in6mac1delay);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_6);
             this.chainGroup1.Controls.Add(this.label5);
             this.chainGroup1.Controls.Add(this.pictureBox13);
-            this.chainGroup1.Controls.Add(this.in1mac1delay);
-            this.chainGroup1.Controls.Add(this.in5mac1delay);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_1);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_5);
             this.chainGroup1.Controls.Add(this.pictureBox5);
             this.chainGroup1.Controls.Add(this.pictureBox15);
-            this.chainGroup1.Controls.Add(this.in2mac1delay);
-            this.chainGroup1.Controls.Add(this.in4mac1delay);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_2);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_4);
             this.chainGroup1.Controls.Add(this.pictureBox9);
             this.chainGroup1.Controls.Add(this.pictureBox7);
-            this.chainGroup1.Controls.Add(this.in3mac1delay);
+            this.chainGroup1.Controls.Add(this.MacroSwitchDelay1_3);
             this.chainGroup1.Controls.Add(this.pictureBox3);
             this.chainGroup1.Controls.Add(this.pictureBox4);
             this.chainGroup1.Controls.Add(this.pictureBox8);
@@ -656,28 +656,28 @@ namespace _ORTools.Forms
             // chainGroup2
             // 
             this.chainGroup2.Controls.Add(this.btnResMac2);
-            this.chainGroup2.Controls.Add(this.in1mac2);
-            this.chainGroup2.Controls.Add(this.in7mac2);
-            this.chainGroup2.Controls.Add(this.in6mac2);
-            this.chainGroup2.Controls.Add(this.in2mac2);
-            this.chainGroup2.Controls.Add(this.in5mac2);
-            this.chainGroup2.Controls.Add(this.in3mac2);
-            this.chainGroup2.Controls.Add(this.in4mac2);
-            this.chainGroup2.Controls.Add(this.in7mac2delay);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_1);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_7);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_6);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_2);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_5);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_3);
+            this.chainGroup2.Controls.Add(this.MacroSwitch2_4);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_7);
             this.chainGroup2.Controls.Add(this.pictureBox1);
             this.chainGroup2.Controls.Add(this.pictureBox10);
-            this.chainGroup2.Controls.Add(this.in6mac2delay);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_6);
             this.chainGroup2.Controls.Add(this.label2);
             this.chainGroup2.Controls.Add(this.pictureBox16);
-            this.chainGroup2.Controls.Add(this.in1mac2delay);
-            this.chainGroup2.Controls.Add(this.in5mac2delay);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_1);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_5);
             this.chainGroup2.Controls.Add(this.pictureBox17);
             this.chainGroup2.Controls.Add(this.pictureBox18);
-            this.chainGroup2.Controls.Add(this.in2mac2delay);
-            this.chainGroup2.Controls.Add(this.in4mac2delay);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_2);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_4);
             this.chainGroup2.Controls.Add(this.pictureBox19);
             this.chainGroup2.Controls.Add(this.pictureBox20);
-            this.chainGroup2.Controls.Add(this.in3mac2delay);
+            this.chainGroup2.Controls.Add(this.MacroSwitchDelay2_3);
             this.chainGroup2.Controls.Add(this.pictureBox21);
             this.chainGroup2.Controls.Add(this.pictureBox22);
             this.chainGroup2.Controls.Add(this.pictureBox23);
@@ -705,82 +705,82 @@ namespace _ORTools.Forms
             this.btnResMac2.Text = "Reset";
             this.btnResMac2.UseVisualStyleBackColor = false;
             // 
-            // in1mac2
+            // MacroSwitch2_1
             // 
-            this.in1mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac2.Location = new System.Drawing.Point(62, 13);
-            this.in1mac2.Name = "in1mac2";
-            this.in1mac2.Size = new System.Drawing.Size(49, 21);
-            this.in1mac2.TabIndex = 182;
-            this.in1mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_1.Location = new System.Drawing.Point(62, 13);
+            this.MacroSwitch2_1.Name = "MacroSwitch2_1";
+            this.MacroSwitch2_1.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_1.TabIndex = 182;
+            this.MacroSwitch2_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac2
+            // MacroSwitch2_7
             // 
-            this.in7mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac2.Location = new System.Drawing.Point(476, 13);
-            this.in7mac2.Name = "in7mac2";
-            this.in7mac2.Size = new System.Drawing.Size(49, 21);
-            this.in7mac2.TabIndex = 277;
-            this.in7mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_7.Location = new System.Drawing.Point(476, 13);
+            this.MacroSwitch2_7.Name = "MacroSwitch2_7";
+            this.MacroSwitch2_7.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_7.TabIndex = 277;
+            this.MacroSwitch2_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in6mac2
+            // MacroSwitch2_6
             // 
-            this.in6mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac2.Location = new System.Drawing.Point(407, 13);
-            this.in6mac2.Name = "in6mac2";
-            this.in6mac2.Size = new System.Drawing.Size(49, 21);
-            this.in6mac2.TabIndex = 273;
-            this.in6mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_6.Location = new System.Drawing.Point(407, 13);
+            this.MacroSwitch2_6.Name = "MacroSwitch2_6";
+            this.MacroSwitch2_6.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_6.TabIndex = 273;
+            this.MacroSwitch2_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac2
+            // MacroSwitch2_2
             // 
-            this.in2mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac2.Location = new System.Drawing.Point(131, 13);
-            this.in2mac2.Name = "in2mac2";
-            this.in2mac2.Size = new System.Drawing.Size(49, 21);
-            this.in2mac2.TabIndex = 257;
-            this.in2mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_2.Location = new System.Drawing.Point(131, 13);
+            this.MacroSwitch2_2.Name = "MacroSwitch2_2";
+            this.MacroSwitch2_2.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_2.TabIndex = 257;
+            this.MacroSwitch2_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac2
+            // MacroSwitch2_5
             // 
-            this.in5mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac2.Location = new System.Drawing.Point(338, 13);
-            this.in5mac2.Name = "in5mac2";
-            this.in5mac2.Size = new System.Drawing.Size(49, 21);
-            this.in5mac2.TabIndex = 269;
-            this.in5mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_5.Location = new System.Drawing.Point(338, 13);
+            this.MacroSwitch2_5.Name = "MacroSwitch2_5";
+            this.MacroSwitch2_5.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_5.TabIndex = 269;
+            this.MacroSwitch2_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac2
+            // MacroSwitch2_3
             // 
-            this.in3mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac2.Location = new System.Drawing.Point(200, 13);
-            this.in3mac2.Name = "in3mac2";
-            this.in3mac2.Size = new System.Drawing.Size(49, 21);
-            this.in3mac2.TabIndex = 261;
-            this.in3mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_3.Location = new System.Drawing.Point(200, 13);
+            this.MacroSwitch2_3.Name = "MacroSwitch2_3";
+            this.MacroSwitch2_3.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_3.TabIndex = 261;
+            this.MacroSwitch2_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac2
+            // MacroSwitch2_4
             // 
-            this.in4mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac2.Location = new System.Drawing.Point(269, 13);
-            this.in4mac2.Name = "in4mac2";
-            this.in4mac2.Size = new System.Drawing.Size(49, 21);
-            this.in4mac2.TabIndex = 265;
-            this.in4mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch2_4.Location = new System.Drawing.Point(269, 13);
+            this.MacroSwitch2_4.Name = "MacroSwitch2_4";
+            this.MacroSwitch2_4.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch2_4.TabIndex = 265;
+            this.MacroSwitch2_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac2delay
+            // MacroSwitchDelay2_7
             // 
-            this.in7mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac2delay.Location = new System.Drawing.Point(479, 47);
-            this.in7mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_7.Location = new System.Drawing.Point(479, 47);
+            this.MacroSwitchDelay2_7.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in7mac2delay.Name = "in7mac2delay";
-            this.in7mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in7mac2delay.TabIndex = 280;
-            this.in7mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_7.Name = "MacroSwitchDelay2_7";
+            this.MacroSwitchDelay2_7.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_7.TabIndex = 280;
+            this.MacroSwitchDelay2_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
@@ -802,19 +802,19 @@ namespace _ORTools.Forms
             this.pictureBox10.TabIndex = 194;
             this.pictureBox10.TabStop = false;
             // 
-            // in6mac2delay
+            // MacroSwitchDelay2_6
             // 
-            this.in6mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac2delay.Location = new System.Drawing.Point(410, 47);
-            this.in6mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_6.Location = new System.Drawing.Point(410, 47);
+            this.MacroSwitchDelay2_6.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in6mac2delay.Name = "in6mac2delay";
-            this.in6mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in6mac2delay.TabIndex = 276;
-            this.in6mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_6.Name = "MacroSwitchDelay2_6";
+            this.MacroSwitchDelay2_6.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_6.TabIndex = 276;
+            this.MacroSwitchDelay2_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -835,33 +835,33 @@ namespace _ORTools.Forms
             this.pictureBox16.TabIndex = 274;
             this.pictureBox16.TabStop = false;
             // 
-            // in1mac2delay
+            // MacroSwitchDelay2_1
             // 
-            this.in1mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac2delay.Location = new System.Drawing.Point(65, 47);
-            this.in1mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_1.Location = new System.Drawing.Point(65, 47);
+            this.MacroSwitchDelay2_1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in1mac2delay.Name = "in1mac2delay";
-            this.in1mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in1mac2delay.TabIndex = 254;
-            this.in1mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_1.Name = "MacroSwitchDelay2_1";
+            this.MacroSwitchDelay2_1.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_1.TabIndex = 254;
+            this.MacroSwitchDelay2_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac2delay
+            // MacroSwitchDelay2_5
             // 
-            this.in5mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac2delay.Location = new System.Drawing.Point(341, 47);
-            this.in5mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_5.Location = new System.Drawing.Point(341, 47);
+            this.MacroSwitchDelay2_5.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in5mac2delay.Name = "in5mac2delay";
-            this.in5mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in5mac2delay.TabIndex = 272;
-            this.in5mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_5.Name = "MacroSwitchDelay2_5";
+            this.MacroSwitchDelay2_5.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_5.TabIndex = 272;
+            this.MacroSwitchDelay2_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox17
             // 
@@ -883,33 +883,33 @@ namespace _ORTools.Forms
             this.pictureBox18.TabIndex = 270;
             this.pictureBox18.TabStop = false;
             // 
-            // in2mac2delay
+            // MacroSwitchDelay2_2
             // 
-            this.in2mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac2delay.Location = new System.Drawing.Point(134, 47);
-            this.in2mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_2.Location = new System.Drawing.Point(134, 47);
+            this.MacroSwitchDelay2_2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in2mac2delay.Name = "in2mac2delay";
-            this.in2mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in2mac2delay.TabIndex = 260;
-            this.in2mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_2.Name = "MacroSwitchDelay2_2";
+            this.MacroSwitchDelay2_2.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_2.TabIndex = 260;
+            this.MacroSwitchDelay2_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac2delay
+            // MacroSwitchDelay2_4
             // 
-            this.in4mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac2delay.Location = new System.Drawing.Point(272, 47);
-            this.in4mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_4.Location = new System.Drawing.Point(272, 47);
+            this.MacroSwitchDelay2_4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in4mac2delay.Name = "in4mac2delay";
-            this.in4mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in4mac2delay.TabIndex = 268;
-            this.in4mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_4.Name = "MacroSwitchDelay2_4";
+            this.MacroSwitchDelay2_4.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_4.TabIndex = 268;
+            this.MacroSwitchDelay2_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox19
             // 
@@ -931,19 +931,19 @@ namespace _ORTools.Forms
             this.pictureBox20.TabIndex = 266;
             this.pictureBox20.TabStop = false;
             // 
-            // in3mac2delay
+            // MacroSwitchDelay2_3
             // 
-            this.in3mac2delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac2delay.Location = new System.Drawing.Point(203, 47);
-            this.in3mac2delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay2_3.Location = new System.Drawing.Point(203, 47);
+            this.MacroSwitchDelay2_3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in3mac2delay.Name = "in3mac2delay";
-            this.in3mac2delay.Size = new System.Drawing.Size(47, 21);
-            this.in3mac2delay.TabIndex = 264;
-            this.in3mac2delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay2_3.Name = "MacroSwitchDelay2_3";
+            this.MacroSwitchDelay2_3.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay2_3.TabIndex = 264;
+            this.MacroSwitchDelay2_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox21
             // 
@@ -1017,28 +1017,28 @@ namespace _ORTools.Forms
             // chainGroup3
             // 
             this.chainGroup3.Controls.Add(this.btnResMac3);
-            this.chainGroup3.Controls.Add(this.in1mac3);
-            this.chainGroup3.Controls.Add(this.in7mac3);
-            this.chainGroup3.Controls.Add(this.in6mac3);
-            this.chainGroup3.Controls.Add(this.in2mac3);
-            this.chainGroup3.Controls.Add(this.in5mac3);
-            this.chainGroup3.Controls.Add(this.in3mac3);
-            this.chainGroup3.Controls.Add(this.in4mac3);
-            this.chainGroup3.Controls.Add(this.in7mac3delay);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_1);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_7);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_6);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_2);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_5);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_3);
+            this.chainGroup3.Controls.Add(this.MacroSwitch3_4);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_7);
             this.chainGroup3.Controls.Add(this.pictureBox27);
             this.chainGroup3.Controls.Add(this.pictureBox28);
-            this.chainGroup3.Controls.Add(this.in6mac3delay);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_6);
             this.chainGroup3.Controls.Add(this.label6);
             this.chainGroup3.Controls.Add(this.pictureBox29);
-            this.chainGroup3.Controls.Add(this.in1mac3delay);
-            this.chainGroup3.Controls.Add(this.in5mac3delay);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_1);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_5);
             this.chainGroup3.Controls.Add(this.pictureBox30);
             this.chainGroup3.Controls.Add(this.pictureBox31);
-            this.chainGroup3.Controls.Add(this.in2mac3delay);
-            this.chainGroup3.Controls.Add(this.in4mac3delay);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_2);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_4);
             this.chainGroup3.Controls.Add(this.pictureBox32);
             this.chainGroup3.Controls.Add(this.pictureBox33);
-            this.chainGroup3.Controls.Add(this.in3mac3delay);
+            this.chainGroup3.Controls.Add(this.MacroSwitchDelay3_3);
             this.chainGroup3.Controls.Add(this.pictureBox34);
             this.chainGroup3.Controls.Add(this.pictureBox35);
             this.chainGroup3.Controls.Add(this.pictureBox36);
@@ -1066,82 +1066,82 @@ namespace _ORTools.Forms
             this.btnResMac3.Text = "Reset";
             this.btnResMac3.UseVisualStyleBackColor = false;
             // 
-            // in1mac3
+            // MacroSwitch3_1
             // 
-            this.in1mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac3.Location = new System.Drawing.Point(62, 13);
-            this.in1mac3.Name = "in1mac3";
-            this.in1mac3.Size = new System.Drawing.Size(49, 21);
-            this.in1mac3.TabIndex = 182;
-            this.in1mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_1.Location = new System.Drawing.Point(62, 13);
+            this.MacroSwitch3_1.Name = "MacroSwitch3_1";
+            this.MacroSwitch3_1.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_1.TabIndex = 182;
+            this.MacroSwitch3_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac3
+            // MacroSwitch3_7
             // 
-            this.in7mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac3.Location = new System.Drawing.Point(476, 13);
-            this.in7mac3.Name = "in7mac3";
-            this.in7mac3.Size = new System.Drawing.Size(49, 21);
-            this.in7mac3.TabIndex = 277;
-            this.in7mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_7.Location = new System.Drawing.Point(476, 13);
+            this.MacroSwitch3_7.Name = "MacroSwitch3_7";
+            this.MacroSwitch3_7.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_7.TabIndex = 277;
+            this.MacroSwitch3_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in6mac3
+            // MacroSwitch3_6
             // 
-            this.in6mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac3.Location = new System.Drawing.Point(407, 13);
-            this.in6mac3.Name = "in6mac3";
-            this.in6mac3.Size = new System.Drawing.Size(49, 21);
-            this.in6mac3.TabIndex = 273;
-            this.in6mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_6.Location = new System.Drawing.Point(407, 13);
+            this.MacroSwitch3_6.Name = "MacroSwitch3_6";
+            this.MacroSwitch3_6.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_6.TabIndex = 273;
+            this.MacroSwitch3_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac3
+            // MacroSwitch3_2
             // 
-            this.in2mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac3.Location = new System.Drawing.Point(131, 13);
-            this.in2mac3.Name = "in2mac3";
-            this.in2mac3.Size = new System.Drawing.Size(49, 21);
-            this.in2mac3.TabIndex = 257;
-            this.in2mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_2.Location = new System.Drawing.Point(131, 13);
+            this.MacroSwitch3_2.Name = "MacroSwitch3_2";
+            this.MacroSwitch3_2.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_2.TabIndex = 257;
+            this.MacroSwitch3_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac3
+            // MacroSwitch3_5
             // 
-            this.in5mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac3.Location = new System.Drawing.Point(338, 13);
-            this.in5mac3.Name = "in5mac3";
-            this.in5mac3.Size = new System.Drawing.Size(49, 21);
-            this.in5mac3.TabIndex = 269;
-            this.in5mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_5.Location = new System.Drawing.Point(338, 13);
+            this.MacroSwitch3_5.Name = "MacroSwitch3_5";
+            this.MacroSwitch3_5.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_5.TabIndex = 269;
+            this.MacroSwitch3_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac3
+            // MacroSwitch3_3
             // 
-            this.in3mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac3.Location = new System.Drawing.Point(200, 13);
-            this.in3mac3.Name = "in3mac3";
-            this.in3mac3.Size = new System.Drawing.Size(49, 21);
-            this.in3mac3.TabIndex = 261;
-            this.in3mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_3.Location = new System.Drawing.Point(200, 13);
+            this.MacroSwitch3_3.Name = "MacroSwitch3_3";
+            this.MacroSwitch3_3.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_3.TabIndex = 261;
+            this.MacroSwitch3_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac3
+            // MacroSwitch3_4
             // 
-            this.in4mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac3.Location = new System.Drawing.Point(269, 13);
-            this.in4mac3.Name = "in4mac3";
-            this.in4mac3.Size = new System.Drawing.Size(49, 21);
-            this.in4mac3.TabIndex = 265;
-            this.in4mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch3_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch3_4.Location = new System.Drawing.Point(269, 13);
+            this.MacroSwitch3_4.Name = "MacroSwitch3_4";
+            this.MacroSwitch3_4.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch3_4.TabIndex = 265;
+            this.MacroSwitch3_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac3delay
+            // MacroSwitchDelay3_7
             // 
-            this.in7mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac3delay.Location = new System.Drawing.Point(479, 47);
-            this.in7mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_7.Location = new System.Drawing.Point(479, 47);
+            this.MacroSwitchDelay3_7.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in7mac3delay.Name = "in7mac3delay";
-            this.in7mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in7mac3delay.TabIndex = 280;
-            this.in7mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_7.Name = "MacroSwitchDelay3_7";
+            this.MacroSwitchDelay3_7.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_7.TabIndex = 280;
+            this.MacroSwitchDelay3_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox27
             // 
@@ -1163,19 +1163,19 @@ namespace _ORTools.Forms
             this.pictureBox28.TabIndex = 194;
             this.pictureBox28.TabStop = false;
             // 
-            // in6mac3delay
+            // MacroSwitchDelay3_6
             // 
-            this.in6mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac3delay.Location = new System.Drawing.Point(410, 47);
-            this.in6mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_6.Location = new System.Drawing.Point(410, 47);
+            this.MacroSwitchDelay3_6.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in6mac3delay.Name = "in6mac3delay";
-            this.in6mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in6mac3delay.TabIndex = 276;
-            this.in6mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_6.Name = "MacroSwitchDelay3_6";
+            this.MacroSwitchDelay3_6.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_6.TabIndex = 276;
+            this.MacroSwitchDelay3_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -1196,33 +1196,33 @@ namespace _ORTools.Forms
             this.pictureBox29.TabIndex = 274;
             this.pictureBox29.TabStop = false;
             // 
-            // in1mac3delay
+            // MacroSwitchDelay3_1
             // 
-            this.in1mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac3delay.Location = new System.Drawing.Point(65, 47);
-            this.in1mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_1.Location = new System.Drawing.Point(65, 47);
+            this.MacroSwitchDelay3_1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in1mac3delay.Name = "in1mac3delay";
-            this.in1mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in1mac3delay.TabIndex = 254;
-            this.in1mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_1.Name = "MacroSwitchDelay3_1";
+            this.MacroSwitchDelay3_1.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_1.TabIndex = 254;
+            this.MacroSwitchDelay3_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac3delay
+            // MacroSwitchDelay3_5
             // 
-            this.in5mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac3delay.Location = new System.Drawing.Point(341, 47);
-            this.in5mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_5.Location = new System.Drawing.Point(341, 47);
+            this.MacroSwitchDelay3_5.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in5mac3delay.Name = "in5mac3delay";
-            this.in5mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in5mac3delay.TabIndex = 272;
-            this.in5mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_5.Name = "MacroSwitchDelay3_5";
+            this.MacroSwitchDelay3_5.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_5.TabIndex = 272;
+            this.MacroSwitchDelay3_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox30
             // 
@@ -1244,33 +1244,33 @@ namespace _ORTools.Forms
             this.pictureBox31.TabIndex = 270;
             this.pictureBox31.TabStop = false;
             // 
-            // in2mac3delay
+            // MacroSwitchDelay3_2
             // 
-            this.in2mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac3delay.Location = new System.Drawing.Point(134, 47);
-            this.in2mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_2.Location = new System.Drawing.Point(134, 47);
+            this.MacroSwitchDelay3_2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in2mac3delay.Name = "in2mac3delay";
-            this.in2mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in2mac3delay.TabIndex = 260;
-            this.in2mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_2.Name = "MacroSwitchDelay3_2";
+            this.MacroSwitchDelay3_2.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_2.TabIndex = 260;
+            this.MacroSwitchDelay3_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac3delay
+            // MacroSwitchDelay3_4
             // 
-            this.in4mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac3delay.Location = new System.Drawing.Point(272, 47);
-            this.in4mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_4.Location = new System.Drawing.Point(272, 47);
+            this.MacroSwitchDelay3_4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in4mac3delay.Name = "in4mac3delay";
-            this.in4mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in4mac3delay.TabIndex = 268;
-            this.in4mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_4.Name = "MacroSwitchDelay3_4";
+            this.MacroSwitchDelay3_4.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_4.TabIndex = 268;
+            this.MacroSwitchDelay3_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox32
             // 
@@ -1292,19 +1292,19 @@ namespace _ORTools.Forms
             this.pictureBox33.TabIndex = 266;
             this.pictureBox33.TabStop = false;
             // 
-            // in3mac3delay
+            // MacroSwitchDelay3_3
             // 
-            this.in3mac3delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac3delay.Location = new System.Drawing.Point(203, 47);
-            this.in3mac3delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay3_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay3_3.Location = new System.Drawing.Point(203, 47);
+            this.MacroSwitchDelay3_3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in3mac3delay.Name = "in3mac3delay";
-            this.in3mac3delay.Size = new System.Drawing.Size(47, 21);
-            this.in3mac3delay.TabIndex = 264;
-            this.in3mac3delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay3_3.Name = "MacroSwitchDelay3_3";
+            this.MacroSwitchDelay3_3.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay3_3.TabIndex = 264;
+            this.MacroSwitchDelay3_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox34
             // 
@@ -1378,28 +1378,28 @@ namespace _ORTools.Forms
             // chainGroup4
             // 
             this.chainGroup4.Controls.Add(this.btnResMac4);
-            this.chainGroup4.Controls.Add(this.in1mac4);
-            this.chainGroup4.Controls.Add(this.in7mac4);
-            this.chainGroup4.Controls.Add(this.in6mac4);
-            this.chainGroup4.Controls.Add(this.in2mac4);
-            this.chainGroup4.Controls.Add(this.in5mac4);
-            this.chainGroup4.Controls.Add(this.in3mac4);
-            this.chainGroup4.Controls.Add(this.in4mac4);
-            this.chainGroup4.Controls.Add(this.in7mac4delay);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_1);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_7);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_6);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_2);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_5);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_3);
+            this.chainGroup4.Controls.Add(this.MacroSwitch4_4);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_7);
             this.chainGroup4.Controls.Add(this.pictureBox40);
             this.chainGroup4.Controls.Add(this.pictureBox41);
-            this.chainGroup4.Controls.Add(this.in6mac4delay);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_6);
             this.chainGroup4.Controls.Add(this.label8);
             this.chainGroup4.Controls.Add(this.pictureBox42);
-            this.chainGroup4.Controls.Add(this.in1mac4delay);
-            this.chainGroup4.Controls.Add(this.in5mac4delay);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_1);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_5);
             this.chainGroup4.Controls.Add(this.pictureBox43);
             this.chainGroup4.Controls.Add(this.pictureBox44);
-            this.chainGroup4.Controls.Add(this.in2mac4delay);
-            this.chainGroup4.Controls.Add(this.in4mac4delay);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_2);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_4);
             this.chainGroup4.Controls.Add(this.pictureBox45);
             this.chainGroup4.Controls.Add(this.pictureBox46);
-            this.chainGroup4.Controls.Add(this.in3mac4delay);
+            this.chainGroup4.Controls.Add(this.MacroSwitchDelay4_3);
             this.chainGroup4.Controls.Add(this.pictureBox47);
             this.chainGroup4.Controls.Add(this.pictureBox48);
             this.chainGroup4.Controls.Add(this.pictureBox49);
@@ -1427,82 +1427,82 @@ namespace _ORTools.Forms
             this.btnResMac4.Text = "Reset";
             this.btnResMac4.UseVisualStyleBackColor = false;
             // 
-            // in1mac4
+            // MacroSwitch4_1
             // 
-            this.in1mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac4.Location = new System.Drawing.Point(62, 13);
-            this.in1mac4.Name = "in1mac4";
-            this.in1mac4.Size = new System.Drawing.Size(49, 21);
-            this.in1mac4.TabIndex = 182;
-            this.in1mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_1.Location = new System.Drawing.Point(62, 13);
+            this.MacroSwitch4_1.Name = "MacroSwitch4_1";
+            this.MacroSwitch4_1.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_1.TabIndex = 182;
+            this.MacroSwitch4_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac4
+            // MacroSwitch4_7
             // 
-            this.in7mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac4.Location = new System.Drawing.Point(476, 13);
-            this.in7mac4.Name = "in7mac4";
-            this.in7mac4.Size = new System.Drawing.Size(49, 21);
-            this.in7mac4.TabIndex = 277;
-            this.in7mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_7.Location = new System.Drawing.Point(476, 13);
+            this.MacroSwitch4_7.Name = "MacroSwitch4_7";
+            this.MacroSwitch4_7.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_7.TabIndex = 277;
+            this.MacroSwitch4_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in6mac4
+            // MacroSwitch4_6
             // 
-            this.in6mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac4.Location = new System.Drawing.Point(407, 13);
-            this.in6mac4.Name = "in6mac4";
-            this.in6mac4.Size = new System.Drawing.Size(49, 21);
-            this.in6mac4.TabIndex = 273;
-            this.in6mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_6.Location = new System.Drawing.Point(407, 13);
+            this.MacroSwitch4_6.Name = "MacroSwitch4_6";
+            this.MacroSwitch4_6.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_6.TabIndex = 273;
+            this.MacroSwitch4_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac4
+            // MacroSwitch4_2
             // 
-            this.in2mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac4.Location = new System.Drawing.Point(131, 13);
-            this.in2mac4.Name = "in2mac4";
-            this.in2mac4.Size = new System.Drawing.Size(49, 21);
-            this.in2mac4.TabIndex = 257;
-            this.in2mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_2.Location = new System.Drawing.Point(131, 13);
+            this.MacroSwitch4_2.Name = "MacroSwitch4_2";
+            this.MacroSwitch4_2.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_2.TabIndex = 257;
+            this.MacroSwitch4_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac4
+            // MacroSwitch4_5
             // 
-            this.in5mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac4.Location = new System.Drawing.Point(338, 13);
-            this.in5mac4.Name = "in5mac4";
-            this.in5mac4.Size = new System.Drawing.Size(49, 21);
-            this.in5mac4.TabIndex = 269;
-            this.in5mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_5.Location = new System.Drawing.Point(338, 13);
+            this.MacroSwitch4_5.Name = "MacroSwitch4_5";
+            this.MacroSwitch4_5.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_5.TabIndex = 269;
+            this.MacroSwitch4_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac4
+            // MacroSwitch4_3
             // 
-            this.in3mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac4.Location = new System.Drawing.Point(200, 13);
-            this.in3mac4.Name = "in3mac4";
-            this.in3mac4.Size = new System.Drawing.Size(49, 21);
-            this.in3mac4.TabIndex = 261;
-            this.in3mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_3.Location = new System.Drawing.Point(200, 13);
+            this.MacroSwitch4_3.Name = "MacroSwitch4_3";
+            this.MacroSwitch4_3.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_3.TabIndex = 261;
+            this.MacroSwitch4_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac4
+            // MacroSwitch4_4
             // 
-            this.in4mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac4.Location = new System.Drawing.Point(269, 13);
-            this.in4mac4.Name = "in4mac4";
-            this.in4mac4.Size = new System.Drawing.Size(49, 21);
-            this.in4mac4.TabIndex = 265;
-            this.in4mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch4_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch4_4.Location = new System.Drawing.Point(269, 13);
+            this.MacroSwitch4_4.Name = "MacroSwitch4_4";
+            this.MacroSwitch4_4.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch4_4.TabIndex = 265;
+            this.MacroSwitch4_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac4delay
+            // MacroSwitchDelay4_7
             // 
-            this.in7mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac4delay.Location = new System.Drawing.Point(479, 47);
-            this.in7mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_7.Location = new System.Drawing.Point(479, 47);
+            this.MacroSwitchDelay4_7.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in7mac4delay.Name = "in7mac4delay";
-            this.in7mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in7mac4delay.TabIndex = 280;
-            this.in7mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_7.Name = "MacroSwitchDelay4_7";
+            this.MacroSwitchDelay4_7.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_7.TabIndex = 280;
+            this.MacroSwitchDelay4_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox40
             // 
@@ -1522,19 +1522,19 @@ namespace _ORTools.Forms
             this.pictureBox41.TabIndex = 194;
             this.pictureBox41.TabStop = false;
             // 
-            // in6mac4delay
+            // MacroSwitchDelay4_6
             // 
-            this.in6mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac4delay.Location = new System.Drawing.Point(410, 47);
-            this.in6mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_6.Location = new System.Drawing.Point(410, 47);
+            this.MacroSwitchDelay4_6.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in6mac4delay.Name = "in6mac4delay";
-            this.in6mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in6mac4delay.TabIndex = 276;
-            this.in6mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_6.Name = "MacroSwitchDelay4_6";
+            this.MacroSwitchDelay4_6.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_6.TabIndex = 276;
+            this.MacroSwitchDelay4_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -1554,33 +1554,33 @@ namespace _ORTools.Forms
             this.pictureBox42.TabIndex = 274;
             this.pictureBox42.TabStop = false;
             // 
-            // in1mac4delay
+            // MacroSwitchDelay4_1
             // 
-            this.in1mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac4delay.Location = new System.Drawing.Point(65, 47);
-            this.in1mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_1.Location = new System.Drawing.Point(65, 47);
+            this.MacroSwitchDelay4_1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in1mac4delay.Name = "in1mac4delay";
-            this.in1mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in1mac4delay.TabIndex = 254;
-            this.in1mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_1.Name = "MacroSwitchDelay4_1";
+            this.MacroSwitchDelay4_1.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_1.TabIndex = 254;
+            this.MacroSwitchDelay4_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac4delay
+            // MacroSwitchDelay4_5
             // 
-            this.in5mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac4delay.Location = new System.Drawing.Point(341, 47);
-            this.in5mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_5.Location = new System.Drawing.Point(341, 47);
+            this.MacroSwitchDelay4_5.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in5mac4delay.Name = "in5mac4delay";
-            this.in5mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in5mac4delay.TabIndex = 272;
-            this.in5mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_5.Name = "MacroSwitchDelay4_5";
+            this.MacroSwitchDelay4_5.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_5.TabIndex = 272;
+            this.MacroSwitchDelay4_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox43
             // 
@@ -1600,33 +1600,33 @@ namespace _ORTools.Forms
             this.pictureBox44.TabIndex = 270;
             this.pictureBox44.TabStop = false;
             // 
-            // in2mac4delay
+            // MacroSwitchDelay4_2
             // 
-            this.in2mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac4delay.Location = new System.Drawing.Point(134, 47);
-            this.in2mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_2.Location = new System.Drawing.Point(134, 47);
+            this.MacroSwitchDelay4_2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in2mac4delay.Name = "in2mac4delay";
-            this.in2mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in2mac4delay.TabIndex = 260;
-            this.in2mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_2.Name = "MacroSwitchDelay4_2";
+            this.MacroSwitchDelay4_2.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_2.TabIndex = 260;
+            this.MacroSwitchDelay4_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac4delay
+            // MacroSwitchDelay4_4
             // 
-            this.in4mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac4delay.Location = new System.Drawing.Point(272, 47);
-            this.in4mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_4.Location = new System.Drawing.Point(272, 47);
+            this.MacroSwitchDelay4_4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in4mac4delay.Name = "in4mac4delay";
-            this.in4mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in4mac4delay.TabIndex = 268;
-            this.in4mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_4.Name = "MacroSwitchDelay4_4";
+            this.MacroSwitchDelay4_4.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_4.TabIndex = 268;
+            this.MacroSwitchDelay4_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox45
             // 
@@ -1646,19 +1646,19 @@ namespace _ORTools.Forms
             this.pictureBox46.TabIndex = 266;
             this.pictureBox46.TabStop = false;
             // 
-            // in3mac4delay
+            // MacroSwitchDelay4_3
             // 
-            this.in3mac4delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac4delay.Location = new System.Drawing.Point(203, 47);
-            this.in3mac4delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay4_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay4_3.Location = new System.Drawing.Point(203, 47);
+            this.MacroSwitchDelay4_3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in3mac4delay.Name = "in3mac4delay";
-            this.in3mac4delay.Size = new System.Drawing.Size(47, 21);
-            this.in3mac4delay.TabIndex = 264;
-            this.in3mac4delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay4_3.Name = "MacroSwitchDelay4_3";
+            this.MacroSwitchDelay4_3.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay4_3.TabIndex = 264;
+            this.MacroSwitchDelay4_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox47
             // 
@@ -1732,28 +1732,28 @@ namespace _ORTools.Forms
             // chainGroup5
             // 
             this.chainGroup5.Controls.Add(this.btnResMac5);
-            this.chainGroup5.Controls.Add(this.in1mac5);
-            this.chainGroup5.Controls.Add(this.in7mac5);
-            this.chainGroup5.Controls.Add(this.in6mac5);
-            this.chainGroup5.Controls.Add(this.in2mac5);
-            this.chainGroup5.Controls.Add(this.in5mac5);
-            this.chainGroup5.Controls.Add(this.in3mac5);
-            this.chainGroup5.Controls.Add(this.in4mac5);
-            this.chainGroup5.Controls.Add(this.in7mac5delay);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_1);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_7);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_6);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_2);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_5);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_3);
+            this.chainGroup5.Controls.Add(this.MacroSwitch5_4);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_7);
             this.chainGroup5.Controls.Add(this.pictureBox53);
             this.chainGroup5.Controls.Add(this.pictureBox54);
-            this.chainGroup5.Controls.Add(this.in6mac5delay);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_6);
             this.chainGroup5.Controls.Add(this.label10);
             this.chainGroup5.Controls.Add(this.pictureBox55);
-            this.chainGroup5.Controls.Add(this.in1mac5delay);
-            this.chainGroup5.Controls.Add(this.in5mac5delay);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_1);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_5);
             this.chainGroup5.Controls.Add(this.pictureBox56);
             this.chainGroup5.Controls.Add(this.pictureBox57);
-            this.chainGroup5.Controls.Add(this.in2mac5delay);
-            this.chainGroup5.Controls.Add(this.in4mac5delay);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_2);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_4);
             this.chainGroup5.Controls.Add(this.pictureBox58);
             this.chainGroup5.Controls.Add(this.pictureBox59);
-            this.chainGroup5.Controls.Add(this.in3mac5delay);
+            this.chainGroup5.Controls.Add(this.MacroSwitchDelay5_3);
             this.chainGroup5.Controls.Add(this.pictureBox60);
             this.chainGroup5.Controls.Add(this.pictureBox61);
             this.chainGroup5.Controls.Add(this.pictureBox62);
@@ -1781,82 +1781,82 @@ namespace _ORTools.Forms
             this.btnResMac5.Text = "Reset";
             this.btnResMac5.UseVisualStyleBackColor = false;
             // 
-            // in1mac5
+            // MacroSwitch5_1
             // 
-            this.in1mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac5.Location = new System.Drawing.Point(62, 13);
-            this.in1mac5.Name = "in1mac5";
-            this.in1mac5.Size = new System.Drawing.Size(49, 21);
-            this.in1mac5.TabIndex = 182;
-            this.in1mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_1.Location = new System.Drawing.Point(62, 13);
+            this.MacroSwitch5_1.Name = "MacroSwitch5_1";
+            this.MacroSwitch5_1.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_1.TabIndex = 182;
+            this.MacroSwitch5_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac5
+            // MacroSwitch5_7
             // 
-            this.in7mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac5.Location = new System.Drawing.Point(476, 13);
-            this.in7mac5.Name = "in7mac5";
-            this.in7mac5.Size = new System.Drawing.Size(49, 21);
-            this.in7mac5.TabIndex = 277;
-            this.in7mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_7.Location = new System.Drawing.Point(476, 13);
+            this.MacroSwitch5_7.Name = "MacroSwitch5_7";
+            this.MacroSwitch5_7.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_7.TabIndex = 277;
+            this.MacroSwitch5_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in6mac5
+            // MacroSwitch5_6
             // 
-            this.in6mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac5.Location = new System.Drawing.Point(407, 13);
-            this.in6mac5.Name = "in6mac5";
-            this.in6mac5.Size = new System.Drawing.Size(49, 21);
-            this.in6mac5.TabIndex = 273;
-            this.in6mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_6.Location = new System.Drawing.Point(407, 13);
+            this.MacroSwitch5_6.Name = "MacroSwitch5_6";
+            this.MacroSwitch5_6.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_6.TabIndex = 273;
+            this.MacroSwitch5_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac5
+            // MacroSwitch5_2
             // 
-            this.in2mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac5.Location = new System.Drawing.Point(131, 13);
-            this.in2mac5.Name = "in2mac5";
-            this.in2mac5.Size = new System.Drawing.Size(49, 21);
-            this.in2mac5.TabIndex = 257;
-            this.in2mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_2.Location = new System.Drawing.Point(131, 13);
+            this.MacroSwitch5_2.Name = "MacroSwitch5_2";
+            this.MacroSwitch5_2.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_2.TabIndex = 257;
+            this.MacroSwitch5_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac5
+            // MacroSwitch5_5
             // 
-            this.in5mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac5.Location = new System.Drawing.Point(338, 13);
-            this.in5mac5.Name = "in5mac5";
-            this.in5mac5.Size = new System.Drawing.Size(49, 21);
-            this.in5mac5.TabIndex = 269;
-            this.in5mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_5.Location = new System.Drawing.Point(338, 13);
+            this.MacroSwitch5_5.Name = "MacroSwitch5_5";
+            this.MacroSwitch5_5.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_5.TabIndex = 269;
+            this.MacroSwitch5_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac5
+            // MacroSwitch5_3
             // 
-            this.in3mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac5.Location = new System.Drawing.Point(200, 13);
-            this.in3mac5.Name = "in3mac5";
-            this.in3mac5.Size = new System.Drawing.Size(49, 21);
-            this.in3mac5.TabIndex = 261;
-            this.in3mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_3.Location = new System.Drawing.Point(200, 13);
+            this.MacroSwitch5_3.Name = "MacroSwitch5_3";
+            this.MacroSwitch5_3.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_3.TabIndex = 261;
+            this.MacroSwitch5_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac5
+            // MacroSwitch5_4
             // 
-            this.in4mac5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac5.Location = new System.Drawing.Point(269, 13);
-            this.in4mac5.Name = "in4mac5";
-            this.in4mac5.Size = new System.Drawing.Size(49, 21);
-            this.in4mac5.TabIndex = 265;
-            this.in4mac5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitch5_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitch5_4.Location = new System.Drawing.Point(269, 13);
+            this.MacroSwitch5_4.Name = "MacroSwitch5_4";
+            this.MacroSwitch5_4.Size = new System.Drawing.Size(49, 21);
+            this.MacroSwitch5_4.TabIndex = 265;
+            this.MacroSwitch5_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac5delay
+            // MacroSwitchDelay5_7
             // 
-            this.in7mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac5delay.Location = new System.Drawing.Point(479, 47);
-            this.in7mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_7.Location = new System.Drawing.Point(479, 47);
+            this.MacroSwitchDelay5_7.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in7mac5delay.Name = "in7mac5delay";
-            this.in7mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in7mac5delay.TabIndex = 280;
-            this.in7mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_7.Name = "MacroSwitchDelay5_7";
+            this.MacroSwitchDelay5_7.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_7.TabIndex = 280;
+            this.MacroSwitchDelay5_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox53
             // 
@@ -1876,19 +1876,19 @@ namespace _ORTools.Forms
             this.pictureBox54.TabIndex = 194;
             this.pictureBox54.TabStop = false;
             // 
-            // in6mac5delay
+            // MacroSwitchDelay5_6
             // 
-            this.in6mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac5delay.Location = new System.Drawing.Point(410, 47);
-            this.in6mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_6.Location = new System.Drawing.Point(410, 47);
+            this.MacroSwitchDelay5_6.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in6mac5delay.Name = "in6mac5delay";
-            this.in6mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in6mac5delay.TabIndex = 276;
-            this.in6mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_6.Name = "MacroSwitchDelay5_6";
+            this.MacroSwitchDelay5_6.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_6.TabIndex = 276;
+            this.MacroSwitchDelay5_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -1908,33 +1908,33 @@ namespace _ORTools.Forms
             this.pictureBox55.TabIndex = 274;
             this.pictureBox55.TabStop = false;
             // 
-            // in1mac5delay
+            // MacroSwitchDelay5_1
             // 
-            this.in1mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac5delay.Location = new System.Drawing.Point(65, 47);
-            this.in1mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_1.Location = new System.Drawing.Point(65, 47);
+            this.MacroSwitchDelay5_1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in1mac5delay.Name = "in1mac5delay";
-            this.in1mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in1mac5delay.TabIndex = 254;
-            this.in1mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_1.Name = "MacroSwitchDelay5_1";
+            this.MacroSwitchDelay5_1.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_1.TabIndex = 254;
+            this.MacroSwitchDelay5_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac5delay
+            // MacroSwitchDelay5_5
             // 
-            this.in5mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac5delay.Location = new System.Drawing.Point(341, 47);
-            this.in5mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_5.Location = new System.Drawing.Point(341, 47);
+            this.MacroSwitchDelay5_5.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in5mac5delay.Name = "in5mac5delay";
-            this.in5mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in5mac5delay.TabIndex = 272;
-            this.in5mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_5.Name = "MacroSwitchDelay5_5";
+            this.MacroSwitchDelay5_5.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_5.TabIndex = 272;
+            this.MacroSwitchDelay5_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox56
             // 
@@ -1954,33 +1954,33 @@ namespace _ORTools.Forms
             this.pictureBox57.TabIndex = 270;
             this.pictureBox57.TabStop = false;
             // 
-            // in2mac5delay
+            // MacroSwitchDelay5_2
             // 
-            this.in2mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac5delay.Location = new System.Drawing.Point(134, 47);
-            this.in2mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_2.Location = new System.Drawing.Point(134, 47);
+            this.MacroSwitchDelay5_2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in2mac5delay.Name = "in2mac5delay";
-            this.in2mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in2mac5delay.TabIndex = 260;
-            this.in2mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_2.Name = "MacroSwitchDelay5_2";
+            this.MacroSwitchDelay5_2.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_2.TabIndex = 260;
+            this.MacroSwitchDelay5_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac5delay
+            // MacroSwitchDelay5_4
             // 
-            this.in4mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac5delay.Location = new System.Drawing.Point(272, 47);
-            this.in4mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_4.Location = new System.Drawing.Point(272, 47);
+            this.MacroSwitchDelay5_4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in4mac5delay.Name = "in4mac5delay";
-            this.in4mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in4mac5delay.TabIndex = 268;
-            this.in4mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_4.Name = "MacroSwitchDelay5_4";
+            this.MacroSwitchDelay5_4.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_4.TabIndex = 268;
+            this.MacroSwitchDelay5_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox58
             // 
@@ -2000,19 +2000,19 @@ namespace _ORTools.Forms
             this.pictureBox59.TabIndex = 266;
             this.pictureBox59.TabStop = false;
             // 
-            // in3mac5delay
+            // MacroSwitchDelay5_3
             // 
-            this.in3mac5delay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac5delay.Location = new System.Drawing.Point(203, 47);
-            this.in3mac5delay.Maximum = new decimal(new int[] {
+            this.MacroSwitchDelay5_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MacroSwitchDelay5_3.Location = new System.Drawing.Point(203, 47);
+            this.MacroSwitchDelay5_3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.in3mac5delay.Name = "in3mac5delay";
-            this.in3mac5delay.Size = new System.Drawing.Size(47, 21);
-            this.in3mac5delay.TabIndex = 264;
-            this.in3mac5delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchDelay5_3.Name = "MacroSwitchDelay5_3";
+            this.MacroSwitchDelay5_3.Size = new System.Drawing.Size(47, 21);
+            this.MacroSwitchDelay5_3.TabIndex = 264;
+            this.MacroSwitchDelay5_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox60
             // 
@@ -2101,42 +2101,42 @@ namespace _ORTools.Forms
             this.Text = "MacroSwitchForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac1delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac1delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac1delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac1delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac1delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac1delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac1delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay1_5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.chainGroup1.ResumeLayout(false);
             this.chainGroup1.PerformLayout();
             this.chainGroup2.ResumeLayout(false);
             this.chainGroup2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac2delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac2delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac2delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac2delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac2delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac2delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac2delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay2_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
@@ -2145,20 +2145,20 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
             this.chainGroup3.ResumeLayout(false);
             this.chainGroup3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac3delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac3delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac3delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac3delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac3delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac3delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac3delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay3_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
@@ -2167,20 +2167,20 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
             this.chainGroup4.ResumeLayout(false);
             this.chainGroup4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac4delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac4delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac4delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac4delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac4delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac4delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac4delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay4_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).EndInit();
@@ -2189,20 +2189,20 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
             this.chainGroup5.ResumeLayout(false);
             this.chainGroup5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.in7mac5delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in6mac5delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in1mac5delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in5mac5delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in2mac5delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in4mac5delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.in3mac5delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchDelay5_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).EndInit();
@@ -2214,120 +2214,120 @@ namespace _ORTools.Forms
         }
 
         #endregion
-        private System.Windows.Forms.TextBox in1mac1;
+        private System.Windows.Forms.TextBox MacroSwitch1_1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown in1mac1delay;
-        private System.Windows.Forms.NumericUpDown in2mac1delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_1;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.TextBox in2mac1;
-        private System.Windows.Forms.NumericUpDown in4mac1delay;
+        private System.Windows.Forms.TextBox MacroSwitch1_2;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_4;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.TextBox in4mac1;
-        private System.Windows.Forms.NumericUpDown in3mac1delay;
+        private System.Windows.Forms.TextBox MacroSwitch1_4;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_3;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.TextBox in3mac1;
-        private System.Windows.Forms.NumericUpDown in7mac1delay;
+        private System.Windows.Forms.TextBox MacroSwitch1_3;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_7;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.TextBox in7mac1;
-        private System.Windows.Forms.NumericUpDown in6mac1delay;
+        private System.Windows.Forms.TextBox MacroSwitch1_7;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_6;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.TextBox in6mac1;
-        private System.Windows.Forms.NumericUpDown in5mac1delay;
+        private System.Windows.Forms.TextBox MacroSwitch1_6;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay1_5;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.TextBox in5mac1;
+        private System.Windows.Forms.TextBox MacroSwitch1_5;
         private System.Windows.Forms.GroupBox chainGroup1;
         private System.Windows.Forms.GroupBox chainGroup2;
         private System.Windows.Forms.GroupBox chainGroup3;
-        private System.Windows.Forms.TextBox in1mac3;
-        private System.Windows.Forms.TextBox in7mac3;
-        private System.Windows.Forms.TextBox in6mac3;
-        private System.Windows.Forms.TextBox in2mac3;
-        private System.Windows.Forms.TextBox in5mac3;
-        private System.Windows.Forms.TextBox in3mac3;
-        private System.Windows.Forms.TextBox in4mac3;
-        private System.Windows.Forms.NumericUpDown in7mac3delay;
+        private System.Windows.Forms.TextBox MacroSwitch3_1;
+        private System.Windows.Forms.TextBox MacroSwitch3_7;
+        private System.Windows.Forms.TextBox MacroSwitch3_6;
+        private System.Windows.Forms.TextBox MacroSwitch3_2;
+        private System.Windows.Forms.TextBox MacroSwitch3_5;
+        private System.Windows.Forms.TextBox MacroSwitch3_3;
+        private System.Windows.Forms.TextBox MacroSwitch3_4;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_7;
         private System.Windows.Forms.PictureBox pictureBox27;
         private System.Windows.Forms.PictureBox pictureBox28;
-        private System.Windows.Forms.NumericUpDown in6mac3delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox29;
-        private System.Windows.Forms.NumericUpDown in1mac3delay;
-        private System.Windows.Forms.NumericUpDown in5mac3delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_1;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_5;
         private System.Windows.Forms.PictureBox pictureBox30;
         private System.Windows.Forms.PictureBox pictureBox31;
-        private System.Windows.Forms.NumericUpDown in2mac3delay;
-        private System.Windows.Forms.NumericUpDown in4mac3delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_2;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_4;
         private System.Windows.Forms.PictureBox pictureBox32;
         private System.Windows.Forms.PictureBox pictureBox33;
-        private System.Windows.Forms.NumericUpDown in3mac3delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay3_3;
         private System.Windows.Forms.PictureBox pictureBox34;
         private System.Windows.Forms.PictureBox pictureBox35;
         private System.Windows.Forms.PictureBox pictureBox36;
         private System.Windows.Forms.PictureBox pictureBox37;
         private System.Windows.Forms.PictureBox pictureBox38;
         private System.Windows.Forms.PictureBox pictureBox39;
-        private System.Windows.Forms.TextBox in1mac2;
-        private System.Windows.Forms.TextBox in7mac2;
-        private System.Windows.Forms.TextBox in6mac2;
-        private System.Windows.Forms.TextBox in2mac2;
-        private System.Windows.Forms.TextBox in5mac2;
-        private System.Windows.Forms.TextBox in3mac2;
-        private System.Windows.Forms.TextBox in4mac2;
+        private System.Windows.Forms.TextBox MacroSwitch2_1;
+        private System.Windows.Forms.TextBox MacroSwitch2_7;
+        private System.Windows.Forms.TextBox MacroSwitch2_6;
+        private System.Windows.Forms.TextBox MacroSwitch2_2;
+        private System.Windows.Forms.TextBox MacroSwitch2_5;
+        private System.Windows.Forms.TextBox MacroSwitch2_3;
+        private System.Windows.Forms.TextBox MacroSwitch2_4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.NumericUpDown in6mac2delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox16;
-        private System.Windows.Forms.NumericUpDown in1mac2delay;
-        private System.Windows.Forms.NumericUpDown in5mac2delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_1;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_5;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.NumericUpDown in2mac2delay;
-        private System.Windows.Forms.NumericUpDown in4mac2delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_2;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_4;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.PictureBox pictureBox20;
-        private System.Windows.Forms.NumericUpDown in3mac2delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_3;
         private System.Windows.Forms.PictureBox pictureBox21;
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox23;
         private System.Windows.Forms.PictureBox pictureBox24;
         private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.PictureBox pictureBox26;
-        private System.Windows.Forms.NumericUpDown in7mac2delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay2_7;
         private System.Windows.Forms.GroupBox chainGroup4;
-        private System.Windows.Forms.TextBox in1mac4;
-        private System.Windows.Forms.TextBox in7mac4;
-        private System.Windows.Forms.TextBox in6mac4;
-        private System.Windows.Forms.TextBox in2mac4;
-        private System.Windows.Forms.TextBox in5mac4;
-        private System.Windows.Forms.TextBox in3mac4;
-        private System.Windows.Forms.TextBox in4mac4;
-        private System.Windows.Forms.NumericUpDown in7mac4delay;
+        private System.Windows.Forms.TextBox MacroSwitch4_1;
+        private System.Windows.Forms.TextBox MacroSwitch4_7;
+        private System.Windows.Forms.TextBox MacroSwitch4_6;
+        private System.Windows.Forms.TextBox MacroSwitch4_2;
+        private System.Windows.Forms.TextBox MacroSwitch4_5;
+        private System.Windows.Forms.TextBox MacroSwitch4_3;
+        private System.Windows.Forms.TextBox MacroSwitch4_4;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_7;
         private System.Windows.Forms.PictureBox pictureBox40;
         private System.Windows.Forms.PictureBox pictureBox41;
-        private System.Windows.Forms.NumericUpDown in6mac4delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox42;
-        private System.Windows.Forms.NumericUpDown in1mac4delay;
-        private System.Windows.Forms.NumericUpDown in5mac4delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_1;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_5;
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.PictureBox pictureBox44;
-        private System.Windows.Forms.NumericUpDown in2mac4delay;
-        private System.Windows.Forms.NumericUpDown in4mac4delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_2;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_4;
         private System.Windows.Forms.PictureBox pictureBox45;
         private System.Windows.Forms.PictureBox pictureBox46;
-        private System.Windows.Forms.NumericUpDown in3mac4delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay4_3;
         private System.Windows.Forms.PictureBox pictureBox47;
         private System.Windows.Forms.PictureBox pictureBox48;
         private System.Windows.Forms.PictureBox pictureBox49;
@@ -2335,29 +2335,29 @@ namespace _ORTools.Forms
         private System.Windows.Forms.PictureBox pictureBox51;
         private System.Windows.Forms.PictureBox pictureBox52;
         private System.Windows.Forms.GroupBox chainGroup5;
-        private System.Windows.Forms.TextBox in1mac5;
-        private System.Windows.Forms.TextBox in7mac5;
-        private System.Windows.Forms.TextBox in6mac5;
-        private System.Windows.Forms.TextBox in2mac5;
-        private System.Windows.Forms.TextBox in5mac5;
-        private System.Windows.Forms.TextBox in3mac5;
-        private System.Windows.Forms.TextBox in4mac5;
-        private System.Windows.Forms.NumericUpDown in7mac5delay;
+        private System.Windows.Forms.TextBox MacroSwitch5_1;
+        private System.Windows.Forms.TextBox MacroSwitch5_7;
+        private System.Windows.Forms.TextBox MacroSwitch5_6;
+        private System.Windows.Forms.TextBox MacroSwitch5_2;
+        private System.Windows.Forms.TextBox MacroSwitch5_5;
+        private System.Windows.Forms.TextBox MacroSwitch5_3;
+        private System.Windows.Forms.TextBox MacroSwitch5_4;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_7;
         private System.Windows.Forms.PictureBox pictureBox53;
         private System.Windows.Forms.PictureBox pictureBox54;
-        private System.Windows.Forms.NumericUpDown in6mac5delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox55;
-        private System.Windows.Forms.NumericUpDown in1mac5delay;
-        private System.Windows.Forms.NumericUpDown in5mac5delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_1;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_5;
         private System.Windows.Forms.PictureBox pictureBox56;
         private System.Windows.Forms.PictureBox pictureBox57;
-        private System.Windows.Forms.NumericUpDown in2mac5delay;
-        private System.Windows.Forms.NumericUpDown in4mac5delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_2;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_4;
         private System.Windows.Forms.PictureBox pictureBox58;
         private System.Windows.Forms.PictureBox pictureBox59;
-        private System.Windows.Forms.NumericUpDown in3mac5delay;
+        private System.Windows.Forms.NumericUpDown MacroSwitchDelay5_3;
         private System.Windows.Forms.PictureBox pictureBox60;
         private System.Windows.Forms.PictureBox pictureBox61;
         private System.Windows.Forms.PictureBox pictureBox62;

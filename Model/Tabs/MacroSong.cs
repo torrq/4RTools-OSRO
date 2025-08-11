@@ -94,7 +94,7 @@ namespace _ORTools.Model
     /// <summary>
     /// Dedicated Song Macro class for bard/dancer songs
     /// </summary>
-    public class SongMacro : IAction
+    public class MacroSong : IAction
     {
         public static string ACTION_NAME = "SongMacro";
 
@@ -102,7 +102,7 @@ namespace _ORTools.Model
         private ThreadRunner thread;
         public List<SongRow> SongRows { get; set; } = new List<SongRow>();
 
-        public SongMacro()
+        public MacroSong()
         {
             InitializeSongRows();
         }

@@ -347,40 +347,41 @@ namespace _ORTools.Utils
 
             try
             {
-                if (hasKey)
+                Font baseFont = null;
+                // Defensive: check if Tag is a valid Font, else reset it
+                if (textBox.Tag is Font cachedFont)
                 {
-                    // Apply active style
-                    if (textBox.Font != null)
-                    {
-                        textBox.Font = new Font(textBox.Font, FontStyle.Bold);
-                        textBox.ForeColor = AppConfig.ActiveKeyColor; // Black (0, 0, 0)
-                        //DebugLogger.Debug($"Applied active style to TextBox: Bold, ForeColor={AppConfig.ActiveKeyColor}");
-                    }
-                    else
-                    {
-                        DebugLogger.Error("ApplyInputKeyStyle: TextBox.Font is null, cannot apply active style");
-                    }
+                    baseFont = cachedFont;
                 }
                 else
                 {
-                    // Apply inactive style
-                    if (textBox.Font != null)
-                    {
-                        textBox.Font = new Font(textBox.Font, FontStyle.Regular);
-                        textBox.ForeColor = AppConfig.InactiveKeyColor; // Gray (150, 150, 150)
-                        //DebugLogger.Debug($"Applied inactive style to TextBox: Regular, ForeColor={AppConfig.InactiveKeyColor}");
-                    }
-                    else
-                    {
-                        DebugLogger.Error("ApplyInputKeyStyle: TextBox.Font is null, cannot apply inactive style");
-                    }
+                    baseFont = textBox.Font ?? Control.DefaultFont;
+                    textBox.Tag = baseFont;
                 }
+
+                FontStyle newStyle = hasKey ? FontStyle.Bold : FontStyle.Regular;
+
+                // Only update font if style differs from current font style
+                if (textBox.Font == null || textBox.Font.Style != newStyle)
+                {
+                    // Dispose old font if it's different from the cached base font
+                    if (textBox.Font != null && textBox.Font != baseFont)
+                    {
+                        textBox.Font.Dispose();
+                    }
+
+                    textBox.Font = new Font(baseFont, newStyle);
+                }
+
+                textBox.ForeColor = hasKey ? AppConfig.ActiveKeyColor : AppConfig.InactiveKeyColor;
             }
             catch (Exception ex)
             {
                 DebugLogger.Error($"ApplyInputKeyStyle: Failed to apply style to TextBox - {ex.Message}");
             }
         }
+
+
     }
 
     public static class EnumExtensions
