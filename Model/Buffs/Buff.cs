@@ -198,7 +198,7 @@ public static class BuffDefinitions
             b.CreateBuff("Cart Boost", "WS_CARTBOOST", "ws_cartboost"),
             b.CreateBuff("Meltdown", "WS_MELTDOWN", "ws_meltdown"),
             b.CreateBuff("Maximum Overthrust", "WS_OVERTHRUSTMAX", "ws_overthrustmax"),
-            b.CreateBuff("Greed Parry", "GREED_PARRY", "ws_greedparry")
+            b.CreateBuff("Greed Parry", "WS_GREEDPARRY", "ws_greedparry")
         };
         MerchantBuffs[1] = new List<Buff>
         {
@@ -319,23 +319,23 @@ public static class BuffDefinitions
         };
         PadawanBuffs[0] = new List<Buff>
         {
-            b.CreateBuff("Force Element (Earth)", "ELEMENT_EARTH", "forceelement_earth"),
-            b.CreateBuff("Force Element (Wind)", "ELEMENT_WIND", "forceelement_wind"),
-            b.CreateBuff("Force Element (Water)", "ELEMENT_WATER", "forceelement_water"),
-            b.CreateBuff("Force Element (Fire)", "ELEMENT_FIRE", "forceelement_fire"),
-            b.CreateBuff("Force Element (Ghost)", "ELEMENT_GHOST", "forceelement_ghost"),
-            b.CreateBuff("Force Element (Shadow)", "ELEMENT_SHADOW", "forceelement_shadow"),
-            b.CreateBuff("Force Element (Holy)", "ELEMENT_HOLY", "forceelement_holy"),
-            b.CreateBuff("Force Projection", "PROJECTION", "forceprojection"),
-            b.CreateBuff("Cold Skin", "COLDSKIN", "coldskin"),
-            b.CreateBuff("Saber Parry", "SABERPARRY", "saberparry"),
-            b.CreateBuff("Force Concentration", "FORCECONCENTRATE", "forceconcentrate"),
-            b.CreateBuff("Saber Thrust", "SABERTHRUST", "saberthrust"),
-            b.CreateBuff("Force Persuasion", "FORCEPERSUASION", "forcepersuasion"),
-            b.CreateBuff("Jedi Stealth", "JEDISTEALTH", "jedistealth"),
-            b.CreateBuff("Force Levitate", "FORCELEVITATE", "forcelevitate"),
-            b.CreateBuff("Jedi Frenzy", "JEDIFRENZY", "jedifrenzy"),
-            b.CreateBuff("Force Sacrifice", "FORCESACRIFICE", "forcesacrifice")
+            b.CreateBuff("Force Element (Earth)", "PD_ELEMENT_EARTH", "forceelement_earth"),
+            b.CreateBuff("Force Element (Wind)", "PD_ELEMENT_WIND", "forceelement_wind"),
+            b.CreateBuff("Force Element (Water)", "PD_ELEMENT_WATER", "forceelement_water"),
+            b.CreateBuff("Force Element (Fire)", "PD_ELEMENT_FIRE", "forceelement_fire"),
+            b.CreateBuff("Force Element (Ghost)", "PD_ELEMENT_GHOST", "forceelement_ghost"),
+            b.CreateBuff("Force Element (Shadow)", "PD_ELEMENT_SHADOW", "forceelement_shadow"),
+            b.CreateBuff("Force Element (Holy)", "PD_ELEMENT_HOLY", "forceelement_holy"),
+            b.CreateBuff("Force Projection", "SI_PROJECTION", "forceprojection"),
+            b.CreateBuff("Cold Skin", "SI_COLDSKIN", "coldskin"),
+            b.CreateBuff("Saber Parry", "JS_SABERPARRY", "saberparry"),
+            b.CreateBuff("Force Concentration", "JS_CONCENTRATE", "forceconcentrate"),
+            b.CreateBuff("Saber Thrust", "SI_SABERTHRUST", "saberthrust"),
+            b.CreateBuff("Force Persuasion", "JS_PERSUADE", "forcepersuasion"),
+            b.CreateBuff("Jedi Stealth", "JE_STEALTH", "jedistealth"),
+            b.CreateBuff("Force Levitate", "JE_LEVITATE", "forcelevitate"),
+            b.CreateBuff("Jedi Frenzy", "JE_FRENZY", "jedifrenzy"),
+            b.CreateBuff("Force Sacrifice", "JE_SACRIFICE", "forcesacrifice")
         };
     }
 

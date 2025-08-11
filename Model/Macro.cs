@@ -95,7 +95,6 @@ namespace _ORTools.Model
 
     public class Macro : IAction
     {
-        public static string ACTION_NAME_SONG_MACRO = "SongMacro2.0";
         public static string ACTION_NAME_MACRO_SWITCH = "MacroSwitch";
 
         public string ActionName { get; set; }

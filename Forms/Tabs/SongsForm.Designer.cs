@@ -30,119 +30,119 @@ namespace _ORTools.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMacro1 = new System.Windows.Forms.GroupBox();
+            this.panelSong1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.in8mac1 = new System.Windows.Forms.TextBox();
-            this.in7mac1 = new System.Windows.Forms.TextBox();
+            this.txtSong8Row1 = new System.Windows.Forms.TextBox();
+            this.txtSong7Row1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.inInstrumentMacro1 = new System.Windows.Forms.TextBox();
+            this.txtInstrumentSong1 = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.inDaggerMacro1 = new System.Windows.Forms.TextBox();
-            this.btnResMac1 = new System.Windows.Forms.Button();
-            this.in6mac1 = new System.Windows.Forms.TextBox();
-            this.in5mac1 = new System.Windows.Forms.TextBox();
-            this.in4mac1 = new System.Windows.Forms.TextBox();
-            this.in3mac1 = new System.Windows.Forms.TextBox();
-            this.in2mac1 = new System.Windows.Forms.TextBox();
-            this.in1mac1 = new System.Windows.Forms.TextBox();
-            this.inTriggerMacro1 = new System.Windows.Forms.TextBox();
-            this.delayMac1 = new System.Windows.Forms.NumericUpDown();
+            this.txtDaggerSong1 = new System.Windows.Forms.TextBox();
+            this.btnResetSong1 = new System.Windows.Forms.Button();
+            this.txtSong6Row1 = new System.Windows.Forms.TextBox();
+            this.txtSong5Row1 = new System.Windows.Forms.TextBox();
+            this.txtSong4Row1 = new System.Windows.Forms.TextBox();
+            this.txtSong3Row1 = new System.Windows.Forms.TextBox();
+            this.txtSong2Row1 = new System.Windows.Forms.TextBox();
+            this.txtSong1Row1 = new System.Windows.Forms.TextBox();
+            this.txtTriggerSong1 = new System.Windows.Forms.TextBox();
+            this.numDelaySong1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panelMacro2 = new System.Windows.Forms.GroupBox();
+            this.panelSong2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.in8mac2 = new System.Windows.Forms.TextBox();
-            this.in7mac2 = new System.Windows.Forms.TextBox();
+            this.txtSong8Row2 = new System.Windows.Forms.TextBox();
+            this.txtSong7Row2 = new System.Windows.Forms.TextBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.in6mac2 = new System.Windows.Forms.TextBox();
-            this.in5mac2 = new System.Windows.Forms.TextBox();
-            this.in4mac2 = new System.Windows.Forms.TextBox();
-            this.in3mac2 = new System.Windows.Forms.TextBox();
-            this.in2mac2 = new System.Windows.Forms.TextBox();
-            this.in1mac2 = new System.Windows.Forms.TextBox();
+            this.txtSong6Row2 = new System.Windows.Forms.TextBox();
+            this.txtSong5Row2 = new System.Windows.Forms.TextBox();
+            this.txtSong4Row2 = new System.Windows.Forms.TextBox();
+            this.txtSong3Row2 = new System.Windows.Forms.TextBox();
+            this.txtSong2Row2 = new System.Windows.Forms.TextBox();
+            this.txtSong1Row2 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.btnResMac2 = new System.Windows.Forms.Button();
-            this.inInstrumentMacro2 = new System.Windows.Forms.TextBox();
-            this.inTriggerMacro2 = new System.Windows.Forms.TextBox();
+            this.btnResetSong2 = new System.Windows.Forms.Button();
+            this.txtInstrumentSong2 = new System.Windows.Forms.TextBox();
+            this.txtTriggerSong2 = new System.Windows.Forms.TextBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.delayMac2 = new System.Windows.Forms.NumericUpDown();
-            this.inDaggerMacro2 = new System.Windows.Forms.TextBox();
+            this.numDelaySong2 = new System.Windows.Forms.NumericUpDown();
+            this.txtDaggerSong2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.panelMacro3 = new System.Windows.Forms.GroupBox();
+            this.panelSong3 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
-            this.in8mac3 = new System.Windows.Forms.TextBox();
-            this.in7mac3 = new System.Windows.Forms.TextBox();
+            this.txtSong8Row3 = new System.Windows.Forms.TextBox();
+            this.txtSong7Row3 = new System.Windows.Forms.TextBox();
             this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
-            this.in6mac3 = new System.Windows.Forms.TextBox();
-            this.in5mac3 = new System.Windows.Forms.TextBox();
-            this.in4mac3 = new System.Windows.Forms.TextBox();
-            this.in3mac3 = new System.Windows.Forms.TextBox();
-            this.in2mac3 = new System.Windows.Forms.TextBox();
-            this.in1mac3 = new System.Windows.Forms.TextBox();
+            this.txtSong6Row3 = new System.Windows.Forms.TextBox();
+            this.txtSong5Row3 = new System.Windows.Forms.TextBox();
+            this.txtSong4Row3 = new System.Windows.Forms.TextBox();
+            this.txtSong3Row3 = new System.Windows.Forms.TextBox();
+            this.txtSong2Row3 = new System.Windows.Forms.TextBox();
+            this.txtSong1Row3 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.inInstrumentMacro3 = new System.Windows.Forms.TextBox();
+            this.txtInstrumentSong3 = new System.Windows.Forms.TextBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
-            this.inDaggerMacro3 = new System.Windows.Forms.TextBox();
-            this.btnResMac3 = new System.Windows.Forms.Button();
-            this.inTriggerMacro3 = new System.Windows.Forms.TextBox();
-            this.delayMac3 = new System.Windows.Forms.NumericUpDown();
+            this.txtDaggerSong3 = new System.Windows.Forms.TextBox();
+            this.btnResetSong3 = new System.Windows.Forms.Button();
+            this.txtTriggerSong3 = new System.Windows.Forms.TextBox();
+            this.numDelaySong3 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.panelMacro4 = new System.Windows.Forms.GroupBox();
+            this.panelSong4 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox28 = new System.Windows.Forms.PictureBox();
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
-            this.in8mac4 = new System.Windows.Forms.TextBox();
-            this.in7mac4 = new System.Windows.Forms.TextBox();
+            this.txtSong8Row4 = new System.Windows.Forms.TextBox();
+            this.txtSong7Row4 = new System.Windows.Forms.TextBox();
             this.pictureBox31 = new System.Windows.Forms.PictureBox();
             this.pictureBox32 = new System.Windows.Forms.PictureBox();
             this.pictureBox33 = new System.Windows.Forms.PictureBox();
             this.pictureBox34 = new System.Windows.Forms.PictureBox();
-            this.in6mac4 = new System.Windows.Forms.TextBox();
-            this.in5mac4 = new System.Windows.Forms.TextBox();
-            this.in4mac4 = new System.Windows.Forms.TextBox();
-            this.in3mac4 = new System.Windows.Forms.TextBox();
-            this.in2mac4 = new System.Windows.Forms.TextBox();
-            this.in1mac4 = new System.Windows.Forms.TextBox();
+            this.txtSong6Row4 = new System.Windows.Forms.TextBox();
+            this.txtSong5Row4 = new System.Windows.Forms.TextBox();
+            this.txtSong4Row4 = new System.Windows.Forms.TextBox();
+            this.txtSong3Row4 = new System.Windows.Forms.TextBox();
+            this.txtSong2Row4 = new System.Windows.Forms.TextBox();
+            this.txtSong1Row4 = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
-            this.inInstrumentMacro4 = new System.Windows.Forms.TextBox();
+            this.txtInstrumentSong4 = new System.Windows.Forms.TextBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
-            this.inDaggerMacro4 = new System.Windows.Forms.TextBox();
-            this.btnResMac4 = new System.Windows.Forms.Button();
-            this.inTriggerMacro4 = new System.Windows.Forms.TextBox();
-            this.delayMac4 = new System.Windows.Forms.NumericUpDown();
+            this.txtDaggerSong4 = new System.Windows.Forms.TextBox();
+            this.btnResetSong4 = new System.Windows.Forms.Button();
+            this.txtTriggerSong4 = new System.Windows.Forms.TextBox();
+            this.numDelaySong4 = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panelMacro1.SuspendLayout();
+            this.panelSong1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -152,8 +152,8 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac1)).BeginInit();
-            this.panelMacro2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong1)).BeginInit();
+            this.panelSong2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -163,8 +163,8 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac2)).BeginInit();
-            this.panelMacro3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong2)).BeginInit();
+            this.panelSong3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
@@ -174,8 +174,8 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac3)).BeginInit();
-            this.panelMacro4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong3)).BeginInit();
+            this.panelSong4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
@@ -185,44 +185,44 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong4)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelMacro1
+            // panelSong1
             // 
-            this.panelMacro1.Controls.Add(this.panel1);
-            this.panelMacro1.Controls.Add(this.pictureBox9);
-            this.panelMacro1.Controls.Add(this.pictureBox7);
-            this.panelMacro1.Controls.Add(this.pictureBox8);
-            this.panelMacro1.Controls.Add(this.in8mac1);
-            this.panelMacro1.Controls.Add(this.in7mac1);
-            this.panelMacro1.Controls.Add(this.pictureBox1);
-            this.panelMacro1.Controls.Add(this.pictureBox4);
-            this.panelMacro1.Controls.Add(this.pictureBox2);
-            this.panelMacro1.Controls.Add(this.pictureBox3);
-            this.panelMacro1.Controls.Add(this.panel3);
-            this.panelMacro1.Controls.Add(this.pictureBox6);
-            this.panelMacro1.Controls.Add(this.inInstrumentMacro1);
-            this.panelMacro1.Controls.Add(this.pictureBox5);
-            this.panelMacro1.Controls.Add(this.inDaggerMacro1);
-            this.panelMacro1.Controls.Add(this.btnResMac1);
-            this.panelMacro1.Controls.Add(this.in6mac1);
-            this.panelMacro1.Controls.Add(this.in5mac1);
-            this.panelMacro1.Controls.Add(this.in4mac1);
-            this.panelMacro1.Controls.Add(this.in3mac1);
-            this.panelMacro1.Controls.Add(this.in2mac1);
-            this.panelMacro1.Controls.Add(this.in1mac1);
-            this.panelMacro1.Controls.Add(this.inTriggerMacro1);
-            this.panelMacro1.Controls.Add(this.delayMac1);
-            this.panelMacro1.Controls.Add(this.label4);
-            this.panelMacro1.Controls.Add(this.label5);
-            this.panelMacro1.Controls.Add(this.label6);
-            this.panelMacro1.Location = new System.Drawing.Point(3, 10);
-            this.panelMacro1.Name = "panelMacro1";
-            this.panelMacro1.Size = new System.Drawing.Size(610, 100);
-            this.panelMacro1.TabIndex = 21;
-            this.panelMacro1.TabStop = false;
-            this.panelMacro1.Text = "Song 1";
+            this.panelSong1.Controls.Add(this.panel1);
+            this.panelSong1.Controls.Add(this.pictureBox9);
+            this.panelSong1.Controls.Add(this.pictureBox7);
+            this.panelSong1.Controls.Add(this.pictureBox8);
+            this.panelSong1.Controls.Add(this.txtSong8Row1);
+            this.panelSong1.Controls.Add(this.txtSong7Row1);
+            this.panelSong1.Controls.Add(this.pictureBox1);
+            this.panelSong1.Controls.Add(this.pictureBox4);
+            this.panelSong1.Controls.Add(this.pictureBox2);
+            this.panelSong1.Controls.Add(this.pictureBox3);
+            this.panelSong1.Controls.Add(this.panel3);
+            this.panelSong1.Controls.Add(this.pictureBox6);
+            this.panelSong1.Controls.Add(this.txtInstrumentSong1);
+            this.panelSong1.Controls.Add(this.pictureBox5);
+            this.panelSong1.Controls.Add(this.txtDaggerSong1);
+            this.panelSong1.Controls.Add(this.btnResetSong1);
+            this.panelSong1.Controls.Add(this.txtSong6Row1);
+            this.panelSong1.Controls.Add(this.txtSong5Row1);
+            this.panelSong1.Controls.Add(this.txtSong4Row1);
+            this.panelSong1.Controls.Add(this.txtSong3Row1);
+            this.panelSong1.Controls.Add(this.txtSong2Row1);
+            this.panelSong1.Controls.Add(this.txtSong1Row1);
+            this.panelSong1.Controls.Add(this.txtTriggerSong1);
+            this.panelSong1.Controls.Add(this.numDelaySong1);
+            this.panelSong1.Controls.Add(this.label4);
+            this.panelSong1.Controls.Add(this.label5);
+            this.panelSong1.Controls.Add(this.label6);
+            this.panelSong1.Location = new System.Drawing.Point(3, 10);
+            this.panelSong1.Name = "panelSong1";
+            this.panelSong1.Size = new System.Drawing.Size(610, 100);
+            this.panelSong1.TabIndex = 21;
+            this.panelSong1.TabStop = false;
+            this.panelSong1.Text = "Song 1";
             // 
             // panel1
             // 
@@ -262,25 +262,25 @@ namespace _ORTools.Forms
             this.pictureBox8.TabIndex = 287;
             this.pictureBox8.TabStop = false;
             // 
-            // in8mac1
+            // txtSong8Row1
             // 
-            this.in8mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in8mac1.Location = new System.Drawing.Point(364, 65);
-            this.in8mac1.Name = "in8mac1";
-            this.in8mac1.Size = new System.Drawing.Size(55, 22);
-            this.in8mac1.TabIndex = 285;
-            this.in8mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong8Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong8Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong8Row1.Location = new System.Drawing.Point(364, 65);
+            this.txtSong8Row1.Name = "txtSong8Row1";
+            this.txtSong8Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong8Row1.TabIndex = 285;
+            this.txtSong8Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac1
+            // txtSong7Row1
             // 
-            this.in7mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in7mac1.Location = new System.Drawing.Point(364, 27);
-            this.in7mac1.Name = "in7mac1";
-            this.in7mac1.Size = new System.Drawing.Size(55, 22);
-            this.in7mac1.TabIndex = 284;
-            this.in7mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong7Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong7Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong7Row1.Location = new System.Drawing.Point(364, 27);
+            this.txtSong7Row1.Name = "txtSong7Row1";
+            this.txtSong7Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong7Row1.TabIndex = 284;
+            this.txtSong7Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
@@ -340,16 +340,15 @@ namespace _ORTools.Forms
             this.pictureBox6.TabIndex = 278;
             this.pictureBox6.TabStop = false;
             // 
-            // inInstrumentMacro1
+            // txtInstrumentSong1
             // 
-            this.inInstrumentMacro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inInstrumentMacro1.Location = new System.Drawing.Point(469, 65);
-            this.inInstrumentMacro1.Name = "inInstrumentMacro1";
-            this.inInstrumentMacro1.Size = new System.Drawing.Size(55, 22);
-            this.inInstrumentMacro1.TabIndex = 277;
-            this.inInstrumentMacro1.Tag = "1:Instrument";
-            this.inInstrumentMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInstrumentSong1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInstrumentSong1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInstrumentSong1.Location = new System.Drawing.Point(469, 65);
+            this.txtInstrumentSong1.Name = "txtInstrumentSong1";
+            this.txtInstrumentSong1.Size = new System.Drawing.Size(55, 22);
+            this.txtInstrumentSong1.TabIndex = 277;
+            this.txtInstrumentSong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox5
             // 
@@ -361,114 +360,112 @@ namespace _ORTools.Forms
             this.pictureBox5.TabIndex = 276;
             this.pictureBox5.TabStop = false;
             // 
-            // inDaggerMacro1
+            // txtDaggerSong1
             // 
-            this.inDaggerMacro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inDaggerMacro1.Location = new System.Drawing.Point(469, 27);
-            this.inDaggerMacro1.Name = "inDaggerMacro1";
-            this.inDaggerMacro1.Size = new System.Drawing.Size(55, 22);
-            this.inDaggerMacro1.TabIndex = 211;
-            this.inDaggerMacro1.Tag = "1:Dagger";
-            this.inDaggerMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDaggerSong1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDaggerSong1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDaggerSong1.Location = new System.Drawing.Point(469, 27);
+            this.txtDaggerSong1.Name = "txtDaggerSong1";
+            this.txtDaggerSong1.Size = new System.Drawing.Size(55, 22);
+            this.txtDaggerSong1.TabIndex = 211;
+            this.txtDaggerSong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnResMac1
+            // btnResetSong1
             // 
-            this.btnResMac1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac1.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnResMac1.Location = new System.Drawing.Point(543, 44);
-            this.btnResMac1.Name = "btnResMac1";
-            this.btnResMac1.Size = new System.Drawing.Size(50, 23);
-            this.btnResMac1.TabIndex = 210;
-            this.btnResMac1.Text = "Reset";
-            this.btnResMac1.UseVisualStyleBackColor = false;
+            this.btnResetSong1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetSong1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetSong1.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResetSong1.Location = new System.Drawing.Point(543, 44);
+            this.btnResetSong1.Name = "btnResetSong1";
+            this.btnResetSong1.Size = new System.Drawing.Size(50, 23);
+            this.btnResetSong1.TabIndex = 210;
+            this.btnResetSong1.Text = "Reset";
+            this.btnResetSong1.UseVisualStyleBackColor = false;
             // 
-            // in6mac1
+            // txtSong6Row1
             // 
-            this.in6mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in6mac1.Location = new System.Drawing.Point(287, 64);
-            this.in6mac1.Name = "in6mac1";
-            this.in6mac1.Size = new System.Drawing.Size(55, 22);
-            this.in6mac1.TabIndex = 75;
-            this.in6mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong6Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong6Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong6Row1.Location = new System.Drawing.Point(287, 64);
+            this.txtSong6Row1.Name = "txtSong6Row1";
+            this.txtSong6Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong6Row1.TabIndex = 75;
+            this.txtSong6Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac1
+            // txtSong5Row1
             // 
-            this.in5mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in5mac1.Location = new System.Drawing.Point(287, 26);
-            this.in5mac1.Name = "in5mac1";
-            this.in5mac1.Size = new System.Drawing.Size(55, 22);
-            this.in5mac1.TabIndex = 74;
-            this.in5mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong5Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong5Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong5Row1.Location = new System.Drawing.Point(287, 26);
+            this.txtSong5Row1.Name = "txtSong5Row1";
+            this.txtSong5Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong5Row1.TabIndex = 74;
+            this.txtSong5Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac1
+            // txtSong4Row1
             // 
-            this.in4mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in4mac1.Location = new System.Drawing.Point(210, 64);
-            this.in4mac1.Name = "in4mac1";
-            this.in4mac1.Size = new System.Drawing.Size(55, 22);
-            this.in4mac1.TabIndex = 73;
-            this.in4mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong4Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong4Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong4Row1.Location = new System.Drawing.Point(210, 64);
+            this.txtSong4Row1.Name = "txtSong4Row1";
+            this.txtSong4Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong4Row1.TabIndex = 73;
+            this.txtSong4Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac1
+            // txtSong3Row1
             // 
-            this.in3mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in3mac1.Location = new System.Drawing.Point(210, 26);
-            this.in3mac1.Name = "in3mac1";
-            this.in3mac1.Size = new System.Drawing.Size(55, 22);
-            this.in3mac1.TabIndex = 72;
-            this.in3mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong3Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong3Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong3Row1.Location = new System.Drawing.Point(210, 26);
+            this.txtSong3Row1.Name = "txtSong3Row1";
+            this.txtSong3Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong3Row1.TabIndex = 72;
+            this.txtSong3Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac1
+            // txtSong2Row1
             // 
-            this.in2mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in2mac1.Location = new System.Drawing.Point(133, 64);
-            this.in2mac1.Name = "in2mac1";
-            this.in2mac1.Size = new System.Drawing.Size(55, 22);
-            this.in2mac1.TabIndex = 71;
-            this.in2mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong2Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong2Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong2Row1.Location = new System.Drawing.Point(133, 64);
+            this.txtSong2Row1.Name = "txtSong2Row1";
+            this.txtSong2Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong2Row1.TabIndex = 71;
+            this.txtSong2Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in1mac1
+            // txtSong1Row1
             // 
-            this.in1mac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in1mac1.Location = new System.Drawing.Point(133, 26);
-            this.in1mac1.Name = "in1mac1";
-            this.in1mac1.Size = new System.Drawing.Size(55, 22);
-            this.in1mac1.TabIndex = 70;
-            this.in1mac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong1Row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong1Row1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong1Row1.Location = new System.Drawing.Point(133, 26);
+            this.txtSong1Row1.Name = "txtSong1Row1";
+            this.txtSong1Row1.Size = new System.Drawing.Size(55, 22);
+            this.txtSong1Row1.TabIndex = 70;
+            this.txtSong1Row1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // inTriggerMacro1
+            // txtTriggerSong1
             // 
-            this.inTriggerMacro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inTriggerMacro1.Location = new System.Drawing.Point(44, 26);
-            this.inTriggerMacro1.Name = "inTriggerMacro1";
-            this.inTriggerMacro1.Size = new System.Drawing.Size(55, 22);
-            this.inTriggerMacro1.TabIndex = 69;
-            this.inTriggerMacro1.Tag = "1:Trigger";
-            this.inTriggerMacro1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTriggerSong1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTriggerSong1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTriggerSong1.Location = new System.Drawing.Point(44, 26);
+            this.txtTriggerSong1.Name = "txtTriggerSong1";
+            this.txtTriggerSong1.Size = new System.Drawing.Size(55, 22);
+            this.txtTriggerSong1.TabIndex = 69;
+            this.txtTriggerSong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // delayMac1
+            // numDelaySong1
             // 
-            this.delayMac1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delayMac1.Location = new System.Drawing.Point(44, 64);
-            this.delayMac1.Maximum = new decimal(new int[] {
+            this.numDelaySong1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numDelaySong1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDelaySong1.Location = new System.Drawing.Point(44, 64);
+            this.numDelaySong1.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.delayMac1.Name = "delayMac1";
-            this.delayMac1.Size = new System.Drawing.Size(47, 22);
-            this.delayMac1.TabIndex = 68;
-            this.delayMac1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numDelaySong1.Name = "numDelaySong1";
+            this.numDelaySong1.Size = new System.Drawing.Size(47, 22);
+            this.numDelaySong1.TabIndex = 68;
+            this.numDelaySong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -500,41 +497,41 @@ namespace _ORTools.Forms
             this.label6.TabIndex = 16;
             this.label6.Text = "Key";
             // 
-            // panelMacro2
+            // panelSong2
             // 
-            this.panelMacro2.Controls.Add(this.panel2);
-            this.panelMacro2.Controls.Add(this.pictureBox12);
-            this.panelMacro2.Controls.Add(this.pictureBox13);
-            this.panelMacro2.Controls.Add(this.pictureBox14);
-            this.panelMacro2.Controls.Add(this.in8mac2);
-            this.panelMacro2.Controls.Add(this.in7mac2);
-            this.panelMacro2.Controls.Add(this.pictureBox15);
-            this.panelMacro2.Controls.Add(this.pictureBox16);
-            this.panelMacro2.Controls.Add(this.pictureBox17);
-            this.panelMacro2.Controls.Add(this.pictureBox18);
-            this.panelMacro2.Controls.Add(this.in6mac2);
-            this.panelMacro2.Controls.Add(this.in5mac2);
-            this.panelMacro2.Controls.Add(this.in4mac2);
-            this.panelMacro2.Controls.Add(this.in3mac2);
-            this.panelMacro2.Controls.Add(this.in2mac2);
-            this.panelMacro2.Controls.Add(this.in1mac2);
-            this.panelMacro2.Controls.Add(this.panel4);
-            this.panelMacro2.Controls.Add(this.pictureBox10);
-            this.panelMacro2.Controls.Add(this.btnResMac2);
-            this.panelMacro2.Controls.Add(this.inInstrumentMacro2);
-            this.panelMacro2.Controls.Add(this.inTriggerMacro2);
-            this.panelMacro2.Controls.Add(this.pictureBox11);
-            this.panelMacro2.Controls.Add(this.delayMac2);
-            this.panelMacro2.Controls.Add(this.inDaggerMacro2);
-            this.panelMacro2.Controls.Add(this.label1);
-            this.panelMacro2.Controls.Add(this.label2);
-            this.panelMacro2.Controls.Add(this.label3);
-            this.panelMacro2.Location = new System.Drawing.Point(3, 118);
-            this.panelMacro2.Name = "panelMacro2";
-            this.panelMacro2.Size = new System.Drawing.Size(610, 100);
-            this.panelMacro2.TabIndex = 68;
-            this.panelMacro2.TabStop = false;
-            this.panelMacro2.Text = "Song 2";
+            this.panelSong2.Controls.Add(this.panel2);
+            this.panelSong2.Controls.Add(this.pictureBox12);
+            this.panelSong2.Controls.Add(this.pictureBox13);
+            this.panelSong2.Controls.Add(this.pictureBox14);
+            this.panelSong2.Controls.Add(this.txtSong8Row2);
+            this.panelSong2.Controls.Add(this.txtSong7Row2);
+            this.panelSong2.Controls.Add(this.pictureBox15);
+            this.panelSong2.Controls.Add(this.pictureBox16);
+            this.panelSong2.Controls.Add(this.pictureBox17);
+            this.panelSong2.Controls.Add(this.pictureBox18);
+            this.panelSong2.Controls.Add(this.txtSong6Row2);
+            this.panelSong2.Controls.Add(this.txtSong5Row2);
+            this.panelSong2.Controls.Add(this.txtSong4Row2);
+            this.panelSong2.Controls.Add(this.txtSong3Row2);
+            this.panelSong2.Controls.Add(this.txtSong2Row2);
+            this.panelSong2.Controls.Add(this.txtSong1Row2);
+            this.panelSong2.Controls.Add(this.panel4);
+            this.panelSong2.Controls.Add(this.pictureBox10);
+            this.panelSong2.Controls.Add(this.btnResetSong2);
+            this.panelSong2.Controls.Add(this.txtInstrumentSong2);
+            this.panelSong2.Controls.Add(this.txtTriggerSong2);
+            this.panelSong2.Controls.Add(this.pictureBox11);
+            this.panelSong2.Controls.Add(this.numDelaySong2);
+            this.panelSong2.Controls.Add(this.txtDaggerSong2);
+            this.panelSong2.Controls.Add(this.label1);
+            this.panelSong2.Controls.Add(this.label2);
+            this.panelSong2.Controls.Add(this.label3);
+            this.panelSong2.Location = new System.Drawing.Point(3, 118);
+            this.panelSong2.Name = "panelSong2";
+            this.panelSong2.Size = new System.Drawing.Size(610, 100);
+            this.panelSong2.TabIndex = 68;
+            this.panelSong2.TabStop = false;
+            this.panelSong2.Text = "Song 2";
             // 
             // panel2
             // 
@@ -574,25 +571,25 @@ namespace _ORTools.Forms
             this.pictureBox14.TabIndex = 302;
             this.pictureBox14.TabStop = false;
             // 
-            // in8mac2
+            // txtSong8Row2
             // 
-            this.in8mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in8mac2.Location = new System.Drawing.Point(362, 65);
-            this.in8mac2.Name = "in8mac2";
-            this.in8mac2.Size = new System.Drawing.Size(55, 22);
-            this.in8mac2.TabIndex = 300;
-            this.in8mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong8Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong8Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong8Row2.Location = new System.Drawing.Point(362, 65);
+            this.txtSong8Row2.Name = "txtSong8Row2";
+            this.txtSong8Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong8Row2.TabIndex = 300;
+            this.txtSong8Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac2
+            // txtSong7Row2
             // 
-            this.in7mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in7mac2.Location = new System.Drawing.Point(362, 27);
-            this.in7mac2.Name = "in7mac2";
-            this.in7mac2.Size = new System.Drawing.Size(55, 22);
-            this.in7mac2.TabIndex = 299;
-            this.in7mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong7Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong7Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong7Row2.Location = new System.Drawing.Point(362, 27);
+            this.txtSong7Row2.Name = "txtSong7Row2";
+            this.txtSong7Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong7Row2.TabIndex = 299;
+            this.txtSong7Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox15
             // 
@@ -634,65 +631,65 @@ namespace _ORTools.Forms
             this.pictureBox18.TabIndex = 296;
             this.pictureBox18.TabStop = false;
             // 
-            // in6mac2
+            // txtSong6Row2
             // 
-            this.in6mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in6mac2.Location = new System.Drawing.Point(285, 64);
-            this.in6mac2.Name = "in6mac2";
-            this.in6mac2.Size = new System.Drawing.Size(55, 22);
-            this.in6mac2.TabIndex = 294;
-            this.in6mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong6Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong6Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong6Row2.Location = new System.Drawing.Point(285, 64);
+            this.txtSong6Row2.Name = "txtSong6Row2";
+            this.txtSong6Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong6Row2.TabIndex = 294;
+            this.txtSong6Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac2
+            // txtSong5Row2
             // 
-            this.in5mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in5mac2.Location = new System.Drawing.Point(285, 26);
-            this.in5mac2.Name = "in5mac2";
-            this.in5mac2.Size = new System.Drawing.Size(55, 22);
-            this.in5mac2.TabIndex = 293;
-            this.in5mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong5Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong5Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong5Row2.Location = new System.Drawing.Point(285, 26);
+            this.txtSong5Row2.Name = "txtSong5Row2";
+            this.txtSong5Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong5Row2.TabIndex = 293;
+            this.txtSong5Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac2
+            // txtSong4Row2
             // 
-            this.in4mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in4mac2.Location = new System.Drawing.Point(208, 64);
-            this.in4mac2.Name = "in4mac2";
-            this.in4mac2.Size = new System.Drawing.Size(55, 22);
-            this.in4mac2.TabIndex = 292;
-            this.in4mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong4Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong4Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong4Row2.Location = new System.Drawing.Point(208, 64);
+            this.txtSong4Row2.Name = "txtSong4Row2";
+            this.txtSong4Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong4Row2.TabIndex = 292;
+            this.txtSong4Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac2
+            // txtSong3Row2
             // 
-            this.in3mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in3mac2.Location = new System.Drawing.Point(208, 26);
-            this.in3mac2.Name = "in3mac2";
-            this.in3mac2.Size = new System.Drawing.Size(55, 22);
-            this.in3mac2.TabIndex = 291;
-            this.in3mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong3Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong3Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong3Row2.Location = new System.Drawing.Point(208, 26);
+            this.txtSong3Row2.Name = "txtSong3Row2";
+            this.txtSong3Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong3Row2.TabIndex = 291;
+            this.txtSong3Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac2
+            // txtSong2Row2
             // 
-            this.in2mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in2mac2.Location = new System.Drawing.Point(130, 64);
-            this.in2mac2.Name = "in2mac2";
-            this.in2mac2.Size = new System.Drawing.Size(55, 22);
-            this.in2mac2.TabIndex = 290;
-            this.in2mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong2Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong2Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong2Row2.Location = new System.Drawing.Point(130, 64);
+            this.txtSong2Row2.Name = "txtSong2Row2";
+            this.txtSong2Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong2Row2.TabIndex = 290;
+            this.txtSong2Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in1mac2
+            // txtSong1Row2
             // 
-            this.in1mac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in1mac2.Location = new System.Drawing.Point(130, 26);
-            this.in1mac2.Name = "in1mac2";
-            this.in1mac2.Size = new System.Drawing.Size(55, 22);
-            this.in1mac2.TabIndex = 289;
-            this.in1mac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong1Row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong1Row2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong1Row2.Location = new System.Drawing.Point(130, 26);
+            this.txtSong1Row2.Name = "txtSong1Row2";
+            this.txtSong1Row2.Size = new System.Drawing.Size(55, 22);
+            this.txtSong1Row2.TabIndex = 289;
+            this.txtSong1Row2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel4
             // 
@@ -712,39 +709,37 @@ namespace _ORTools.Forms
             this.pictureBox10.TabIndex = 283;
             this.pictureBox10.TabStop = false;
             // 
-            // btnResMac2
+            // btnResetSong2
             // 
-            this.btnResMac2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac2.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnResMac2.Location = new System.Drawing.Point(543, 44);
-            this.btnResMac2.Name = "btnResMac2";
-            this.btnResMac2.Size = new System.Drawing.Size(50, 23);
-            this.btnResMac2.TabIndex = 209;
-            this.btnResMac2.Text = "Reset";
-            this.btnResMac2.UseVisualStyleBackColor = false;
+            this.btnResetSong2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetSong2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetSong2.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResetSong2.Location = new System.Drawing.Point(543, 44);
+            this.btnResetSong2.Name = "btnResetSong2";
+            this.btnResetSong2.Size = new System.Drawing.Size(50, 23);
+            this.btnResetSong2.TabIndex = 209;
+            this.btnResetSong2.Text = "Reset";
+            this.btnResetSong2.UseVisualStyleBackColor = false;
             // 
-            // inInstrumentMacro2
+            // txtInstrumentSong2
             // 
-            this.inInstrumentMacro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inInstrumentMacro2.Location = new System.Drawing.Point(469, 65);
-            this.inInstrumentMacro2.Name = "inInstrumentMacro2";
-            this.inInstrumentMacro2.Size = new System.Drawing.Size(55, 22);
-            this.inInstrumentMacro2.TabIndex = 282;
-            this.inInstrumentMacro2.Tag = "2:Instrument";
-            this.inInstrumentMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInstrumentSong2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInstrumentSong2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInstrumentSong2.Location = new System.Drawing.Point(469, 65);
+            this.txtInstrumentSong2.Name = "txtInstrumentSong2";
+            this.txtInstrumentSong2.Size = new System.Drawing.Size(55, 22);
+            this.txtInstrumentSong2.TabIndex = 282;
+            this.txtInstrumentSong2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // inTriggerMacro2
+            // txtTriggerSong2
             // 
-            this.inTriggerMacro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inTriggerMacro2.Location = new System.Drawing.Point(44, 26);
-            this.inTriggerMacro2.Name = "inTriggerMacro2";
-            this.inTriggerMacro2.Size = new System.Drawing.Size(55, 22);
-            this.inTriggerMacro2.TabIndex = 70;
-            this.inTriggerMacro2.Tag = "2:Trigger";
-            this.inTriggerMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTriggerSong2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTriggerSong2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTriggerSong2.Location = new System.Drawing.Point(44, 26);
+            this.txtTriggerSong2.Name = "txtTriggerSong2";
+            this.txtTriggerSong2.Size = new System.Drawing.Size(55, 22);
+            this.txtTriggerSong2.TabIndex = 70;
+            this.txtTriggerSong2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox11
             // 
@@ -756,31 +751,30 @@ namespace _ORTools.Forms
             this.pictureBox11.TabIndex = 281;
             this.pictureBox11.TabStop = false;
             // 
-            // delayMac2
+            // numDelaySong2
             // 
-            this.delayMac2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delayMac2.Location = new System.Drawing.Point(44, 64);
-            this.delayMac2.Maximum = new decimal(new int[] {
+            this.numDelaySong2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numDelaySong2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDelaySong2.Location = new System.Drawing.Point(44, 64);
+            this.numDelaySong2.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.delayMac2.Name = "delayMac2";
-            this.delayMac2.Size = new System.Drawing.Size(47, 22);
-            this.delayMac2.TabIndex = 69;
-            this.delayMac2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numDelaySong2.Name = "numDelaySong2";
+            this.numDelaySong2.Size = new System.Drawing.Size(47, 22);
+            this.numDelaySong2.TabIndex = 69;
+            this.numDelaySong2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // inDaggerMacro2
+            // txtDaggerSong2
             // 
-            this.inDaggerMacro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inDaggerMacro2.Location = new System.Drawing.Point(469, 27);
-            this.inDaggerMacro2.Name = "inDaggerMacro2";
-            this.inDaggerMacro2.Size = new System.Drawing.Size(55, 22);
-            this.inDaggerMacro2.TabIndex = 280;
-            this.inDaggerMacro2.Tag = "2:Dagger";
-            this.inDaggerMacro2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDaggerSong2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDaggerSong2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDaggerSong2.Location = new System.Drawing.Point(469, 27);
+            this.txtDaggerSong2.Name = "txtDaggerSong2";
+            this.txtDaggerSong2.Size = new System.Drawing.Size(55, 22);
+            this.txtDaggerSong2.TabIndex = 280;
+            this.txtDaggerSong2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -812,41 +806,41 @@ namespace _ORTools.Forms
             this.label3.TabIndex = 16;
             this.label3.Text = "Key";
             // 
-            // panelMacro3
+            // panelSong3
             // 
-            this.panelMacro3.Controls.Add(this.panel5);
-            this.panelMacro3.Controls.Add(this.pictureBox21);
-            this.panelMacro3.Controls.Add(this.pictureBox22);
-            this.panelMacro3.Controls.Add(this.pictureBox23);
-            this.panelMacro3.Controls.Add(this.in8mac3);
-            this.panelMacro3.Controls.Add(this.in7mac3);
-            this.panelMacro3.Controls.Add(this.pictureBox24);
-            this.panelMacro3.Controls.Add(this.pictureBox25);
-            this.panelMacro3.Controls.Add(this.pictureBox26);
-            this.panelMacro3.Controls.Add(this.pictureBox27);
-            this.panelMacro3.Controls.Add(this.in6mac3);
-            this.panelMacro3.Controls.Add(this.in5mac3);
-            this.panelMacro3.Controls.Add(this.in4mac3);
-            this.panelMacro3.Controls.Add(this.in3mac3);
-            this.panelMacro3.Controls.Add(this.in2mac3);
-            this.panelMacro3.Controls.Add(this.in1mac3);
-            this.panelMacro3.Controls.Add(this.panel6);
-            this.panelMacro3.Controls.Add(this.pictureBox19);
-            this.panelMacro3.Controls.Add(this.inInstrumentMacro3);
-            this.panelMacro3.Controls.Add(this.pictureBox20);
-            this.panelMacro3.Controls.Add(this.inDaggerMacro3);
-            this.panelMacro3.Controls.Add(this.btnResMac3);
-            this.panelMacro3.Controls.Add(this.inTriggerMacro3);
-            this.panelMacro3.Controls.Add(this.delayMac3);
-            this.panelMacro3.Controls.Add(this.label7);
-            this.panelMacro3.Controls.Add(this.label8);
-            this.panelMacro3.Controls.Add(this.label9);
-            this.panelMacro3.Location = new System.Drawing.Point(3, 228);
-            this.panelMacro3.Name = "panelMacro3";
-            this.panelMacro3.Size = new System.Drawing.Size(610, 100);
-            this.panelMacro3.TabIndex = 68;
-            this.panelMacro3.TabStop = false;
-            this.panelMacro3.Text = "Song 3";
+            this.panelSong3.Controls.Add(this.panel5);
+            this.panelSong3.Controls.Add(this.pictureBox21);
+            this.panelSong3.Controls.Add(this.pictureBox22);
+            this.panelSong3.Controls.Add(this.pictureBox23);
+            this.panelSong3.Controls.Add(this.txtSong8Row3);
+            this.panelSong3.Controls.Add(this.txtSong7Row3);
+            this.panelSong3.Controls.Add(this.pictureBox24);
+            this.panelSong3.Controls.Add(this.pictureBox25);
+            this.panelSong3.Controls.Add(this.pictureBox26);
+            this.panelSong3.Controls.Add(this.pictureBox27);
+            this.panelSong3.Controls.Add(this.txtSong6Row3);
+            this.panelSong3.Controls.Add(this.txtSong5Row3);
+            this.panelSong3.Controls.Add(this.txtSong4Row3);
+            this.panelSong3.Controls.Add(this.txtSong3Row3);
+            this.panelSong3.Controls.Add(this.txtSong2Row3);
+            this.panelSong3.Controls.Add(this.txtSong1Row3);
+            this.panelSong3.Controls.Add(this.panel6);
+            this.panelSong3.Controls.Add(this.pictureBox19);
+            this.panelSong3.Controls.Add(this.txtInstrumentSong3);
+            this.panelSong3.Controls.Add(this.pictureBox20);
+            this.panelSong3.Controls.Add(this.txtDaggerSong3);
+            this.panelSong3.Controls.Add(this.btnResetSong3);
+            this.panelSong3.Controls.Add(this.txtTriggerSong3);
+            this.panelSong3.Controls.Add(this.numDelaySong3);
+            this.panelSong3.Controls.Add(this.label7);
+            this.panelSong3.Controls.Add(this.label8);
+            this.panelSong3.Controls.Add(this.label9);
+            this.panelSong3.Location = new System.Drawing.Point(3, 228);
+            this.panelSong3.Name = "panelSong3";
+            this.panelSong3.Size = new System.Drawing.Size(610, 100);
+            this.panelSong3.TabIndex = 68;
+            this.panelSong3.TabStop = false;
+            this.panelSong3.Text = "Song 3";
             // 
             // panel5
             // 
@@ -886,25 +880,25 @@ namespace _ORTools.Forms
             this.pictureBox23.TabIndex = 317;
             this.pictureBox23.TabStop = false;
             // 
-            // in8mac3
+            // txtSong8Row3
             // 
-            this.in8mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in8mac3.Location = new System.Drawing.Point(364, 65);
-            this.in8mac3.Name = "in8mac3";
-            this.in8mac3.Size = new System.Drawing.Size(55, 22);
-            this.in8mac3.TabIndex = 315;
-            this.in8mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong8Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong8Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong8Row3.Location = new System.Drawing.Point(364, 65);
+            this.txtSong8Row3.Name = "txtSong8Row3";
+            this.txtSong8Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong8Row3.TabIndex = 315;
+            this.txtSong8Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac3
+            // txtSong7Row3
             // 
-            this.in7mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in7mac3.Location = new System.Drawing.Point(364, 27);
-            this.in7mac3.Name = "in7mac3";
-            this.in7mac3.Size = new System.Drawing.Size(55, 22);
-            this.in7mac3.TabIndex = 314;
-            this.in7mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong7Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong7Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong7Row3.Location = new System.Drawing.Point(364, 27);
+            this.txtSong7Row3.Name = "txtSong7Row3";
+            this.txtSong7Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong7Row3.TabIndex = 314;
+            this.txtSong7Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox24
             // 
@@ -946,65 +940,65 @@ namespace _ORTools.Forms
             this.pictureBox27.TabIndex = 311;
             this.pictureBox27.TabStop = false;
             // 
-            // in6mac3
+            // txtSong6Row3
             // 
-            this.in6mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in6mac3.Location = new System.Drawing.Point(287, 64);
-            this.in6mac3.Name = "in6mac3";
-            this.in6mac3.Size = new System.Drawing.Size(55, 22);
-            this.in6mac3.TabIndex = 309;
-            this.in6mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong6Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong6Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong6Row3.Location = new System.Drawing.Point(287, 64);
+            this.txtSong6Row3.Name = "txtSong6Row3";
+            this.txtSong6Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong6Row3.TabIndex = 309;
+            this.txtSong6Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac3
+            // txtSong5Row3
             // 
-            this.in5mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in5mac3.Location = new System.Drawing.Point(287, 26);
-            this.in5mac3.Name = "in5mac3";
-            this.in5mac3.Size = new System.Drawing.Size(55, 22);
-            this.in5mac3.TabIndex = 308;
-            this.in5mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong5Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong5Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong5Row3.Location = new System.Drawing.Point(287, 26);
+            this.txtSong5Row3.Name = "txtSong5Row3";
+            this.txtSong5Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong5Row3.TabIndex = 308;
+            this.txtSong5Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac3
+            // txtSong4Row3
             // 
-            this.in4mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in4mac3.Location = new System.Drawing.Point(210, 64);
-            this.in4mac3.Name = "in4mac3";
-            this.in4mac3.Size = new System.Drawing.Size(55, 22);
-            this.in4mac3.TabIndex = 307;
-            this.in4mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong4Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong4Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong4Row3.Location = new System.Drawing.Point(210, 64);
+            this.txtSong4Row3.Name = "txtSong4Row3";
+            this.txtSong4Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong4Row3.TabIndex = 307;
+            this.txtSong4Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac3
+            // txtSong3Row3
             // 
-            this.in3mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in3mac3.Location = new System.Drawing.Point(210, 26);
-            this.in3mac3.Name = "in3mac3";
-            this.in3mac3.Size = new System.Drawing.Size(55, 22);
-            this.in3mac3.TabIndex = 306;
-            this.in3mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong3Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong3Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong3Row3.Location = new System.Drawing.Point(210, 26);
+            this.txtSong3Row3.Name = "txtSong3Row3";
+            this.txtSong3Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong3Row3.TabIndex = 306;
+            this.txtSong3Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac3
+            // txtSong2Row3
             // 
-            this.in2mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in2mac3.Location = new System.Drawing.Point(133, 64);
-            this.in2mac3.Name = "in2mac3";
-            this.in2mac3.Size = new System.Drawing.Size(55, 22);
-            this.in2mac3.TabIndex = 305;
-            this.in2mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong2Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong2Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong2Row3.Location = new System.Drawing.Point(133, 64);
+            this.txtSong2Row3.Name = "txtSong2Row3";
+            this.txtSong2Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong2Row3.TabIndex = 305;
+            this.txtSong2Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in1mac3
+            // txtSong1Row3
             // 
-            this.in1mac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in1mac3.Location = new System.Drawing.Point(133, 26);
-            this.in1mac3.Name = "in1mac3";
-            this.in1mac3.Size = new System.Drawing.Size(55, 22);
-            this.in1mac3.TabIndex = 304;
-            this.in1mac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong1Row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong1Row3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong1Row3.Location = new System.Drawing.Point(133, 26);
+            this.txtSong1Row3.Name = "txtSong1Row3";
+            this.txtSong1Row3.Size = new System.Drawing.Size(55, 22);
+            this.txtSong1Row3.TabIndex = 304;
+            this.txtSong1Row3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel6
             // 
@@ -1024,16 +1018,15 @@ namespace _ORTools.Forms
             this.pictureBox19.TabIndex = 288;
             this.pictureBox19.TabStop = false;
             // 
-            // inInstrumentMacro3
+            // txtInstrumentSong3
             // 
-            this.inInstrumentMacro3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inInstrumentMacro3.Location = new System.Drawing.Point(469, 65);
-            this.inInstrumentMacro3.Name = "inInstrumentMacro3";
-            this.inInstrumentMacro3.Size = new System.Drawing.Size(55, 22);
-            this.inInstrumentMacro3.TabIndex = 287;
-            this.inInstrumentMacro3.Tag = "3:Instrument";
-            this.inInstrumentMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInstrumentSong3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInstrumentSong3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInstrumentSong3.Location = new System.Drawing.Point(469, 65);
+            this.txtInstrumentSong3.Name = "txtInstrumentSong3";
+            this.txtInstrumentSong3.Size = new System.Drawing.Size(55, 22);
+            this.txtInstrumentSong3.TabIndex = 287;
+            this.txtInstrumentSong3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox20
             // 
@@ -1045,54 +1038,52 @@ namespace _ORTools.Forms
             this.pictureBox20.TabIndex = 286;
             this.pictureBox20.TabStop = false;
             // 
-            // inDaggerMacro3
+            // txtDaggerSong3
             // 
-            this.inDaggerMacro3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inDaggerMacro3.Location = new System.Drawing.Point(469, 27);
-            this.inDaggerMacro3.Name = "inDaggerMacro3";
-            this.inDaggerMacro3.Size = new System.Drawing.Size(55, 22);
-            this.inDaggerMacro3.TabIndex = 285;
-            this.inDaggerMacro3.Tag = "3:Dagger";
-            this.inDaggerMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDaggerSong3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDaggerSong3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDaggerSong3.Location = new System.Drawing.Point(469, 27);
+            this.txtDaggerSong3.Name = "txtDaggerSong3";
+            this.txtDaggerSong3.Size = new System.Drawing.Size(55, 22);
+            this.txtDaggerSong3.TabIndex = 285;
+            this.txtDaggerSong3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnResMac3
+            // btnResetSong3
             // 
-            this.btnResMac3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac3.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnResMac3.Location = new System.Drawing.Point(543, 44);
-            this.btnResMac3.Name = "btnResMac3";
-            this.btnResMac3.Size = new System.Drawing.Size(50, 23);
-            this.btnResMac3.TabIndex = 208;
-            this.btnResMac3.Text = "Reset";
-            this.btnResMac3.UseVisualStyleBackColor = false;
+            this.btnResetSong3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetSong3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetSong3.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResetSong3.Location = new System.Drawing.Point(543, 44);
+            this.btnResetSong3.Name = "btnResetSong3";
+            this.btnResetSong3.Size = new System.Drawing.Size(50, 23);
+            this.btnResetSong3.TabIndex = 208;
+            this.btnResetSong3.Text = "Reset";
+            this.btnResetSong3.UseVisualStyleBackColor = false;
             // 
-            // inTriggerMacro3
+            // txtTriggerSong3
             // 
-            this.inTriggerMacro3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inTriggerMacro3.Location = new System.Drawing.Point(44, 26);
-            this.inTriggerMacro3.Name = "inTriggerMacro3";
-            this.inTriggerMacro3.Size = new System.Drawing.Size(55, 22);
-            this.inTriggerMacro3.TabIndex = 71;
-            this.inTriggerMacro3.Tag = "3:Trigger";
-            this.inTriggerMacro3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTriggerSong3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTriggerSong3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTriggerSong3.Location = new System.Drawing.Point(44, 26);
+            this.txtTriggerSong3.Name = "txtTriggerSong3";
+            this.txtTriggerSong3.Size = new System.Drawing.Size(55, 22);
+            this.txtTriggerSong3.TabIndex = 71;
+            this.txtTriggerSong3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // delayMac3
+            // numDelaySong3
             // 
-            this.delayMac3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delayMac3.Location = new System.Drawing.Point(44, 64);
-            this.delayMac3.Maximum = new decimal(new int[] {
+            this.numDelaySong3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numDelaySong3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDelaySong3.Location = new System.Drawing.Point(44, 64);
+            this.numDelaySong3.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.delayMac3.Name = "delayMac3";
-            this.delayMac3.Size = new System.Drawing.Size(47, 22);
-            this.delayMac3.TabIndex = 70;
-            this.delayMac3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numDelaySong3.Name = "numDelaySong3";
+            this.numDelaySong3.Size = new System.Drawing.Size(47, 22);
+            this.numDelaySong3.TabIndex = 70;
+            this.numDelaySong3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -1124,41 +1115,41 @@ namespace _ORTools.Forms
             this.label9.TabIndex = 16;
             this.label9.Text = "Key";
             // 
-            // panelMacro4
+            // panelSong4
             // 
-            this.panelMacro4.Controls.Add(this.panel7);
-            this.panelMacro4.Controls.Add(this.pictureBox28);
-            this.panelMacro4.Controls.Add(this.pictureBox29);
-            this.panelMacro4.Controls.Add(this.pictureBox30);
-            this.panelMacro4.Controls.Add(this.in8mac4);
-            this.panelMacro4.Controls.Add(this.in7mac4);
-            this.panelMacro4.Controls.Add(this.pictureBox31);
-            this.panelMacro4.Controls.Add(this.pictureBox32);
-            this.panelMacro4.Controls.Add(this.pictureBox33);
-            this.panelMacro4.Controls.Add(this.pictureBox34);
-            this.panelMacro4.Controls.Add(this.in6mac4);
-            this.panelMacro4.Controls.Add(this.in5mac4);
-            this.panelMacro4.Controls.Add(this.in4mac4);
-            this.panelMacro4.Controls.Add(this.in3mac4);
-            this.panelMacro4.Controls.Add(this.in2mac4);
-            this.panelMacro4.Controls.Add(this.in1mac4);
-            this.panelMacro4.Controls.Add(this.panel8);
-            this.panelMacro4.Controls.Add(this.pictureBox35);
-            this.panelMacro4.Controls.Add(this.inInstrumentMacro4);
-            this.panelMacro4.Controls.Add(this.pictureBox36);
-            this.panelMacro4.Controls.Add(this.inDaggerMacro4);
-            this.panelMacro4.Controls.Add(this.btnResMac4);
-            this.panelMacro4.Controls.Add(this.inTriggerMacro4);
-            this.panelMacro4.Controls.Add(this.delayMac4);
-            this.panelMacro4.Controls.Add(this.label10);
-            this.panelMacro4.Controls.Add(this.label11);
-            this.panelMacro4.Controls.Add(this.label12);
-            this.panelMacro4.Location = new System.Drawing.Point(3, 338);
-            this.panelMacro4.Name = "panelMacro4";
-            this.panelMacro4.Size = new System.Drawing.Size(610, 100);
-            this.panelMacro4.TabIndex = 68;
-            this.panelMacro4.TabStop = false;
-            this.panelMacro4.Text = "Song 4";
+            this.panelSong4.Controls.Add(this.panel7);
+            this.panelSong4.Controls.Add(this.pictureBox28);
+            this.panelSong4.Controls.Add(this.pictureBox29);
+            this.panelSong4.Controls.Add(this.pictureBox30);
+            this.panelSong4.Controls.Add(this.txtSong8Row4);
+            this.panelSong4.Controls.Add(this.txtSong7Row4);
+            this.panelSong4.Controls.Add(this.pictureBox31);
+            this.panelSong4.Controls.Add(this.pictureBox32);
+            this.panelSong4.Controls.Add(this.pictureBox33);
+            this.panelSong4.Controls.Add(this.pictureBox34);
+            this.panelSong4.Controls.Add(this.txtSong6Row4);
+            this.panelSong4.Controls.Add(this.txtSong5Row4);
+            this.panelSong4.Controls.Add(this.txtSong4Row4);
+            this.panelSong4.Controls.Add(this.txtSong3Row4);
+            this.panelSong4.Controls.Add(this.txtSong2Row4);
+            this.panelSong4.Controls.Add(this.txtSong1Row4);
+            this.panelSong4.Controls.Add(this.panel8);
+            this.panelSong4.Controls.Add(this.pictureBox35);
+            this.panelSong4.Controls.Add(this.txtInstrumentSong4);
+            this.panelSong4.Controls.Add(this.pictureBox36);
+            this.panelSong4.Controls.Add(this.txtDaggerSong4);
+            this.panelSong4.Controls.Add(this.btnResetSong4);
+            this.panelSong4.Controls.Add(this.txtTriggerSong4);
+            this.panelSong4.Controls.Add(this.numDelaySong4);
+            this.panelSong4.Controls.Add(this.label10);
+            this.panelSong4.Controls.Add(this.label11);
+            this.panelSong4.Controls.Add(this.label12);
+            this.panelSong4.Location = new System.Drawing.Point(3, 338);
+            this.panelSong4.Name = "panelSong4";
+            this.panelSong4.Size = new System.Drawing.Size(610, 100);
+            this.panelSong4.TabIndex = 68;
+            this.panelSong4.TabStop = false;
+            this.panelSong4.Text = "Song 4";
             // 
             // panel7
             // 
@@ -1198,25 +1189,25 @@ namespace _ORTools.Forms
             this.pictureBox30.TabIndex = 337;
             this.pictureBox30.TabStop = false;
             // 
-            // in8mac4
+            // txtSong8Row4
             // 
-            this.in8mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in8mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in8mac4.Location = new System.Drawing.Point(364, 64);
-            this.in8mac4.Name = "in8mac4";
-            this.in8mac4.Size = new System.Drawing.Size(55, 22);
-            this.in8mac4.TabIndex = 335;
-            this.in8mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong8Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong8Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong8Row4.Location = new System.Drawing.Point(364, 64);
+            this.txtSong8Row4.Name = "txtSong8Row4";
+            this.txtSong8Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong8Row4.TabIndex = 335;
+            this.txtSong8Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in7mac4
+            // txtSong7Row4
             // 
-            this.in7mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in7mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in7mac4.Location = new System.Drawing.Point(364, 26);
-            this.in7mac4.Name = "in7mac4";
-            this.in7mac4.Size = new System.Drawing.Size(55, 22);
-            this.in7mac4.TabIndex = 334;
-            this.in7mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong7Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong7Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong7Row4.Location = new System.Drawing.Point(364, 26);
+            this.txtSong7Row4.Name = "txtSong7Row4";
+            this.txtSong7Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong7Row4.TabIndex = 334;
+            this.txtSong7Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox31
             // 
@@ -1258,65 +1249,65 @@ namespace _ORTools.Forms
             this.pictureBox34.TabIndex = 331;
             this.pictureBox34.TabStop = false;
             // 
-            // in6mac4
+            // txtSong6Row4
             // 
-            this.in6mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in6mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in6mac4.Location = new System.Drawing.Point(287, 63);
-            this.in6mac4.Name = "in6mac4";
-            this.in6mac4.Size = new System.Drawing.Size(55, 22);
-            this.in6mac4.TabIndex = 329;
-            this.in6mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong6Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong6Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong6Row4.Location = new System.Drawing.Point(287, 63);
+            this.txtSong6Row4.Name = "txtSong6Row4";
+            this.txtSong6Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong6Row4.TabIndex = 329;
+            this.txtSong6Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in5mac4
+            // txtSong5Row4
             // 
-            this.in5mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in5mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in5mac4.Location = new System.Drawing.Point(287, 25);
-            this.in5mac4.Name = "in5mac4";
-            this.in5mac4.Size = new System.Drawing.Size(55, 22);
-            this.in5mac4.TabIndex = 328;
-            this.in5mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong5Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong5Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong5Row4.Location = new System.Drawing.Point(287, 25);
+            this.txtSong5Row4.Name = "txtSong5Row4";
+            this.txtSong5Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong5Row4.TabIndex = 328;
+            this.txtSong5Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in4mac4
+            // txtSong4Row4
             // 
-            this.in4mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in4mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in4mac4.Location = new System.Drawing.Point(210, 64);
-            this.in4mac4.Name = "in4mac4";
-            this.in4mac4.Size = new System.Drawing.Size(55, 22);
-            this.in4mac4.TabIndex = 327;
-            this.in4mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong4Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong4Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong4Row4.Location = new System.Drawing.Point(210, 64);
+            this.txtSong4Row4.Name = "txtSong4Row4";
+            this.txtSong4Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong4Row4.TabIndex = 327;
+            this.txtSong4Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in3mac4
+            // txtSong3Row4
             // 
-            this.in3mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in3mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in3mac4.Location = new System.Drawing.Point(210, 26);
-            this.in3mac4.Name = "in3mac4";
-            this.in3mac4.Size = new System.Drawing.Size(55, 22);
-            this.in3mac4.TabIndex = 326;
-            this.in3mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong3Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong3Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong3Row4.Location = new System.Drawing.Point(210, 26);
+            this.txtSong3Row4.Name = "txtSong3Row4";
+            this.txtSong3Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong3Row4.TabIndex = 326;
+            this.txtSong3Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in2mac4
+            // txtSong2Row4
             // 
-            this.in2mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in2mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in2mac4.Location = new System.Drawing.Point(133, 64);
-            this.in2mac4.Name = "in2mac4";
-            this.in2mac4.Size = new System.Drawing.Size(55, 22);
-            this.in2mac4.TabIndex = 325;
-            this.in2mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong2Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong2Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong2Row4.Location = new System.Drawing.Point(133, 64);
+            this.txtSong2Row4.Name = "txtSong2Row4";
+            this.txtSong2Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong2Row4.TabIndex = 325;
+            this.txtSong2Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // in1mac4
+            // txtSong1Row4
             // 
-            this.in1mac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.in1mac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.in1mac4.Location = new System.Drawing.Point(133, 26);
-            this.in1mac4.Name = "in1mac4";
-            this.in1mac4.Size = new System.Drawing.Size(55, 22);
-            this.in1mac4.TabIndex = 324;
-            this.in1mac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSong1Row4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSong1Row4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSong1Row4.Location = new System.Drawing.Point(133, 26);
+            this.txtSong1Row4.Name = "txtSong1Row4";
+            this.txtSong1Row4.Size = new System.Drawing.Size(55, 22);
+            this.txtSong1Row4.TabIndex = 324;
+            this.txtSong1Row4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel8
             // 
@@ -1336,16 +1327,15 @@ namespace _ORTools.Forms
             this.pictureBox35.TabIndex = 322;
             this.pictureBox35.TabStop = false;
             // 
-            // inInstrumentMacro4
+            // txtInstrumentSong4
             // 
-            this.inInstrumentMacro4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inInstrumentMacro4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inInstrumentMacro4.Location = new System.Drawing.Point(469, 64);
-            this.inInstrumentMacro4.Name = "inInstrumentMacro4";
-            this.inInstrumentMacro4.Size = new System.Drawing.Size(55, 22);
-            this.inInstrumentMacro4.TabIndex = 321;
-            this.inInstrumentMacro4.Tag = "4:Instrument";
-            this.inInstrumentMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInstrumentSong4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInstrumentSong4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInstrumentSong4.Location = new System.Drawing.Point(469, 64);
+            this.txtInstrumentSong4.Name = "txtInstrumentSong4";
+            this.txtInstrumentSong4.Size = new System.Drawing.Size(55, 22);
+            this.txtInstrumentSong4.TabIndex = 321;
+            this.txtInstrumentSong4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox36
             // 
@@ -1357,54 +1347,62 @@ namespace _ORTools.Forms
             this.pictureBox36.TabIndex = 320;
             this.pictureBox36.TabStop = false;
             // 
-            // inDaggerMacro4
+            // txtDaggerSong4
             // 
-            this.inDaggerMacro4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inDaggerMacro4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inDaggerMacro4.Location = new System.Drawing.Point(469, 26);
-            this.inDaggerMacro4.Name = "inDaggerMacro4";
-            this.inDaggerMacro4.Size = new System.Drawing.Size(55, 22);
-            this.inDaggerMacro4.TabIndex = 319;
-            this.inDaggerMacro4.Tag = "4:Dagger";
-            this.inDaggerMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDaggerSong4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDaggerSong4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDaggerSong4.Location = new System.Drawing.Point(469, 26);
+            this.txtDaggerSong4.Name = "txtDaggerSong4";
+            this.txtDaggerSong4.Size = new System.Drawing.Size(55, 22);
+            this.txtDaggerSong4.TabIndex = 319;
+            this.txtDaggerSong4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnResMac4
+            // btnResetSong4
             // 
-            this.btnResMac4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResMac4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResMac4.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnResMac4.Location = new System.Drawing.Point(543, 44);
-            this.btnResMac4.Name = "btnResMac4";
-            this.btnResMac4.Size = new System.Drawing.Size(50, 23);
-            this.btnResMac4.TabIndex = 207;
-            this.btnResMac4.Text = "Reset";
-            this.btnResMac4.UseVisualStyleBackColor = false;
+            this.btnResetSong4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetSong4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetSong4.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnResetSong4.Location = new System.Drawing.Point(543, 44);
+            this.btnResetSong4.Name = "btnResetSong4";
+            this.btnResetSong4.Size = new System.Drawing.Size(50, 23);
+            this.btnResetSong4.TabIndex = 207;
+            this.btnResetSong4.Text = "Reset";
+            this.btnResetSong4.UseVisualStyleBackColor = false;
             // 
-            // inTriggerMacro4
+            // txtTriggerSong4
             // 
-            this.inTriggerMacro4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inTriggerMacro4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inTriggerMacro4.Location = new System.Drawing.Point(44, 26);
-            this.inTriggerMacro4.Name = "inTriggerMacro4";
-            this.inTriggerMacro4.Size = new System.Drawing.Size(55, 22);
-            this.inTriggerMacro4.TabIndex = 72;
-            this.inTriggerMacro4.Tag = "4:Trigger";
-            this.inTriggerMacro4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTriggerSong4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTriggerSong4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTriggerSong4.Location = new System.Drawing.Point(44, 26);
+            this.txtTriggerSong4.Name = "txtTriggerSong4";
+            this.txtTriggerSong4.Size = new System.Drawing.Size(55, 22);
+            this.txtTriggerSong4.TabIndex = 72;
+            this.txtTriggerSong4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // delayMac4
+            // numDelaySong4
             // 
-            this.delayMac4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delayMac4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delayMac4.Location = new System.Drawing.Point(44, 64);
-            this.delayMac4.Maximum = new decimal(new int[] {
+            this.numDelaySong4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numDelaySong4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numDelaySong4.Location = new System.Drawing.Point(44, 64);
+            this.numDelaySong4.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
-            this.delayMac4.Name = "delayMac4";
-            this.delayMac4.Size = new System.Drawing.Size(47, 22);
-            this.delayMac4.TabIndex = 71;
-            this.delayMac4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numDelaySong4.Name = "numDelaySong4";
+            this.numDelaySong4.Size = new System.Drawing.Size(47, 22);
+            this.numDelaySong4.TabIndex = 71;
+            this.numDelaySong4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(92, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(22, 14);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "ms";
             // 
             // label11
             // 
@@ -1426,33 +1424,23 @@ namespace _ORTools.Forms
             this.label12.TabIndex = 16;
             this.label12.Text = "Key";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(92, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(22, 14);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "ms";
-            // 
-            // MacroSongForm
+            // SongsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(617, 450);
-            this.Controls.Add(this.panelMacro4);
-            this.Controls.Add(this.panelMacro3);
-            this.Controls.Add(this.panelMacro2);
-            this.Controls.Add(this.panelMacro1);
+            this.Controls.Add(this.panelSong4);
+            this.Controls.Add(this.panelSong3);
+            this.Controls.Add(this.panelSong2);
+            this.Controls.Add(this.panelSong1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MacroSongForm";
-            this.Text = "MacroSongForm";
-            this.panelMacro1.ResumeLayout(false);
-            this.panelMacro1.PerformLayout();
+            this.Name = "SongsForm";
+            this.Text = "SongsForm";
+            this.panelSong1.ResumeLayout(false);
+            this.panelSong1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -1462,9 +1450,9 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac1)).EndInit();
-            this.panelMacro2.ResumeLayout(false);
-            this.panelMacro2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong1)).EndInit();
+            this.panelSong2.ResumeLayout(false);
+            this.panelSong2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
@@ -1474,9 +1462,9 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac2)).EndInit();
-            this.panelMacro3.ResumeLayout(false);
-            this.panelMacro3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong2)).EndInit();
+            this.panelSong3.ResumeLayout(false);
+            this.panelSong3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
@@ -1486,9 +1474,9 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac3)).EndInit();
-            this.panelMacro4.ResumeLayout(false);
-            this.panelMacro4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong3)).EndInit();
+            this.panelSong4.ResumeLayout(false);
+            this.panelSong4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
@@ -1498,48 +1486,48 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.delayMac4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelaySong4)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox panelMacro1;
+        private System.Windows.Forms.GroupBox panelSong1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox panelMacro2;
+        private System.Windows.Forms.GroupBox panelSong2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox panelMacro3;
+        private System.Windows.Forms.GroupBox panelSong3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox panelMacro4;
+        private System.Windows.Forms.GroupBox panelSong4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown delayMac1;
-        private System.Windows.Forms.NumericUpDown delayMac2;
-        private System.Windows.Forms.NumericUpDown delayMac3;
-        private System.Windows.Forms.NumericUpDown delayMac4;
-        private System.Windows.Forms.TextBox inTriggerMacro1;
-        private System.Windows.Forms.TextBox inTriggerMacro2;
-        private System.Windows.Forms.TextBox inTriggerMacro3;
-        private System.Windows.Forms.TextBox inTriggerMacro4;
-        private System.Windows.Forms.TextBox in1mac1;
-        private System.Windows.Forms.TextBox in2mac1;
-        private System.Windows.Forms.TextBox in6mac1;
-        private System.Windows.Forms.TextBox in5mac1;
-        private System.Windows.Forms.TextBox in4mac1;
-        private System.Windows.Forms.TextBox in3mac1;
-        private System.Windows.Forms.Button btnResMac4;
-        private System.Windows.Forms.Button btnResMac3;
-        private System.Windows.Forms.Button btnResMac2;
-        private System.Windows.Forms.Button btnResMac1;
-        private System.Windows.Forms.TextBox inDaggerMacro1;
+        private System.Windows.Forms.NumericUpDown numDelaySong1;
+        private System.Windows.Forms.NumericUpDown numDelaySong2;
+        private System.Windows.Forms.NumericUpDown numDelaySong3;
+        private System.Windows.Forms.NumericUpDown numDelaySong4;
+        private System.Windows.Forms.TextBox txtTriggerSong1;
+        private System.Windows.Forms.TextBox txtTriggerSong2;
+        private System.Windows.Forms.TextBox txtTriggerSong3;
+        private System.Windows.Forms.TextBox txtTriggerSong4;
+        private System.Windows.Forms.TextBox txtSong1Row1;
+        private System.Windows.Forms.TextBox txtSong2Row1;
+        private System.Windows.Forms.TextBox txtSong6Row1;
+        private System.Windows.Forms.TextBox txtSong5Row1;
+        private System.Windows.Forms.TextBox txtSong4Row1;
+        private System.Windows.Forms.TextBox txtSong3Row1;
+        private System.Windows.Forms.Button btnResetSong4;
+        private System.Windows.Forms.Button btnResetSong3;
+        private System.Windows.Forms.Button btnResetSong2;
+        private System.Windows.Forms.Button btnResetSong1;
+        private System.Windows.Forms.TextBox txtDaggerSong1;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.TextBox inInstrumentMacro1;
+        private System.Windows.Forms.TextBox txtInstrumentSong1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -1547,70 +1535,70 @@ namespace _ORTools.Forms
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.TextBox in8mac1;
-        private System.Windows.Forms.TextBox in7mac1;
+        private System.Windows.Forms.TextBox txtSong8Row1;
+        private System.Windows.Forms.TextBox txtSong7Row1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.TextBox in8mac2;
-        private System.Windows.Forms.TextBox in7mac2;
+        private System.Windows.Forms.TextBox txtSong8Row2;
+        private System.Windows.Forms.TextBox txtSong7Row2;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.TextBox in6mac2;
-        private System.Windows.Forms.TextBox in5mac2;
-        private System.Windows.Forms.TextBox in4mac2;
-        private System.Windows.Forms.TextBox in3mac2;
-        private System.Windows.Forms.TextBox in2mac2;
-        private System.Windows.Forms.TextBox in1mac2;
+        private System.Windows.Forms.TextBox txtSong6Row2;
+        private System.Windows.Forms.TextBox txtSong5Row2;
+        private System.Windows.Forms.TextBox txtSong4Row2;
+        private System.Windows.Forms.TextBox txtSong3Row2;
+        private System.Windows.Forms.TextBox txtSong2Row2;
+        private System.Windows.Forms.TextBox txtSong1Row2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.TextBox inInstrumentMacro2;
+        private System.Windows.Forms.TextBox txtInstrumentSong2;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.TextBox inDaggerMacro2;
+        private System.Windows.Forms.TextBox txtDaggerSong2;
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox23;
-        private System.Windows.Forms.TextBox in8mac3;
-        private System.Windows.Forms.TextBox in7mac3;
+        private System.Windows.Forms.TextBox txtSong8Row3;
+        private System.Windows.Forms.TextBox txtSong7Row3;
         private System.Windows.Forms.PictureBox pictureBox24;
         private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.PictureBox pictureBox27;
-        private System.Windows.Forms.TextBox in6mac3;
-        private System.Windows.Forms.TextBox in5mac3;
-        private System.Windows.Forms.TextBox in4mac3;
-        private System.Windows.Forms.TextBox in3mac3;
-        private System.Windows.Forms.TextBox in2mac3;
-        private System.Windows.Forms.TextBox in1mac3;
+        private System.Windows.Forms.TextBox txtSong6Row3;
+        private System.Windows.Forms.TextBox txtSong5Row3;
+        private System.Windows.Forms.TextBox txtSong4Row3;
+        private System.Windows.Forms.TextBox txtSong3Row3;
+        private System.Windows.Forms.TextBox txtSong2Row3;
+        private System.Windows.Forms.TextBox txtSong1Row3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.TextBox inInstrumentMacro3;
+        private System.Windows.Forms.TextBox txtInstrumentSong3;
         private System.Windows.Forms.PictureBox pictureBox20;
-        private System.Windows.Forms.TextBox inDaggerMacro3;
+        private System.Windows.Forms.TextBox txtDaggerSong3;
         private System.Windows.Forms.PictureBox pictureBox28;
         private System.Windows.Forms.PictureBox pictureBox29;
         private System.Windows.Forms.PictureBox pictureBox30;
-        private System.Windows.Forms.TextBox in8mac4;
-        private System.Windows.Forms.TextBox in7mac4;
+        private System.Windows.Forms.TextBox txtSong8Row4;
+        private System.Windows.Forms.TextBox txtSong7Row4;
         private System.Windows.Forms.PictureBox pictureBox31;
         private System.Windows.Forms.PictureBox pictureBox32;
         private System.Windows.Forms.PictureBox pictureBox33;
         private System.Windows.Forms.PictureBox pictureBox34;
-        private System.Windows.Forms.TextBox in6mac4;
-        private System.Windows.Forms.TextBox in5mac4;
-        private System.Windows.Forms.TextBox in4mac4;
-        private System.Windows.Forms.TextBox in3mac4;
-        private System.Windows.Forms.TextBox in2mac4;
-        private System.Windows.Forms.TextBox in1mac4;
+        private System.Windows.Forms.TextBox txtSong6Row4;
+        private System.Windows.Forms.TextBox txtSong5Row4;
+        private System.Windows.Forms.TextBox txtSong4Row4;
+        private System.Windows.Forms.TextBox txtSong3Row4;
+        private System.Windows.Forms.TextBox txtSong2Row4;
+        private System.Windows.Forms.TextBox txtSong1Row4;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.PictureBox pictureBox35;
-        private System.Windows.Forms.TextBox inInstrumentMacro4;
+        private System.Windows.Forms.TextBox txtInstrumentSong4;
         private System.Windows.Forms.PictureBox pictureBox36;
-        private System.Windows.Forms.TextBox inDaggerMacro4;
+        private System.Windows.Forms.TextBox txtDaggerSong4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox21;

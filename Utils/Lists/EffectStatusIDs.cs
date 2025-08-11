@@ -676,58 +676,58 @@ namespace _ORTools.Utils
         NPC_HALLUCINATION = 1416,
 
         [Description("Force Element (Earth)")]
-        ELEMENT_EARTH = 1423,
+        PD_ELEMENT_EARTH = 1423,
 
         [Description("Force Element (Wind)")]
-        ELEMENT_WIND = 1424,
+        PD_ELEMENT_WIND = 1424,
 
         [Description("Force Element (Water)")]
-        ELEMENT_WATER = 1425,
+        PD_ELEMENT_WATER = 1425,
 
         [Description("Force Element (Fire)")]
-        ELEMENT_FIRE = 1426,
+        PD_ELEMENT_FIRE = 1426,
 
         [Description("Force Element (Ghost)")]
-        ELEMENT_GHOST = 1427,
+        PD_ELEMENT_GHOST = 1427,
 
         [Description("Force Element (Shadow)")]
-        ELEMENT_SHADOW = 1428,
+        PD_ELEMENT_SHADOW = 1428,
 
         [Description("Force Element (Holy)")]
-        ELEMENT_HOLY = 1429,
+        PD_ELEMENT_HOLY = 1429,
 
         [Description("Saber Parry")]
-        SABERPARRY = 1430,
+        JS_SABERPARRY = 1430,
 
         [Description("Force Concentration")]
-        FORCECONCENTRATE = 1432,
+        JS_CONCENTRATE = 1432,
 
         [Description("Saber Thrust")]
-        SABERTHRUST = 1438,
+        SI_SABERTHRUST = 1438,
 
         [Description("Cold Skin")]
-        COLDSKIN = 1439,
+        SI_COLDSKIN = 1439,
 
         [Description("Force Projection")]
-        PROJECTION = 1441,
+        SI_PROJECTION = 1441,
 
         [Description("Force Persuasion")]
-        FORCEPERSUASION = 1431,
+        JS_PERSUADE = 1431,
 
         [Description("Jedi Frenzy")]
-        JEDIFRENZY = 1433,
+        JE_FRENZY = 1433,
 
         [Description("Force Sacrifice")]
-        FORCESACRIFICE = 1434,
+        JE_SACRIFICE = 1434,
 
         [Description("Force Levitate")]
-        FORCELEVITATE = 1435,
+        JE_LEVITATE = 1435,
 
         [Description("Jedi Stealth")]
-        JEDISTEALTH = 1437,
+        JE_STEALTH = 1437,
 
         [Description("Greed Parry")]
-        GREED_PARRY = 1442,
+        WS_GREEDPARRY = 1442,
 
         [Description("Halo Halo")]
         HALOHALO = 2011,

@@ -322,6 +322,7 @@
     <Compile Include="Forms\Tabs\TransferHelperForm.Designer.cs">
       <DependentUpon>TransferHelperForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\SongMacro.cs" />
     <Compile Include="Model\Tabs\AutoOff.cs" />
     <Compile Include="Model\Tabs\AutopotHP.cs" />
     <Compile Include="Model\Tabs\AutopotSP.cs" />
