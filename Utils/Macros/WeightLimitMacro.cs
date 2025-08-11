@@ -9,9 +9,6 @@ namespace _ORTools.Utils
 {
     public static class WeightLimitMacro
     {
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr GetForegroundWindow();
-
         private static readonly Dictionary<Keys, string> _sendKeysMap = new Dictionary<Keys, string>()
         {
              { Keys.D0, "0" },
@@ -25,9 +22,6 @@ namespace _ORTools.Utils
              { Keys.D8, "8" },
              { Keys.D9, "9" }
         };
-
-        [DllImport("user32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         public static string ToSendKeysFormat(Keys key)
         {
@@ -55,7 +49,7 @@ namespace _ORTools.Utils
                 IntPtr hWnd = ClientSingleton.GetClient().Process.MainWindowHandle;
 
                 // Only focus the window if it's not already focused
-                if (GetForegroundWindow() != hWnd) { SetForegroundWindow(hWnd); }
+                if (Win32Interop.GetForegroundWindow() != hWnd) { Win32Interop.SetForegroundWindow(hWnd); }
 
                 Thread.Sleep(1000);
 

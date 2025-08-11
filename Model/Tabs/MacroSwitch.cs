@@ -13,6 +13,10 @@ namespace _ORTools.Model
     {
         public Keys Key { get; set; }
 
+        public static int TOTAL_MACRO_LANES = 4;
+        public static int TOTAL_MACRO_KEYS = 8;
+        public static int TOTAL_MACRO_KEY_DELAYS = 7;
+
         private int _delay = AppConfig.MacroDefaultDelay;
         public int Delay
         {
@@ -56,6 +60,11 @@ namespace _ORTools.Model
     {
         public int id;
 
+        /// <summary>
+        /// The trigger key that activates this macro chain
+        /// </summary>
+        public Keys TriggerKey { get; set; } = Keys.None;
+
         public List<MacroKey> macroEntries { get; set; } = new List<MacroKey>();
 
         public ChainConfig() { }
@@ -63,8 +72,9 @@ namespace _ORTools.Model
         public ChainConfig(int id)
         {
             this.id = id;
+            this.TriggerKey = Keys.None;
             this.macroEntries = new List<MacroKey>();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < MacroKey.TOTAL_MACRO_KEYS; i++)
             {
                 this.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
             }
@@ -73,21 +83,21 @@ namespace _ORTools.Model
         public ChainConfig(ChainConfig macro)
         {
             this.id = macro.id;
+            this.TriggerKey = macro.TriggerKey;
             this.macroEntries = new List<MacroKey>(macro.macroEntries);
         }
 
         public ChainConfig(int id, Keys trigger)
         {
             this.id = id;
+            this.TriggerKey = trigger;
             this.macroEntries = new List<MacroKey>();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < MacroKey.TOTAL_MACRO_KEYS; i++)
             {
                 this.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
             }
         }
-
     }
-
 
     public class MacroSwitch : IAction
     {
@@ -103,7 +113,6 @@ namespace _ORTools.Model
             for (int i = 1; i <= macroLanes; i++)
             {
                 ChainConfigs.Add(new ChainConfig(i, Keys.None));
-
             }
         }
 
@@ -117,7 +126,6 @@ namespace _ORTools.Model
             {
                 var exception = ex;
             }
-
         }
 
         public string GetActionName()
@@ -134,19 +142,32 @@ namespace _ORTools.Model
         {
             foreach (ChainConfig chainConfig in this.ChainConfigs)
             {
-                // Determine the trigger key as the first non-None key in macroEntries
-                MacroKey triggerMacroKey = chainConfig.macroEntries.Find(k => k.Key != Keys.None);
-                if (triggerMacroKey == null)
-                    continue; // no valid keys, skip
+                // Use the dedicated TriggerKey instead of the first non-None key
+                if (chainConfig.TriggerKey == Keys.None)
+                    continue; // no trigger key set, skip this chain
 
-                if (Win32Interop.IsKeyPressed(triggerMacroKey.Key))
+                if (Win32Interop.IsKeyPressed(chainConfig.TriggerKey))
                 {
                     foreach (var macroKey in chainConfig.macroEntries)
                     {
                         if (macroKey.Key != Keys.None)
                         {
+                            // Send the key
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, macroKey.Key, 0);
-                            Thread.Sleep(macroKey.Delay); // delay after sending key
+
+                            // Handle click behavior
+                            if (macroKey.ClickMode == 1)
+                            {
+                                // Click at current mouse position
+                                MouseHelper.TryClickAtCurrentPosition(roClient.Process.MainWindowHandle);
+                            }
+                            else if (macroKey.ClickMode == 2)
+                            {
+                                // Click at center of game window
+                                MouseHelper.TryClickAtWindowCenter(roClient.Process.MainWindowHandle);
+                            }
+
+                            Thread.Sleep(macroKey.Delay); // delay after sending key and/or click
                         }
                     }
                 }

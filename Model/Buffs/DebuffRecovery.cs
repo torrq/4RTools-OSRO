@@ -40,9 +40,6 @@ namespace _ORTools.Model
             return this.ActionName;
         }
 
-        [DllImport("user32.dll")]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
-
         public ThreadRunner DebuffRecoveryThread(Client c)
         {
             Client roClient = ClientSingleton.GetClient();

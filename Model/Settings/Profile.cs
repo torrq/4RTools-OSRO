@@ -38,7 +38,7 @@ namespace _ORTools.Model
             this.AutobuffItem = new AutoBuffItem(AutoBuffItem.ACTION_NAME_AUTOBUFFITEM);
             this.StatusRecovery = new StatusRecovery();
             this.SongMacro = new MacroSong();
-            this.MacroSwitch = new MacroSwitch(MacroSwitch.ACTION_NAME_MACRO_SWITCH, MacroSwitchForm.TOTAL_MACRO_LANES);
+            this.MacroSwitch = new MacroSwitch(MacroSwitch.ACTION_NAME_MACRO_SWITCH, MacroKey.TOTAL_MACRO_LANES);
             this.AtkDefMode = new ATKDEF(ATKDEFForm.TOTAL_ATKDEF_LANES);
             this.DebuffsRecovery = new DebuffRecovery("DebuffsRecovery");
             this.TransferHelper = new TransferHelper();

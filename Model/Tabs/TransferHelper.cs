@@ -10,13 +10,8 @@ namespace _ORTools.Model
     public class TransferHelper : IAction
     {
         public static string ACTION_NAME_TRANSFER = "TransferHelper";
-
         public string ActionName { get; set; } = ACTION_NAME_TRANSFER;
-
         private ThreadRunner thread;
-
-        [DllImport("user32.dll")]
-        public static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
         public Keys TransferKey { get; set; } = Keys.None;
 
@@ -52,14 +47,14 @@ namespace _ORTools.Model
                 return 0;
             };
 
-            keybd_event(Constants.VK_LMENU, 0xA4, Constants.KEYEVENTF_EXTENDEDKEY, 0);
+            Win32Interop.keybd_event(Constants.VK_LMENU, 0xA4, Constants.KEYEVENTF_EXTENDEDKEY, 0);
 
             while (Win32Interop.IsKeyPressed(config.Key))
             {
                 send_click(0);
                 Thread.Sleep(10);
             }
-            keybd_event(Constants.VK_LMENU, 0xA4, Constants.KEYEVENTF_EXTENDEDKEY | Constants.KEYEVENTF_KEYUP, 0);
+            Win32Interop.keybd_event(Constants.VK_LMENU, 0xA4, Constants.KEYEVENTF_EXTENDEDKEY | Constants.KEYEVENTF_KEYUP, 0);
         }
 
         public void Start()

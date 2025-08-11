@@ -12,58 +12,9 @@ namespace _ORTools.Model
 {
     public class SkillTimer : IAction
     {
-        #region P/Invoke Definitions
-        [StructLayout(LayoutKind.Sequential)]
-        private struct RECT { public int Left, Top, Right, Bottom; }
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct POINT { public int X, Y; }
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool ClientToScreen(IntPtr hWnd, ref POINT lpPoint);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool GetCursorPos(out POINT lpPoint);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool SetCursorPos(int x, int y);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, UIntPtr dwExtraInfo);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr GetForegroundWindow();
-
-        #endregion
-
         #region Constants
-        private const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
-        private const uint MOUSEEVENTF_LEFTUP = 0x0004;
-        private const uint WM_LBUTTONDOWN = 0x0201;
-        private const uint WM_LBUTTONUP = 0x0202;
-        private const int SW_RESTORE = 9;
         public const int MAX_SKILL_TIMERS = 10;
         #endregion
-
-        private static IntPtr MakeLParam(int low, int high) => (IntPtr)((high << 16) | (low & 0xFFFF));
 
         private readonly string ACTION_NAME = "SkillTimer";
         public Dictionary<int, SkillTimerKey> skillTimer = new Dictionary<int, SkillTimerKey>();
@@ -152,9 +103,9 @@ namespace _ORTools.Model
                     if (macro.AltKey)
                     {
                         // Only focus the window if it's not already focused
-                        if (GetForegroundWindow() != hWnd)
+                        if (Win32Interop.GetForegroundWindow() != hWnd)
                         {
-                            SetForegroundWindow(hWnd);
+                            Win32Interop.SetForegroundWindow(hWnd);
                         }
                         SendKeys.SendWait("%" + ToSendKeysFormat(macro.Key));
                         //DebugLogger.Info($"Sent ALT Skilltimer key: " + macro.Key);
@@ -193,14 +144,14 @@ namespace _ORTools.Model
 
         private void TryClickAtCurrentPosition(IntPtr hWnd)
         {
-            SendMessage(hWnd, WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
+            Win32Interop.SendMessage(hWnd, Win32Interop.WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
             Thread.Sleep(25);
-            SendMessage(hWnd, WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
+            Win32Interop.SendMessage(hWnd, Win32Interop.WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
         }
 
         private void TryClickAtCenter(IntPtr hWnd)
         {
-            if (!GetClientRect(hWnd, out RECT clientRect))
+            if (!Win32Interop.GetClientRect(hWnd, out Win32Interop.RECT clientRect))
                 return;
 
             // Calculate the center of the client area
@@ -208,22 +159,22 @@ namespace _ORTools.Model
             int centerY = clientRect.Bottom / 2;
 
             // Convert client coordinates to screen coordinates
-            POINT centerPoint = new POINT { X = centerX, Y = centerY };
-            ClientToScreen(hWnd, ref centerPoint);
+            Win32Interop.POINT centerPoint = new Win32Interop.POINT { X = centerX, Y = centerY };
+            Win32Interop.ClientToScreen(hWnd, ref centerPoint);
 
             // Save current cursor position
-            GetCursorPos(out POINT originalPos);
+            Win32Interop.GetCursorPos(out Win32Interop.POINT originalPos);
 
             // Move cursor to center, click, then restore position
-            SetCursorPos(centerPoint.X, centerPoint.Y);
+            Win32Interop.SetCursorPos(centerPoint.X, centerPoint.Y);
             Thread.Sleep(25); // Keep the original timing that was working
 
-            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+            Win32Interop.mouse_event(Win32Interop.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             Thread.Sleep(50); // Slightly longer delay between down and up
-            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+            Win32Interop.mouse_event(Win32Interop.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
             // Restore original cursor position
-            SetCursorPos(originalPos.X, originalPos.Y);
+            Win32Interop.SetCursorPos(originalPos.X, originalPos.Y);
         }
 
         private static readonly Dictionary<Keys, string> _sendKeysMap = new Dictionary<Keys, string>()

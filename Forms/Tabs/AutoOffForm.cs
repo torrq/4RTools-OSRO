@@ -44,9 +44,6 @@ namespace _ORTools.Forms
         public AutoOff AutoOffModel => autoOffModel;
         #endregion
 
-        [DllImport("user32.dll")]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
-
         #region Constructor
         public AutoOffForm(Subject subject, StateSwitchForm toggleStateForm)
         {

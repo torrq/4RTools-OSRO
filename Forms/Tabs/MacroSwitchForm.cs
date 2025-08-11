@@ -2,6 +2,7 @@
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -11,33 +12,157 @@ namespace _ORTools.Forms
 {
     public partial class MacroSwitchForm : Form, IObserver
     {
-        public static int TOTAL_MACRO_LANES = 5;
+        private List<GroupBox> dynamicGroups = new List<GroupBox>();
 
         public MacroSwitchForm(Subject subject)
         {
             subject.Attach(this);
             InitializeComponent();
-            string[] resetButtonNames = { "btnResMac1", "btnResMac2", "btnResMac3", "btnResMac4", "btnResMac5" };
+
+            // Hide the template group - we'll use it as a template only
+            templateGroup.Visible = false;
+
+            CreateDynamicRows();
+
+            // Dynamically generate reset button names based on TOTAL_MACRO_LANES
+            string[] resetButtonNames = Enumerable.Range(1, MacroKey.TOTAL_MACRO_LANES)
+                .Select(i => $"btnResetMac{i}")
+                .ToArray();
             FormHelper.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
             FormHelper.SetNumericUpDownMinimumDelays(this);
             ConfigureMacroLanes();
             AddCommonResetButtonTooltip();
         }
 
+        private void CreateDynamicRows()
+        {
+            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
+            {
+                GroupBox newGroup = CloneGroupBox(templateGroup, i);
+                newGroup.Location = new Point(templateGroup.Location.X, templateGroup.Location.Y + (i - 1) * 100);
+                newGroup.Text = $"Switch {i}";
+                newGroup.Visible = true;
+
+                this.Controls.Add(newGroup);
+                dynamicGroups.Add(newGroup);
+            }
+
+            // Adjust form height to accommodate all rows
+            this.Height = Math.Max(this.Height, templateGroup.Location.Y + (MacroKey.TOTAL_MACRO_LANES * 100) + 50);
+        }
+
+        private GroupBox CloneGroupBox(GroupBox original, int id)
+        {
+            GroupBox clone = new GroupBox();
+            clone.Size = original.Size;
+            clone.Text = original.Text;
+            clone.FlatStyle = original.FlatStyle;
+            clone.Name = $"chainGroup{id}";
+
+            foreach (Control control in original.Controls)
+            {
+                Control clonedControl = CloneControl(control, id);
+                if (clonedControl != null)
+                {
+                    clone.Controls.Add(clonedControl);
+                }
+            }
+
+            return clone;
+        }
+
+        private Control CloneControl(Control original, int id)
+        {
+            Control clone = null;
+
+            if (original is TextBox textBox)
+            {
+                clone = new TextBox();
+                ((TextBox)clone).BorderStyle = textBox.BorderStyle;
+                ((TextBox)clone).TextAlign = textBox.TextAlign;
+                ((TextBox)clone).Font = textBox.Font;
+
+                // Update name from Template to actual ID
+                string newName = textBox.Name.Replace("Template", id.ToString());
+                clone.Name = newName;
+            }
+            else if (original is NumericUpDown numericUpDown)
+            {
+                clone = new NumericUpDown();
+                ((NumericUpDown)clone).BorderStyle = numericUpDown.BorderStyle;
+                ((NumericUpDown)clone).TextAlign = numericUpDown.TextAlign;
+                ((NumericUpDown)clone).Maximum = numericUpDown.Maximum;
+                ((NumericUpDown)clone).Minimum = numericUpDown.Minimum;
+
+                // Update name from Template to actual ID
+                string newName = numericUpDown.Name.Replace("Template", id.ToString());
+                clone.Name = newName;
+            }
+            else if (original is CheckBox checkBox)
+            {
+                clone = new CheckBox();
+                ((CheckBox)clone).AutoSize = checkBox.AutoSize;
+                ((CheckBox)clone).UseVisualStyleBackColor = checkBox.UseVisualStyleBackColor;
+
+                // Update name from Template to actual ID
+                string newName = checkBox.Name.Replace("Template", id.ToString());
+                clone.Name = newName;
+            }
+            else if (original is Button button)
+            {
+                clone = new Button();
+                ((Button)clone).FlatStyle = button.FlatStyle;
+                ((Button)clone).ForeColor = button.ForeColor;
+                ((Button)clone).UseVisualStyleBackColor = button.UseVisualStyleBackColor;
+                ((Button)clone).Cursor = button.Cursor;
+                clone.Text = button.Text;
+                // Update name from Template to actual ID
+                string newName = button.Name.Replace("Template", $"Mac{id}");
+                clone.Name = newName;
+            }
+            else if (original is PictureBox pictureBox)
+            {
+                clone = new PictureBox();
+                ((PictureBox)clone).Image = pictureBox.Image;
+                ((PictureBox)clone).SizeMode = pictureBox.SizeMode;
+                ((PictureBox)clone).TabStop = pictureBox.TabStop;
+                clone.Name = $"{pictureBox.Name}_Group{id}";
+            }
+            else if (original is Label label)
+            {
+                clone = new Label();
+                clone.Text = label.Text;
+                ((Label)clone).AutoSize = label.AutoSize;
+                clone.Name = $"{label.Name}_Group{id}";
+            }
+
+            if (clone != null)
+            {
+                clone.Location = original.Location;
+                clone.Size = original.Size;
+                clone.TabIndex = original.TabIndex;
+            }
+
+            return clone;
+        }
+
         private void AddCommonResetButtonTooltip()
         {
             ToolTip tooltip = new ToolTip();
             string tooltipText = "Reset this macro row to default values";
-            int totalResetButtons = TOTAL_MACRO_LANES;
 
-            for (int i = 1; i <= totalResetButtons; i++)
+            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
             {
-                string buttonName = $"btnResMac{i}";
+                string buttonName = $"btnResetMac{i}";
                 Control[] foundControls = this.Controls.Find(buttonName, true);
 
                 if (foundControls.Length > 0 && foundControls[0] is Button resetButton)
                 {
                     tooltip.SetToolTip(resetButton, tooltipText);
+                }
+                else
+                {
+                    DebugLogger.Warning($"Reset button '{buttonName}' not found.");
                 }
             }
         }
@@ -72,12 +197,29 @@ namespace _ORTools.Forms
                     ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Add(chainConfig);
                 }
 
+                // Update trigger key
+                string triggerControlName = $"MacroSwitchTrigger{id}";
+                if (group.Controls.Find(triggerControlName, true).FirstOrDefault() is TextBox triggerTextBox)
+                {
+                    triggerTextBox.TextChanged -= OnTriggerTextChange;
+                    triggerTextBox.Text = chainConfig.TriggerKey.ToString();
+                    triggerTextBox.TextChanged += OnTriggerTextChange;
+
+                    FormHelper.ApplyInputKeyStyle(
+                        triggerTextBox,
+                        !string.IsNullOrWhiteSpace(triggerTextBox.Text) && triggerTextBox.Text != AppConfig.TEXT_NONE
+                    );
+                }
+
+                // Update macro keys and their properties
                 for (int step = 0; step < chainConfig.macroEntries.Count; step++)
                 {
                     MacroKey macroKey = chainConfig.macroEntries[step];
                     string keyControlName = $"MacroSwitch{id}_{step + 1}";
                     string delayControlName = $"MacroSwitchDelay{id}_{step + 1}";
+                    string clickControlName = $"MacroSwitchClick{id}_{step + 1}";
 
+                    // Update key textbox
                     if (group.Controls.Find(keyControlName, true).FirstOrDefault() is TextBox textBox)
                     {
                         textBox.TextChanged -= OnTextChange;
@@ -90,17 +232,56 @@ namespace _ORTools.Forms
                         );
                     }
 
+                    // Update delay numeric
                     if (group.Controls.Find(delayControlName, true).FirstOrDefault() is NumericUpDown delayInput)
                     {
                         delayInput.ValueChanged -= OnDelayChange;
                         delayInput.Value = macroKey.Delay;
                         delayInput.ValueChanged += OnDelayChange;
                     }
+
+                    // Update click checkbox
+                    if (group.Controls.Find(clickControlName, true).FirstOrDefault() is CheckBox clickCheckBox)
+                    {
+                        clickCheckBox.CheckedChanged -= OnClickModeChange;
+                        clickCheckBox.Checked = macroKey.ClickMode == 1;
+                        clickCheckBox.CheckedChanged += OnClickModeChange;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 DebugLogger.Error($"Error in UpdatePanelData for ID {id}: {ex}");
+            }
+        }
+
+        private void OnTriggerTextChange(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                string triggerName = textBox.Name.Replace("MacroSwitchTrigger", "");
+                int chainID = int.Parse(triggerName);
+
+                ChainConfig chainConfig = ProfileSingleton.GetCurrent()
+                    .MacroSwitch.ChainConfigs.Find(c => c.id == chainID);
+
+                if (chainConfig == null) return;
+
+                if (Enum.TryParse(textBox.Text, out Keys key))
+                {
+                    chainConfig.TriggerKey = key;
+                }
+                else
+                {
+                    chainConfig.TriggerKey = Keys.None;
+                }
+
+                FormHelper.ApplyInputKeyStyle(
+                    textBox,
+                    chainConfig.TriggerKey != Keys.None
+                );
+
+                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
             }
         }
 
@@ -155,6 +336,7 @@ namespace _ORTools.Forms
 
                 if (chainConfig == null) return;
 
+                // Make sure macroEntries list is large enough
                 while (chainConfig.macroEntries.Count <= stepIndex)
                 {
                     chainConfig.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
@@ -166,9 +348,34 @@ namespace _ORTools.Forms
             }
         }
 
+        private void OnClickModeChange(object sender, EventArgs e)
+        {
+            if (sender is CheckBox clickCheckBox)
+            {
+                string[] parts = clickCheckBox.Name.Replace("MacroSwitchClick", "").Split('_');
+                int chainID = int.Parse(parts[0]);
+                int stepIndex = int.Parse(parts[1]) - 1;
+
+                ChainConfig chainConfig = ProfileSingleton.GetCurrent()
+                    .MacroSwitch.ChainConfigs.Find(c => c.id == chainID);
+
+                if (chainConfig == null) return;
+
+                // Make sure macroEntries list is large enough
+                while (chainConfig.macroEntries.Count <= stepIndex)
+                {
+                    chainConfig.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                }
+
+                chainConfig.macroEntries[stepIndex].ClickMode = clickCheckBox.Checked ? 1 : 0;
+
+                ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
+            }
+        }
+
         private void UpdateUi()
         {
-            for (int i = 1; i <= TOTAL_MACRO_LANES; i++)
+            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
             {
                 UpdatePanelData(i);
             }
@@ -176,7 +383,7 @@ namespace _ORTools.Forms
 
         private void ConfigureMacroLanes()
         {
-            for (int i = 1; i <= TOTAL_MACRO_LANES; i++)
+            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
             {
                 InitializeLane(i);
             }
@@ -193,12 +400,26 @@ namespace _ORTools.Forms
                     {
                         textBox.KeyDown += FormHelper.OnKeyDown;
                         textBox.KeyPress += FormHelper.OnKeyPress;
-                        textBox.TextChanged += this.OnTextChange;
+
+                        // Hook up appropriate event handlers based on control name
+                        if (textBox.Name.Contains("MacroSwitchTrigger"))
+                        {
+                            textBox.TextChanged += this.OnTriggerTextChange;
+                        }
+                        else
+                        {
+                            textBox.TextChanged += this.OnTextChange;
+                        }
                     }
 
                     if (control is NumericUpDown delayInput)
                     {
                         delayInput.ValueChanged += this.OnDelayChange;
+                    }
+
+                    if (control is CheckBox clickCheckBox)
+                    {
+                        clickCheckBox.CheckedChanged += this.OnClickModeChange;
                     }
 
                     if (control is Button resetButton)
@@ -211,13 +432,12 @@ namespace _ORTools.Forms
             {
                 DebugLogger.Error($"Exception in MacroSwitchForm.InitializeLane: {ex}");
             }
-
         }
 
         private void OnReset(object sender, EventArgs e)
         {
             Button resetButton = (Button)sender;
-            int btnResetID = short.Parse(resetButton.Name.Split(new[] { "btnResMac" }, StringSplitOptions.None)[1]);
+            int btnResetID = short.Parse(resetButton.Name.Split(new[] { "btnResetMac" }, StringSplitOptions.None)[1]);
 
             MacroSwitch macroSwitch = ProfileSingleton.GetCurrent().MacroSwitch;
             ChainConfig chainConfig = macroSwitch.ChainConfigs.Find(config => config.id == btnResetID);
@@ -225,14 +445,14 @@ namespace _ORTools.Forms
             if (chainConfig != null)
             {
                 // Reset all chain config properties
-
                 chainConfig.macroEntries.Clear();
+                chainConfig.TriggerKey = Keys.None; // Reset trigger key
 
                 // Update the UI
                 GroupBox panel = (GroupBox)this.Controls.Find("chainGroup" + btnResetID, true)[0];
                 if (panel != null)
                 {
-                    // Reset all text boxes and numeric up downs
+                    // Reset all controls
                     foreach (Control c in panel.Controls)
                     {
                         if (c is TextBox textBox)
@@ -243,12 +463,21 @@ namespace _ORTools.Forms
                         {
                             numericUpDown.Value = AppConfig.MacroDefaultDelay;
                         }
+                        else if (c is CheckBox checkBox)
+                        {
+                            checkBox.Checked = false;
+                        }
                     }
                 }
 
                 // Save the changes
                 ProfileSingleton.SetConfiguration(macroSwitch);
             }
+        }
+
+        private void MacroSwitchForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

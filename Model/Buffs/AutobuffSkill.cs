@@ -28,9 +28,6 @@ namespace _ORTools.Model
         private const int maxConsecutiveErrors = 5;
         private DateTime lastSuccessfulRead = DateTime.Now;
 
-        [DllImport("user32.dll")]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
-
         public AutoBuffSkill(string actionName)
         {
             this.ActionName = actionName;

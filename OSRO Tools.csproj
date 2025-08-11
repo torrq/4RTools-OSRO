@@ -367,6 +367,7 @@
     <Compile Include="Utils\Lists\AppConfig.cs" />
     <Compile Include="Utils\Lists\Constants.cs" />
     <Compile Include="Utils\Lists\EffectStatusIDs.cs" />
+    <Compile Include="Utils\MouseHelper.cs" />
     <Compile Include="Utils\UI\CharacterInfoLabel.cs">
       <SubType>Component</SubType>
     </Compile>

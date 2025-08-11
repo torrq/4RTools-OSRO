@@ -7,32 +7,6 @@ namespace _ORTools.Utils
 {
     public static class KeyboardHook
     {
-        #region interop
-
-        //This is the Import for the SetWindowsHookEx function.
-        //Use this function to install a thread-specific hook.
-        [DllImport("user32.dll", CharSet = CharSet.Auto,
-         CallingConvention = CallingConvention.StdCall)]
-        internal static extern IntPtr SetWindowsHookEx(int idHook, HookProc lpfn,
-        IntPtr hInstance, int threadId);
-
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern IntPtr GetModuleHandle(string lpModuleName);
-
-        //This is the Import for the CallNextHookEx function.
-        //Use this function to pass the hook information to the next hook procedure in chain.
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
-            IntPtr wParam, IntPtr lParam);
-
-        //This is the Import for the UnhookWindowsHookEx function.
-        //Call this function to uninstall the hook.
-        [DllImport("user32.dll", CharSet = CharSet.Auto,
-         CallingConvention = CallingConvention.StdCall)]
-        internal static extern bool UnhookWindowsHookEx(IntPtr idHook);
-
-        #endregion interop
-
         public delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         private static IntPtr hHook = IntPtr.Zero;
@@ -103,7 +77,7 @@ namespace _ORTools.Utils
                 {
                     using (Process curProcess = Process.GetCurrentProcess())
                     using (ProcessModule curModule = curProcess.MainModule)
-                        hHook = SetWindowsHookEx(Constants.WH_KEYBOARD_LL, hookproc, GetModuleHandle(curModule.ModuleName), 0);
+                        hHook = Win32Interop.SetWindowsHookEx(Constants.WH_KEYBOARD_LL, hookproc, Win32Interop.GetModuleHandle(curModule.ModuleName), 0);
                     Enabled = true;
                     return true;
                 }
@@ -127,7 +101,7 @@ namespace _ORTools.Utils
             {
                 try
                 {
-                    UnhookWindowsHookEx(hHook);
+                    Win32Interop.UnhookWindowsHookEx(hHook);
                     Enabled = false;
                     return true;
                 }
@@ -187,7 +161,7 @@ namespace _ORTools.Utils
                 }
             }
 
-            return result ? CallNextHookEx(hHook, nCode, wParam, lParam) : new IntPtr(1);
+            return result ? Win32Interop.CallNextHookEx(hHook, nCode, wParam, lParam) : new IntPtr(1);
         }
 
         /// <summary>
@@ -291,5 +265,6 @@ namespace _ORTools.Utils
                             (KeyboardHook.Win ? "Win + " : "") +
                             key.ToString();
         }
+
     }
 }

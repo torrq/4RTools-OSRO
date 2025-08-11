@@ -25,12 +25,6 @@ namespace _ORTools.Model
 
     public class SkillSpammer : IAction
     {
-        [DllImport("user32.dll")] public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
-        [DllImport("user32.dll", SetLastError = true)] public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
-        [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
-        [DllImport("user32.dll", SetLastError = true)] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
-        [DllImport("user32.dll")] private static extern short GetAsyncKeyState(Keys vKey);
-
         public static bool IsGameWindowActive()
         {
             try
@@ -41,14 +35,14 @@ namespace _ORTools.Model
                     return false;
                 }
 
-                IntPtr activeWindowHandle = GetForegroundWindow();
+                IntPtr activeWindowHandle = Win32Interop.GetForegroundWindow();
                 if (activeWindowHandle == IntPtr.Zero)
                 {
                     return false;
                 }
 
                 uint activeProcessId;
-                GetWindowThreadProcessId(activeWindowHandle, out activeProcessId);
+                Win32Interop.GetWindowThreadProcessId(activeWindowHandle, out activeProcessId);
 
                 return activeProcessId == currentClient.Process.Id;
             }
@@ -124,9 +118,9 @@ namespace _ORTools.Model
                 if (config.ClickActive && !config.IsIndeterminate)
                 {
                     Point cursorPos = System.Windows.Forms.Cursor.Position;
-                    mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
+                    Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
                     Thread.Sleep(1);
-                    mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
+                    Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
                 }
 
                 Thread.Sleep(this.SpammerDelay);
