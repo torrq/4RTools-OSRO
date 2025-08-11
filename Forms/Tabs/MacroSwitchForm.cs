@@ -155,6 +155,11 @@ namespace _ORTools.Forms
 
                 if (chainConfig == null) return;
 
+                while (chainConfig.macroEntries.Count <= stepIndex)
+                {
+                    chainConfig.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                }
+
                 chainConfig.macroEntries[stepIndex].Delay = (int)delayInput.Value;
 
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().MacroSwitch);
