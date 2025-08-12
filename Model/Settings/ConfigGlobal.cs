@@ -11,9 +11,11 @@ namespace _ORTools.Model
         public bool DebugModeShowLog { get; set; } = true;
         public string LastUsedProfile { get; set; } = "Default";
         public bool MiniMode { get; set; } = false;
+        public int SongRows { get; set; } = 4; // Added new global setting
+        public int MacroSwitchRows { get; set; } = 4; // Added new global setting
     }
 
-    internal class ConfigGlobal
+    internal static class ConfigGlobal
     {
         private static readonly string ConfigFile = AppConfig.ConfigFile;
         private static Config config;

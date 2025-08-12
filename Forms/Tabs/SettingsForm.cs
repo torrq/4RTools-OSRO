@@ -19,14 +19,20 @@ namespace _ORTools.Forms
 
             InitializeComponent();
 
-            // Detach event handler before setting initial state
+            // Detach event handlers before setting initial state
             this.DebugMode.CheckedChanged -= this.DebugMode_CheckedChanged;
             this.DebugMode.Checked = cfg.DebugMode;
             this.DebugModeShowLog.CheckedChanged -= this.DebugModeShowLog_CheckedChanged;
             this.DebugModeShowLog.Checked = cfg.DebugModeShowLog;
-            // Reattach event handler after setting initial state
+            this.SongRows.ValueChanged -= this.SongRows_ValueChanged;
+            this.SongRows.Value = cfg.SongRows;
+            this.MacroSwitchRows.ValueChanged -= this.MacroSwitchRows_ValueChanged;
+            this.MacroSwitchRows.Value = cfg.MacroSwitchRows;
+            // Reattach event handlers after setting initial state
             this.DebugMode.CheckedChanged += this.DebugMode_CheckedChanged;
             this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
+            this.SongRows.ValueChanged += this.SongRows_ValueChanged;
+            this.MacroSwitchRows.ValueChanged += this.MacroSwitchRows_ValueChanged;
 
             isInitializing = false; // Initialization complete
 
@@ -77,6 +83,7 @@ namespace _ORTools.Forms
         public void UpdateUI(ISubject subject)
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            Config cfg = ConfigGlobal.GetConfig();
             try
             {
                 AutoBuffSkill currentBuffs = (AutoBuffSkill)(subject as Subject).Message.Data ?? ProfileSingleton.GetCurrent().AutobuffSkill;
@@ -93,15 +100,21 @@ namespace _ORTools.Forms
                 this.chkSoundEnabled.CheckedChanged -= ChkSoundEnabled_CheckedChanged;
                 this.DebugMode.CheckedChanged -= DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
+                this.SongRows.ValueChanged -= SongRows_ValueChanged;
+                this.MacroSwitchRows.ValueChanged -= MacroSwitchRows_ValueChanged;
 
                 this.chkStopBuffsOnCity.Checked = prefs.StopBuffsCity;
                 this.chkSoundEnabled.Checked = prefs.SoundEnabled;
+                this.SongRows.Value = cfg.SongRows;
+                this.MacroSwitchRows.Value = cfg.MacroSwitchRows;
 
                 // Reattach event handlers
                 this.chkStopBuffsOnCity.CheckedChanged += ChkStopBuffsOnCity_CheckedChanged;
                 this.chkSoundEnabled.CheckedChanged += ChkSoundEnabled_CheckedChanged;
                 this.DebugMode.CheckedChanged += DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
+                this.SongRows.ValueChanged += SongRows_ValueChanged;
+                this.MacroSwitchRows.ValueChanged += MacroSwitchRows_ValueChanged;
 
             }
             catch (Exception ex)
@@ -245,13 +258,6 @@ namespace _ORTools.Forms
                     DebugModeShowLog.Enabled = DebugMode.Checked;
                 }
             }
-            else
-            {
-                // If the checkbox state matches the saved config, do nothing.
-                // This handles cases where the event might fire without a logical change.
-                // DebugLogger.Info($"DebugMode checkbox checked changed, but value is already {newValue}. No action needed.");
-            }
-
         }
 
         private void DebugModeShowLog_CheckedChanged(object sender, EventArgs e)
@@ -295,14 +301,42 @@ namespace _ORTools.Forms
                     this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
                 }
             }
-            else
-            {
-                // If the checkbox state matches the saved config, do nothing.
-                // This handles cases where the event might fire without a logical change.
-                // DebugLogger.Info($"DebugMode checkbox checked changed, but value is already {newValue}. No action needed.");
-            }
-
         }
 
+        private void SongRows_ValueChanged(object sender, EventArgs e)
+        {
+            // Prevent this logic from running during form initialization
+            if (isInitializing) return;
+
+            Config cfg = ConfigGlobal.GetConfig();
+            int newValue = (int)SongRows.Value;
+            int currentValue = cfg.SongRows;
+
+            // Only proceed if the value actually changed from the saved config
+            if (newValue != currentValue)
+            {
+                cfg.SongRows = newValue; // Update the setting
+                ConfigGlobal.SaveConfig(); // Save the updated config
+                DebugLogger.Info($"SongRows changed to {newValue}.");
+            }
+        }
+
+        private void MacroSwitchRows_ValueChanged(object sender, EventArgs e)
+        {
+            // Prevent this logic from running during form initialization
+            if (isInitializing) return;
+
+            Config cfg = ConfigGlobal.GetConfig();
+            int newValue = (int)MacroSwitchRows.Value;
+            int currentValue = cfg.MacroSwitchRows;
+
+            // Only proceed if the value actually changed from the saved config
+            if (newValue != currentValue)
+            {
+                cfg.MacroSwitchRows = newValue; // Update the setting
+                ConfigGlobal.SaveConfig(); // Save the updated config
+                DebugLogger.Info($"MacroSwitchRows changed to {newValue}.");
+            }
+        }
     }
 }

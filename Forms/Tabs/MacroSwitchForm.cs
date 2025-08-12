@@ -25,7 +25,7 @@ namespace _ORTools.Forms
             CreateDynamicRows();
 
             // Dynamically generate reset button names based on TOTAL_MACRO_LANES
-            string[] resetButtonNames = Enumerable.Range(1, MacroKey.TOTAL_MACRO_LANES)
+            string[] resetButtonNames = Enumerable.Range(1, MacroSwitchKey.TOTAL_MACRO_LANES)
                 .Select(i => $"btnResetMac{i}")
                 .ToArray();
             FormHelper.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
@@ -36,7 +36,7 @@ namespace _ORTools.Forms
 
         private void CreateDynamicRows()
         {
-            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
+            for (int i = 1; i <= MacroSwitchKey.TOTAL_MACRO_LANES; i++)
             {
                 GroupBox newGroup = CloneGroupBox(templateGroup, i);
                 newGroup.Location = new Point(templateGroup.Location.X, templateGroup.Location.Y + (i - 1) * 100);
@@ -48,7 +48,7 @@ namespace _ORTools.Forms
             }
 
             // Adjust form height to accommodate all rows
-            this.Height = Math.Max(this.Height, templateGroup.Location.Y + (MacroKey.TOTAL_MACRO_LANES * 100) + 50);
+            this.Height = Math.Max(this.Height, templateGroup.Location.Y + (MacroSwitchKey.TOTAL_MACRO_LANES * 100) + 50);
         }
 
         private GroupBox CloneGroupBox(GroupBox original, int id)
@@ -91,6 +91,7 @@ namespace _ORTools.Forms
                 clone = new NumericUpDown();
                 ((NumericUpDown)clone).BorderStyle = numericUpDown.BorderStyle;
                 ((NumericUpDown)clone).TextAlign = numericUpDown.TextAlign;
+                ((NumericUpDown)clone).Font = numericUpDown.Font;
                 ((NumericUpDown)clone).Maximum = numericUpDown.Maximum;
                 ((NumericUpDown)clone).Minimum = numericUpDown.Minimum;
 
@@ -151,7 +152,7 @@ namespace _ORTools.Forms
             ToolTip tooltip = new ToolTip();
             string tooltipText = "Reset this macro row to default values";
 
-            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
+            for (int i = 1; i <= MacroSwitchKey.TOTAL_MACRO_LANES; i++)
             {
                 string buttonName = $"btnResetMac{i}";
                 Control[] foundControls = this.Controls.Find(buttonName, true);
@@ -188,12 +189,12 @@ namespace _ORTools.Forms
             try
             {
                 GroupBox group = (GroupBox)this.Controls.Find("chainGroup" + id, true)[0];
-                ChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs
+                MacroSwitchChainConfig chainConfig = ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs
                     .Find(config => config.id == id);
 
                 if (chainConfig == null)
                 {
-                    chainConfig = new ChainConfig(id);
+                    chainConfig = new MacroSwitchChainConfig(id);
                     ProfileSingleton.GetCurrent().MacroSwitch.ChainConfigs.Add(chainConfig);
                 }
 
@@ -214,7 +215,7 @@ namespace _ORTools.Forms
                 // Update macro keys and their properties
                 for (int step = 0; step < chainConfig.macroEntries.Count; step++)
                 {
-                    MacroKey macroKey = chainConfig.macroEntries[step];
+                    MacroSwitchKey macroKey = chainConfig.macroEntries[step];
                     string keyControlName = $"MacroSwitch{id}_{step + 1}";
                     string delayControlName = $"MacroSwitchDelay{id}_{step + 1}";
                     string clickControlName = $"MacroSwitchClick{id}_{step + 1}";
@@ -262,7 +263,7 @@ namespace _ORTools.Forms
                 string triggerName = textBox.Name.Replace("MacroSwitchTrigger", "");
                 int chainID = int.Parse(triggerName);
 
-                ChainConfig chainConfig = ProfileSingleton.GetCurrent()
+                MacroSwitchChainConfig chainConfig = ProfileSingleton.GetCurrent()
                     .MacroSwitch.ChainConfigs.Find(c => c.id == chainID);
 
                 if (chainConfig == null) return;
@@ -293,7 +294,7 @@ namespace _ORTools.Forms
                 int chainID = int.Parse(parts[0]);
                 int stepIndex = int.Parse(parts[1]) - 1;
 
-                ChainConfig chainConfig = ProfileSingleton.GetCurrent()
+                MacroSwitchChainConfig chainConfig = ProfileSingleton.GetCurrent()
                     .MacroSwitch.ChainConfigs.Find(c => c.id == chainID);
 
                 if (chainConfig == null) return;
@@ -301,7 +302,7 @@ namespace _ORTools.Forms
                 // Make sure macroEntries list is large enough
                 while (chainConfig.macroEntries.Count <= stepIndex)
                 {
-                    chainConfig.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                    chainConfig.macroEntries.Add(new MacroSwitchKey(Keys.None, AppConfig.MacroDefaultDelay));
                 }
 
                 if (Enum.TryParse(textBox.Text, out Keys key))
@@ -331,7 +332,7 @@ namespace _ORTools.Forms
                 int chainID = int.Parse(parts[0]);
                 int stepIndex = int.Parse(parts[1]) - 1;
 
-                ChainConfig chainConfig = ProfileSingleton.GetCurrent()
+                MacroSwitchChainConfig chainConfig = ProfileSingleton.GetCurrent()
                     .MacroSwitch.ChainConfigs.Find(c => c.id == chainID);
 
                 if (chainConfig == null) return;
@@ -339,7 +340,7 @@ namespace _ORTools.Forms
                 // Make sure macroEntries list is large enough
                 while (chainConfig.macroEntries.Count <= stepIndex)
                 {
-                    chainConfig.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                    chainConfig.macroEntries.Add(new MacroSwitchKey(Keys.None, AppConfig.MacroDefaultDelay));
                 }
 
                 chainConfig.macroEntries[stepIndex].Delay = (int)delayInput.Value;
@@ -356,7 +357,7 @@ namespace _ORTools.Forms
                 int chainID = int.Parse(parts[0]);
                 int stepIndex = int.Parse(parts[1]) - 1;
 
-                ChainConfig chainConfig = ProfileSingleton.GetCurrent()
+                MacroSwitchChainConfig chainConfig = ProfileSingleton.GetCurrent()
                     .MacroSwitch.ChainConfigs.Find(c => c.id == chainID);
 
                 if (chainConfig == null) return;
@@ -364,7 +365,7 @@ namespace _ORTools.Forms
                 // Make sure macroEntries list is large enough
                 while (chainConfig.macroEntries.Count <= stepIndex)
                 {
-                    chainConfig.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                    chainConfig.macroEntries.Add(new MacroSwitchKey(Keys.None, AppConfig.MacroDefaultDelay));
                 }
 
                 chainConfig.macroEntries[stepIndex].ClickMode = clickCheckBox.Checked ? 1 : 0;
@@ -375,7 +376,7 @@ namespace _ORTools.Forms
 
         private void UpdateUi()
         {
-            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
+            for (int i = 1; i <= MacroSwitchKey.TOTAL_MACRO_LANES; i++)
             {
                 UpdatePanelData(i);
             }
@@ -383,7 +384,7 @@ namespace _ORTools.Forms
 
         private void ConfigureMacroLanes()
         {
-            for (int i = 1; i <= MacroKey.TOTAL_MACRO_LANES; i++)
+            for (int i = 1; i <= MacroSwitchKey.TOTAL_MACRO_LANES; i++)
             {
                 InitializeLane(i);
             }
@@ -440,7 +441,7 @@ namespace _ORTools.Forms
             int btnResetID = short.Parse(resetButton.Name.Split(new[] { "btnResetMac" }, StringSplitOptions.None)[1]);
 
             MacroSwitch macroSwitch = ProfileSingleton.GetCurrent().MacroSwitch;
-            ChainConfig chainConfig = macroSwitch.ChainConfigs.Find(config => config.id == btnResetID);
+            MacroSwitchChainConfig chainConfig = macroSwitch.ChainConfigs.Find(config => config.id == btnResetID);
 
             if (chainConfig != null)
             {
@@ -473,11 +474,6 @@ namespace _ORTools.Forms
                 // Save the changes
                 ProfileSingleton.SetConfiguration(macroSwitch);
             }
-        }
-
-        private void MacroSwitchForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

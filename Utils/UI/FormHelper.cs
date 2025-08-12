@@ -191,25 +191,6 @@ namespace _ORTools.Utils
             }
         }
 
-        private static void resetCheckboxForm(Control control)
-        {
-            IEnumerable<Control> checks = GetAll(control, typeof(CheckBox));
-            IEnumerable<Control> combos = GetAll(control, typeof(ComboBox));
-
-            foreach (Control c in checks)
-            {
-                CheckBox checkBox = (CheckBox)c;
-                checkBox.Checked = false;
-            }
-
-            foreach (Control c in combos)
-            {
-                ComboBox comboBox = (ComboBox)c;
-                if (comboBox.Items.Count > 0)
-                    comboBox.SelectedIndex = 0;
-            }
-        }
-
         public static void ResetCheckboxForm(Form form)
         {
             foreach (Control c in form.Controls)
@@ -381,7 +362,124 @@ namespace _ORTools.Utils
             }
         }
 
+        /// <summary>
+        /// Copies event handlers from a source control to a target control
+        /// </summary>
+        /// <param name="sourceControl">The control to copy event handlers from</param>
+        /// <param name="targetControl">The control to copy event handlers to</param>
+        public static void CopyEventHandlers(Control sourceControl, Control targetControl)
+        {
+            if (sourceControl == null || targetControl == null)
+                return;
 
+            // Only copy if controls are of the same type
+            if (sourceControl.GetType() != targetControl.GetType())
+                return;
+
+            try
+            {
+                // Get the Events property using reflection
+                PropertyInfo eventsProperty = typeof(Component).GetProperty("Events",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+
+                if (eventsProperty == null)
+                    return;
+
+                EventHandlerList sourceEvents = (EventHandlerList)eventsProperty.GetValue(sourceControl, null);
+                EventHandlerList targetEvents = (EventHandlerList)eventsProperty.GetValue(targetControl, null);
+
+                if (sourceEvents == null || targetEvents == null)
+                    return;
+
+                // Get common event keys for common control types
+                var eventKeys = GetEventKeys(sourceControl);
+
+                foreach (var eventKey in eventKeys)
+                {
+                    if (eventKey != null)
+                    {
+                        Delegate sourceHandler = sourceEvents[eventKey];
+                        if (sourceHandler != null)
+                        {
+                            // Copy the event handler to the target control
+                            targetEvents.AddHandler(eventKey, sourceHandler);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Event copying is not critical, but we can log for debugging
+                DebugLogger.Debug($"Failed to copy event handlers: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Gets event keys for common control events
+        /// </summary>
+        /// <param name="control">The control to get event keys for</param>
+        /// <returns>List of event keys</returns>
+        private static List<object> GetEventKeys(Control control)
+        {
+            var eventKeys = new List<object>();
+
+            try
+            {
+                Type controlType = control.GetType();
+
+                // Get common event field keys using reflection
+                var eventFields = new[]
+                {
+            "EventClick",
+            "EventDoubleClick",
+            "EventMouseClick",
+            "EventMouseDoubleClick",
+            "EventMouseDown",
+            "EventMouseUp",
+            "EventMouseMove",
+            "EventMouseEnter",
+            "EventMouseLeave",
+            "EventMouseHover",
+            "EventKeyDown",
+            "EventKeyUp",
+            "EventKeyPress",
+            "EventTextChanged",
+            "EventEnter",
+            "EventLeave",
+            "EventGotFocus",
+            "EventLostFocus",
+            "EventValueChanged" // For NumericUpDown
+        };
+
+                // Try to get event keys from Control class and the specific control type
+                Type[] typesToCheck = { typeof(Control), controlType };
+
+                foreach (Type typeToCheck in typesToCheck)
+                {
+                    foreach (string eventField in eventFields)
+                    {
+                        FieldInfo field = typeToCheck.GetField(eventField,
+                            BindingFlags.Static | BindingFlags.NonPublic);
+
+                        if (field != null)
+                        {
+                            object eventKey = field.GetValue(null);
+                            if (eventKey != null && !eventKeys.Contains(eventKey))
+                            {
+                                eventKeys.Add(eventKey);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log reflection errors for debugging, but don't throw
+                DebugLogger.Debug($"Failed to get event keys for {control?.GetType().Name}: {ex.Message}");
+            }
+
+            return eventKeys;
+        }
     }
 
     public static class EnumExtensions

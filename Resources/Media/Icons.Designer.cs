@@ -263,6 +263,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_up_compact {
+            get {
+                object obj = ResourceManager.GetObject("arrow_up_compact", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap as_poisonreact {
             get {
                 object obj = ResourceManager.GetObject("as_poisonreact", resourceCulture);

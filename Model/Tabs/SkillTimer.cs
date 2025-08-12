@@ -144,9 +144,9 @@ namespace _ORTools.Model
 
         private void TryClickAtCurrentPosition(IntPtr hWnd)
         {
-            Win32Interop.SendMessage(hWnd, Win32Interop.WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
+            Win32Interop.SendMessage(hWnd, Constants.WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
             Thread.Sleep(25);
-            Win32Interop.SendMessage(hWnd, Win32Interop.WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
+            Win32Interop.SendMessage(hWnd, Constants.WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
         }
 
         private void TryClickAtCenter(IntPtr hWnd)
@@ -169,9 +169,9 @@ namespace _ORTools.Model
             Win32Interop.SetCursorPos(centerPoint.X, centerPoint.Y);
             Thread.Sleep(25); // Keep the original timing that was working
 
-            Win32Interop.mouse_event(Win32Interop.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             Thread.Sleep(50); // Slightly longer delay between down and up
-            Win32Interop.mouse_event(Win32Interop.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
             // Restore original cursor position
             Win32Interop.SetCursorPos(originalPos.X, originalPos.Y);

@@ -9,13 +9,12 @@ using Cursor = System.Windows.Forms.Cursor;
 
 namespace _ORTools.Model
 {
-    public class MacroKey
+    public class MacroSwitchKey
     {
         public Keys Key { get; set; }
 
-        public static int TOTAL_MACRO_LANES = 4;
-        public static int TOTAL_MACRO_KEYS = 8;
-        public static int TOTAL_MACRO_KEY_DELAYS = 7;
+        public static int TOTAL_MACRO_LANES = ConfigGlobal.GetConfig().MacroSwitchRows;
+        public static int TOTAL_MACRO_KEYS = 7;
 
         private int _delay = AppConfig.MacroDefaultDelay;
         public int Delay
@@ -35,7 +34,7 @@ namespace _ORTools.Model
         /// <summary>
         /// Constructor for creating new instances programmatically.
         /// </summary>
-        public MacroKey(Keys key, int delay, int clickMode = 0)
+        public MacroSwitchKey(Keys key, int delay, int clickMode = 0)
         {
             this.Key = key;
             this.Delay = delay;
@@ -47,16 +46,16 @@ namespace _ORTools.Model
         /// This allows loading profiles that may or may not contain the click-related properties.
         /// </summary>
         [JsonConstructor]
-        public MacroKey(Keys key, int delay)
+        public MacroSwitchKey(Keys key, int delay)
         {
             this.Key = key;
             this.Delay = delay;
         }
 
-        public MacroKey() { }  // Default constructor needed for some deserialization scenarios.
+        public MacroSwitchKey() { }  // Default constructor needed for some deserialization scenarios.
     }
 
-    public class ChainConfig
+    public class MacroSwitchChainConfig
     {
         public int id;
 
@@ -65,36 +64,36 @@ namespace _ORTools.Model
         /// </summary>
         public Keys TriggerKey { get; set; } = Keys.None;
 
-        public List<MacroKey> macroEntries { get; set; } = new List<MacroKey>();
+        public List<MacroSwitchKey> macroEntries { get; set; } = new List<MacroSwitchKey>();
 
-        public ChainConfig() { }
+        public MacroSwitchChainConfig() { }
 
-        public ChainConfig(int id)
+        public MacroSwitchChainConfig(int id)
         {
             this.id = id;
             this.TriggerKey = Keys.None;
-            this.macroEntries = new List<MacroKey>();
-            for (int i = 0; i < MacroKey.TOTAL_MACRO_KEYS; i++)
+            this.macroEntries = new List<MacroSwitchKey>();
+            for (int i = 0; i < MacroSwitchKey.TOTAL_MACRO_KEYS; i++)
             {
-                this.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                this.macroEntries.Add(new MacroSwitchKey(Keys.None, AppConfig.MacroDefaultDelay));
             }
         }
 
-        public ChainConfig(ChainConfig macro)
+        public MacroSwitchChainConfig(MacroSwitchChainConfig macro)
         {
             this.id = macro.id;
             this.TriggerKey = macro.TriggerKey;
-            this.macroEntries = new List<MacroKey>(macro.macroEntries);
+            this.macroEntries = new List<MacroSwitchKey>(macro.macroEntries);
         }
 
-        public ChainConfig(int id, Keys trigger)
+        public MacroSwitchChainConfig(int id, Keys trigger)
         {
             this.id = id;
             this.TriggerKey = trigger;
-            this.macroEntries = new List<MacroKey>();
-            for (int i = 0; i < MacroKey.TOTAL_MACRO_KEYS; i++)
+            this.macroEntries = new List<MacroSwitchKey>();
+            for (int i = 0; i < MacroSwitchKey.TOTAL_MACRO_KEYS; i++)
             {
-                this.macroEntries.Add(new MacroKey(Keys.None, AppConfig.MacroDefaultDelay));
+                this.macroEntries.Add(new MacroSwitchKey(Keys.None, AppConfig.MacroDefaultDelay));
             }
         }
     }
@@ -105,14 +104,14 @@ namespace _ORTools.Model
 
         public string ActionName { get; set; }
         private ThreadRunner thread;
-        public List<ChainConfig> ChainConfigs { get; set; } = new List<ChainConfig>();
+        public List<MacroSwitchChainConfig> ChainConfigs { get; set; } = new List<MacroSwitchChainConfig>();
 
         public MacroSwitch(string macroname, int macroLanes)
         {
             this.ActionName = macroname;
             for (int i = 1; i <= macroLanes; i++)
             {
-                ChainConfigs.Add(new ChainConfig(i, Keys.None));
+                ChainConfigs.Add(new MacroSwitchChainConfig(i, Keys.None));
             }
         }
 
@@ -120,7 +119,7 @@ namespace _ORTools.Model
         {
             try
             {
-                ChainConfigs[macroId - 1] = new ChainConfig(macroId);
+                ChainConfigs[macroId - 1] = new MacroSwitchChainConfig(macroId);
             }
             catch (Exception ex)
             {
@@ -140,7 +139,7 @@ namespace _ORTools.Model
 
         private int MacroThread(Client roClient)
         {
-            foreach (ChainConfig chainConfig in this.ChainConfigs)
+            foreach (MacroSwitchChainConfig chainConfig in this.ChainConfigs)
             {
                 // Use the dedicated TriggerKey instead of the first non-None key
                 if (chainConfig.TriggerKey == Keys.None)
