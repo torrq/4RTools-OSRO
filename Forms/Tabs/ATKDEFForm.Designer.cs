@@ -245,7 +245,7 @@ namespace _ORTools.Forms
             this.btnResetAtkDef1.TabIndex = 38;
             this.btnResetAtkDef1.Text = "Reset";
             this.btnResetAtkDef1.UseVisualStyleBackColor = false;
-            this.btnResetAtkDef1.Click += new System.EventHandler(this.btnResetAtkDefGroup_Click);
+            this.btnResetAtkDef1.Click += new System.EventHandler(this.ButonResetAtkDefGroup_Click);
             // 
             // pictureBox12
             // 
@@ -401,7 +401,6 @@ namespace _ORTools.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2, 160);
             this.panel1.TabIndex = 6;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox9
             // 
@@ -657,7 +656,6 @@ namespace _ORTools.Forms
             this.panelSwitch2.Name = "panelSwitch2";
             this.panelSwitch2.Size = new System.Drawing.Size(588, 180);
             this.panelSwitch2.TabIndex = 28;
-            this.panelSwitch2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSwitch2_Paint);
             // 
             // btnResetAtkDef2
             // 
@@ -671,7 +669,7 @@ namespace _ORTools.Forms
             this.btnResetAtkDef2.TabIndex = 38;
             this.btnResetAtkDef2.Text = "Reset";
             this.btnResetAtkDef2.UseVisualStyleBackColor = false;
-            this.btnResetAtkDef2.Click += new System.EventHandler(this.btnResetAtkDefGroup_Click);
+            this.btnResetAtkDef2.Click += new System.EventHandler(this.ButonResetAtkDefGroup_Click);
             // 
             // pictureBox13
             // 
@@ -1046,7 +1044,7 @@ namespace _ORTools.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ATKDEFForm";
             this.Text = "ATKDEFForm";
-            this.Click += new System.EventHandler(this.btnResetAtkDefGroup_Click);
+            this.Click += new System.EventHandler(this.ButonResetAtkDefGroup_Click);
             this.equipGroup1.ResumeLayout(false);
             this.panelSwitch1.ResumeLayout(false);
             this.panelSwitch1.PerformLayout();

@@ -110,7 +110,7 @@ namespace _ORTools.Utils
                 }
                 else
                 {
-                    thisk = (Keys)Enum.Parse(typeof(Keys), e.KeyCode.ToString());
+                    thisk = (Keys)e.KeyCode;
                 }
 
                 switch (thisk)
@@ -130,7 +130,7 @@ namespace _ORTools.Utils
             }
             catch (Exception ex)
             {
-                DebugLogger.Error("Error in OnKeyDown: " + ex.Message);
+                DebugLogger.Error("Error in OnKeyDown: " + ex.Message + "\n" + ex.StackTrace);
             }
         }
 
@@ -328,29 +328,29 @@ namespace _ORTools.Utils
 
             try
             {
-                Font baseFont = null;
-                // Defensive: check if Tag is a valid Font, else reset it
-                if (textBox.Tag is Font cachedFont)
+                Font baseFont;
+
+                // Keep original Tag for business logic, store cached font in AccessibleDescription
+                if (textBox.AccessibleDescription != null &&
+                    textBox.AccessibleDescription.StartsWith("cachedFont:", StringComparison.OrdinalIgnoreCase))
                 {
-                    baseFont = cachedFont;
+                    // Try to retrieve cached font
+                    baseFont = textBox.Font ?? Control.DefaultFont;
                 }
                 else
                 {
                     baseFont = textBox.Font ?? Control.DefaultFont;
-                    textBox.Tag = baseFont;
+                    textBox.AccessibleDescription = "cachedFont:"; // mark as cached
                 }
 
                 FontStyle newStyle = hasKey ? FontStyle.Bold : FontStyle.Regular;
 
-                // Only update font if style differs from current font style
                 if (textBox.Font == null || textBox.Font.Style != newStyle)
                 {
-                    // Dispose old font if it's different from the cached base font
                     if (textBox.Font != null && textBox.Font != baseFont)
                     {
                         textBox.Font.Dispose();
                     }
-
                     textBox.Font = new Font(baseFont, newStyle);
                 }
 

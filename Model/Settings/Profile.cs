@@ -23,7 +23,7 @@ namespace _ORTools.Model
         public MacroSong SongMacro { get; set; }
         public MacroSwitch MacroSwitch { get; set; }
         public TransferHelper TransferHelper { get; set; }
-        public ATKDEF AtkDefMode { get; set; }
+        public ATKDEF ATKDEFMode { get; set; }
 
         public Profile(string name)
         {
@@ -39,7 +39,7 @@ namespace _ORTools.Model
             this.StatusRecovery = new StatusRecovery();
             this.SongMacro = new MacroSong();
             this.MacroSwitch = new MacroSwitch(MacroSwitch.ACTION_NAME_MACRO_SWITCH, MacroSwitchKey.TOTAL_MACRO_LANES);
-            this.AtkDefMode = new ATKDEF(ATKDEFForm.TOTAL_ATKDEF_LANES);
+            this.ATKDEFMode = new ATKDEF(ATKDEFForm.TOTAL_ATKDEF_LANES);
             this.DebuffsRecovery = new DebuffRecovery("DebuffsRecovery");
             this.TransferHelper = new TransferHelper();
         }
@@ -122,7 +122,7 @@ namespace _ORTools.Model
                         profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;
                     }
                     profile.SongMacro = JsonConvert.DeserializeObject<MacroSong>(Profile.GetByAction(rawObject, profile.SongMacro));
-                    profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
+                    profile.ATKDEFMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.ATKDEFMode));
                     profile.MacroSwitch = JsonConvert.DeserializeObject<MacroSwitch>(Profile.GetByAction(rawObject, profile.MacroSwitch));
                     profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
                     profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));

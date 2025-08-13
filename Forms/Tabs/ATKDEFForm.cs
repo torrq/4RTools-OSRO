@@ -25,13 +25,13 @@ namespace _ORTools.Forms
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
-                    UpdateUi();
+                    UpdateUI();
                     break;
                 case MessageCode.TURN_ON:
-                    ProfileSingleton.GetCurrent().AtkDefMode?.Start();
+                    ProfileSingleton.GetCurrent().ATKDEFMode?.Start();
                     break;
                 case MessageCode.TURN_OFF:
-                    ProfileSingleton.GetCurrent().AtkDefMode?.Stop();
+                    ProfileSingleton.GetCurrent().ATKDEFMode?.Stop();
                     break;
             }
         }
@@ -43,7 +43,7 @@ namespace _ORTools.Forms
                 GroupBox group = (GroupBox)this.Controls.Find("equipGroup" + id, true).FirstOrDefault();
                 if (group == null) return;
 
-                ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+                ATKDEF currentMode = ProfileSingleton.GetCurrent().ATKDEFMode;
                 if (currentMode == null) return;
 
                 EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
@@ -57,12 +57,16 @@ namespace _ORTools.Forms
                 if (cKey.Length > 0 && cKey[0] is TextBox txtSpammerKey)
                 {
                     txtSpammerKey.Text = equipConfig.KeySpammer.ToString();
+                    FormHelper.ApplyInputKeyStyle(
+                        txtSpammerKey,
+                        FormHelper.IsValidKey(equipConfig.KeySpammer)
+                    );
                 }
 
                 Control[] cSpammerDelay = group.Controls.Find("in" + id + "SpammerDelay", true);
                 if (cSpammerDelay.Length > 0 && cSpammerDelay[0] is NumericUpDown numSpammerDelay)
                 {
-                    numSpammerDelay.Value = Math.Max(numSpammerDelay.Minimum, Math.Min(numSpammerDelay.Maximum, equipConfig.AHKDelay));
+                    numSpammerDelay.Value = Math.Max(numSpammerDelay.Minimum, Math.Min(numSpammerDelay.Maximum, equipConfig.KeySpammerDelay));
                 }
 
                 Control[] cSwitchDelay = group.Controls.Find("in" + id + "SwitchDelay", true);
@@ -82,13 +86,21 @@ namespace _ORTools.Forms
                     Control[] equipDefCtrl = group.Controls.Find("in" + id + "Def" + i, true);
                     if (equipDefCtrl.Length > 0 && equipDefCtrl[0] is TextBox tbDef)
                     {
-                        tbDef.Text = equipConfig.DefKeys.ContainsKey(tbDef.Name) ? equipConfig.DefKeys[tbDef.Name].ToString() : Keys.None.ToString();
+                        Keys defKey = equipConfig.DefKeys.ContainsKey(tbDef.Name)
+                            ? equipConfig.DefKeys[tbDef.Name]
+                            : Keys.None;
+                        tbDef.Text = defKey.ToString();
+                        FormHelper.ApplyInputKeyStyle(tbDef, FormHelper.IsValidKey(defKey));
                     }
 
                     Control[] equipAtkCtrl = group.Controls.Find("in" + id + "Atk" + i, true);
                     if (equipAtkCtrl.Length > 0 && equipAtkCtrl[0] is TextBox tbAtk)
                     {
-                        tbAtk.Text = equipConfig.AtkKeys.ContainsKey(tbAtk.Name) ? equipConfig.AtkKeys[tbAtk.Name].ToString() : Keys.None.ToString();
+                        Keys atkKey = equipConfig.AtkKeys.ContainsKey(tbAtk.Name)
+                            ? equipConfig.AtkKeys[tbAtk.Name]
+                            : Keys.None;
+                        tbAtk.Text = atkKey.ToString();
+                        FormHelper.ApplyInputKeyStyle(tbAtk, FormHelper.IsValidKey(atkKey));
                     }
                 }
             }
@@ -98,9 +110,9 @@ namespace _ORTools.Forms
             }
         }
 
-        private void UpdateUi()
+        private void UpdateUI()
         {
-            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().ATKDEFMode;
             if (currentMode == null) return;
 
             for (int i = 1; i <= currentMode.EquipConfigs.Count && i <= TOTAL_ATKDEF_LANES; i++)
@@ -112,21 +124,21 @@ namespace _ORTools.Forms
             }
         }
 
-        private void onDelayChange(object sender, EventArgs e)
+        private void OnDelayChange(object sender, EventArgs e)
         {
             NumericUpDown delayInput = (NumericUpDown)sender;
             string[] inputTag = delayInput.Tag.ToString().Split(new[] { ":" }, StringSplitOptions.None);
             int id = short.Parse(inputTag[0]);
             string type = inputTag[1];
 
-            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().ATKDEFMode;
             if (currentMode == null) return;
             EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
             if (equipConfig == null) return;
 
             if (type == "spammerDelay")
             {
-                equipConfig.AHKDelay = decimal.ToInt16(delayInput.Value);
+                equipConfig.KeySpammerDelay = decimal.ToInt16(delayInput.Value);
             }
             else
             {
@@ -135,30 +147,38 @@ namespace _ORTools.Forms
             ProfileSingleton.SetConfiguration(currentMode);
         }
 
-        private void onTextChange(object sender, EventArgs e)
+        private void OnTextChange(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             Keys key = Keys.None;
+
             if (Enum.TryParse<Keys>(textBox.Text, true, out Keys parsedKey))
             {
                 key = parsedKey;
-                var keyString = key.ToString();
-                FormHelper.ApplyInputKeyStyle(
-                    textBox,
-                    !string.IsNullOrWhiteSpace(keyString) && keyString != AppConfig.TEXT_NONE
-                );
+                FormHelper.ApplyInputKeyStyle(textBox, FormHelper.IsValidKey(key));
             }
-            else if (string.IsNullOrWhiteSpace(textBox.Text) || textBox.Text.Equals(AppConfig.TEXT_NONE, StringComparison.OrdinalIgnoreCase))
+            else if (string.IsNullOrWhiteSpace(textBox.Text) ||
+                     textBox.Text.Equals(AppConfig.TEXT_NONE, StringComparison.OrdinalIgnoreCase))
             {
                 key = Keys.None;
+                FormHelper.ApplyInputKeyStyle(textBox, false);
             }
 
-            string[] inputTag = textBox.Tag.ToString().Split(new[] { ":" }, StringSplitOptions.None);
-            int id = short.Parse(inputTag[0]);
+            string[] inputTag = textBox.Tag?.ToString().Split(new[] { ":" }, StringSplitOptions.None)
+                                ?? Array.Empty<string>();
+
+            if (inputTag.Length < 2 || !short.TryParse(inputTag[0], out short id))
+            {
+                DebugLogger.Error(
+                    $"OnTextChange: Invalid Tag '{textBox.Tag}' for TextBox '{textBox.Name}'. Expected format: 'id:type'."
+                );
+                return;
+            }
             string type = inputTag[1];
 
-            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().ATKDEFMode;
             if (currentMode == null) return;
+
             EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
             if (equipConfig == null) return;
 
@@ -171,16 +191,17 @@ namespace _ORTools.Forms
                 string itemTypeCategory = type.Substring(0, 3).ToUpper();
                 currentMode.AddSwitchItem(id, textBox.Name, key, itemTypeCategory);
             }
+
             ProfileSingleton.SetConfiguration(currentMode);
         }
 
-        private void ChkBox_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
             string[] inputTag = checkBox.Tag.ToString().Split(new[] { ":" }, StringSplitOptions.None);
             int id = short.Parse(inputTag[0]);
 
-            ATKDEF currentMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentMode = ProfileSingleton.GetCurrent().ATKDEFMode;
             if (currentMode == null) return;
             EquipConfig equipConfig = currentMode.EquipConfigs.FirstOrDefault(config => config.id == id);
             if (equipConfig == null) return;
@@ -203,25 +224,25 @@ namespace _ORTools.Forms
                         TextBox textBox = (TextBox)c;
                         textBox.KeyDown -= FormHelper.OnKeyDown;
                         textBox.KeyPress -= FormHelper.OnKeyPress;
-                        textBox.TextChanged -= this.onTextChange;
+                        textBox.TextChanged -= this.OnTextChange;
 
                         textBox.KeyDown += FormHelper.OnKeyDown;
                         textBox.KeyPress += FormHelper.OnKeyPress;
-                        textBox.TextChanged += this.onTextChange;
+                        textBox.TextChanged += this.OnTextChange;
                     }
 
                     foreach (Control c in FormHelper.GetAll(group, typeof(NumericUpDown)))
                     {
                         NumericUpDown numericUpDown = (NumericUpDown)c;
-                        numericUpDown.ValueChanged -= this.onDelayChange;
-                        numericUpDown.ValueChanged += this.onDelayChange;
+                        numericUpDown.ValueChanged -= this.OnDelayChange;
+                        numericUpDown.ValueChanged += this.OnDelayChange;
                     }
 
                     foreach (Control c in FormHelper.GetAll(group, typeof(CheckBox)))
                     {
                         CheckBox checkBox = (CheckBox)c;
-                        checkBox.CheckedChanged -= this.ChkBox_CheckedChanged;
-                        checkBox.CheckedChanged += this.ChkBox_CheckedChanged;
+                        checkBox.CheckedChanged -= this.CheckBox_CheckedChanged;
+                        checkBox.CheckedChanged += this.CheckBox_CheckedChanged;
                     }
                 }
             }
@@ -239,7 +260,7 @@ namespace _ORTools.Forms
             if (this.btnResetAtkDef2 != null) resetTooltip.SetToolTip(this.btnResetAtkDef2, tooltipText);
         }
 
-        private void btnResetAtkDefGroup_Click(object sender, EventArgs e)
+        private void ButonResetAtkDefGroup_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             if (clickedButton == null) return;
@@ -257,7 +278,7 @@ namespace _ORTools.Forms
 
             if (configIdToReset == -1) return;
 
-            ATKDEF currentAtkDefMode = ProfileSingleton.GetCurrent().AtkDefMode;
+            ATKDEF currentAtkDefMode = ProfileSingleton.GetCurrent().ATKDEFMode;
             if (currentAtkDefMode == null) return;
 
             int groupIndex = currentAtkDefMode.EquipConfigs.FindIndex(ec => ec.id == configIdToReset);
@@ -276,16 +297,6 @@ namespace _ORTools.Forms
 
             ProfileSingleton.SetConfiguration(currentAtkDefMode);
             UpdatePanelData(configIdToReset);
-        }
-
-        private void panelSwitch2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

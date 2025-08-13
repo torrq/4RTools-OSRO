@@ -20,7 +20,7 @@ namespace _ORTools.Model
 
         private int _AHKDelay = AppConfig.ATKDEFSpammerDefaultDelay;
 
-        public int AHKDelay
+        public int KeySpammerDelay
         {
             get => _AHKDelay <= 0 ? AppConfig.ATKDEFSpammerDefaultDelay : _AHKDelay;
             set => _AHKDelay = value;
@@ -52,7 +52,7 @@ namespace _ORTools.Model
         public EquipConfig(EquipConfig macro)
         {
             this.id = macro.id;
-            this.AHKDelay = macro.AHKDelay;
+            this.KeySpammerDelay = macro.KeySpammerDelay;
             this.SwitchDelay = macro.SwitchDelay;
             this.KeySpammer = macro.KeySpammer;
             this.KeySpammerWithClick = macro.KeySpammerWithClick;
@@ -139,12 +139,12 @@ namespace _ORTools.Model
                             AutoSwitchAmmo(roClient, ref ammo);
                             Thread.Sleep(1);
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
-                            Thread.Sleep(equipConfig.AHKDelay);
+                            Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
                         else
                         {
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
-                            Thread.Sleep(equipConfig.AHKDelay);
+                            Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
                     }
                     if (!equipDefItems)
