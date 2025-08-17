@@ -46,7 +46,7 @@ namespace _4RTools.Model
             _httpClient.Timeout = TimeSpan.FromSeconds(10);
         }
 
-        public async void SendEvent(string action, string category, string label)
+        public async Task SendEvent(string action, string category, string label)
         {
             try
             {
@@ -62,9 +62,10 @@ namespace _4RTools.Model
             catch (Exception err)
             {
                 Console.WriteLine(err.ToString());
+                throw;
             }
-                
-          
+
+
         }
     }
 }
