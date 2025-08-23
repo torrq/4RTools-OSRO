@@ -28,7 +28,7 @@ namespace _ORTools.Model
 
         public ClientDTO() { }
 
-        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress, string onlineAddress)
+        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress)
         {
             this.Name = name;
             this.Description = description;
@@ -36,13 +36,11 @@ namespace _ORTools.Model
             this.NameAddress = nameAddress;
             this.MapAddress = mapAddress;
             this.JobAdress = jobAddress;
-            this.OnlineAddress = onlineAddress;
 
             this.HPAddressPointer = Convert.ToInt32(hpAddress, 16);
             this.NameAddressPointer = Convert.ToInt32(nameAddress, 16);
             this.MapAddressPointer = Convert.ToInt32(mapAddress, 16);
             this.JobAddressPointer = Convert.ToInt32(jobAddress, 16);
-            this.OnlineAddressPointer = Convert.ToInt32(onlineAddress, 16);
         }
     }
 
@@ -308,8 +306,6 @@ namespace _ORTools.Model
                     isLoggedIn = loginValue > 0;
                     return isLoggedIn;
                 }
-                // LR
-                else if (AppConfig.ServerMode == 2) { return isLoggedIn; }
                 // MR
                 else
                 {
@@ -340,11 +336,6 @@ namespace _ORTools.Model
                 this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x470;
                 //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for HR client.");
             }
-            else if (AppConfig.ServerMode == 2) // LR
-            {
-                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474; // Placeholder for LR, to be updated with correct offset
-                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for LR client.");
-            }
             else // Default to MR (ServerMode == 0)
             {
                 this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474;
@@ -367,11 +358,6 @@ namespace _ORTools.Model
             {
                 this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x470;
                 //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for HR client.");
-            }
-            else if (AppConfig.ServerMode == 2) // LR
-            {
-                this.StatusBufferAddress = this.CurrentHPBaseAddress + 0x474; // Placeholder for LR, to be updated with correct offset
-                //DebugLogger.Debug($"StatusBufferAddress set to: 0x{this.StatusBufferAddress:X8} for LR client.");
             }
             else // Default to MR (ServerMode == 0)
             {
@@ -486,8 +472,6 @@ namespace _ORTools.Model
             {
                 case 1: // HR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 2));
-                case 2: // LR #FIXME
-                    return ReadMemory(this.CurrentJobAddress + 0);
                 default: // MR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + 4);
             }
@@ -499,8 +483,6 @@ namespace _ORTools.Model
             {
                 case 1: // HR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 4));
-                case 2: // LR #FIXME
-                    return ReadMemory(this.CurrentJobAddress + 0);
                 default: // MR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 3));
             }
@@ -512,8 +494,6 @@ namespace _ORTools.Model
             {
                 case 1: // HR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 10));
-                case 2: // LR #FIXME
-                    return ReadMemory(this.CurrentJobAddress + 0);
                 default: // MR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 9));
             }
@@ -525,8 +505,6 @@ namespace _ORTools.Model
             {
                 case 1: // HR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 12));
-                case 2: // LR #FIXME
-                    return ReadMemory(this.CurrentJobAddress + 0);
                 default: // MR - correct as of 2025-07-05
                     return ReadMemory(this.CurrentJobAddress + (4 * 11));
             }

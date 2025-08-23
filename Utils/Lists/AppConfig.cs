@@ -14,7 +14,7 @@ namespace _ORTools.Utils
         public static string Version = "v1.0.9";
         public static decimal ConfigVersion = 1;
 
-        // 0 = Mid-rate, 1 = High-rate, 2 = Low-rate
+        // 0 = Mid-rate, 1 = High-rate
         public static int ServerMode = 0;
 
         // Set to true for pre-release versions, false for stable releases
@@ -74,20 +74,6 @@ namespace _ORTools.Utils
                             }
                         };
 
-                    case 2: // Low-rate
-                        return new List<dynamic>
-                        {
-                            new
-                            {
-                                name          = "OsRO Revo",
-                                description   = "OsRO Revo (Lowrate)",
-                                hpAddress     = "00000000",
-                                nameAddress   = "00000000",
-                                mapAddress    = "00000000",
-                                jobAddress    = "00000000"
-                            }
-                        };
-
                     default:
                         throw new InvalidOperationException($"Unsupported ServerMode value: {ServerMode}");
                 }
@@ -100,7 +86,6 @@ namespace _ORTools.Utils
             {
                 case 0: return "MR";   // Mid‑rate
                 case 1: return "HR";   // High‑rate
-                case 2: return "LR";   // Low‑rate
                 default:
                     throw new InvalidOperationException($"Unsupported ServerMode value: {ServerMode}");
             }
@@ -126,10 +111,8 @@ namespace _ORTools.Utils
         public static string GithubLink = "https://github.com/torrq/4RTools-OSRO/releases";
         public static string WebsiteMR = "https://osro.mr";
         public static string WebsiteHR = "https://osro.gg";
-        public static string WebsiteLR = "https://osro-revo.gg";
         public static string DiscordLinkMR = "https://discord.com/invite/osro2";
         public static string DiscordLinkHR = "https://discord.com/invite/osro";
-        public static string DiscordLinkLR = "https://discord.com/invite/osro3";
 
         #endregion
 

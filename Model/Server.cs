@@ -69,8 +69,7 @@ namespace _ORTools.Model
                         server.hpAddress,
                         server.nameAddress,
                         server.mapAddress,
-                        server.jobAddress,
-                        server.onlineAddress
+                        server.jobAddress
                     ));
                 }
                 return clients;

@@ -87,7 +87,6 @@ if ($nameMatch.Success -and $preReleaseMatch.Success -and $serverModeMatch.Succe
     $rateTag = switch ($serverMode) {
         0 { "MR" }  # Mid-rate
         1 { "HR" }  # High-rate
-        2 { "LR" }  # Low-rate
         default { "Unknown" }
     }
 

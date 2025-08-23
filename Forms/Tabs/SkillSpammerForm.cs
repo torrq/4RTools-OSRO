@@ -146,12 +146,6 @@ namespace _ORTools.Forms
         // Event handlers for individual checkboxes (can be removed if not needed)
         private void SkillSpammerForm_Load(object sender, EventArgs e) { }
 
-        // Website and Discord buttons
-        private void LRWebsiteButton_Click(object sender, EventArgs e)
-        {
-            Process.Start(AppConfig.WebsiteLR);
-        }
-
         private void MRWebsiteButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.WebsiteMR);
@@ -165,11 +159,6 @@ namespace _ORTools.Forms
         private void GitHubButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.GithubLink);
-        }
-
-        private void LRDiscordButton_Click(object sender, EventArgs e)
-        {
-            Process.Start(AppConfig.DiscordLinkLR);
         }
 
         private void MRDiscordButton_Click(object sender, EventArgs e)
