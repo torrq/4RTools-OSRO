@@ -28,7 +28,7 @@ namespace _ORTools.Model
 
         public ClientDTO() { }
 
-        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress)
+        public ClientDTO(string name, string description, string hpAddress, string nameAddress, string mapAddress, string jobAddress, string onlineAddress)
         {
             this.Name = name;
             this.Description = description;
@@ -36,11 +36,13 @@ namespace _ORTools.Model
             this.NameAddress = nameAddress;
             this.MapAddress = mapAddress;
             this.JobAdress = jobAddress;
+            this.OnlineAddress = onlineAddress;
 
             this.HPAddressPointer = Convert.ToInt32(hpAddress, 16);
             this.NameAddressPointer = Convert.ToInt32(nameAddress, 16);
             this.MapAddressPointer = Convert.ToInt32(mapAddress, 16);
             this.JobAddressPointer = Convert.ToInt32(jobAddress, 16);
+            this.OnlineAddressPointer = Convert.ToInt32(onlineAddress, 16);
         }
     }
 
