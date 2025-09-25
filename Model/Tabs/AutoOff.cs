@@ -13,6 +13,7 @@ namespace _ORTools.Model
         private const int TWO_HOURS = 2 * 60; // 2 hours in minutes
         private const int THREE_HOURS = 3 * 60; // 3 hours in minutes
         private const int FOUR_HOURS = 4 * 60; // 4 hours in minutes
+        private const int FIVE_HOURS = 5 * 60; // 5 hours in minutes
         private const int EIGHT_HOURS = 8 * 60; // 8 hours in minutes
         #endregion
 
@@ -46,7 +47,7 @@ namespace _ORTools.Model
 
         public bool IsTimerRunning => isTimerRunning;
 
-        public int MaxMinutes => AppConfig.ServerMode == 1 ? EIGHT_HOURS : FOUR_HOURS;
+        public int MaxMinutes => AppConfig.ServerMode == 1 ? EIGHT_HOURS : FIVE_HOURS;
 
         public int MinMinutes => MIN_MINUTES;
 
@@ -133,6 +134,7 @@ namespace _ORTools.Model
         public void SetTimeToTwoHours() => SetTime(TWO_HOURS);
         public void SetTimeToThreeHours() => SetTime(THREE_HOURS);
         public void SetTimeToFourHours() => SetTime(FOUR_HOURS);
+        public void SetTimeToFiveHours() => SetTime(FIVE_HOURS);
         public void SetTimeToEightHours() => SetTime(EIGHT_HOURS);
         #endregion
 
