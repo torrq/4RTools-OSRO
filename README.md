@@ -6,9 +6,9 @@
 **The Ultimate Gaming Automation Suite**
 
 ## 🔥 Overview
-**Brute Gaming Macros** is a superior, high-performance gaming macro tool built on the foundation of [4RTools OSRO](https://github.com/torrq/4RTools-OSRO), which was a fork of [TalesTools](https://github.com/biancaazuma/TalesTools) and originally based on [4RTools](https://github.com/4RTools/4RTools).
+**Brute Gaming Macros** is a superior, high-performance gaming macro tool - the evolution of automation for Ragnarok Online. Originally inspired by the community tools TalesTools and related projects, this represents a complete reimagining focused on maximum performance and reliability.
 
-**Version 2.0** brings massive performance improvements, modern architecture, and a professional rebrand while maintaining full compatibility with [OsRO MR](https://osro.mr/), [OsRO HR](https://osro.gg/), and [OsRO LR](https://osro-revo.gg/).
+**Version 2.0** brings massive performance improvements, modern architecture, and professional-grade features while maintaining full compatibility with [OsRO MR](https://osro.mr/), [OsRO HR](https://osro.gg/), and [OsRO LR](https://osro-revo.gg/).
 
 ## ⚡ What's New in v2.0.0
 
@@ -30,9 +30,9 @@
 - **Bug Fixes:** Critical fixes including AutoBuff logic and IsOnline() method
 - **Error Handling:** Comprehensive exception handling throughout
 
-## 🎯 Key Features (Inherited + Enhanced)
+## 🎯 Key Features
 
-### From Original 4RTools OSRO
+### Core Features
 - **Language & Adaptation:** English interface aligned with OsRO's status set
 - **Weight-Based Auto-Disable:** Disable when overweight (50%/90%) with Alt-# macro trigger
 - **Expanded Skill Support:** Padawan (Jedi/Sith) skills with icons
@@ -50,7 +50,7 @@
 ## 📦 Installation
 
 ### Quick Start
-1. Download the `.zip` file from the [release page](https://github.com/epicseo/4RTools-OSRO/releases)
+1. Download the latest `.zip` file from the releases page
 2. Extract the contents to a folder of your choice
 3. Run `BruteGamingMacros.exe` as **Administrator**
 4. Select your game process from the dropdown
@@ -61,7 +61,7 @@
 - Windows 10/11 (64-bit recommended)
 - .NET Framework 4.8.1 or higher
 - Administrator privileges
-- Ragnarok Online client (OsRO MR/HR/LR)
+- Ragnarok Online client (OsRO MR/HR/LR supported)
 
 > **⚠️ Antivirus Note:** Some antivirus programs may flag the executable due to memory reading capabilities. This is a false positive. Add an exception for the folder to resolve this issue.
 
