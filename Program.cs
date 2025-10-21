@@ -1,8 +1,8 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using System;
 using System.Windows.Forms;
 
-namespace _4RTools
+namespace BruteGamingMacros.Core
 {
     internal static class Program
     {

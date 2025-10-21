@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _4RTools.Properties {
+namespace BruteGamingMacros.Properties {
     using System;
     
     

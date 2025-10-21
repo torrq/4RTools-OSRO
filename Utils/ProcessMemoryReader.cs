@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     internal class ProcessMemoryReader
     {

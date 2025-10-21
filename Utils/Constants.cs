@@ -1,4 +1,4 @@
-﻿namespace _4RTools.Utils
+﻿namespace BruteGamingMacros.Core.Utils
 {
     internal class Constants
     {

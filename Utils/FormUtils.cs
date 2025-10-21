@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     public class FormUtils
     {

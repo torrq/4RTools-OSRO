@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     internal class BuffContainer
     {

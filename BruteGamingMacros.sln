@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSRO Tools", "OSRO Tools.csproj", "{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruteGamingMacros", "BruteGamingMacros.csproj", "{A7D78B00-6CE1-4B4D-90A3-1D2E93C7F68A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

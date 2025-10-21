@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;

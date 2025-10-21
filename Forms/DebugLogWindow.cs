@@ -1,10 +1,10 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace BruteGamingMacros.UI.Forms
 {
     public partial class DebugLogWindow : Form
     {

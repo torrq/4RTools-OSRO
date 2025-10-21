@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace BruteGamingMacros.UI.Forms
 {
     public partial class DialogInput : Form
     {

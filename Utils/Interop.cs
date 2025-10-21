@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     internal class Interop
     {

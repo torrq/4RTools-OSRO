@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _4RTools.Resources._4RTools {
+namespace BruteGamingMacros.Resources.BruteGaming {
     using System;
     
     

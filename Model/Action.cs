@@ -1,4 +1,4 @@
-﻿namespace _4RTools.Model
+﻿namespace BruteGamingMacros.Core.Model
 {
     public interface IAction
     {

@@ -1,4 +1,4 @@
-﻿namespace _4RTools.Forms
+﻿namespace BruteGamingMacros.UI.Forms
 {
     partial class DialogConfirm
     {

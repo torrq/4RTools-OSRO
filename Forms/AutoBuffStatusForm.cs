@@ -1,11 +1,11 @@
-﻿using _4RTools.Model;
-using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Model;
+using BruteGamingMacros.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
-namespace _4RTools.Forms
+namespace BruteGamingMacros.UI.Forms
 {
     public partial class AutoBuffStatusForm : Form, IObserver
     {

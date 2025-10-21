@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
-using _4RTools.Model;
+using BruteGamingMacros.Core.Model;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     public class AmmoSwapHandler
     {

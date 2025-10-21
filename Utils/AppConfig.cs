@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     internal class AppConfig
     {
-        public static string Name = "OSRO Tools";
-        public static string Version = "v1.0.7";
+        // === BRUTE GAMING MACROS v2.0.0 ===
+        public static string Name = "Brute Gaming Macros";
+        public static string Version = "v2.0.0";
+        public static string Tagline = "The Ultimate Gaming Automation Suite";
 
 #if MR_BUILD
         public static int ServerMode = 0; // Mid-rate
@@ -22,6 +24,17 @@ namespace _4RTools.Utils
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}";
 
+        // === SUPERIOR PERFORMANCE SETTINGS ===
+        // Ultra-fast spam modes (Phase 2 - SuperiorInputEngine)
+        public static int UltraSpamDelayMs = 1;        // 1000 actions/second
+        public static int TurboSpamDelayMs = 5;        // 200 actions/second
+        public static int StandardSpamDelayMs = 10;    // 100 actions/second
+
+        // Engine optimization flags
+        public static bool UseHardwareSimulation = true;     // SendInput API
+        public static bool UseBatchMemoryReading = true;     // Batch memory reads
+        public static int MemoryCacheDurationMs = 100;       // Cache duration
+
         public static string ProfileFolder = "Profile\\";
         public static string ConfigFolder = "Config\\";
         public static string ConfigFile = ConfigFolder + "config.json";
@@ -29,9 +42,10 @@ namespace _4RTools.Utils
         public static string CitiesFile = ConfigFolder + "cities.json";
         public static string DebugLogFile = "debug.log";
 
+        // === WINDOW CLASS NAMES (for process detection) ===
         public static string WindowClassMR = "Oldschool RO - Midrate | www.osro.mr";
         public static string WindowClassHR = "Oldschool RO | www.osro.gg";
-        public static string WindowClassLR = "Oldschool RO | dunno";
+        public static string WindowClassLR = "Oldschool RO | Revo";  // Updated from "dunno"
 
         public static List<dynamic> DefaultServers
         {
@@ -96,7 +110,8 @@ namespace _4RTools.Utils
             "dewata", "malangdo", "malaya", "eclage", "marketplace", "mainhall", "quiz_00"
         };
 
-        public static string GithubLink = "https://github.com/torrq/4RTools-OSRO/releases";
+        // === LINKS & RESOURCES ===
+        public static string GithubLink = "https://github.com/epicseo/4RTools-OSRO/releases";  // Updated repo
         public static string WebsiteMR = "https://osro.mr";
         public static string WebsiteHR = "https://osro.gg";
         public static string WebsiteLR = "https://osro-revo.gg";

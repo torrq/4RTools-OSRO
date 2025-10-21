@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using _4RTools.Utils;
+using BruteGamingMacros.Core.Utils;
 
-namespace _4RTools.Forms
+namespace BruteGamingMacros.UI.Forms
 {
     partial class ConfigForm
     {

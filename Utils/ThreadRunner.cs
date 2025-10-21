@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     public class ThreadRunner
     {

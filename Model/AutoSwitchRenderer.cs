@@ -1,6 +1,6 @@
-﻿using _4RTools.Forms;
-using _4RTools.Properties;
-using _4RTools.Utils;
+﻿using BruteGamingMacros.UI.Forms;
+using BruteGamingMacros.Properties;
+using BruteGamingMacros.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using static _4RTools.Model.AutoSwitch;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     internal class AutoSwitchContainer
     {

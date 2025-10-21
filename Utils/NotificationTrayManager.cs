@@ -1,11 +1,11 @@
-﻿using _4RTools.Model;
-using _4RTools.Resources._4RTools;
+﻿using BruteGamingMacros.Core.Model;
+using BruteGamingMacros.Resources.BruteGaming;
 using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     public class NotificationTrayManager : IObserver, IDisposable
     {

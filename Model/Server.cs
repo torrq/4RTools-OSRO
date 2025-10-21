@@ -1,10 +1,10 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     internal class Server
     {

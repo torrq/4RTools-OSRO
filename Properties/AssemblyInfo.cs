@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General information about an assembly is controlled by
 // a set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OSRO Tools")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Brute Gaming Macros")]
+[assembly: AssemblyDescription("The Ultimate Gaming Automation Suite - Superior performance gaming macro tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("https://github.com/torrq/4RTools-OSRO")]
-[assembly: AssemblyProduct("OSRO Tools")]
-[assembly: AssemblyCopyright("2025 by torrq | MIT License")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Brute Gaming")]
+[assembly: AssemblyProduct("Brute Gaming Macros")]
+[assembly: AssemblyCopyright("Copyright © 2025 Brute Gaming | Based on 4RTools by torrq | MIT License")]
+[assembly: AssemblyTrademark("Brute Gaming™")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly invisible
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or default to Build and Revision Numbers
 // using the "*" as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.7.0")]
-[assembly: AssemblyFileVersion("1.0.7.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 [assembly: NeutralResourcesLanguage("en")]

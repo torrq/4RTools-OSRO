@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     public class ClientDTO
     {

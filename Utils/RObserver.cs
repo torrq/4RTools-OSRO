@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     public interface IObserver
     {

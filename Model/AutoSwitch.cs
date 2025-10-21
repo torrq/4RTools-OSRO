@@ -4,11 +4,11 @@ using System.Windows.Input;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using _4RTools.Utils;
+using BruteGamingMacros.Core.Utils;
 using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
 
     public class AutoSwitch : Action

@@ -1,12 +1,12 @@
-﻿using _4RTools.Forms;
-using _4RTools.Utils;
+﻿using BruteGamingMacros.UI.Forms;
+using BruteGamingMacros.Core.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     public class ProfileSingleton
     {

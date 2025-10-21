@@ -2,14 +2,14 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using _4RTools.Utils;
+using BruteGamingMacros.Core.Utils;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Http;
 using Aspose.Zip.Rar;
 using System.Net;
 
-namespace _4RTools.Forms
+namespace BruteGamingMacros.UI.Forms
 {
     public partial class AutoPatcher : Form
     {

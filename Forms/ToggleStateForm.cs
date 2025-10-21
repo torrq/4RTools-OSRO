@@ -1,12 +1,12 @@
-﻿using _4RTools.Model;
-using _4RTools.Resources._4RTools;
-using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Model;
+using BruteGamingMacros.Resources.BruteGaming;
+using BruteGamingMacros.Core.Utils;
 using System;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
 
-namespace _4RTools.Forms
+namespace BruteGamingMacros.UI.Forms
 {
     public partial class ToggleStateForm : Form, IObserver
     {

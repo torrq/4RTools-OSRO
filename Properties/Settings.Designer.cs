@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _4RTools.Properties {
+namespace BruteGamingMacros.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

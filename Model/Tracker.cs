@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     sealed class TrackerSingleton
     {

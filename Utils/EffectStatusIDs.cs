@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     [Flags]
     public enum EffectStatusIDs : uint

@@ -1,4 +1,4 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Runtime.InteropServices;
@@ -6,7 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     public class TransferHelper : IAction
     {

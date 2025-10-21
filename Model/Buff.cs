@@ -1,9 +1,9 @@
-﻿using _4RTools.Utils;
+﻿using BruteGamingMacros.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace _4RTools.Model
+namespace BruteGamingMacros.Core.Model
 {
     internal class Buff
     {

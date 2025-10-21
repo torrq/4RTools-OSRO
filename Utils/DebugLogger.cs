@@ -1,9 +1,9 @@
-﻿using _4RTools.Model;
+﻿using BruteGamingMacros.Core.Model;
 using System;
 using System.IO;
 using System.Text;
 
-namespace _4RTools.Utils
+namespace BruteGamingMacros.Core.Utils
 {
     public static class DebugLogger
     {
