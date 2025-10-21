@@ -22,11 +22,11 @@ namespace BruteGamingMacros.UI.Forms
              * 1. Fetch the latest tag in url
              * 2. Compare with current version code in AppConfig.cs
              * 3. If different, should download the .rar in github
-             * 3.1  Rename current 4RTools.exe to 4RTools_old.exe
-             * 3.2  Rename 4RTools to 4RTools_old
+             * 3.1  Rename current BruteGamingMacros.exe to BruteGamingMacros_old.exe
+             * 3.2  Rename BruteGamingMacros to BruteGamingMacros_old
              * 3.3  Extract .rar file in folder
              * 3.3  Delete .rar in file folder.
-             * 3.4  Delete 4RTools_old in file folder.
+             * 3.4  Delete BruteGamingMacros_old in file folder.
              * 4. If equals, version are updated.
              */
             StartAutopatcher();
@@ -40,16 +40,16 @@ namespace BruteGamingMacros.UI.Forms
             //List[1] = Url
             try
             {
-                String oldFileName = "4RTools-tq_old.exe";
-                String old4rtoolsFileName = "4RTools_old.exe";
-                String sourceFileName = "4RTools-tq.exe";
-                File.Delete(old4rtoolsFileName); //Delete old R4Tools
-                File.Delete(oldFileName); //Delete old R4Tools
+                String oldFileName = "BruteGamingMacros_old.exe";
+                String oldBackupFileName = "BruteGamingMacros_backup.exe";
+                String sourceFileName = "BruteGamingMacros.exe";
+                File.Delete(oldBackupFileName); //Delete old backup
+                File.Delete(oldFileName); //Delete old version
                 //Fetch Github latest Tag
                 client.Timeout = TimeSpan.FromSeconds(5);
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
 
-                string latestVersion = await client.GetStringAsync(AppConfig._4RLatestVersionURL);
+                string latestVersion = await client.GetStringAsync(AppConfig.LatestVersionURL);
                 JObject obj = JsonConvert.DeserializeObject<JObject>(latestVersion);
 
                 string tag = obj["name"].ToString(); //Tag Name
@@ -80,12 +80,12 @@ namespace BruteGamingMacros.UI.Forms
         private async Task<bool> Download(string url, string filename)
         {
             WebClient client = new WebClient();
-            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(_4RTools_DownloadProgressChanged);
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(BruteGamingMacros_DownloadProgressChanged);
             await client.DownloadFileTaskAsync(url, @filename);
             return true;
         }
 
-        void _4RTools_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        void BruteGamingMacros_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate
             {

@@ -157,7 +157,7 @@ namespace BruteGamingMacros.UI.Forms
             this.overweight50.Cursor = System.Windows.Forms.Cursors.Hand;
             this.overweight50.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweight50.ForeColor = System.Drawing.Color.Crimson;
-            this.overweight50.Image = global::_4RTools.Resources._4RTools.Icons.weight50;
+            this.overweight50.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.weight50;
             this.overweight50.Location = new System.Drawing.Point(166, 30);
             this.overweight50.Name = "overweight50";
             this.overweight50.Size = new System.Drawing.Size(54, 40);
@@ -198,7 +198,7 @@ namespace BruteGamingMacros.UI.Forms
             this.overweight90.Cursor = System.Windows.Forms.Cursors.Hand;
             this.overweight90.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overweight90.ForeColor = System.Drawing.Color.Crimson;
-            this.overweight90.Image = global::_4RTools.Resources._4RTools.Icons.weight90;
+            this.overweight90.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.weight90;
             this.overweight90.Location = new System.Drawing.Point(228, 30);
             this.overweight90.Name = "overweight90";
             this.overweight90.Size = new System.Drawing.Size(54, 40);

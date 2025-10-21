@@ -87,7 +87,7 @@ namespace BruteGamingMacros.UI.Forms
             this.btnStatusToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStatusToggle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatusToggle.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnStatusToggle.Image = global::_4RTools.Resources._4RTools.Icons.toggle_off;
+            this.btnStatusToggle.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.toggle_off;
             this.btnStatusToggle.Location = new System.Drawing.Point(18, 22);
             this.btnStatusToggle.Margin = new System.Windows.Forms.Padding(0);
             this.btnStatusToggle.Name = "btnStatusToggle";

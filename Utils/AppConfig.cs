@@ -111,7 +111,8 @@ namespace BruteGamingMacros.Core.Utils
         };
 
         // === LINKS & RESOURCES ===
-        public static string GithubLink = "https://github.com/epicseo/4RTools-OSRO/releases";  // Updated repo
+        public static string GithubLink = "https://github.com/epicseo/4RTools-OSRO/releases";  // Repository releases
+        public static string LatestVersionURL = "https://api.github.com/repos/epicseo/4RTools-OSRO/releases/latest";  // API endpoint for latest version
         public static string WebsiteMR = "https://osro.mr";
         public static string WebsiteHR = "https://osro.gg";
         public static string WebsiteLR = "https://osro-revo.gg";

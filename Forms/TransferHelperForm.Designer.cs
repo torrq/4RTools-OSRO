@@ -62,7 +62,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Help;
-            this.pictureBox2.Image = global::_4RTools.Resources._4RTools.Icons.info;
+            this.pictureBox2.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.info;
             this.pictureBox2.Location = new System.Drawing.Point(177, 8);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);

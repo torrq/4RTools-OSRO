@@ -780,7 +780,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.shift;
+            this.pictureBox1.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.shift;
             this.pictureBox1.Location = new System.Drawing.Point(188, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
@@ -791,7 +791,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pbUpAndDownArrow
             // 
-            this.pbUpAndDownArrow.Image = global::_4RTools.Resources._4RTools.Icons.up_and_down_arrow;
+            this.pbUpAndDownArrow.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.up_and_down_arrow;
             this.pbUpAndDownArrow.Location = new System.Drawing.Point(95, 20);
             this.pbUpAndDownArrow.Name = "pbUpAndDownArrow";
             this.pbUpAndDownArrow.Size = new System.Drawing.Size(16, 16);
@@ -868,7 +868,7 @@ namespace BruteGamingMacros.UI.Forms
             this.GitHubButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.GitHubButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GitHubButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GitHubButton.Image = global::_4RTools.Resources._4RTools.Icons.github;
+            this.GitHubButton.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.github;
             this.GitHubButton.Location = new System.Drawing.Point(538, 107);
             this.GitHubButton.Margin = new System.Windows.Forms.Padding(0);
             this.GitHubButton.Name = "GitHubButton";
@@ -889,7 +889,7 @@ namespace BruteGamingMacros.UI.Forms
             this.HRDiscordButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.HRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRDiscordButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
+            this.HRDiscordButton.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.discord;
             this.HRDiscordButton.Location = new System.Drawing.Point(460, 409);
             this.HRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRDiscordButton.Name = "HRDiscordButton";
@@ -909,7 +909,7 @@ namespace BruteGamingMacros.UI.Forms
             this.MRDiscordButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.MRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRDiscordButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MRDiscordButton.Image = global::_4RTools.Resources._4RTools.Icons.discord;
+            this.MRDiscordButton.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.discord;
             this.MRDiscordButton.Location = new System.Drawing.Point(162, 409);
             this.MRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRDiscordButton.Name = "MRDiscordButton";
@@ -929,7 +929,7 @@ namespace BruteGamingMacros.UI.Forms
             this.HRWebsiteButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.HRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRWebsiteButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
+            this.HRWebsiteButton.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.url_green;
             this.HRWebsiteButton.Location = new System.Drawing.Point(375, 409);
             this.HRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRWebsiteButton.Name = "HRWebsiteButton";
@@ -949,7 +949,7 @@ namespace BruteGamingMacros.UI.Forms
             this.MRWebsiteButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.MRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRWebsiteButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MRWebsiteButton.Image = global::_4RTools.Resources._4RTools.Icons.url_green;
+            this.MRWebsiteButton.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.url_green;
             this.MRWebsiteButton.Location = new System.Drawing.Point(77, 409);
             this.MRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRWebsiteButton.Name = "MRWebsiteButton";
@@ -964,7 +964,7 @@ namespace BruteGamingMacros.UI.Forms
             // OSROHRBox
             // 
             this.OSROHRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OSROHRBox.Image = global::_4RTools.Resources._4RTools.Icons.osro_logo_hr;
+            this.OSROHRBox.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.osro_logo_hr;
             this.OSROHRBox.Location = new System.Drawing.Point(322, 283);
             this.OSROHRBox.Name = "OSROHRBox";
             this.OSROHRBox.Size = new System.Drawing.Size(272, 119);
@@ -974,7 +974,7 @@ namespace BruteGamingMacros.UI.Forms
             // OSROMRBox
             // 
             this.OSROMRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OSROMRBox.Image = global::_4RTools.Resources._4RTools.Icons.osro_logo_mr;
+            this.OSROMRBox.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.osro_logo_mr;
             this.OSROMRBox.Location = new System.Drawing.Point(28, 283);
             this.OSROMRBox.Name = "OSROMRBox";
             this.OSROMRBox.Size = new System.Drawing.Size(272, 119);

@@ -236,7 +236,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox9.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox9.Location = new System.Drawing.Point(372, 53);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(11, 14);
@@ -246,7 +246,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox7.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox7.Location = new System.Drawing.Point(301, 52);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(11, 14);
@@ -256,7 +256,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox8.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox8.Location = new System.Drawing.Point(331, 36);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(20, 40);
@@ -284,7 +284,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox1.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox1.Location = new System.Drawing.Point(231, 52);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(11, 14);
@@ -294,7 +294,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox4.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox4.Location = new System.Drawing.Point(261, 36);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(20, 40);
@@ -304,7 +304,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox2.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox2.Location = new System.Drawing.Point(160, 52);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(11, 14);
@@ -314,7 +314,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox3.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox3.Location = new System.Drawing.Point(190, 36);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 40);
@@ -332,7 +332,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackgroundImage = _4RTools.Resources._4RTools.Icons.violin;
+            this.pictureBox6.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.violin;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox6.Location = new System.Drawing.Point(435, 59);
             this.pictureBox6.Name = "pictureBox6";
@@ -352,7 +352,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackgroundImage = _4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox5.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.dagger;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox5.Location = new System.Drawing.Point(434, 28);
             this.pictureBox5.Name = "pictureBox5";
@@ -533,7 +533,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox12.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox12.Location = new System.Drawing.Point(372, 53);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(11, 14);
@@ -543,7 +543,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox13.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox13.Location = new System.Drawing.Point(301, 52);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(11, 14);
@@ -553,7 +553,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox14.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox14.Location = new System.Drawing.Point(331, 36);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(20, 40);
@@ -581,7 +581,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox15.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox15.Location = new System.Drawing.Point(231, 52);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(11, 14);
@@ -591,7 +591,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox16.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox16.Location = new System.Drawing.Point(261, 36);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(20, 40);
@@ -601,7 +601,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox17.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox17.Location = new System.Drawing.Point(160, 52);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(11, 14);
@@ -611,7 +611,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox18.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox18.Location = new System.Drawing.Point(190, 36);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(20, 40);
@@ -683,7 +683,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox10
             // 
-            this.pictureBox10.BackgroundImage = _4RTools.Resources._4RTools.Icons.violin;
+            this.pictureBox10.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.violin;
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox10.Location = new System.Drawing.Point(435, 61);
             this.pictureBox10.Name = "pictureBox10";
@@ -724,7 +724,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox11
             // 
-            this.pictureBox11.BackgroundImage = _4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox11.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.dagger;
             this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox11.Location = new System.Drawing.Point(434, 30);
             this.pictureBox11.Name = "pictureBox11";
@@ -828,7 +828,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox21
             // 
-            this.pictureBox21.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox21.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox21.Location = new System.Drawing.Point(372, 53);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(11, 14);
@@ -838,7 +838,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox22
             // 
-            this.pictureBox22.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox22.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox22.Location = new System.Drawing.Point(301, 52);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(11, 14);
@@ -848,7 +848,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox23.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox23.Location = new System.Drawing.Point(331, 36);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(20, 40);
@@ -876,7 +876,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox24
             // 
-            this.pictureBox24.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox24.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox24.Location = new System.Drawing.Point(231, 52);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(11, 14);
@@ -886,7 +886,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox25
             // 
-            this.pictureBox25.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox25.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox25.Location = new System.Drawing.Point(261, 36);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(20, 40);
@@ -896,7 +896,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox26
             // 
-            this.pictureBox26.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox26.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox26.Location = new System.Drawing.Point(160, 52);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(11, 14);
@@ -906,7 +906,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox27
             // 
-            this.pictureBox27.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox27.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox27.Location = new System.Drawing.Point(190, 36);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(20, 40);
@@ -978,7 +978,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox19
             // 
-            this.pictureBox19.BackgroundImage = _4RTools.Resources._4RTools.Icons.violin;
+            this.pictureBox19.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.violin;
             this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox19.Location = new System.Drawing.Point(435, 58);
             this.pictureBox19.Name = "pictureBox19";
@@ -998,7 +998,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox20
             // 
-            this.pictureBox20.BackgroundImage = _4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox20.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.dagger;
             this.pictureBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox20.Location = new System.Drawing.Point(434, 27);
             this.pictureBox20.Name = "pictureBox20";
@@ -1125,7 +1125,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox28
             // 
-            this.pictureBox28.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox28.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox28.Location = new System.Drawing.Point(372, 52);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(11, 14);
@@ -1135,7 +1135,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox29
             // 
-            this.pictureBox29.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox29.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox29.Location = new System.Drawing.Point(301, 51);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(11, 14);
@@ -1145,7 +1145,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox30
             // 
-            this.pictureBox30.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox30.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox30.Location = new System.Drawing.Point(331, 36);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(20, 40);
@@ -1173,7 +1173,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox31
             // 
-            this.pictureBox31.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox31.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox31.Location = new System.Drawing.Point(231, 52);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(11, 14);
@@ -1183,7 +1183,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox32
             // 
-            this.pictureBox32.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox32.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox32.Location = new System.Drawing.Point(261, 36);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(20, 40);
@@ -1193,7 +1193,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox33
             // 
-            this.pictureBox33.Image = _4RTools.Resources._4RTools.Icons.arrow_down;
+            this.pictureBox33.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_down;
             this.pictureBox33.Location = new System.Drawing.Point(160, 52);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(11, 14);
@@ -1203,7 +1203,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox34
             // 
-            this.pictureBox34.Image = _4RTools.Resources._4RTools.Icons.arrow_up;
+            this.pictureBox34.Image = BruteGamingMacros.Resources.BruteGaming.Icons.arrow_up;
             this.pictureBox34.Location = new System.Drawing.Point(190, 36);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(20, 40);
@@ -1275,7 +1275,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox35
             // 
-            this.pictureBox35.BackgroundImage = _4RTools.Resources._4RTools.Icons.violin;
+            this.pictureBox35.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.violin;
             this.pictureBox35.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox35.Location = new System.Drawing.Point(435, 57);
             this.pictureBox35.Name = "pictureBox35";
@@ -1295,7 +1295,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox36
             // 
-            this.pictureBox36.BackgroundImage = _4RTools.Resources._4RTools.Icons.dagger;
+            this.pictureBox36.BackgroundImage = BruteGamingMacros.Resources.BruteGaming.Icons.dagger;
             this.pictureBox36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox36.Location = new System.Drawing.Point(434, 26);
             this.pictureBox36.Name = "pictureBox36";

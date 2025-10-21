@@ -48,7 +48,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::_4RTools.Resources._4RTools.Icons.panacea;
+            this.pictureBox1.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.panacea;
             this.pictureBox1.Location = new System.Drawing.Point(295, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);

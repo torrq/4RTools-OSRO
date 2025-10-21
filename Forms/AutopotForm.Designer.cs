@@ -103,7 +103,7 @@ namespace BruteGamingMacros.UI.Forms
             // picBoxSP
             // 
             this.picBoxSP.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxSP.Image = global::_4RTools.Resources._4RTools.Icons.blue_potion;
+            this.picBoxSP.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.blue_potion;
             this.picBoxSP.Location = new System.Drawing.Point(50, 69);
             this.picBoxSP.Name = "picBoxSP";
             this.picBoxSP.Size = new System.Drawing.Size(42, 42);
@@ -114,7 +114,7 @@ namespace BruteGamingMacros.UI.Forms
             // picBoxHP
             // 
             this.picBoxHP.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxHP.Image = global::_4RTools.Resources._4RTools.Icons.white_potion;
+            this.picBoxHP.Image = global::BruteGamingMacros.Resources.BruteGaming.Icons.white_potion;
             this.picBoxHP.Location = new System.Drawing.Point(50, 26);
             this.picBoxHP.Name = "picBoxHP";
             this.picBoxHP.Size = new System.Drawing.Size(42, 42);
