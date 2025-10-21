@@ -4,7 +4,10 @@ using System.Runtime.InteropServices;
 
 namespace BruteGamingMacros.Core.Utils
 {
-    internal class ProcessMemoryReader
+    /// <summary>
+    /// MEMORY MANAGEMENT: Implements IDisposable for proper handle cleanup
+    /// </summary>
+    internal class ProcessMemoryReader : IDisposable
     {
         private class MemoryApi
         {
@@ -68,6 +71,7 @@ namespace BruteGamingMacros.Core.Utils
 
         private Process m_ReadProcess = null;
         private IntPtr m_hProcess = IntPtr.Zero;
+        private bool disposed = false;
 
         public Process ReadProcess
         {
@@ -120,6 +124,54 @@ namespace BruteGamingMacros.Core.Utils
         public bool Dealloc(int Addr)
         {
             return MemoryApi.VirtualFreeEx(m_hProcess, (IntPtr)Addr, 0, MemoryApi.FreeType.Release);
+        }
+
+        /// <summary>
+        /// IDisposable implementation for proper resource cleanup
+        /// </summary>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed resources
+                    m_ReadProcess = null;
+                }
+
+                // Dispose unmanaged resources (the process handle)
+                if (m_hProcess != IntPtr.Zero)
+                {
+                    try
+                    {
+                        MemoryApi.CloseHandle(m_hProcess);
+                    }
+                    catch
+                    {
+                        // Silently handle errors during cleanup
+                    }
+                    m_hProcess = IntPtr.Zero;
+                }
+
+                disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Finalizer to ensure handle is closed even if Dispose is not called
+        /// </summary>
+        ~ProcessMemoryReader()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// Public Dispose method implementing IDisposable
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

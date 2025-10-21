@@ -87,7 +87,15 @@ namespace BruteGamingMacros.Core.Model
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().DebuffsRecovery);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore invalid key input - this is expected during user typing
+                // Only log if it's not a parsing error
+                if (!(ex is ArgumentException || ex is FormatException))
+                {
+                    Console.WriteLine($"Error in DebuffRenderer.OnTextChange: {ex.Message}");
+                }
+            }
         }
     }
 }

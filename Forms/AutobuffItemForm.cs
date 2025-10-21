@@ -62,7 +62,14 @@ namespace BruteGamingMacros.UI.Forms
                 ProfileSingleton.GetCurrent().AutobuffItem.Delay = Convert.ToInt16(this.numericDelay.Value);
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffItem);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore conversion errors during typing
+                if (!(ex is FormatException || ex is OverflowException))
+                {
+                    Console.WriteLine($"Error in AutobuffItemForm delay change: {ex.Message}");
+                }
+            }
         }
 
         private void toolTipDelayReset_Popup(object sender, PopupEventArgs e)

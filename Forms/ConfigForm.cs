@@ -143,7 +143,11 @@ namespace BruteGamingMacros.UI.Forms
                     newOrderedBuffList.Clear();
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Log error during buff reordering
+                Console.WriteLine($"Error reordering buffs in ConfigForm: {ex.Message}");
+            }
         }
         private void SkillsListBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -198,7 +202,14 @@ namespace BruteGamingMacros.UI.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore invalid key input during typing
+                if (!(ex is ArgumentException || ex is FormatException))
+                {
+                    Console.WriteLine($"Error in Ammo1 key parsing: {ex.Message}");
+                }
+            }
         }
 
         private void TextAmmo2_TextChanged(object sender, EventArgs e)
@@ -213,7 +224,14 @@ namespace BruteGamingMacros.UI.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore invalid key input during typing
+                if (!(ex is ArgumentException || ex is FormatException))
+                {
+                    Console.WriteLine($"Error in Ammo2 key parsing: {ex.Message}");
+                }
+            }
         }
 
         private void TextAmmoTrigger_TextChanged(object sender, EventArgs e)
@@ -228,7 +246,14 @@ namespace BruteGamingMacros.UI.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore invalid key input during typing
+                if (!(ex is ArgumentException || ex is FormatException))
+                {
+                    Console.WriteLine($"Error in AmmoTrigger key parsing: {ex.Message}");
+                }
+            }
         }
 
         private void Label2_Click(object sender, EventArgs e)
@@ -248,7 +273,14 @@ namespace BruteGamingMacros.UI.Forms
                     ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore invalid key input during typing
+                if (!(ex is ArgumentException || ex is FormatException))
+                {
+                    Console.WriteLine($"Error in OverweightKey parsing: {ex.Message}");
+                }
+            }
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)

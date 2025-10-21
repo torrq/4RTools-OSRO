@@ -56,7 +56,14 @@ namespace BruteGamingMacros.UI.Forms
                 this.transferHelper.TransferKey = key;
                 ProfileSingleton.SetConfiguration(this.transferHelper);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore invalid key input - this is expected during user typing
+                if (!(ex is ArgumentException || ex is FormatException))
+                {
+                    Console.WriteLine($"Error in TransferHelperForm key parsing: {ex.Message}");
+                }
+            }
             this.ActiveControl = null;
         }
 

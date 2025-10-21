@@ -40,37 +40,62 @@ namespace BruteGamingMacros.Core.Model
         }
     }
 
+    /// <summary>
+    /// THREAD-SAFE: Manages list of clients with lock protection
+    /// </summary>
     public sealed class ClientListSingleton
     {
         private static List<Client> Clients = new List<Client>();
+        private static readonly object clientsLock = new object();
 
         public static void AddClient(Client c)
         {
-            Clients.Add(c);
+            lock (clientsLock)
+            {
+                Clients.Add(c);
+            }
         }
 
         public static void RemoveClient(Client c)
         {
-            Clients.Remove(c);
+            lock (clientsLock)
+            {
+                Clients.Remove(c);
+            }
         }
 
         public static List<Client> GetAll()
         {
-            return Clients;
+            lock (clientsLock)
+            {
+                // Return a copy to prevent external modification
+                return new List<Client>(Clients);
+            }
         }
 
         public static bool ExistsByProcessName(string processName)
         {
-            return Clients.Exists(client => client.ProcessName == processName);
+            lock (clientsLock)
+            {
+                return Clients.Exists(client => client.ProcessName == processName);
+            }
         }
     }
 
+    /// <summary>
+    /// THREAD-SAFE: Singleton client manager with lock protection
+    /// </summary>
     public sealed class ClientSingleton
     {
         private static Client client;
+        private static readonly object clientLock = new object();
+
         private ClientSingleton(Client client)
         {
-            ClientSingleton.client = client;
+            lock (clientLock)
+            {
+                ClientSingleton.client = client;
+            }
         }
 
         public static ClientSingleton Instance(Client client)
@@ -80,7 +105,10 @@ namespace BruteGamingMacros.Core.Model
 
         public static Client GetClient()
         {
-            return client;
+            lock (clientLock)
+            {
+                return client;
+            }
         }
     }
 
@@ -200,26 +228,36 @@ namespace BruteGamingMacros.Core.Model
             return BitConverter.ToUInt32(PMR.ReadProcessMemory((IntPtr)address, 4u, out _num), 0);
         }
 
+        /// <summary>
+        /// BUG FIX: Properly check online status instead of always returning true
+        /// </summary>
         public bool IsOnline()
         {
-            return true;
-            /*
             try
             {
+                // Validate that we have a valid CurrentOnlineAddress
+                if (CurrentOnlineAddress == 0)
+                {
+                    // If address is not configured, assume online (fallback for unsupported clients)
+                    return true;
+                }
+
                 byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentOnlineAddress, 1u, out _num);
                 if (_num == 1)
                 {
                     return bytes[0] == 1; // 1 = online, 0 = offline
                 }
+
+                // If read failed, log warning but assume online to prevent disruption
                 DebugLogger.Warning($"Failed to read online status at address 0x{CurrentOnlineAddress:X8}");
-                return false;
+                return true;
             }
             catch (Exception ex)
             {
+                // On error, log and assume online to prevent disruption
                 DebugLogger.Error($"Error reading online status: {ex.Message}");
-                return false;
+                return true;
             }
-            */
         }
 
         public void WriteMemory(int address, uint intToWrite)

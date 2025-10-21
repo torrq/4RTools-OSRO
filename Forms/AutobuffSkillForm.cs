@@ -91,7 +91,14 @@ namespace BruteGamingMacros.UI.Forms
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffSkill);
                 this.ActiveControl = null;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Silently ignore conversion errors during typing
+                if (!(ex is FormatException || ex is OverflowException))
+                {
+                    Console.WriteLine($"Error in AutobuffSkillForm delay change: {ex.Message}");
+                }
+            }
         }
 
         private void SkillAutoBuffForm_Load(object sender, EventArgs e)

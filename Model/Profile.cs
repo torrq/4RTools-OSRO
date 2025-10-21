@@ -10,7 +10,9 @@ namespace BruteGamingMacros.Core.Model
 {
     public class ProfileSingleton
     {
-        public static Profile profile = new Profile("Default");
+        // THREAD SAFETY FIX: Private field with lock-protected access
+        private static Profile profile = new Profile("Default");
+        private static readonly object profileLock = new object();
 
         // Temporary class to deserialize old "Custom" data
         private class LegacyCustom
@@ -19,6 +21,9 @@ namespace BruteGamingMacros.Core.Model
             public Key tiMode { get; set; }
         }
 
+        /// <summary>
+        /// THREAD-SAFE: Load profile from disk with lock protection
+        /// </summary>
         public static void Load(string profileName)
         {
             try
@@ -61,29 +66,32 @@ namespace BruteGamingMacros.Core.Model
 
                 if (rawObject != null)
                 {
-                    profile.Name = profileName;
-                    profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));
-                    profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
-                    profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
-                    profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
-                    profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
-                    profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
-                    profile.AutobuffSkill = JsonConvert.DeserializeObject<AutoBuffSkill>(Profile.GetByAction(rawObject, profile.AutobuffSkill));
-                    if (profile.AutobuffSkill.Delay < 0)
+                    lock (profileLock)
                     {
-                        profile.AutobuffSkill.Delay = AppConfig.AutoBuffSkillsDefaultDelay;
+                        profile.Name = profileName;
+                        profile.UserPreferences = JsonConvert.DeserializeObject<ConfigProfile>(Profile.GetByAction(rawObject, profile.UserPreferences));
+                        profile.SkillSpammer = JsonConvert.DeserializeObject<SkillSpammer>(Profile.GetByAction(rawObject, profile.SkillSpammer));
+                        profile.Autopot = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.Autopot));
+                        profile.AutopotYgg = JsonConvert.DeserializeObject<Autopot>(Profile.GetByAction(rawObject, profile.AutopotYgg));
+                        profile.StatusRecovery = JsonConvert.DeserializeObject<StatusRecovery>(Profile.GetByAction(rawObject, profile.StatusRecovery));
+                        profile.SkillTimer = JsonConvert.DeserializeObject<SkillTimer>(Profile.GetByAction(rawObject, profile.SkillTimer));
+                        profile.AutobuffSkill = JsonConvert.DeserializeObject<AutoBuffSkill>(Profile.GetByAction(rawObject, profile.AutobuffSkill));
+                        if (profile.AutobuffSkill.Delay < 0)
+                        {
+                            profile.AutobuffSkill.Delay = AppConfig.AutoBuffSkillsDefaultDelay;
+                        }
+                        profile.AutobuffItem = JsonConvert.DeserializeObject<AutoBuffItem>(Profile.GetByAction(rawObject, profile.AutobuffItem));
+                        if (profile.AutobuffItem.Delay < 0)
+                        {
+                            profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;
+                        }
+                        profile.SongMacro = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.SongMacro));
+                        profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
+                        profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
+                        profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
+                        profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
+                        profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
                     }
-                    profile.AutobuffItem = JsonConvert.DeserializeObject<AutoBuffItem>(Profile.GetByAction(rawObject, profile.AutobuffItem));
-                    if (profile.AutobuffItem.Delay < 0)
-                    {
-                        profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;
-                    }
-                    profile.SongMacro = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.SongMacro));
-                    profile.AtkDefMode = JsonConvert.DeserializeObject<ATKDEF>(Profile.GetByAction(rawObject, profile.AtkDefMode));
-                    profile.MacroSwitch = JsonConvert.DeserializeObject<Macro>(Profile.GetByAction(rawObject, profile.MacroSwitch));
-                    profile.TransferHelper = JsonConvert.DeserializeObject<TransferHelper>(Profile.GetByAction(rawObject, profile.TransferHelper));
-                    profile.DebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.DebuffsRecovery));
-                    profile.WeightDebuffsRecovery = JsonConvert.DeserializeObject<DebuffRecovery>(Profile.GetByAction(rawObject, profile.WeightDebuffsRecovery));
                 }
             }
             catch (Exception ex)
@@ -92,11 +100,17 @@ namespace BruteGamingMacros.Core.Model
             }
         }
 
+        /// <summary>
+        /// THREAD-SAFE: Clear profile with lock protection
+        /// </summary>
         public static void ClearProfile(string profileName)
         {
-            if (profileName != profile.Name)
+            lock (profileLock)
             {
-                profile = new Profile(profileName);
+                if (profileName != profile.Name)
+                {
+                    profile = new Profile(profileName);
+                }
             }
         }
 
@@ -125,9 +139,16 @@ namespace BruteGamingMacros.Core.Model
             {
                 if (profileName != "Default") { File.Delete(AppConfig.ProfileFolder + profileName + ".json"); }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Log error but don't throw - file may already be deleted
+                Console.WriteLine($"Failed to delete profile '{profileName}': {ex.Message}");
+            }
         }
 
+        /// <summary>
+        /// THREAD-SAFE: Rename profile with lock protection
+        /// </summary>
         public static void Rename(string oldProfileName, string newProfileName)
         {
             try
@@ -153,9 +174,12 @@ namespace BruteGamingMacros.Core.Model
                 File.Move(oldFilePath, newFilePath);
 
                 // Update the current profile if it was the one renamed
-                if (profile.Name == oldProfileName)
+                lock (profileLock)
                 {
-                    profile.Name = newProfileName;
+                    if (profile.Name == oldProfileName)
+                    {
+                        profile.Name = newProfileName;
+                    }
                 }
             }
             catch (Exception ex)
@@ -164,21 +188,33 @@ namespace BruteGamingMacros.Core.Model
             }
         }
 
+        /// <summary>
+        /// THREAD-SAFE: Set configuration with lock protection
+        /// </summary>
         public static void SetConfiguration(IAction action)
         {
-            if (profile != null)
+            lock (profileLock)
             {
-                string jsonData = File.ReadAllText(AppConfig.ProfileFolder + profile.Name + ".json");
-                dynamic jsonObj = JsonConvert.DeserializeObject(jsonData);
-                jsonObj[action.GetActionName()] = action.GetConfiguration();
-                string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
-                File.WriteAllText(AppConfig.ProfileFolder + profile.Name + ".json", output);
+                if (profile != null)
+                {
+                    string jsonData = File.ReadAllText(AppConfig.ProfileFolder + profile.Name + ".json");
+                    dynamic jsonObj = JsonConvert.DeserializeObject(jsonData);
+                    jsonObj[action.GetActionName()] = action.GetConfiguration();
+                    string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+                    File.WriteAllText(AppConfig.ProfileFolder + profile.Name + ".json", output);
+                }
             }
         }
 
+        /// <summary>
+        /// THREAD-SAFE: Get current profile with lock protection
+        /// </summary>
         public static Profile GetCurrent()
         {
-            return profile;
+            lock (profileLock)
+            {
+                return profile;
+            }
         }
 
         public static void Copy(string sourceProfileName, string destinationProfileName)
@@ -274,6 +310,12 @@ namespace BruteGamingMacros.Core.Model
             List<string> profiles = new List<string>();
             try
             {
+                // Ensure profile folder exists before reading
+                if (!Directory.Exists(AppConfig.ProfileFolder))
+                {
+                    return profiles; // Return empty list if folder doesn't exist
+                }
+
                 string[] files = Directory.GetFiles(AppConfig.ProfileFolder);
 
                 foreach (string fileName in files)
@@ -283,7 +325,11 @@ namespace BruteGamingMacros.Core.Model
                     profiles.Add(profileName);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Log error and return empty list
+                Console.WriteLine($"Failed to list profiles: {ex.Message}");
+            }
             return profiles;
         }
     }

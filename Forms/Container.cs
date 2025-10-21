@@ -689,7 +689,11 @@ namespace BruteGamingMacros.UI.Forms
                 {
                     ClientListSingleton.AddClient(new Client(clientDTO));
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    // Log error loading client but continue with others
+                    Console.WriteLine($"Error loading client '{clientDTO.Name}': {ex.Message}");
+                }
             }
         }
 

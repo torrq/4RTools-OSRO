@@ -105,7 +105,11 @@ namespace BruteGamingMacros.UI.Forms
                 txtAutoRefreshDelay.ValueChanged += new EventHandler(this.TxtAutoRefreshDelayTextChanged);
 
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Log error if controls not found
+                Console.WriteLine($"Error initializing SkillTimer panel {id}: {ex.Message}");
+            }
         }
 
         private void UpdatePanelData(int id)

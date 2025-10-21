@@ -100,13 +100,14 @@ namespace BruteGamingMacros.Core.Model
                     buffs.Clear();
                     foreach (var item in bmClone)
                     {
+                        // BUG FIX: Changed break to continue to skip individual buffs instead of exiting loop
                         if (foundQuag && (item.Key == EffectStatusIDs.CONCENTRATION || item.Key == EffectStatusIDs.INC_AGI || item.Key == EffectStatusIDs.TRUESIGHT || item.Key == EffectStatusIDs.ADRENALINE || item.Key == EffectStatusIDs.SPEARQUICKEN || item.Key == EffectStatusIDs.ONEHANDQUICKEN || item.Key == EffectStatusIDs.WINDWALK))
                         {
-                            break;
+                            continue; // Skip this buff but continue processing others
                         }
                         else if (foundDecreaseAgi && (item.Key == EffectStatusIDs.TWOHANDQUICKEN || item.Key == EffectStatusIDs.ADRENALINE || item.Key == EffectStatusIDs.ADRENALINE2 || item.Key == EffectStatusIDs.ONEHANDQUICKEN || item.Key == EffectStatusIDs.SPEARQUICKEN))
                         {
-                            break;
+                            continue; // Skip this buff but continue processing others
                         }
                         else if (c.ReadCurrentHp() >= Constants.MINIMUM_HP_TO_RECOVER)
                         {
