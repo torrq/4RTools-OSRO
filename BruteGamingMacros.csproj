@@ -355,6 +355,7 @@
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Core\Engine\SuperiorInputEngine.cs" />
     <Compile Include="Core\Engine\SuperiorSkillSpammer.cs" />
+    <Compile Include="Core\Engine\SuperiorMemoryEngine.cs" />
     <Compile Include="Forms\AutopotForm.cs">
       <SubType>Form</SubType>
     </Compile>
