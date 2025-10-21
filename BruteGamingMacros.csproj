@@ -353,6 +353,8 @@
     <Compile Include="Model\Action.cs" />
     <Compile Include="Model\Macro.cs" />
     <Compile Include="Model\Profile.cs" />
+    <Compile Include="Core\Engine\SuperiorInputEngine.cs" />
+    <Compile Include="Core\Engine\SuperiorSkillSpammer.cs" />
     <Compile Include="Forms\AutopotForm.cs">
       <SubType>Form</SubType>
     </Compile>
