@@ -334,7 +334,7 @@ namespace BruteGamingMacros.UI.Forms
             // 
             // clientDTOBindingSource
             // 
-            this.clientDTOBindingSource.DataSource = typeof(_4RTools.Model.ClientDTO);
+            this.clientDTOBindingSource.DataSource = typeof(BruteGamingMacros.Core.Model.ClientDTO);
             // 
             // ConfigForm
             // 

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
-using static _4RTools.Model.AutoSwitch;
+using static BruteGamingMacros.Core.Model.AutoSwitch;
 
 namespace BruteGamingMacros.Core.Model
 {
@@ -87,7 +87,7 @@ namespace BruteGamingMacros.Core.Model
                 itemtb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 itemtb.Text = config.itemKey != 0 ? config.itemKey.ToString() : Key.None.ToString();
 
-                seta1pb.Image = Resources._4RTools.ETCResource.arrowright;
+                seta1pb.Image = BruteGamingMacros.Resources.BruteGaming.ETCResource.arrowright;
                 seta1pb.Location = new Point(itemtb.Location.X + 60, itemtb.Location.Y + 3);
                 seta1pb.Name = "item" + ((int)skill.effectStatusID);
                 seta1pb.Size = new System.Drawing.Size(19, 11);
@@ -108,7 +108,7 @@ namespace BruteGamingMacros.Core.Model
                 skilltb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 skilltb.Text = config.itemKey != 0 ? config.skillKey.ToString() : Key.None.ToString();
 
-                seta2pb.Image = Resources._4RTools.ETCResource.arrowright;
+                seta2pb.Image = BruteGamingMacros.Resources.BruteGaming.ETCResource.arrowright;
                 seta2pb.Location = new Point(skilltb.Location.X + 60, skilltb.Location.Y + 3);
                 seta2pb.Name = "pboxSeta2" + ((int)skill.effectStatusID);
                 seta2pb.Size = new System.Drawing.Size(19, 11);
@@ -129,7 +129,7 @@ namespace BruteGamingMacros.Core.Model
                 nextItemtb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 nextItemtb.Text = config.itemKey != 0 ? config.nextItemKey.ToString() : Key.None.ToString();
 
-                removepb.Image = Resources._4RTools.ETCResource.remove;
+                removepb.Image = BruteGamingMacros.Resources.BruteGaming.ETCResource.remove;
                 removepb.Location = new Point(nextItemtb.Location.X + 60, nextItemtb.Location.Y);
                 removepb.Name = "remove" + ((int)skill.effectStatusID);
                 removepb.Size = new System.Drawing.Size(20, 20);

@@ -19,8 +19,8 @@ namespace BruteGamingMacros.UI.Forms
 
             if (isYgg)
             {
-                this.picBoxHP.Image = _4RTools.Resources._4RTools.Icons.ygg;
-                this.picBoxSP.Image = _4RTools.Resources._4RTools.Icons.ygg;
+                this.picBoxHP.Image = BruteGamingMacros.Resources.BruteGaming.Icons.ygg;
+                this.picBoxSP.Image = BruteGamingMacros.Resources.BruteGaming.Icons.ygg;
                 this.chkStopOnCriticalInjury.Hide();
             }
             subject.Attach(this);

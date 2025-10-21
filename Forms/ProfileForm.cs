@@ -88,7 +88,7 @@ namespace BruteGamingMacros.UI.Forms
 
             if (iconY >= 0) // Only draw if iconY is set (i.e., there’s an active profile)
             {
-                Image icon = global::_4RTools.Resources._4RTools.Icons.profile_active;
+                Image icon = global::BruteGamingMacros.Resources.BruteGaming.Icons.profile_active;
                 e.Graphics.DrawImage(icon, iconX, iconY, iconSize, iconSize);
             }
         }

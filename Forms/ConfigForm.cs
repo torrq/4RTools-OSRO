@@ -47,7 +47,7 @@ namespace BruteGamingMacros.UI.Forms
             this.skillsListBox.DragOver += this.SkillsListBox_DragOver;
             this.skillsListBox.DragDrop += this.SkillsListBox_DragDrop;
 
-            string cityName = _4RTools.Model.Server.GetCitiesFile();
+            string cityName = BruteGamingMacros.Core.Model.Server.GetCitiesFile();
 
             toolTipchkStopBuffsOnCity.SetToolTip(chkStopBuffsOnCity, "Pause when in a city (cities defined in " + cityName + ")");
 
