@@ -24,6 +24,8 @@ namespace _ORTools.Forms
             this.DebugMode.Checked = cfg.DebugMode;
             this.DebugModeShowLog.CheckedChanged -= this.DebugModeShowLog_CheckedChanged;
             this.DebugModeShowLog.Checked = cfg.DebugModeShowLog;
+            this.ChkDisableSystray.CheckedChanged -= this.ChkDisableSystray_CheckedChanged;
+            this.ChkDisableSystray.Checked = cfg.DisableSystray;
             this.SongRows.ValueChanged -= this.SongRows_ValueChanged;
             this.SongRows.Value = cfg.SongRows;
             this.MacroSwitchRows.ValueChanged -= this.MacroSwitchRows_ValueChanged;
@@ -31,6 +33,7 @@ namespace _ORTools.Forms
             // Reattach event handlers after setting initial state
             this.DebugMode.CheckedChanged += this.DebugMode_CheckedChanged;
             this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
+            this.ChkDisableSystray.CheckedChanged -= this.ChkDisableSystray_CheckedChanged;
             this.SongRows.ValueChanged += this.SongRows_ValueChanged;
             this.MacroSwitchRows.ValueChanged += this.MacroSwitchRows_ValueChanged;
 
@@ -100,6 +103,7 @@ namespace _ORTools.Forms
                 this.chkSoundEnabled.CheckedChanged -= ChkSoundEnabled_CheckedChanged;
                 this.DebugMode.CheckedChanged -= DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
+                this.ChkDisableSystray.CheckedChanged -= ChkDisableSystray_CheckedChanged;
                 this.SongRows.ValueChanged -= SongRows_ValueChanged;
                 this.MacroSwitchRows.ValueChanged -= MacroSwitchRows_ValueChanged;
 
@@ -113,6 +117,7 @@ namespace _ORTools.Forms
                 this.chkSoundEnabled.CheckedChanged += ChkSoundEnabled_CheckedChanged;
                 this.DebugMode.CheckedChanged += DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
+                this.ChkDisableSystray.CheckedChanged += ChkDisableSystray_CheckedChanged;
                 this.SongRows.ValueChanged += SongRows_ValueChanged;
                 this.MacroSwitchRows.ValueChanged += MacroSwitchRows_ValueChanged;
 
@@ -299,6 +304,49 @@ namespace _ORTools.Forms
                     this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
                     DebugModeShowLog.Checked = currentValue;
                     this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
+                }
+            }
+        }
+
+        private void ChkDisableSystray_CheckedChanged(object sender, EventArgs e)
+        {
+            // Prevent this logic from running during form initialization
+            if (isInitializing) return;
+
+            Config cfg = ConfigGlobal.GetConfig();
+            bool newValue = ChkDisableSystray.Checked;
+            bool currentValue = cfg.DisableSystray;
+
+            // Only proceed if the checkbox state actually changed from the saved config
+            if (newValue != currentValue)
+            {
+                string action = newValue ? "enable" : "disable";
+                string message = $"Restart to {action} systray icon now?";
+
+                // Prompt for restart confirmation
+                bool confirmRestart = DialogConfirm.ShowDialog(message, "App Restart Required");
+
+                // Check if the user confirmed the restart
+                if (confirmRestart)
+                {
+                    if (cfg.DisableSystray != newValue)
+                    {
+                        cfg.DisableSystray = newValue; // Update the setting
+                        ConfigGlobal.SaveConfig(); // Save the updated config
+                        DebugLogger.Info($"ChkDisableSystray changed to {newValue}. Initiating application restart...");
+                        DebugLogger.Info("Attempting Application.Restart()...");
+                        Application.Restart();
+                        Environment.Exit(0);
+                    }
+                }
+                else // User cancelled restart
+                {
+                    DebugLogger.Info("User cancelled application restart.");
+                    // Revert the checkbox to the original value if the user cancels
+                    // Detach temporarily to prevent triggering the event again
+                    this.ChkDisableSystray.CheckedChanged -= ChkDisableSystray_CheckedChanged;
+                    ChkDisableSystray.Checked = currentValue;
+                    this.ChkDisableSystray.CheckedChanged += ChkDisableSystray_CheckedChanged;
                 }
             }
         }

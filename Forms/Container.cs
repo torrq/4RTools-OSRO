@@ -109,7 +109,10 @@ namespace _ORTools.Forms
             }
 
             frmStateSwitch = SetStateSwitchWindow();
-            trayManager = frmStateSwitch.GetTrayManager();
+            if(!GlobalConfig.DisableSystray)
+            {
+                trayManager = frmStateSwitch.GetTrayManager();
+            }
             SetAutopotHPWindow();
             SetAutopotSPWindow();
             SetSkillTimerWindow();
@@ -511,6 +514,8 @@ namespace _ORTools.Forms
 
         public void RefreshProfileList()
         {
+            Config GlobalConfig = ConfigGlobal.GetConfig();
+
             this.Invoke((MethodInvoker)delegate ()
             {
                 string currentSelection = profileCB.SelectedItem?.ToString();
@@ -546,7 +551,10 @@ namespace _ORTools.Forms
                     profileForm.RefreshProfileList();
                 }
 
-                trayManager?.RefreshProfileMenu();
+                if (!GlobalConfig.DisableSystray)
+                {
+                    trayManager?.RefreshProfileMenu();
+                }
             });
         }
 
@@ -678,7 +686,11 @@ namespace _ORTools.Forms
                     debugLogWindow = null;
                 }
 
-                trayManager?.Dispose();
+                Config GlobalConfig = ConfigGlobal.GetConfig();
+
+                if (!GlobalConfig.DisableSystray) {
+                    trayManager?.Dispose();
+                }
 
                 foreach (Form childForm in this.MdiChildren)
                 {
@@ -819,7 +831,8 @@ namespace _ORTools.Forms
 
         private void ContainerResize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized) { this.Hide(); }
+            Config GlobalConfig = ConfigGlobal.GetConfig();
+            if (!GlobalConfig.DisableSystray && this.WindowState == FormWindowState.Minimized) { this.Hide(); }
         }
 
         private void LoadServers(List<ClientDTO> clients)

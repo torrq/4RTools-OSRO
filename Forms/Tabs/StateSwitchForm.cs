@@ -25,6 +25,8 @@ namespace _ORTools.Forms
             subject.Attach(this);
             KeyboardHook.Enable();
 
+            Config GlobalConfig = ConfigGlobal.GetConfig();
+
             // Replace the initialization section in your constructor:
             Keys initialToggleKey = Keys.None;
             string toggleKeyString = ProfileSingleton.GetCurrent().UserPreferences.ToggleStateKey;
@@ -70,7 +72,9 @@ namespace _ORTools.Forms
 
             SetVisualState(isApplicationOn);
 
-            trayManager = new TrayManager(subject, isApplicationOn);
+            if (!GlobalConfig.DisableSystray) {
+                trayManager = new TrayManager(subject, isApplicationOn);
+            }
         }
 
         public TrayManager GetTrayManager()
@@ -85,6 +89,8 @@ namespace _ORTools.Forms
 
         public void Update(ISubject subject)
         {
+            Config GlobalConfig = ConfigGlobal.GetConfig();
+
             switch (subject.Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
@@ -120,7 +126,10 @@ namespace _ORTools.Forms
 
                         isApplicationOn = false;
                         SetVisualState(isApplicationOn);
-                        trayManager.UpdateIcon(isApplicationOn);
+                        if (!GlobalConfig.DisableSystray)
+                        {
+                            trayManager.UpdateIcon(isApplicationOn);
+                        }
                     }
                     catch
                     {
@@ -128,7 +137,10 @@ namespace _ORTools.Forms
                         this.txtStatusToggleKey.Text = string.Empty;
                         isApplicationOn = false;
                         SetVisualState(isApplicationOn);
-                        trayManager.UpdateIcon(isApplicationOn);
+                        if (!GlobalConfig.DisableSystray)
+                        {
+                            trayManager.UpdateIcon(isApplicationOn);
+                        }
                     }
                     break;
 
@@ -146,6 +158,8 @@ namespace _ORTools.Forms
 
         private void onStateSwitchKeyChange(object sender, EventArgs e)
         {
+            Config GlobalConfig = ConfigGlobal.GetConfig();
+
             try
             {
                 // Validate input before parsing (same as TransferHelperForm)
@@ -165,7 +179,10 @@ namespace _ORTools.Forms
 
                     isApplicationOn = false;
                     SetVisualState(isApplicationOn);
-                    trayManager.UpdateIcon(isApplicationOn);
+                    if (!GlobalConfig.DisableSystray)
+                    {
+                        trayManager.UpdateIcon(isApplicationOn);
+                    }
                     return;
                 }
 
@@ -203,7 +220,10 @@ namespace _ORTools.Forms
 
                 isApplicationOn = false;
                 SetVisualState(isApplicationOn);
-                trayManager.UpdateIcon(isApplicationOn);
+                if (!GlobalConfig.DisableSystray)
+                {
+                    trayManager.UpdateIcon(isApplicationOn);
+                }
             }
             catch (Exception ex)
             {
@@ -220,12 +240,16 @@ namespace _ORTools.Forms
         public bool toggleStatus()
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            Config GlobalConfig = ConfigGlobal.GetConfig();
 
             if (isApplicationOn)
             {
                 isApplicationOn = false;
                 SetVisualState(isApplicationOn);
-                trayManager.UpdateIcon(isApplicationOn);
+                if (!GlobalConfig.DisableSystray)
+                {
+                    trayManager.UpdateIcon(isApplicationOn);
+                }
 
                 this.subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
@@ -244,7 +268,10 @@ namespace _ORTools.Forms
                 {
                     isApplicationOn = true;
                     SetVisualState(isApplicationOn);
-                    trayManager.UpdateIcon(isApplicationOn);
+                    if (!GlobalConfig.DisableSystray)
+                    {
+                        trayManager.UpdateIcon(isApplicationOn);
+                    }
 
                     this.subject.Notify(new Utils.Message(MessageCode.TURN_ON, null));
 
@@ -262,7 +289,10 @@ namespace _ORTools.Forms
                     this.lblStatusToggle.ForeColor = Color.Red;
                     isApplicationOn = false;
                     SetVisualState(isApplicationOn);
-                    trayManager.UpdateIcon(isApplicationOn);
+                    if (!GlobalConfig.DisableSystray)
+                    {
+                        trayManager.UpdateIcon(isApplicationOn);
+                    }
                     return false;
                 }
             }
@@ -273,12 +303,16 @@ namespace _ORTools.Forms
         public bool TurnOFF()
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            Config GlobalConfig = ConfigGlobal.GetConfig();
 
             if (isApplicationOn)
             {
                 isApplicationOn = false;
                 SetVisualState(isApplicationOn);
-                trayManager.UpdateIcon(isApplicationOn);
+                if (!GlobalConfig.DisableSystray)
+                {
+                    trayManager.UpdateIcon(isApplicationOn);
+                }
 
                 this.subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
                 this.lblStatusToggle.Text = "Press the key to start!";

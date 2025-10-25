@@ -42,21 +42,22 @@ namespace _ORTools.Forms
             this.DebugMode = new System.Windows.Forms.CheckBox();
             this.DebugModeShowLog = new System.Windows.Forms.CheckBox();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.SongRows = new System.Windows.Forms.NumericUpDown();
+            this.SongRowsLabel = new System.Windows.Forms.Label();
+            this.MacroSwitchRows = new System.Windows.Forms.NumericUpDown();
+            this.MacroSwitchRowsLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.toolTipchkSoundEnabled = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.MacroSwitchRowsLabel = new System.Windows.Forms.Label();
-            this.MacroSwitchRows = new System.Windows.Forms.NumericUpDown();
-            this.SongRowsLabel = new System.Windows.Forms.Label();
-            this.SongRows = new System.Windows.Forms.NumericUpDown();
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ChkDisableSystray = new System.Windows.Forms.CheckBox();
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchRows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SongRows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchRows)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +88,7 @@ namespace _ORTools.Forms
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
-            this.groupSettings.Size = new System.Drawing.Size(300, 266);
+            this.groupSettings.Size = new System.Drawing.Size(300, 191);
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Profile Settings";
@@ -156,78 +157,18 @@ namespace _ORTools.Forms
             // 
             // groupGlobalSettings
             // 
+            this.groupGlobalSettings.Controls.Add(this.ChkDisableSystray);
             this.groupGlobalSettings.Controls.Add(this.SongRows);
             this.groupGlobalSettings.Controls.Add(this.SongRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRows);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.panel1);
-            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 292);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 255);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
-            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 128);
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 165);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
-            // 
-            // toolTipReqRestart
-            // 
-            this.toolTipReqRestart.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipReqRestart.ToolTipTitle = "Debug Mode";
-            // 
-            // toolTipDebugModeShowLog
-            // 
-            this.toolTipDebugModeShowLog.AutoPopDelay = 15000;
-            this.toolTipDebugModeShowLog.InitialDelay = 300;
-            this.toolTipDebugModeShowLog.ReshowDelay = 100;
-            this.toolTipDebugModeShowLog.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipDebugModeShowLog.ToolTipTitle = "Show Debug Log";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.DebugMode);
-            this.panel1.Controls.Add(this.DebugModeShowLog);
-            this.panel1.Location = new System.Drawing.Point(52, 96);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(198, 23);
-            this.panel1.TabIndex = 323;
-            // 
-            // MacroSwitchRowsLabel
-            // 
-            this.MacroSwitchRowsLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MacroSwitchRowsLabel.Location = new System.Drawing.Point(58, 66);
-            this.MacroSwitchRowsLabel.Name = "MacroSwitchRowsLabel";
-            this.MacroSwitchRowsLabel.Size = new System.Drawing.Size(113, 14);
-            this.MacroSwitchRowsLabel.TabIndex = 324;
-            this.MacroSwitchRowsLabel.Text = "Macro Switch Rows";
-            this.MacroSwitchRowsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // MacroSwitchRows
-            // 
-            this.MacroSwitchRows.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MacroSwitchRows.Location = new System.Drawing.Point(179, 62);
-            this.MacroSwitchRows.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MacroSwitchRows.Name = "MacroSwitchRows";
-            this.MacroSwitchRows.Size = new System.Drawing.Size(50, 22);
-            this.MacroSwitchRows.TabIndex = 325;
-            this.MacroSwitchRows.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MacroSwitchRows.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // SongRowsLabel
-            // 
-            this.SongRowsLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SongRowsLabel.Location = new System.Drawing.Point(58, 30);
-            this.SongRowsLabel.Name = "SongRowsLabel";
-            this.SongRowsLabel.Size = new System.Drawing.Size(113, 14);
-            this.SongRowsLabel.TabIndex = 326;
-            this.SongRowsLabel.Text = "Song Rows";
-            this.SongRowsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SongRows
             // 
@@ -248,9 +189,83 @@ namespace _ORTools.Forms
             0,
             0});
             // 
+            // SongRowsLabel
+            // 
+            this.SongRowsLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SongRowsLabel.Location = new System.Drawing.Point(58, 30);
+            this.SongRowsLabel.Name = "SongRowsLabel";
+            this.SongRowsLabel.Size = new System.Drawing.Size(113, 14);
+            this.SongRowsLabel.TabIndex = 326;
+            this.SongRowsLabel.Text = "Song Rows";
+            this.SongRowsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // MacroSwitchRows
+            // 
+            this.MacroSwitchRows.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MacroSwitchRows.Location = new System.Drawing.Point(179, 62);
+            this.MacroSwitchRows.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MacroSwitchRows.Name = "MacroSwitchRows";
+            this.MacroSwitchRows.Size = new System.Drawing.Size(50, 22);
+            this.MacroSwitchRows.TabIndex = 325;
+            this.MacroSwitchRows.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MacroSwitchRows.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // MacroSwitchRowsLabel
+            // 
+            this.MacroSwitchRowsLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MacroSwitchRowsLabel.Location = new System.Drawing.Point(58, 66);
+            this.MacroSwitchRowsLabel.Name = "MacroSwitchRowsLabel";
+            this.MacroSwitchRowsLabel.Size = new System.Drawing.Size(113, 14);
+            this.MacroSwitchRowsLabel.TabIndex = 324;
+            this.MacroSwitchRowsLabel.Text = "Macro Switch Rows";
+            this.MacroSwitchRowsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.DebugMode);
+            this.panel1.Controls.Add(this.DebugModeShowLog);
+            this.panel1.Location = new System.Drawing.Point(52, 96);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(198, 23);
+            this.panel1.TabIndex = 323;
+            // 
+            // toolTipReqRestart
+            // 
+            this.toolTipReqRestart.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipReqRestart.ToolTipTitle = "Debug Mode";
+            // 
+            // toolTipDebugModeShowLog
+            // 
+            this.toolTipDebugModeShowLog.AutoPopDelay = 15000;
+            this.toolTipDebugModeShowLog.InitialDelay = 300;
+            this.toolTipDebugModeShowLog.ReshowDelay = 100;
+            this.toolTipDebugModeShowLog.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDebugModeShowLog.ToolTipTitle = "Show Debug Log";
+            // 
             // clientDTOBindingSource
             // 
             this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
+            // 
+            // ChkDisableSystray
+            // 
+            this.ChkDisableSystray.AutoSize = true;
+            this.ChkDisableSystray.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ChkDisableSystray.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkDisableSystray.Location = new System.Drawing.Point(55, 125);
+            this.ChkDisableSystray.Name = "ChkDisableSystray";
+            this.ChkDisableSystray.Size = new System.Drawing.Size(86, 20);
+            this.ChkDisableSystray.TabIndex = 318;
+            this.ChkDisableSystray.Text = "Disable Systray Icon";
+            this.toolTipchkSoundEnabled.SetToolTip(this.ChkDisableSystray, "Disable system tray icon at bottom right");
+            this.ChkDisableSystray.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -269,10 +284,11 @@ namespace _ORTools.Forms
             this.groupSettings.ResumeLayout(false);
             this.groupSettings.PerformLayout();
             this.groupGlobalSettings.ResumeLayout(false);
+            this.groupGlobalSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SongRows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchRows)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchRows)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SongRows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,5 +316,6 @@ namespace _ORTools.Forms
         private NumericUpDown SongRows;
         private Label SongRowsLabel;
         private NumericUpDown MacroSwitchRows;
+        private CheckBox ChkDisableSystray;
     }
 }
