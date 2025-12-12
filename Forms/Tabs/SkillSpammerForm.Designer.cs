@@ -36,8 +36,6 @@ namespace _ORTools.Forms
             this.txtSpammerDelay = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkNoShift = new System.Windows.Forms.CheckBox();
-            this.chkMouseFlick = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -103,6 +101,11 @@ namespace _ORTools.Forms
             this.chkE = new _ORTools.Controls.BorderedCheckBox();
             this.chkQ = new _ORTools.Controls.BorderedCheckBox();
             this.chkW = new _ORTools.Controls.BorderedCheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.chkMouseFlick = new System.Windows.Forms.CheckBox();
+            this.chkNoShift = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -110,6 +113,9 @@ namespace _ORTools.Forms
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSpammerDelay
@@ -132,7 +138,7 @@ namespace _ORTools.Forms
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtSpammerDelay);
-            this.groupBox2.Location = new System.Drawing.Point(491, 189);
+            this.groupBox2.Location = new System.Drawing.Point(340, 236);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(115, 49);
             this.groupBox2.TabIndex = 32;
@@ -148,20 +154,6 @@ namespace _ORTools.Forms
             this.label1.Size = new System.Drawing.Size(23, 15);
             this.label1.TabIndex = 32;
             this.label1.Text = "ms";
-            // 
-            // chkNoShift
-            // 
-            this.chkNoShift.Location = new System.Drawing.Point(0, 0);
-            this.chkNoShift.Name = "chkNoShift";
-            this.chkNoShift.Size = new System.Drawing.Size(104, 24);
-            this.chkNoShift.TabIndex = 0;
-            // 
-            // chkMouseFlick
-            // 
-            this.chkMouseFlick.Location = new System.Drawing.Point(0, 0);
-            this.chkMouseFlick.Name = "chkMouseFlick";
-            this.chkMouseFlick.Size = new System.Drawing.Size(104, 24);
-            this.chkMouseFlick.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -1008,12 +1000,71 @@ namespace _ORTools.Forms
             this.chkW.ThreeState = true;
             this.chkW.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.pictureBox2);
+            this.groupBox4.Controls.Add(this.pictureBox3);
+            this.groupBox4.Controls.Add(this.chkMouseFlick);
+            this.groupBox4.Controls.Add(this.chkNoShift);
+            this.groupBox4.Location = new System.Drawing.Point(80, 236);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(218, 49);
+            this.groupBox4.TabIndex = 43;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Key Config";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.shift;
+            this.pictureBox2.Location = new System.Drawing.Point(188, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::_ORTools.Resources.Media.Icons.up_and_down_arrow;
+            this.pictureBox3.Location = new System.Drawing.Point(95, 20);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 35;
+            this.pictureBox3.TabStop = false;
+            // 
+            // chkMouseFlick
+            // 
+            this.chkMouseFlick.AutoSize = true;
+            this.chkMouseFlick.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkMouseFlick.Location = new System.Drawing.Point(12, 21);
+            this.chkMouseFlick.Name = "chkMouseFlick";
+            this.chkMouseFlick.Size = new System.Drawing.Size(80, 17);
+            this.chkMouseFlick.TabIndex = 38;
+            this.chkMouseFlick.Text = "Mouse Flick";
+            this.chkMouseFlick.UseVisualStyleBackColor = true;
+            this.chkMouseFlick.CheckedChanged += new System.EventHandler(this.ChkMouseFlick_CheckedChanged);
+            // 
+            // chkNoShift
+            // 
+            this.chkNoShift.AutoSize = true;
+            this.chkNoShift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkNoShift.Location = new System.Drawing.Point(123, 21);
+            this.chkNoShift.Margin = new System.Windows.Forms.Padding(0);
+            this.chkNoShift.Name = "chkNoShift";
+            this.chkNoShift.Size = new System.Drawing.Size(64, 17);
+            this.chkNoShift.TabIndex = 39;
+            this.chkNoShift.Text = "No Shift";
+            this.chkNoShift.UseVisualStyleBackColor = true;
+            this.chkNoShift.CheckedChanged += new System.EventHandler(this.ChkNoShift_CheckedChanged);
+            // 
             // SkillSpammerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(620, 454);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GitHubButton);
             this.Controls.Add(this.HRDiscordButton);
@@ -1081,6 +1132,10 @@ namespace _ORTools.Forms
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1137,8 +1192,6 @@ namespace _ORTools.Forms
         private _ORTools.Controls.BorderedCheckBox cbWithNoClick;
         private _ORTools.Controls.BorderedCheckBox cbWithClick;
         private System.Windows.Forms.PictureBox pbUpAndDownArrow;
-        private CheckBox chkNoShift;
-        private CheckBox chkMouseFlick;
         private PictureBox pictureBox1;
         private Panel keysDividerPanel;
         private PictureBox OSROMRBox;
@@ -1156,5 +1209,10 @@ namespace _ORTools.Forms
         private Label cbWithClickLabel;
         private Label cbWithNoClickLabel;
         private Label cbDeactivatedLabel;
+        private GroupBox groupBox4;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private CheckBox chkMouseFlick;
+        private CheckBox chkNoShift;
     }
 }

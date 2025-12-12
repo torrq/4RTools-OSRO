@@ -58,11 +58,16 @@ namespace _ORTools.Model
         public Dictionary<string, KeyConfig> SpammerEntries { get; set; } = new Dictionary<string, KeyConfig>();
 
         private int _delay = AppConfig.SkillSpammerDefaultDelay;
+
         public int SpammerDelay
         {
             get => _delay <= 0 ? AppConfig.SkillSpammerDefaultDelay : _delay;
             set => _delay = value;
         }
+
+        public bool MouseFlick { get; set; } = false;
+
+        public bool NoShift { get; set; } = false;
 
         public SkillSpammer() { }
 
@@ -118,9 +123,30 @@ namespace _ORTools.Model
                 if (config.ClickActive && !config.IsIndeterminate)
                 {
                     Point cursorPos = System.Windows.Forms.Cursor.Position;
-                    Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
-                    Thread.Sleep(1);
-                    Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
+
+                    if (this.MouseFlick)
+                    {
+                        // Move cursor diagonally before click
+                        System.Windows.Forms.Cursor.Position = new Point(
+                            cursorPos.X - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK,
+                            cursorPos.Y - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK
+                        );
+
+                        Point flickPos = System.Windows.Forms.Cursor.Position;
+                        Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, (uint)flickPos.X, (uint)flickPos.Y, 0, 0);
+                        Thread.Sleep(1);
+                        Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)flickPos.X, (uint)flickPos.Y, 0, 0);
+
+                        // Move cursor back to original position
+                        System.Windows.Forms.Cursor.Position = cursorPos;
+                    }
+                    else
+                    {
+                        // Normal click at current position
+                        Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
+                        Thread.Sleep(1);
+                        Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
+                    }
                 }
 
                 Thread.Sleep(this.SpammerDelay);

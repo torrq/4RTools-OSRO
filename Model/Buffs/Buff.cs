@@ -115,6 +115,7 @@ public static class BuffDefinitions
     public static readonly List<Buff> BoxBuffs = new List<Buff>();
     public static readonly List<Buff> ScrollBuffs = new List<Buff>();
     public static readonly List<Buff> EtcBuffs = new List<Buff>();
+    public static readonly List<Buff> FishBuffs = new List<Buff>();
 
     // DEBUFFS
     public static readonly List<Buff> Debuffs = new List<Buff>();
@@ -348,6 +349,7 @@ public static class BuffDefinitions
         BoxBuffs.Clear();
         ScrollBuffs.Clear();
         EtcBuffs.Clear();
+        FishBuffs.Clear();
 
         PotionBuffs.AddRange(new[]
         {
@@ -415,6 +417,22 @@ public static class BuffDefinitions
             b.CreateBuff("Field Manual 100% / 300%", "FIELD_MANUAL", "fieldmanual"),
             b.CreateBuff("Bubble Gum / HE Bubble Gum", "CASH_RECEIVEITEM", "he_bubble_gum")
         });
+
+        FishBuffs.AddRange(new[]
+        {
+            b.CreateBuff("Energy Drink", "ENERGY_DRINK", "energy_drink"),
+            b.CreateBuff("Max Potion", "MAX_POTION", "max_potion"),
+            b.CreateBuff("Dash Juice", "DASH_JUICE", "dash_juice"),
+            b.CreateBuff("Demon Extract", "DEMON_EXTRACT", "demon_extract"),
+            b.CreateBuff("Stoneskin Extract", "STONESKIN_EXTRACT", "stoneskin_extract"),
+            b.CreateBuff("Psychoserum", "PSYCHOSERUM", "psychoserum"),
+            b.CreateBuff("STR Tonic", "STR_TONIC", "str_tonic"),
+            b.CreateBuff("AGI Tonic", "AGI_TONIC", "agi_tonic"),
+            b.CreateBuff("VIT Tonic", "VIT_TONIC", "vit_tonic"),
+            b.CreateBuff("INT Tonic", "INT_TONIC", "int_tonic"),
+            b.CreateBuff("DEX Tonic", "DEX_TONIC", "dex_tonic"),
+            b.CreateBuff("LUK Tonic", "LUK_TONIC", "luk_tonic")
+        });
     }
 
     private static void InitializeDebuffs(IBuffFactory b)
@@ -476,6 +494,7 @@ public static class BuffService
     public static List<Buff> GetBoxBuffs() => new List<Buff>(BuffDefinitions.BoxBuffs);
     public static List<Buff> GetScrollBuffs() => new List<Buff>(BuffDefinitions.ScrollBuffs);
     public static List<Buff> GetEtcBuffs() => new List<Buff>(BuffDefinitions.EtcBuffs);
+    public static List<Buff> GetFishBuffs() => new List<Buff>(BuffDefinitions.FishBuffs);
 
     // DEBUFFS
     public static List<Buff> GetDebuffs() => new List<Buff>(BuffDefinitions.Debuffs);

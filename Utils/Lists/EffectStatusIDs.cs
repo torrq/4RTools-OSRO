@@ -624,6 +624,36 @@ namespace _ORTools.Utils
         [Description("Refraction")]
         REFRACTION = 1008,
 
+        [Description("Light of Sun")]
+        LIGHT_OF_SUN = 1036,
+
+        [Description("Light of Star")]
+        LIGHT_OF_STAR = 1037,
+
+        [Description("Lunar Stance")]
+        LUNAR_STANCE = 1038,
+
+        [Description("Universal Stance")]
+        UNIVERSAL_STANCE = 1039,
+
+        [Description("Sun Stance")]
+        SUN_STANCE = 1040,
+
+        [Description("New Moon Kick")]
+        NEW_MOON_KICK = 1042,
+
+        [Description("Star Stance")]
+        STAR_STANCE = 1043,
+
+        [Description("Falling Star")]
+        FALLING_STAR = 1048,
+
+        [Description("Soul Collect")]
+        SOUL_COLLECT = 1053,
+
+        [Description("Soul Reaper")]
+        SOUL_REAPER = 1054,
+
         [Description("Infinity Drink")]
         INFINITY_DRINK = 1065,
 
@@ -699,20 +729,11 @@ namespace _ORTools.Utils
         [Description("Saber Parry")]
         JS_SABERPARRY = 1430,
 
-        [Description("Force Concentration")]
-        JS_CONCENTRATE = 1432,
-
-        [Description("Saber Thrust")]
-        SI_SABERTHRUST = 1438,
-
-        [Description("Cold Skin")]
-        SI_COLDSKIN = 1439,
-
-        [Description("Force Projection")]
-        SI_PROJECTION = 1441,
-
         [Description("Force Persuasion")]
         JS_PERSUADE = 1431,
+
+        [Description("Force Concentration")]
+        JS_CONCENTRATE = 1432,
 
         [Description("Jedi Frenzy")]
         JE_FRENZY = 1433,
@@ -726,8 +747,56 @@ namespace _ORTools.Utils
         [Description("Jedi Stealth")]
         JE_STEALTH = 1437,
 
+        [Description("Saber Thrust")]
+        SI_SABERTHRUST = 1438,
+
+        [Description("Cold Skin")]
+        SI_COLDSKIN = 1439,
+
+        [Description("Force Projection")]
+        SI_PROJECTION = 1441,
+
         [Description("Greed Parry")]
         WS_GREEDPARRY = 1442,
+
+        [Description("Energy Drink")]
+        ENERGY_DRINK = 1443,
+
+        [Description("Hunter's Potion")]
+        HUNTERS_POTION = 1444,
+
+        [Description("Max Potion")]
+        MAX_POTION = 1445,
+
+        [Description("Dash Juice")]
+        DASH_JUICE = 1446,
+
+        [Description("Demon Extract")]
+        DEMON_EXTRACT = 1447,
+
+        [Description("Stoneskin Extract")]
+        STONESKIN_EXTRACT = 1449,
+
+        [Description("Psychoserum")]
+        PSYCHOSERUM = 1448,
+
+        [Description("STR Tonic")]
+        STR_TONIC = 1450,
+
+        [Description("AGI Tonic")]
+        AGI_TONIC = 1451,
+
+        [Description("VIT Tonic")]
+        VIT_TONIC = 1452,
+
+        [Description("INT Tonic")]
+        INT_TONIC = 1453,
+
+        [Description("DEX Tonic")]
+        DEX_TONIC = 1454,
+
+        [Description("LUK Tonic")]
+        LUK_TONIC = 1455,
 
         [Description("Halo Halo")]
         HALOHALO = 2011,

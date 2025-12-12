@@ -123,6 +123,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agi_tonic {
+            get {
+                object obj = ResourceManager.GetObject("agi_tonic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap al_angelus {
             get {
                 object obj = ResourceManager.GetObject("al_angelus", resourceCulture);
@@ -663,6 +673,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dash_juice {
+            get {
+                object obj = ResourceManager.GetObject("dash_juice", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap decrease_agi {
             get {
                 object obj = ResourceManager.GetObject("decrease_agi", resourceCulture);
@@ -693,9 +713,29 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap demon_extract {
+            get {
+                object obj = ResourceManager.GetObject("demon_extract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dex_food {
             get {
                 object obj = ResourceManager.GetObject("dex_food", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dex_tonic {
+            get {
+                object obj = ResourceManager.GetObject("dex_tonic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -806,6 +846,16 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap enchantpoisonarmor {
             get {
                 object obj = ResourceManager.GetObject("enchantpoisonarmor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap energy_drink {
+            get {
+                object obj = ResourceManager.GetObject("energy_drink", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1093,6 +1143,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap herbal_remedy {
+            get {
+                object obj = ResourceManager.GetObject("herbal_remedy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hiding {
             get {
                 object obj = ResourceManager.GetObject("hiding", resourceCulture);
@@ -1183,6 +1243,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hunters_potion {
+            get {
+                object obj = ResourceManager.GetObject("hunters_potion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap impositio_manus {
             get {
                 object obj = ResourceManager.GetObject("impositio_manus", resourceCulture);
@@ -1216,6 +1286,16 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap int_food {
             get {
                 object obj = ResourceManager.GetObject("int_food", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap int_tonic {
+            get {
+                object obj = ResourceManager.GetObject("int_tonic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1823,6 +1903,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap luk_tonic {
+            get {
+                object obj = ResourceManager.GetObject("luk_tonic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap madnesscancel {
             get {
                 object obj = ResourceManager.GetObject("madnesscancel", resourceCulture);
@@ -1856,6 +1946,16 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap mastela_fruit {
             get {
                 object obj = ResourceManager.GetObject("mastela_fruit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap max_potion {
+            get {
+                object obj = ResourceManager.GetObject("max_potion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2156,6 +2256,16 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap provoke {
             get {
                 object obj = ResourceManager.GetObject("provoke", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap psychoserum {
+            get {
+                object obj = ResourceManager.GetObject("psychoserum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2503,6 +2613,26 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap stoneskin_extract {
+            get {
+                object obj = ResourceManager.GetObject("stoneskin_extract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap str_tonic {
+            get {
+                object obj = ResourceManager.GetObject("str_tonic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap strawberry {
             get {
                 object obj = ResourceManager.GetObject("strawberry", resourceCulture);
@@ -2796,6 +2926,16 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap vit_food {
             get {
                 object obj = ResourceManager.GetObject("vit_food", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vit_tonic {
+            get {
+                object obj = ResourceManager.GetObject("vit_tonic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

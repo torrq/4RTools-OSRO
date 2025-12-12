@@ -109,8 +109,9 @@ namespace _ORTools.Model
 
         private void InitializeSongRows()
         {
-            // Initialize 4 song rows
-            for (int i = 1; i <= 4; i++)
+            // Initialize rows based on config
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+            for (int i = 1; i <= totalRows; i++)
             {
                 SongRows.Add(new SongRow(i));
             }

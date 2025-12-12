@@ -45,6 +45,8 @@ namespace _ORTools.Forms
             this.skillSpammer = ProfileSingleton.GetCurrent().SkillSpammer;
             InitializeCheckAsThreeState();
 
+            this.chkNoShift.Checked = ProfileSingleton.GetCurrent().SkillSpammer.NoShift;
+            this.chkMouseFlick.Checked = ProfileSingleton.GetCurrent().SkillSpammer.MouseFlick;
             this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().SkillSpammer.SpammerDelay.ToString();
 
             Dictionary<string, KeyConfig> spammerClones = new Dictionary<string, KeyConfig>(ProfileSingleton.GetCurrent().SkillSpammer.SpammerEntries);
@@ -143,6 +145,20 @@ namespace _ORTools.Forms
             this.cbWithClick.AutoCheck = false;
         }
 
+        private void ChkMouseFlick_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            this.skillSpammer.MouseFlick = chk.Checked;
+            ProfileSingleton.SetConfiguration(this.skillSpammer);
+        }
+
+        private void ChkNoShift_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            this.skillSpammer.NoShift = chk.Checked;
+            ProfileSingleton.SetConfiguration(this.skillSpammer);
+        }
+
         // Event handlers for individual checkboxes (can be removed if not needed)
         private void SkillSpammerForm_Load(object sender, EventArgs e) { }
 
@@ -169,6 +185,11 @@ namespace _ORTools.Forms
         private void HRDiscordButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.DiscordLinkHR);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

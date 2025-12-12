@@ -11,7 +11,7 @@ namespace _ORTools.Utils
         #region General
 
         public static string Name = "OSRO Tools";
-        public static string Version = "v1.0.9";
+        public static string Version = "v1.0.10";
         public static decimal ConfigVersion = 1;
 
         // 0 = Mid-rate, 1 = High-rate
@@ -20,14 +20,14 @@ namespace _ORTools.Utils
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
 
-        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251024)" : "")}";
-        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251024)" : "")}";
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251208)" : "")}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251208)" : "")}";
 
         #endregion
 
         #region File Paths
 
-        public static string ProfileFolder = "Profile\\";
+        public static string ProfileFolder = "Profiles\\";
         public static string ConfigFolder = "Config\\";
         public static string ConfigFile = ConfigFolder + "config.json";
         public static string ServersFile = ConfigFolder + "servers.json";

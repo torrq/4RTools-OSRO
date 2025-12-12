@@ -96,6 +96,21 @@ namespace _ORTools.Model
                 EffectStatusIDs.SILENCE,
             };
             statusLists["GreenPotion"] = new StatusRecoveryList("GreenPotion", greenPotionStatuses, Keys.None);
+
+            // Herbal Remedy list - cures Poison, Curse, Silence, Confusion, Blind, Hallucination, Bleeding, Change Undead
+            var herbalRemedyStatuses = new List<EffectStatusIDs>
+            {
+                EffectStatusIDs.POISON,
+                EffectStatusIDs.CURSE,
+                EffectStatusIDs.SILENCE,
+                EffectStatusIDs.CONFUSION,
+                EffectStatusIDs.BLIND,
+                EffectStatusIDs.NPC_HALLUCINATION,
+                EffectStatusIDs.NPC_BLEEDING,
+                EffectStatusIDs.PROPERTYUNDEAD,
+            };
+            statusLists["HerbalRemedy"] = new StatusRecoveryList("HerbalRemedy", herbalRemedyStatuses, Keys.None);
+
         }
 
         public string GetActionName()

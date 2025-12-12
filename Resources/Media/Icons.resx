@@ -231,6 +231,48 @@
   <data name="he_bubble_gum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\item\exp\he_bubble_gum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+<data name="agi_tonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\agi_tonic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="dash_juice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\dash_juice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="demon_extract" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\demon_extract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="dex_tonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\dex_tonic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="energy_drink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\energy_drink.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="herbal_remedy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\herbal_remedy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="hunters_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\hunters_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="int_tonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\int_tonic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="luk_tonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\luk_tonic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="max_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\max_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="psychoserum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\psychoserum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="stoneskin_extract" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\stoneskin_extract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="str_tonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\str_tonic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
+<data name="vit_tonic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	<value>..\..\assets\image\icon\item\fishing\vit_tonic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+</data>
   <data name="agi_food" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\assets\image\icon\item\food\food_agi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

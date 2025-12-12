@@ -43,6 +43,7 @@ namespace _ORTools.Forms
             this.numericDelay = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.delayToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.FishGP = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericDelay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,13 +184,24 @@ namespace _ORTools.Forms
             this.delayToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.delayToolTip.ToolTipTitle = "Delay (ms)";
             // 
+            // FishGP
+            // 
+            this.FishGP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FishGP.Location = new System.Drawing.Point(12, 267);
+            this.FishGP.Name = "FishGP";
+            this.FishGP.Size = new System.Drawing.Size(575, 30);
+            this.FishGP.TabIndex = 299;
+            this.FishGP.TabStop = false;
+            this.FishGP.Text = "Fishing";
+            // 
             // AutobuffItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(600, 274);
+            this.ClientSize = new System.Drawing.Size(600, 325);
+            this.Controls.Add(this.FishGP);
             this.Controls.Add(this.numericDelay);
             this.Controls.Add(this.btnResetAutobuff);
             this.Controls.Add(this.EtcGP);
@@ -222,5 +234,6 @@ namespace _ORTools.Forms
         private System.Windows.Forms.NumericUpDown numericDelay;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolTip delayToolTip;
+        private System.Windows.Forms.GroupBox FishGP;
     }
 }

@@ -31,6 +31,7 @@ namespace _ORTools.Forms
             itemContainers.Add(new BuffContainer(this.FoodsGP, BuffService.GetFoodBuffs()));
             itemContainers.Add(new BuffContainer(this.ScrollBuffsGP, BuffService.GetScrollBuffs()));
             itemContainers.Add(new BuffContainer(this.EtcGP, BuffService.GetEtcBuffs()));
+            itemContainers.Add(new BuffContainer(this.FishGP, BuffService.GetFishBuffs()));
 
             new BuffRenderer(itemContainers, toolTip1, ProfileSingleton.GetCurrent().AutobuffItem.ActionName, subject).DoRender();
 

@@ -1,23 +1,150 @@
 ﻿using _ORTools.Model;
 using _ORTools.Utils;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace _ORTools.Forms
 {
     public partial class SongsForm : Form, IObserver
     {
-        public static int TOTAL_SONG_ROWS = 4;
+        private List<GroupBox> dynamicPanels = new List<GroupBox>();
 
         public SongsForm(Subject subject)
         {
             subject.Attach(this);
             InitializeComponent();
-            string[] resetButtonNames = { "btnResetSong1", "btnResetSong2", "btnResetSong3", "btnResetSong4" };
+
+            // Hide the template panel - we'll use it as a template only
+            templateSongPanel.Visible = false;
+
+            CreateDynamicRows();
+
+            // Dynamically generate reset button names based on TOTAL_SONG_ROWS
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+            string[] resetButtonNames = Enumerable.Range(1, totalRows)
+                .Select(i => $"btnResetSong{i}")
+                .ToArray();
             FormHelper.ApplyColorToButtons(this, resetButtonNames, AppConfig.ResetButtonBackColor);
             FormHelper.SetNumericUpDownMinimumDelays(this);
             ConfigureSongRows();
             AddCommonResetButtonTooltip();
+        }
+
+        private void CreateDynamicRows()
+        {
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+            for (int i = 1; i <= totalRows; i++)
+            {
+                GroupBox newPanel = CloneGroupBox(templateSongPanel, i);
+                newPanel.Location = new Point(templateSongPanel.Location.X, templateSongPanel.Location.Y + (i - 1) * 110);
+                newPanel.Text = $"Song {i}";
+                newPanel.Visible = true;
+
+                this.Controls.Add(newPanel);
+                dynamicPanels.Add(newPanel);
+            }
+
+            // Adjust form height to accommodate all rows
+            this.Height = Math.Max(this.Height, templateSongPanel.Location.Y + (totalRows * 110) + 50);
+        }
+
+        private GroupBox CloneGroupBox(GroupBox original, int id)
+        {
+            GroupBox clone = new GroupBox();
+            clone.Size = original.Size;
+            clone.Text = original.Text;
+            clone.FlatStyle = original.FlatStyle;
+            clone.Name = $"panelSong{id}";
+
+            foreach (Control control in original.Controls)
+            {
+                Control clonedControl = CloneControl(control, id);
+                if (clonedControl != null)
+                {
+                    clone.Controls.Add(clonedControl);
+                }
+            }
+
+            return clone;
+        }
+
+        private Control CloneControl(Control original, int id)
+        {
+            Control clone = null;
+
+            if (original is TextBox textBox)
+            {
+                clone = new TextBox();
+                ((TextBox)clone).BorderStyle = textBox.BorderStyle;
+                ((TextBox)clone).TextAlign = textBox.TextAlign;
+                ((TextBox)clone).Font = textBox.Font;
+
+                // Update name from Template to actual ID
+                string newName = textBox.Name.Replace("Template", id.ToString());
+                clone.Name = newName;
+            }
+            else if (original is NumericUpDown numericUpDown)
+            {
+                clone = new NumericUpDown();
+                ((NumericUpDown)clone).BorderStyle = numericUpDown.BorderStyle;
+                ((NumericUpDown)clone).TextAlign = numericUpDown.TextAlign;
+                ((NumericUpDown)clone).Font = numericUpDown.Font;
+                ((NumericUpDown)clone).Maximum = numericUpDown.Maximum;
+                ((NumericUpDown)clone).Minimum = numericUpDown.Minimum;
+
+                // Update name from Template to actual ID
+                string newName = numericUpDown.Name.Replace("Template", id.ToString());
+                clone.Name = newName;
+            }
+            else if (original is Button button)
+            {
+                clone = new Button();
+                ((Button)clone).FlatStyle = button.FlatStyle;
+                ((Button)clone).ForeColor = button.ForeColor;
+                ((Button)clone).UseVisualStyleBackColor = button.UseVisualStyleBackColor;
+                ((Button)clone).Cursor = button.Cursor;
+                clone.Text = button.Text;
+
+                // Update name from Template to actual ID
+                string newName = button.Name.Replace("Template", id.ToString());
+                clone.Name = newName;
+            }
+            else if (original is PictureBox pictureBox)
+            {
+                clone = new PictureBox();
+                ((PictureBox)clone).Image = pictureBox.Image;
+                ((PictureBox)clone).BackgroundImage = pictureBox.BackgroundImage;
+                ((PictureBox)clone).BackgroundImageLayout = pictureBox.BackgroundImageLayout;
+                ((PictureBox)clone).SizeMode = pictureBox.SizeMode;
+                ((PictureBox)clone).TabStop = pictureBox.TabStop;
+                clone.Name = $"{pictureBox.Name}_Panel{id}";
+            }
+            else if (original is Label label)
+            {
+                clone = new Label();
+                clone.Text = label.Text;
+                ((Label)clone).AutoSize = label.AutoSize;
+                ((Label)clone).Font = label.Font;
+                clone.Name = $"{label.Name}_Panel{id}";
+            }
+            else if (original is Panel panel)
+            {
+                clone = new Panel();
+                ((Panel)clone).BackColor = panel.BackColor;
+                clone.Name = $"{panel.Name}_Panel{id}";
+            }
+
+            if (clone != null)
+            {
+                clone.Location = original.Location;
+                clone.Size = original.Size;
+                clone.TabIndex = original.TabIndex;
+            }
+
+            return clone;
         }
 
         private void AddCommonResetButtonTooltip()
@@ -25,7 +152,8 @@ namespace _ORTools.Forms
             ToolTip tooltip = new ToolTip();
             string tooltipText = "Reset this song row to default values";
 
-            for (int i = 1; i <= TOTAL_SONG_ROWS; i++)
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+            for (int i = 1; i <= totalRows; i++)
             {
                 string buttonName = $"btnResetSong{i}";
                 Control[] foundControls = this.Controls.Find(buttonName, true);
@@ -33,6 +161,10 @@ namespace _ORTools.Forms
                 if (foundControls.Length > 0 && foundControls[0] is Button resetButton)
                 {
                     tooltip.SetToolTip(resetButton, tooltipText);
+                }
+                else
+                {
+                    DebugLogger.Warning($"Reset button '{buttonName}' not found.");
                 }
             }
         }
@@ -89,13 +221,13 @@ namespace _ORTools.Forms
                     return;
                 }
 
-                FormHelper.ResetForm(panel);
-
                 // Update Trigger Key
                 Control[] triggerControls = panel.Controls.Find($"txtTriggerSong{rowId}", true);
                 if (triggerControls.Length > 0 && triggerControls[0] is TextBox triggerTextBox)
                 {
+                    triggerTextBox.TextChanged -= OnTextChange;
                     triggerTextBox.Text = songRow.TriggerKey.ToString();
+                    triggerTextBox.TextChanged += OnTextChange;
                     FormHelper.ApplyInputKeyStyle(triggerTextBox, songRow.TriggerKey != Keys.None);
                 }
 
@@ -103,7 +235,9 @@ namespace _ORTools.Forms
                 Control[] daggerControls = panel.Controls.Find($"txtDaggerSong{rowId}", true);
                 if (daggerControls.Length > 0 && daggerControls[0] is TextBox daggerTextBox)
                 {
+                    daggerTextBox.TextChanged -= OnTextChange;
                     daggerTextBox.Text = songRow.DaggerKey.ToString();
+                    daggerTextBox.TextChanged += OnTextChange;
                     FormHelper.ApplyInputKeyStyle(daggerTextBox, songRow.DaggerKey != Keys.None);
                 }
 
@@ -111,7 +245,9 @@ namespace _ORTools.Forms
                 Control[] instrumentControls = panel.Controls.Find($"txtInstrumentSong{rowId}", true);
                 if (instrumentControls.Length > 0 && instrumentControls[0] is TextBox instrumentTextBox)
                 {
+                    instrumentTextBox.TextChanged -= OnTextChange;
                     instrumentTextBox.Text = songRow.InstrumentKey.ToString();
+                    instrumentTextBox.TextChanged += OnTextChange;
                     FormHelper.ApplyInputKeyStyle(instrumentTextBox, songRow.InstrumentKey != Keys.None);
                 }
 
@@ -123,7 +259,9 @@ namespace _ORTools.Forms
                         Control[] sequenceControls = panel.Controls.Find($"txtSong{i + 1}Row{rowId}", true);
                         if (sequenceControls.Length > 0 && sequenceControls[0] is TextBox sequenceTextBox)
                         {
+                            sequenceTextBox.TextChanged -= OnTextChange;
                             sequenceTextBox.Text = songRow.SongSequence[i].ToString();
+                            sequenceTextBox.TextChanged += OnTextChange;
                             FormHelper.ApplyInputKeyStyle(sequenceTextBox, songRow.SongSequence[i] != Keys.None);
                         }
                     }
@@ -137,7 +275,9 @@ namespace _ORTools.Forms
                 Control[] delayControls = panel.Controls.Find($"numDelaySong{rowId}", true);
                 if (delayControls.Length > 0 && delayControls[0] is NumericUpDown delayInput)
                 {
+                    delayInput.ValueChanged -= OnDelayChange;
                     delayInput.Value = songRow.Delay;
+                    delayInput.ValueChanged += OnDelayChange;
                 }
             }
             catch (Exception ex)
@@ -266,7 +406,8 @@ namespace _ORTools.Forms
 
         private void UpdateUI()
         {
-            for (int i = 1; i <= TOTAL_SONG_ROWS; i++)
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+            for (int i = 1; i <= totalRows; i++)
             {
                 UpdateSongRowData(i);
             }
@@ -274,7 +415,8 @@ namespace _ORTools.Forms
 
         private void ConfigureSongRows()
         {
-            for (int i = 1; i <= TOTAL_SONG_ROWS; i++)
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+            for (int i = 1; i <= totalRows; i++)
             {
                 InitializeSongRow(i);
             }
