@@ -31,6 +31,7 @@ namespace _ORTools.Forms
         private void InitializeComponent()
         {
             this.templateSongPanel = new System.Windows.Forms.GroupBox();
+            this.pictureBoxViolin = new System.Windows.Forms.PictureBox();
             this.panelDivider1 = new System.Windows.Forms.Panel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -42,10 +43,8 @@ namespace _ORTools.Forms
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelDivider2 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.txtInstrumentSongTemplate = new System.Windows.Forms.TextBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.txtDaggerSongTemplate = new System.Windows.Forms.TextBox();
+            this.pictureBoxAdaptation = new System.Windows.Forms.PictureBox();
+            this.txtAdaptationSongTemplate = new System.Windows.Forms.TextBox();
             this.btnResetSongTemplate = new System.Windows.Forms.Button();
             this.txtSong6RowTemplate = new System.Windows.Forms.TextBox();
             this.txtSong5RowTemplate = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@ namespace _ORTools.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.templateSongPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxViolin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -66,13 +66,13 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdaptation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelaySongTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // templateSongPanel
             // 
+            this.templateSongPanel.Controls.Add(this.pictureBoxViolin);
             this.templateSongPanel.Controls.Add(this.panelDivider1);
             this.templateSongPanel.Controls.Add(this.pictureBox9);
             this.templateSongPanel.Controls.Add(this.pictureBox7);
@@ -84,10 +84,8 @@ namespace _ORTools.Forms
             this.templateSongPanel.Controls.Add(this.pictureBox2);
             this.templateSongPanel.Controls.Add(this.pictureBox3);
             this.templateSongPanel.Controls.Add(this.panelDivider2);
-            this.templateSongPanel.Controls.Add(this.pictureBox6);
-            this.templateSongPanel.Controls.Add(this.txtInstrumentSongTemplate);
-            this.templateSongPanel.Controls.Add(this.pictureBox5);
-            this.templateSongPanel.Controls.Add(this.txtDaggerSongTemplate);
+            this.templateSongPanel.Controls.Add(this.pictureBoxAdaptation);
+            this.templateSongPanel.Controls.Add(this.txtAdaptationSongTemplate);
             this.templateSongPanel.Controls.Add(this.btnResetSongTemplate);
             this.templateSongPanel.Controls.Add(this.txtSong6RowTemplate);
             this.templateSongPanel.Controls.Add(this.txtSong5RowTemplate);
@@ -103,10 +101,20 @@ namespace _ORTools.Forms
             this.templateSongPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.templateSongPanel.Location = new System.Drawing.Point(3, 10);
             this.templateSongPanel.Name = "templateSongPanel";
-            this.templateSongPanel.Size = new System.Drawing.Size(610, 100);
+            this.templateSongPanel.Size = new System.Drawing.Size(595, 100);
             this.templateSongPanel.TabIndex = 21;
             this.templateSongPanel.TabStop = false;
             this.templateSongPanel.Text = "Template";
+            // 
+            // pictureBoxViolin
+            // 
+            this.pictureBoxViolin.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
+            this.pictureBoxViolin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxViolin.Location = new System.Drawing.Point(443, 56);
+            this.pictureBoxViolin.Name = "pictureBoxViolin";
+            this.pictureBoxViolin.Size = new System.Drawing.Size(25, 26);
+            this.pictureBoxViolin.TabIndex = 290;
+            this.pictureBoxViolin.TabStop = false;
             // 
             // panelDivider1
             // 
@@ -214,52 +222,32 @@ namespace _ORTools.Forms
             this.panelDivider2.Size = new System.Drawing.Size(2, 70);
             this.panelDivider2.TabIndex = 279;
             // 
-            // pictureBox6
+            // pictureBoxAdaptation
             // 
-            this.pictureBox6.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox6.Location = new System.Drawing.Point(443, 62);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(25, 26);
-            this.pictureBox6.TabIndex = 278;
-            this.pictureBox6.TabStop = false;
+            this.pictureBoxAdaptation.BackgroundImage = global::_ORTools.Resources.Media.Icons.bd_adaptation;
+            this.pictureBoxAdaptation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxAdaptation.Location = new System.Drawing.Point(443, 29);
+            this.pictureBoxAdaptation.Name = "pictureBoxAdaptation";
+            this.pictureBoxAdaptation.Size = new System.Drawing.Size(25, 26);
+            this.pictureBoxAdaptation.TabIndex = 278;
+            this.pictureBoxAdaptation.TabStop = false;
             // 
-            // txtInstrumentSongTemplate
+            // txtAdaptationSongTemplate
             // 
-            this.txtInstrumentSongTemplate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInstrumentSongTemplate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInstrumentSongTemplate.Location = new System.Drawing.Point(469, 65);
-            this.txtInstrumentSongTemplate.Name = "txtInstrumentSongTemplate";
-            this.txtInstrumentSongTemplate.Size = new System.Drawing.Size(55, 22);
-            this.txtInstrumentSongTemplate.TabIndex = 277;
-            this.txtInstrumentSongTemplate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackgroundImage = global::_ORTools.Resources.Media.Icons.dagger;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(443, 24);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 27);
-            this.pictureBox5.TabIndex = 276;
-            this.pictureBox5.TabStop = false;
-            // 
-            // txtDaggerSongTemplate
-            // 
-            this.txtDaggerSongTemplate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDaggerSongTemplate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDaggerSongTemplate.Location = new System.Drawing.Point(469, 27);
-            this.txtDaggerSongTemplate.Name = "txtDaggerSongTemplate";
-            this.txtDaggerSongTemplate.Size = new System.Drawing.Size(55, 22);
-            this.txtDaggerSongTemplate.TabIndex = 211;
-            this.txtDaggerSongTemplate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAdaptationSongTemplate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAdaptationSongTemplate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdaptationSongTemplate.Location = new System.Drawing.Point(469, 43);
+            this.txtAdaptationSongTemplate.Name = "txtAdaptationSongTemplate";
+            this.txtAdaptationSongTemplate.Size = new System.Drawing.Size(55, 22);
+            this.txtAdaptationSongTemplate.TabIndex = 277;
+            this.txtAdaptationSongTemplate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnResetSongTemplate
             // 
             this.btnResetSongTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetSongTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSongTemplate.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnResetSongTemplate.Location = new System.Drawing.Point(543, 44);
+            this.btnResetSongTemplate.Location = new System.Drawing.Point(536, 40);
             this.btnResetSongTemplate.Name = "btnResetSongTemplate";
             this.btnResetSongTemplate.Size = new System.Drawing.Size(50, 23);
             this.btnResetSongTemplate.TabIndex = 210;
@@ -395,6 +383,7 @@ namespace _ORTools.Forms
             this.Text = "SongsForm";
             this.templateSongPanel.ResumeLayout(false);
             this.templateSongPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxViolin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -402,8 +391,7 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdaptation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelaySongTemplate)).EndInit();
             this.ResumeLayout(false);
 
@@ -422,11 +410,9 @@ namespace _ORTools.Forms
         private System.Windows.Forms.TextBox txtSong5RowTemplate;
         private System.Windows.Forms.TextBox txtSong4RowTemplate;
         private System.Windows.Forms.TextBox txtSong3RowTemplate;
+        private System.Windows.Forms.PictureBox pictureBoxAdaptation;
+        private System.Windows.Forms.TextBox txtAdaptationSongTemplate;
         private System.Windows.Forms.Button btnResetSongTemplate;
-        private System.Windows.Forms.TextBox txtDaggerSongTemplate;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.TextBox txtInstrumentSongTemplate;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panelDivider2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -438,5 +424,6 @@ namespace _ORTools.Forms
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panelDivider1;
+        private System.Windows.Forms.PictureBox pictureBoxViolin;
     }
 }

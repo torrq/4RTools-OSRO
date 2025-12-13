@@ -333,6 +333,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bd_adaptation {
+            get {
+                object obj = ResourceManager.GetObject("bd_adaptation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap berserk_potion {
             get {
                 object obj = ResourceManager.GetObject("berserk_potion", resourceCulture);
@@ -2126,16 +2136,6 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap osro_logo_hr {
             get {
                 object obj = ResourceManager.GetObject("osro_logo_hr", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap osro_logo_lr {
-            get {
-                object obj = ResourceManager.GetObject("osro_logo_lr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

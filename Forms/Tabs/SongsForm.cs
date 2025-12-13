@@ -231,25 +231,17 @@ namespace _ORTools.Forms
                     FormHelper.ApplyInputKeyStyle(triggerTextBox, songRow.TriggerKey != Keys.None);
                 }
 
-                // Update Dagger Key
-                Control[] daggerControls = panel.Controls.Find($"txtDaggerSong{rowId}", true);
-                if (daggerControls.Length > 0 && daggerControls[0] is TextBox daggerTextBox)
+                // Update Adaptation Key
+                Control[] adaptationControls = panel.Controls.Find($"txtAdaptationSong{rowId}", true);
+                if (adaptationControls.Length > 0 && adaptationControls[0] is TextBox adaptationTextBox)
                 {
-                    daggerTextBox.TextChanged -= OnTextChange;
-                    daggerTextBox.Text = songRow.DaggerKey.ToString();
-                    daggerTextBox.TextChanged += OnTextChange;
-                    FormHelper.ApplyInputKeyStyle(daggerTextBox, songRow.DaggerKey != Keys.None);
+                    adaptationTextBox.TextChanged -= OnTextChange;
+                    adaptationTextBox.Text = songRow.AdaptationKey.ToString();
+                    adaptationTextBox.TextChanged += OnTextChange;
+                    FormHelper.ApplyInputKeyStyle(adaptationTextBox, songRow.AdaptationKey != Keys.None);
                 }
 
-                // Update Instrument Key
-                Control[] instrumentControls = panel.Controls.Find($"txtInstrumentSong{rowId}", true);
-                if (instrumentControls.Length > 0 && instrumentControls[0] is TextBox instrumentTextBox)
-                {
-                    instrumentTextBox.TextChanged -= OnTextChange;
-                    instrumentTextBox.Text = songRow.InstrumentKey.ToString();
-                    instrumentTextBox.TextChanged += OnTextChange;
-                    FormHelper.ApplyInputKeyStyle(instrumentTextBox, songRow.InstrumentKey != Keys.None);
-                }
+                // Instrument key is no longer used in UI but kept in model for future use
 
                 // Update Song Sequence (8 keys) with extensive safety checks
                 for (int i = 0; i < 8 && i < songRow.SongSequence.Length; i++)
@@ -311,18 +303,19 @@ namespace _ORTools.Forms
                         FormHelper.ApplyInputKeyStyle(textBox, key != Keys.None);
                     }
                 }
-                else if (name.StartsWith("txtDaggerSong"))
+                else if (name.StartsWith("txtAdaptationSong"))
                 {
-                    int rowId = int.Parse(name.Replace("txtDaggerSong", ""));
+                    int rowId = int.Parse(name.Replace("txtAdaptationSong", ""));
                     var songRow = songMacro.GetSongRow(rowId);
                     if (songRow != null)
                     {
-                        songRow.DaggerKey = key;
+                        songRow.AdaptationKey = key;
                         FormHelper.ApplyInputKeyStyle(textBox, key != Keys.None);
                     }
                 }
                 else if (name.StartsWith("txtInstrumentSong"))
                 {
+                    // Instrument key kept in model but not actively used in UI
                     int rowId = int.Parse(name.Replace("txtInstrumentSong", ""));
                     var songRow = songMacro.GetSongRow(rowId);
                     if (songRow != null)

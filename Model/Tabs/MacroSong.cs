@@ -2,19 +2,20 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Threading;
 using System.Windows.Forms;
 
 namespace _ORTools.Model
 {
     /// <summary>
-    /// Represents a song row configuration with trigger, sequence, dagger, and instrument
+    /// Represents a song row configuration with trigger, sequence, adaptation, and instrument
     /// </summary>
     public class SongRow
     {
         public int Id { get; set; }
         public Keys TriggerKey { get; set; } = Keys.None;
-        public Keys DaggerKey { get; set; } = Keys.None;
+        public Keys AdaptationKey { get; set; } = Keys.None;
         public Keys InstrumentKey { get; set; } = Keys.None;
         public int Delay { get; set; } = AppConfig.MacroDefaultDelay;
 
@@ -34,11 +35,11 @@ namespace _ORTools.Model
         }
 
         [JsonConstructor]
-        public SongRow(int id, Keys triggerKey, Keys daggerKey, Keys instrumentKey, int delay, Keys[] songSequence)
+        public SongRow(int id, Keys triggerKey, Keys adaptationKey, Keys instrumentKey, int delay, Keys[] songSequence)
         {
             this.Id = id;
             this.TriggerKey = triggerKey;
-            this.DaggerKey = daggerKey;
+            this.AdaptationKey = adaptationKey;
             this.InstrumentKey = instrumentKey;
             this.Delay = delay;
             this.SongSequence = songSequence;
@@ -81,7 +82,7 @@ namespace _ORTools.Model
         public void Reset()
         {
             TriggerKey = Keys.None;
-            DaggerKey = Keys.None;
+            AdaptationKey = Keys.None;
             InstrumentKey = Keys.None;
             Delay = AppConfig.MacroDefaultDelay;
             for (int i = 0; i < 8; i++)
@@ -107,6 +108,29 @@ namespace _ORTools.Model
             InitializeSongRows();
         }
 
+        [JsonConstructor]
+        public MacroSong(string actionName, List<SongRow> songRows)
+        {
+            this.ActionName = actionName ?? ACTION_NAME;
+            this.SongRows = songRows ?? new List<SongRow>();
+
+            // Ensure we have the correct number of rows based on current config
+            EnsureCorrectRowCount();
+        }
+
+        [JsonIgnore]
+        private bool isInitialized = false;
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
+            if (!isInitialized)
+            {
+                EnsureCorrectRowCount();
+                isInitialized = true;
+            }
+        }
+
         private void InitializeSongRows()
         {
             // Initialize rows based on config
@@ -114,6 +138,23 @@ namespace _ORTools.Model
             for (int i = 1; i <= totalRows; i++)
             {
                 SongRows.Add(new SongRow(i));
+            }
+        }
+
+        private void EnsureCorrectRowCount()
+        {
+            int totalRows = ConfigGlobal.GetConfig().SongRows;
+
+            // Add missing rows if config has more rows than saved data
+            while (SongRows.Count < totalRows)
+            {
+                SongRows.Add(new SongRow(SongRows.Count + 1));
+            }
+
+            // Remove extra rows if config has fewer rows than saved data
+            while (SongRows.Count > totalRows)
+            {
+                SongRows.RemoveAt(SongRows.Count - 1);
             }
         }
 
@@ -169,18 +210,19 @@ namespace _ORTools.Model
                             Thread.Sleep(30);
                         }
 
-                        foreach (Keys songKey in activeSongKeys)
+                        // Cast songs with adaptation between each step
+                        for (int i = 0; i < activeSongKeys.Count; i++)
                         {
-                            // Cast the song
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, songKey, 0);
+                            // Cast the song key
+                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, activeSongKeys[i], 0);
                             Thread.Sleep(songRow.Delay);
-                        }
 
-                        // Equip dagger to cancel song if specified
-                        if (songRow.DaggerKey != Keys.None)
-                        {
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, songRow.DaggerKey, 0);
-                            Thread.Sleep(30);
+                            // Send adaptation key after each song step (including the last one)
+                            if (songRow.AdaptationKey != Keys.None)
+                            {
+                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, songRow.AdaptationKey, 0);
+                                Thread.Sleep(songRow.Delay);
+                            }
                         }
                     }
                 }

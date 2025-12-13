@@ -160,6 +160,12 @@ namespace _ORTools.Utils
         [Description("Spear Quicken")]
         CR_SPEARQUICKEN = 68,
 
+        [Description("A Whistle")]
+        BA_WHISTLE = 70,
+
+        [Description("Assassin Cross of Sunset / Impressive Riff")]
+        BA_ASSASSINCROSS = 71,
+
         [Description("A Poem of Bragi")]
         BA_POEMBRAGI = 72,
 
