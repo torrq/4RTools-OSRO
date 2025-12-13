@@ -320,7 +320,7 @@ namespace _ORTools.Forms
             // Only proceed if the checkbox state actually changed from the saved config
             if (newValue != currentValue)
             {
-                string action = newValue ? "enable" : "disable";
+                string action = newValue ? "disable" : "enable";
                 string message = $"Restart to {action} systray icon now?";
 
                 // Prompt for restart confirmation

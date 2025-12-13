@@ -20,8 +20,8 @@ namespace _ORTools.Utils
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
 
-        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251208)" : "")}";
-        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251208)" : "")}";
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251213)" : "")}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251213)" : "")}";
 
         #endregion
 
@@ -113,6 +113,8 @@ namespace _ORTools.Utils
         public static string WebsiteHR = "https://osro.gg";
         public static string DiscordLinkMR = "https://discord.com/invite/osro2";
         public static string DiscordLinkHR = "https://discord.com/invite/osro";
+        public static string WikiLinkMR = "https://wiki.osro.mr";
+        public static string WikiLinkHR = "https://wiki.osro.gg";
 
         #endregion
 

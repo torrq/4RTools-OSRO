@@ -187,9 +187,14 @@ namespace _ORTools.Forms
             Process.Start(AppConfig.DiscordLinkHR);
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void MRWikiButton_Click(object sender, EventArgs e)
         {
+            Process.Start(AppConfig.WikiLinkMR);
+        }
 
+        private void HRWikiButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.WikiLinkHR);
         }
     }
 }

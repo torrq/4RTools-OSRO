@@ -2133,26 +2133,6 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap osro_logo_hr {
-            get {
-                object obj = ResourceManager.GetObject("osro_logo_hr", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap osro_logo_mr {
-            get {
-                object obj = ResourceManager.GetObject("osro_logo_mr", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap panacea {
             get {
                 object obj = ResourceManager.GetObject("panacea", resourceCulture);
@@ -2346,6 +2326,16 @@ namespace _ORTools.Resources.Media {
         internal static System.Drawing.Bitmap scroll {
             get {
                 object obj = ResourceManager.GetObject("scroll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap server_banner {
+            get {
+                object obj = ResourceManager.GetObject("server_banner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

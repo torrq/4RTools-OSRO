@@ -51,8 +51,6 @@ namespace _ORTools.Forms
             this.MRDiscordButton = new System.Windows.Forms.Button();
             this.HRWebsiteButton = new System.Windows.Forms.Button();
             this.MRWebsiteButton = new System.Windows.Forms.Button();
-            this.OSROHRBox = new System.Windows.Forms.PictureBox();
-            this.OSROMRBox = new System.Windows.Forms.PictureBox();
             this.MRWebsiteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRWebsiteButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -106,16 +104,22 @@ namespace _ORTools.Forms
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.chkMouseFlick = new System.Windows.Forms.CheckBox();
             this.chkNoShift = new System.Windows.Forms.CheckBox();
+            this.ServerBanner = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MRWikiButton = new System.Windows.Forms.Button();
+            this.MRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.HRWikiButton = new System.Windows.Forms.Button();
+            this.HRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ServerBanner)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSpammerDelay
@@ -138,7 +142,7 @@ namespace _ORTools.Forms
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtSpammerDelay);
-            this.groupBox2.Location = new System.Drawing.Point(340, 236);
+            this.groupBox2.Location = new System.Drawing.Point(373, 229);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(115, 49);
             this.groupBox2.TabIndex = 32;
@@ -298,14 +302,14 @@ namespace _ORTools.Forms
             this.HRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRDiscordButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HRDiscordButton.Image = global::_ORTools.Resources.Media.Icons.discord;
-            this.HRDiscordButton.Location = new System.Drawing.Point(443, 404);
+            this.HRDiscordButton.Location = new System.Drawing.Point(501, 409);
             this.HRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRDiscordButton.Name = "HRDiscordButton";
-            this.HRDiscordButton.Size = new System.Drawing.Size(83, 32);
+            this.HRDiscordButton.Size = new System.Drawing.Size(80, 32);
             this.HRDiscordButton.TabIndex = 41;
             this.HRDiscordButton.Text = "Discord";
             this.HRDiscordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRDiscordButtonToolTip.SetToolTip(this.HRDiscordButton, "Link to OSRO Highrate Discord group");
+            this.HRDiscordButtonToolTip.SetToolTip(this.HRDiscordButton, "Link to OSRO HR Discord group");
             this.HRDiscordButton.UseVisualStyleBackColor = false;
             this.HRDiscordButton.Click += new System.EventHandler(this.HRDiscordButton_Click);
             // 
@@ -318,14 +322,14 @@ namespace _ORTools.Forms
             this.MRDiscordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRDiscordButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MRDiscordButton.Image = global::_ORTools.Resources.Media.Icons.discord;
-            this.MRDiscordButton.Location = new System.Drawing.Point(183, 404);
+            this.MRDiscordButton.Location = new System.Drawing.Point(220, 409);
             this.MRDiscordButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRDiscordButton.Name = "MRDiscordButton";
-            this.MRDiscordButton.Size = new System.Drawing.Size(83, 32);
+            this.MRDiscordButton.Size = new System.Drawing.Size(80, 32);
             this.MRDiscordButton.TabIndex = 40;
             this.MRDiscordButton.Text = "Discord";
             this.MRDiscordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.MRDiscordButtonToolTip.SetToolTip(this.MRDiscordButton, "Link to OSRO Midrate Discord group");
+            this.MRDiscordButtonToolTip.SetToolTip(this.MRDiscordButton, "Link to OSRO MR Discord group");
             this.MRDiscordButton.UseVisualStyleBackColor = false;
             this.MRDiscordButton.Click += new System.EventHandler(this.MRDiscordButton_Click);
             // 
@@ -338,14 +342,14 @@ namespace _ORTools.Forms
             this.HRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRWebsiteButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HRWebsiteButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
-            this.HRWebsiteButton.Location = new System.Drawing.Point(358, 404);
+            this.HRWebsiteButton.Location = new System.Drawing.Point(337, 409);
             this.HRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.HRWebsiteButton.Name = "HRWebsiteButton";
-            this.HRWebsiteButton.Size = new System.Drawing.Size(83, 32);
+            this.HRWebsiteButton.Size = new System.Drawing.Size(80, 32);
             this.HRWebsiteButton.TabIndex = 39;
             this.HRWebsiteButton.Text = "Website";
             this.HRWebsiteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRWebsiteButtonToolTip.SetToolTip(this.HRWebsiteButton, "Link to OSRO Highrate website");
+            this.HRWebsiteButtonToolTip.SetToolTip(this.HRWebsiteButton, "Link to OSRO HR website");
             this.HRWebsiteButton.UseVisualStyleBackColor = false;
             this.HRWebsiteButton.Click += new System.EventHandler(this.HRWebsiteButton_Click);
             // 
@@ -358,36 +362,16 @@ namespace _ORTools.Forms
             this.MRWebsiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MRWebsiteButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MRWebsiteButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
-            this.MRWebsiteButton.Location = new System.Drawing.Point(98, 404);
+            this.MRWebsiteButton.Location = new System.Drawing.Point(56, 409);
             this.MRWebsiteButton.Margin = new System.Windows.Forms.Padding(0);
             this.MRWebsiteButton.Name = "MRWebsiteButton";
-            this.MRWebsiteButton.Size = new System.Drawing.Size(83, 32);
+            this.MRWebsiteButton.Size = new System.Drawing.Size(80, 32);
             this.MRWebsiteButton.TabIndex = 38;
             this.MRWebsiteButton.Text = "Website";
             this.MRWebsiteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.MRWebsiteButtonToolTip.SetToolTip(this.MRWebsiteButton, "Link to OSRO Midrate website");
+            this.MRWebsiteButtonToolTip.SetToolTip(this.MRWebsiteButton, "Link to OSRO MR website");
             this.MRWebsiteButton.UseVisualStyleBackColor = false;
             this.MRWebsiteButton.Click += new System.EventHandler(this.MRWebsiteButton_Click);
-            // 
-            // OSROHRBox
-            // 
-            this.OSROHRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OSROHRBox.Image = global::_ORTools.Resources.Media.Icons.osro_logo_hr;
-            this.OSROHRBox.Location = new System.Drawing.Point(340, 306);
-            this.OSROHRBox.Name = "OSROHRBox";
-            this.OSROHRBox.Size = new System.Drawing.Size(200, 88);
-            this.OSROHRBox.TabIndex = 37;
-            this.OSROHRBox.TabStop = false;
-            // 
-            // OSROMRBox
-            // 
-            this.OSROMRBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OSROMRBox.Image = global::_ORTools.Resources.Media.Icons.osro_logo_mr;
-            this.OSROMRBox.Location = new System.Drawing.Point(80, 306);
-            this.OSROMRBox.Name = "OSROMRBox";
-            this.OSROMRBox.Size = new System.Drawing.Size(200, 88);
-            this.OSROMRBox.TabIndex = 36;
-            this.OSROMRBox.TabStop = false;
             // 
             // chkS
             // 
@@ -1006,7 +990,7 @@ namespace _ORTools.Forms
             this.groupBox4.Controls.Add(this.pictureBox3);
             this.groupBox4.Controls.Add(this.chkMouseFlick);
             this.groupBox4.Controls.Add(this.chkNoShift);
-            this.groupBox4.Location = new System.Drawing.Point(80, 236);
+            this.groupBox4.Location = new System.Drawing.Point(15, 229);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(218, 49);
             this.groupBox4.TabIndex = 43;
@@ -1058,12 +1042,84 @@ namespace _ORTools.Forms
             this.chkNoShift.UseVisualStyleBackColor = true;
             this.chkNoShift.CheckedChanged += new System.EventHandler(this.ChkNoShift_CheckedChanged);
             // 
+            // ServerBanner
+            // 
+            this.ServerBanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ServerBanner.Image = global::_ORTools.Resources.Media.Icons.server_banner;
+            this.ServerBanner.Location = new System.Drawing.Point(-11, 289);
+            this.ServerBanner.Name = "ServerBanner";
+            this.ServerBanner.Size = new System.Drawing.Size(639, 106);
+            this.ServerBanner.TabIndex = 44;
+            this.ServerBanner.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(140, 393);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "OSRO Midrate";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(414, 393);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "OSRO Highrate";
+            // 
+            // MRWikiButton
+            // 
+            this.MRWikiButton.BackColor = System.Drawing.Color.White;
+            this.MRWikiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MRWikiButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MRWikiButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.MRWikiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MRWikiButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MRWikiButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
+            this.MRWikiButton.Location = new System.Drawing.Point(138, 409);
+            this.MRWikiButton.Margin = new System.Windows.Forms.Padding(0);
+            this.MRWikiButton.Name = "MRWikiButton";
+            this.MRWikiButton.Size = new System.Drawing.Size(80, 32);
+            this.MRWikiButton.TabIndex = 47;
+            this.MRWikiButton.Text = "Wiki";
+            this.MRWikiButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MRWikiButtonToolTip.SetToolTip(this.MRWikiButton, "Link to OSRO MR Wiki");
+            this.MRWikiButton.UseVisualStyleBackColor = false;
+            this.MRWikiButton.Click += new System.EventHandler(this.MRWikiButton_Click);
+            // 
+            // HRWikiButton
+            // 
+            this.HRWikiButton.BackColor = System.Drawing.Color.White;
+            this.HRWikiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.HRWikiButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HRWikiButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.HRWikiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HRWikiButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HRWikiButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
+            this.HRWikiButton.Location = new System.Drawing.Point(419, 409);
+            this.HRWikiButton.Margin = new System.Windows.Forms.Padding(0);
+            this.HRWikiButton.Name = "HRWikiButton";
+            this.HRWikiButton.Size = new System.Drawing.Size(80, 32);
+            this.HRWikiButton.TabIndex = 48;
+            this.HRWikiButton.Text = "Wiki";
+            this.HRWikiButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.HRWikiButtonToolTip.SetToolTip(this.HRWikiButton, "Link to OSRO HR Wiki");
+            this.HRWikiButton.UseVisualStyleBackColor = false;
+            this.HRWikiButton.Click += new System.EventHandler(this.HRWikiButton_Click);
+            // 
             // SkillSpammerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(620, 454);
+            this.Controls.Add(this.HRWikiButton);
+            this.Controls.Add(this.MRWikiButton);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GitHubButton);
@@ -1071,8 +1127,6 @@ namespace _ORTools.Forms
             this.Controls.Add(this.MRDiscordButton);
             this.Controls.Add(this.HRWebsiteButton);
             this.Controls.Add(this.MRWebsiteButton);
-            this.Controls.Add(this.OSROHRBox);
-            this.Controls.Add(this.OSROMRBox);
             this.Controls.Add(this.keysDividerPanel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.chkS);
@@ -1118,6 +1172,9 @@ namespace _ORTools.Forms
             this.Controls.Add(this.chkE);
             this.Controls.Add(this.chkQ);
             this.Controls.Add(this.chkW);
+            this.Controls.Add(this.ServerBanner);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SkillSpammerForm";
@@ -1130,13 +1187,13 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUpAndDownArrow)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OSROHRBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OSROMRBox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ServerBanner)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1194,8 +1251,6 @@ namespace _ORTools.Forms
         private System.Windows.Forms.PictureBox pbUpAndDownArrow;
         private PictureBox pictureBox1;
         private Panel keysDividerPanel;
-        private PictureBox OSROMRBox;
-        private PictureBox OSROHRBox;
         private Button MRWebsiteButton;
         private Button HRWebsiteButton;
         private Button MRDiscordButton;
@@ -1214,5 +1269,12 @@ namespace _ORTools.Forms
         private PictureBox pictureBox3;
         private CheckBox chkMouseFlick;
         private CheckBox chkNoShift;
+        private PictureBox ServerBanner;
+        private Label label2;
+        private Label label3;
+        private Button MRWikiButton;
+        private ToolTip MRWikiButtonToolTip;
+        private Button HRWikiButton;
+        private ToolTip HRWikiButtonToolTip;
     }
 }

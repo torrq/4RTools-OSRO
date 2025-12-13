@@ -607,8 +607,6 @@
     <Content Include="assets\image\logos\applogo.png" />
     <Content Include="assets\image\logos\icon4rtools_off.ico" />
     <Content Include="assets\image\logos\icon4rtools_on.ico" />
-    <Content Include="assets\image\logos\osro_logo_hr.png" />
-    <Content Include="assets\image\logos\osro_logo_mr.png" />
     <Content Include="assets\image\icon\debuff\bleeding.png" />
     <Content Include="assets\image\icon\debuff\burning.png" />
     <Content Include="assets\image\icon\debuff\chaos.png" />
@@ -728,6 +726,7 @@
     <Content Include="assets\image\icon\ui\toggle_off.png" />
     <Content Include="assets\image\icon\ui\toggle_on.png" />
     <Content Include="assets\image\logos\4rtools.svg" />
+    <Content Include="assets\image\logos\server_banner.png" />
     <Content Include="assets\sound\toggle_off.wav" />
     <Content Include="assets\sound\toggle_on.wav" />
   </ItemGroup>
