@@ -442,6 +442,7 @@
     <Content Include="assets\image\icon\common\arrow_up.png" />
     <Content Include="assets\image\icon\common\arrow_up_compact.png" />
     <Content Include="assets\image\icon\common\dagger.png" />
+    <Content Include="assets\image\icon\common\harp.png" />
     <Content Include="assets\image\icon\common\violin.png" />
     <Content Include="assets\image\icon\debuff\green_potion.png" />
     <Content Include="assets\image\icon\debuff\panacea.png" />
@@ -725,7 +726,6 @@
     <Content Include="assets\image\icon\ui\info.png" />
     <Content Include="assets\image\icon\ui\toggle_off.png" />
     <Content Include="assets\image\icon\ui\toggle_on.png" />
-    <Content Include="assets\image\logos\4rtools.svg" />
     <Content Include="assets\image\logos\server_banner.png" />
     <Content Include="assets\sound\toggle_off.wav" />
     <Content Include="assets\sound\toggle_on.wav" />

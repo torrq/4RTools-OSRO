@@ -1143,6 +1143,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap harp {
+            get {
+                object obj = ResourceManager.GetObject("harp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap he_bubble_gum {
             get {
                 object obj = ResourceManager.GetObject("he_bubble_gum", resourceCulture);

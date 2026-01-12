@@ -42,6 +42,9 @@ namespace _ORTools.Forms
             this.DebugMode = new System.Windows.Forms.CheckBox();
             this.DebugModeShowLog = new System.Windows.Forms.CheckBox();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.DefaultToggleStateKey = new System.Windows.Forms.TextBox();
+            this.DefaultToggleStateKeyLabel = new System.Windows.Forms.Label();
+            this.ChkDisableSystray = new System.Windows.Forms.CheckBox();
             this.SongRows = new System.Windows.Forms.NumericUpDown();
             this.SongRowsLabel = new System.Windows.Forms.Label();
             this.MacroSwitchRows = new System.Windows.Forms.NumericUpDown();
@@ -52,7 +55,6 @@ namespace _ORTools.Forms
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ChkDisableSystray = new System.Windows.Forms.CheckBox();
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SongRows)).BeginInit();
@@ -154,21 +156,59 @@ namespace _ORTools.Forms
             this.DebugModeShowLog.Text = "Show Log";
             this.toolTipDebugModeShowLog.SetToolTip(this.DebugModeShowLog, "Adds a debug/console log to the bottom of the app");
             this.DebugModeShowLog.UseVisualStyleBackColor = true;
+            this.DebugModeShowLog.CheckedChanged += new System.EventHandler(this.DebugModeShowLog_CheckedChanged);
             // 
             // groupGlobalSettings
             // 
+            this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKey);
+            this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKeyLabel);
             this.groupGlobalSettings.Controls.Add(this.ChkDisableSystray);
             this.groupGlobalSettings.Controls.Add(this.SongRows);
             this.groupGlobalSettings.Controls.Add(this.SongRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRows);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.panel1);
-            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 255);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 217);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
-            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 165);
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 203);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
+            // 
+            // DefaultToggleStateKey
+            // 
+            this.DefaultToggleStateKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DefaultToggleStateKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DefaultToggleStateKey.Location = new System.Drawing.Point(179, 95);
+            this.DefaultToggleStateKey.Name = "DefaultToggleStateKey";
+            this.DefaultToggleStateKey.Size = new System.Drawing.Size(65, 25);
+            this.DefaultToggleStateKey.TabIndex = 329;
+            this.DefaultToggleStateKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DefaultToggleStateKey.TextChanged += new System.EventHandler(this.DefaultToggleStateKey_TextChanged);
+            // 
+            // DefaultToggleStateKeyLabel
+            // 
+            this.DefaultToggleStateKeyLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DefaultToggleStateKeyLabel.Location = new System.Drawing.Point(58, 98);
+            this.DefaultToggleStateKeyLabel.Name = "DefaultToggleStateKeyLabel";
+            this.DefaultToggleStateKeyLabel.Size = new System.Drawing.Size(113, 14);
+            this.DefaultToggleStateKeyLabel.TabIndex = 328;
+            this.DefaultToggleStateKeyLabel.Text = "Default Toggle Key";
+            this.DefaultToggleStateKeyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ChkDisableSystray
+            // 
+            this.ChkDisableSystray.AutoSize = true;
+            this.ChkDisableSystray.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ChkDisableSystray.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkDisableSystray.Location = new System.Drawing.Point(55, 166);
+            this.ChkDisableSystray.Name = "ChkDisableSystray";
+            this.ChkDisableSystray.Size = new System.Drawing.Size(141, 20);
+            this.ChkDisableSystray.TabIndex = 318;
+            this.ChkDisableSystray.Text = "Disable Systray Icon";
+            this.toolTipchkSoundEnabled.SetToolTip(this.ChkDisableSystray, "Disable system tray icon at bottom right");
+            this.ChkDisableSystray.UseVisualStyleBackColor = true;
+            this.ChkDisableSystray.CheckedChanged += new System.EventHandler(this.ChkDisableSystray_CheckedChanged);
             // 
             // SongRows
             // 
@@ -188,6 +228,7 @@ namespace _ORTools.Forms
             0,
             0,
             0});
+            this.SongRows.ValueChanged += new System.EventHandler(this.SongRows_ValueChanged);
             // 
             // SongRowsLabel
             // 
@@ -217,6 +258,7 @@ namespace _ORTools.Forms
             0,
             0,
             0});
+            this.MacroSwitchRows.ValueChanged += new System.EventHandler(this.MacroSwitchRows_ValueChanged);
             // 
             // MacroSwitchRowsLabel
             // 
@@ -232,7 +274,7 @@ namespace _ORTools.Forms
             // 
             this.panel1.Controls.Add(this.DebugMode);
             this.panel1.Controls.Add(this.DebugModeShowLog);
-            this.panel1.Location = new System.Drawing.Point(52, 96);
+            this.panel1.Location = new System.Drawing.Point(52, 137);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(198, 23);
             this.panel1.TabIndex = 323;
@@ -253,19 +295,6 @@ namespace _ORTools.Forms
             // clientDTOBindingSource
             // 
             this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
-            // 
-            // ChkDisableSystray
-            // 
-            this.ChkDisableSystray.AutoSize = true;
-            this.ChkDisableSystray.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ChkDisableSystray.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChkDisableSystray.Location = new System.Drawing.Point(55, 125);
-            this.ChkDisableSystray.Name = "ChkDisableSystray";
-            this.ChkDisableSystray.Size = new System.Drawing.Size(86, 20);
-            this.ChkDisableSystray.TabIndex = 318;
-            this.ChkDisableSystray.Text = "Disable Systray Icon";
-            this.toolTipchkSoundEnabled.SetToolTip(this.ChkDisableSystray, "Disable system tray icon at bottom right");
-            this.ChkDisableSystray.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -295,7 +324,7 @@ namespace _ORTools.Forms
 
         }
 
-      
+
         #endregion
         private System.Windows.Forms.BindingSource clientDTOBindingSource;
         private ListBox skillsListBox;
@@ -317,5 +346,7 @@ namespace _ORTools.Forms
         private Label SongRowsLabel;
         private NumericUpDown MacroSwitchRows;
         private CheckBox ChkDisableSystray;
+        private Label DefaultToggleStateKeyLabel;
+        private TextBox DefaultToggleStateKey;
     }
 }

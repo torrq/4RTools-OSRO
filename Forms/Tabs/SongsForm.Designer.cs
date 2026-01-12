@@ -108,7 +108,7 @@ namespace _ORTools.Forms
             // 
             // pictureBoxViolin
             // 
-            this.pictureBoxViolin.BackgroundImage = global::_ORTools.Resources.Media.Icons.violin;
+            this.pictureBoxViolin.BackgroundImage = global::_ORTools.Resources.Media.Icons.harp;
             this.pictureBoxViolin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxViolin.Location = new System.Drawing.Point(443, 56);
             this.pictureBoxViolin.Name = "pictureBoxViolin";

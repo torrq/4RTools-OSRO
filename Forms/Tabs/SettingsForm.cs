@@ -30,12 +30,43 @@ namespace _ORTools.Forms
             this.SongRows.Value = cfg.SongRows;
             this.MacroSwitchRows.ValueChanged -= this.MacroSwitchRows_ValueChanged;
             this.MacroSwitchRows.Value = cfg.MacroSwitchRows;
+
+            // Initialize DefaultToggleStateKey with proper styling
+            this.DefaultToggleStateKey.KeyDown += new KeyEventHandler(FormHelper.OnKeyDown);
+            this.DefaultToggleStateKey.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
+            this.DefaultToggleStateKey.TextChanged -= this.DefaultToggleStateKey_TextChanged;
+
+            Keys initialKey = Keys.None;
+            string keyString = cfg.DefaultToggleStateKey;
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(keyString) && keyString != "None")
+                {
+                    if (Enum.TryParse<Keys>(keyString, true, out Keys parsedKey))
+                    {
+                        initialKey = parsedKey;
+                    }
+                }
+            }
+            catch
+            {
+                initialKey = Keys.None;
+            }
+
+            // Show "None" when None, otherwise show the key name
+            this.DefaultToggleStateKey.Text = initialKey.ToString();
+
+            // Apply appropriate style
+            FormHelper.ApplyInputKeyStyle(this.DefaultToggleStateKey, initialKey != Keys.None);
+
             // Reattach event handlers after setting initial state
             this.DebugMode.CheckedChanged += this.DebugMode_CheckedChanged;
             this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
-            this.ChkDisableSystray.CheckedChanged -= this.ChkDisableSystray_CheckedChanged;
+            this.ChkDisableSystray.CheckedChanged += this.ChkDisableSystray_CheckedChanged;
             this.SongRows.ValueChanged += this.SongRows_ValueChanged;
             this.MacroSwitchRows.ValueChanged += this.MacroSwitchRows_ValueChanged;
+            this.DefaultToggleStateKey.TextChanged += this.DefaultToggleStateKey_TextChanged;
 
             isInitializing = false; // Initialization complete
 
@@ -384,6 +415,67 @@ namespace _ORTools.Forms
                 cfg.MacroSwitchRows = newValue; // Update the setting
                 ConfigGlobal.SaveConfig(); // Save the updated config
                 DebugLogger.Info($"MacroSwitchRows changed to {newValue}.");
+            }
+        }
+
+        private void DefaultToggleStateKey_TextChanged(object sender, EventArgs e)
+        {
+            // Prevent this logic from running during form initialization
+            if (isInitializing) return;
+
+            Config cfg = ConfigGlobal.GetConfig();
+
+            try
+            {
+                TextBox textBox = this.DefaultToggleStateKey;
+                string currentText = textBox?.Text ?? string.Empty;
+
+                // Validate input before parsing
+                if (string.IsNullOrWhiteSpace(currentText))
+                {
+                    // Handle empty case - shouldn't happen with FormHelper, but just in case
+                    if (cfg.DefaultToggleStateKey != Keys.None.ToString())
+                    {
+                        cfg.DefaultToggleStateKey = Keys.None.ToString();
+                        ConfigGlobal.SaveConfig();
+                        DebugLogger.Info("DefaultToggleStateKey cleared (set to None).");
+                    }
+
+                    FormHelper.ApplyInputKeyStyle(textBox, false);
+                    return;
+                }
+
+                string keyText = currentText.Trim();
+
+                // Attempt to parse the key
+                if (!Enum.TryParse<Keys>(keyText, true, out Keys newKey))
+                {
+                    // Failed to parse - just return, don't revert text
+                    return;
+                }
+
+                // Apply styling based on key value
+                FormHelper.ApplyInputKeyStyle(textBox, newKey != Keys.None);
+
+                // Update the configuration
+                string keyValueToSave = newKey.ToString();
+
+                if (cfg.DefaultToggleStateKey != keyValueToSave)
+                {
+                    cfg.DefaultToggleStateKey = keyValueToSave;
+                    ConfigGlobal.SaveConfig();
+                    DebugLogger.Info($"DefaultToggleStateKey changed to {keyValueToSave}.");
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"Error in DefaultToggleStateKey_TextChanged: {ex.Message}");
+                // Don't revert text on error - let user continue editing
+            }
+            finally
+            {
+                // Always clear focus regardless of success or failure
+                this.ActiveControl = null;
             }
         }
     }

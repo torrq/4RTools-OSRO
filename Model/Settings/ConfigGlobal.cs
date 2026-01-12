@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace _ORTools.Model
 {
@@ -14,6 +15,7 @@ namespace _ORTools.Model
         public bool MiniMode { get; set; } = false;
         public int SongRows { get; set; } = 4; // Added new global setting
         public int MacroSwitchRows { get; set; } = 4; // Added new global setting
+        public string DefaultToggleStateKey { get; set; } = Keys.None.ToString();
     }
 
     internal static class ConfigGlobal

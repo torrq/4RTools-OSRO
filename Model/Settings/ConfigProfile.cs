@@ -9,7 +9,7 @@ namespace _ORTools.Model
     {
         private readonly string ACTION_NAME = "UserPreferences";
         public decimal ConfigVersion { get; set; }
-        public string ToggleStateKey { get; set; } = Keys.End.ToString();
+        public string ToggleStateKey { get; set; } = ConfigGlobal.GetConfig().DefaultToggleStateKey;
         public List<EffectStatusIDs> AutoBuffOrder { get; set; } = new List<EffectStatusIDs>();
         public bool StopBuffsCity { get; set; } = false;
         public bool SoundEnabled { get; set; } = false;
