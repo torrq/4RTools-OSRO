@@ -15,13 +15,13 @@ namespace _ORTools.Utils
         public static decimal ConfigVersion = 1;
 
         // 0 = Mid-rate, 1 = High-rate
-        public static int ServerMode = 1;
+        public static int ServerMode = 0;
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
 
-        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251226)" : "")}";
-        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20251226)" : "")}";
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260205)" : "")}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260205)" : "")}";
 
         #endregion
 

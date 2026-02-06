@@ -115,11 +115,15 @@ namespace _ORTools.Model
         {
             while (Win32Interop.IsKeyPressed(config.Key))
             {
+                // Press Shift if NoShift is enabled
+                if (this.NoShift)
+                {
+                    Win32Interop.keybd_event(Constants.VK_SHIFT, 0x45, Constants.KEYEVENTF_EXTENDEDKEY, 0);
+                }
+
                 Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
 
                 // Handle clicking based on config state
-                // Checked (ClickActive=true, IsIndeterminate=false) = Key + Click
-                // Indeterminate (IsIndeterminate=true) = Key only, no click
                 if (config.ClickActive && !config.IsIndeterminate)
                 {
                     Point cursorPos = System.Windows.Forms.Cursor.Position;
@@ -147,6 +151,12 @@ namespace _ORTools.Model
                         Thread.Sleep(1);
                         Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)cursorPos.X, (uint)cursorPos.Y, 0, 0);
                     }
+                }
+
+                // Release Shift if NoShift is enabled
+                if (this.NoShift)
+                {
+                    Win32Interop.keybd_event(Constants.VK_SHIFT, 0x45, Constants.KEYEVENTF_EXTENDEDKEY | Constants.KEYEVENTF_KEYUP, 0);
                 }
 
                 Thread.Sleep(this.SpammerDelay);
