@@ -111,6 +111,8 @@ namespace _ORTools.Forms
             this.MRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRWikiButton = new System.Windows.Forms.Button();
             this.HRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.chkToggleMode = new System.Windows.Forms.CheckBox();
+            this.txtToggleModeKey = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,7 +144,7 @@ namespace _ORTools.Forms
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtSpammerDelay);
-            this.groupBox2.Location = new System.Drawing.Point(373, 229);
+            this.groupBox2.Location = new System.Drawing.Point(491, 229);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(115, 49);
             this.groupBox2.TabIndex = 32;
@@ -986,13 +988,15 @@ namespace _ORTools.Forms
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkToggleMode);
+            this.groupBox4.Controls.Add(this.txtToggleModeKey);
             this.groupBox4.Controls.Add(this.pictureBox2);
             this.groupBox4.Controls.Add(this.pictureBox3);
             this.groupBox4.Controls.Add(this.chkMouseFlick);
             this.groupBox4.Controls.Add(this.chkNoShift);
             this.groupBox4.Location = new System.Drawing.Point(15, 229);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(218, 49);
+            this.groupBox4.Size = new System.Drawing.Size(456, 49);
             this.groupBox4.TabIndex = 43;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Key Config";
@@ -1111,6 +1115,29 @@ namespace _ORTools.Forms
             this.HRWikiButtonToolTip.SetToolTip(this.HRWikiButton, "Link to OSRO HR Wiki");
             this.HRWikiButton.UseVisualStyleBackColor = false;
             this.HRWikiButton.Click += new System.EventHandler(this.HRWikiButton_Click);
+            // 
+            // chkToggleMode
+            // 
+            this.chkToggleMode.AutoSize = true;
+            this.chkToggleMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkToggleMode.Location = new System.Drawing.Point(294, 20);
+            this.chkToggleMode.Margin = new System.Windows.Forms.Padding(0);
+            this.chkToggleMode.Name = "chkToggleMode";
+            this.chkToggleMode.Size = new System.Drawing.Size(87, 17);
+            this.chkToggleMode.TabIndex = 50;
+            this.chkToggleMode.Text = "Toggle Mode";
+            this.chkToggleMode.UseVisualStyleBackColor = true;
+            this.chkToggleMode.CheckedChanged += new System.EventHandler(this.ChkToggleMode_CheckedChanged);
+            // 
+            // txtToggleModeKey
+            // 
+            this.txtToggleModeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtToggleModeKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToggleModeKey.Location = new System.Drawing.Point(384, 18);
+            this.txtToggleModeKey.Name = "txtToggleModeKey";
+            this.txtToggleModeKey.Size = new System.Drawing.Size(55, 23);
+            this.txtToggleModeKey.TabIndex = 51;
+            this.txtToggleModeKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SkillSpammerForm
             // 
@@ -1276,5 +1303,7 @@ namespace _ORTools.Forms
         private ToolTip MRWikiButtonToolTip;
         private Button HRWikiButton;
         private ToolTip HRWikiButtonToolTip;
+        private CheckBox chkToggleMode;
+        private TextBox txtToggleModeKey;
     }
 }

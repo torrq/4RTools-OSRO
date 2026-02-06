@@ -43,11 +43,30 @@ namespace _ORTools.Forms
             SetLegendDefaultValues();
 
             this.skillSpammer = ProfileSingleton.GetCurrent().SkillSpammer;
+            this.skillSpammer.ToggleModeChanged += OnToggleModeChangedFromKey;
+
             InitializeCheckAsThreeState();
 
             this.chkNoShift.Checked = ProfileSingleton.GetCurrent().SkillSpammer.NoShift;
             this.chkMouseFlick.Checked = ProfileSingleton.GetCurrent().SkillSpammer.MouseFlick;
+            this.chkToggleMode.Checked = ProfileSingleton.GetCurrent().SkillSpammer.ToggleMode;
             this.txtSpammerDelay.Text = ProfileSingleton.GetCurrent().SkillSpammer.SpammerDelay.ToString();
+            this.txtToggleModeKey.Text = ProfileSingleton.GetCurrent().SkillSpammer.ToggleModeKey.ToString();
+
+            this.txtToggleModeKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormHelper.OnKeyDown);
+            this.txtToggleModeKey.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
+            this.txtToggleModeKey.TextChanged += new EventHandler(OnToggleModeKeyChange);
+            this.ActiveControl = null;
+
+            System.Windows.Forms.TextBox textToggleModeKey = this.txtToggleModeKey;
+            if (textToggleModeKey.Text == Keys.None.ToString())
+            {
+                FormHelper.ApplyInputKeyStyle(textToggleModeKey, false);
+            }
+            else
+            {
+                FormHelper.ApplyInputKeyStyle(textToggleModeKey, true);
+            }
 
             Dictionary<string, KeyConfig> spammerClones = new Dictionary<string, KeyConfig>(ProfileSingleton.GetCurrent().SkillSpammer.SpammerEntries);
 
@@ -109,6 +128,75 @@ namespace _ORTools.Forms
             }
         }
 
+        private void OnToggleModeChangedFromKey(object sender, bool isToggled)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => OnToggleModeChangedFromKey(sender, isToggled)));
+                return;
+            }
+
+            this.chkToggleMode.CheckedChanged -= ChkToggleMode_CheckedChanged;
+            this.chkToggleMode.Checked = isToggled;
+            this.chkToggleMode.CheckedChanged += ChkToggleMode_CheckedChanged;
+        }
+
+        private void OnToggleModeKeyChange(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validate input before parsing
+                if (string.IsNullOrWhiteSpace(this.txtToggleModeKey?.Text))
+                {
+                    DebugLogger.Debug("OnToggleModeKeyChange: Transfer key text is null or empty");
+                    return;
+                }
+
+                string keyText = this.txtToggleModeKey.Text.Trim();
+
+                // Attempt to parse the key
+                if (!Enum.TryParse<Keys>(keyText, true, out Keys key))
+                {
+                    DebugLogger.Warning($"OnToggleModeKeyChange: Failed to parse '{keyText}' as a valid Keys enum value");
+                    return;
+                }
+
+                System.Windows.Forms.TextBox textToggleModeKey = this.txtToggleModeKey;
+                if (textToggleModeKey.Text == Keys.None.ToString())
+                {
+                    FormHelper.ApplyInputKeyStyle(textToggleModeKey, false);
+                }
+                else
+                {
+                    FormHelper.ApplyInputKeyStyle(textToggleModeKey, true);
+                }
+
+                // Update the transfer helper and configuration
+                this.skillSpammer.ToggleModeKey = key;
+                ProfileSingleton.SetConfiguration(this.skillSpammer);
+
+                //DebugLogger.Debug($"OnTransferKeyChange: Successfully set transfer key to {key}");
+            }
+            catch (ArgumentException ex)
+            {
+                DebugLogger.Error($"OnTransferKeyChange: Invalid key value '{this.txtToggleModeKey?.Text}': {ex.Message}");
+            }
+            catch (NullReferenceException ex)
+            {
+                DebugLogger.Error($"OnTransferKeyChange: Null reference error - transferHelper or txtTransferKey may be null: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"OnTransferKeyChange: Unexpected error while updating transfer key: {ex.Message}");
+                DebugLogger.Error($"OnTransferKeyChange: Stack trace: {ex.StackTrace}");
+            }
+            finally
+            {
+                // Always clear focus regardless of success or failure
+                this.ActiveControl = null;
+            }
+        }
+
         private void RemoveHandlers()
         {
             foreach (Control c in this.Controls)
@@ -156,6 +244,13 @@ namespace _ORTools.Forms
         {
             CheckBox chk = sender as CheckBox;
             this.skillSpammer.NoShift = chk.Checked;
+            ProfileSingleton.SetConfiguration(this.skillSpammer);
+        }
+
+        private void ChkToggleMode_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = sender as CheckBox;
+            this.skillSpammer.ToggleMode = chk.Checked;
             ProfileSingleton.SetConfiguration(this.skillSpammer);
         }
 
