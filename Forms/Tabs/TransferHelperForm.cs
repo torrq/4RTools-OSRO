@@ -17,6 +17,12 @@ namespace _ORTools.Forms
             subject.Attach(this);
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.ActiveControl = null;
+        }
+
         public void Update(ISubject subject)
         {
             switch ((subject as Subject).Message.Code)
@@ -41,7 +47,6 @@ namespace _ORTools.Forms
             this.txtTransferKey.KeyDown += new System.Windows.Forms.KeyEventHandler(FormHelper.OnKeyDown);
             this.txtTransferKey.KeyPress += new KeyPressEventHandler(FormHelper.OnKeyPress);
             this.txtTransferKey.TextChanged += new EventHandler(OnTransferKeyChange);
-            this.ActiveControl = null;
 
             System.Windows.Forms.TextBox textTransferKey = this.txtTransferKey;
             if (textTransferKey.Text == Keys.None.ToString())

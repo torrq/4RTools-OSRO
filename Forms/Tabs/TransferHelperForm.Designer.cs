@@ -42,6 +42,7 @@
             this.txtTransferKey.Name = "txtTransferKey";
             this.txtTransferKey.Size = new System.Drawing.Size(55, 23);
             this.txtTransferKey.TabIndex = 11;
+            this.txtTransferKey.TabStop = false;
             this.txtTransferKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TransferItemLabel

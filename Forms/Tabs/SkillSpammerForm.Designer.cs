@@ -1008,7 +1008,7 @@ namespace _ORTools.Forms
             // 
             this.chkToggleMode.AutoSize = true;
             this.chkToggleMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkToggleMode.Location = new System.Drawing.Point(294, 20);
+            this.chkToggleMode.Location = new System.Drawing.Point(297, 20);
             this.chkToggleMode.Margin = new System.Windows.Forms.Padding(0);
             this.chkToggleMode.Name = "chkToggleMode";
             this.chkToggleMode.Size = new System.Drawing.Size(87, 17);
@@ -1021,7 +1021,7 @@ namespace _ORTools.Forms
             // 
             this.txtToggleModeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtToggleModeKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToggleModeKey.Location = new System.Drawing.Point(384, 18);
+            this.txtToggleModeKey.Location = new System.Drawing.Point(387, 16);
             this.txtToggleModeKey.Name = "txtToggleModeKey";
             this.txtToggleModeKey.Size = new System.Drawing.Size(55, 23);
             this.txtToggleModeKey.TabIndex = 51;
@@ -1030,7 +1030,7 @@ namespace _ORTools.Forms
             // pictureBox2
             // 
             this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.shift;
-            this.pictureBox2.Location = new System.Drawing.Point(188, 19);
+            this.pictureBox2.Location = new System.Drawing.Point(233, 19);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1063,7 +1063,7 @@ namespace _ORTools.Forms
             // 
             this.chkNoShift.AutoSize = true;
             this.chkNoShift.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkNoShift.Location = new System.Drawing.Point(123, 21);
+            this.chkNoShift.Location = new System.Drawing.Point(168, 21);
             this.chkNoShift.Margin = new System.Windows.Forms.Padding(0);
             this.chkNoShift.Name = "chkNoShift";
             this.chkNoShift.Size = new System.Drawing.Size(64, 17);
