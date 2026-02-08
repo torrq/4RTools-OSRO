@@ -2143,6 +2143,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap osro_quests_logo {
+            get {
+                object obj = ResourceManager.GetObject("osro_quests_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap panacea {
             get {
                 object obj = ResourceManager.GetObject("panacea", resourceCulture);

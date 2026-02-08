@@ -726,6 +726,7 @@
     <Content Include="assets\image\icon\ui\info.png" />
     <Content Include="assets\image\icon\ui\toggle_off.png" />
     <Content Include="assets\image\icon\ui\toggle_on.png" />
+    <Content Include="assets\image\logos\osro_quests_logo.png" />
     <Content Include="assets\image\logos\server_banner.png" />
     <Content Include="assets\sound\toggle_off.wav" />
     <Content Include="assets\sound\toggle_on.wav" />

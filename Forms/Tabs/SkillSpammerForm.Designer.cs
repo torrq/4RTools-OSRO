@@ -100,6 +100,8 @@ namespace _ORTools.Forms
             this.chkQ = new _ORTools.Controls.BorderedCheckBox();
             this.chkW = new _ORTools.Controls.BorderedCheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkToggleMode = new System.Windows.Forms.CheckBox();
+            this.txtToggleModeKey = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.chkMouseFlick = new System.Windows.Forms.CheckBox();
@@ -111,8 +113,8 @@ namespace _ORTools.Forms
             this.MRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRWikiButton = new System.Windows.Forms.Button();
             this.HRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.chkToggleMode = new System.Windows.Forms.CheckBox();
-            this.txtToggleModeKey = new System.Windows.Forms.TextBox();
+            this.OSROQuestsButton = new System.Windows.Forms.PictureBox();
+            this.OSROQuestsButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -122,6 +124,7 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServerBanner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OSROQuestsButton)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSpammerDelay
@@ -1001,6 +1004,29 @@ namespace _ORTools.Forms
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Key Config";
             // 
+            // chkToggleMode
+            // 
+            this.chkToggleMode.AutoSize = true;
+            this.chkToggleMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkToggleMode.Location = new System.Drawing.Point(294, 20);
+            this.chkToggleMode.Margin = new System.Windows.Forms.Padding(0);
+            this.chkToggleMode.Name = "chkToggleMode";
+            this.chkToggleMode.Size = new System.Drawing.Size(87, 17);
+            this.chkToggleMode.TabIndex = 50;
+            this.chkToggleMode.Text = "Toggle Mode";
+            this.chkToggleMode.UseVisualStyleBackColor = true;
+            this.chkToggleMode.CheckedChanged += new System.EventHandler(this.ChkToggleMode_CheckedChanged);
+            // 
+            // txtToggleModeKey
+            // 
+            this.txtToggleModeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtToggleModeKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToggleModeKey.Location = new System.Drawing.Point(384, 18);
+            this.txtToggleModeKey.Name = "txtToggleModeKey";
+            this.txtToggleModeKey.Size = new System.Drawing.Size(55, 23);
+            this.txtToggleModeKey.TabIndex = 51;
+            this.txtToggleModeKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.shift;
@@ -1116,28 +1142,21 @@ namespace _ORTools.Forms
             this.HRWikiButton.UseVisualStyleBackColor = false;
             this.HRWikiButton.Click += new System.EventHandler(this.HRWikiButton_Click);
             // 
-            // chkToggleMode
+            // OSROQuestsButton
             // 
-            this.chkToggleMode.AutoSize = true;
-            this.chkToggleMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkToggleMode.Location = new System.Drawing.Point(294, 20);
-            this.chkToggleMode.Margin = new System.Windows.Forms.Padding(0);
-            this.chkToggleMode.Name = "chkToggleMode";
-            this.chkToggleMode.Size = new System.Drawing.Size(87, 17);
-            this.chkToggleMode.TabIndex = 50;
-            this.chkToggleMode.Text = "Toggle Mode";
-            this.chkToggleMode.UseVisualStyleBackColor = true;
-            this.chkToggleMode.CheckedChanged += new System.EventHandler(this.ChkToggleMode_CheckedChanged);
+            this.OSROQuestsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OSROQuestsButton.Image = global::_ORTools.Resources.Media.Icons.osro_quests_logo;
+            this.OSROQuestsButton.Location = new System.Drawing.Point(538, 149);
+            this.OSROQuestsButton.Name = "OSROQuestsButton";
+            this.OSROQuestsButton.Size = new System.Drawing.Size(70, 28);
+            this.OSROQuestsButton.TabIndex = 49;
+            this.OSROQuestsButton.TabStop = false;
+            this.OSROQuestsButtonToolTip.SetToolTip(this.OSROQuestsButton, "Link to OSRO Quests Helper");
+            this.OSROQuestsButton.Click += new System.EventHandler(this.OSROQuestsButton_Click);
             // 
-            // txtToggleModeKey
+            // OSROQuestsButtonToolTip
             // 
-            this.txtToggleModeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtToggleModeKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToggleModeKey.Location = new System.Drawing.Point(384, 18);
-            this.txtToggleModeKey.Name = "txtToggleModeKey";
-            this.txtToggleModeKey.Size = new System.Drawing.Size(55, 23);
-            this.txtToggleModeKey.TabIndex = 51;
-            this.txtToggleModeKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OSROQuestsButtonToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // SkillSpammerForm
             // 
@@ -1145,6 +1164,7 @@ namespace _ORTools.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(620, 454);
+            this.Controls.Add(this.OSROQuestsButton);
             this.Controls.Add(this.HRWikiButton);
             this.Controls.Add(this.MRWikiButton);
             this.Controls.Add(this.groupBox4);
@@ -1219,6 +1239,7 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServerBanner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OSROQuestsButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1305,5 +1326,7 @@ namespace _ORTools.Forms
         private ToolTip HRWikiButtonToolTip;
         private CheckBox chkToggleMode;
         private TextBox txtToggleModeKey;
+        private PictureBox OSROQuestsButton;
+        private ToolTip OSROQuestsButtonToolTip;
     }
 }

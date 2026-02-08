@@ -101,6 +101,11 @@ namespace _ORTools.Model
             if (!SkillSpammer.IsGameWindowActive())
                 return 0;
 
+            // Cache expensive lookups once per iteration
+            IntPtr windowHandle = roClient.Process.MainWindowHandle;
+            bool noShift = this.NoShift;
+            bool mouseFlick = this.MouseFlick;
+
             // Handle toggle mode key press
             if (this.ToggleModeKey != Keys.None)
             {
@@ -110,10 +115,7 @@ namespace _ORTools.Model
                 if (isToggleKeyPressed && !wasToggleKeyPressed)
                 {
                     this.ToggleMode = !this.ToggleMode;
-
-                    // Raise event to update UI
                     ToggleModeChanged?.Invoke(this, this.ToggleMode);
-
                     ProfileSingleton.SetConfiguration(this);
 
                     if (!this.ToggleMode)
@@ -128,30 +130,24 @@ namespace _ORTools.Model
             foreach (var kvp in SpammerEntries)
             {
                 var config = kvp.Value;
-                var keyToSpam = config.Key;
-
-                bool shouldProcess = config.ClickActive || config.IsIndeterminate;
-
-                if (shouldProcess)
+                if (config.ClickActive || config.IsIndeterminate)
                 {
-                    SkillSpammerSpeedBoost(roClient, config, keyToSpam);
+                    SkillSpammerSpeedBoost(config, windowHandle, noShift, mouseFlick);
                 }
             }
 
             return 0;
         }
 
-        private void SkillSpammerSpeedBoost(Client roClient, KeyConfig config, Keys thisk)
+        private void SkillSpammerSpeedBoost(KeyConfig config, IntPtr windowHandle, bool noShift, bool mouseFlick)
         {
             bool isKeyPressed = Win32Interop.IsKeyPressed(config.Key);
             bool wasKeyPressed = keyPressedLastFrame.ContainsKey(config.Key) && keyPressedLastFrame[config.Key];
 
             if (this.ToggleMode)
             {
-                // Toggle mode: press once to start, press again to stop
                 if (isKeyPressed && !wasKeyPressed)
                 {
-                    // Key just pressed - toggle state
                     if (!toggledKeys.ContainsKey(config.Key))
                         toggledKeys[config.Key] = false;
 
@@ -160,49 +156,44 @@ namespace _ORTools.Model
 
                 keyPressedLastFrame[config.Key] = isKeyPressed;
 
-                // Only spam if this key is toggled on
                 if (toggledKeys.ContainsKey(config.Key) && toggledKeys[config.Key])
                 {
-                    ExecuteSkillSpam(roClient, config, thisk);
+                    ExecuteSkillSpam(config, windowHandle, noShift, mouseFlick);
                 }
             }
             else
             {
-                // Normal mode: hold key to spam
                 if (isKeyPressed)
                 {
-                    ExecuteSkillSpam(roClient, config, thisk);
+                    ExecuteSkillSpam(config, windowHandle, noShift, mouseFlick);
                 }
             }
         }
 
-        private void ExecuteSkillSpam(Client roClient, KeyConfig config, Keys thisk)
+        private void ExecuteSkillSpam(KeyConfig config, IntPtr windowHandle, bool noShift, bool mouseFlick)
         {
-            // Press Shift if NoShift is enabled
-            if (this.NoShift)
+            if (noShift)
             {
                 Win32Interop.keybd_event(Constants.VK_SHIFT, 0x45, Constants.KEYEVENTF_EXTENDEDKEY, 0);
             }
 
-            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+            Win32Interop.PostMessage(windowHandle, Constants.WM_KEYDOWN_MSG_ID, config.Key, 0);
 
-            // Handle clicking based on config state
             if (config.ClickActive && !config.IsIndeterminate)
             {
                 Point cursorPos = System.Windows.Forms.Cursor.Position;
 
-                if (this.MouseFlick)
+                if (mouseFlick)
                 {
-                    System.Windows.Forms.Cursor.Position = new Point(
+                    Point flickPos = new Point(
                         cursorPos.X - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK,
                         cursorPos.Y - Constants.MOUSE_DIAGONAL_MOVIMENTATION_PIXELS_AHK
                     );
 
-                    Point flickPos = System.Windows.Forms.Cursor.Position;
+                    System.Windows.Forms.Cursor.Position = flickPos;
                     Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, (uint)flickPos.X, (uint)flickPos.Y, 0, 0);
                     Thread.Sleep(1);
                     Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, (uint)flickPos.X, (uint)flickPos.Y, 0, 0);
-
                     System.Windows.Forms.Cursor.Position = cursorPos;
                 }
                 else
@@ -213,8 +204,7 @@ namespace _ORTools.Model
                 }
             }
 
-            // Release Shift if NoShift is enabled
-            if (this.NoShift)
+            if (noShift)
             {
                 Win32Interop.keybd_event(Constants.VK_SHIFT, 0x45, Constants.KEYEVENTF_EXTENDEDKEY | Constants.KEYEVENTF_KEYUP, 0);
             }

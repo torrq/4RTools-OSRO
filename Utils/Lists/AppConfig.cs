@@ -18,7 +18,7 @@ namespace _ORTools.Utils
         public static int ServerMode = 0;
 
         // Set to true for pre-release versions, false for stable releases
-        public static bool preRelease = true;
+        public static bool preRelease = false;
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260206)" : "")}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260206)" : "")}";
@@ -109,6 +109,7 @@ namespace _ORTools.Utils
         #region URLs
 
         public static string GithubLink = "https://github.com/torrq/4RTools-OSRO/releases";
+        public static string OSROQuestsLinkMR = "https://torrq.github.io/osro-quest-helper";
         public static string WebsiteMR = "https://osro.mr";
         public static string WebsiteHR = "https://osro.gg";
         public static string DiscordLinkMR = "https://discord.com/invite/osro2";

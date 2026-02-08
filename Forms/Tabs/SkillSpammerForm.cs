@@ -272,6 +272,11 @@ namespace _ORTools.Forms
             Process.Start(AppConfig.GithubLink);
         }
 
+        private void OSROQuestsButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(AppConfig.OSROQuestsLinkMR);
+        }
+
         private void MRDiscordButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.DiscordLinkMR);
@@ -290,6 +295,11 @@ namespace _ORTools.Forms
         private void HRWikiButton_Click(object sender, EventArgs e)
         {
             Process.Start(AppConfig.WikiLinkHR);
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }
