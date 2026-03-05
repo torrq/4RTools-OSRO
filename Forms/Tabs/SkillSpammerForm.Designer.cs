@@ -40,11 +40,8 @@ namespace _ORTools.Forms
             this.pbUpAndDownArrow = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbDeactivatedLabel = new System.Windows.Forms.Label();
-            this.cbDeactivated = new _ORTools.Controls.BorderedCheckBox();
             this.cbWithNoClickLabel = new System.Windows.Forms.Label();
             this.cbWithClickLabel = new System.Windows.Forms.Label();
-            this.cbWithNoClick = new _ORTools.Controls.BorderedCheckBox();
-            this.cbWithClick = new _ORTools.Controls.BorderedCheckBox();
             this.keysDividerPanel = new System.Windows.Forms.Panel();
             this.GitHubButton = new System.Windows.Forms.Button();
             this.HRDiscordButton = new System.Windows.Forms.Button();
@@ -56,6 +53,24 @@ namespace _ORTools.Forms
             this.MRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.HRDiscordButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.GitHubButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkToggleMode = new System.Windows.Forms.CheckBox();
+            this.txtToggleModeKey = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.chkMouseFlick = new System.Windows.Forms.CheckBox();
+            this.chkNoShift = new System.Windows.Forms.CheckBox();
+            this.ServerBanner = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MRWikiButton = new System.Windows.Forms.Button();
+            this.MRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.HRWikiButton = new System.Windows.Forms.Button();
+            this.HRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.OSROQuestsButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.cbDeactivated = new _ORTools.Controls.BorderedCheckBox();
+            this.cbWithNoClick = new _ORTools.Controls.BorderedCheckBox();
+            this.cbWithClick = new _ORTools.Controls.BorderedCheckBox();
             this.chkS = new _ORTools.Controls.BorderedCheckBox();
             this.chkM = new _ORTools.Controls.BorderedCheckBox();
             this.chk9 = new _ORTools.Controls.BorderedCheckBox();
@@ -99,22 +114,7 @@ namespace _ORTools.Forms
             this.chkE = new _ORTools.Controls.BorderedCheckBox();
             this.chkQ = new _ORTools.Controls.BorderedCheckBox();
             this.chkW = new _ORTools.Controls.BorderedCheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chkToggleMode = new System.Windows.Forms.CheckBox();
-            this.txtToggleModeKey = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.chkMouseFlick = new System.Windows.Forms.CheckBox();
-            this.chkNoShift = new System.Windows.Forms.CheckBox();
-            this.ServerBanner = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.MRWikiButton = new System.Windows.Forms.Button();
-            this.MRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.HRWikiButton = new System.Windows.Forms.Button();
-            this.HRWikiButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.OSROQuestsButton = new System.Windows.Forms.PictureBox();
-            this.OSROQuestsButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtSpammerDelay)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -207,19 +207,6 @@ namespace _ORTools.Forms
             this.cbDeactivatedLabel.Text = "Disabled";
             this.cbDeactivatedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbDeactivated
-            // 
-            this.cbDeactivated.AutoCheck = false;
-            this.cbDeactivated.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDeactivated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.cbDeactivated.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbDeactivated.Location = new System.Drawing.Point(10, 60);
-            this.cbDeactivated.Name = "cbDeactivated";
-            this.cbDeactivated.Size = new System.Drawing.Size(24, 24);
-            this.cbDeactivated.TabIndex = 2;
-            this.cbDeactivated.ThreeState = true;
-            this.cbDeactivated.UseVisualStyleBackColor = true;
-            // 
             // cbWithNoClickLabel
             // 
             this.cbWithNoClickLabel.Image = global::_ORTools.Resources.Media.Icons.spammer_mouse_off;
@@ -241,32 +228,6 @@ namespace _ORTools.Forms
             this.cbWithClickLabel.TabIndex = 50;
             this.cbWithClickLabel.Text = "With click";
             this.cbWithClickLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbWithNoClick
-            // 
-            this.cbWithNoClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWithNoClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.cbWithNoClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbWithNoClick.Location = new System.Drawing.Point(10, 40);
-            this.cbWithNoClick.Name = "cbWithNoClick";
-            this.cbWithNoClick.Size = new System.Drawing.Size(24, 24);
-            this.cbWithNoClick.TabIndex = 1;
-            this.cbWithNoClick.ThreeState = true;
-            this.cbWithNoClick.UseVisualStyleBackColor = true;
-            // 
-            // cbWithClick
-            // 
-            this.cbWithClick.Checked = true;
-            this.cbWithClick.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbWithClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbWithClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.cbWithClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbWithClick.Location = new System.Drawing.Point(10, 20);
-            this.cbWithClick.Name = "cbWithClick";
-            this.cbWithClick.Size = new System.Drawing.Size(24, 24);
-            this.cbWithClick.TabIndex = 0;
-            this.cbWithClick.ThreeState = true;
-            this.cbWithClick.UseVisualStyleBackColor = true;
             // 
             // keysDividerPanel
             // 
@@ -377,6 +338,202 @@ namespace _ORTools.Forms
             this.MRWebsiteButtonToolTip.SetToolTip(this.MRWebsiteButton, "Link to OSRO MR website");
             this.MRWebsiteButton.UseVisualStyleBackColor = false;
             this.MRWebsiteButton.Click += new System.EventHandler(this.MRWebsiteButton_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.chkToggleMode);
+            this.groupBox4.Controls.Add(this.txtToggleModeKey);
+            this.groupBox4.Controls.Add(this.pictureBox2);
+            this.groupBox4.Controls.Add(this.pictureBox3);
+            this.groupBox4.Controls.Add(this.chkMouseFlick);
+            this.groupBox4.Controls.Add(this.chkNoShift);
+            this.groupBox4.Location = new System.Drawing.Point(15, 229);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(456, 49);
+            this.groupBox4.TabIndex = 43;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Key Config";
+            // 
+            // chkToggleMode
+            // 
+            this.chkToggleMode.AutoSize = true;
+            this.chkToggleMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkToggleMode.Location = new System.Drawing.Point(297, 20);
+            this.chkToggleMode.Margin = new System.Windows.Forms.Padding(0);
+            this.chkToggleMode.Name = "chkToggleMode";
+            this.chkToggleMode.Size = new System.Drawing.Size(87, 17);
+            this.chkToggleMode.TabIndex = 50;
+            this.chkToggleMode.Text = "Toggle Mode";
+            this.chkToggleMode.UseVisualStyleBackColor = true;
+            this.chkToggleMode.CheckedChanged += new System.EventHandler(this.ChkToggleMode_CheckedChanged);
+            // 
+            // txtToggleModeKey
+            // 
+            this.txtToggleModeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtToggleModeKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToggleModeKey.Location = new System.Drawing.Point(387, 16);
+            this.txtToggleModeKey.Name = "txtToggleModeKey";
+            this.txtToggleModeKey.Size = new System.Drawing.Size(55, 23);
+            this.txtToggleModeKey.TabIndex = 51;
+            this.txtToggleModeKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.shift;
+            this.pictureBox2.Location = new System.Drawing.Point(233, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::_ORTools.Resources.Media.Icons.up_and_down_arrow;
+            this.pictureBox3.Location = new System.Drawing.Point(95, 20);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 35;
+            this.pictureBox3.TabStop = false;
+            // 
+            // chkMouseFlick
+            // 
+            this.chkMouseFlick.AutoSize = true;
+            this.chkMouseFlick.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkMouseFlick.Location = new System.Drawing.Point(12, 21);
+            this.chkMouseFlick.Name = "chkMouseFlick";
+            this.chkMouseFlick.Size = new System.Drawing.Size(80, 17);
+            this.chkMouseFlick.TabIndex = 38;
+            this.chkMouseFlick.Text = "Mouse Flick";
+            this.chkMouseFlick.UseVisualStyleBackColor = true;
+            this.chkMouseFlick.CheckedChanged += new System.EventHandler(this.ChkMouseFlick_CheckedChanged);
+            // 
+            // chkNoShift
+            // 
+            this.chkNoShift.AutoSize = true;
+            this.chkNoShift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkNoShift.Location = new System.Drawing.Point(168, 21);
+            this.chkNoShift.Margin = new System.Windows.Forms.Padding(0);
+            this.chkNoShift.Name = "chkNoShift";
+            this.chkNoShift.Size = new System.Drawing.Size(64, 17);
+            this.chkNoShift.TabIndex = 39;
+            this.chkNoShift.Text = "No Shift";
+            this.chkNoShift.UseVisualStyleBackColor = true;
+            this.chkNoShift.CheckedChanged += new System.EventHandler(this.ChkNoShift_CheckedChanged);
+            // 
+            // ServerBanner
+            // 
+            this.ServerBanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ServerBanner.Image = global::_ORTools.Resources.Media.Icons.server_banner;
+            this.ServerBanner.Location = new System.Drawing.Point(-11, 289);
+            this.ServerBanner.Name = "ServerBanner";
+            this.ServerBanner.Size = new System.Drawing.Size(639, 106);
+            this.ServerBanner.TabIndex = 44;
+            this.ServerBanner.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(140, 393);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "OSRO Midrate";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(414, 393);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "OSRO Highrate";
+            // 
+            // MRWikiButton
+            // 
+            this.MRWikiButton.BackColor = System.Drawing.Color.White;
+            this.MRWikiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MRWikiButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MRWikiButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.MRWikiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MRWikiButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MRWikiButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
+            this.MRWikiButton.Location = new System.Drawing.Point(138, 409);
+            this.MRWikiButton.Margin = new System.Windows.Forms.Padding(0);
+            this.MRWikiButton.Name = "MRWikiButton";
+            this.MRWikiButton.Size = new System.Drawing.Size(80, 32);
+            this.MRWikiButton.TabIndex = 47;
+            this.MRWikiButton.Text = "Wiki";
+            this.MRWikiButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MRWikiButtonToolTip.SetToolTip(this.MRWikiButton, "Link to OSRO MR Wiki");
+            this.MRWikiButton.UseVisualStyleBackColor = false;
+            this.MRWikiButton.Click += new System.EventHandler(this.MRWikiButton_Click);
+            // 
+            // HRWikiButton
+            // 
+            this.HRWikiButton.BackColor = System.Drawing.Color.White;
+            this.HRWikiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.HRWikiButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HRWikiButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.HRWikiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HRWikiButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HRWikiButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
+            this.HRWikiButton.Location = new System.Drawing.Point(419, 409);
+            this.HRWikiButton.Margin = new System.Windows.Forms.Padding(0);
+            this.HRWikiButton.Name = "HRWikiButton";
+            this.HRWikiButton.Size = new System.Drawing.Size(80, 32);
+            this.HRWikiButton.TabIndex = 48;
+            this.HRWikiButton.Text = "Wiki";
+            this.HRWikiButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.HRWikiButtonToolTip.SetToolTip(this.HRWikiButton, "Link to OSRO HR Wiki");
+            this.HRWikiButton.UseVisualStyleBackColor = false;
+            this.HRWikiButton.Click += new System.EventHandler(this.HRWikiButton_Click);
+            // 
+            // OSROQuestsButtonToolTip
+            // 
+            this.OSROQuestsButtonToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
+            // cbDeactivated
+            // 
+            this.cbDeactivated.AutoCheck = false;
+            this.cbDeactivated.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDeactivated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbDeactivated.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbDeactivated.Location = new System.Drawing.Point(10, 60);
+            this.cbDeactivated.Name = "cbDeactivated";
+            this.cbDeactivated.Size = new System.Drawing.Size(24, 24);
+            this.cbDeactivated.TabIndex = 2;
+            this.cbDeactivated.ThreeState = true;
+            this.cbDeactivated.UseVisualStyleBackColor = true;
+            // 
+            // cbWithNoClick
+            // 
+            this.cbWithNoClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWithNoClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbWithNoClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbWithNoClick.Location = new System.Drawing.Point(10, 40);
+            this.cbWithNoClick.Name = "cbWithNoClick";
+            this.cbWithNoClick.Size = new System.Drawing.Size(24, 24);
+            this.cbWithNoClick.TabIndex = 1;
+            this.cbWithNoClick.ThreeState = true;
+            this.cbWithNoClick.UseVisualStyleBackColor = true;
+            // 
+            // cbWithClick
+            // 
+            this.cbWithClick.Checked = true;
+            this.cbWithClick.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbWithClick.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWithClick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.cbWithClick.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbWithClick.Location = new System.Drawing.Point(10, 20);
+            this.cbWithClick.Name = "cbWithClick";
+            this.cbWithClick.Size = new System.Drawing.Size(24, 24);
+            this.cbWithClick.TabIndex = 0;
+            this.cbWithClick.ThreeState = true;
+            this.cbWithClick.UseVisualStyleBackColor = true;
             // 
             // chkS
             // 
@@ -989,159 +1146,6 @@ namespace _ORTools.Forms
             this.chkW.ThreeState = true;
             this.chkW.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.chkToggleMode);
-            this.groupBox4.Controls.Add(this.txtToggleModeKey);
-            this.groupBox4.Controls.Add(this.pictureBox2);
-            this.groupBox4.Controls.Add(this.pictureBox3);
-            this.groupBox4.Controls.Add(this.chkMouseFlick);
-            this.groupBox4.Controls.Add(this.chkNoShift);
-            this.groupBox4.Location = new System.Drawing.Point(15, 229);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(456, 49);
-            this.groupBox4.TabIndex = 43;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Key Config";
-            // 
-            // chkToggleMode
-            // 
-            this.chkToggleMode.AutoSize = true;
-            this.chkToggleMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkToggleMode.Location = new System.Drawing.Point(297, 20);
-            this.chkToggleMode.Margin = new System.Windows.Forms.Padding(0);
-            this.chkToggleMode.Name = "chkToggleMode";
-            this.chkToggleMode.Size = new System.Drawing.Size(87, 17);
-            this.chkToggleMode.TabIndex = 50;
-            this.chkToggleMode.Text = "Toggle Mode";
-            this.chkToggleMode.UseVisualStyleBackColor = true;
-            this.chkToggleMode.CheckedChanged += new System.EventHandler(this.ChkToggleMode_CheckedChanged);
-            // 
-            // txtToggleModeKey
-            // 
-            this.txtToggleModeKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtToggleModeKey.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToggleModeKey.Location = new System.Drawing.Point(387, 16);
-            this.txtToggleModeKey.Name = "txtToggleModeKey";
-            this.txtToggleModeKey.Size = new System.Drawing.Size(55, 23);
-            this.txtToggleModeKey.TabIndex = 51;
-            this.txtToggleModeKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::_ORTools.Resources.Media.Icons.shift;
-            this.pictureBox2.Location = new System.Drawing.Point(233, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 35;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::_ORTools.Resources.Media.Icons.up_and_down_arrow;
-            this.pictureBox3.Location = new System.Drawing.Point(95, 20);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 35;
-            this.pictureBox3.TabStop = false;
-            // 
-            // chkMouseFlick
-            // 
-            this.chkMouseFlick.AutoSize = true;
-            this.chkMouseFlick.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkMouseFlick.Location = new System.Drawing.Point(12, 21);
-            this.chkMouseFlick.Name = "chkMouseFlick";
-            this.chkMouseFlick.Size = new System.Drawing.Size(80, 17);
-            this.chkMouseFlick.TabIndex = 38;
-            this.chkMouseFlick.Text = "Mouse Flick";
-            this.chkMouseFlick.UseVisualStyleBackColor = true;
-            this.chkMouseFlick.CheckedChanged += new System.EventHandler(this.ChkMouseFlick_CheckedChanged);
-            // 
-            // chkNoShift
-            // 
-            this.chkNoShift.AutoSize = true;
-            this.chkNoShift.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkNoShift.Location = new System.Drawing.Point(168, 21);
-            this.chkNoShift.Margin = new System.Windows.Forms.Padding(0);
-            this.chkNoShift.Name = "chkNoShift";
-            this.chkNoShift.Size = new System.Drawing.Size(64, 17);
-            this.chkNoShift.TabIndex = 39;
-            this.chkNoShift.Text = "No Shift";
-            this.chkNoShift.UseVisualStyleBackColor = true;
-            this.chkNoShift.CheckedChanged += new System.EventHandler(this.ChkNoShift_CheckedChanged);
-            // 
-            // ServerBanner
-            // 
-            this.ServerBanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ServerBanner.Image = global::_ORTools.Resources.Media.Icons.server_banner;
-            this.ServerBanner.Location = new System.Drawing.Point(-11, 289);
-            this.ServerBanner.Name = "ServerBanner";
-            this.ServerBanner.Size = new System.Drawing.Size(639, 106);
-            this.ServerBanner.TabIndex = 44;
-            this.ServerBanner.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(140, 393);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "OSRO Midrate";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(414, 393);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "OSRO Highrate";
-            // 
-            // MRWikiButton
-            // 
-            this.MRWikiButton.BackColor = System.Drawing.Color.White;
-            this.MRWikiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.MRWikiButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MRWikiButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.MRWikiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MRWikiButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MRWikiButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
-            this.MRWikiButton.Location = new System.Drawing.Point(138, 409);
-            this.MRWikiButton.Margin = new System.Windows.Forms.Padding(0);
-            this.MRWikiButton.Name = "MRWikiButton";
-            this.MRWikiButton.Size = new System.Drawing.Size(80, 32);
-            this.MRWikiButton.TabIndex = 47;
-            this.MRWikiButton.Text = "Wiki";
-            this.MRWikiButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.MRWikiButtonToolTip.SetToolTip(this.MRWikiButton, "Link to OSRO MR Wiki");
-            this.MRWikiButton.UseVisualStyleBackColor = false;
-            this.MRWikiButton.Click += new System.EventHandler(this.MRWikiButton_Click);
-            // 
-            // HRWikiButton
-            // 
-            this.HRWikiButton.BackColor = System.Drawing.Color.White;
-            this.HRWikiButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.HRWikiButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HRWikiButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.HRWikiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HRWikiButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HRWikiButton.Image = global::_ORTools.Resources.Media.Icons.url_green;
-            this.HRWikiButton.Location = new System.Drawing.Point(419, 409);
-            this.HRWikiButton.Margin = new System.Windows.Forms.Padding(0);
-            this.HRWikiButton.Name = "HRWikiButton";
-            this.HRWikiButton.Size = new System.Drawing.Size(80, 32);
-            this.HRWikiButton.TabIndex = 48;
-            this.HRWikiButton.Text = "Wiki";
-            this.HRWikiButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HRWikiButtonToolTip.SetToolTip(this.HRWikiButton, "Link to OSRO HR Wiki");
-            this.HRWikiButton.UseVisualStyleBackColor = false;
-            this.HRWikiButton.Click += new System.EventHandler(this.HRWikiButton_Click);
-            // 
             // OSROQuestsButton
             // 
             this.OSROQuestsButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1153,10 +1157,6 @@ namespace _ORTools.Forms
             this.OSROQuestsButton.TabStop = false;
             this.OSROQuestsButtonToolTip.SetToolTip(this.OSROQuestsButton, "Link to OSRO Quests Helper");
             this.OSROQuestsButton.Click += new System.EventHandler(this.OSROQuestsButton_Click);
-            // 
-            // OSROQuestsButtonToolTip
-            // 
-            this.OSROQuestsButtonToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // SkillSpammerForm
             // 
@@ -1326,7 +1326,7 @@ namespace _ORTools.Forms
         private ToolTip HRWikiButtonToolTip;
         private CheckBox chkToggleMode;
         private TextBox txtToggleModeKey;
-        private PictureBox OSROQuestsButton;
         private ToolTip OSROQuestsButtonToolTip;
+        private PictureBox OSROQuestsButton;
     }
 }

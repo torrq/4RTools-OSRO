@@ -12,10 +12,10 @@ namespace _ORTools.Utils
 
         public static string Name = "OSRO Tools";
         public static string Version = "v1.0.10";
-        public static decimal ConfigVersion = 1;
+        public static decimal ConfigVersion = 0;
 
         // 0 = Mid-rate, 1 = High-rate
-        public static int ServerMode = 0;
+        public static int ServerMode = 1;
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = false;

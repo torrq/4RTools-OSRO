@@ -47,7 +47,9 @@ namespace _ORTools.Model
 
         public bool IsTimerRunning => isTimerRunning;
 
-        public int MaxMinutes => AppConfig.ServerMode == 1 ? EIGHT_HOURS : FIVE_HOURS;
+        private const int BUFFER_MINUTES = 30;
+        public int MaxMinutes =>
+            (AppConfig.ServerMode == 1 ? EIGHT_HOURS : FIVE_HOURS) + BUFFER_MINUTES;
 
         public int MinMinutes => MIN_MINUTES;
 
