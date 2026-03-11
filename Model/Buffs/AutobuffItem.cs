@@ -242,7 +242,7 @@ namespace _ORTools.Model
                     DebugLogger.Debug($"AutoBuffItem: Thread exception: {ex.Message}");
                 }
 
-                Thread.Sleep(300);
+                Thread.Sleep(this.Delay);
                 return 0;
             }, "AutobuffItem");
 
@@ -419,4 +419,4 @@ namespace _ORTools.Model
             lastSuccessfulRead = DateTime.Now;
         }
     }
-}
+}

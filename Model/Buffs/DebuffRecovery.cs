@@ -172,7 +172,7 @@ namespace _ORTools.Model
                     {
                         if (int.TryParse(configData["Delay"].ToString(), out int delay))
                         {
-                            this.Delay = Math.Max(100, delay); // Minimum 100ms delay
+                            this.Delay = delay;
                         }
                     }
                     return;
@@ -196,7 +196,7 @@ namespace _ORTools.Model
 
                     if (oldDebuffRecovery.Delay > 0)
                     {
-                        this.Delay = Math.Max(100, oldDebuffRecovery.Delay);
+                        this.Delay = oldDebuffRecovery.Delay;
                     }
                 }
             }
@@ -312,4 +312,4 @@ namespace _ORTools.Model
             lastSuccessfulRead = DateTime.Now;
         }
     }
-}
+}

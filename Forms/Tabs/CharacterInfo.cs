@@ -10,6 +10,14 @@ namespace _ORTools.Forms
     {
         private string mapLink = "";
 
+        // How old a cache entry can be before we consider macros "off" and do a full read
+        private static readonly TimeSpan CacheStaleThreshold = TimeSpan.FromSeconds(2);
+
+        // Slow full-refresh interval when macros aren't running
+        private const int SLOW_REFRESH_MS = 2000;
+
+        private readonly Timer _refreshTimer;
+
         public CharacterInfo()
         {
             InitializeComponent();
@@ -20,6 +28,14 @@ namespace _ORTools.Forms
 
             this.characterMapLabel.Cursor = Cursors.Hand;
             this.characterMapLabel.Click += CharacterMapLabel_Click;
+
+            _refreshTimer = new Timer { Interval = 15 };
+            _refreshTimer.Tick += RefreshTick;
+            _refreshTimer.Start();
+
+            // Register with the designer's components container so Dispose() in Designer.cs cleans it up
+            if (components == null) components = new System.ComponentModel.Container();
+            components.Add(_refreshTimer);
         }
 
         public string CharacterNameLabel
@@ -44,6 +60,57 @@ namespace _ORTools.Forms
         {
             get { return mapLink; }
             set { mapLink = value ?? ""; }
+        }
+
+        private DateTime _lastSlowRefresh = DateTime.MinValue;
+
+        /// <summary>
+        /// Timer callback — fires every 500 ms on the UI thread.
+        /// Uses the HpSpCache written by macro threads when fresh; falls back to a
+        /// full re-read every SLOW_REFRESH_MS when macros are idle.
+        /// </summary>
+        private void RefreshTick(object sender, EventArgs e)
+        {
+            Client client = ClientSingleton.GetClient();
+            if (client?.Process == null || client.Process.HasExited || !client.IsLoggedIn)
+            {
+                ClearLabels();
+                return;
+            }
+
+            var cached = HpSpCache.Latest;
+            bool cacheIsFresh = cached.IsValid &&
+                                (DateTime.UtcNow - cached.Timestamp) < CacheStaleThreshold;
+
+            if (cacheIsFresh)
+            {
+                // Fast path — just repaint the HP/SP line; no RPM call needed
+                UpdateHpSpLine(cached.Snapshot);
+            }
+            else
+            {
+                // Macros aren't running; do a full refresh at a slower rate
+                if ((DateTime.UtcNow - _lastSlowRefresh).TotalMilliseconds >= SLOW_REFRESH_MS)
+                {
+                    _lastSlowRefresh = DateTime.UtcNow;
+                    UpdateCharacterInfo(client);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates only the HP/SP line from an already-read snapshot — zero RPM calls.
+        /// </summary>
+        public void UpdateHpSpLine(Client.HpSpSnapshot snap)
+        {
+            if (snap.MaxHp == 0) return; // zeroed snapshot, nothing useful
+            string hpLine = $"HP {snap.CurrentHp} / {snap.MaxHp} | SP {snap.CurrentSp} / {snap.MaxSp}";
+
+            // CharacterInfoLabel is "line1\nline2" — preserve line1, replace line2
+            string current = this.CharacterInfoLabel;
+            int nl = current.IndexOf('\n');
+            string line1 = nl >= 0 ? current.Substring(0, nl) : current;
+            this.CharacterInfoLabel = line1 + "\n" + hpLine;
         }
 
         private void ClearLabels()

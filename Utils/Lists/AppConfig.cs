@@ -18,10 +18,10 @@ namespace _ORTools.Utils
         public static int ServerMode = 0;
 
         // Set to true for pre-release versions, false for stable releases
-        public static bool preRelease = false;
+        public static bool preRelease = true;
 
-        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260206)" : "")}";
-        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260206)" : "")}";
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260311)" : "")}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (BETA 20260311)" : "")}";
 
         #endregion
 

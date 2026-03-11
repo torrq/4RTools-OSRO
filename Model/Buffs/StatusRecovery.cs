@@ -257,7 +257,7 @@ namespace _ORTools.Model
                     {
                         if (int.TryParse(configData["Delay"].ToString(), out int delay))
                         {
-                            this.Delay = Math.Max(100, delay); // Minimum 100ms delay
+                            this.Delay = delay;
                         }
                     }
                     return;
@@ -308,7 +308,7 @@ namespace _ORTools.Model
                     // Copy other properties if they exist
                     if (oldStatusRecovery.Delay > 0)
                     {
-                        this.Delay = Math.Max(100, oldStatusRecovery.Delay);
+                        this.Delay = oldStatusRecovery.Delay;
                     }
                 }
             }
@@ -416,4 +416,4 @@ namespace _ORTools.Model
             return Statuses.Contains(status);
         }
     }
-}
+}

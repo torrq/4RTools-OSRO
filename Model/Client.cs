@@ -432,19 +432,22 @@ namespace _ORTools.Model
         /// Reads CurrentHp, MaxHp, CurrentSp, MaxSp in a single 16-byte
         /// ReadProcessMemory call instead of four separate 4-byte calls.
         /// Returns a zeroed snapshot on failure.
+        /// Also pushes the result into HpSpCache for the character info panel.
         /// </summary>
         public HpSpSnapshot ReadHpSp()
         {
             if (CurrentHPBaseAddress == 0) return default;
             byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentHPBaseAddress, 16u, throwOnError: false);
             if (bytes == null || bytes.Length < 16) return default;
-            return new HpSpSnapshot
+            var snap = new HpSpSnapshot
             {
                 CurrentHp = BitConverter.ToUInt32(bytes, 0),
                 MaxHp     = BitConverter.ToUInt32(bytes, 4),
                 CurrentSp = BitConverter.ToUInt32(bytes, 8),
                 MaxSp     = BitConverter.ToUInt32(bytes, 12),
             };
+            HpSpCache.Push(snap);
+            return snap;
         }
 
         /// <summary>
@@ -701,6 +704,30 @@ namespace _ORTools.Model
                     _disposed = true;
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Shared, lock-free cache for the most recent HP/SP snapshot.
+    /// Written on every ReadHpSp() call (macro threads); read by CharacterInfo timer.
+    /// </summary>
+    public static class HpSpCache
+    {
+        private static volatile HpSpCacheEntry _entry = new HpSpCacheEntry();
+
+        public static void Push(Client.HpSpSnapshot snap)
+        {
+            _entry = new HpSpCacheEntry { Snapshot = snap, Timestamp = DateTime.UtcNow };
+        }
+
+        /// <summary>Returns the cached snapshot and its age. Returns null if never populated.</summary>
+        public static HpSpCacheEntry Latest => _entry;
+
+        public class HpSpCacheEntry
+        {
+            public Client.HpSpSnapshot Snapshot;
+            public DateTime Timestamp;
+            public bool IsValid => Timestamp != default;
         }
     }
 }

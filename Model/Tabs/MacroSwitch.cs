@@ -171,7 +171,7 @@ namespace _ORTools.Model
                     }
                 }
             }
-            Thread.Sleep(100);
+            Thread.Sleep(1);
             return 0;
         }
 
@@ -199,4 +199,4 @@ namespace _ORTools.Model
             }
         }
     }
-}
+}
