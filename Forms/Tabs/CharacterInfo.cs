@@ -46,6 +46,14 @@ namespace _ORTools.Forms
             set { mapLink = value ?? ""; }
         }
 
+        private void ClearLabels()
+        {
+            this.CharacterNameLabel = "";
+            this.CharacterInfoLabel = "";
+            this.CharacterMapLabel  = "";
+            this.MapLink            = "";
+        }
+
         /// <summary>
         /// Updates character information with client data and formats it for display
         /// </summary>
@@ -54,34 +62,33 @@ namespace _ORTools.Forms
             // Check if client is null, has no process, or is not logged in
             if (client?.Process == null || !IsClientLoggedIn(client))
             {
-                // Clear UI labels when no valid client is logged in
-                this.CharacterNameLabel = "";
-                this.CharacterInfoLabel = "";
-                this.CharacterMapLabel = "";
-                this.MapLink = "";
+                ClearLabels();
                 return;
             }
 
-            // Read character data
+            // Read all data in bulk — 3 RPM calls instead of 10
+            var hpSp   = client.ReadHpSp();
+            var jobSnap = client.ReadJobBlock();
+            string currentMap = client.ReadCurrentMap() ?? "";
             string characterName = client.ReadCharacterName();
-            int currentLevel = (int)client.ReadCurrentLevel();
-            int currentJobLevel = (int)client.ReadCurrentJobLevel();
-            int currentJobId = (int)client.ReadCurrentJob();
-            int currentExpToLevel = (int)client.ReadCurrentExpToLevel();
-            int currentExp = (int)client.ReadCurrentExp();
-            int currentHP = (int)client.ReadCurrentHp();
-            int currentMaxHP = (int)client.ReadMaxHp();
-            int currentSP = (int)client.ReadCurrentSp();
-            int currentMaxSP = (int)client.ReadMaxSp();
+
+            if (jobSnap == null) { ClearLabels(); return; }
+            var job = jobSnap.Value;
+
+            int currentLevel     = (int)job.Level;
+            int currentJobLevel  = (int)job.JobLevel;
+            int currentJobId     = (int)job.JobId;
+            int currentExpToLevel = (int)job.ExpToLevel;
+            int currentExp       = (int)job.Exp;
+            int currentHP        = (int)hpSp.CurrentHp;
+            int currentMaxHP     = (int)hpSp.MaxHp;
+            int currentSP        = (int)hpSp.CurrentSp;
+            int currentMaxSP     = (int)hpSp.MaxSp;
 
             // Validate data (example: check if level is reasonable)
             if (!IsValidCharacterData(currentLevel, currentJobLevel, currentHP, currentMaxHP))
             {
-                // Clear UI labels if data is invalid
-                this.CharacterNameLabel = "";
-                this.CharacterInfoLabel = "";
-                this.CharacterMapLabel = "";
-                this.MapLink = "";
+                ClearLabels();
                 return;
             }
 
@@ -109,8 +116,8 @@ namespace _ORTools.Forms
             // Update the form
             this.CharacterNameLabel = characterName;
             this.CharacterInfoLabel = clientDebugInfo;
-            this.CharacterMapLabel = client.ReadCurrentMap() ?? "";
-            this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + (client.ReadCurrentMap() ?? "");
+            this.CharacterMapLabel = currentMap;
+            this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + currentMap;
         }
 
         // Helper method to check if client is logged in
@@ -148,4 +155,4 @@ namespace _ORTools.Forms
             }
         }
     }
-}
+}

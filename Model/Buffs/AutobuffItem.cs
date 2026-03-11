@@ -103,27 +103,18 @@ namespace _ORTools.Model
 
                     if (!hadError && prefs != null)
                     {
-                        // Collect and log statuses always
+                        // Read entire status buffer in one RPM call instead of 99 individual reads
+                        var statusBuffer = c.ReadStatusBuffer();
                         var statusList = new List<(int index, uint statusId)>();
-                        bool statusReadError = false;
+                        bool statusReadError = statusBuffer == null;
 
-                        for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                        if (!statusReadError)
                         {
-                            try
+                            for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                             {
-                                uint currentStatus = c.CurrentBuffStatusCode(i);
-
+                                uint currentStatus = statusBuffer[i];
                                 if (StatusUtils.IsValidStatus(currentStatus))
-                                {
                                     statusList.Add((i, currentStatus));
-                                    //DebugLogger.Debug("currentStatus: " + i + ":" + currentStatus);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                DebugLogger.Debug($"AutoBuffItem: Error reading status at index {i}: {ex.Message}");
-                                statusReadError = true;
-                                break;
                             }
                         }
 
@@ -201,21 +192,22 @@ namespace _ORTools.Model
                                     }
                                 }
 
-                                // Collect and log statuses again after autobuff actions
+                                // Re-read status buffer in one call after autobuff actions
                                 if (!hadError)
                                 {
                                     try
                                     {
                                         statusList.Clear();
-                                        for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                                        var statusBuffer2 = c.ReadStatusBuffer();
+                                        if (statusBuffer2 != null)
                                         {
-                                            uint currentStatus = c.CurrentBuffStatusCode(i);
-                                            if (StatusUtils.IsValidStatus(currentStatus))
+                                            for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                                             {
-                                                statusList.Add((i, currentStatus));
+                                                uint currentStatus = statusBuffer2[i];
+                                                if (StatusUtils.IsValidStatus(currentStatus))
+                                                    statusList.Add((i, currentStatus));
                                             }
                                         }
-
                                         StatusEffectLogger.LogAllStatuses(statusList);
                                     }
                                     catch (Exception ex)

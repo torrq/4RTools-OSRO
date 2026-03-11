@@ -76,11 +76,17 @@ namespace _ORTools.Model
                     bool hadError = false;
                     bool foundAnyStatus = false;
 
-                    for (int i = 0; i <= Constants.MAX_BUFF_LIST_INDEX_SIZE - 1; i++)
+                    // Read entire status buffer in one RPM call instead of 100 individual reads
+                    var statusBuffer = c.ReadStatusBuffer();
+                    if (statusBuffer == null)
                     {
-                        try
+                        hadError = true;
+                    }
+                    else
+                    {
+                        for (int i = 0; i <= Constants.MAX_BUFF_LIST_INDEX_SIZE - 1; i++)
                         {
-                            uint currentStatus = c.CurrentBuffStatusCode(i);
+                            uint currentStatus = statusBuffer[i];
 
                             if (currentStatus == uint.MaxValue)
                             {
@@ -100,12 +106,6 @@ namespace _ORTools.Model
                                     DebugLogger.Debug($"DebuffRecovery: Used key {key} for status {status}");
                                 }
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            DebugLogger.Debug($"DebuffRecovery: Error reading status at index {i}: {ex.Message}");
-                            hadError = true;
-                            break; // Break the loop on error
                         }
                     }
 

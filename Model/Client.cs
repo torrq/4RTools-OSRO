@@ -406,7 +406,100 @@ namespace _ORTools.Model
             }
         }
 
-        // ORIGINAL WORKING METHODS - Keep these unchanged
+        // ── Bulk read helpers ─────────────────────────────────────────────────────
+
+        /// <summary>
+        /// HP/SP values captured in a single 16-byte read.
+        /// Offsets: CurrentHp+0, MaxHp+4, CurrentSp+8, MaxSp+12.
+        /// </summary>
+        public struct HpSpSnapshot
+        {
+            public uint CurrentHp;
+            public uint MaxHp;
+            public uint CurrentSp;
+            public uint MaxSp;
+
+            /// <summary>Returns true when HP is below <paramref name="percent"/>% of max.</summary>
+            public bool IsHpBelow(int percent) =>
+                CurrentHp * 100 < (uint)percent * MaxHp;
+
+            /// <summary>Returns true when SP is below <paramref name="percent"/>% of max.</summary>
+            public bool IsSpBelow(int percent) =>
+                CurrentSp * 100 < (uint)percent * MaxSp;
+        }
+
+        /// <summary>
+        /// Reads CurrentHp, MaxHp, CurrentSp, MaxSp in a single 16-byte
+        /// ReadProcessMemory call instead of four separate 4-byte calls.
+        /// Returns a zeroed snapshot on failure.
+        /// </summary>
+        public HpSpSnapshot ReadHpSp()
+        {
+            if (CurrentHPBaseAddress == 0) return default;
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentHPBaseAddress, 16u, throwOnError: false);
+            if (bytes == null || bytes.Length < 16) return default;
+            return new HpSpSnapshot
+            {
+                CurrentHp = BitConverter.ToUInt32(bytes, 0),
+                MaxHp     = BitConverter.ToUInt32(bytes, 4),
+                CurrentSp = BitConverter.ToUInt32(bytes, 8),
+                MaxSp     = BitConverter.ToUInt32(bytes, 12),
+            };
+        }
+
+        /// <summary>
+        /// Job/level/exp values captured in a single read spanning
+        /// CurrentJobAddress+0 through CurrentJobAddress+(12*4)=+48 bytes (13 uint slots).
+        /// Slot layout differs by ServerMode — see ReadCurrentLevel/Exp for offsets.
+        /// </summary>
+        public struct JobSnapshot
+        {
+            private readonly uint[] _slots;
+            private readonly int _mode;
+
+            public JobSnapshot(uint[] slots, int mode) { _slots = slots; _mode = mode; }
+
+            public uint JobId        => _slots[0];
+            public uint Exp          => _mode == 1 ? _slots[2]  : _slots[1];
+            public uint ExpToLevel   => _mode == 1 ? _slots[4]  : _slots[3];
+            public uint Level        => _mode == 1 ? _slots[10] : _slots[9];
+            public uint JobLevel     => _mode == 1 ? _slots[12] : _slots[11];
+        }
+
+        /// <summary>
+        /// Reads job/level/exp data in a single 52-byte ReadProcessMemory call
+        /// instead of five individual 4-byte calls.
+        /// Returns null on failure.
+        /// </summary>
+        public JobSnapshot? ReadJobBlock()
+        {
+            if (CurrentJobAddress == 0) return null;
+            // Need slots 0-12 → 13 uints → 52 bytes
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)CurrentJobAddress, 52u, throwOnError: false);
+            if (bytes == null || bytes.Length < 52) return null;
+            var slots = new uint[13];
+            for (int i = 0; i < 13; i++)
+                slots[i] = BitConverter.ToUInt32(bytes, i * 4);
+            return new JobSnapshot(slots, AppConfig.ServerMode);
+        }
+
+
+        /// (MAX_BUFF_LIST_INDEX_SIZE × 4 bytes) instead of one call per index.
+        /// Returns null on failure; otherwise an array of length MAX_BUFF_LIST_INDEX_SIZE.
+        /// </summary>
+        public uint[] ReadStatusBuffer()
+        {
+            if (StatusBufferAddress == 0) return null;
+            int count = Constants.MAX_BUFF_LIST_INDEX_SIZE;
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)StatusBufferAddress, (uint)(count * 4), throwOnError: false);
+            if (bytes == null || bytes.Length < count * 4) return null;
+            var result = new uint[count];
+            for (int i = 0; i < count; i++)
+                result[i] = BitConverter.ToUInt32(bytes, i * 4);
+            return result;
+        }
+
+        // ── Individual reads (kept for single-value use-cases) ────────────────
         private string ReadMemoryAsString(int address)
         {
             // use the convenience overload (no out param)
@@ -610,4 +703,4 @@ namespace _ORTools.Model
             }
         }
     }
-}
+}

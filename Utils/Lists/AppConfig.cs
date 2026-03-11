@@ -15,7 +15,7 @@ namespace _ORTools.Utils
         public static decimal ConfigVersion = 0;
 
         // 0 = Mid-rate, 1 = High-rate
-        public static int ServerMode = 1;
+        public static int ServerMode = 0;
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = false;

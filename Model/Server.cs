@@ -8,7 +8,7 @@ namespace _ORTools.Model
 {
     internal static class Server
     {
-        private static List<string> cityList;
+        private static HashSet<string> cityList;
 
         public static string GetCitiesFile()
         {
@@ -95,7 +95,7 @@ namespace _ORTools.Model
             }
         }
 
-        public static List<string> GetCityList()
+        public static HashSet<string> GetCityList()
         {
             if (cityList == null || cityList.Count == 0)
             {
@@ -104,20 +104,21 @@ namespace _ORTools.Model
                 if (string.IsNullOrEmpty(localCities))
                 {
                     DebugLogger.Warning($"{AppConfig.CitiesFile} is empty or could not be read");
-                    return new List<string>();
+                    return new HashSet<string>();
                 }
 
                 try
                 {
-                    cityList = JsonConvert.DeserializeObject<List<string>>(localCities);
+                    var list = JsonConvert.DeserializeObject<List<string>>(localCities);
+                    cityList = new HashSet<string>(list, StringComparer.OrdinalIgnoreCase);
                 }
                 catch (Exception ex)
                 {
                     DebugLogger.Error(ex, $"Error deserializing {AppConfig.CitiesFile}");
-                    return new List<string>();
+                    return new HashSet<string>();
                 }
             }
             return cityList;
         }
     }
-}
+}

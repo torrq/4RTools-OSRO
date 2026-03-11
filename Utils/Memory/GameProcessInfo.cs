@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using _ORTools.Model;
+
 namespace _ORTools.Utils
 {
     public class GameProcessInfo
@@ -12,11 +14,15 @@ namespace _ORTools.Utils
         public string CharacterName { get; set; }
         public string CurrentMap { get; set; }
 
-        public GameProcessInfo(string processText, string characterName, string currentMap)
+        /// <summary>Already-opened Client built during list refresh — reused on selection to avoid a second OpenProcess.</summary>
+        public Client CachedClient { get; set; }
+
+        public GameProcessInfo(string processText, string characterName, string currentMap, Client cachedClient = null)
         {
             ProcessText = processText;
             CharacterName = characterName;
             CurrentMap = currentMap;
+            CachedClient = cachedClient;
         }
 
         public override string ToString()
@@ -24,4 +30,4 @@ namespace _ORTools.Utils
             return ProcessText;
         }
     }
-}
+}

@@ -107,15 +107,17 @@ namespace _ORTools.Model
                     {
                         if (!prefs.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
                         {
+                            // Read entire status buffer in one RPM call instead of 99 individual reads
+                            var statusBuffer = c.ReadStatusBuffer();
                             List<EffectStatusIDs> currentBuffs = new List<EffectStatusIDs>();
                             Dictionary<EffectStatusIDs, Keys> buffsToApply = new Dictionary<EffectStatusIDs, Keys>(this.buffMapping);
-                            bool statusReadError = false;
+                            bool statusReadError = statusBuffer == null;
 
-                            for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                            if (!statusReadError)
                             {
-                                try
+                                for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
                                 {
-                                    uint currentStatusValue = c.CurrentBuffStatusCode(i);
+                                    uint currentStatusValue = statusBuffer[i];
 
                                     if (currentStatusValue == uint.MaxValue) { continue; }
 
@@ -136,12 +138,6 @@ namespace _ORTools.Model
 
                                     if (status == EffectStatusIDs.WZ_QUAGMIRE) foundQuag = true;
                                     if (status == EffectStatusIDs.AL_DECAGI) foundDecreaseAgi = true;
-                                }
-                                catch (Exception ex)
-                                {
-                                    DebugLogger.Debug($"AutoBuffSkill: Error reading status at index {i}: {ex.Message}");
-                                    statusReadError = true;
-                                    break;
                                 }
                             }
 

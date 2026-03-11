@@ -447,16 +447,16 @@ namespace _ORTools.Forms
         private void ProcessCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (processCB.SelectedIndex < 0) return;
-            string selectedProcessString = (processCB.SelectedItem as GameProcessInfo)?.ProcessText;
-            if (string.IsNullOrEmpty(selectedProcessString)) return;
+            var info = processCB.SelectedItem as GameProcessInfo;
+            if (info == null || string.IsNullOrEmpty(info.ProcessText)) return;
 
-            // Create Client to check login status
-            Client client = new Client(selectedProcessString);
+            // Reuse the Client already opened during list refresh; fall back to constructing a new one only if needed
+            Client client = info.CachedClient ?? new Client(info.ProcessText);
 
             // Check if the client is logged in
             if (!client.IsLoggedIn)
             {
-                DebugLogger.Warning($"Process selected: {selectedProcessString} - No logged-in memory found.");
+                DebugLogger.Warning($"Process selected: {info.ProcessText} - No logged-in memory found.");
                 processCB.SelectedIndex = -1; // Deselect the combo box
                 return;
             }
@@ -470,7 +470,7 @@ namespace _ORTools.Forms
             }
             else
             {
-                DebugLogger.Warning($"Process selected: {selectedProcessString} - Process instance not available in Client object.");
+                DebugLogger.Warning($"Process selected: {info.ProcessText} - Process instance not available in Client object.");
             }
 
             // Update character info with formatting
@@ -567,47 +567,53 @@ namespace _ORTools.Forms
                 return;
             }
 
-            if (this.InvokeRequired)
-            {
-                this.Invoke((MethodInvoker)RefreshProcessList);
-                return;
-            }
+            // Snapshot known process names on the UI thread (cheap — it's just a List lookup)
+            var knownNames = ClientListSingleton.GetAll()
+                .Select(c => c.ProcessName)
+                .Distinct()
+                .ToList();
 
-            try
+            // Do all the slow work (GetProcessesByName, OpenProcess, memory reads) on a thread-pool thread
+            System.Threading.ThreadPool.QueueUserWorkItem(_ =>
             {
-                processCB.BeginUpdate();
-                processCB.Items.Clear();
-                this.maxDropDownWidth = 150;
-
                 var processItems = new List<GameProcessInfo>();
 
-                foreach (Process p in Process.GetProcesses())
+                try
                 {
-                    if (p.MainWindowTitle != "" && ClientListSingleton.ExistsByProcessName(p.ProcessName))
+                    foreach (string name in knownNames)
                     {
-                        try
+                        // GetProcessesByName is much faster than GetProcesses() for known names
+                        foreach (Process p in Process.GetProcessesByName(name))
                         {
-                            string processText = $"{p.ProcessName}.exe - {p.Id}";
-                            Client client = new Client(processText);
+                            try
+                            {
+                                if (string.IsNullOrEmpty(p.MainWindowTitle)) continue;
 
-                            // Only add processes with valid logged-in memory
-                            if (client.IsLoggedIn)
-                            {
-                                string characterName = client.ReadCharacterName();
-                                string currentMap = client.ReadCurrentMap();
-                                processItems.Add(new GameProcessInfo(processText, characterName, currentMap));
-                                DebugLogger.Info($"Added process to list: {processText} (Character: {characterName}, Map: {currentMap})");
+                                string processText = $"{p.ProcessName}.exe - {p.Id}";
+                                Client client = new Client(processText);
+
+                                if (client.IsLoggedIn)
+                                {
+                                    string characterName = client.ReadCharacterName();
+                                    string currentMap    = client.ReadCurrentMap();
+                                    processItems.Add(new GameProcessInfo(processText, characterName, currentMap, client));
+                                    DebugLogger.Info($"Added process to list: {processText} (Character: {characterName}, Map: {currentMap})");
+                                }
+                                else
+                                {
+                                    DebugLogger.Warning($"Skipped process: {processText} - No logged-in memory found.");
+                                }
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                DebugLogger.Warning($"Skipped process: {processText} - No logged-in memory found.");
+                                DebugLogger.Warning($"Skipped process due to error: {p.ProcessName} ({p.Id}) - {ex.Message}");
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            DebugLogger.Warning($"Skipped process due to error: {p.ProcessName} ({p.Id}) - {ex.Message}");
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    DebugLogger.Error($"Failed to enumerate processes: {ex.Message}");
                 }
 
                 var sortedItems = processItems
@@ -615,38 +621,36 @@ namespace _ORTools.Forms
                         (string.IsNullOrEmpty(item.CharacterName) && string.IsNullOrEmpty(item.CurrentMap)) ? 1 : 0)
                     .ThenBy(item =>
                     {
-                        try
-                        {
-                            string[] parts = item.ProcessText.Split('-');
-                            if (parts.Length >= 2)
-                            {
-                                string idPart = parts.Last().Trim();
-                                if (int.TryParse(idPart, out int id))
-                                    return id;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            DebugLogger.Warning($"Failed to parse process ID from: {item.ProcessText}. Error: {ex.Message}");
-                        }
+                        string[] parts = item.ProcessText.Split('-');
+                        if (parts.Length >= 2 && int.TryParse(parts.Last().Trim(), out int id))
+                            return id;
                         return int.MaxValue;
-                    });
+                    })
+                    .ToList();
 
-                foreach (var item in sortedItems)
+                // Marshal the final UI update back onto the UI thread
+                if (this.IsDisposed) return;
+                this.BeginInvoke((System.Windows.Forms.MethodInvoker)(() =>
                 {
-                    processCB.Items.Add(item);
-                }
-
-                DebugLogger.Info($"Process list refreshed with {processCB.Items.Count} items.");
-            }
-            catch (Exception ex)
-            {
-                DebugLogger.Error($"Failed to refresh process list: {ex.Message}");
-            }
-            finally
-            {
-                processCB.EndUpdate();
-            }
+                    try
+                    {
+                        processCB.BeginUpdate();
+                        processCB.Items.Clear();
+                        this.maxDropDownWidth = 150;
+                        foreach (var item in sortedItems)
+                            processCB.Items.Add(item);
+                        DebugLogger.Info($"Process list refreshed with {processCB.Items.Count} items.");
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugLogger.Error($"Failed to update process list UI: {ex.Message}");
+                    }
+                    finally
+                    {
+                        processCB.EndUpdate();
+                    }
+                }));
+            });
         }
 
         protected override void OnClosed(EventArgs e)
@@ -1037,4 +1041,4 @@ namespace _ORTools.Forms
             this.SetStyle(ControlStyles.Selectable, false);
         }
     }
-}
+}
