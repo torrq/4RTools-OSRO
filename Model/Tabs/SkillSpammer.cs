@@ -89,6 +89,7 @@ namespace _ORTools.Model
                 {
                     ThreadRunner.Stop(this.thread);
                     this.thread.Terminate();
+                    this.thread = null;
                 }
 
                 this.thread = new ThreadRunner(_ => SkillSpammerThread(roClient), "SkillSpammerThread");

@@ -328,10 +328,6 @@ namespace _ORTools.Model
                 consecutiveErrors = 0;
                 lastSuccessfulRead = DateTime.Now;
 
-                if (this.thread != null)
-                {
-                    ThreadRunner.Stop(this.thread);
-                }
                 this.thread = StatusRecoveryThread(roClient);
                 ThreadRunner.Start(this.thread);
             }

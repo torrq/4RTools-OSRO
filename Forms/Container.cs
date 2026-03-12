@@ -252,7 +252,7 @@ namespace _ORTools.Forms
 
         private void processCB_DrawItem(object sender, DrawItemEventArgs e)
         {
-            if (e.Index < 0) return;
+            if (e.Index < 0 || e.Index >= processCB.Items.Count) return;
 
             var item = processCB.Items[e.Index] as GameProcessInfo;
             if (item == null) return;
@@ -864,6 +864,7 @@ namespace _ORTools.Forms
                 MdiParent = this
             };
             frm.Show();
+            FormHelper.StateSwitchFormInstance = frm;
             return frm;
         }
 

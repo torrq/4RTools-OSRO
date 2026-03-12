@@ -183,6 +183,8 @@ namespace _ORTools.Model
                 if (this.thread != null)
                 {
                     ThreadRunner.Stop(this.thread);
+                    this.thread.Terminate();
+                    this.thread = null;
                 }
                 this.thread = new ThreadRunner((_) => MacroThread(roClient), "MacroSwitch");
                 ThreadRunner.Start(this.thread);
@@ -199,4 +201,4 @@ namespace _ORTools.Model
             }
         }
     }
-}
+}

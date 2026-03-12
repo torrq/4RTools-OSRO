@@ -13,6 +13,9 @@ namespace _ORTools.Utils
 {
     public static class FormHelper
     {
+        // Cached on the UI thread when StateSwitchForm is created; avoids Application.OpenForms lookup from background threads
+        public static StateSwitchForm StateSwitchFormInstance { get; set; }
+
         public static void ApplyColorToButtons(Control parentControl, string[] buttonNames, Color color)
         {
             if (buttonNames == null || buttonNames.Length == 0) return;
@@ -38,10 +41,13 @@ namespace _ORTools.Utils
 
         public static void ToggleStateOff(string DebugLogType = "FormHelper")
         {
-            var frmStateSwitch = (StateSwitchForm)Application.OpenForms["StateSwitchForm"];
-            if (frmStateSwitch != null)
+            var frmStateSwitch = StateSwitchFormInstance;
+            if (frmStateSwitch != null && !frmStateSwitch.IsDisposed)
             {
-                frmStateSwitch.TurnOFF();
+                if (frmStateSwitch.InvokeRequired)
+                    frmStateSwitch.BeginInvoke((System.Windows.Forms.MethodInvoker)(() => frmStateSwitch.TurnOFF()));
+                else
+                    frmStateSwitch.TurnOFF();
             }
             else
             {
