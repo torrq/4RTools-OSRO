@@ -102,6 +102,20 @@ namespace _ORTools.Utils
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
         #endregion
 
+        #region Timer Resolution
+        /// <summary>
+        /// Sets the minimum timer resolution (in milliseconds).
+        /// Call timeBeginPeriod(1) at startup to enable 1ms Thread.Sleep accuracy.
+        /// Must be paired with a matching timeEndPeriod(1) on shutdown.
+        /// </summary>
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod", SetLastError = true)]
+        public static extern uint timeBeginPeriod(uint uMilliseconds);
+
+        /// <summary>Clears a minimum timer resolution previously set by timeBeginPeriod.</summary>
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod", SetLastError = true)]
+        public static extern uint timeEndPeriod(uint uMilliseconds);
+        #endregion
+
         #region Hook Operations
         /// <summary>Installs a hook procedure to monitor system events.</summary>
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]

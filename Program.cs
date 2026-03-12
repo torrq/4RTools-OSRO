@@ -9,6 +9,10 @@ namespace _ORTools
         [STAThread]
         static void Main()
         {
+            // Set Windows timer resolution to 1ms so Thread.Sleep(1/5/etc.) is accurate.
+            // Default is ~15.6ms which makes every short sleep wildly over-sleep.
+            Win32Interop.timeBeginPeriod(1);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -26,6 +30,7 @@ namespace _ORTools
             }
             finally
             {
+                Win32Interop.timeEndPeriod(1);
                 DebugLogger.Info("Application exiting...");
                 Application.Exit();
             }

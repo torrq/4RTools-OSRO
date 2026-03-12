@@ -21,6 +21,25 @@ namespace _ORTools.Model
 
         private readonly Dictionary<int, ThreadRunner> threads = new Dictionary<int, ThreadRunner>();
 
+        // Map cache — shared across all timer threads; avoids an RPM call every tick.
+        // Refreshed at most once per second so city-check stays accurate without hammering memory.
+        private string _cachedMap = string.Empty;
+        private DateTime _mapCacheTime = DateTime.MinValue;
+        private readonly object _mapCacheLock = new object();
+
+        private string GetCurrentMapCached(Client roClient)
+        {
+            lock (_mapCacheLock)
+            {
+                if ((DateTime.UtcNow - _mapCacheTime).TotalMilliseconds > 1000)
+                {
+                    _cachedMap = roClient.ReadCurrentMap();
+                    _mapCacheTime = DateTime.UtcNow;
+                }
+                return _cachedMap;
+            }
+        }
+
         public void Start()
         {
             Client roClient = ClientSingleton.GetClient();
@@ -57,7 +76,7 @@ namespace _ORTools.Model
             if (skillTimer.TryGetValue(timerId, out var macro) && macro.Enabled)
             {
                 // Respect the StopBuffsCity setting - if enabled and we're in a city, don't start the timer
-                string currentMap = roClient.ReadCurrentMap();
+                string currentMap = GetCurrentMapCached(roClient);
                 if (ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity && Server.GetCityList().Contains(currentMap))
                 {
                     // Don't start timer if we're in a city and StopBuffsCity is enabled
@@ -94,7 +113,7 @@ namespace _ORTools.Model
 
         private int SkillTimerThread(Client roClient, SkillTimerKey macro)
         {
-            string currentMap = roClient.ReadCurrentMap();
+            string currentMap = GetCurrentMapCached(roClient);
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
                 IntPtr hWnd = roClient.Process.MainWindowHandle;
@@ -144,9 +163,9 @@ namespace _ORTools.Model
 
         private void TryClickAtCurrentPosition(IntPtr hWnd)
         {
-            Win32Interop.SendMessage(hWnd, Constants.WM_LBUTTONDOWN, (IntPtr)1, IntPtr.Zero);
-            Thread.Sleep(25);
-            Win32Interop.SendMessage(hWnd, Constants.WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
+            Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONDOWN, Keys.LButton, 0);
+            Thread.Sleep(5);
+            Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONUP, Keys.None, 0);
         }
 
         private void TryClickAtCenter(IntPtr hWnd)
@@ -167,10 +186,10 @@ namespace _ORTools.Model
 
             // Move cursor to center, click, then restore position
             Win32Interop.SetCursorPos(centerPoint.X, centerPoint.Y);
-            Thread.Sleep(25); // Keep the original timing that was working
+            // SetCursorPos is synchronous — no sleep needed before the click
 
             Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-            Thread.Sleep(50); // Slightly longer delay between down and up
+            Thread.Sleep(25);
             Win32Interop.mouse_event(Constants.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
             // Restore original cursor position
