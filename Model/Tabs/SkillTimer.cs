@@ -121,13 +121,7 @@ namespace _ORTools.Model
                 {
                     if (macro.AltKey)
                     {
-                        // Only focus the window if it's not already focused
-                        if (Win32Interop.GetForegroundWindow() != hWnd)
-                        {
-                            Win32Interop.SetForegroundWindow(hWnd);
-                        }
-                        SendKeys.SendWait("%" + ToSendKeysFormat(macro.Key));
-                        //DebugLogger.Info($"Sent ALT Skilltimer key: " + macro.Key);
+                        SendAltKey(hWnd, macro.Key);
                     }
                     else
                     {
@@ -159,6 +153,38 @@ namespace _ORTools.Model
         public string GetActionName()
         {
             return ACTION_NAME;
+        }
+
+        private static void SendAltKey(IntPtr hWnd, Keys key)
+        {
+            if (Win32Interop.GetForegroundWindow() != hWnd)
+            {
+                Win32Interop.SetForegroundWindow(hWnd);
+            }
+            SendKeys.SendWait("%" + ToSendKeysFormat(key));
+        }
+
+        private static readonly Dictionary<Keys, string> _sendKeysMap = new Dictionary<Keys, string>()
+        {
+             { Keys.D0, "0" },
+             { Keys.D1, "1" },
+             { Keys.D2, "2" },
+             { Keys.D3, "3" },
+             { Keys.D4, "4" },
+             { Keys.D5, "5" },
+             { Keys.D6, "6" },
+             { Keys.D7, "7" },
+             { Keys.D8, "8" },
+             { Keys.D9, "9" }
+        };
+
+        public static string ToSendKeysFormat(Keys key)
+        {
+            if (_sendKeysMap.TryGetValue(key, out string value))
+            {
+                return value;
+            }
+            return key.ToString().ToLower();
         }
 
         private void TryClickAtCurrentPosition(IntPtr hWnd)
@@ -196,27 +222,5 @@ namespace _ORTools.Model
             Win32Interop.SetCursorPos(originalPos.X, originalPos.Y);
         }
 
-        private static readonly Dictionary<Keys, string> _sendKeysMap = new Dictionary<Keys, string>()
-        {
-             { Keys.D0, "0" },
-             { Keys.D1, "1" },
-             { Keys.D2, "2" },
-             { Keys.D3, "3" },
-             { Keys.D4, "4" },
-             { Keys.D5, "5" },
-             { Keys.D6, "6" },
-             { Keys.D7, "7" },
-             { Keys.D8, "8" },
-             { Keys.D9, "9" }
-        };
-
-        public static string ToSendKeysFormat(Keys key)
-        {
-            if (_sendKeysMap.TryGetValue(key, out string value))
-            {
-                return value;
-            }
-            return key.ToString().ToLower();
-        }
     }
 }

@@ -407,7 +407,7 @@ namespace _ORTools.Model
                     var client = ClientSingleton.GetClient();
                     if (client?.Process != null && !client.Process.HasExited)
                     {
-                        Win32Interop.PostMessage(client.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, (Keys)Enum.Parse(typeof(Keys), key.ToString()), 0);
+                        Win32Interop.PostMessage(client.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, key, 0);
                     }
                 }
             }
@@ -428,4 +428,4 @@ namespace _ORTools.Model
             lastSuccessfulRead = DateTime.Now;
         }
     }
-}
+}

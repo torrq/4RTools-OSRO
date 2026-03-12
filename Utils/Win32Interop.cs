@@ -86,6 +86,10 @@ namespace _ORTools.Utils
         {
             return (GetAsyncKeyState(key) & 0x8000) != 0;
         }
+
+        /// <summary>Translates a virtual-key code to a scan code (or vice versa).</summary>
+        [DllImport("user32.dll")]
+        public static extern uint MapVirtualKey(uint uCode, uint uMapType);
         #endregion
 
         #region Message Posting
