@@ -490,6 +490,7 @@ namespace _ORTools.Model
         /// (MAX_BUFF_LIST_INDEX_SIZE × 4 bytes) instead of one call per index.
         /// Returns null on failure; otherwise an array of length MAX_BUFF_LIST_INDEX_SIZE.
         /// </summary>
+        // ── Status buffer ─────────────────────────────────────────────────────
         public uint[] ReadStatusBuffer()
         {
             if (StatusBufferAddress == 0) return null;
@@ -730,4 +731,4 @@ namespace _ORTools.Model
             public bool IsValid => Timestamp != default;
         }
     }
-}
+}

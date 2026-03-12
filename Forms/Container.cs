@@ -45,7 +45,6 @@ namespace _ORTools.Forms
 
             InitializeComponent();
 
-            // Initialize CharacterInfo form
             characterInfoForm = new CharacterInfo
             {
                 TopLevel = false,
@@ -93,19 +92,8 @@ namespace _ORTools.Forms
             if (GlobalConfig.DebugMode)
             {
                 DebugLogger.Info("DebugMode is ON");
-
-                if (GlobalConfig.DebugModeShowLog)
-                {
-                    DebugLogger.Info("DebugModeShowLog is ON: Creating and showing DebugLogWindow");
-                    debugLogWindow = new DebugLogWindow(Icon)
-                    {
-                        Owner = this
-                    };
-                    debugLogWindow.Show();
-                    SubscribeToDebugLogger();
-                    this.LocationChanged += Container_LocationOrSizeChanged;
-                    this.SizeChanged += Container_LocationOrSizeChanged;
-                }
+                // DebugLogWindow creation deferred to Container_Load — calling Show() on an owned
+                // form before the MDI container owner is visible prevents the app from launching.
             }
 
             frmStateSwitch = SetStateSwitchWindow();
@@ -497,7 +485,21 @@ namespace _ORTools.Forms
 
             ConfigureTabControl(tabControlTop);
 
-            if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+            Config loadConfig = ConfigGlobal.GetConfig();
+            if (loadConfig.DebugMode && loadConfig.DebugModeShowLog && debugLogWindow == null)
+            {
+                DebugLogger.Info("DebugModeShowLog is ON: Creating and showing DebugLogWindow");
+                debugLogWindow = new DebugLogWindow(Icon)
+                {
+                    Owner = this
+                };
+                PositionDebugLogWindow();
+                debugLogWindow.Show();
+                SubscribeToDebugLogger();
+                this.LocationChanged += Container_LocationOrSizeChanged;
+                this.SizeChanged += Container_LocationOrSizeChanged;
+            }
+            else if (debugLogWindow != null && !debugLogWindow.IsDisposed)
             {
                 PositionDebugLogWindow();
             }
@@ -1041,4 +1043,4 @@ namespace _ORTools.Forms
             this.SetStyle(ControlStyles.Selectable, false);
         }
     }
-}
+}
