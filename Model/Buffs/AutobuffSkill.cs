@@ -28,6 +28,22 @@ namespace _ORTools.Model
         private const int maxConsecutiveErrors = 5;
         private DateTime lastSuccessfulRead = DateTime.Now;
 
+        // Map cache
+        private string _cachedMap = string.Empty;
+        private long _mapCacheTicks = 0;
+        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
+
+        private string GetCurrentMapCached(Client c)
+        {
+            long now = DateTime.UtcNow.Ticks;
+            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
+            {
+                _cachedMap = c.ReadCurrentMap();
+                _mapCacheTicks = now;
+            }
+            return _cachedMap;
+        }
+
         public AutoBuffSkill(string actionName)
         {
             this.ActionName = actionName;
@@ -94,7 +110,7 @@ namespace _ORTools.Model
 
                     try
                     {
-                        currentMap = c.ReadCurrentMap();
+                        currentMap = GetCurrentMapCached(c);
                         prefs = ProfileSingleton.GetCurrent().UserPreferences;
                     }
                     catch (Exception ex)
@@ -143,6 +159,9 @@ namespace _ORTools.Model
 
                             if (!statusReadError && !currentBuffs.Contains(EffectStatusIDs.RIDDING))
                             {
+                                // Read HP once before applying buffs — reused for all buff checks below
+                                uint currentHp = c.ReadCurrentHp();
+
                                 foreach (var buffToApply in buffsToApply)
                                 {
                                     try
@@ -157,7 +176,6 @@ namespace _ORTools.Model
                                             continue; // Use continue instead of break to check other buffs
                                         }
 
-                                        uint currentHp = c.ReadCurrentHp();
                                         if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER)
                                         {
                                             this.UseAutobuff(buffToApply.Value);

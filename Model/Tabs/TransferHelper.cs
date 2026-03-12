@@ -30,7 +30,7 @@ namespace _ORTools.Model
             var transferKey = ProfileSingleton.GetCurrent().TransferHelper.TransferKey;
             if (transferKey != Keys.None && Win32Interop.IsKeyPressed(transferKey))
             {
-                TransferHelperMacro(roClient, new KeyConfig(transferKey, true), (Keys)Enum.Parse(typeof(Keys), transferKey.ToString()));
+                TransferHelperMacro(roClient, new KeyConfig(transferKey, true), transferKey);
                 return 0;
             }
             Thread.Sleep(100);

@@ -28,6 +28,22 @@ namespace _ORTools.Model
         private const int maxConsecutiveErrors = 5;
         private DateTime lastSuccessfulRead = DateTime.Now;
 
+        // Map cache
+        private string _cachedMap = string.Empty;
+        private long _mapCacheTicks = 0;
+        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
+
+        private string GetCurrentMapCached(Client c)
+        {
+            long now = DateTime.UtcNow.Ticks;
+            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
+            {
+                _cachedMap = c.ReadCurrentMap();
+                _mapCacheTicks = now;
+            }
+            return _cachedMap;
+        }
+
         public AutoBuffItem(string actionName)
         {
             this.ActionName = actionName;
@@ -92,7 +108,7 @@ namespace _ORTools.Model
 
                     try
                     {
-                        currentMap = c.ReadCurrentMap();
+                        currentMap = GetCurrentMapCached(c);
                         prefs = ProfileSingleton.GetCurrent().UserPreferences;
                     }
                     catch (Exception ex)
@@ -161,6 +177,9 @@ namespace _ORTools.Model
 
                                 buffs.Clear();
 
+                                // Read HP once before applying buffs — reused for all buff checks below
+                                uint currentHp = c.ReadCurrentHp();
+
                                 // Apply buffs with error handling
                                 foreach (var item in bmClone)
                                 {
@@ -176,7 +195,6 @@ namespace _ORTools.Model
                                         }
                                         else
                                         {
-                                            uint currentHp = c.ReadCurrentHp();
                                             if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER)
                                             {
                                                 this.UseAutobuff(item.Value);

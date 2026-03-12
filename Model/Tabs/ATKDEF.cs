@@ -210,7 +210,7 @@ namespace _ORTools.Model
 
         private Keys toKeys(Keys k)
         {
-            return (Keys)Enum.Parse(typeof(Keys), k.ToString());
+            return k;
         }
 
         public void Stop()

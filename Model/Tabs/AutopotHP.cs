@@ -38,8 +38,23 @@ namespace _ORTools.Model
         private long _lastCriticalWoundCheck = 0;
         private readonly long _criticalWoundCheckInterval = TimeSpan.FromMilliseconds(200).Ticks; // Check every 200ms
 
-        // Track last used slot globally for proper cycling across all available slots
         private int _lastUsedSlotIndex = -1;
+
+        // Map cache — avoids a full RPM read every 1ms idle cycle
+        private string _cachedMap = string.Empty;
+        private long _mapCacheTicks = 0;
+        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
+
+        private string GetCurrentMapCached(Client roClient)
+        {
+            long now = DateTime.UtcNow.Ticks;
+            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
+            {
+                _cachedMap = roClient.ReadCurrentMap();
+                _mapCacheTicks = now;
+            }
+            return _cachedMap;
+        }
 
         public AutopotHP() { }
 
@@ -99,7 +114,7 @@ namespace _ORTools.Model
 
             try
             {
-                string currentMap = roClient.ReadCurrentMap();
+                string currentMap = GetCurrentMapCached(roClient);
                 bool isInCity =
                     ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity
                     && Server.GetCityList().Contains(currentMap);
@@ -117,7 +132,7 @@ namespace _ORTools.Model
                         }
                     }
 
-                    potUsed = ProcessHPHealing(roClient);
+                    potUsed = ProcessHPHealing(roClient, roClient.Process.MainWindowHandle);
                 }
             }
             catch (Exception ex)
@@ -133,7 +148,7 @@ namespace _ORTools.Model
             return 0;
         }
 
-        private bool ProcessHPHealing(Client roClient)
+        private bool ProcessHPHealing(Client roClient, IntPtr handle)
         {
             // Early exit if we should stop on critical injury and have one
             if (StopOnCriticalInjury && _hasCriticalWound)
@@ -143,12 +158,15 @@ namespace _ORTools.Model
             if (!PotionManager.CanUsePot())
                 return false;
 
+            // Read HP/SP in one bulk call so every slot comparison below costs zero extra RPM calls
+            Client.HpSpSnapshot hpSp = roClient.ReadHpSp();
+
             // Find all enabled slots that meet the HP threshold, grouped by HP percentage
             var slotsByHPPercent = new Dictionary<int, List<int>>();
             for (int i = 0; i < HPSlots.Count; i++)
             {
                 var slot = HPSlots[i];
-                if (slot.Enabled && slot.HPPercent > 0 && roClient.IsHpBelow(slot.HPPercent))
+                if (slot.Enabled && slot.HPPercent > 0 && hpSp.IsHpBelow(slot.HPPercent))
                 {
                     if (!slotsByHPPercent.ContainsKey(slot.HPPercent))
                         slotsByHPPercent[slot.HPPercent] = new List<int>();
@@ -178,7 +196,7 @@ namespace _ORTools.Model
 
             // Use the next slot in the cycling order across all available slots
             int nextSlotIndex = GetNextSlotIndex(allAvailableSlots);
-            if (nextSlotIndex != -1 && UsePot(HPSlots[nextSlotIndex].Key))
+            if (nextSlotIndex != -1 && UsePot(HPSlots[nextSlotIndex].Key, handle))
             {
                 _lastUsedSlotIndex = nextSlotIndex;
                 PotionManager.RecordPotUsage();
@@ -206,31 +224,22 @@ namespace _ORTools.Model
             return availableSlots[nextPosition];
         }
 
-        private bool UsePot(Keys key)
+        private bool UsePot(Keys key, IntPtr handle)
         {
             if (key == Keys.None)
                 return false;
 
             try
             {
-                // Only send if Alt is not pressed (prevents conflicts with alt+key combinations)
-                if (
-                    !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu)
-                )
+                if (!Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
-                    Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
-                    var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
-
-                    // Send key press and release
-                    Win32Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
-                    Win32Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
-
+                    Win32Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, key, 0);
+                    Win32Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, key, 0);
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                // Log parse errors but don't crash
                 System.Diagnostics.Debug.WriteLine($"Failed to use pot key {key}: {ex.Message}");
             }
 
@@ -254,12 +263,15 @@ namespace _ORTools.Model
 
         public string GetActionName() => ActionName ?? ACTION_NAME_AUTOPOT_HP;
 
-        // Optimized critical wound check - only called when needed
+        // Optimized critical wound check - reads the entire status buffer in one call
         private bool HasCriticalWound(Client c)
         {
+            uint[] statusBuffer = c.ReadStatusBuffer();
+            if (statusBuffer == null) return false;
+
             for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
             {
-                uint currentStatus = c.CurrentBuffStatusCode(i);
+                uint currentStatus = statusBuffer[i];
                 if (currentStatus == uint.MaxValue)
                     continue;
 

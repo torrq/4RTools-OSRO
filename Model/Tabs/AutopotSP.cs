@@ -37,6 +37,22 @@ namespace _ORTools.Model
         // Track last used slot globally for proper cycling across all available slots
         private int _lastUsedSlotIndex = -1;
 
+        // Map cache — avoids a full RPM read every 1ms idle cycle
+        private string _cachedMap = string.Empty;
+        private long _mapCacheTicks = 0;
+        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
+
+        private string GetCurrentMapCached(Client roClient)
+        {
+            long now = DateTime.UtcNow.Ticks;
+            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
+            {
+                _cachedMap = roClient.ReadCurrentMap();
+                _mapCacheTicks = now;
+            }
+            return _cachedMap;
+        }
+
         public AutopotSP() { }
 
         public AutopotSP(string actionName)
@@ -95,14 +111,14 @@ namespace _ORTools.Model
 
             try
             {
-                string currentMap = roClient.ReadCurrentMap();
+                string currentMap = GetCurrentMapCached(roClient);
                 bool isInCity =
                     ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity
                     && Server.GetCityList().Contains(currentMap);
 
                 if (!isInCity)
                 {
-                    potUsed = ProcessSPHealing(roClient);
+                    potUsed = ProcessSPHealing(roClient, roClient.Process.MainWindowHandle);
                 }
             }
             catch (Exception ex)
@@ -118,18 +134,21 @@ namespace _ORTools.Model
             return 0;
         }
 
-        private bool ProcessSPHealing(Client roClient)
+        private bool ProcessSPHealing(Client roClient, IntPtr handle)
         {
             // Check the global pot cooldown before attempting to use a pot
             if (!PotionManager.CanUsePot())
                 return false;
+
+            // Read HP/SP in one bulk call so every slot comparison below costs zero extra RPM calls
+            Client.HpSpSnapshot hpSp = roClient.ReadHpSp();
 
             // Find all enabled slots that meet the SP threshold, grouped by SP percentage
             var slotsBySPPercent = new Dictionary<int, List<int>>();
             for (int i = 0; i < SPSlots.Count; i++)
             {
                 var slot = SPSlots[i];
-                if (slot.Enabled && slot.SPPercent > 0 && roClient.IsSpBelow(slot.SPPercent))
+                if (slot.Enabled && slot.SPPercent > 0 && hpSp.IsSpBelow(slot.SPPercent))
                 {
                     if (!slotsBySPPercent.ContainsKey(slot.SPPercent))
                         slotsBySPPercent[slot.SPPercent] = new List<int>();
@@ -156,7 +175,7 @@ namespace _ORTools.Model
 
             // Use the next slot in the cycling order across all available slots
             int nextSlotIndex = GetNextSlotIndex(allAvailableSlots);
-            if (nextSlotIndex != -1 && UsePot(SPSlots[nextSlotIndex].Key))
+            if (nextSlotIndex != -1 && UsePot(SPSlots[nextSlotIndex].Key, handle))
             {
                 _lastUsedSlotIndex = nextSlotIndex;
                 PotionManager.RecordPotUsage();
@@ -184,31 +203,22 @@ namespace _ORTools.Model
             return availableSlots[nextPosition];
         }
 
-        private bool UsePot(Keys key)
+        private bool UsePot(Keys key, IntPtr handle)
         {
             if (key == Keys.None)
                 return false;
 
             try
             {
-                // Only send if Alt is not pressed (prevents conflicts with alt+key combinations)
-                if (
-                    !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu)
-                )
+                if (!Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
-                    Keys k = (Keys)Enum.Parse(typeof(Keys), key.ToString());
-                    var handle = ClientSingleton.GetClient().Process.MainWindowHandle;
-
-                    // Send key press and release
-                    Win32Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, k, 0);
-                    Win32Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, k, 0);
-
+                    Win32Interop.PostMessage(handle, Constants.WM_KEYDOWN_MSG_ID, key, 0);
+                    Win32Interop.PostMessage(handle, Constants.WM_KEYUP_MSG_ID, key, 0);
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                // Log parse errors but don't crash
                 System.Diagnostics.Debug.WriteLine($"Failed to use pot key {key}: {ex.Message}");
             }
 
