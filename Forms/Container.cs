@@ -562,6 +562,10 @@ namespace _ORTools.Forms
             }
 
             // Proceed with client selection
+            Client previousClient = ClientSingleton.GetClient();
+            bool switchingClient = previousClient != null &&
+                                   previousClient.Process?.Id != client.Process?.Id;
+
             ClientSingleton.Instance(client);
 
             if (client.Process != null)
@@ -575,6 +579,12 @@ namespace _ORTools.Forms
 
             // Update character info with formatting
             characterInfoForm.UpdateCharacterInfo(client);
+
+            if (switchingClient && frmStateSwitch.IsApplicationOn())
+            {
+                DebugLogger.Info("Client switched while state ON — toggling off");
+                frmStateSwitch.TurnOFF();
+            }
 
             subject.Notify(new Utils.Message(MessageCode.PROCESS_CHANGED, null));
         }
