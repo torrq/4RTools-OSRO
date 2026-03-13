@@ -111,6 +111,9 @@ namespace _ORTools.Forms
             int nl = current.IndexOf('\n');
             string line1 = nl >= 0 ? current.Substring(0, nl) : current;
             this.CharacterInfoLabel = line1 + "\n" + hpLine;
+
+            characterInfoLabel.HpLow = snap.MaxHp > 0 && snap.CurrentHp < snap.MaxHp * 0.25;
+            characterInfoLabel.SpLow = snap.MaxSp > 0 && snap.CurrentSp < snap.MaxSp * 0.25;
         }
 
         private void ClearLabels()
@@ -185,6 +188,9 @@ namespace _ORTools.Forms
             this.CharacterInfoLabel = clientDebugInfo;
             this.CharacterMapLabel = currentMap;
             this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + currentMap;
+
+            characterInfoLabel.HpLow = currentMaxHP > 0 && currentHP < currentMaxHP * 0.25;
+            characterInfoLabel.SpLow = currentMaxSP > 0 && currentSP < currentMaxSP * 0.25;
         }
 
         // Helper method to check if client is logged in
@@ -200,7 +206,7 @@ namespace _ORTools.Forms
         // Helper method to validate character data
         private bool IsValidCharacterData(int level, int jobLevel, int hp, int maxHP)
         {
-            // DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
+            //DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
             // Example validation: ensure level and HP are within reasonable ranges
             return level > 0 && level <= 255 && // Adjust max level based on game
                    jobLevel > 0 && jobLevel <= 255 && // Adjust max job level based on game
@@ -222,4 +228,4 @@ namespace _ORTools.Forms
             }
         }
     }
-}
+}

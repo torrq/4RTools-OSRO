@@ -75,7 +75,8 @@ namespace _ORTools.Model
 
     public static class ProfileSingleton
     {
-        private static Profile profile = new Profile("Default");
+        private static volatile Profile profile = new Profile("Default");
+        private static readonly object _configLock = new object();
 
         public static void Load(string profileName)
         {
@@ -224,6 +225,8 @@ namespace _ORTools.Model
             if (profile != null)
             {
                 string filePath = AppConfig.ProfileFolder + profile.Name + ".json";
+                lock (_configLock)
+                {
                 try
                 {
                     // Create profile file if it doesn't exist
@@ -254,6 +257,7 @@ namespace _ORTools.Model
                 catch (Exception ex)
                 {
                     DebugLogger.Error(ex, $"Failed to save configuration for action '{action.GetActionName()}' to profile '{profile.Name}': {ex.Message}");
+                }
                 }
             }
         }

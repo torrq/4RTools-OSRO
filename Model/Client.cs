@@ -154,7 +154,7 @@ namespace _ORTools.Model
 
     public sealed class ClientSingleton
     {
-        private static Client client;
+        private static volatile Client client;
         private ClientSingleton(Client client)
         {
             ClientSingleton.client = client;

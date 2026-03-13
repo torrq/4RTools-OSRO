@@ -23,6 +23,14 @@ namespace _ORTools.Model
 
         public Dictionary<EffectStatusIDs, Keys> buffMapping = new Dictionary<EffectStatusIDs, Keys>();
 
+        // Per-buff cast cooldown: prevents re-casting a buff before the server has had time
+        // to reflect the new status in memory (avoids toggling-off skills like Force Projection)
+        private readonly Dictionary<EffectStatusIDs, DateTime> _lastCastTime = new Dictionary<EffectStatusIDs, DateTime>();
+        private static readonly TimeSpan CastCooldown = TimeSpan.FromMilliseconds(300);
+
+        // Set false by Stop() so an in-flight iteration stops sending keys immediately
+        private volatile bool _active = false;
+
         // Add error tracking
         private int consecutiveErrors = 0;
         private const int maxConsecutiveErrors = 5;
@@ -58,6 +66,7 @@ namespace _ORTools.Model
                 // Reset error tracking
                 consecutiveErrors = 0;
                 lastSuccessfulRead = DateTime.Now;
+                _active = true;
 
                 this.thread = AutoBuffThread(roClient);
                 ThreadRunner.Start(this.thread);
@@ -174,7 +183,17 @@ namespace _ORTools.Model
 
                                         if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER)
                                         {
+                                            if (!_active) break;
+
+                                            // Skip if we cast this buff recently — server may not have reflected it yet
+                                            if (_lastCastTime.TryGetValue(buffToApply.Key, out DateTime lastCast) &&
+                                                (DateTime.UtcNow - lastCast) < CastCooldown)
+                                            {
+                                                continue;
+                                            }
+
                                             this.UseAutobuff(buffToApply.Value);
+                                            _lastCastTime[buffToApply.Key] = DateTime.UtcNow;
                                             Thread.Sleep(Delay);
                                         }
                                     }
@@ -322,6 +341,7 @@ namespace _ORTools.Model
 
         public void Stop()
         {
+            _active = false;
             if (this.thread != null)
             {
                 ThreadRunner.Stop(this.thread);

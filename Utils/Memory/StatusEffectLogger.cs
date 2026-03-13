@@ -6,7 +6,7 @@ using System.Linq;
 public static class StatusEffectLogger
 {
     private static Dictionary<uint, string> knownStatusIds = null;
-    private static string lastStatusesLog = null;
+    private static volatile string lastStatusesLog = null;
 
     static StatusEffectLogger()
     {

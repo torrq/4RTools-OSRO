@@ -42,6 +42,14 @@ namespace _ORTools.Utils
             }
         }
 
+        /// <summary>When true, the HP segment on line 2 is drawn in red.</summary>
+        public bool HpLow { get; set; }
+
+        /// <summary>When true, the SP segment on line 2 is drawn in red.</summary>
+        public bool SpLow { get; set; }
+
+        private static readonly Color LowColor = Color.FromArgb(220, 50, 50);
+
         protected override void OnPaint(PaintEventArgs e)
         {
             using (Brush backBrush = new SolidBrush(this.BackColor))
@@ -52,26 +60,79 @@ namespace _ORTools.Utils
             string text = this.Text ?? string.Empty;
             if (string.IsNullOrEmpty(text)) return;
 
-            // Apply padding based on alignment
-            string paddedText = ApplyTextPadding(text, this.textAlign);
+            // Split into lines; only line 2 (index 1) gets segment coloring
+            string[] lines = text.Split('\n');
 
-            // Simple top-left positioning since we're using padding for alignment
-            Point location = new Point(0, 0);
-
-            // Handle vertical alignment with basic positioning
+            float y = 0f;
             if (textAlign == ContentAlignment.MiddleLeft || textAlign == ContentAlignment.MiddleCenter || textAlign == ContentAlignment.MiddleRight)
-            {
-                // Rough vertical centering
-                location.Y = (this.ClientSize.Height - this.Font.Height) / 2;
-            }
+                y = (this.ClientSize.Height - this.Font.Height * lines.Length) / 2f;
             else if (textAlign == ContentAlignment.BottomLeft || textAlign == ContentAlignment.BottomCenter || textAlign == ContentAlignment.BottomRight)
+                y = this.ClientSize.Height - this.Font.Height * lines.Length;
+
+            using (Brush normalBrush = new SolidBrush(this.ForeColor))
+            using (Brush lowBrush = new SolidBrush(LowColor))
             {
-                location.Y = this.ClientSize.Height - this.Font.Height;
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string line = lines[i];
+                    string paddedLine = ApplyTextPadding(line, this.textAlign);
+
+                    // Line 2 (0-based index 1) with HpLow or SpLow: draw HP / SP segments in color
+                    if (i == 1 && (HpLow || SpLow) && paddedLine.Contains("HP ") && paddedLine.Contains("| SP "))
+                    {
+                        DrawHpSpLine(e.Graphics, paddedLine, y, normalBrush, lowBrush);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString(paddedLine, this.Font, normalBrush, 0f, y);
+                    }
+
+                    y += this.Font.Height;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Draws "HP x / y | SP x / y" with per-segment color based on HpLow/SpLow.
+        /// Segments: [HP part] [ | ] [SP part]
+        /// </summary>
+        private void DrawHpSpLine(Graphics g, string line, float y, Brush normalBrush, Brush lowBrush)
+        {
+            // Find the separator between HP and SP parts
+            int sepIdx = line.IndexOf("| SP ");
+            if (sepIdx < 0)
+            {
+                g.DrawString(line, this.Font, normalBrush, 0f, y);
+                return;
             }
 
-            // Use DrawString (honors TextRenderingHint) with location
-            using (Brush textBrush = new SolidBrush(this.ForeColor))
-                e.Graphics.DrawString(paddedText, this.Font, textBrush, location);
+            string hpPart  = line.Substring(0, sepIdx);           // "HP x / y "
+            string sep     = "|";                                   // just the pipe
+            string spPart  = line.Substring(sepIdx + 1);           // " SP x / y" (leading space preserved)
+
+            float x = 0f;
+            // HP segment
+            Brush hpBrush = HpLow ? lowBrush : normalBrush;
+            g.DrawString(hpPart, this.Font, hpBrush, x, y);
+            x += MeasureWidth(g, hpPart);
+
+            // Separator " | "
+            g.DrawString(sep, this.Font, normalBrush, x, y);
+            x += MeasureWidth(g, sep);
+
+            // SP segment
+            Brush spBrush = SpLow ? lowBrush : normalBrush;
+            g.DrawString(spPart, this.Font, spBrush, x, y);
+        }
+
+        private float MeasureWidth(Graphics g, string text)
+        {
+            // MeasureString adds padding; use MeasureCharacterRanges for accuracy
+            var ranges = new[] { new CharacterRange(0, text.Length) };
+            var fmt = new StringFormat();
+            fmt.SetMeasurableCharacterRanges(ranges);
+            var regions = g.MeasureCharacterRanges(text, this.Font, new RectangleF(0, 0, 2000, 100), fmt);
+            return regions[0].GetBounds(g).Width;
         }
 
         private string ApplyTextPadding(string text, ContentAlignment align)

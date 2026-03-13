@@ -9,8 +9,8 @@ namespace _ORTools.Utils
     {
         private static readonly object _logLock = new object();
         private static readonly string _logFilePath = AppConfig.DebugLogFile;
-        private static bool _debugMode;
-        private static bool _isInitialized = false;
+        private static volatile bool _debugMode;
+        private static volatile bool _isInitialized = false;
         private static bool _initializationLogged = false;
         private static string _sessionDate;
 
