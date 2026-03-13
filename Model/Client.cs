@@ -555,6 +555,8 @@ namespace _ORTools.Model
             return ReadMemoryAsString(this.CurrentMapAddress);
         }
 
+        // Fixed coordinates addresses (MR only — HR unknown)
+
         public uint ReadMaxSp()
         {
             return ReadMemory(this.CurrentHPBaseAddress + 12);

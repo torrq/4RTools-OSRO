@@ -13,8 +13,8 @@ namespace _ORTools.Forms
         // How old a cache entry can be before we consider macros "off" and do a full read
         private static readonly TimeSpan CacheStaleThreshold = TimeSpan.FromSeconds(2);
 
-        // Slow full-refresh interval when macros aren't running
         private const int SLOW_REFRESH_MS = 2000;
+        private const int MAP_REFRESH_MS = 1000;
 
         private readonly Timer _refreshTimer;
 
@@ -26,8 +26,24 @@ namespace _ORTools.Forms
             this.CharacterMapLabel = "";
             this.MapLink = "";
 
-            this.characterMapLabel.Cursor = Cursors.Hand;
-            this.characterMapLabel.Click += CharacterMapLabel_Click;
+            // Replace plain label with LinkLabel so only the map name is a clickable link
+            var ll = new LinkLabel
+            {
+                AutoSize         = characterMapLabel.AutoSize,
+                Font             = characterMapLabel.Font,
+                Location         = characterMapLabel.Location,
+                Size             = characterMapLabel.Size,
+                Cursor           = Cursors.Hand,
+                LinkBehavior     = LinkBehavior.HoverUnderline,
+                LinkColor        = characterMapLabel.ForeColor,
+                ActiveLinkColor  = characterMapLabel.ForeColor,
+                VisitedLinkColor = characterMapLabel.ForeColor,
+                TextAlign        = System.Drawing.ContentAlignment.BottomRight,
+            };
+            ll.LinkClicked += (s, e) => OpenMapLink();
+            Controls.Remove(characterMapLabel);
+            characterMapLabel = ll;
+            Controls.Add(characterMapLabel);
 
             _refreshTimer = new Timer { Interval = 15 };
             _refreshTimer.Tick += RefreshTick;
@@ -53,7 +69,18 @@ namespace _ORTools.Forms
         public string CharacterMapLabel
         {
             get { return characterMapLabel.Text; }
-            set { characterMapLabel.Text = value; }
+            set
+            {
+                characterMapLabel.Text = value;
+                // Set link area to cover only the map name (up to first space, or whole string)
+                if (characterMapLabel is LinkLabel ll)
+                {
+                    ll.Links.Clear();
+                    int linkLen = value.IndexOf(' ');
+                    if (linkLen < 0) linkLen = value.Length;
+                    if (linkLen > 0) ll.Links.Add(0, linkLen);
+                }
+            }
         }
 
         public string MapLink
@@ -63,6 +90,7 @@ namespace _ORTools.Forms
         }
 
         private DateTime _lastSlowRefresh = DateTime.MinValue;
+        private DateTime _lastMapRefresh = DateTime.MinValue;
 
         /// <summary>
         /// Timer callback — fires every 500 ms on the UI thread.
@@ -86,6 +114,15 @@ namespace _ORTools.Forms
             {
                 // Fast path — just repaint the HP/SP line; no RPM call needed
                 UpdateHpSpLine(cached.Snapshot);
+
+                // Map can change independently — refresh it on its own interval
+                if ((DateTime.UtcNow - _lastMapRefresh).TotalMilliseconds >= MAP_REFRESH_MS)
+                {
+                    _lastMapRefresh = DateTime.UtcNow;
+                    string map = client.ReadCurrentMap() ?? string.Empty;
+                    this.CharacterMapLabel = map;
+                    this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + map;
+                }
             }
             else
             {
@@ -206,14 +243,14 @@ namespace _ORTools.Forms
         // Helper method to validate character data
         private bool IsValidCharacterData(int level, int jobLevel, int hp, int maxHP)
         {
-            //DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
+            DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
             // Example validation: ensure level and HP are within reasonable ranges
             return level > 0 && level <= 255 && // Adjust max level based on game
                    jobLevel > 0 && jobLevel <= 255 && // Adjust max job level based on game
                    hp >= 0 && maxHP > 0 && hp <= maxHP;
         }
 
-        private void CharacterMapLabel_Click(object sender, EventArgs e)
+        private void OpenMapLink()
         {
             if (!string.IsNullOrWhiteSpace(mapLink))
             {
