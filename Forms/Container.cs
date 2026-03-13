@@ -17,9 +17,7 @@ namespace _ORTools.Forms
         private List<ClientDTO> clients = new List<ClientDTO>();
         private StateSwitchForm frmStateSwitch = new StateSwitchForm();
         private TrayManager trayManager;
-        private DebugLogWindow debugLogWindow;
         private bool isShuttingDown;
-        private DebugLogger.LogMessageHandler debugLogHandler;
         private ProfilesForm profileForm;
         private Font italicFont;
         private Font regularFont;
@@ -33,6 +31,11 @@ namespace _ORTools.Forms
         private bool isMiniMode;
         private Size fullModeClientSize;
         private Size miniModeClientSize;
+
+        // Embedded debug log panel
+        private RichTextBox _debugConsole;
+        private bool _debugPanelVisible = false;
+        private const int DEBUG_PANEL_HEIGHT = 200;
 
         public Container()
         {
@@ -57,6 +60,20 @@ namespace _ORTools.Forms
             // Setup for Mini-Mode Toggle
             fullModeClientSize = ClientSize;
             miniModeClientSize = new Size(ClientSize.Width, btnToggleMiniMode.Bottom);
+
+            // Create embedded debug log panel (hidden until debug mode enabled)
+            _debugConsole = new RichTextBox
+            {
+                BackColor = AppConfig.DebugConsoleBackColor,
+                ForeColor = AppConfig.DebugConsoleForeColor,
+                Font = AppConfig.DebugConsoleFont,
+                ReadOnly = true,
+                BorderStyle = BorderStyle.None,
+                ScrollBars = RichTextBoxScrollBars.Vertical,
+                Visible = false
+            };
+            Controls.Add(_debugConsole);
+            _debugConsole.BringToFront();
 
             regularFont = profileCB.Font;
             italicFont = new Font(regularFont, FontStyle.Italic);
@@ -92,8 +109,7 @@ namespace _ORTools.Forms
             if (GlobalConfig.DebugMode)
             {
                 DebugLogger.Info("DebugMode is ON");
-                // DebugLogWindow creation deferred to Container_Load — calling Show() on an owned
-                // form before the MDI container owner is visible prevents the app from launching.
+                // Debug panel shown in Container_Load after the form is visible
             }
 
             frmStateSwitch = SetStateSwitchWindow();
@@ -128,31 +144,22 @@ namespace _ORTools.Forms
 
                 SuspendLayout();
 
-                if (isMiniMode)
-                {
-                    btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_more;
-                    ClientSize = miniModeClientSize;
-                }
-                else
-                {
-                    btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
-                    if (isMiniMode)
-                    {
-                        btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_more;
-                        ClientSize = miniModeClientSize;
-                    }
-                    else
-                    {
-                        btnToggleMiniMode.Image = global::_ORTools.Resources.Media.Icons.minimode_less;
-                        ClientSize = fullModeClientSize;
-                    }
-                }
+                Size baseSize = isMiniMode ? miniModeClientSize : fullModeClientSize;
+                ClientSize = _debugPanelVisible
+                    ? new Size(baseSize.Width, baseSize.Height + DEBUG_PANEL_HEIGHT)
+                    : baseSize;
+
+                btnToggleMiniMode.Image = isMiniMode
+                    ? global::_ORTools.Resources.Media.Icons.minimode_more
+                    : global::_ORTools.Resources.Media.Icons.minimode_less;
 
                 ResumeLayout(true);
                 ConfigGlobal.GetConfig().MiniMode = isMiniMode;
                 ConfigGlobal.SaveConfig();
             }
         }
+
+        private Size CurrentBaseSize => isMiniMode ? miniModeClientSize : fullModeClientSize;
 
         private void SetTopTabIcons()
         {
@@ -215,7 +222,7 @@ namespace _ORTools.Forms
 
         private void ProcessCB_MeasureItem(object sender, MeasureItemEventArgs e)
         {
-            if (e.Index < 0 || e.Index >= processCB.Items.Count) return;
+            if (e.Index < 0) return;
 
             if (!(processCB.Items[e.Index] is GameProcessInfo item)) return;
 
@@ -369,44 +376,149 @@ namespace _ORTools.Forms
             }
         }
 
-        private void PositionDebugLogWindow()
+        private void ShowDebugPanel()
         {
-            if (debugLogWindow != null && !debugLogWindow.IsDisposed)
-            {
-                int x = this.Location.X + this.DisplayRectangle.X + 8;
-                int y = this.Location.Y + this.Height - 8;
-                debugLogWindow.Location = new Point(x, y);
-                debugLogWindow.Width = this.DisplayRectangle.Width;
-            }
+            if (_debugPanelVisible) return;
+            _debugPanelVisible = true;
+            SuspendLayout();
+            ClientSize = new Size(CurrentBaseSize.Width, CurrentBaseSize.Height + DEBUG_PANEL_HEIGHT);
+            Padding = new Padding(0, 0, 0, DEBUG_PANEL_HEIGHT);
+            PositionDebugConsole();
+            _debugConsole.Visible = true;
+            _debugConsole.BringToFront();
+            ResumeLayout(true);
+            DebugLogger.OnLogMessage += AppendDebugLog;
         }
 
-        private void Container_LocationOrSizeChanged(object sender, EventArgs e)
+        private void HideDebugPanel()
         {
-            if (!isShuttingDown)
-            {
-                PositionDebugLogWindow();
-            }
+            if (!_debugPanelVisible) return;
+            DebugLogger.OnLogMessage -= AppendDebugLog;
+            _debugPanelVisible = false;
+            SuspendLayout();
+            _debugConsole.Visible = false;
+            Padding = new Padding(0);
+            ClientSize = CurrentBaseSize;
+            ResumeLayout(true);
         }
 
-        private void SubscribeToDebugLogger()
+        private void PositionDebugConsole()
         {
-            debugLogHandler = (message, level) =>
+            _debugConsole.SetBounds(0, ClientSize.Height - DEBUG_PANEL_HEIGHT,
+                ClientSize.Width, DEBUG_PANEL_HEIGHT);
+        }
+
+        protected override void OnClientSizeChanged(EventArgs e)
+        {
+            base.OnClientSizeChanged(e);
+            if (_debugPanelVisible && _debugConsole != null)
+                PositionDebugConsole();
+        }
+
+        private void AppendDebugLog(string message, DebugLogger.LogLevel level)
+        {
+            if (_debugConsole.InvokeRequired)
             {
-                if (debugLogWindow != null && !debugLogWindow.IsDisposed)
+                _debugConsole.BeginInvoke((MethodInvoker)(() => AppendDebugLog(message, level)));
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(message)) return;
+
+            _debugConsole.SuspendLayout();
+            _debugConsole.SelectionStart = _debugConsole.TextLength;
+            _debugConsole.SelectionLength = 0;
+
+            Color defaultLineColor;
+            switch (level)
+            {
+                case DebugLogger.LogLevel.INFO:    defaultLineColor = AppConfig.LogColor_INFO;    break;
+                case DebugLogger.LogLevel.WARNING: defaultLineColor = AppConfig.LogColor_WARNING; break;
+                case DebugLogger.LogLevel.ERROR:   defaultLineColor = AppConfig.LogColor_ERROR;   break;
+                case DebugLogger.LogLevel.DEBUG:   defaultLineColor = AppConfig.LogColor_DEBUG;   break;
+                case DebugLogger.LogLevel.STATUS:  defaultLineColor = AppConfig.LogColor_STATUS;  break;
+                default: defaultLineColor = _debugConsole.ForeColor; break;
+            }
+
+            if (level == DebugLogger.LogLevel.STATUS)
+            {
+                var match = System.Text.RegularExpressions.Regex.Match(message,
+                    $@"^(\d{{2}}:\d{{2}}:\d{{2}}\.\d{{3}}) \[({AppConfig.STATUS})\] (.*)$");
+
+                if (match.Success)
                 {
-                    debugLogWindow.DebugLogger_OnLogMessage(message, level);
-                }
-            };
-            DebugLogger.OnLogMessage += debugLogHandler;
-        }
+                    _debugConsole.SelectionColor = AppConfig.LogColor_Timestamp;
+                    _debugConsole.AppendText(match.Groups[1].Value + " ");
 
-        private void UnsubscribeFromDebugLogger()
-        {
-            if (debugLogHandler != null)
-            {
-                DebugLogger.OnLogMessage -= debugLogHandler;
-                debugLogHandler = null;
+                    _debugConsole.SelectionColor = AppConfig.LogColor_STATUS;
+                    _debugConsole.AppendText("[" + match.Groups[2].Value + "] ");
+
+                    string[] statuses = match.Groups[3].Value
+                        .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    for (int i = 0; i < statuses.Length; i++)
+                    {
+                        string[] parts = statuses[i].Split(':');
+                        if (parts.Length == 2)
+                        {
+                            _debugConsole.SelectionColor = AppConfig.LogColor_StatusId;
+                            _debugConsole.AppendText(parts[0]);
+                            _debugConsole.SelectionColor = _debugConsole.ForeColor;
+                            _debugConsole.AppendText(":");
+                            _debugConsole.SelectionColor = parts[1] == "**UNKNOWN**"
+                                ? AppConfig.LogColor_StatusUnknown
+                                : AppConfig.LogColor_StatusName;
+                            _debugConsole.AppendText(parts[1]);
+                        }
+                        else
+                        {
+                            _debugConsole.SelectionColor = _debugConsole.ForeColor;
+                            _debugConsole.AppendText(statuses[i]);
+                        }
+                        if (i < statuses.Length - 1)
+                        {
+                            _debugConsole.SelectionColor = _debugConsole.ForeColor;
+                            _debugConsole.AppendText(" ");
+                        }
+                    }
+                }
+                else
+                {
+                    _debugConsole.SelectionColor = AppConfig.LogColor_STATUS;
+                    _debugConsole.AppendText(message);
+                }
             }
+            else
+            {
+                string logLevelPattern = $"({AppConfig.INFO}|{AppConfig.WARNING}|{AppConfig.ERROR}|{AppConfig.DEBUG}|{AppConfig.STATUS})";
+                var match = System.Text.RegularExpressions.Regex.Match(message,
+                    $@"^(\d{{2}}:\d{{2}}:\d{{2}}\.\d{{3}}) \[{logLevelPattern}\] (.*)$");
+
+                if (match.Success)
+                {
+                    _debugConsole.SelectionColor = AppConfig.LogColor_Timestamp;
+                    _debugConsole.AppendText(match.Groups[1].Value + " ");
+
+                    _debugConsole.SelectionColor = defaultLineColor;
+                    _debugConsole.AppendText("[" + match.Groups[2].Value + "] ");
+
+                    int r = Math.Min(255, (int)(defaultLineColor.R * 1.3));
+                    int g = Math.Min(255, (int)(defaultLineColor.G * 1.3));
+                    int b = Math.Min(255, (int)(defaultLineColor.B * 1.3));
+                    _debugConsole.SelectionColor = Color.FromArgb(defaultLineColor.A, r, g, b);
+                    _debugConsole.AppendText(match.Groups[3].Value);
+                }
+                else
+                {
+                    _debugConsole.SelectionColor = defaultLineColor;
+                    _debugConsole.AppendText(message);
+                }
+            }
+
+            _debugConsole.SelectionColor = _debugConsole.ForeColor;
+            _debugConsole.AppendText(Environment.NewLine);
+            _debugConsole.ScrollToCaret();
+            _debugConsole.ResumeLayout();
         }
 
         public void Addform(TabPage tp, Form f)
@@ -486,22 +598,10 @@ namespace _ORTools.Forms
             ConfigureTabControl(tabControlTop);
 
             Config loadConfig = ConfigGlobal.GetConfig();
-            if (loadConfig.DebugMode && loadConfig.DebugModeShowLog && debugLogWindow == null)
+            if (loadConfig.DebugMode && loadConfig.DebugModeShowLog)
             {
-                DebugLogger.Info("DebugModeShowLog is ON: Creating and showing DebugLogWindow");
-                debugLogWindow = new DebugLogWindow(Icon)
-                {
-                    Owner = this
-                };
-                PositionDebugLogWindow();
-                debugLogWindow.Show();
-                SubscribeToDebugLogger();
-                this.LocationChanged += Container_LocationOrSizeChanged;
-                this.SizeChanged += Container_LocationOrSizeChanged;
-            }
-            else if (debugLogWindow != null && !debugLogWindow.IsDisposed)
-            {
-                PositionDebugLogWindow();
+                DebugLogger.Info("DebugModeShowLog is ON: Showing debug panel");
+                ShowDebugPanel();
             }
         }
 
@@ -682,15 +782,7 @@ namespace _ORTools.Forms
 
                 subject.Notify(new Utils.Message(MessageCode.TURN_OFF, null));
 
-                UnsubscribeFromDebugLogger();
-
-                if (debugLogWindow != null && !debugLogWindow.IsDisposed)
-                {
-                    DebugLogger.Info("Closing DebugLogWindow...");
-                    debugLogWindow.Close();
-                    debugLogWindow.Dispose();
-                    debugLogWindow = null;
-                }
+                HideDebugPanel();
 
                 Config GlobalConfig = ConfigGlobal.GetConfig();
 
@@ -799,30 +891,15 @@ namespace _ORTools.Forms
                 case MessageCode.DEBUG_MODE_CHANGED:
                     bool newDebugMode = (bool)((subject as Subject).Message.Data);
                     DebugLogger.Info($"Received DEBUG_MODE_CHANGED notification. New DebugMode: {newDebugMode}");
-                    if (newDebugMode && debugLogWindow == null)
+                    if (newDebugMode)
                     {
-                        DebugLogger.Info("DebugMode set to true: Creating and showing DebugLogWindow...");
-                        debugLogWindow = new DebugLogWindow(this.Icon)
-                        {
-                            Owner = this
-                        };
-                        PositionDebugLogWindow();
-                        debugLogWindow.Show();
-                        SubscribeToDebugLogger();
+                        DebugLogger.Info("DebugMode set to true: Showing debug panel");
+                        ShowDebugPanel();
                     }
-                    else if (!newDebugMode && debugLogWindow != null && !debugLogWindow.IsDisposed)
+                    else
                     {
-                        DebugLogger.Info("DebugMode set to false: Closing DebugLogWindow...");
-                        UnsubscribeFromDebugLogger();
-                        debugLogWindow.Close();
-                        debugLogWindow = null;
-                    }
-                    else if (newDebugMode && debugLogWindow != null && debugLogWindow.Visible == false)
-                    {
-                        DebugLogger.Info("DebugMode set to true: Showing existing DebugLogWindow...");
-                        debugLogWindow.Owner = this;
-                        PositionDebugLogWindow();
-                        debugLogWindow.Show();
+                        DebugLogger.Info("DebugMode set to false: Hiding debug panel");
+                        HideDebugPanel();
                     }
                     break;
 

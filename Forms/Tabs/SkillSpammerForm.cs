@@ -256,7 +256,10 @@ namespace _ORTools.Forms
         }
 
         // Event handlers for individual checkboxes (can be removed if not needed)
-        private void SkillSpammerForm_Load(object sender, EventArgs e) { }
+        private void SkillSpammerForm_Load(object sender, EventArgs e)
+        {
+            OSROQuestsButton.Visible = AppConfig.ServerMode == 0;
+        }
 
         private void MRWebsiteButton_Click(object sender, EventArgs e)
         {

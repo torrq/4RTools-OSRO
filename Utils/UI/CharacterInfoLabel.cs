@@ -98,7 +98,6 @@ namespace _ORTools.Utils
         /// </summary>
         private void DrawHpSpLine(Graphics g, string line, float y, Brush normalBrush, Brush lowBrush)
         {
-            // Find the separator between HP and SP parts
             int sepIdx = line.IndexOf("| SP ");
             if (sepIdx < 0)
             {
@@ -106,33 +105,41 @@ namespace _ORTools.Utils
                 return;
             }
 
-            string hpPart  = line.Substring(0, sepIdx);           // "HP x / y "
-            string sep     = "|";                                   // just the pipe
-            string spPart  = line.Substring(sepIdx + 1);           // " SP x / y" (leading space preserved)
+            // hpPart = everything up to and including the space before |
+            // spStart = index of 'S' in "SP"
+            int spStart = sepIdx + 2; // pipe + space, then 'S'
 
-            float x = 0f;
-            // HP segment
-            Brush hpBrush = HpLow ? lowBrush : normalBrush;
-            g.DrawString(hpPart, this.Font, hpBrush, x, y);
-            x += MeasureWidth(g, hpPart);
+            // Draw the full line in normal color first — this establishes correct spacing
+            g.DrawString(line, this.Font, normalBrush, 0f, y);
 
-            // Separator " | "
-            g.DrawString(sep, this.Font, normalBrush, x, y);
-            x += MeasureWidth(g, sep);
-
-            // SP segment
-            Brush spBrush = SpLow ? lowBrush : normalBrush;
-            g.DrawString(spPart, this.Font, spBrush, x, y);
-        }
-
-        private float MeasureWidth(Graphics g, string text)
-        {
-            // MeasureString adds padding; use MeasureCharacterRanges for accuracy
-            var ranges = new[] { new CharacterRange(0, text.Length) };
+            // Now overdraw only the segments that need a different color
+            // Measure character offsets within the full string using MeasureCharacterRanges
             var fmt = new StringFormat();
-            fmt.SetMeasurableCharacterRanges(ranges);
-            var regions = g.MeasureCharacterRanges(text, this.Font, new RectangleF(0, 0, 2000, 100), fmt);
-            return regions[0].GetBounds(g).Width;
+
+            if (HpLow && lowBrush != normalBrush)
+            {
+                // HP segment: chars 0..sepIdx-1
+                fmt.SetMeasurableCharacterRanges(new[] { new CharacterRange(0, sepIdx) });
+                var regions = g.MeasureCharacterRanges(line, this.Font,
+                    new RectangleF(0, y, 2000, 100), fmt);
+                RectangleF hpBounds = regions[0].GetBounds(g);
+                // Clip to HP region and redraw
+                g.SetClip(new RectangleF(0f, y, hpBounds.Right, this.Font.Height + 2));
+                g.DrawString(line, this.Font, lowBrush, 0f, y);
+                g.ResetClip();
+            }
+
+            if (SpLow && lowBrush != normalBrush)
+            {
+                // SP segment: chars spStart..end
+                fmt.SetMeasurableCharacterRanges(new[] { new CharacterRange(spStart, line.Length - spStart) });
+                var regions = g.MeasureCharacterRanges(line, this.Font,
+                    new RectangleF(0, y, 2000, 100), fmt);
+                RectangleF spBounds = regions[0].GetBounds(g);
+                g.SetClip(new RectangleF(spBounds.Left - 3, y, spBounds.Width + 7, this.Font.Height + 2));
+                g.DrawString(line, this.Font, lowBrush, 0f, y);
+                g.ResetClip();
+            }
         }
 
         private string ApplyTextPadding(string text, ContentAlignment align)
