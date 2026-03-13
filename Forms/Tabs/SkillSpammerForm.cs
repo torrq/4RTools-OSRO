@@ -31,11 +31,7 @@ namespace _ORTools.Forms
                     this.skillSpammer.Start();
                     break;
                 case MessageCode.TURN_OFF:
-                    if (this.skillSpammer.ToggleMode)
-                    {
-                        this.skillSpammer.ToggleMode = false;
-                        OnToggleModeChangedFromKey(this, false);
-                    }
+                    this.skillSpammer.ResetToggleState();
                     this.skillSpammer.Stop();
                     break;
             }

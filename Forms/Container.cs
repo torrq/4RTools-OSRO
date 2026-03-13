@@ -215,7 +215,7 @@ namespace _ORTools.Forms
 
         private void ProcessCB_MeasureItem(object sender, MeasureItemEventArgs e)
         {
-            if (e.Index < 0) return;
+            if (e.Index < 0 || e.Index >= processCB.Items.Count) return;
 
             if (!(processCB.Items[e.Index] is GameProcessInfo item)) return;
 

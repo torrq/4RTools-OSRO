@@ -26,6 +26,15 @@ namespace _ORTools.Model
     public class SkillSpammer : IAction
     {
         private Dictionary<Keys, bool> toggledKeys = new Dictionary<Keys, bool>();
+
+        /// <summary>
+        /// Clears which keys are actively firing in toggle mode, without disabling toggle mode itself.
+        /// Call this when the app state turns OFF so the next ON requires a fresh key tap.
+        /// </summary>
+        public void ResetToggleState()
+        {
+            toggledKeys.Clear();
+        }
         private Dictionary<Keys, bool> keyPressedLastFrame = new Dictionary<Keys, bool>();
 
         public event EventHandler<bool> ToggleModeChanged;
