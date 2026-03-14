@@ -111,7 +111,7 @@ namespace _ORTools.Model
 
         private int ATKDEFThread(Client roClient)
         {
-            if (roClient.IsTextInputActive()) return 0;
+            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
 
             foreach (EquipConfig equipConfig in this.EquipConfigs)
             {

@@ -194,7 +194,7 @@ namespace _ORTools.Model
 
         private int SongMacroThread(Client roClient)
         {
-            if (roClient.IsTextInputActive()) return 0;
+            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
 
             foreach (SongRow songRow in this.SongRows)
             {

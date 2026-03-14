@@ -12,16 +12,17 @@ namespace _ORTools.Utils
 
         public static string Name = "OSRO Tools";
         public static string Version = "v1.0.11";
-        public static decimal ConfigVersion = 0;
+        public static decimal ConfigVersion = 1;
 
         // 0 = Mid-rate, 1 = High-rate
         public static int ServerMode = 0;
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
+        public static string preReleaseTag = "SPEEDY-20260314";
 
-        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (SPEEDY 20260313)" : "")}";
-        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" (SPEEDY 20260313)" : "")}";
+        public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
+        public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
 
         #endregion
 
@@ -88,6 +89,39 @@ namespace _ORTools.Utils
                 case 1: return "HR";   // High‑rate
                 default:
                     throw new InvalidOperationException($"Unsupported ServerMode value: {ServerMode}");
+            }
+        }
+
+        #endregion
+
+        #region Weight Addresses
+
+        /// <summary>
+        /// Current and max weight addresses. Both are 4-byte values.
+        /// MaxWeight is always WeightAddress + 4, so both read in a single 8-byte RPM call.
+        /// HR addresses unknown — returns 0, weight display hidden.
+        /// </summary>
+        public static int WeightAddress
+        {
+            get
+            {
+                switch (ServerMode)
+                {
+                    case 0: return 0xE8BB28; // MR current weight
+                    default: return 0;       // HR unknown
+                }
+            }
+        }
+
+        public static int MaxWeightAddress
+        {
+            get
+            {
+                switch (ServerMode)
+                {
+                    case 0: return 0xE8BB24; // MR max weight
+                    default: return 0;
+                }
             }
         }
 

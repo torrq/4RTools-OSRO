@@ -139,7 +139,7 @@ namespace _ORTools.Model
 
         private int MacroThread(Client roClient)
         {
-            if (roClient.IsTextInputActive()) return 0;
+            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
 
             foreach (MacroSwitchChainConfig chainConfig in this.ChainConfigs)
             {

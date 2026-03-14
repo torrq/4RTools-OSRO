@@ -111,7 +111,7 @@ namespace _ORTools.Model
             if (!SkillSpammer.IsGameWindowActive())
                 return 0;
 
-            if (roClient.IsTextInputActive())
+            if (roClient.IsTextInputActive() || roClient.IsDead())
                 return 0;
 
             // Cache expensive lookups once per iteration

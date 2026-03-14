@@ -53,6 +53,7 @@ namespace _ORTools.Utils
     {
         public Message Message { get; set; } = new Message();
         private readonly List<IObserver> _observers = new List<IObserver>();
+        private readonly object _observersLock = new object();
 
         public void Attach(IObserver observer)
         {
@@ -62,23 +63,31 @@ namespace _ORTools.Utils
                 return;
             }
 
-            if (!_observers.Contains(observer))
+            lock (_observersLock)
             {
-                _observers.Add(observer);
+                if (!_observers.Contains(observer))
+                    _observers.Add(observer);
             }
         }
 
         public void Detach(IObserver observer)
         {
-            this._observers.Remove(observer);
+            lock (_observersLock)
+            {
+                _observers.Remove(observer);
+            }
             DebugLogger.Debug("Subject: Detached an observer.");
         }
 
         public void Notify(Message message)
         {
-            //DebugLogger.Debug("Subject: Notifying observers...");
             this.Message = message;
-            foreach (var observer in _observers)
+            IObserver[] snapshot;
+            lock (_observersLock)
+            {
+                snapshot = _observers.ToArray();
+            }
+            foreach (var observer in snapshot)
             {
                 observer.Update(this);
             }

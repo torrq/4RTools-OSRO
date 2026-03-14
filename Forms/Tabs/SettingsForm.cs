@@ -28,6 +28,8 @@ namespace _ORTools.Forms
             this.ChkDisableSystray.Checked = cfg.DisableSystray;
             this.PauseWhenChatting.CheckedChanged -= this.PauseWhenChatting_CheckedChanged;
             this.PauseWhenChatting.Checked = cfg.PauseWhenChatting;
+            this.PauseWhenDead.CheckedChanged -= this.PauseWhenDead_CheckedChanged;
+            this.PauseWhenDead.Checked = cfg.PauseWhenDead;
             this.SongRows.ValueChanged -= this.SongRows_ValueChanged;
             this.SongRows.Value = cfg.SongRows;
             this.MacroSwitchRows.ValueChanged -= this.MacroSwitchRows_ValueChanged;
@@ -67,6 +69,7 @@ namespace _ORTools.Forms
             this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
             this.ChkDisableSystray.CheckedChanged += this.ChkDisableSystray_CheckedChanged;
             this.PauseWhenChatting.CheckedChanged += this.PauseWhenChatting_CheckedChanged;
+            this.PauseWhenDead.CheckedChanged += this.PauseWhenDead_CheckedChanged;
             this.SongRows.ValueChanged += this.SongRows_ValueChanged;
             this.MacroSwitchRows.ValueChanged += this.MacroSwitchRows_ValueChanged;
             this.DefaultToggleStateKey.TextChanged += this.DefaultToggleStateKey_TextChanged;
@@ -349,6 +352,15 @@ namespace _ORTools.Forms
             cfg.PauseWhenChatting = PauseWhenChatting.Checked;
             ConfigGlobal.SaveConfig();
             DebugLogger.Info($"PauseWhenChatting changed to {cfg.PauseWhenChatting}");
+        }
+
+        private void PauseWhenDead_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializing) return;
+            Config cfg = ConfigGlobal.GetConfig();
+            cfg.PauseWhenDead = PauseWhenDead.Checked;
+            ConfigGlobal.SaveConfig();
+            DebugLogger.Info($"PauseWhenDead changed to {cfg.PauseWhenDead}");
         }
 
         private void ChkDisableSystray_CheckedChanged(object sender, EventArgs e)

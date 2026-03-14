@@ -36,6 +36,7 @@ namespace _ORTools.Forms
         private RichTextBox _debugConsole;
         private bool _debugPanelVisible = false;
         private const int DEBUG_PANEL_HEIGHT = 200;
+        public const int DEBUG_MAX_LINES = 2000;
 
         public Container()
         {
@@ -52,7 +53,7 @@ namespace _ORTools.Forms
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(385, 6)
+                Location = new Point(385, 5)
             };
             Controls.Add(characterInfoForm);
             characterInfoForm.Show();
@@ -341,6 +342,7 @@ namespace _ORTools.Forms
             }
         }
 
+
         private void TabControlTop_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (!(sender is TabControl tabControl)) return;
@@ -426,6 +428,16 @@ namespace _ORTools.Forms
             if (string.IsNullOrWhiteSpace(message)) return;
 
             _debugConsole.SuspendLayout();
+
+            // Cap line count to avoid unbounded memory growth
+            if (_debugConsole.Lines.Length >= DEBUG_MAX_LINES)
+            {
+                int trimTo = DEBUG_MAX_LINES / 2;
+                int removeUpTo = _debugConsole.GetFirstCharIndexFromLine(trimTo);
+                _debugConsole.Select(0, removeUpTo);
+                _debugConsole.SelectedText = string.Empty;
+            }
+
             _debugConsole.SelectionStart = _debugConsole.TextLength;
             _debugConsole.SelectionLength = 0;
 

@@ -555,6 +555,23 @@ namespace _ORTools.Model
             return ReadMemoryAsString(this.CurrentMapAddress);
         }
 
+        // Shared 1-second map cache — all macro threads call this instead of ReadCurrentMap()
+        // so at most one RPM read per second regardless of how many macros are running.
+        private volatile string _cachedMap = string.Empty;
+        private long _mapCacheTicks = 0;
+        private const long MAP_CACHE_TICKS = 10_000_000; // 1s in ticks
+
+        public string ReadCurrentMapCached()
+        {
+            long now = DateTime.UtcNow.Ticks;
+            if (now - _mapCacheTicks > MAP_CACHE_TICKS)
+            {
+                _cachedMap = ReadCurrentMap() ?? string.Empty;
+                _mapCacheTicks = now;
+            }
+            return _cachedMap;
+        }
+
         /// <summary>
         /// Returns true if a text input box (chat, search, etc.) is currently active.
         /// When true, macros should not send keys to avoid interrupting typing.
@@ -562,10 +579,38 @@ namespace _ORTools.Model
         /// Logs a debug message when the state changes (0→1 or 1→0) to aid address verification.
         /// </summary>
         /// <summary>
+        /// Reads current and max weight in a single 8-byte RPM call.
+        /// MaxWeight is at WeightAddress-4 (E8BB24), current at WeightAddress (E8BB28).
+        /// Returns (0, 0) on HR where addresses are unknown.
+        /// </summary>
+        public (uint current, uint max) ReadWeight()
+        {
+            int addr = AppConfig.MaxWeightAddress;
+            if (addr == 0) return (0, 0);
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)addr, 8u, throwOnError: false);
+            if (bytes == null || bytes.Length < 8) return (0, 0);
+            uint max     = BitConverter.ToUInt32(bytes, 0);
+            uint current = BitConverter.ToUInt32(bytes, 4);
+            return (current, max);
+        }
+
+        /// <summary>
         /// Returns true when the player has a text input box focused (chat, search, etc.).
         /// Only byte 0 at TextInputActiveAddress is checked — b0=0x01 means active.
         /// Returns false on HR where the address is unknown.
         /// </summary>
+        /// <summary>
+        /// Returns true when the character is dead (HP == 1 in RO).
+        /// Uses HpSpCache so no extra RPM call is needed.
+        /// </summary>
+        public bool IsDead()
+        {
+            if (!ConfigGlobal.GetConfig().PauseWhenDead) return false;
+            var snap = HpSpCache.Latest;
+            if (!snap.IsValid || snap.Snapshot.MaxHp == 0) return false;
+            return snap.Snapshot.CurrentHp == 1;
+        }
+
         public bool IsTextInputActive()
         {
             if (!ConfigGlobal.GetConfig().PauseWhenChatting) return false;

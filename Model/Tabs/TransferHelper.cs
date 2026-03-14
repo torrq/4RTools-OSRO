@@ -27,7 +27,7 @@ namespace _ORTools.Model
 
         private int TransferHelperThread(Client roClient)
         {
-            if (roClient.IsTextInputActive()) return 0;
+            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
 
             var transferKey = ProfileSingleton.GetCurrent().TransferHelper.TransferKey;
             if (transferKey != Keys.None && Win32Interop.IsKeyPressed(transferKey))

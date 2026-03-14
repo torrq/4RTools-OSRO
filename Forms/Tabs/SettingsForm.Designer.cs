@@ -54,8 +54,9 @@ namespace _ORTools.Forms
             this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
-            this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PauseWhenChatting = new System.Windows.Forms.CheckBox();
+            this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PauseWhenDead = new System.Windows.Forms.CheckBox();
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SongRows)).BeginInit();
@@ -91,7 +92,7 @@ namespace _ORTools.Forms
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
-            this.groupSettings.Size = new System.Drawing.Size(300, 165);
+            this.groupSettings.Size = new System.Drawing.Size(300, 141);
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Profile Settings";
@@ -161,6 +162,7 @@ namespace _ORTools.Forms
             // 
             // groupGlobalSettings
             // 
+            this.groupGlobalSettings.Controls.Add(this.PauseWhenDead);
             this.groupGlobalSettings.Controls.Add(this.PauseWhenChatting);
             this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKey);
             this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKeyLabel);
@@ -170,9 +172,9 @@ namespace _ORTools.Forms
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRows);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.panel1);
-            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 191);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 167);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
-            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 229);
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 253);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
@@ -294,10 +296,6 @@ namespace _ORTools.Forms
             this.toolTipDebugModeShowLog.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipDebugModeShowLog.ToolTipTitle = "Show Debug Log";
             // 
-            // clientDTOBindingSource
-            // 
-            this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
-            // 
             // PauseWhenChatting
             // 
             this.PauseWhenChatting.AutoSize = true;
@@ -309,6 +307,22 @@ namespace _ORTools.Forms
             this.PauseWhenChatting.TabIndex = 318;
             this.PauseWhenChatting.Text = "Pause when chatting";
             this.PauseWhenChatting.UseVisualStyleBackColor = true;
+            // 
+            // clientDTOBindingSource
+            // 
+            this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
+            // 
+            // PauseWhenDead
+            // 
+            this.PauseWhenDead.AutoSize = true;
+            this.PauseWhenDead.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PauseWhenDead.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PauseWhenDead.Location = new System.Drawing.Point(55, 218);
+            this.PauseWhenDead.Name = "PauseWhenDead";
+            this.PauseWhenDead.Size = new System.Drawing.Size(127, 20);
+            this.PauseWhenDead.TabIndex = 330;
+            this.PauseWhenDead.Text = "Pause when dead";
+            this.PauseWhenDead.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -363,5 +377,6 @@ namespace _ORTools.Forms
         private Label DefaultToggleStateKeyLabel;
         private TextBox DefaultToggleStateKey;
         private CheckBox PauseWhenChatting;
+        private CheckBox PauseWhenDead;
     }
 }

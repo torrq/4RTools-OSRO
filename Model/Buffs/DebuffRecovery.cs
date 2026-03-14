@@ -285,7 +285,7 @@ namespace _ORTools.Model
                 if ((key != Keys.None) && !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                 {
                     var client = ClientSingleton.GetClient();
-                    if (client?.Process != null && !client.Process.HasExited && !client.IsTextInputActive())
+                    if (client?.Process != null && !client.Process.HasExited && !client.IsTextInputActive() && !client.IsDead())
                     {
                         Win32Interop.PostMessage(client.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, key, 0);
                     }

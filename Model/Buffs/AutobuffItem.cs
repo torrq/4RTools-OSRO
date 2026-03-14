@@ -30,20 +30,6 @@ namespace _ORTools.Model
 
         // Map cache
         private string _cachedMap = string.Empty;
-        private long _mapCacheTicks = 0;
-        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
-
-        private string GetCurrentMapCached(Client c)
-        {
-            long now = DateTime.UtcNow.Ticks;
-            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
-            {
-                _cachedMap = c.ReadCurrentMap();
-                _mapCacheTicks = now;
-            }
-            return _cachedMap;
-        }
-
         public AutoBuffItem(string actionName)
         {
             this.ActionName = actionName;
@@ -104,7 +90,7 @@ namespace _ORTools.Model
 
                     try
                     {
-                        currentMap = GetCurrentMapCached(c);
+                        currentMap = c.ReadCurrentMapCached();
                         prefs = ProfileSingleton.GetCurrent().UserPreferences;
                     }
                     catch (Exception ex)
@@ -191,7 +177,7 @@ namespace _ORTools.Model
                                         }
                                         else
                                         {
-                                            if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER && !c.IsTextInputActive())
+                                            if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER && !c.IsTextInputActive() && !c.IsDead())
                                             {
                                                 this.UseAutobuff(item.Value);
                                                 Thread.Sleep(Delay);

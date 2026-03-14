@@ -24,22 +24,6 @@ namespace _ORTools.Model
         // Map cache — shared across all timer threads; avoids an RPM call every tick.
         // Refreshed at most once per second so city-check stays accurate without hammering memory.
         private string _cachedMap = string.Empty;
-        private DateTime _mapCacheTime = DateTime.MinValue;
-        private readonly object _mapCacheLock = new object();
-
-        private string GetCurrentMapCached(Client roClient)
-        {
-            lock (_mapCacheLock)
-            {
-                if ((DateTime.UtcNow - _mapCacheTime).TotalMilliseconds > 1000)
-                {
-                    _cachedMap = roClient.ReadCurrentMap();
-                    _mapCacheTime = DateTime.UtcNow;
-                }
-                return _cachedMap;
-            }
-        }
-
         public void Start()
         {
             Client roClient = ClientSingleton.GetClient();
@@ -76,7 +60,7 @@ namespace _ORTools.Model
             if (skillTimer.TryGetValue(timerId, out var macro) && macro.Enabled)
             {
                 // Respect the StopBuffsCity setting - if enabled and we're in a city, don't start the timer
-                string currentMap = GetCurrentMapCached(roClient);
+                string currentMap = roClient.ReadCurrentMapCached();
                 if (ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity && Server.GetCityList().Contains(currentMap))
                 {
                     // Don't start timer if we're in a city and StopBuffsCity is enabled
@@ -113,9 +97,9 @@ namespace _ORTools.Model
 
         private int SkillTimerThread(Client roClient, SkillTimerKey macro)
         {
-            if (roClient.IsTextInputActive()) return 0;
+            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
 
-            string currentMap = GetCurrentMapCached(roClient);
+            string currentMap = roClient.ReadCurrentMapCached();
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
                 IntPtr hWnd = roClient.Process.MainWindowHandle;

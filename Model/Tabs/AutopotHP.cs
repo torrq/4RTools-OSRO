@@ -42,20 +42,6 @@ namespace _ORTools.Model
 
         // Map cache — avoids a full RPM read every 1ms idle cycle
         private string _cachedMap = string.Empty;
-        private long _mapCacheTicks = 0;
-        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
-
-        private string GetCurrentMapCached(Client roClient)
-        {
-            long now = DateTime.UtcNow.Ticks;
-            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
-            {
-                _cachedMap = roClient.ReadCurrentMap();
-                _mapCacheTicks = now;
-            }
-            return _cachedMap;
-        }
-
         public AutopotHP() { }
 
         public AutopotHP(string actionName)
@@ -116,7 +102,7 @@ namespace _ORTools.Model
 
             try
             {
-                string currentMap = GetCurrentMapCached(roClient);
+                string currentMap = roClient.ReadCurrentMapCached();
                 bool isInCity =
                     ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity
                     && Server.GetCityList().Contains(currentMap);
@@ -160,7 +146,7 @@ namespace _ORTools.Model
             if (!PotionManager.CanUsePot())
                 return false;
 
-            if (roClient.IsTextInputActive())
+            if (roClient.IsTextInputActive() || roClient.IsDead())
                 return false;
 
             // Read HP/SP in one bulk call so every slot comparison below costs zero extra RPM calls

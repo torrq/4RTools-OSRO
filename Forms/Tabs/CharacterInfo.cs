@@ -2,6 +2,7 @@
 using _ORTools.Utils;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace _ORTools.Forms
@@ -9,6 +10,9 @@ namespace _ORTools.Forms
     public partial class CharacterInfo : Form
     {
         private string mapLink = "";
+        private uint _weightCurrent = 0;
+        private uint _weightMax = 0;
+        private readonly ToolTip _weightTip = new ToolTip();
 
         // How old a cache entry can be before we consider macros "off" and do a full read
         private static readonly TimeSpan CacheStaleThreshold = TimeSpan.FromSeconds(2);
@@ -52,6 +56,10 @@ namespace _ORTools.Forms
             // Register with the designer's components container so Dispose() in Designer.cs cleans it up
             if (components == null) components = new System.ComponentModel.Container();
             components.Add(_refreshTimer);
+            components.Add(_weightTip);
+
+            // Weight bar — 2px tall, spans full width, sits at the very bottom of the form
+            _weightTip.SetToolTip(this, "");
         }
 
         public string CharacterNameLabel
@@ -122,6 +130,8 @@ namespace _ORTools.Forms
                     string map = client.ReadCurrentMap() ?? string.Empty;
                     this.CharacterMapLabel = map;
                     this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + map;
+                    var (wCur, wMax) = client.ReadWeight();
+                    UpdateWeightBar(wCur, wMax);
                 }
             }
             else
@@ -153,12 +163,48 @@ namespace _ORTools.Forms
             characterInfoLabel.SpLow = snap.MaxSp > 0 && snap.CurrentSp < snap.MaxSp * 0.25;
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            if (_weightMax == 0) return;
+
+            const int BAR_HEIGHT = 8;
+            float ratio = Math.Min(1f, (float)_weightCurrent / _weightMax);
+            int barY = 0;
+            int barWidth = (int)(this.ClientSize.Width * ratio);
+
+            // Color: green → yellow → red as weight fills up
+            Color barColor;
+            if (ratio < 0.5f)
+                barColor = Color.FromArgb(80, 200, 80);
+            else if (ratio < 0.9f)
+                barColor = Color.FromArgb(220, 180, 0);
+            else
+                barColor = Color.FromArgb(210, 60, 60);
+
+            using (Brush b = new SolidBrush(barColor))
+                e.Graphics.FillRectangle(b, 0, barY, barWidth, BAR_HEIGHT);
+        }
+
+        private void UpdateWeightBar(uint current, uint max)
+        {
+            if (_weightCurrent == current && _weightMax == max) return;
+            _weightCurrent = current;
+            _weightMax = max;
+            if (max > 0)
+                _weightTip.SetToolTip(this, $"Weight: {current} / {max}");
+            else
+                _weightTip.SetToolTip(this, "");
+            Invalidate(new Rectangle(0, 0, this.ClientSize.Width, 8));
+        }
+
         private void ClearLabels()
         {
             this.CharacterNameLabel = "";
             this.CharacterInfoLabel = "";
             this.CharacterMapLabel  = "";
             this.MapLink            = "";
+            UpdateWeightBar(0, 0);
         }
 
         /// <summary>
@@ -225,6 +271,8 @@ namespace _ORTools.Forms
             this.CharacterInfoLabel = clientDebugInfo;
             this.CharacterMapLabel = currentMap;
             this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + currentMap;
+            var (wCur2, wMax2) = client.ReadWeight();
+            UpdateWeightBar(wCur2, wMax2);
 
             characterInfoLabel.HpLow = currentMaxHP > 0 && currentHP < currentMaxHP * 0.25;
             characterInfoLabel.SpLow = currentMaxSP > 0 && currentSP < currentMaxSP * 0.25;

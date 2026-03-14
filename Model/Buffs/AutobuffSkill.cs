@@ -38,20 +38,6 @@ namespace _ORTools.Model
 
         // Map cache
         private string _cachedMap = string.Empty;
-        private long _mapCacheTicks = 0;
-        private const long MAP_CACHE_INTERVAL = 10_000_000; // 1 second in ticks
-
-        private string GetCurrentMapCached(Client c)
-        {
-            long now = DateTime.UtcNow.Ticks;
-            if (now - _mapCacheTicks > MAP_CACHE_INTERVAL)
-            {
-                _cachedMap = c.ReadCurrentMap();
-                _mapCacheTicks = now;
-            }
-            return _cachedMap;
-        }
-
         public AutoBuffSkill(string actionName)
         {
             this.ActionName = actionName;
@@ -115,7 +101,7 @@ namespace _ORTools.Model
 
                     try
                     {
-                        currentMap = GetCurrentMapCached(c);
+                        currentMap = c.ReadCurrentMapCached();
                         prefs = ProfileSingleton.GetCurrent().UserPreferences;
                     }
                     catch (Exception ex)
@@ -184,7 +170,7 @@ namespace _ORTools.Model
                                         if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER)
                                         {
                                             if (!_active) break;
-                                            if (c.IsTextInputActive()) break;
+                                            if (c.IsTextInputActive() || c.IsDead()) break;
 
                                             // Skip if we cast this buff recently — server may not have reflected it yet
                                             if (_lastCastTime.TryGetValue(buffToApply.Key, out DateTime lastCast) &&
@@ -248,15 +234,15 @@ namespace _ORTools.Model
                 if (status == EffectStatusIDs.WEIGHT90 && prefs.AutoOffOverweight)
                 {
                     DebugLogger.Info("Overweight 90%, disable now");
-                    var frmStateSwitch = (StateSwitchForm)Application.OpenForms["StateSwitchForm"];
-                    if (frmStateSwitch != null)
+                    var frmStateSwitch = FormHelper.StateSwitchFormInstance;
+                    if (frmStateSwitch != null && !frmStateSwitch.IsDisposed)
                     {
-                        frmStateSwitch.toggleStatus();
+                        frmStateSwitch.TurnOFF();
                         WeightLimitMacro.SendOverweightMacro();
                     }
                     else
                     {
-                        DebugLogger.Error("HandleOverweightStatus: Could not find 'StateSwitchForm' to toggle status.");
+                        DebugLogger.Error("HandleOverweightStatus: Could not find StateSwitchForm to toggle status.");
                     }
                 }
             }
