@@ -191,7 +191,7 @@ namespace _ORTools.Model
                                         }
                                         else
                                         {
-                                            if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER)
+                                            if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER && !c.IsTextInputActive())
                                             {
                                                 this.UseAutobuff(item.Value);
                                                 Thread.Sleep(Delay);

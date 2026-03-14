@@ -194,6 +194,8 @@ namespace _ORTools.Model
 
         private int SongMacroThread(Client roClient)
         {
+            if (roClient.IsTextInputActive()) return 0;
+
             foreach (SongRow songRow in this.SongRows)
             {
                 if (songRow.TriggerKey != Keys.None && Win32Interop.IsKeyPressed(songRow.TriggerKey))

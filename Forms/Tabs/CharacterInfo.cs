@@ -243,7 +243,7 @@ namespace _ORTools.Forms
         // Helper method to validate character data
         private bool IsValidCharacterData(int level, int jobLevel, int hp, int maxHP)
         {
-            DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
+            //DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
             // Example validation: ensure level and HP are within reasonable ranges
             return level > 0 && level <= 255 && // Adjust max level based on game
                    jobLevel > 0 && jobLevel <= 255 && // Adjust max job level based on game

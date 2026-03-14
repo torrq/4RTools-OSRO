@@ -93,6 +93,27 @@ namespace _ORTools.Utils
 
         #endregion
 
+        #region Text Input Detection
+
+        /// <summary>
+        /// Base address of the text input state block. Byte 0 = active flag (0x01 = input focused,
+        /// 0x00 = not focused); bytes 1–2 are always 0x01 and are ignored.
+        /// HR address unknown — returns 0, check is skipped.
+        /// </summary>
+        public static int TextInputActiveAddress
+        {
+            get
+            {
+                switch (ServerMode)
+                {
+                    case 0: return 0xCE6B40; // MR
+                    default: return 0;       // HR unknown
+                }
+            }
+        }
+
+        #endregion
+
         #region Cities
 
         public static List<string> DefaultCities => new List<string>

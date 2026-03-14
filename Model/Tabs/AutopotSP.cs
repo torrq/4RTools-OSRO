@@ -142,6 +142,9 @@ namespace _ORTools.Model
             if (!PotionManager.CanUsePot())
                 return false;
 
+            if (roClient.IsTextInputActive())
+                return false;
+
             // Read HP/SP in one bulk call so every slot comparison below costs zero extra RPM calls
             Client.HpSpSnapshot hpSp = roClient.ReadHpSp();
 

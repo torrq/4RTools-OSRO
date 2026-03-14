@@ -55,6 +55,7 @@ namespace _ORTools.Forms
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PauseWhenChatting = new System.Windows.Forms.CheckBox();
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SongRows)).BeginInit();
@@ -90,7 +91,7 @@ namespace _ORTools.Forms
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
-            this.groupSettings.Size = new System.Drawing.Size(300, 191);
+            this.groupSettings.Size = new System.Drawing.Size(300, 165);
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Profile Settings";
@@ -160,6 +161,7 @@ namespace _ORTools.Forms
             // 
             // groupGlobalSettings
             // 
+            this.groupGlobalSettings.Controls.Add(this.PauseWhenChatting);
             this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKey);
             this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKeyLabel);
             this.groupGlobalSettings.Controls.Add(this.ChkDisableSystray);
@@ -168,9 +170,9 @@ namespace _ORTools.Forms
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRows);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.panel1);
-            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 217);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 191);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
-            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 203);
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 229);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
@@ -296,6 +298,18 @@ namespace _ORTools.Forms
             // 
             this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
             // 
+            // PauseWhenChatting
+            // 
+            this.PauseWhenChatting.AutoSize = true;
+            this.PauseWhenChatting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PauseWhenChatting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PauseWhenChatting.Location = new System.Drawing.Point(55, 192);
+            this.PauseWhenChatting.Name = "PauseWhenChatting";
+            this.PauseWhenChatting.Size = new System.Drawing.Size(144, 20);
+            this.PauseWhenChatting.TabIndex = 318;
+            this.PauseWhenChatting.Text = "Pause when chatting";
+            this.PauseWhenChatting.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,5 +362,6 @@ namespace _ORTools.Forms
         private CheckBox ChkDisableSystray;
         private Label DefaultToggleStateKeyLabel;
         private TextBox DefaultToggleStateKey;
+        private CheckBox PauseWhenChatting;
     }
 }

@@ -139,6 +139,8 @@ namespace _ORTools.Model
 
         private int MacroThread(Client roClient)
         {
+            if (roClient.IsTextInputActive()) return 0;
+
             foreach (MacroSwitchChainConfig chainConfig in this.ChainConfigs)
             {
                 // Use the dedicated TriggerKey instead of the first non-None key

@@ -113,6 +113,8 @@ namespace _ORTools.Model
 
         private int SkillTimerThread(Client roClient, SkillTimerKey macro)
         {
+            if (roClient.IsTextInputActive()) return 0;
+
             string currentMap = GetCurrentMapCached(roClient);
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {

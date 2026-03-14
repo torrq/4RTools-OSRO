@@ -184,6 +184,7 @@ namespace _ORTools.Model
                                         if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER)
                                         {
                                             if (!_active) break;
+                                            if (c.IsTextInputActive()) break;
 
                                             // Skip if we cast this buff recently — server may not have reflected it yet
                                             if (_lastCastTime.TryGetValue(buffToApply.Key, out DateTime lastCast) &&

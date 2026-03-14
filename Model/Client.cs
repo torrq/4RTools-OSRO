@@ -555,6 +555,26 @@ namespace _ORTools.Model
             return ReadMemoryAsString(this.CurrentMapAddress);
         }
 
+        /// <summary>
+        /// Returns true if a text input box (chat, search, etc.) is currently active.
+        /// When true, macros should not send keys to avoid interrupting typing.
+        /// Returns false on HR (address unknown) so behaviour is unchanged there.
+        /// Logs a debug message when the state changes (0→1 or 1→0) to aid address verification.
+        /// </summary>
+        /// <summary>
+        /// Returns true when the player has a text input box focused (chat, search, etc.).
+        /// Only byte 0 at TextInputActiveAddress is checked — b0=0x01 means active.
+        /// Returns false on HR where the address is unknown.
+        /// </summary>
+        public bool IsTextInputActive()
+        {
+            if (!ConfigGlobal.GetConfig().PauseWhenChatting) return false;
+            int addr = AppConfig.TextInputActiveAddress;
+            if (addr == 0) return false;
+            byte[] bytes = PMR.ReadProcessMemory((IntPtr)addr, 4u, throwOnError: false);
+            return bytes != null && bytes.Length >= 1 && bytes[0] != 0;
+        }
+
         // Fixed coordinates addresses (MR only — HR unknown)
 
         public uint ReadMaxSp()

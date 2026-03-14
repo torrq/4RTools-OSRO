@@ -111,6 +111,9 @@ namespace _ORTools.Model
             if (!SkillSpammer.IsGameWindowActive())
                 return 0;
 
+            if (roClient.IsTextInputActive())
+                return 0;
+
             // Cache expensive lookups once per iteration
             IntPtr windowHandle = roClient.Process.MainWindowHandle;
             bool noShift = this.NoShift;
