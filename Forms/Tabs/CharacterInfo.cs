@@ -60,6 +60,9 @@ namespace _ORTools.Forms
 
             // Weight bar — 2px tall, spans full width, sits at the very bottom of the form
             _weightTip.SetToolTip(this, "");
+            _weightTip.InitialDelay = 400;
+            _weightTip.AutoPopDelay = 2000;
+            _weightTip.ReshowDelay = 200;
         }
 
         public string CharacterNameLabel
@@ -173,17 +176,40 @@ namespace _ORTools.Forms
             int barY = 0;
             int barWidth = (int)(this.ClientSize.Width * ratio);
 
-            // Color: green → yellow → red as weight fills up
-            Color barColor;
-            if (ratio < 0.5f)
-                barColor = Color.FromArgb(80, 200, 80);
-            else if (ratio < 0.9f)
-                barColor = Color.FromArgb(220, 180, 0);
-            else
-                barColor = Color.FromArgb(210, 60, 60);
+            if (barWidth <= 0) return;
 
-            using (Brush b = new SolidBrush(barColor))
-                e.Graphics.FillRectangle(b, 0, barY, barWidth, BAR_HEIGHT);
+            // Gradient: green → yellow → red over 0–90%, solid red from 90–100%
+            using (var bmp = new System.Drawing.Bitmap(barWidth, BAR_HEIGHT))
+            {
+                for (int x = 0; x < barWidth; x++)
+                {
+                    float t = Math.Min(1f, (x / (float)(this.ClientSize.Width * 0.9f)));
+                    Color px;
+                    if (ratio >= 0.9f && x >= (int)(this.ClientSize.Width * 0.9f))
+                    {
+                        px = Color.FromArgb(210, 60, 60); // solid red tail
+                    }
+                    else if (t < 0.5f)
+                    {
+                        float s = t / 0.5f;
+                        px = Color.FromArgb(
+                            (int)(80  + s * (220 - 80)),
+                            (int)(200 + s * (180 - 200)),
+                            (int)(80  + s * (0   - 80)));
+                    }
+                    else
+                    {
+                        float s = (t - 0.5f) / 0.5f;
+                        px = Color.FromArgb(
+                            (int)(220 + s * (210 - 220)),
+                            (int)(180 + s * (60  - 180)),
+                            (int)(0   + s * (60  - 0)));
+                    }
+                    for (int y = 0; y < BAR_HEIGHT; y++)
+                        bmp.SetPixel(x, y, px);
+                }
+                e.Graphics.DrawImage(bmp, 0, barY);
+            }
         }
 
         private void UpdateWeightBar(uint current, uint max)
@@ -192,7 +218,10 @@ namespace _ORTools.Forms
             _weightCurrent = current;
             _weightMax = max;
             if (max > 0)
-                _weightTip.SetToolTip(this, $"Weight: {current} / {max}");
+            {
+                int pct = (int)Math.Round(current * 100.0 / max);
+                _weightTip.SetToolTip(this, $"Weight: {current} / {max} ({pct}%)");
+            }
             else
                 _weightTip.SetToolTip(this, "");
             Invalidate(new Rectangle(0, 0, this.ClientSize.Width, 8));

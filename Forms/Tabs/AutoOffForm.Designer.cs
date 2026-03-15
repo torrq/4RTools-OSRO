@@ -52,7 +52,7 @@ namespace _ORTools.Forms
             this.trackBarTime.Maximum = 480;
             this.trackBarTime.Minimum = 1;
             this.trackBarTime.Name = "trackBarTime";
-            this.trackBarTime.Size = new System.Drawing.Size(323, 45);
+            this.trackBarTime.Size = new System.Drawing.Size(346, 45);
             this.trackBarTime.TabIndex = 0;
             this.trackBarTime.Value = 1;
             this.trackBarTime.Scroll += new System.EventHandler(this.TrackBarTime_Scroll);
@@ -114,9 +114,10 @@ namespace _ORTools.Forms
             // animatedClockImage
             // 
             this.animatedClockImage.Image = global::_ORTools.Resources.Media.Icons.clock_animated;
-            this.animatedClockImage.Location = new System.Drawing.Point(325, 2);
+            this.animatedClockImage.Location = new System.Drawing.Point(101, 68);
             this.animatedClockImage.Name = "animatedClockImage";
             this.animatedClockImage.Size = new System.Drawing.Size(24, 24);
+            this.animatedClockImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.animatedClockImage.TabIndex = 5;
             this.animatedClockImage.TabStop = false;
             // 
