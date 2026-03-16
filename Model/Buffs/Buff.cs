@@ -414,6 +414,7 @@ public static class BuffDefinitions
         EtcBuffs.AddRange(new[]
         {
             b.CreateBuff("VIP Ticket", "VIP_BONUS", "vip_ticket"),
+            b.CreateBuff("SVIP Ticket", "SVIP_BONUS", "vip_ticket"),
             b.CreateBuff("Field Manual 100% / 300%", "FIELD_MANUAL", "fieldmanual"),
             b.CreateBuff("Bubble Gum / HE Bubble Gum", "CASH_RECEIVEITEM", "he_bubble_gum")
         });
