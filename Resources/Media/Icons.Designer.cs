@@ -2893,6 +2893,16 @@ namespace _ORTools.Resources.Media {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap unlock_bbg {
+            get {
+                object obj = ResourceManager.GetObject("unlock_bbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap up_and_down_arrow {
             get {
                 object obj = ResourceManager.GetObject("up_and_down_arrow", resourceCulture);

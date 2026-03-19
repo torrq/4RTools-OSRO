@@ -804,6 +804,9 @@ namespace _ORTools.Utils
         [Description("LUK Tonic")]
         LUK_TONIC = 1455,
 
+        [Description("Unlock Bubble Gum")]
+        UNLOCK_BUBBLEGUM = 1456,
+
         [Description("SVIP Bonus")]
         SVIP_BONUS = 1457,
 

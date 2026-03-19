@@ -416,7 +416,8 @@ public static class BuffDefinitions
             b.CreateBuff("VIP Ticket", "VIP_BONUS", "vip_ticket"),
             b.CreateBuff("SVIP Ticket", "SVIP_BONUS", "vip_ticket"),
             b.CreateBuff("Field Manual 100% / 300%", "FIELD_MANUAL", "fieldmanual"),
-            b.CreateBuff("Bubble Gum / HE Bubble Gum", "CASH_RECEIVEITEM", "he_bubble_gum")
+            b.CreateBuff("Bubble Gum / HE Bubble Gum", "CASH_RECEIVEITEM", "he_bubble_gum"),
+            b.CreateBuff("Unlock Bubble Gum", "UNLOCK_BUBBLEGUM", "unlock_bbg")
         });
 
         FishBuffs.AddRange(new[]
