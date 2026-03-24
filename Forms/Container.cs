@@ -53,7 +53,7 @@ namespace _ORTools.Forms
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
-                Location = new Point(385, 5)
+                Location = new Point(395, 3)
             };
             Controls.Add(characterInfoForm);
             characterInfoForm.Show();

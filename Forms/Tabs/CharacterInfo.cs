@@ -1,4 +1,4 @@
-﻿using _ORTools.Model;
+using _ORTools.Model;
 using _ORTools.Utils;
 using System;
 using System.Diagnostics;
@@ -10,27 +10,56 @@ namespace _ORTools.Forms
     public partial class CharacterInfo : Form
     {
         private string mapLink = "";
-        private uint _weightCurrent = 0;
-        private uint _weightMax = 0;
-        private readonly ToolTip _weightTip = new ToolTip();
 
-        // How old a cache entry can be before we consider macros "off" and do a full read
+        // Bar data stored for OnPaint
+        private uint _hpCur, _hpMax;
+        private uint _spCur, _spMax;
+        private uint _weightCur, _weightMax;
+
+        // Line 1 text (Lv/Job/Exp) drawn in OnPaint
+        private string _infoLine1 = "";
+
         private static readonly TimeSpan CacheStaleThreshold = TimeSpan.FromSeconds(2);
-
         private const int SLOW_REFRESH_MS = 2000;
-        private const int MAP_REFRESH_MS = 1000;
+        private const int MAP_REFRESH_MS  = 1000;
+
+        private DateTime _lastSlowRefresh = DateTime.MinValue;
+        private DateTime _lastMapRefresh  = DateTime.MinValue;
 
         private readonly Timer _refreshTimer;
+
+        // Tooltip for bar hover
+        private readonly ToolTip _barTip = new ToolTip { InitialDelay = 300, AutoPopDelay = 2500, ReshowDelay = 100 };
+        private string _lastTip = "";
+
+        // Layout constants
+        private const int INFO_ROW_Y   = 13;
+        private const int INFO_ROW_H   = 11;
+        private const int HP_BAR_Y     = 25;
+        private const int SP_BAR_Y     = 37;
+        private const int WT_BAR_Y     = 49;
+        private const int BAR_H        = 12;
+        private const int BAR_PAD      = 2;
+
+        private static readonly Color HpColor     = Color.FromArgb(33, 219, 31);
+        private static readonly Color HpLowColor  = Color.FromArgb(220, 55, 55);
+        private static readonly Color SpColor     = Color.FromArgb(0, 111, 245);
+        private static readonly Color SpLowColor  = Color.FromArgb(230, 140, 30);
+        private static readonly Color WtColor     = Color.FromArgb(185, 65, 50);
+        private static readonly Color BarBgColor  = Color.FromArgb(218, 223, 233);
+        private static readonly Color TextOnBar   = Color.FromArgb(30, 30, 30);
 
         public CharacterInfo()
         {
             InitializeComponent();
-            this.CharacterNameLabel = "";
-            this.CharacterInfoLabel = "";
-            this.CharacterMapLabel = "";
-            this.MapLink = "";
 
-            // Replace plain label with LinkLabel so only the map name is a clickable link
+            this.SetStyle(
+                ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.AllPaintingInWmPaint  |
+                ControlStyles.UserPaint, true);
+            this.UpdateStyles();
+
+            // Replace plain map label with LinkLabel
             var ll = new LinkLabel
             {
                 AutoSize         = characterMapLabel.AutoSize,
@@ -42,79 +71,75 @@ namespace _ORTools.Forms
                 LinkColor        = characterMapLabel.ForeColor,
                 ActiveLinkColor  = characterMapLabel.ForeColor,
                 VisitedLinkColor = characterMapLabel.ForeColor,
-                TextAlign        = System.Drawing.ContentAlignment.BottomRight,
+                TextAlign        = ContentAlignment.TopRight,
             };
             ll.LinkClicked += (s, e) => OpenMapLink();
             Controls.Remove(characterMapLabel);
             characterMapLabel = ll;
             Controls.Add(characterMapLabel);
 
+            // Hide old text info label — replaced by bars
+            characterInfoLabel.Visible = false;
+
             _refreshTimer = new Timer { Interval = 15 };
             _refreshTimer.Tick += RefreshTick;
             _refreshTimer.Start();
 
-            // Register with the designer's components container so Dispose() in Designer.cs cleans it up
             if (components == null) components = new System.ComponentModel.Container();
             components.Add(_refreshTimer);
-            components.Add(_weightTip);
+            components.Add(_barTip);
 
-            // Weight bar — 2px tall, spans full width, sits at the very bottom of the form
-            _weightTip.SetToolTip(this, "");
-            _weightTip.InitialDelay = 400;
-            _weightTip.AutoPopDelay = 2000;
-            _weightTip.ReshowDelay = 200;
+            this.MouseMove += OnMouseMoveBar;
         }
+
+        // ── Properties ────────────────────────────────────────────────────────
 
         public string CharacterNameLabel
         {
-            get { return characterNameLabel.Text; }
-            set { characterNameLabel.Text = value; }
+            get => characterNameLabel.Text;
+            set => characterNameLabel.Text = value;
         }
 
         public string CharacterInfoLabel
         {
-            get { return characterInfoLabel.Text; }
-            set { characterInfoLabel.Text = value; }
+            get => _infoLine1;
+            set
+            {
+                int nl = value?.IndexOf('\n') ?? -1;
+                _infoLine1 = nl >= 0 ? value.Substring(0, nl) : (value ?? "");
+            }
         }
 
         public string CharacterMapLabel
         {
-            get { return characterMapLabel.Text; }
+            get => characterMapLabel.Text;
             set
             {
                 characterMapLabel.Text = value;
-                // Set link area to cover only the map name (up to first space, or whole string)
                 if (characterMapLabel is LinkLabel ll)
                 {
                     ll.Links.Clear();
-                    int linkLen = value.IndexOf(' ');
-                    if (linkLen < 0) linkLen = value.Length;
-                    if (linkLen > 0) ll.Links.Add(0, linkLen);
+                    int len = value?.IndexOf(' ') ?? -1;
+                    if (len < 0) len = value?.Length ?? 0;
+                    if (len > 0) ll.Links.Add(0, len);
                 }
             }
         }
 
         public string MapLink
         {
-            get { return mapLink; }
-            set { mapLink = value ?? ""; }
+            get => mapLink;
+            set => mapLink = value ?? "";
         }
 
-        private DateTime _lastSlowRefresh = DateTime.MinValue;
-        private DateTime _lastMapRefresh = DateTime.MinValue;
+        // ── Refresh ───────────────────────────────────────────────────────────
 
-        /// <summary>
-        /// Timer callback — fires every 500 ms on the UI thread.
-        /// Uses the HpSpCache written by macro threads when fresh; falls back to a
-        /// full re-read every SLOW_REFRESH_MS when macros are idle.
-        /// </summary>
         private void RefreshTick(object sender, EventArgs e)
         {
             Client client = ClientSingleton.GetClient();
             if (client?.Process == null || client.Process.HasExited || !client.IsLoggedIn)
             {
-                ClearLabels();
-                return;
+                ClearLabels(); return;
             }
 
             var cached = HpSpCache.Latest;
@@ -123,10 +148,8 @@ namespace _ORTools.Forms
 
             if (cacheIsFresh)
             {
-                // Fast path — just repaint the HP/SP line; no RPM call needed
-                UpdateHpSpLine(cached.Snapshot);
+                UpdateHpSpBars(cached.Snapshot);
 
-                // Map can change independently — refresh it on its own interval
                 if ((DateTime.UtcNow - _lastMapRefresh).TotalMilliseconds >= MAP_REFRESH_MS)
                 {
                     _lastMapRefresh = DateTime.UtcNow;
@@ -134,12 +157,11 @@ namespace _ORTools.Forms
                     this.CharacterMapLabel = map;
                     this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + map;
                     var (wCur, wMax) = client.ReadWeight();
-                    UpdateWeightBar(wCur, wMax);
+                    SetWeight(wCur, wMax);
                 }
             }
             else
             {
-                // Macros aren't running; do a full refresh at a slower rate
                 if ((DateTime.UtcNow - _lastSlowRefresh).TotalMilliseconds >= SLOW_REFRESH_MS)
                 {
                     _lastSlowRefresh = DateTime.UtcNow;
@@ -148,197 +170,182 @@ namespace _ORTools.Forms
             }
         }
 
-        /// <summary>
-        /// Updates only the HP/SP line from an already-read snapshot — zero RPM calls.
-        /// </summary>
-        public void UpdateHpSpLine(Client.HpSpSnapshot snap)
+        private void UpdateHpSpBars(Client.HpSpSnapshot snap)
         {
-            if (snap.MaxHp == 0) return; // zeroed snapshot, nothing useful
-            string hpLine = $"HP {snap.CurrentHp} / {snap.MaxHp} | SP {snap.CurrentSp} / {snap.MaxSp}";
-
-            // CharacterInfoLabel is "line1\nline2" — preserve line1, replace line2
-            string current = this.CharacterInfoLabel;
-            int nl = current.IndexOf('\n');
-            string line1 = nl >= 0 ? current.Substring(0, nl) : current;
-            this.CharacterInfoLabel = line1 + "\n" + hpLine;
-
-            characterInfoLabel.HpLow = snap.MaxHp > 0 && snap.CurrentHp < snap.MaxHp * 0.25;
-            characterInfoLabel.SpLow = snap.MaxSp > 0 && snap.CurrentSp < snap.MaxSp * 0.25;
+            if (snap.MaxHp == 0) return;
+            bool changed = snap.CurrentHp != _hpCur || snap.MaxHp != _hpMax ||
+                           snap.CurrentSp != _spCur || snap.MaxSp != _spMax;
+            _hpCur = snap.CurrentHp; _hpMax = snap.MaxHp;
+            _spCur = snap.CurrentSp; _spMax = snap.MaxSp;
+            if (changed) Invalidate(new Rectangle(0, HP_BAR_Y, ClientSize.Width, BAR_H * 2 + 2));
+            // Also refresh weight bar since it sits below SP
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void SetWeight(uint cur, uint max)
         {
-            base.OnPaint(e);
-            if (_weightMax == 0) return;
-
-            const int BAR_HEIGHT = 8;
-            float ratio = Math.Min(1f, (float)_weightCurrent / _weightMax);
-            int barY = 0;
-            int barWidth = (int)(this.ClientSize.Width * ratio);
-
-            if (barWidth <= 0) return;
-
-            // Gradient: green → yellow → red over 0–90%, solid red from 90–100%
-            using (var bmp = new System.Drawing.Bitmap(barWidth, BAR_HEIGHT))
-            {
-                for (int x = 0; x < barWidth; x++)
-                {
-                    float t = Math.Min(1f, (x / (float)(this.ClientSize.Width * 0.9f)));
-                    Color px;
-                    if (ratio >= 0.9f && x >= (int)(this.ClientSize.Width * 0.9f))
-                    {
-                        px = Color.FromArgb(210, 60, 60); // solid red tail
-                    }
-                    else if (t < 0.5f)
-                    {
-                        float s = t / 0.5f;
-                        px = Color.FromArgb(
-                            (int)(80  + s * (220 - 80)),
-                            (int)(200 + s * (180 - 200)),
-                            (int)(80  + s * (0   - 80)));
-                    }
-                    else
-                    {
-                        float s = (t - 0.5f) / 0.5f;
-                        px = Color.FromArgb(
-                            (int)(220 + s * (210 - 220)),
-                            (int)(180 + s * (60  - 180)),
-                            (int)(0   + s * (60  - 0)));
-                    }
-                    for (int y = 0; y < BAR_HEIGHT; y++)
-                        bmp.SetPixel(x, y, px);
-                }
-                e.Graphics.DrawImage(bmp, 0, barY);
-            }
+            if (_weightCur == cur && _weightMax == max) return;
+            _weightCur = cur; _weightMax = max;
+            Invalidate(new Rectangle(0, WT_BAR_Y, ClientSize.Width, BAR_H));
         }
 
-        private void UpdateWeightBar(uint current, uint max)
-        {
-            if (_weightCurrent == current && _weightMax == max) return;
-            _weightCurrent = current;
-            _weightMax = max;
-            if (max > 0)
-            {
-                int pct = (int)Math.Round(current * 100.0 / max);
-                _weightTip.SetToolTip(this, $"Weight: {current} / {max} ({pct}%)");
-            }
-            else
-                _weightTip.SetToolTip(this, "");
-            Invalidate(new Rectangle(0, 0, this.ClientSize.Width, 8));
-        }
-
-        private void ClearLabels()
-        {
-            this.CharacterNameLabel = "";
-            this.CharacterInfoLabel = "";
-            this.CharacterMapLabel  = "";
-            this.MapLink            = "";
-            UpdateWeightBar(0, 0);
-        }
-
-        /// <summary>
-        /// Updates character information with client data and formats it for display
-        /// </summary>
         public void UpdateCharacterInfo(Client client)
         {
-            // Check if client is null, has no process, or is not logged in
-            if (client?.Process == null || !IsClientLoggedIn(client))
-            {
-                ClearLabels();
-                return;
-            }
+            if (client?.Process == null) { ClearLabels(); return; }
 
-            // Read all data in bulk — 3 RPM calls instead of 10
-            var hpSp   = client.ReadHpSp();
+            var hpSp    = client.ReadHpSp();
             var jobSnap = client.ReadJobBlock();
-            string currentMap = client.ReadCurrentMap() ?? "";
-            string characterName = client.ReadCharacterName();
+            string map  = client.ReadCurrentMap() ?? "";
+            string name = client.ReadCharacterName();
 
             if (jobSnap == null) { ClearLabels(); return; }
             var job = jobSnap.Value;
 
-            int currentLevel     = (int)job.Level;
-            int currentJobLevel  = (int)job.JobLevel;
-            int currentJobId     = (int)job.JobId;
-            int currentExpToLevel = (int)job.ExpToLevel;
-            int currentExp       = (int)job.Exp;
-            int currentHP        = (int)hpSp.CurrentHp;
-            int currentMaxHP     = (int)hpSp.MaxHp;
-            int currentSP        = (int)hpSp.CurrentSp;
-            int currentMaxSP     = (int)hpSp.MaxSp;
+            int lvl   = (int)job.Level;
+            int jlvl  = (int)job.JobLevel;
+            int jid   = (int)job.JobId;
+            int expTo = (int)job.ExpToLevel;
+            int exp   = (int)job.Exp;
+            int hp    = (int)hpSp.CurrentHp;
+            int maxHp = (int)hpSp.MaxHp;
 
-            // Validate data (example: check if level is reasonable)
-            if (!IsValidCharacterData(currentLevel, currentJobLevel, currentHP, currentMaxHP))
-            {
-                ClearLabels();
-                return;
-            }
+            if (!(lvl > 0 && lvl <= 255 && jlvl > 0 && jlvl <= 255 && hp >= 0 && maxHp > 0 && hp <= maxHp))
+            { ClearLabels(); return; }
 
-            // Calculate experience percentage
-            string currentExpPercent;
-            if (currentExpToLevel > 0)
-            {
-                double ratio = (double)currentExp / currentExpToLevel;
-                currentExpPercent = $"{(ratio * 100):0.00}%";
-            }
-            else
-            {
-                currentExpPercent = "100%";
-            }
+            string expPct  = expTo > 0 ? $"{(double)exp / expTo * 100:0.00}%" : "100%";
+            string jobName = JobList.GetNameById(jid);
 
-            // Get job name
-            string jobName = JobList.GetNameById(currentJobId);
+            characterNameLabel.Text = name;
+            _infoLine1 = $"Lv{lvl} / {jobName} / Lv{jlvl} / Exp {expPct}";
+            this.CharacterMapLabel = map;
+            this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + map;
 
-            // Format the multi-line info text
-            string line1 = $"Lv{currentLevel} / {jobName} / Lv{currentJobLevel} / Exp {currentExpPercent}";
-            string line2 = $"HP {currentHP} / {currentMaxHP} | SP {currentSP} / {currentMaxSP}";
+            _hpCur = hpSp.CurrentHp; _hpMax = hpSp.MaxHp;
+            _spCur = hpSp.CurrentSp; _spMax = hpSp.MaxSp;
 
-            string clientDebugInfo = line1 + "\n" + line2;
+            var (wCur, wMax) = client.ReadWeight();
+            _weightCur = wCur; _weightMax = wMax;
 
-            // Update the form
-            this.CharacterNameLabel = characterName;
-            this.CharacterInfoLabel = clientDebugInfo;
-            this.CharacterMapLabel = currentMap;
-            this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + currentMap;
-            var (wCur2, wMax2) = client.ReadWeight();
-            UpdateWeightBar(wCur2, wMax2);
-
-            characterInfoLabel.HpLow = currentMaxHP > 0 && currentHP < currentMaxHP * 0.25;
-            characterInfoLabel.SpLow = currentMaxSP > 0 && currentSP < currentMaxSP * 0.25;
+            Invalidate();
         }
 
-        // Helper method to check if client is logged in
-        private bool IsClientLoggedIn(Client client)
+        private void ClearLabels()
         {
-            // Replace with actual logic to check if client is logged in
-            // Example: return client.IsLoggedIn; // Assuming Client has an IsLoggedIn property
-            // If no such property exists, you might check if characterName is non-empty or other indicators
-            return true;
-            //!string.IsNullOrEmpty(client.ReadCharacterName());
+            characterNameLabel.Text = "";
+            characterMapLabel.Text  = "";
+            _infoLine1 = "";
+            MapLink = "";
+            _hpCur = _hpMax = _spCur = _spMax = _weightCur = _weightMax = 0;
+            Invalidate();
         }
 
-        // Helper method to validate character data
-        private bool IsValidCharacterData(int level, int jobLevel, int hp, int maxHP)
+        // ── Painting ──────────────────────────────────────────────────────────
+
+        protected override void OnPaint(PaintEventArgs e)
         {
-            //DebugLogger.Debug($"Validating character data: Level={level}, JobLevel={jobLevel}, HP={hp}, MaxHP={maxHP}");
-            // Example validation: ensure level and HP are within reasonable ranges
-            return level > 0 && level <= 255 && // Adjust max level based on game
-                   jobLevel > 0 && jobLevel <= 255 && // Adjust max job level based on game
-                   hp >= 0 && maxHP > 0 && hp <= maxHP;
+            e.Graphics.FillRectangle(SystemBrushes.Window, ClientRectangle);
+
+            // Info line (Lv / Job / Exp)
+            if (!string.IsNullOrEmpty(_infoLine1))
+            {
+                using (var f = new Font("Tahoma", 7.5f))
+                using (var b = new SolidBrush(Color.FromArgb(90, 90, 90)))
+                {
+                    var r  = new RectangleF(BAR_PAD, INFO_ROW_Y, ClientSize.Width - BAR_PAD * 2, INFO_ROW_H);
+                    var sf = new StringFormat { Alignment = StringAlignment.Center,
+                                                LineAlignment = StringAlignment.Center,
+                                                FormatFlags = StringFormatFlags.NoWrap,
+                                                Trimming = StringTrimming.EllipsisCharacter };
+                    e.Graphics.DrawString(_infoLine1, f, b, r, sf);
+                }
+            }
+
+            // HP bar — turns red when low
+            if (_hpMax > 0)
+            {
+                bool hpLow = _hpMax > 0 && _hpCur < _hpMax * 0.25f;
+                DrawBar(e.Graphics, HP_BAR_Y, _hpCur, _hpMax,
+                    hpLow ? HpLowColor : HpColor,
+                    $"HP  {_hpCur} / {_hpMax}");
+            }
+
+            // SP bar — turns orange when low
+            if (_spMax > 0)
+            {
+                bool spLow = _spMax > 0 && _spCur < _spMax * 0.25f;
+                DrawBar(e.Graphics, SP_BAR_Y, _spCur, _spMax,
+                    spLow ? SpLowColor : SpColor,
+                    $"SP  {_spCur} / {_spMax}");
+            }
+
+            // Weight bar — flat red, shows percentage
+            if (_weightMax > 0)
+            {
+                int wPct = (int)Math.Round(_weightCur * 100.0 / _weightMax);
+                DrawBar(e.Graphics, WT_BAR_Y, _weightCur, _weightMax, WtColor,
+                    $"Weight  {wPct}%");
+            }
         }
+
+
+        private void DrawBar(Graphics g, int y, uint cur, uint max, Color fillColor, string label)
+        {
+            int x = BAR_PAD;
+            int w = ClientSize.Width - BAR_PAD * 2;
+
+            // Background track
+            g.FillRectangle(new SolidBrush(BarBgColor), x, y, w, BAR_H);
+
+            // Filled portion
+            float ratio = Math.Min(1f, (float)cur / max);
+            int fillW = (int)(w * ratio);
+            if (fillW > 0)
+                g.FillRectangle(new SolidBrush(fillColor), x, y, fillW, BAR_H);
+
+            // Centered label
+            using (var f = new Font("Tahoma", 7.5f))
+            {
+                var rect = new RectangleF(x, y, w, BAR_H);
+                var sf   = new StringFormat { Alignment = StringAlignment.Center,
+                                              LineAlignment = StringAlignment.Center,
+                                              FormatFlags = StringFormatFlags.NoWrap };
+                // Subtle white shadow for legibility
+                using (var sh = new SolidBrush(Color.FromArgb(120, 255, 255, 255)))
+                    g.DrawString(label, f, sh, new RectangleF(x + 1, y + 1, w, BAR_H), sf);
+                g.DrawString(label, f, new SolidBrush(TextOnBar), rect, sf);
+            }
+        }
+
+        // ── Tooltip on hover ──────────────────────────────────────────────────
+
+        private void OnMouseMoveBar(object sender, MouseEventArgs e)
+        {
+            string tip = "";
+            if (e.Y >= HP_BAR_Y && e.Y < HP_BAR_Y + BAR_H && _hpMax > 0)
+                tip = $"HP: {_hpCur} / {_hpMax}";
+            else if (e.Y >= SP_BAR_Y && e.Y < SP_BAR_Y + BAR_H && _spMax > 0)
+                tip = $"SP: {_spCur} / {_spMax}";
+            else if (e.Y >= WT_BAR_Y && e.Y < WT_BAR_Y + BAR_H && _weightMax > 0)
+            {
+                int pct = (int)Math.Round(_weightCur * 100.0 / _weightMax);
+                tip = $"Weight: {_weightCur} / {_weightMax} ({pct}%)";
+            }
+
+            if (tip != _lastTip)
+            {
+                _lastTip = tip;
+                if (string.IsNullOrEmpty(tip)) _barTip.Hide(this);
+                else _barTip.Show(tip, this, e.X + 12, e.Y + 12);
+            }
+        }
+
+        // ── Map link ──────────────────────────────────────────────────────────
 
         private void OpenMapLink()
         {
             if (!string.IsNullOrWhiteSpace(mapLink))
             {
-                try
-                {
-                    Process.Start(new ProcessStartInfo(mapLink) { UseShellExecute = true });
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to open link:\n" + ex.Message);
-                }
+                try { Process.Start(new ProcessStartInfo(mapLink) { UseShellExecute = true }); }
+                catch (Exception ex) { MessageBox.Show("Failed to open link:\n" + ex.Message); }
             }
         }
     }
