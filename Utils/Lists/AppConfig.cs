@@ -19,7 +19,7 @@ namespace _ORTools.Utils
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
-        public static string preReleaseTag = "SPEEDY-20260323";
+        public static string preReleaseTag = "SPEEDY-20260324";
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";

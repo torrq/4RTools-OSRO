@@ -115,7 +115,6 @@ namespace _ORTools.Model
 
             foreach (EquipConfig equipConfig in this.EquipConfigs)
             {
-                bool equipAtkItems = false;
                 bool equipDefItems = false;
                 bool ammo = false;
 
@@ -124,24 +123,21 @@ namespace _ORTools.Model
                 {
                     Keys thisk = toKeys(equipConfig.KeySpammer);
 
+                    // Equip ATK items before entering the spam loop so the skill key
+                    // is never sent in the same iteration as the weapon switch
+                    foreach (Keys key in equipConfig.AtkKeys.Values)
+                    {
+                        Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Thread.Sleep(equipConfig.SwitchDelay);
+                    }
+
                     while (Win32Interop.IsKeyPressed(equipConfig.KeySpammer))
                     {
-                        if (!equipAtkItems)
-                        {
-                            foreach (Keys key in equipConfig.AtkKeys.Values)
-                            {
-                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip ATK Items
-                                Thread.Sleep(equipConfig.SwitchDelay);
-                            }
-                            equipAtkItems = true;
-                        }
-
                         if (equipConfig.KeySpammerWithClick)
                         {
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
                             AutoSwitchAmmo(roClient, ref ammo);
-                            Thread.Sleep(1);
                             Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
                             Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
