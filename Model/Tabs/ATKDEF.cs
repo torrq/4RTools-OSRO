@@ -113,7 +113,8 @@ namespace _ORTools.Model
         {
             if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
             if (roClient.Process == null || roClient.Process.HasExited) return 0;
-            IntPtr hWnd = hWnd;
+
+            IntPtr hWnd = roClient.Process.MainWindowHandle;
 
             foreach (EquipConfig equipConfig in this.EquipConfigs)
             {
@@ -125,8 +126,6 @@ namespace _ORTools.Model
                 {
                     Keys thisk = toKeys(equipConfig.KeySpammer);
 
-                    // Equip ATK items before entering the spam loop so the skill key
-                    // is never sent in the same iteration as the weapon switch
                     foreach (Keys key in equipConfig.AtkKeys.Values)
                     {
                         Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
@@ -139,7 +138,9 @@ namespace _ORTools.Model
                         {
                             Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                             Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONDOWN, 0, 0);
-                            AutoSwitchAmmo(roClient, ref ammo);
+
+                            AutoSwitchAmmo(roClient, ref ammo, hWnd);
+
                             Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONUP, 0, 0);
                             Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
@@ -149,11 +150,12 @@ namespace _ORTools.Model
                             Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
                     }
+
                     if (!equipDefItems)
                     {
                         foreach (Keys key in equipConfig.DefKeys.Values)
                         {
-                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip DEF Items
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                             Thread.Sleep(equipConfig.SwitchDelay);
                         }
                         equipDefItems = true;
@@ -163,7 +165,7 @@ namespace _ORTools.Model
             return 0;
         }
 
-        private void AutoSwitchAmmo(Client roClient, ref bool ammo)
+        private void AutoSwitchAmmo(Client roClient, ref bool ammo, IntPtr hWnd)
         {
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (prefs.SwitchAmmo)
