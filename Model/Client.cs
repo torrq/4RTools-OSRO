@@ -564,10 +564,10 @@ namespace _ORTools.Model
         public string ReadCurrentMapCached()
         {
             long now = DateTime.UtcNow.Ticks;
-            if (now - _mapCacheTicks > MAP_CACHE_TICKS)
+            if (now - System.Threading.Interlocked.Read(ref _mapCacheTicks) > MAP_CACHE_TICKS)
             {
                 _cachedMap = ReadCurrentMap() ?? string.Empty;
-                _mapCacheTicks = now;
+                System.Threading.Interlocked.Exchange(ref _mapCacheTicks, now);
             }
             return _cachedMap;
         }

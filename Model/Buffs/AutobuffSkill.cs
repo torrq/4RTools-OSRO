@@ -237,7 +237,12 @@ namespace _ORTools.Model
                     var frmStateSwitch = FormHelper.StateSwitchFormInstance;
                     if (frmStateSwitch != null && !frmStateSwitch.IsDisposed)
                     {
-                        frmStateSwitch.TurnOFF();
+                        // Marshal to UI thread — TurnOFF touches WinForms controls
+                        frmStateSwitch.BeginInvoke((System.Windows.Forms.MethodInvoker)(() =>
+                        {
+                            if (!frmStateSwitch.IsDisposed)
+                                frmStateSwitch.TurnOFF();
+                        }));
                         WeightLimitMacro.SendOverweightMacro();
                     }
                     else

@@ -343,11 +343,13 @@ namespace _ORTools.Forms
         }
 
 
+        private static readonly SolidBrush _tabBgBrush = new SolidBrush(AppConfig.AccentBackColor);
+
         private void TabControlTop_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (!(sender is TabControl tabControl)) return;
 
-            e.Graphics.FillRectangle(new SolidBrush(AppConfig.AccentBackColor), e.Bounds);
+            e.Graphics.FillRectangle(_tabBgBrush, e.Bounds);
 
             bool isActiveTab = (e.Index == tabControl.SelectedIndex);
             Font tabFont = isActiveTab ? new Font(e.Font, FontStyle.Bold) : e.Font;
@@ -376,6 +378,7 @@ namespace _ORTools.Forms
             {
                 e.Graphics.DrawString(text, tabFont, textBrush, textX, adjustedTextY);
             }
+            if (isActiveTab) tabFont.Dispose();
         }
 
         private void ShowDebugPanel()

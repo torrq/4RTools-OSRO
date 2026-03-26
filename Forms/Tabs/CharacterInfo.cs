@@ -210,15 +210,14 @@ namespace _ORTools.Forms
                            snap.CurrentSp != _spCur || snap.MaxSp != _spMax;
             _hpCur = snap.CurrentHp; _hpMax = snap.MaxHp;
             _spCur = snap.CurrentSp; _spMax = snap.MaxSp;
-            if (changed) Invalidate(new Rectangle(0, HP_BAR_Y, ClientSize.Width, BAR_H * 2 + 2));
-            // Also refresh weight bar since it sits below SP
+            if (changed) Invalidate();
         }
 
         private void SetWeight(uint cur, uint max)
         {
             if (_weightCur == cur && _weightMax == max) return;
             _weightCur = cur; _weightMax = max;
-            Invalidate(new Rectangle(0, WT_BAR_Y, ClientSize.Width, BAR_H));
+            Invalidate();
         }
 
         public void UpdateCharacterInfo(Client client)

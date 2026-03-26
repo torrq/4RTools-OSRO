@@ -355,13 +355,13 @@ namespace _ORTools.Forms
             {
                 lblRemainingTime.Text = autoOffModel.RemainingTimeText;
                 lblRemainingTimeText.Text = LABEL_REMAINING_TIME_TEXT;
-                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
+                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font.FontFamily, lblRemainingTimeText.Font.Size, FontStyle.Regular);
             }
             else
             {
                 lblRemainingTime.Text = "";
                 lblRemainingTimeText.Text = LABEL_REMAINING_TIME_STOPPED_TEXT;
-                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font, FontStyle.Regular);
+                lblRemainingTimeText.Font = new Font(lblRemainingTimeText.Font.FontFamily, lblRemainingTimeText.Font.Size, FontStyle.Regular);
             }
         }
 
