@@ -1,4 +1,4 @@
-﻿using _ORTools.Utils;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -115,53 +115,82 @@ namespace _ORTools.Model
             if (roClient.Process == null || roClient.Process.HasExited) return 0;
 
             IntPtr hWnd = roClient.Process.MainWindowHandle;
+            if (hWnd == IntPtr.Zero) return 0;
 
-            foreach (EquipConfig equipConfig in this.EquipConfigs)
+            List<EquipConfig> currentConfigs;
+            lock (this.EquipConfigs)
             {
-                bool equipDefItems = false;
-                bool ammo = false;
+                currentConfigs = this.EquipConfigs.ToList();
+            }
 
-                if (equipConfig.KeySpammer != Keys.None && Win32Interop.IsKeyPressed(equipConfig.KeySpammer)
-                    && !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
+            try
+            {
+                foreach (EquipConfig equipConfig in currentConfigs)
                 {
-                    Keys thisk = toKeys(equipConfig.KeySpammer);
+                    bool equipAtkItems = false;
+                    bool equipDefItems = false;
+                    bool ammo = false;
 
-                    foreach (Keys key in equipConfig.AtkKeys.Values)
+                    if (equipConfig.KeySpammer != Keys.None && Win32Interop.IsKeyPressed(equipConfig.KeySpammer)
+                        && !Win32Interop.IsKeyPressed(Keys.LMenu) && !Win32Interop.IsKeyPressed(Keys.RMenu))
                     {
-                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
-                        Thread.Sleep(equipConfig.SwitchDelay);
-                    }
+                        Keys thisk = equipConfig.KeySpammer;
 
-                    while (Win32Interop.IsKeyPressed(equipConfig.KeySpammer))
-                    {
-                        if (equipConfig.KeySpammerWithClick)
+                        while (Win32Interop.IsKeyPressed(equipConfig.KeySpammer))
                         {
-                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
-                            Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONDOWN, 0, 0);
+                            if (!equipAtkItems)
+                            {
+                                List<Keys> atkKeys;
+                                lock (this.EquipConfigs)
+                                {
+                                    atkKeys = equipConfig.AtkKeys.Values.ToList();
+                                }
+                                foreach (Keys key in atkKeys)
+                                {
+                                    Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, key, 0); //Equip ATK Items
+                                    Thread.Sleep(equipConfig.SwitchDelay);
+                                }
+                                equipAtkItems = true;
+                            }
 
-                            AutoSwitchAmmo(roClient, ref ammo, hWnd);
-
-                            Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONUP, 0, 0);
-                            Thread.Sleep(equipConfig.KeySpammerDelay);
+                            if (equipConfig.KeySpammerWithClick)
+                            {
+                                Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                                Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONDOWN, 0, 0);
+                                AutoSwitchAmmo(roClient, ref ammo, hWnd);
+                                Thread.Sleep(1);
+                                Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONUP, 0, 0);
+                                Thread.Sleep(equipConfig.KeySpammerDelay);
+                            }
+                            else
+                            {
+                                Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                                Thread.Sleep(equipConfig.KeySpammerDelay);
+                            }
                         }
-                        else
+                        
+                        if (!equipDefItems)
                         {
-                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
-                            Thread.Sleep(equipConfig.KeySpammerDelay);
+                            List<Keys> defKeys;
+                            lock (this.EquipConfigs)
+                            {
+                                defKeys = equipConfig.DefKeys.Values.ToList();
+                            }
+                            foreach (Keys key in defKeys)
+                            {
+                                Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, key, 0); //Equip DEF Items
+                                Thread.Sleep(equipConfig.SwitchDelay);
+                            }
+                            equipDefItems = true;
                         }
-                    }
-
-                    if (!equipDefItems)
-                    {
-                        foreach (Keys key in equipConfig.DefKeys.Values)
-                        {
-                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
-                            Thread.Sleep(equipConfig.SwitchDelay);
-                        }
-                        equipDefItems = true;
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ATKDEFThread] Exception: {ex.Message}");
+            }
+
             return 0;
         }
 
@@ -170,18 +199,16 @@ namespace _ORTools.Model
             ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
             if (prefs.SwitchAmmo)
             {
-                if (prefs.Ammo1Key.ToString() != string.Empty && prefs.Ammo2Key.ToString() != string.Empty)
+                if (prefs.Ammo1Key != Keys.None && prefs.Ammo2Key != Keys.None)
                 {
-                    if (ammo == false)
+                    if (!ammo)
                     {
-                        Keys key = prefs.Ammo1Key;
-                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, prefs.Ammo1Key, 0);
                         ammo = true;
                     }
                     else
                     {
-                        Keys key = prefs.Ammo2Key;
-                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, prefs.Ammo2Key, 0);
                         ammo = false;
                     }
                 }
@@ -190,31 +217,35 @@ namespace _ORTools.Model
 
         public void AddSwitchItem(int id, string dictKey, Keys k, string type)
         {
-            var equips = EquipConfigs.FirstOrDefault(x => x.id == id);
-
-            Dictionary<string, Keys> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
-
-            if (copy.ContainsKey(dictKey))
+            lock (this.EquipConfigs)
             {
-                RemoveSwitchEntry(id, dictKey, type);
-            }
+                var equips = EquipConfigs.FirstOrDefault(x => x.id == id);
+                if (equips == null) return;
 
-            if (k != Keys.None)
-            {
-                copy.Add(dictKey, k);
+                Dictionary<string, Keys> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
+
+                if (copy.ContainsKey(dictKey))
+                {
+                    copy.Remove(dictKey);
+                }
+
+                if (k != Keys.None)
+                {
+                    copy.Add(dictKey, k);
+                }
             }
         }
 
         public void RemoveSwitchEntry(int id, string dictKey, string type)
         {
-            var equips = EquipConfigs.FirstOrDefault(x => x.id == id);
-            Dictionary<string, Keys> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
-            copy.Remove(dictKey);
-        }
+            lock (this.EquipConfigs)
+            {
+                var equips = EquipConfigs.FirstOrDefault(x => x.id == id);
+                if (equips == null) return;
 
-        private Keys toKeys(Keys k)
-        {
-            return k;
+                Dictionary<string, Keys> copy = type == "DEF" ? equips.DefKeys : equips.AtkKeys;
+                copy.Remove(dictKey);
+            }
         }
 
         public void Stop()
