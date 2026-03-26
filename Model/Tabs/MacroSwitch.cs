@@ -149,23 +149,25 @@ namespace _ORTools.Model
 
                 if (Win32Interop.IsKeyPressed(chainConfig.TriggerKey))
                 {
+                    if (roClient.Process == null || roClient.Process.HasExited) return 0;
+                    IntPtr hWnd = roClient.Process.MainWindowHandle;
                     foreach (var macroKey in chainConfig.macroEntries)
                     {
                         if (macroKey.Key != Keys.None)
                         {
                             // Send the key
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, macroKey.Key, 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, macroKey.Key, 0);
 
                             // Handle click behavior
                             if (macroKey.ClickMode == 1)
                             {
                                 // Click at current mouse position
-                                MouseHelper.TryClickAtCurrentPosition(roClient.Process.MainWindowHandle);
+                                MouseHelper.TryClickAtCurrentPosition(hWnd);
                             }
                             else if (macroKey.ClickMode == 2)
                             {
                                 // Click at center of game window
-                                MouseHelper.TryClickAtWindowCenter(roClient.Process.MainWindowHandle);
+                                MouseHelper.TryClickAtWindowCenter(hWnd);
                             }
 
                             Thread.Sleep(macroKey.Delay); // delay after sending key and/or click

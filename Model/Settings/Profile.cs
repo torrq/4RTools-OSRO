@@ -68,7 +68,10 @@ namespace _ORTools.Model
                     profiles.Add(profileName);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Warning($"Profile.ListAll: could not read profiles folder '{AppConfig.ProfileFolder}': {ex.Message}");
+            }
             return profiles;
         }
     }

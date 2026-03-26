@@ -76,7 +76,10 @@ namespace _ORTools.Forms
                 ProfileSingleton.GetCurrent().AutobuffItem.Delay = Convert.ToInt16(this.numericDelay.Value);
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffItem);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"SetupInputs failed: {ex.Message}");
+            }
         }
     }
 }

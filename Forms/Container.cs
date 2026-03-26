@@ -951,7 +951,10 @@ namespace _ORTools.Forms
                 {
                     ClientListSingleton.AddClient(new Client(clientDTO));
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    DebugLogger.Warning($"LoadServers: failed to load client '{clientDTO?.Name}': {ex.Message}");
+                }
             }
         }
 

@@ -112,6 +112,8 @@ namespace _ORTools.Model
         private int ATKDEFThread(Client roClient)
         {
             if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
+            if (roClient.Process == null || roClient.Process.HasExited) return 0;
+            IntPtr hWnd = hWnd;
 
             foreach (EquipConfig equipConfig in this.EquipConfigs)
             {
@@ -127,7 +129,7 @@ namespace _ORTools.Model
                     // is never sent in the same iteration as the weapon switch
                     foreach (Keys key in equipConfig.AtkKeys.Values)
                     {
-                        Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         Thread.Sleep(equipConfig.SwitchDelay);
                     }
 
@@ -135,15 +137,15 @@ namespace _ORTools.Model
                     {
                         if (equipConfig.KeySpammerWithClick)
                         {
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONDOWN, 0, 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONDOWN, 0, 0);
                             AutoSwitchAmmo(roClient, ref ammo);
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_LBUTTONUP, 0, 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_LBUTTONUP, 0, 0);
                             Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
                         else
                         {
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, thisk, 0);
                             Thread.Sleep(equipConfig.KeySpammerDelay);
                         }
                     }
@@ -151,7 +153,7 @@ namespace _ORTools.Model
                     {
                         foreach (Keys key in equipConfig.DefKeys.Values)
                         {
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip DEF Items
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0); //Equip DEF Items
                             Thread.Sleep(equipConfig.SwitchDelay);
                         }
                         equipDefItems = true;
@@ -171,13 +173,13 @@ namespace _ORTools.Model
                     if (ammo == false)
                     {
                         Keys key = prefs.Ammo1Key;
-                        Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = true;
                     }
                     else
                     {
                         Keys key = prefs.Ammo2Key;
-                        Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, toKeys(key), 0);
                         ammo = false;
                     }
                 }

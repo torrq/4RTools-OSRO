@@ -113,7 +113,10 @@ namespace _ORTools.Forms
                 ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffSkill);
                 this.ActiveControl = null;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DebugLogger.Error($"SetupInputs failed: {ex.Message}");
+            }
         }
     }
 }
