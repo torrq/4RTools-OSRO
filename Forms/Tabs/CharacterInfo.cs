@@ -41,13 +41,29 @@ namespace _ORTools.Forms
         private const int BAR_H        = 12;
         private const int BAR_PAD      = 2;
 
-        private static readonly Color HpColor     = Color.FromArgb(33, 219, 31);
-        private static readonly Color HpLowColor  = Color.FromArgb(220, 55, 55);
-        private static readonly Color SpColor     = Color.FromArgb(0, 111, 245);
-        private static readonly Color SpLowColor  = Color.FromArgb(230, 140, 30);
-        private static readonly Color WtColor     = Color.FromArgb(185, 65, 50);
-        private static readonly Color BarBgColor  = Color.FromArgb(218, 223, 233);
-        private static readonly Color TextOnBar   = Color.FromArgb(30, 30, 30);
+
+        // Cached GDI objects — created once, reused every paint call
+        private static readonly Font     _barFont    = new Font("Tahoma", 7.5f);
+        private static readonly Font     _infoFont   = new Font("Tahoma", 7.5f);
+        private static readonly SolidBrush _infoTextBrush = new SolidBrush(Color.FromArgb(90, 90, 90));
+        private static readonly SolidBrush _barBgBrush    = new SolidBrush(Color.FromArgb(218, 223, 233));
+        private static readonly SolidBrush _textBrush     = new SolidBrush(Color.FromArgb(30, 30, 30));
+        private static readonly SolidBrush _shadowBrush   = new SolidBrush(Color.FromArgb(120, 255, 255, 255));
+        private static readonly SolidBrush _hpBrush       = new SolidBrush(Color.FromArgb(33, 219, 31));
+        private static readonly SolidBrush _hpLowBrush    = new SolidBrush(Color.FromArgb(220, 55, 55));
+        private static readonly SolidBrush _spBrush       = new SolidBrush(Color.FromArgb(0, 111, 245));
+        private static readonly SolidBrush _spLowBrush    = new SolidBrush(Color.FromArgb(230, 140, 30));
+        private static readonly SolidBrush _wtBrush       = new SolidBrush(Color.FromArgb(185, 65, 50));
+        private static readonly StringFormat _centerSf    = new StringFormat
+        {
+            Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center,
+            FormatFlags = StringFormatFlags.NoWrap, Trimming = StringTrimming.EllipsisCharacter
+        };
+        private static readonly StringFormat _barSf       = new StringFormat
+        {
+            Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center,
+            FormatFlags = StringFormatFlags.NoWrap
+        };
 
         public CharacterInfo()
         {
@@ -153,9 +169,26 @@ namespace _ORTools.Forms
                 if ((DateTime.UtcNow - _lastMapRefresh).TotalMilliseconds >= MAP_REFRESH_MS)
                 {
                     _lastMapRefresh = DateTime.UtcNow;
+
+                    // Name and map
+                    characterNameLabel.Text = client.ReadCharacterName() ?? "";
                     string map = client.ReadCurrentMap() ?? string.Empty;
                     this.CharacterMapLabel = map;
                     this.MapLink = "https://ro.kokotewa.com/db/map_info?id=" + map;
+
+                    // Job/level/exp — single 52-byte RPM call, cheap
+                    var jobSnap = client.ReadJobBlock();
+                    if (jobSnap.HasValue)
+                    {
+                        var job = jobSnap.Value;
+                        string expPct = job.ExpToLevel > 0
+                            ? $"{(double)job.Exp / job.ExpToLevel * 100:0.00}%"
+                            : "100%";
+                        _infoLine1 = $"Lv{job.Level} / {JobList.GetNameById((int)job.JobId)} / Lv{job.JobLevel} / Exp {expPct}";
+                        Invalidate(new Rectangle(0, INFO_ROW_Y, ClientSize.Width, INFO_ROW_H));
+                    }
+
+                    // Weight
                     var (wCur, wMax) = client.ReadWeight();
                     SetWeight(wCur, wMax);
                 }
@@ -247,72 +280,47 @@ namespace _ORTools.Forms
             // Info line (Lv / Job / Exp)
             if (!string.IsNullOrEmpty(_infoLine1))
             {
-                using (var f = new Font("Tahoma", 7.5f))
-                using (var b = new SolidBrush(Color.FromArgb(90, 90, 90)))
-                {
-                    var r  = new RectangleF(BAR_PAD, INFO_ROW_Y, ClientSize.Width - BAR_PAD * 2, INFO_ROW_H);
-                    var sf = new StringFormat { Alignment = StringAlignment.Center,
-                                                LineAlignment = StringAlignment.Center,
-                                                FormatFlags = StringFormatFlags.NoWrap,
-                                                Trimming = StringTrimming.EllipsisCharacter };
-                    e.Graphics.DrawString(_infoLine1, f, b, r, sf);
-                }
+                var r = new RectangleF(BAR_PAD, INFO_ROW_Y, ClientSize.Width - BAR_PAD * 2, INFO_ROW_H);
+                e.Graphics.DrawString(_infoLine1, _infoFont, _infoTextBrush, r, _centerSf);
             }
 
             // HP bar — turns red when low
             if (_hpMax > 0)
-            {
-                bool hpLow = _hpMax > 0 && _hpCur < _hpMax * 0.25f;
                 DrawBar(e.Graphics, HP_BAR_Y, _hpCur, _hpMax,
-                    hpLow ? HpLowColor : HpColor,
+                    _hpCur < _hpMax * 0.25f ? _hpLowBrush : _hpBrush,
                     $"HP  {_hpCur} / {_hpMax}");
-            }
 
             // SP bar — turns orange when low
             if (_spMax > 0)
-            {
-                bool spLow = _spMax > 0 && _spCur < _spMax * 0.25f;
                 DrawBar(e.Graphics, SP_BAR_Y, _spCur, _spMax,
-                    spLow ? SpLowColor : SpColor,
+                    _spCur < _spMax * 0.25f ? _spLowBrush : _spBrush,
                     $"SP  {_spCur} / {_spMax}");
-            }
 
             // Weight bar — flat red, shows percentage
             if (_weightMax > 0)
             {
                 int wPct = (int)Math.Round(_weightCur * 100.0 / _weightMax);
-                DrawBar(e.Graphics, WT_BAR_Y, _weightCur, _weightMax, WtColor,
+                DrawBar(e.Graphics, WT_BAR_Y, _weightCur, _weightMax, _wtBrush,
                     $"Weight  {wPct}%");
             }
         }
 
 
-        private void DrawBar(Graphics g, int y, uint cur, uint max, Color fillColor, string label)
+        private void DrawBar(Graphics g, int y, uint cur, uint max, SolidBrush fillBrush, string label)
         {
             int x = BAR_PAD;
             int w = ClientSize.Width - BAR_PAD * 2;
 
-            // Background track
-            g.FillRectangle(new SolidBrush(BarBgColor), x, y, w, BAR_H);
+            g.FillRectangle(_barBgBrush, x, y, w, BAR_H);
 
-            // Filled portion
             float ratio = Math.Min(1f, (float)cur / max);
             int fillW = (int)(w * ratio);
             if (fillW > 0)
-                g.FillRectangle(new SolidBrush(fillColor), x, y, fillW, BAR_H);
+                g.FillRectangle(fillBrush, x, y, fillW, BAR_H);
 
-            // Centered label
-            using (var f = new Font("Tahoma", 7.5f))
-            {
-                var rect = new RectangleF(x, y, w, BAR_H);
-                var sf   = new StringFormat { Alignment = StringAlignment.Center,
-                                              LineAlignment = StringAlignment.Center,
-                                              FormatFlags = StringFormatFlags.NoWrap };
-                // Subtle white shadow for legibility
-                using (var sh = new SolidBrush(Color.FromArgb(120, 255, 255, 255)))
-                    g.DrawString(label, f, sh, new RectangleF(x + 1, y + 1, w, BAR_H), sf);
-                g.DrawString(label, f, new SolidBrush(TextOnBar), rect, sf);
-            }
+            var rect = new RectangleF(x, y, w, BAR_H);
+            g.DrawString(label, _barFont, _shadowBrush, new RectangleF(x + 1, y + 1, w, BAR_H), _barSf);
+            g.DrawString(label, _barFont, _textBrush, rect, _barSf);
         }
 
         // ── Tooltip on hover ──────────────────────────────────────────────────
