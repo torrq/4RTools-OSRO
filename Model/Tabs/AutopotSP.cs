@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -79,14 +79,14 @@ namespace _ORTools.Model
                     this.thread.Terminate();
                     this.thread = null;
                 }
-                this.thread = new ThreadRunner(_ => AutopotSPThread(roClient), "AutopotSP");
+                this.thread = new ThreadRunner(_ => AutopotSPThread(roClient), "AutopotSP") { IterationDelay = 1 };
                 ThreadRunner.Start(this.thread);
             }
         }
 
         private int AutopotSPThread(Client roClient)
         {
-            if (roClient?.Process == null || roClient.Process.HasExited)
+            if (!roClient.IsProcessRunning())
             {
                 DebugLogger.Debug(
                     "AutopotSP: Client process is null or has exited, stopping thread."
@@ -106,7 +106,7 @@ namespace _ORTools.Model
 
                 if (!isInCity)
                 {
-                    potUsed = ProcessSPHealing(roClient, roClient.Process.MainWindowHandle);
+                    potUsed = ProcessSPHealing(roClient, roClient.MainWindowHandle);
                 }
             }
             catch (Exception ex)

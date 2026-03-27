@@ -99,7 +99,7 @@ namespace _ORTools.Model
                     this.thread.Terminate();
                     this.thread = null;
                 }
-                this.thread = new ThreadRunner(_ => ATKDEFThread(roClient), "ATKDEF");
+                this.thread = new ThreadRunner(_ => ATKDEFThread(roClient), "ATKDEF") { IterationDelay = 1 };
                 ThreadRunner.Start(this.thread);
             }
         }
@@ -107,9 +107,9 @@ namespace _ORTools.Model
         private int ATKDEFThread(Client roClient)
         {
             if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
-            if (roClient.Process == null || roClient.Process.HasExited) return 0;
+            if (!roClient.IsProcessRunning()) return 0;
 
-            IntPtr hWnd = roClient.Process.MainWindowHandle;
+            IntPtr hWnd = roClient.MainWindowHandle;
             if (hWnd == IntPtr.Zero) return 0;
 
             if (Win32Interop.GetForegroundWindow() != hWnd) return 0;

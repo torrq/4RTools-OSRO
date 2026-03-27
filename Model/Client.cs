@@ -1,4 +1,4 @@
-﻿using _ORTools.Forms;
+using _ORTools.Forms;
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
@@ -196,11 +196,28 @@ namespace _ORTools.Model
 
         private bool _disposed = false;
 
+        private IntPtr _cachedMainWindowHandle = IntPtr.Zero;
+        
+        /// <summary>
+        /// Cached access to the MainWindowHandle. Avoids slow Process queries on every tick.
+        /// </summary>
+        public IntPtr MainWindowHandle
+        {
+            get
+            {
+                if (_cachedMainWindowHandle == IntPtr.Zero && Process != null)
+                {
+                    try { _cachedMainWindowHandle = Process.MainWindowHandle; } catch { }
+                }
+                return _cachedMainWindowHandle;
+            }
+        }
+
         /// <summary>
         /// Checks if the process is valid and accessible for memory operations.
         /// Only checks basic process state, not memory accessibility.
         /// </summary>
-        private bool IsProcessValid()
+        public bool IsProcessRunning()
         {
             // Check if we have a valid cached value
             if (_cachedProcessValid.HasValue &&
@@ -239,7 +256,7 @@ namespace _ORTools.Model
         {
             try
             {
-                if (!IsProcessValid() || address == 0)
+                if (!IsProcessRunning() || address == 0)
                     return 0;
 
                 // Use non-throwing version

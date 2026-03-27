@@ -1,7 +1,8 @@
-﻿using _ORTools.Utils;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -105,6 +106,18 @@ namespace _ORTools.Model
         public string ActionName { get; set; }
         private ThreadRunner thread;
         public List<MacroSwitchChainConfig> ChainConfigs { get; set; } = new List<MacroSwitchChainConfig>();
+        private BlockingCollection<MacroSwitchChainConfig> _macroQueue = new BlockingCollection<MacroSwitchChainConfig>();
+
+        private void OnGlobalKeyDown(Keys key)
+        {
+             foreach (var chainConfig in this.ChainConfigs)
+             {
+                 if (chainConfig.TriggerKey != Keys.None && chainConfig.TriggerKey == key)
+                 {
+                     _macroQueue.Add(chainConfig);
+                 }
+             }
+        }
 
         public MacroSwitch(string macroname, int macroLanes)
         {
@@ -139,43 +152,36 @@ namespace _ORTools.Model
 
         private int MacroThread(Client roClient)
         {
-            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
-
-            foreach (MacroSwitchChainConfig chainConfig in this.ChainConfigs)
+            if (_macroQueue.TryTake(out MacroSwitchChainConfig chainConfig, 100))
             {
-                // Use the dedicated TriggerKey instead of the first non-None key
-                if (chainConfig.TriggerKey == Keys.None)
-                    continue; // no trigger key set, skip this chain
+                if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
+                if (!roClient.IsProcessRunning()) return 0;
+                IntPtr hWnd = roClient.MainWindowHandle;
 
-                if (Win32Interop.IsKeyPressed(chainConfig.TriggerKey))
+                foreach (var macroKey in chainConfig.macroEntries)
                 {
-                    if (roClient.Process == null || roClient.Process.HasExited) return 0;
-                    IntPtr hWnd = roClient.Process.MainWindowHandle;
-                    foreach (var macroKey in chainConfig.macroEntries)
+                    if (macroKey.Key != Keys.None)
                     {
-                        if (macroKey.Key != Keys.None)
+                        // Send the key
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, macroKey.Key, 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYUP_MSG_ID, macroKey.Key, 0);
+
+                        // Handle click behavior
+                        if (macroKey.ClickMode == 1)
                         {
-                            // Send the key
-                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, macroKey.Key, 0);
-
-                            // Handle click behavior
-                            if (macroKey.ClickMode == 1)
-                            {
-                                // Click at current mouse position
-                                MouseHelper.TryClickAtCurrentPosition(hWnd);
-                            }
-                            else if (macroKey.ClickMode == 2)
-                            {
-                                // Click at center of game window
-                                MouseHelper.TryClickAtWindowCenter(hWnd);
-                            }
-
-                            Thread.Sleep(macroKey.Delay); // delay after sending key and/or click
+                            // Click at current mouse position
+                            MouseHelper.TryClickAtCurrentPosition(hWnd);
                         }
+                        else if (macroKey.ClickMode == 2)
+                        {
+                            // Click at center of game window
+                            MouseHelper.TryClickAtWindowCenter(hWnd);
+                        }
+
+                        Thread.Sleep(macroKey.Delay); // delay after sending key and/or click
                     }
                 }
             }
-            Thread.Sleep(1);
             return 0;
         }
 
@@ -184,19 +190,20 @@ namespace _ORTools.Model
             Client roClient = ClientSingleton.GetClient();
             if (roClient != null)
             {
-                if (this.thread != null)
-                {
-                    ThreadRunner.Stop(this.thread);
-                    this.thread.Terminate();
-                    this.thread = null;
-                }
-                this.thread = new ThreadRunner((_) => MacroThread(roClient), "MacroSwitch");
+                Stop(); // ensure thread and hook are cleaned before starting
+                
+                while (_macroQueue.TryTake(out _)) { } // Clear queue
+                KeyboardHook.OnKeyDownEvent -= OnGlobalKeyDown;
+                KeyboardHook.OnKeyDownEvent += OnGlobalKeyDown;
+
+                this.thread = new ThreadRunner((_) => MacroThread(roClient), "MacroSwitch") { IterationDelay = 1 };
                 ThreadRunner.Start(this.thread);
             }
         }
 
         public void Stop()
         {
+            KeyboardHook.OnKeyDownEvent -= OnGlobalKeyDown;
             if (this.thread != null)
             {
                 ThreadRunner.Stop(this.thread);

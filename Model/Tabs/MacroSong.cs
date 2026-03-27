@@ -1,8 +1,9 @@
-﻿using _ORTools.Utils;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -102,6 +103,18 @@ namespace _ORTools.Model
         public string ActionName { get; set; } = ACTION_NAME;
         private ThreadRunner thread;
         public List<SongRow> SongRows { get; set; } = new List<SongRow>();
+        private BlockingCollection<SongRow> _songQueue = new BlockingCollection<SongRow>();
+
+        private void OnGlobalKeyDown(Keys key)
+        {
+            foreach (SongRow songRow in this.SongRows)
+            {
+                if (songRow.TriggerKey != Keys.None && songRow.TriggerKey == key)
+                {
+                    _songQueue.Add(songRow);
+                }
+            }
+        }
 
         public MacroSong()
         {
@@ -194,42 +207,42 @@ namespace _ORTools.Model
 
         private int SongMacroThread(Client roClient)
         {
-            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
-
-            foreach (SongRow songRow in this.SongRows)
+            if (_songQueue.TryTake(out SongRow songRow, 100))
             {
-                if (songRow.TriggerKey != Keys.None && Win32Interop.IsKeyPressed(songRow.TriggerKey))
+                if (!roClient.IsProcessRunning() || roClient.IsTextInputActive() || roClient.IsDead()) return 0;
+                IntPtr hWnd = roClient.MainWindowHandle;
+
+                List<Keys> activeSongKeys = songRow.GetActiveSongKeys();
+
+                // Only proceed if there are active song keys
+                if (activeSongKeys.Count > 0)
                 {
-                    List<Keys> activeSongKeys = songRow.GetActiveSongKeys();
-
-                    // Only proceed if there are active song keys
-                    if (activeSongKeys.Count > 0)
+                    // Equip instrument if specified
+                    if (songRow.InstrumentKey != Keys.None)
                     {
-                        // Equip instrument if specified
-                        if (songRow.InstrumentKey != Keys.None)
-                        {
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, songRow.InstrumentKey, 0);
-                            Thread.Sleep(30);
-                        }
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, songRow.InstrumentKey, 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYUP_MSG_ID, songRow.InstrumentKey, 0);
+                        Thread.Sleep(30);
+                    }
 
-                        // Cast songs with adaptation between each step
-                        for (int i = 0; i < activeSongKeys.Count; i++)
+                    // Cast songs with adaptation between each step
+                    for (int i = 0; i < activeSongKeys.Count; i++)
+                    {
+                        // Cast the song key
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, activeSongKeys[i], 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYUP_MSG_ID, activeSongKeys[i], 0);
+                        Thread.Sleep(songRow.Delay);
+
+                        // Send adaptation key after each song step (including the last one)
+                        if (songRow.AdaptationKey != Keys.None)
                         {
-                            // Cast the song key
-                            Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, activeSongKeys[i], 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, songRow.AdaptationKey, 0);
+                            Win32Interop.PostMessage(hWnd, Constants.WM_KEYUP_MSG_ID, songRow.AdaptationKey, 0);
                             Thread.Sleep(songRow.Delay);
-
-                            // Send adaptation key after each song step (including the last one)
-                            if (songRow.AdaptationKey != Keys.None)
-                            {
-                                Win32Interop.PostMessage(roClient.Process.MainWindowHandle, Constants.WM_KEYDOWN_MSG_ID, songRow.AdaptationKey, 0);
-                                Thread.Sleep(songRow.Delay);
-                            }
                         }
                     }
                 }
             }
-            Thread.Sleep(1);
             return 0;
         }
 
@@ -238,19 +251,20 @@ namespace _ORTools.Model
             Client roClient = ClientSingleton.GetClient();
             if (roClient != null)
             {
-                if (this.thread != null)
-                {
-                    ThreadRunner.Stop(this.thread);
-                    this.thread.Terminate();
-                    this.thread = null;
-                }
-                this.thread = new ThreadRunner((_) => SongMacroThread(roClient), "SongMacro");
+                Stop(); // ensure thread and hook are cleaned before starting
+                
+                while (_songQueue.TryTake(out _)) { } // Clear queue
+                KeyboardHook.OnKeyDownEvent -= OnGlobalKeyDown;
+                KeyboardHook.OnKeyDownEvent += OnGlobalKeyDown;
+
+                this.thread = new ThreadRunner((_) => SongMacroThread(roClient), "SongMacro") { IterationDelay = 1 };
                 ThreadRunner.Start(this.thread);
             }
         }
 
         public void Stop()
         {
+            KeyboardHook.OnKeyDownEvent -= OnGlobalKeyDown;
             if (this.thread != null)
             {
                 ThreadRunner.Stop(this.thread);
