@@ -19,7 +19,7 @@ namespace _ORTools.Utils
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
-        public static string preReleaseTag = "SPEEDY-20260327";
+        public static string preReleaseTag = "SPEEDY-20260328";
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
@@ -108,6 +108,7 @@ namespace _ORTools.Utils
                 switch (ServerMode)
                 {
                     case 0: return 0xE8BB28; // MR current weight
+                    case 1: return 0x10D94B0; // HR current weight
                     default: return 0;       // HR unknown
                 }
             }
@@ -120,6 +121,7 @@ namespace _ORTools.Utils
                 switch (ServerMode)
                 {
                     case 0: return 0xE8BB24; // MR max weight
+                    case 1: return 0x10D94AC; // HR max weight
                     default: return 0;
                 }
             }
@@ -141,7 +143,8 @@ namespace _ORTools.Utils
                 switch (ServerMode)
                 {
                     case 0: return 0xCE6B40; // MR
-                    default: return 0;       // HR unknown
+                    case 1: return 0xF33B48; // HR
+                    default: return 0;       // unknown
                 }
             }
         }

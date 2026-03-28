@@ -17,7 +17,7 @@ namespace _ORTools.Model
         public int MacroSwitchRows { get; set; } = 4; // Added new global setting
         public string DefaultToggleStateKey { get; set; } = Keys.None.ToString();
         public bool PauseWhenChatting { get; set; } = true;
-        public bool PauseWhenDead { get; set; } = true;
+        public bool PauseWhenDead { get; set; } = false;
     }
 
     internal static class ConfigGlobal

@@ -1,4 +1,4 @@
-﻿using _ORTools.Model;
+using _ORTools.Model;
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
@@ -38,6 +38,39 @@ namespace _ORTools.Forms
         private const int DEBUG_PANEL_HEIGHT = 200;
         public const int DEBUG_MAX_LINES = 2000;
 
+        // Off-screen compositing: Windows draws the entire control tree to a back-buffer
+        // before blitting to screen. Eliminates flicker/lag when dragging with many child controls.
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
+        // Freeze all painting while the user is dragging/resizing the window.
+        // WM_SETREDRAW(false) tells Windows to skip ALL paint messages for this HWND tree.
+        // On release, WM_SETREDRAW(true) + Refresh() does a single
+        //
+        private const int WM_ENTERSIZEMOVE = 0x0231;
+        private const int WM_EXITSIZEMOVE  = 0x0232;
+
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            if (m.Msg == WM_ENTERSIZEMOVE)
+            {
+                Win32Interop.SendMessage(this.Handle, 0x000B /* WM_SETREDRAW */, IntPtr.Zero, IntPtr.Zero);
+            }
+            else if (m.Msg == WM_EXITSIZEMOVE)
+            {
+                Win32Interop.SendMessage(this.Handle, 0x000B /* WM_SETREDRAW */, new IntPtr(1), IntPtr.Zero);
+                this.Refresh();
+            }
+            base.WndProc(ref m);
+        }
+
         public Container()
         {
             ConfigGlobal.Initialize();
@@ -48,6 +81,8 @@ namespace _ORTools.Forms
             this.subject.Attach(this);
 
             InitializeComponent();
+            this.DoubleBuffered = true;
+            EnableDoubleBufferingRecursive(this);
 
             characterInfoForm = new CharacterInfo
             {
@@ -133,6 +168,10 @@ namespace _ORTools.Forms
             SetMacroSwitchWindow();
             SetConfigWindow();
             SetTopTabIcons();
+
+            // Enable double buffering on all child controls (including tab forms)
+            // Must be called after all Set*Window() calls have added their forms
+            EnableDoubleBufferingRecursive(this);
 
             SetMiniMode(ConfigGlobal.GetConfig().MiniMode);
         }
@@ -344,6 +383,8 @@ namespace _ORTools.Forms
 
 
         private static readonly SolidBrush _tabBgBrush = new SolidBrush(AppConfig.AccentBackColor);
+        private static readonly SolidBrush _tabTextBrush = new SolidBrush(Color.Black);
+        private Font _cachedTabBoldFont;
 
         private void TabControlTop_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -352,14 +393,17 @@ namespace _ORTools.Forms
             e.Graphics.FillRectangle(_tabBgBrush, e.Bounds);
 
             bool isActiveTab = (e.Index == tabControl.SelectedIndex);
-            Font tabFont = isActiveTab ? new Font(e.Font, FontStyle.Bold) : e.Font;
-            Color textColor = Color.Black;
+            if (isActiveTab && (_cachedTabBoldFont == null || _cachedTabBoldFont.FontFamily != e.Font.FontFamily || _cachedTabBoldFont.Size != e.Font.Size))
+            {
+                _cachedTabBoldFont?.Dispose();
+                _cachedTabBoldFont = new Font(e.Font, FontStyle.Bold);
+            }
+            Font tabFont = isActiveTab ? _cachedTabBoldFont : e.Font;
 
             string text = tabControl.TabPages[e.Index].Text;
             Image icon = tabControl.ImageList?.Images[tabControl.TabPages[e.Index].ImageIndex];
 
             float textX = e.Bounds.X;
-            float textY = e.Bounds.Y;
 
             // Draw icon (if any)
             int spacing = 7;
@@ -374,11 +418,7 @@ namespace _ORTools.Forms
             SizeF textSize = e.Graphics.MeasureString(text, tabFont);
             float adjustedTextY = e.Bounds.Y + (e.Bounds.Height - textSize.Height) / 2;
 
-            using (Brush textBrush = new SolidBrush(textColor))
-            {
-                e.Graphics.DrawString(text, tabFont, textBrush, textX, adjustedTextY);
-            }
-            if (isActiveTab) tabFont.Dispose();
+            e.Graphics.DrawString(text, tabFont, _tabTextBrush, textX, adjustedTextY);
         }
 
         private void ShowDebugPanel()
@@ -543,9 +583,7 @@ namespace _ORTools.Forms
                 tp.Controls.Add(f);
                 f.Dock = DockStyle.Fill;
                 f.Show();
-                Refresh();
             }
-            Refresh();
         }
 
         private void SetBackGroundColorOfMDIForm()
@@ -1137,6 +1175,22 @@ namespace _ORTools.Forms
         }
 
         #endregion Frames
+
+        /// <summary>
+        /// Recursively enables DoubleBuffered on every control in the tree.
+        /// DoubleBuffered is protected, so we use reflection to set it on controls we don't own.
+        /// </summary>
+        private static void EnableDoubleBufferingRecursive(Control control)
+        {
+            var prop = typeof(Control).GetProperty("DoubleBuffered",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            prop?.SetValue(control, true, null);
+
+            foreach (Control child in control.Controls)
+            {
+                EnableDoubleBufferingRecursive(child);
+            }
+        }
     }
 
     /// <summary>
