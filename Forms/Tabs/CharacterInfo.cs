@@ -28,10 +28,6 @@ namespace _ORTools.Forms
 
         private readonly Timer _refreshTimer;
 
-        // Tooltip for bar hover
-        private readonly ToolTip _barTip = new ToolTip { InitialDelay = 300, AutoPopDelay = 2500, ReshowDelay = 100 };
-        private string _lastTip = "";
-
         // Layout constants
         private const int INFO_ROW_Y   = 13;
         private const int INFO_ROW_H   = 11;
@@ -103,9 +99,6 @@ namespace _ORTools.Forms
 
             if (components == null) components = new System.ComponentModel.Container();
             components.Add(_refreshTimer);
-            components.Add(_barTip);
-
-            this.MouseMove += OnMouseMoveBar;
         }
 
         // ── Properties ────────────────────────────────────────────────────────
@@ -300,7 +293,7 @@ namespace _ORTools.Forms
             {
                 int wPct = (int)Math.Round(_weightCur * 100.0 / _weightMax);
                 DrawBar(e.Graphics, WT_BAR_Y, _weightCur, _weightMax, _wtBrush,
-                    $"Weight  {wPct}%");
+                    $"Weight  {_weightCur} / {_weightMax} ({wPct}%)");
             }
         }
 
@@ -320,29 +313,6 @@ namespace _ORTools.Forms
             var rect = new RectangleF(x, y, w, BAR_H);
             g.DrawString(label, _barFont, _shadowBrush, new RectangleF(x + 1, y + 1, w, BAR_H), _barSf);
             g.DrawString(label, _barFont, _textBrush, rect, _barSf);
-        }
-
-        // ── Tooltip on hover ──────────────────────────────────────────────────
-
-        private void OnMouseMoveBar(object sender, MouseEventArgs e)
-        {
-            string tip = "";
-            if (e.Y >= HP_BAR_Y && e.Y < HP_BAR_Y + BAR_H && _hpMax > 0)
-                tip = $"HP: {_hpCur} / {_hpMax}";
-            else if (e.Y >= SP_BAR_Y && e.Y < SP_BAR_Y + BAR_H && _spMax > 0)
-                tip = $"SP: {_spCur} / {_spMax}";
-            else if (e.Y >= WT_BAR_Y && e.Y < WT_BAR_Y + BAR_H && _weightMax > 0)
-            {
-                int pct = (int)Math.Round(_weightCur * 100.0 / _weightMax);
-                tip = $"Weight: {_weightCur} / {_weightMax} ({pct}%)";
-            }
-
-            if (tip != _lastTip)
-            {
-                _lastTip = tip;
-                if (string.IsNullOrEmpty(tip)) _barTip.Hide(this);
-                else _barTip.Show(tip, this, e.X + 12, e.Y + 12);
-            }
         }
 
         // ── Map link ──────────────────────────────────────────────────────────
