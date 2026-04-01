@@ -3,6 +3,7 @@ using _ORTools.Utils;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace _ORTools.Forms
@@ -45,11 +46,6 @@ namespace _ORTools.Forms
         private static readonly SolidBrush _barBgBrush    = new SolidBrush(Color.FromArgb(218, 223, 233));
         private static readonly SolidBrush _textBrush     = new SolidBrush(Color.FromArgb(30, 30, 30));
         private static readonly SolidBrush _shadowBrush   = new SolidBrush(Color.FromArgb(120, 255, 255, 255));
-        private static readonly SolidBrush _hpBrush       = new SolidBrush(Color.FromArgb(33, 219, 31));
-        private static readonly SolidBrush _hpLowBrush    = new SolidBrush(Color.FromArgb(220, 55, 55));
-        private static readonly SolidBrush _spBrush       = new SolidBrush(Color.FromArgb(0, 111, 245));
-        private static readonly SolidBrush _spLowBrush    = new SolidBrush(Color.FromArgb(230, 140, 30));
-        private static readonly SolidBrush _wtBrush       = new SolidBrush(Color.FromArgb(185, 65, 50));
         private static readonly StringFormat _centerSf    = new StringFormat
         {
             Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center,
@@ -278,41 +274,62 @@ namespace _ORTools.Forms
 
             // HP bar — turns red when low
             if (_hpMax > 0)
-                DrawBar(e.Graphics, HP_BAR_Y, _hpCur, _hpMax,
-                    _hpCur < _hpMax * 0.25f ? _hpLowBrush : _hpBrush,
-                    $"HP  {_hpCur} / {_hpMax}");
+            {
+                bool low = _hpCur < _hpMax * 0.25f;
+                Color top = low ? Color.FromArgb(255, 80, 80) : Color.FromArgb(80, 255, 80);
+                Color bot = low ? Color.FromArgb(200, 30, 30) : Color.FromArgb(20, 160, 20);
+                DrawBar(e.Graphics, HP_BAR_Y, _hpCur, _hpMax, top, bot, $"HP  {_hpCur} / {_hpMax}");
+            }
 
             // SP bar — turns orange when low
             if (_spMax > 0)
-                DrawBar(e.Graphics, SP_BAR_Y, _spCur, _spMax,
-                    _spCur < _spMax * 0.25f ? _spLowBrush : _spBrush,
-                    $"SP  {_spCur} / {_spMax}");
+            {
+                bool low = _spCur < _spMax * 0.25f;
+                Color top = low ? Color.FromArgb(255, 180, 50) : Color.FromArgb(60, 180, 255);
+                Color bot = low ? Color.FromArgb(210, 110, 0) : Color.FromArgb(0, 90, 220);
+                DrawBar(e.Graphics, SP_BAR_Y, _spCur, _spMax, top, bot, $"SP  {_spCur} / {_spMax}");
+            }
 
-            // Weight bar — flat red, shows percentage
+            // Weight bar — brownish red gradient
             if (_weightMax > 0)
             {
                 int wPct = (int)Math.Round(_weightCur * 100.0 / _weightMax);
-                DrawBar(e.Graphics, WT_BAR_Y, _weightCur, _weightMax, _wtBrush,
-                    $"Weight  {_weightCur} / {_weightMax} ({wPct}%)");
+                Color top = Color.FromArgb(210, 100, 80);
+                Color bot = Color.FromArgb(150, 45, 30);
+                DrawBar(e.Graphics, WT_BAR_Y, _weightCur, _weightMax, top, bot, $"Weight  {_weightCur} / {_weightMax} ({wPct}%)");
             }
         }
 
 
-        private void DrawBar(Graphics g, int y, uint cur, uint max, SolidBrush fillBrush, string label)
+        private void DrawBar(Graphics g, int y, uint cur, uint max, Color topColor, Color bottomColor, string label)
         {
             int x = BAR_PAD;
             int w = ClientSize.Width - BAR_PAD * 2;
 
+            // Bar background
             g.FillRectangle(_barBgBrush, x, y, w, BAR_H);
 
             float ratio = Math.Min(1f, (float)cur / max);
             int fillW = (int)(w * ratio);
             if (fillW > 0)
-                g.FillRectangle(fillBrush, x, y, fillW, BAR_H);
+            {
+                var rectArea = new Rectangle(x, y, fillW, BAR_H);
+                using (var brush = new LinearGradientBrush(rectArea, topColor, bottomColor, LinearGradientMode.Vertical))
+                {
+                    g.FillRectangle(brush, rectArea);
+                }
 
-            var rect = new RectangleF(x, y, w, BAR_H);
+                // 1-pixel solid end caps to the colored fill area
+                using (var pen = new Pen(bottomColor, 1))
+                {
+                    g.DrawLine(pen, x, y, x, y + BAR_H - 1); // Left cap
+                    g.DrawLine(pen, x + fillW - 1, y, x + fillW - 1, y + BAR_H - 1); // Right cap
+                }
+            }
+
+            var rectText = new RectangleF(x, y, w, BAR_H);
             g.DrawString(label, _barFont, _shadowBrush, new RectangleF(x + 1, y + 1, w, BAR_H), _barSf);
-            g.DrawString(label, _barFont, _textBrush, rect, _barSf);
+            g.DrawString(label, _barFont, _textBrush, rectText, _barSf);
         }
 
         // ── Map link ──────────────────────────────────────────────────────────
