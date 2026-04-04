@@ -360,10 +360,10 @@ public static class BuffDefinitions
 
         ElementBuffs.AddRange(new[]
         {
-            b.CreateBuff("Fire Elemental Converter", "SA_FLAMELAUNCHER", "ele_fire_converter"),
-            b.CreateBuff("Wind Elemental Converter", "SA_LIGHTNINGLOADER", "ele_wind_converter"),
-            b.CreateBuff("Earth Elemental Converter", "SA_SEISMICWEAPON", "ele_earth_converter"),
-            b.CreateBuff("Water Elemental Converter", "SA_FROSTWEAPON", "ele_water_converter"),
+            b.CreateBuff("Fire Elemental Converter", "ENDOW_FIRE", "ele_fire_converter"),
+            b.CreateBuff("Wind Elemental Converter", "ENDOW_WIND", "ele_wind_converter"),
+            b.CreateBuff("Earth Elemental Converter", "ENDOW_EARTH", "ele_earth_converter"),
+            b.CreateBuff("Water Elemental Converter", "BOX_OF_THUNDER", "ele_water_converter"),
             b.CreateBuff("Box of Storms", "BOX_OF_STORMS", "boxofstorms"),
             b.CreateBuff("Cursed Water", "PROPERTYDARK", "cursed_water"),
             b.CreateBuff("Fireproof Potion", "RESIST_PROPERTY_FIRE", "fireproof"),

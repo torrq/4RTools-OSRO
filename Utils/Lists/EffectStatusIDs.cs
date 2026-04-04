@@ -696,6 +696,15 @@ namespace _ORTools.Utils
         [Description("Box of Storms")]
         BOX_OF_STORMS = 1405,
 
+        [Description("Endow Weapon: Earth")]
+        ENDOW_EARTH = 1403,
+
+        [Description("Endow Weapon: Wind")]
+        ENDOW_WIND = 1404,
+
+        [Description("Endow Weapon: Fire")]
+        ENDOW_FIRE = 1406,
+
         [Description("Volcano")]
         SA_VOLCANO = 1412,
 
