@@ -1,4 +1,4 @@
-﻿using _ORTools.Utils;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace _ORTools.Model
                 if (skillTimer.TryGetValue(i, out var macro) && macro.Enabled)
                 {
                     int skillIndex = i; // Capture loop variable
-                    threads[i] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[skillIndex]), $"SkillTimer-{i}");
+                    threads[i] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[skillIndex]), $"SkillTimer-{i}") { IterationDelay = 1 };
                     ThreadRunner.Start(threads[i]);
                 }
             }
@@ -67,7 +67,7 @@ namespace _ORTools.Model
                     return;
                 }
 
-                threads[timerId] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[timerId]), $"SkillTimer-{timerId}");
+                threads[timerId] = new ThreadRunner((_) => SkillTimerThread(roClient, skillTimer[timerId]), $"SkillTimer-{timerId}") { IterationDelay = 1 };
                 ThreadRunner.Start(threads[timerId]);
             }
         }
@@ -97,12 +97,12 @@ namespace _ORTools.Model
 
         private int SkillTimerThread(Client roClient, SkillTimerKey macro)
         {
-            if (roClient.IsTextInputActive() || roClient.IsDead()) return 0;
+            if (!roClient.IsProcessRunning() || roClient.IsTextInputActive() || roClient.IsDead()) return 0;
 
             string currentMap = roClient.ReadCurrentMapCached();
             if (!ProfileSingleton.GetCurrent().UserPreferences.StopBuffsCity || !Server.GetCityList().Contains(currentMap))
             {
-                IntPtr hWnd = roClient.Process.MainWindowHandle;
+                IntPtr hWnd = roClient.MainWindowHandle;
                 if (macro.Key != Keys.None)
                 {
                     if (macro.AltKey)
@@ -113,6 +113,7 @@ namespace _ORTools.Model
                     {
                         // Remove the KeyInterop conversion since macro.Key is already Keys enum
                         Win32Interop.PostMessage(hWnd, Constants.WM_KEYDOWN_MSG_ID, macro.Key, 0);
+                        Win32Interop.PostMessage(hWnd, Constants.WM_KEYUP_MSG_ID, macro.Key, 0);
                     }
                 }
                 // Handle clicking based on the ClickMode

@@ -1,4 +1,4 @@
-﻿using _ORTools.Utils;
+using _ORTools.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -46,7 +46,7 @@ namespace _ORTools.Model
             try
             {
                 Client currentClient = ClientSingleton.GetClient();
-                if (currentClient?.Process == null || currentClient.Process.HasExited)
+                if (!currentClient.IsProcessRunning())
                 {
                     return false;
                 }
@@ -101,7 +101,7 @@ namespace _ORTools.Model
                     this.thread = null;
                 }
 
-                this.thread = new ThreadRunner(_ => SkillSpammerThread(roClient), "SkillSpammerThread");
+                this.thread = new ThreadRunner(_ => SkillSpammerThread(roClient), "SkillSpammerThread") { IterationDelay = 1 };
                 ThreadRunner.Start(this.thread);
             }
         }
@@ -115,7 +115,7 @@ namespace _ORTools.Model
                 return 0;
 
             // Cache expensive lookups once per iteration
-            IntPtr windowHandle = roClient.Process.MainWindowHandle;
+            IntPtr windowHandle = roClient.MainWindowHandle;
             bool noShift = this.NoShift;
             bool mouseFlick = this.MouseFlick;
 
@@ -191,6 +191,7 @@ namespace _ORTools.Model
             }
 
             Win32Interop.PostMessage(windowHandle, Constants.WM_KEYDOWN_MSG_ID, config.Key, 0);
+            Win32Interop.PostMessage(windowHandle, Constants.WM_KEYUP_MSG_ID, config.Key, 0);
 
             if (config.ClickActive && !config.IsIndeterminate)
             {

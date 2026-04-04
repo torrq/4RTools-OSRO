@@ -1,4 +1,4 @@
-﻿using _ORTools.Forms;
+using _ORTools.Forms;
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
@@ -196,11 +196,28 @@ namespace _ORTools.Model
 
         private bool _disposed = false;
 
+        private IntPtr _cachedMainWindowHandle = IntPtr.Zero;
+        
+        /// <summary>
+        /// Cached access to the MainWindowHandle. Avoids slow Process queries on every tick.
+        /// </summary>
+        public IntPtr MainWindowHandle
+        {
+            get
+            {
+                if (_cachedMainWindowHandle == IntPtr.Zero && Process != null)
+                {
+                    try { _cachedMainWindowHandle = Process.MainWindowHandle; } catch { }
+                }
+                return _cachedMainWindowHandle;
+            }
+        }
+
         /// <summary>
         /// Checks if the process is valid and accessible for memory operations.
         /// Only checks basic process state, not memory accessibility.
         /// </summary>
-        private bool IsProcessValid()
+        public bool IsProcessRunning()
         {
             // Check if we have a valid cached value
             if (_cachedProcessValid.HasValue &&
@@ -239,7 +256,7 @@ namespace _ORTools.Model
         {
             try
             {
-                if (!IsProcessValid() || address == 0)
+                if (!IsProcessRunning() || address == 0)
                     return 0;
 
                 // Use non-throwing version
@@ -493,6 +510,10 @@ namespace _ORTools.Model
         // ── Status buffer ─────────────────────────────────────────────────────
         public uint[] ReadStatusBuffer()
         {
+            // Return cached version if still fresh — avoids duplicate RPM calls across threads
+            var cached = StatusBufferCache.Latest;
+            if (cached != null) return cached;
+
             if (StatusBufferAddress == 0) return null;
             int count = Constants.MAX_BUFF_LIST_INDEX_SIZE;
             byte[] bytes = PMR.ReadProcessMemory((IntPtr)StatusBufferAddress, (uint)(count * 4), throwOnError: false);
@@ -500,6 +521,7 @@ namespace _ORTools.Model
             var result = new uint[count];
             for (int i = 0; i < count; i++)
                 result[i] = BitConverter.ToUInt32(bytes, i * 4);
+            StatusBufferCache.Push(result);
             return result;
         }
 
@@ -779,6 +801,33 @@ namespace _ORTools.Model
     /// Shared, lock-free cache for the most recent HP/SP snapshot.
     /// Written on every ReadHpSp() call (macro threads); read by CharacterInfo timer.
     /// </summary>
+    /// <summary>
+    /// Shared status buffer cache — written by whichever macro thread reads it first each tick,
+    /// then reused by all other threads within the TTL window to avoid duplicate RPM calls.
+    /// </summary>
+    public static class StatusBufferCache
+    {
+        private const long TTL_TICKS = 500_000; // 50ms in ticks
+
+        private static volatile uint[] _buffer = null;
+        private static long _timestamp = 0;
+
+        public static void Push(uint[] buffer)
+        {
+            _buffer = buffer;
+            System.Threading.Interlocked.Exchange(ref _timestamp, DateTime.UtcNow.Ticks);
+        }
+
+        public static uint[] Latest
+        {
+            get
+            {
+                long age = DateTime.UtcNow.Ticks - System.Threading.Interlocked.Read(ref _timestamp);
+                return age < TTL_TICKS ? _buffer : null;
+            }
+        }
+    }
+
     public static class HpSpCache
     {
         private static volatile HpSpCacheEntry _entry = new HpSpCacheEntry();

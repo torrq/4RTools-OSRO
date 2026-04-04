@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -59,6 +59,16 @@ namespace _ORTools.Utils
         /// Add a HookHandler delegate to this to activate hotkeys.
         /// </summary>
         public static KeyboardHookHandler KeyDown;
+
+        /// <summary>
+        /// System-wide broadcast event for KeyDown. Independent of the trap delegate system.
+        /// </summary>
+        public static event Action<Keys> OnKeyDownEvent;
+
+        /// <summary>
+        /// System-wide broadcast event for KeyUp.
+        /// </summary>
+        public static event Action<Keys> OnKeyUpEvent;
 
         /// <summary>
         /// Keep track of the hook state.
@@ -236,6 +246,8 @@ namespace _ORTools.Utils
 
         private static bool OnKeyDown(Keys key)
         {
+            OnKeyDownEvent?.Invoke(key);
+
             if (KeyDown != null)
                 return KeyDown(key);
             if (handledKeysDown.ContainsKey(key))
@@ -246,6 +258,8 @@ namespace _ORTools.Utils
 
         private static bool OnKeyUp(Keys key)
         {
+            OnKeyUpEvent?.Invoke(key);
+
             if (handledKeysUp.ContainsKey(key))
                 return handledKeysUp[key]();
             else

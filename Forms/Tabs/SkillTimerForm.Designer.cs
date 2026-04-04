@@ -156,7 +156,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay1.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay1.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -182,7 +182,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay4.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay4.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -208,7 +208,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay3.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay3.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -234,7 +234,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay5.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay5.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -410,7 +410,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay2.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay2.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -778,7 +778,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay6.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay6.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -877,7 +877,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay7.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay7.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -976,7 +976,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay8.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay8.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -1075,7 +1075,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay9.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay9.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -1174,7 +1174,7 @@ namespace _ORTools.Forms
             this.txtAutoRefreshDelay10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAutoRefreshDelay10.Location = new System.Drawing.Point(170, 3);
             this.txtAutoRefreshDelay10.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});

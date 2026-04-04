@@ -42,6 +42,8 @@ namespace _ORTools.Forms
             this.DebugMode = new System.Windows.Forms.CheckBox();
             this.DebugModeShowLog = new System.Windows.Forms.CheckBox();
             this.groupGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.PauseWhenDead = new System.Windows.Forms.CheckBox();
+            this.PauseWhenChatting = new System.Windows.Forms.CheckBox();
             this.DefaultToggleStateKey = new System.Windows.Forms.TextBox();
             this.DefaultToggleStateKeyLabel = new System.Windows.Forms.Label();
             this.ChkDisableSystray = new System.Windows.Forms.CheckBox();
@@ -54,9 +56,7 @@ namespace _ORTools.Forms
             this.toolTipchkStopBuffsOnCity = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
-            this.PauseWhenChatting = new System.Windows.Forms.CheckBox();
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.PauseWhenDead = new System.Windows.Forms.CheckBox();
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SongRows)).BeginInit();
@@ -101,10 +101,10 @@ namespace _ORTools.Forms
             // 
             this.chkSoundEnabled.AutoSize = true;
             this.chkSoundEnabled.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkSoundEnabled.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSoundEnabled.Location = new System.Drawing.Point(13, 68);
+            this.chkSoundEnabled.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.chkSoundEnabled.Location = new System.Drawing.Point(13, 67);
             this.chkSoundEnabled.Name = "chkSoundEnabled";
-            this.chkSoundEnabled.Size = new System.Drawing.Size(86, 20);
+            this.chkSoundEnabled.Size = new System.Drawing.Size(84, 18);
             this.chkSoundEnabled.TabIndex = 317;
             this.chkSoundEnabled.Text = "Sounds on";
             this.toolTipchkSoundEnabled.SetToolTip(this.chkSoundEnabled, "Play sounds when toggling on and off");
@@ -115,10 +115,10 @@ namespace _ORTools.Forms
             // 
             this.chkStopBuffsOnCity.AutoSize = true;
             this.chkStopBuffsOnCity.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkStopBuffsOnCity.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStopBuffsOnCity.Font = new System.Drawing.Font("Tahoma", 9F);
             this.chkStopBuffsOnCity.Location = new System.Drawing.Point(13, 27);
             this.chkStopBuffsOnCity.Name = "chkStopBuffsOnCity";
-            this.chkStopBuffsOnCity.Size = new System.Drawing.Size(141, 20);
+            this.chkStopBuffsOnCity.Size = new System.Drawing.Size(139, 18);
             this.chkStopBuffsOnCity.TabIndex = 0;
             this.chkStopBuffsOnCity.Text = "Pause when in town";
             this.chkStopBuffsOnCity.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@ namespace _ORTools.Forms
             this.DebugModeShowLog.AutoSize = true;
             this.DebugModeShowLog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DebugModeShowLog.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DebugModeShowLog.Location = new System.Drawing.Point(114, 3);
+            this.DebugModeShowLog.Location = new System.Drawing.Point(111, 3);
             this.DebugModeShowLog.Name = "DebugModeShowLog";
             this.DebugModeShowLog.Size = new System.Drawing.Size(81, 18);
             this.DebugModeShowLog.TabIndex = 321;
@@ -179,13 +179,37 @@ namespace _ORTools.Forms
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
             // 
+            // PauseWhenDead
+            // 
+            this.PauseWhenDead.AutoSize = true;
+            this.PauseWhenDead.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PauseWhenDead.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.PauseWhenDead.Location = new System.Drawing.Point(55, 218);
+            this.PauseWhenDead.Name = "PauseWhenDead";
+            this.PauseWhenDead.Size = new System.Drawing.Size(124, 18);
+            this.PauseWhenDead.TabIndex = 330;
+            this.PauseWhenDead.Text = "Pause when dead";
+            this.PauseWhenDead.UseVisualStyleBackColor = true;
+            // 
+            // PauseWhenChatting
+            // 
+            this.PauseWhenChatting.AutoSize = true;
+            this.PauseWhenChatting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PauseWhenChatting.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.PauseWhenChatting.Location = new System.Drawing.Point(55, 192);
+            this.PauseWhenChatting.Name = "PauseWhenChatting";
+            this.PauseWhenChatting.Size = new System.Drawing.Size(142, 18);
+            this.PauseWhenChatting.TabIndex = 318;
+            this.PauseWhenChatting.Text = "Pause when chatting";
+            this.PauseWhenChatting.UseVisualStyleBackColor = true;
+            // 
             // DefaultToggleStateKey
             // 
             this.DefaultToggleStateKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DefaultToggleStateKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DefaultToggleStateKey.Font = new System.Drawing.Font("Tahoma", 9F);
             this.DefaultToggleStateKey.Location = new System.Drawing.Point(179, 95);
             this.DefaultToggleStateKey.Name = "DefaultToggleStateKey";
-            this.DefaultToggleStateKey.Size = new System.Drawing.Size(65, 25);
+            this.DefaultToggleStateKey.Size = new System.Drawing.Size(65, 22);
             this.DefaultToggleStateKey.TabIndex = 329;
             this.DefaultToggleStateKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DefaultToggleStateKey.TextChanged += new System.EventHandler(this.DefaultToggleStateKey_TextChanged);
@@ -204,10 +228,10 @@ namespace _ORTools.Forms
             // 
             this.ChkDisableSystray.AutoSize = true;
             this.ChkDisableSystray.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ChkDisableSystray.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkDisableSystray.Font = new System.Drawing.Font("Tahoma", 9F);
             this.ChkDisableSystray.Location = new System.Drawing.Point(55, 166);
             this.ChkDisableSystray.Name = "ChkDisableSystray";
-            this.ChkDisableSystray.Size = new System.Drawing.Size(141, 20);
+            this.ChkDisableSystray.Size = new System.Drawing.Size(134, 18);
             this.ChkDisableSystray.TabIndex = 318;
             this.ChkDisableSystray.Text = "Disable Systray Icon";
             this.toolTipchkSoundEnabled.SetToolTip(this.ChkDisableSystray, "Disable system tray icon at bottom right");
@@ -296,33 +320,9 @@ namespace _ORTools.Forms
             this.toolTipDebugModeShowLog.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipDebugModeShowLog.ToolTipTitle = "Show Debug Log";
             // 
-            // PauseWhenChatting
-            // 
-            this.PauseWhenChatting.AutoSize = true;
-            this.PauseWhenChatting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PauseWhenChatting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PauseWhenChatting.Location = new System.Drawing.Point(55, 192);
-            this.PauseWhenChatting.Name = "PauseWhenChatting";
-            this.PauseWhenChatting.Size = new System.Drawing.Size(144, 20);
-            this.PauseWhenChatting.TabIndex = 318;
-            this.PauseWhenChatting.Text = "Pause when chatting";
-            this.PauseWhenChatting.UseVisualStyleBackColor = true;
-            // 
             // clientDTOBindingSource
             // 
             this.clientDTOBindingSource.DataSource = typeof(_ORTools.Model.ClientDTO);
-            // 
-            // PauseWhenDead
-            // 
-            this.PauseWhenDead.AutoSize = true;
-            this.PauseWhenDead.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PauseWhenDead.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PauseWhenDead.Location = new System.Drawing.Point(55, 218);
-            this.PauseWhenDead.Name = "PauseWhenDead";
-            this.PauseWhenDead.Size = new System.Drawing.Size(127, 20);
-            this.PauseWhenDead.TabIndex = 330;
-            this.PauseWhenDead.Text = "Pause when dead";
-            this.PauseWhenDead.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 

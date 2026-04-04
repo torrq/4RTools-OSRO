@@ -30,6 +30,7 @@ public static class StatusEffectLogger
 
     public static void LogAllStatuses(IEnumerable<(int index, uint statusId)> statuses)
     {
+        if (!AppConfig.DebugMode) return; // skip all LINQ work when not in debug mode
         if (knownStatusIds == null)
             InitializeStatusDictionaries();
 

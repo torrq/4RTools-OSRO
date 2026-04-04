@@ -192,8 +192,8 @@ namespace _ORTools.Model
                                     }
                                 }
 
-                                // Re-read status buffer in one call after autobuff actions
-                                if (!hadError)
+                                // Re-read status buffer only when debug mode is on — pure logging, not needed in production
+                                if (!hadError && AppConfig.DebugMode)
                                 {
                                     try
                                     {

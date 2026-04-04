@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 
 namespace _ORTools.Utils
@@ -8,6 +8,12 @@ namespace _ORTools.Utils
         private readonly Thread thread;
         private readonly ManualResetEventSlim suspendEvent = new ManualResetEventSlim(true); // Initially set
         private volatile bool running = true;
+        
+        /// <summary>
+        /// Delay applied at the end of each thread cycle. 
+        /// Set to 0 if the thread manages its own internal yielding perfectly.
+        /// </summary>
+        public int IterationDelay { get; set; } = 5;
 
         public ThreadRunner(Func<int, int> toRun, string name = "Unnamed ThreadRunner")
         {
@@ -32,7 +38,8 @@ namespace _ORTools.Utils
                     }
                     finally
                     {
-                        Thread.Sleep(5);
+                        if (IterationDelay > 0)
+                            Thread.Sleep(IterationDelay);
                     }
                 }
 
