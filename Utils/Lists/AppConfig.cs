@@ -108,8 +108,7 @@ namespace _ORTools.Utils
                 switch (ServerMode)
                 {
                     case 0: return 0xE8BB28; // MR current weight
-                    case 1: return 0x10D94B0; // HR current weight
-                    default: return 0;
+                    default: return 0;       // HR unknown
                 }
             }
         }
@@ -121,7 +120,6 @@ namespace _ORTools.Utils
                 switch (ServerMode)
                 {
                     case 0: return 0xE8BB24; // MR max weight
-                    case 1: return 0x10D94AC; // HR max weight
                     default: return 0;
                 }
             }
@@ -143,8 +141,7 @@ namespace _ORTools.Utils
                 switch (ServerMode)
                 {
                     case 0: return 0xCE6B40; // MR
-                    case 1: return 0xF33B48; // HR
-                    default: return 0;
+                    default: return 0;       // HR unknown
                 }
             }
         }
@@ -159,8 +156,7 @@ namespace _ORTools.Utils
             "comodo", "yuno", "amatsu", "gonryun", "umbala", "niflheim", "louyang", "jawaii",
             "ayothaya", "einbroch", "lighthalzen", "einbech", "hugel", "rachel", "veins",
             "moscovia", "mid_camp", "munak", "splendide", "brasilis", "dicastes01", "mora",
-            "dewata", "malangdo", "malaya", "eclage", "marketplace", "mainhall", "quiz_00",
-            "e_tower"
+            "dewata", "malangdo", "malaya", "eclage", "marketplace", "mainhall", "quiz_00"
         };
 
         #endregion
