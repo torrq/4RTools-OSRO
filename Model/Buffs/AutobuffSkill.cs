@@ -148,6 +148,16 @@ namespace _ORTools.Model
                                 }
                             }
 
+                            // Log all statuses when debug mode is on — regardless of which buffs are mapped
+                            if (!statusReadError)
+                            {
+                                var statusList = new List<(int index, uint statusId)>();
+                                for (int i = 1; i < Constants.MAX_BUFF_LIST_INDEX_SIZE; i++)
+                                    if (StatusUtils.IsValidStatus(statusBuffer[i]))
+                                        statusList.Add((i, statusBuffer[i]));
+                                StatusEffectLogger.LogAllStatuses(statusList);
+                            }
+
                             if (!statusReadError && !currentBuffs.Contains(EffectStatusIDs.RIDDING))
                             {
                                 // Read HP once before applying buffs — reused for all buff checks below

@@ -510,7 +510,6 @@ namespace _ORTools.Model
         // ── Status buffer ─────────────────────────────────────────────────────
         public uint[] ReadStatusBuffer()
         {
-            // Return cached version if still fresh — avoids duplicate RPM calls across threads
             var cached = StatusBufferCache.Latest;
             if (cached != null) return cached;
 
@@ -802,12 +801,12 @@ namespace _ORTools.Model
     /// Written on every ReadHpSp() call (macro threads); read by CharacterInfo timer.
     /// </summary>
     /// <summary>
-    /// Shared status buffer cache — written by whichever macro thread reads it first each tick,
-    /// then reused by all other threads within the TTL window to avoid duplicate RPM calls.
+    /// Shared status buffer cache. Threads share one RPM read per TTL window.
+    /// Call Invalidate() after casting to force a fresh read next cycle.
     /// </summary>
     public static class StatusBufferCache
     {
-        private const long TTL_TICKS = 500_000; // 50ms in ticks
+        private const long TTL_TICKS = 500_000; // 50ms
 
         private static volatile uint[] _buffer = null;
         private static long _timestamp = 0;
@@ -825,6 +824,11 @@ namespace _ORTools.Model
                 long age = DateTime.UtcNow.Ticks - System.Threading.Interlocked.Read(ref _timestamp);
                 return age < TTL_TICKS ? _buffer : null;
             }
+        }
+
+        public static void Invalidate()
+        {
+            System.Threading.Interlocked.Exchange(ref _timestamp, 0);
         }
     }
 

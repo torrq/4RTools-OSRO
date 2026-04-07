@@ -120,7 +120,9 @@ namespace _ORTools.Model
                     {
                         profile.AutobuffSkill.Delay = AppConfig.AutoBuffSkillsDefaultDelay;
                     }
-                    profile.AutobuffItem = JsonConvert.DeserializeObject<AutoBuffItem>(Profile.GetByAction(rawObject, profile.AutobuffItem));
+                    string autobuffItemConfig = Profile.GetByAction(rawObject, profile.AutobuffItem);
+                    if (!string.IsNullOrEmpty(autobuffItemConfig))
+                        profile.AutobuffItem.LoadConfiguration(autobuffItemConfig);
                     if (profile.AutobuffItem.Delay < 0)
                     {
                         profile.AutobuffItem.Delay = AppConfig.AutoBuffItemsDefaultDelay;

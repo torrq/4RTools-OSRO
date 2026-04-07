@@ -41,7 +41,7 @@ namespace _ORTools.Forms
             // 
             this.characterNameLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.characterNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.characterNameLabel.Location = new System.Drawing.Point(-1, 0);
+            this.characterNameLabel.Location = new System.Drawing.Point(-1, -1);
             this.characterNameLabel.Name = "characterNameLabel";
             this.characterNameLabel.Size = new System.Drawing.Size(150, 15);
             this.characterNameLabel.TabIndex = 21;
@@ -52,7 +52,7 @@ namespace _ORTools.Forms
             this.characterMapLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.characterMapLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.characterMapLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.characterMapLabel.Location = new System.Drawing.Point(150, 0);
+            this.characterMapLabel.Location = new System.Drawing.Point(150, -1);
             this.characterMapLabel.Name = "characterMapLabel";
             this.characterMapLabel.Size = new System.Drawing.Size(90, 15);
             this.characterMapLabel.TabIndex = 28;
@@ -75,7 +75,7 @@ namespace _ORTools.Forms
             this.characterInfoLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.characterInfoLabel.ForeColor = System.Drawing.Color.Black;
             this.characterInfoLabel.HpLow = false;
-            this.characterInfoLabel.Location = new System.Drawing.Point(-1, 26);
+            this.characterInfoLabel.Location = new System.Drawing.Point(-1, 25);
             this.characterInfoLabel.Margin = new System.Windows.Forms.Padding(0);
             this.characterInfoLabel.Name = "characterInfoLabel";
             this.characterInfoLabel.Size = new System.Drawing.Size(241, 41);
@@ -89,7 +89,7 @@ namespace _ORTools.Forms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(240, 61);
+            this.ClientSize = new System.Drawing.Size(240, 65);
             this.Controls.Add(this.characterNameLabel);
             this.Controls.Add(this.characterInfoLabel);
             this.Controls.Add(this.characterMapLabel);

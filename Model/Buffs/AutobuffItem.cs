@@ -21,7 +21,9 @@ namespace _ORTools.Model
             set => _delay = value;
         }
 
-        public Dictionary<EffectStatusIDs, Keys> buffMapping = new Dictionary<EffectStatusIDs, Keys>();
+        // Keys per status — List<Keys> allows multiple items sharing the same status ID (e.g. Water Converter + Box of Thunder)
+        public Dictionary<EffectStatusIDs, List<Keys>> buffMapping = new Dictionary<EffectStatusIDs, List<Keys>>();
+
 
         // Add error tracking
         private int consecutiveErrors = 0;
@@ -131,7 +133,7 @@ namespace _ORTools.Model
                             {
                                 // Process buffs
                                 List<EffectStatusIDs> buffs = new List<EffectStatusIDs>();
-                                Dictionary<EffectStatusIDs, Keys> bmClone = new Dictionary<EffectStatusIDs, Keys>(this.buffMapping);
+                                Dictionary<EffectStatusIDs, List<Keys>> bmClone = new Dictionary<EffectStatusIDs, List<Keys>>(this.buffMapping);
 
                                 foreach (var (i, currentStatus) in statusList)
                                 {
@@ -179,7 +181,11 @@ namespace _ORTools.Model
                                         {
                                             if (currentHp >= Constants.MINIMUM_HP_TO_RECOVER && !c.IsTextInputActive() && !c.IsDead())
                                             {
-                                                this.UseAutobuff(item.Value);
+                                                // Send first available key (list allows multiple items sharing same status)
+                                                var keys = item.Value;
+                                                if (keys != null && keys.Count > 0)
+                                                    this.UseAutobuff(keys[0]);
+                                                StatusBufferCache.Invalidate(); // force fresh status read next cycle
                                                 Thread.Sleep(Delay);
                                             }
                                         }
@@ -192,8 +198,8 @@ namespace _ORTools.Model
                                     }
                                 }
 
-                                // Re-read status buffer only when debug mode is on — pure logging, not needed in production
-                                if (!hadError && AppConfig.DebugMode)
+                                // Re-read status buffer in one call after autobuff actions
+                                if (!hadError)
                                 {
                                     try
                                     {
@@ -251,15 +257,28 @@ namespace _ORTools.Model
 
         public void AddKeyToBuff(EffectStatusIDs status, Keys key)
         {
-            if (buffMapping.ContainsKey(status))
+            // Invalid/None key means the user cleared the slot — remove the mapping
+            if (!FormHelper.IsValidKey(key))
             {
                 buffMapping.Remove(status);
+                return;
             }
+            if (!buffMapping.ContainsKey(status))
+                buffMapping[status] = new List<Keys>();
+            if (!buffMapping[status].Contains(key))
+                buffMapping[status].Add(key);
+        }
 
-            if (FormHelper.IsValidKey(key))
+        public void ReplaceKeyForBuff(EffectStatusIDs status, Keys oldKey, Keys newKey)
+        {
+            if (buffMapping.ContainsKey(status))
             {
-                buffMapping.Add(status, key);
+                buffMapping[status].Remove(oldKey);
+                if (buffMapping[status].Count == 0)
+                    buffMapping.Remove(status);
             }
+            if (FormHelper.IsValidKey(newKey))
+                AddKeyToBuff(status, newKey);
         }
 
         public void RemoveKeyFromBuff(EffectStatusIDs status)
@@ -284,12 +303,21 @@ namespace _ORTools.Model
 
         public Keys GetKeyForStatus(EffectStatusIDs status)
         {
-            return buffMapping.ContainsKey(status) ? buffMapping[status] : Keys.None;
+            if (!buffMapping.ContainsKey(status) || buffMapping[status].Count == 0) return Keys.None;
+            return buffMapping[status][0];
+        }
+
+        public List<Keys> GetKeysForStatus(EffectStatusIDs status)
+        {
+            return buffMapping.ContainsKey(status) ? new List<Keys>(buffMapping[status]) : new List<Keys>();
         }
 
         public Dictionary<EffectStatusIDs, Keys> GetAllMappings()
         {
-            return new Dictionary<EffectStatusIDs, Keys>(buffMapping);
+            var result = new Dictionary<EffectStatusIDs, Keys>();
+            foreach (var kvp in buffMapping)
+                if (kvp.Value.Count > 0) result[kvp.Key] = kvp.Value[0];
+            return result;
         }
 
         public int GetMappingCount()
@@ -313,7 +341,7 @@ namespace _ORTools.Model
             var configData = new Dictionary<string, object>
             {
                 ["ActionName"] = this.ActionName,
-                ["BuffMapping"] = this.buffMapping,
+                ["BuffMapping"] = GetAllMappings(), // serialize as flat dict for profile compatibility
                 ["Delay"] = this._delay
             };
             return JsonConvert.SerializeObject(configData);
@@ -339,7 +367,9 @@ namespace _ORTools.Model
                         var mappingData = JsonConvert.DeserializeObject<Dictionary<EffectStatusIDs, Keys>>(configData["BuffMapping"].ToString());
                         if (mappingData != null)
                         {
-                            this.buffMapping = mappingData;
+                            this.buffMapping = new Dictionary<EffectStatusIDs, List<Keys>>();
+                            foreach (var kvp in mappingData)
+                                this.buffMapping[kvp.Key] = new List<Keys> { kvp.Value };
                         }
                     }
 
