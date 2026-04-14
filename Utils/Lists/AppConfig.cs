@@ -19,7 +19,7 @@ namespace _ORTools.Utils
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
-        public static string preReleaseTag = "SPEEDY-20260406";
+        public static string preReleaseTag = "SPEEDY-20260413";
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
@@ -183,8 +183,8 @@ namespace _ORTools.Utils
         public static int AutoPotDefaultDelay = 50;
         public static int YggDefaultDelay = 50;
         public static int SkillSpammerDefaultDelay = 50;
-        public static int AutoBuffSkillsDefaultDelay = 250;
-        public static int AutoBuffItemsDefaultDelay = 250;
+        public static int AutoBuffSkillsDefaultDelay = 300;
+        public static int AutoBuffItemsDefaultDelay = 300;
         public static int ATKDEFSpammerDefaultDelay = 100;
         public static int ATKDEFSwitchDefaultDelay = 100;
         public static int MacroDefaultDelay = 100;

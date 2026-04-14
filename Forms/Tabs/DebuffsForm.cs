@@ -62,15 +62,6 @@ namespace _ORTools.Forms
                 txtRoyalJellyKey.TextAlign = HorizontalAlignment.Center;
                 statusListTextBoxes["RoyalJelly"] = txtRoyalJellyKey;
             }
-
-            if(txtHerbalRemedy != null)
-            {
-                txtHerbalRemedy.KeyDown += FormHelper.OnKeyDown;
-                txtHerbalRemedy.KeyPress += FormHelper.OnKeyPress;
-                txtHerbalRemedy.TextChanged += (sender, e) => OnStatusListKeyChange("HerbalRemedy", sender, e);
-                txtHerbalRemedy.TextAlign = HorizontalAlignment.Center;
-                statusListTextBoxes["HerbalRemedy"] = txtHerbalRemedy;
-            }
         }
 
         public void Update(ISubject subject)
@@ -172,12 +163,12 @@ namespace _ORTools.Forms
 
         }
 
-        private void HerbalRemedyLabel_Click(object sender, EventArgs e)
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        private void RoyalJellyPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

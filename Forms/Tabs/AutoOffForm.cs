@@ -23,6 +23,7 @@ namespace _ORTools.Forms
         private const string BUTTON_SET_3H = "3h";
         private const string BUTTON_SET_4H = "4h";
         private const string BUTTON_SET_5H = "5h";
+        private const string BUTTON_SET_6H = "6h";
         private const string BUTTON_SET_8H = "8h";
         private const string ERROR_NOT_ACTIVE_TITLE = "Can't start auto-off timer";
         private const string ERROR_NOT_ACTIVE = "Sorry!\nMacro must be active first!";
@@ -36,6 +37,7 @@ namespace _ORTools.Forms
         private Button btnSet3Hours;
         private Button btnSet4Hours;
         private Button btnSet5Hours;
+        private Button btnSet6Hours;
         private Button btnSet8Hours;
         #endregion
 
@@ -231,42 +233,49 @@ namespace _ORTools.Forms
 
         private void BtnSet1Hours_Click(object sender, EventArgs e)
         {
-            autoOffModel.SetTimeToOneHour();
+            autoOffModel.SetTimeTo1Hours();
             trackBarTime.Value = autoOffModel.SelectedMinutes;
             UpdateUI();
         }
 
         private void BtnSet2Hours_Click(object sender, EventArgs e)
         {
-            autoOffModel.SetTimeToTwoHours();
+            autoOffModel.SetTimeTo2Hours();
             trackBarTime.Value = autoOffModel.SelectedMinutes;
             UpdateUI();
         }
 
         private void BtnSet3Hours_Click(object sender, EventArgs e)
         {
-            autoOffModel.SetTimeToThreeHours();
+            autoOffModel.SetTimeTo3Hours();
             trackBarTime.Value = autoOffModel.SelectedMinutes;
             UpdateUI();
         }
 
         private void BtnSet4Hours_Click(object sender, EventArgs e)
         {
-            autoOffModel.SetTimeToFourHours();
+            autoOffModel.SetTimeTo4Hours();
             trackBarTime.Value = autoOffModel.SelectedMinutes;
             UpdateUI();
         }
 
         private void BtnSet5Hours_Click(object sender, EventArgs e)
         {
-            autoOffModel.SetTimeToFiveHours();
+            autoOffModel.SetTimeTo5Hours();
+            trackBarTime.Value = autoOffModel.SelectedMinutes;
+            UpdateUI();
+        }
+
+        private void BtnSet6Hours_Click(object sender, EventArgs e)
+        {
+            autoOffModel.SetTimeTo6Hours();
             trackBarTime.Value = autoOffModel.SelectedMinutes;
             UpdateUI();
         }
 
         private void BtnSet8Hours_Click(object sender, EventArgs e)
         {
-            autoOffModel.SetTimeToEightHours();
+            autoOffModel.SetTimeTo8Hours();
             trackBarTime.Value = autoOffModel.SelectedMinutes;
             UpdateUI();
         }
@@ -378,6 +387,7 @@ namespace _ORTools.Forms
             var potentialButtons = new List<(string Name, string Text, EventHandler Handler, int TabIndex, int Minutes)>();
             if (AppConfig.ServerMode == 0)
             {
+                potentialButtons.Add(("btnSet6Hours", BUTTON_SET_6H, BtnSet6Hours_Click, 8, 5 * 60));
                 potentialButtons.Add(("btnSet5Hours", BUTTON_SET_5H, BtnSet5Hours_Click, 8, 5 * 60));
                 potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, 4 * 60));
                 potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, 2 * 60));
@@ -386,6 +396,7 @@ namespace _ORTools.Forms
             else if (AppConfig.ServerMode == 1)
             {
                 potentialButtons.Add(("btnSet8Hours", BUTTON_SET_8H, BtnSet8Hours_Click, 8, 8 * 60));
+                potentialButtons.Add(("btnSet6Hours", BUTTON_SET_6H, BtnSet6Hours_Click, 8, 5 * 60));
                 potentialButtons.Add(("btnSet4Hours", BUTTON_SET_4H, BtnSet4Hours_Click, 7, 4 * 60));
                 potentialButtons.Add(("btnSet2Hours", BUTTON_SET_2H, BtnSet2Hours_Click, 6, 2 * 60));
                 potentialButtons.Add(("btnSet1Hours", BUTTON_SET_1H, BtnSet1Hours_Click, 5, 1 * 60));
@@ -420,6 +431,7 @@ namespace _ORTools.Forms
 
                 if (name == "btnSet8Hours") btnSet8Hours = button;
                 else if (name == "btnSet5Hours") btnSet5Hours = button;
+                else if (name == "btnSet6Hours") btnSet6Hours = button;
                 else if (name == "btnSet4Hours") btnSet4Hours = button;
                 else if (name == "btnSet3Hours") btnSet3Hours = button;
                 else if (name == "btnSet2Hours") btnSet2Hours = button;
@@ -436,6 +448,7 @@ namespace _ORTools.Forms
             if (btnSet3Hours != null) dynamicButtonNames.Add("btnSet3Hours");
             if (btnSet4Hours != null) dynamicButtonNames.Add("btnSet4Hours");
             if (btnSet5Hours != null) dynamicButtonNames.Add("btnSet5Hours");
+            if (btnSet6Hours != null) dynamicButtonNames.Add("btnSet6Hours");
             if (btnSet8Hours != null) dynamicButtonNames.Add("btnSet8Hours");
             FormHelper.ApplyColorToButtons(this, dynamicButtonNames.ToArray(), AppConfig.CopyButtonBackColor);
         }
@@ -452,6 +465,7 @@ namespace _ORTools.Forms
                 btnSet3Hours?.Dispose();
                 btnSet4Hours?.Dispose();
                 btnSet5Hours?.Dispose();
+                btnSet6Hours?.Dispose();
                 btnSet8Hours?.Dispose();
             }
             base.Dispose(disposing);

@@ -705,6 +705,9 @@ namespace _ORTools.Utils
         [Description("Endow Weapon: Fire")]
         ENDOW_FIRE = 1406,
 
+        [Description("Endow Weapon: Dark")]
+        ENDOW_DARK = 1409,
+
         [Description("Volcano")]
         SA_VOLCANO = 1412,
 

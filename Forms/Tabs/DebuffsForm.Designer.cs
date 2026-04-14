@@ -45,14 +45,9 @@ namespace _ORTools.Forms
             this.GreenPotionToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.PanaceaToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RoyalJellyToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.HerbalRemedyLabel = new System.Windows.Forms.Label();
-            this.txtHerbalRemedy = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.HerbalRemedyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.GreenPotionPanel.SuspendLayout();
             this.PanaceaPanel.SuspendLayout();
             this.RoyalJellyPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolTipPanacea
@@ -78,9 +73,9 @@ namespace _ORTools.Forms
             // 
             this.GreenPotionPanel.Controls.Add(this.txtGreenPotionKey);
             this.GreenPotionPanel.Controls.Add(this.GreenPotionLabel);
-            this.GreenPotionPanel.Location = new System.Drawing.Point(8, 15);
+            this.GreenPotionPanel.Location = new System.Drawing.Point(50, 15);
             this.GreenPotionPanel.Name = "GreenPotionPanel";
-            this.GreenPotionPanel.Size = new System.Drawing.Size(135, 25);
+            this.GreenPotionPanel.Size = new System.Drawing.Size(145, 25);
             this.GreenPotionPanel.TabIndex = 0;
             // 
             // txtGreenPotionKey
@@ -89,7 +84,7 @@ namespace _ORTools.Forms
             this.txtGreenPotionKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGreenPotionKey.Location = new System.Drawing.Point(83, 0);
             this.txtGreenPotionKey.Name = "txtGreenPotionKey";
-            this.txtGreenPotionKey.Size = new System.Drawing.Size(50, 25);
+            this.txtGreenPotionKey.Size = new System.Drawing.Size(60, 25);
             this.txtGreenPotionKey.TabIndex = 305;
             // 
             // GreenPotionLabel
@@ -111,9 +106,9 @@ namespace _ORTools.Forms
             // 
             this.PanaceaPanel.Controls.Add(this.txtPanaceaKey);
             this.PanaceaPanel.Controls.Add(this.PanaceaLabel);
-            this.PanaceaPanel.Location = new System.Drawing.Point(156, 15);
+            this.PanaceaPanel.Location = new System.Drawing.Point(234, 15);
             this.PanaceaPanel.Name = "PanaceaPanel";
-            this.PanaceaPanel.Size = new System.Drawing.Size(128, 25);
+            this.PanaceaPanel.Size = new System.Drawing.Size(138, 25);
             this.PanaceaPanel.TabIndex = 302;
             // 
             // txtPanaceaKey
@@ -122,7 +117,7 @@ namespace _ORTools.Forms
             this.txtPanaceaKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPanaceaKey.Location = new System.Drawing.Point(77, 0);
             this.txtPanaceaKey.Name = "txtPanaceaKey";
-            this.txtPanaceaKey.Size = new System.Drawing.Size(50, 25);
+            this.txtPanaceaKey.Size = new System.Drawing.Size(60, 25);
             this.txtPanaceaKey.TabIndex = 306;
             // 
             // PanaceaLabel
@@ -137,16 +132,17 @@ namespace _ORTools.Forms
             this.PanaceaLabel.TabIndex = 307;
             this.PanaceaLabel.Text = "Panacea";
             this.PanaceaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PanaceaToolTip.SetToolTip(this.PanaceaLabel, "Silence, Poison, Blind, Curse, Chaos, Hallucination & Bleeding");
+            this.PanaceaToolTip.SetToolTip(this.PanaceaLabel, "Silence, Poison, Blind, Curse & Chaos");
             // 
             // RoyalJellyPanel
             // 
             this.RoyalJellyPanel.Controls.Add(this.txtRoyalJellyKey);
             this.RoyalJellyPanel.Controls.Add(this.RoyalJellyLabel);
-            this.RoyalJellyPanel.Location = new System.Drawing.Point(297, 15);
+            this.RoyalJellyPanel.Location = new System.Drawing.Point(403, 15);
             this.RoyalJellyPanel.Name = "RoyalJellyPanel";
-            this.RoyalJellyPanel.Size = new System.Drawing.Size(141, 25);
+            this.RoyalJellyPanel.Size = new System.Drawing.Size(151, 25);
             this.RoyalJellyPanel.TabIndex = 303;
+            this.RoyalJellyPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.RoyalJellyPanel_Paint);
             // 
             // txtRoyalJellyKey
             // 
@@ -154,7 +150,7 @@ namespace _ORTools.Forms
             this.txtRoyalJellyKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoyalJellyKey.Location = new System.Drawing.Point(88, 0);
             this.txtRoyalJellyKey.Name = "txtRoyalJellyKey";
-            this.txtRoyalJellyKey.Size = new System.Drawing.Size(50, 25);
+            this.txtRoyalJellyKey.Size = new System.Drawing.Size(60, 25);
             this.txtRoyalJellyKey.TabIndex = 309;
             // 
             // RoyalJellyLabel
@@ -169,7 +165,7 @@ namespace _ORTools.Forms
             this.RoyalJellyLabel.TabIndex = 308;
             this.RoyalJellyLabel.Text = "Royal Jelly";
             this.RoyalJellyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RoyalJellyToolTip.SetToolTip(this.RoyalJellyLabel, "Silence, Poison, Blind, Curse, Chaos, Hallucination & Bleeding");
+            this.RoyalJellyToolTip.SetToolTip(this.RoyalJellyLabel, "Silence, Poison, Blind, Curse & Chaos");
             // 
             // GreenPotionToolTip
             // 
@@ -198,50 +194,6 @@ namespace _ORTools.Forms
             this.RoyalJellyToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.RoyalJellyToolTip.ToolTipTitle = "Royal Jelly";
             // 
-            // HerbalRemedyLabel
-            // 
-            this.HerbalRemedyLabel.Cursor = System.Windows.Forms.Cursors.Help;
-            this.HerbalRemedyLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HerbalRemedyLabel.Image = global::_ORTools.Resources.Media.Icons.herbal_remedy;
-            this.HerbalRemedyLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.HerbalRemedyLabel.Location = new System.Drawing.Point(5, 0);
-            this.HerbalRemedyLabel.Name = "HerbalRemedyLabel";
-            this.HerbalRemedyLabel.Size = new System.Drawing.Size(103, 25);
-            this.HerbalRemedyLabel.TabIndex = 310;
-            this.HerbalRemedyLabel.Text = "Herb Remedy";
-            this.HerbalRemedyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HerbalRemedyToolTip.SetToolTip(this.HerbalRemedyLabel, "Cures Poison, Curse, Silence, Confusion, Blind, Hallucination, Bleeding, Change U" +
-        "ndead");
-            this.HerbalRemedyLabel.Click += new System.EventHandler(this.HerbalRemedyLabel_Click);
-            // 
-            // txtHerbalRemedy
-            // 
-            this.txtHerbalRemedy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHerbalRemedy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHerbalRemedy.Location = new System.Drawing.Point(105, 0);
-            this.txtHerbalRemedy.Name = "txtHerbalRemedy";
-            this.txtHerbalRemedy.Size = new System.Drawing.Size(50, 25);
-            this.txtHerbalRemedy.TabIndex = 310;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtHerbalRemedy);
-            this.panel1.Controls.Add(this.HerbalRemedyLabel);
-            this.panel1.Location = new System.Drawing.Point(448, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(155, 25);
-            this.panel1.TabIndex = 310;
-            // 
-            // HerbalRemedyToolTip
-            // 
-            this.HerbalRemedyToolTip.AutomaticDelay = 300;
-            this.HerbalRemedyToolTip.AutoPopDelay = 20000;
-            this.HerbalRemedyToolTip.InitialDelay = 300;
-            this.HerbalRemedyToolTip.ReshowDelay = 60;
-            this.HerbalRemedyToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.HerbalRemedyToolTip.ToolTipTitle = "Herbal Remedy";
-            this.HerbalRemedyToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
-            // 
             // DebuffsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,7 +201,6 @@ namespace _ORTools.Forms
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(626, 452);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.RoyalJellyPanel);
             this.Controls.Add(this.PanaceaPanel);
             this.Controls.Add(this.GreenPotionPanel);
@@ -265,8 +216,6 @@ namespace _ORTools.Forms
             this.PanaceaPanel.PerformLayout();
             this.RoyalJellyPanel.ResumeLayout(false);
             this.RoyalJellyPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,9 +236,5 @@ namespace _ORTools.Forms
         private System.Windows.Forms.ToolTip GreenPotionToolTip;
         private System.Windows.Forms.ToolTip PanaceaToolTip;
         private System.Windows.Forms.ToolTip RoyalJellyToolTip;
-        private System.Windows.Forms.Label HerbalRemedyLabel;
-        private System.Windows.Forms.TextBox txtHerbalRemedy;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolTip HerbalRemedyToolTip;
     }
 }

@@ -14,6 +14,7 @@ namespace _ORTools.Model
         private const int THREE_HOURS = 3 * 60; // 3 hours in minutes
         private const int FOUR_HOURS = 4 * 60; // 4 hours in minutes
         private const int FIVE_HOURS = 5 * 60; // 5 hours in minutes
+        private const int SIX_HOURS = 6 * 60; // 6 hours in minutes
         private const int EIGHT_HOURS = 8 * 60; // 8 hours in minutes
         #endregion
 
@@ -49,7 +50,7 @@ namespace _ORTools.Model
 
         private const int BUFFER_MINUTES = 30;
         public int MaxMinutes =>
-            (AppConfig.ServerMode == 1 ? EIGHT_HOURS : FIVE_HOURS) + BUFFER_MINUTES;
+            (AppConfig.ServerMode == 1 ? EIGHT_HOURS : SIX_HOURS) + BUFFER_MINUTES;
 
         public int MinMinutes => MIN_MINUTES;
 
@@ -132,12 +133,13 @@ namespace _ORTools.Model
             }
         }
 
-        public void SetTimeToOneHour() => SetTime(ONE_HOUR);
-        public void SetTimeToTwoHours() => SetTime(TWO_HOURS);
-        public void SetTimeToThreeHours() => SetTime(THREE_HOURS);
-        public void SetTimeToFourHours() => SetTime(FOUR_HOURS);
-        public void SetTimeToFiveHours() => SetTime(FIVE_HOURS);
-        public void SetTimeToEightHours() => SetTime(EIGHT_HOURS);
+        public void SetTimeTo1Hours() => SetTime(ONE_HOUR);
+        public void SetTimeTo2Hours() => SetTime(TWO_HOURS);
+        public void SetTimeTo3Hours() => SetTime(THREE_HOURS);
+        public void SetTimeTo4Hours() => SetTime(FOUR_HOURS);
+        public void SetTimeTo5Hours() => SetTime(FIVE_HOURS);
+        public void SetTimeTo6Hours() => SetTime(SIX_HOURS);
+        public void SetTimeTo8Hours() => SetTime(EIGHT_HOURS);
         #endregion
 
         #region Private Methods

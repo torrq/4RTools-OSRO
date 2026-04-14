@@ -364,11 +364,22 @@ public static class BuffDefinitions
             b.CreateBuff("Wind Elemental Converter", "ENDOW_WIND", "ele_wind_converter"),
             b.CreateBuff("Earth Elemental Converter", "ENDOW_EARTH", "ele_earth_converter"),
             b.CreateBuff("Box of Storms / Water Converter", "BOX_OF_STORMS", "boxofstorms"),
-            b.CreateBuff("Cursed Water", "PROPERTYDARK", "cursed_water"),
+            b.CreateBuff("Cursed Water", "ENDOW_DARK", "cursed_water"),
             b.CreateBuff("Fireproof Potion", "RESIST_PROPERTY_FIRE", "fireproof"),
             b.CreateBuff("Coldproof Potion", "RESIST_PROPERTY_WATER", "coldproof"),
             b.CreateBuff("Thunderproof Potion", "RESIST_PROPERTY_WIND", "thunderproof"),
             b.CreateBuff("Earthproof Potion", "RESIST_PROPERTY_GROUND", "earthproof")
+        });
+
+        BoxBuffs.AddRange(new[]
+        {
+            b.CreateBuff("Box of Drowsiness / Tasty W. Ration", "PLUSMAGICPOWER", "drowsiness"),
+            b.CreateBuff("Box of Resentment / Tasty P. Ration / Chewy Ricecake", "PLUSATTACKPOWER", "resentment"),
+            b.CreateBuff("Box of Gloom", "AC_CONCENTRATION", "gloom"),
+            b.CreateBuff("Box of Thunder / Speed Potion", "BOX_OF_THUNDER", "boxofthunder"),
+            b.CreateBuff("Anodyne", "SM_ENDURE", "anodyne"),
+            b.CreateBuff("Aloe Vera", "SM_PROVOKE", "aloevera"),
+            b.CreateBuff("Abrasive", "CRITICALPERCENT", "abrasive"),
         });
 
         FoodBuffs.AddRange(new[]
@@ -379,41 +390,25 @@ public static class BuffDefinitions
             b.CreateBuff("Dragon Breath Cocktail (INT+10)", "FOOD_INT", "int_food"),
             b.CreateBuff("Hwergelmir's Tonic (DEX+10)", "FOOD_DEX", "dex_food"),
             b.CreateBuff("Cooked Nine Tail's Tails (LUK+10)", "FOOD_LUK", "luk_food"),
-            b.CreateBuff("Halo-Halo", "HALOHALO", "halohalo"),
             b.CreateBuff("Glass of Illusion", "GLASS_OF_ILLUSION", "Glass_Of_Illusion")
-        });
-
-        BoxBuffs.AddRange(new[]
-        {
-            b.CreateBuff("Box of Drowsiness / Tasty W. Ration", "PLUSMAGICPOWER", "drowsiness"),
-            b.CreateBuff("Box of Resentment / Tasty P. Ration / Chewy Ricecake", "PLUSATTACKPOWER", "resentment"),
-            b.CreateBuff("Box of Sunlight", "SUNLIGHT_BOX", "sunbox"),
-            b.CreateBuff("Box of Gloom", "AC_CONCENTRATION", "gloom"),
-            b.CreateBuff("Box of Thunder", "BOX_OF_THUNDER", "boxofthunder"),
-            b.CreateBuff("Speed Potion", "MOVHASTE_POTION", "speedpotion"),
-            b.CreateBuff("Anodyne", "SM_ENDURE", "anodyne"),
-            b.CreateBuff("Aloe Vera", "SM_PROVOKE", "aloevera"),
-            b.CreateBuff("Abrasive", "CRITICALPERCENT", "abrasive"),
-            b.CreateBuff("Combat Pill", "COMBAT_PILL", "combat_pill"),
-            b.CreateBuff("Enriched Celermine Juice", "ENRICH_CELERMINE_JUICE", "celermine"),
-            b.CreateBuff("ASPD Potion Infinity", "ASPDPOTIONINFINITY", "poison")
         });
 
         ScrollBuffs.AddRange(new[]
         {
             b.CreateBuff("Increase Agility Scroll", "AL_INCAGI", "al_incagi1"),
             b.CreateBuff("Bless Scroll", "AL_BLESSING", "al_blessing1"),
-            b.CreateBuff("Full Chemical Protection ", "AM_CP_ARMOR", "cr_fullprotection"),
-            b.CreateBuff("Link Scroll", "SOULLINK", "sl_soullinker"),
-            b.CreateBuff("Assumptio", "HP_ASSUMPTIO", "assumptio"),
-            b.CreateBuff("Flee Scroll / Spray of Flowers", "FOOD_BASICAVOIDANCE", "flee_scroll"),
-            b.CreateBuff("Accuracy Scroll", "ACCURACY_SCROLL", "accuracy_scroll")
+            b.CreateBuff("Talisman / Link Scroll", "SOULLINK", "sl_soullinker"),
+            b.CreateBuff("Assumptio Scroll", "HP_ASSUMPTIO", "assumptio"),
+            b.CreateBuff("Spray of Flowers / Flee Scroll", "FOOD_BASICAVOIDANCE", "flee_scroll"),
         });
 
         EtcBuffs.AddRange(new[]
         {
             b.CreateBuff("VIP Ticket", "VIP_BONUS", "vip_ticket"),
-            b.CreateBuff("SVIP Ticket", "SVIP_BONUS", "vip_ticket"),
+         /*
+          * This one won't work because the item is a box type with a dialog which can't be assigned to a hotkey.
+          * b.CreateBuff("SVIP Ticket", "SVIP_BONUS", "vip_ticket"),
+          */
             b.CreateBuff("Field Manual 100% / 300%", "FIELD_MANUAL", "fieldmanual"),
             b.CreateBuff("Bubble Gum / HE Bubble Gum", "CASH_RECEIVEITEM", "he_bubble_gum"),
             b.CreateBuff("Unlock Bubble Gum", "UNLOCK_BUBBLEGUM", "unlock_bbg")
