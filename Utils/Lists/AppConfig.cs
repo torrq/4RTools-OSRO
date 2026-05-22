@@ -15,11 +15,17 @@ namespace _ORTools.Utils
         public static decimal ConfigVersion = 1;
 
         // 0 = Mid-rate, 1 = High-rate
-        public static int ServerMode = 0;
+        public static int ServerMode = 1;
+
+        public static bool IsMidRate => ServerMode == 0;
+        public static bool IsHighRate => ServerMode == 1;
+
+        // Feature flags by server mode (keep UI/logic checks centralized for maintainability)
+        public static bool SupportsFishing => IsMidRate;
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
-        public static string preReleaseTag = "SPEEDY-20260404";
+        public static string preReleaseTag = "SPEEDY-20260522";
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
@@ -239,7 +245,8 @@ namespace _ORTools.Utils
         public const string ERROR = "E";
         public const string DEBUG = "D";
         public const string STATUS = "S";
-        public static bool DebugMode = false;
+        // Single source of truth: global config.json setting.
+        public static bool DebugMode => _ORTools.Model.ConfigGlobal.GetConfig().DebugMode;
 
         #endregion
     }

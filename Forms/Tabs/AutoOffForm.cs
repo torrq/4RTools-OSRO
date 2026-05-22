@@ -174,7 +174,9 @@ namespace _ORTools.Forms
                     UpdateUI();
                     this.AutoOffKey1.Text = prefs.AutoOffKey1.ToString();
                     this.AutoOffKey2.Text = prefs.AutoOffKey2.ToString();
-                    this.AutoOffOverweightCB.Checked = prefs.AutoOffOverweight;
+                    this.AutoOffOverweightDisabledRB.Checked = !prefs.AutoOffOverweight;
+                    this.AutoOffOverweight50RB.Checked = prefs.AutoOffOverweight && prefs.AutoOffOverweightMode == ConfigProfile.OverweightAutoOffMode.Weight50;
+                    this.AutoOffOverweight90RB.Checked = prefs.AutoOffOverweight && prefs.AutoOffOverweightMode == ConfigProfile.OverweightAutoOffMode.Weight90;
                     this.AutoOffKillClientChk.Checked = prefs.AutoOffKillClient;
 
                     TextBox txtKey1 = AutoOffKey1;
@@ -331,11 +333,28 @@ namespace _ORTools.Forms
             }
         }
 
-        private void AutoOffOverweight_CheckedChanged(object sender, EventArgs e)
+        private void AutoOffOverweightMode_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox chk = sender as CheckBox;
-            ProfileSingleton.GetCurrent().UserPreferences.AutoOffOverweight = chk.Checked;
-            ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().UserPreferences);
+            if (!(sender is RadioButton rb) || !rb.Checked)
+                return;
+
+            var prefs = ProfileSingleton.GetCurrent().UserPreferences;
+            if (rb == AutoOffOverweightDisabledRB)
+            {
+                prefs.AutoOffOverweight = false;
+            }
+            else if (rb == AutoOffOverweight50RB)
+            {
+                prefs.AutoOffOverweight = true;
+                prefs.AutoOffOverweightMode = ConfigProfile.OverweightAutoOffMode.Weight50;
+            }
+            else if (rb == AutoOffOverweight90RB)
+            {
+                prefs.AutoOffOverweight = true;
+                prefs.AutoOffOverweightMode = ConfigProfile.OverweightAutoOffMode.Weight90;
+            }
+
+            ProfileSingleton.SetConfiguration(prefs);
         }
 
         private void AutoOffKillClientChk_CheckedChanged(object sender, EventArgs e)
@@ -457,5 +476,10 @@ namespace _ORTools.Forms
             base.Dispose(disposing);
         }
         #endregion
+
+        private void AutoOffOverweightGP_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

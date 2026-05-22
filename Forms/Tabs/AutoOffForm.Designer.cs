@@ -20,7 +20,10 @@ namespace _ORTools.Forms
             this.lblSelectedTimeText = new System.Windows.Forms.Label();
             this.lblRemainingTimeText = new System.Windows.Forms.Label();
             this.animatedClockImage = new System.Windows.Forms.PictureBox();
-            this.AutoOffOverweightCB = new System.Windows.Forms.CheckBox();
+            this.AutoOffOverweightGP = new System.Windows.Forms.GroupBox();
+            this.AutoOffOverweight50RB = new System.Windows.Forms.RadioButton();
+            this.AutoOffOverweight90RB = new System.Windows.Forms.RadioButton();
+            this.AutoOffOverweightDisabledRB = new System.Windows.Forms.RadioButton();
             this.overweightAltKeyPlusLabel = new System.Windows.Forms.Label();
             this.overweightAltKeyLabel = new System.Windows.Forms.Label();
             this.arrowDown1 = new System.Windows.Forms.PictureBox();
@@ -39,6 +42,7 @@ namespace _ORTools.Forms
             this.StopClientToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).BeginInit();
+            this.AutoOffOverweightGP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown2)).BeginInit();
@@ -121,22 +125,69 @@ namespace _ORTools.Forms
             this.animatedClockImage.TabIndex = 5;
             this.animatedClockImage.TabStop = false;
             // 
-            // AutoOffOverweightCB
+            // AutoOffOverweightGP
             // 
-            this.AutoOffOverweightCB.BackColor = System.Drawing.Color.Pink;
-            this.AutoOffOverweightCB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AutoOffOverweightCB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoOffOverweightCB.Image = global::_ORTools.Resources.Media.Icons.weight90;
-            this.AutoOffOverweightCB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AutoOffOverweightCB.Location = new System.Drawing.Point(2, 110);
-            this.AutoOffOverweightCB.Name = "AutoOffOverweightCB";
-            this.AutoOffOverweightCB.Padding = new System.Windows.Forms.Padding(6, 0, 2, 0);
-            this.AutoOffOverweightCB.Size = new System.Drawing.Size(131, 40);
-            this.AutoOffOverweightCB.TabIndex = 318;
-            this.AutoOffOverweightCB.Text = "Overweight Auto-off";
-            this.overweightToolTip.SetToolTip(this.AutoOffOverweightCB, "Enable this to toggle off when at 90% weight");
-            this.AutoOffOverweightCB.UseVisualStyleBackColor = false;
-            this.AutoOffOverweightCB.CheckedChanged += new System.EventHandler(this.AutoOffOverweight_CheckedChanged);
+            this.AutoOffOverweightGP.BackColor = System.Drawing.Color.Transparent;
+            this.AutoOffOverweightGP.Controls.Add(this.AutoOffOverweight50RB);
+            this.AutoOffOverweightGP.Controls.Add(this.AutoOffOverweight90RB);
+            this.AutoOffOverweightGP.Controls.Add(this.AutoOffOverweightDisabledRB);
+            this.AutoOffOverweightGP.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffOverweightGP.Location = new System.Drawing.Point(13, 110);
+            this.AutoOffOverweightGP.Name = "AutoOffOverweightGP";
+            this.AutoOffOverweightGP.Padding = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.AutoOffOverweightGP.Size = new System.Drawing.Size(141, 138);
+            this.AutoOffOverweightGP.TabIndex = 318;
+            this.AutoOffOverweightGP.TabStop = false;
+            this.AutoOffOverweightGP.Text = "Overweight Auto-Off";
+            this.AutoOffOverweightGP.Enter += new System.EventHandler(this.AutoOffOverweightGP_Enter);
+            // 
+            // AutoOffOverweight50RB
+            // 
+            this.AutoOffOverweight50RB.BackColor = System.Drawing.Color.LightGray;
+            this.AutoOffOverweight50RB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AutoOffOverweight50RB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffOverweight50RB.Image = global::_ORTools.Resources.Media.Icons.weight50;
+            this.AutoOffOverweight50RB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AutoOffOverweight50RB.Location = new System.Drawing.Point(10, 22);
+            this.AutoOffOverweight50RB.Name = "AutoOffOverweight50RB";
+            this.AutoOffOverweight50RB.Padding = new System.Windows.Forms.Padding(6, 0, 2, 0);
+            this.AutoOffOverweight50RB.Size = new System.Drawing.Size(122, 38);
+            this.AutoOffOverweight50RB.TabIndex = 0;
+            this.AutoOffOverweight50RB.TabStop = true;
+            this.AutoOffOverweight50RB.Text = "50% Over";
+            this.AutoOffOverweight50RB.UseVisualStyleBackColor = false;
+            this.AutoOffOverweight50RB.CheckedChanged += new System.EventHandler(this.AutoOffOverweightMode_CheckedChanged);
+            // 
+            // AutoOffOverweight90RB
+            // 
+            this.AutoOffOverweight90RB.BackColor = System.Drawing.Color.DarkGray;
+            this.AutoOffOverweight90RB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AutoOffOverweight90RB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffOverweight90RB.Image = global::_ORTools.Resources.Media.Icons.weight90;
+            this.AutoOffOverweight90RB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AutoOffOverweight90RB.Location = new System.Drawing.Point(10, 64);
+            this.AutoOffOverweight90RB.Name = "AutoOffOverweight90RB";
+            this.AutoOffOverweight90RB.Padding = new System.Windows.Forms.Padding(6, 0, 2, 0);
+            this.AutoOffOverweight90RB.Size = new System.Drawing.Size(122, 38);
+            this.AutoOffOverweight90RB.TabIndex = 1;
+            this.AutoOffOverweight90RB.TabStop = true;
+            this.AutoOffOverweight90RB.Text = "90% Over";
+            this.AutoOffOverweight90RB.UseVisualStyleBackColor = false;
+            this.AutoOffOverweight90RB.CheckedChanged += new System.EventHandler(this.AutoOffOverweightMode_CheckedChanged);
+            // 
+            // AutoOffOverweightDisabledRB
+            // 
+            this.AutoOffOverweightDisabledRB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AutoOffOverweightDisabledRB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoOffOverweightDisabledRB.Location = new System.Drawing.Point(9, 105);
+            this.AutoOffOverweightDisabledRB.Name = "AutoOffOverweightDisabledRB";
+            this.AutoOffOverweightDisabledRB.Padding = new System.Windows.Forms.Padding(6, 0, 2, 0);
+            this.AutoOffOverweightDisabledRB.Size = new System.Drawing.Size(123, 24);
+            this.AutoOffOverweightDisabledRB.TabIndex = 2;
+            this.AutoOffOverweightDisabledRB.TabStop = true;
+            this.AutoOffOverweightDisabledRB.Text = "Disabled";
+            this.AutoOffOverweightDisabledRB.UseVisualStyleBackColor = true;
+            this.AutoOffOverweightDisabledRB.CheckedChanged += new System.EventHandler(this.AutoOffOverweightMode_CheckedChanged);
             // 
             // overweightAltKeyPlusLabel
             // 
@@ -175,7 +226,7 @@ namespace _ORTools.Forms
             // arrowRight
             // 
             this.arrowRight.Image = global::_ORTools.Resources.Media.Icons.arrow_right;
-            this.arrowRight.Location = new System.Drawing.Point(148, 130);
+            this.arrowRight.Location = new System.Drawing.Point(161, 154);
             this.arrowRight.Name = "arrowRight";
             this.arrowRight.Size = new System.Drawing.Size(19, 11);
             this.arrowRight.TabIndex = 320;
@@ -315,7 +366,7 @@ namespace _ORTools.Forms
             this.Controls.Add(this.arrowDown2);
             this.Controls.Add(this.arrowRight);
             this.Controls.Add(this.arrowDown1);
-            this.Controls.Add(this.AutoOffOverweightCB);
+            this.Controls.Add(this.AutoOffOverweightGP);
             this.Controls.Add(this.overweightAltKeyPlusLabel);
             this.Controls.Add(this.animatedClockImage);
             this.Controls.Add(this.overweightAltKeyLabel);
@@ -332,6 +383,7 @@ namespace _ORTools.Forms
             this.Text = "AutoOffForm";
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.animatedClockImage)).EndInit();
+            this.AutoOffOverweightGP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowDown2)).EndInit();
@@ -350,7 +402,10 @@ namespace _ORTools.Forms
         private System.Windows.Forms.Label lblSelectedTimeText;
         private System.Windows.Forms.Label lblRemainingTimeText;
         private System.Windows.Forms.PictureBox animatedClockImage;
-        private System.Windows.Forms.CheckBox AutoOffOverweightCB;
+        private System.Windows.Forms.GroupBox AutoOffOverweightGP;
+        private System.Windows.Forms.RadioButton AutoOffOverweight50RB;
+        private System.Windows.Forms.RadioButton AutoOffOverweight90RB;
+        private System.Windows.Forms.RadioButton AutoOffOverweightDisabledRB;
         private System.Windows.Forms.Label overweightAltKeyPlusLabel;
         private System.Windows.Forms.Label overweightAltKeyLabel;
         private System.Windows.Forms.PictureBox arrowDown1;

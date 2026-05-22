@@ -108,6 +108,7 @@ namespace _ORTools.Utils
             string time = DateTime.Now.ToString("HH:mm:ss.fff");
             string logLevelName = GetLogLevelName(level);
             string formatted = time + " [" + logLevelName + "] " + message;
+            LogMessageHandler handlers = null;
 
             try
             {
@@ -130,8 +131,11 @@ namespace _ORTools.Utils
                         }
                     }
 
-                    OnLogMessage?.Invoke(formatted, level);
+                    handlers = OnLogMessage;
                 }
+
+                // Invoke outside the lock to avoid blocking other logging on UI work.
+                handlers?.Invoke(formatted, level);
             }
             catch (Exception ex)
             {

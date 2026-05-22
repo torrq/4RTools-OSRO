@@ -231,9 +231,16 @@ namespace _ORTools.Model
             try
             {
                 ConfigProfile prefs = ProfileSingleton.GetCurrent().UserPreferences;
-                if (status == EffectStatusIDs.WEIGHT90 && prefs.AutoOffOverweight)
+                if (!prefs.AutoOffOverweight)
+                    return;
+
+                bool shouldAutoOff =
+                    (prefs.AutoOffOverweightMode == ConfigProfile.OverweightAutoOffMode.Weight50 && status == EffectStatusIDs.WEIGHT50) ||
+                    (prefs.AutoOffOverweightMode == ConfigProfile.OverweightAutoOffMode.Weight90 && status == EffectStatusIDs.WEIGHT90);
+
+                if (shouldAutoOff)
                 {
-                    DebugLogger.Info("Overweight 90%, disable now");
+                    DebugLogger.Info($"Overweight {(int)prefs.AutoOffOverweightMode}%, disable now");
                     var frmStateSwitch = FormHelper.StateSwitchFormInstance;
                     if (frmStateSwitch != null && !frmStateSwitch.IsDisposed)
                     {

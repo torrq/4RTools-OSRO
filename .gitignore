@@ -405,3 +405,4 @@ OldVersions/
 .idea/.gitignore
 *.zip
 *.7z
+/.dotnet_home

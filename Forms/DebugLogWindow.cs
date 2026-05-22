@@ -1,5 +1,6 @@
-﻿using _ORTools.Utils;
+using _ORTools.Utils;
 using System;
+using System.Collections.Concurrent;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -21,11 +22,25 @@ namespace _ORTools.Forms
         }
 
         private RichTextBox debugConsole;
+        private readonly ConcurrentQueue<(string message, DebugLogger.LogLevel level)> pending = new ConcurrentQueue<(string, DebugLogger.LogLevel)>();
+        private readonly Timer flushTimer;
+        private const int FlushIntervalMs = 50;
+        private const int MaxLines = 3000;
 
         public DebugLogWindow(Icon containerIcon)
         {
             InitializeComponents();
             this.Icon = containerIcon;
+
+            flushTimer = new Timer { Interval = FlushIntervalMs };
+            flushTimer.Tick += (_, __) => FlushPending();
+            flushTimer.Start();
+
+            this.FormClosed += (_, __) =>
+            {
+                try { flushTimer.Stop(); } catch { }
+                try { flushTimer.Dispose(); } catch { }
+            };
         }
 
         private void InitializeComponents()
@@ -54,21 +69,40 @@ namespace _ORTools.Forms
 
         internal void DebugLogger_OnLogMessage(string message, DebugLogger.LogLevel level)
         {
+            if (string.IsNullOrWhiteSpace(message))
+                return;
+
+            pending.Enqueue((message, level));
+        }
+
+        private void FlushPending()
+        {
+            if (IsDisposed || debugConsole == null || debugConsole.IsDisposed)
+                return;
+
             if (debugConsole.InvokeRequired)
             {
-                debugConsole.Invoke((MethodInvoker)delegate
-                {
-                    DebugLogger_OnLogMessage(message, level);
-                });
+                debugConsole.BeginInvoke((MethodInvoker)FlushPending);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(message))
-            {
+            if (pending.IsEmpty)
                 return;
-            }
 
             debugConsole.SuspendLayout();
+
+            while (pending.TryDequeue(out var item))
+            {
+                AppendFormattedLine(item.message, item.level);
+            }
+
+            TrimToMaxLines();
+            debugConsole.ScrollToCaret();
+            debugConsole.ResumeLayout();
+        }
+
+        private void AppendFormattedLine(string message, DebugLogger.LogLevel level)
+        {
             debugConsole.SelectionStart = debugConsole.TextLength;
             debugConsole.SelectionLength = 0;
 
@@ -192,8 +226,31 @@ namespace _ORTools.Forms
 
             debugConsole.SelectionColor = debugConsole.ForeColor;
             debugConsole.AppendText(Environment.NewLine);
-            debugConsole.ScrollToCaret();
-            debugConsole.ResumeLayout();
+        }
+
+        private void TrimToMaxLines()
+        {
+            // RichTextBox becomes noticeably slower as it grows large; keep it bounded.
+            // This is a debug window, so dropping oldest lines is acceptable.
+            var lines = debugConsole.Lines;
+            if (lines == null || lines.Length <= MaxLines)
+                return;
+
+            int removeCount = lines.Length - MaxLines;
+            int startIndex = 0;
+            for (int i = 0; i < removeCount; i++)
+            {
+                int nextNewline = debugConsole.Text.IndexOf('\n', startIndex);
+                if (nextNewline < 0)
+                    break;
+                startIndex = nextNewline + 1;
+            }
+
+            if (startIndex > 0 && startIndex < debugConsole.TextLength)
+            {
+                debugConsole.Select(0, startIndex);
+                debugConsole.SelectedText = string.Empty;
+            }
         }
     }
 }

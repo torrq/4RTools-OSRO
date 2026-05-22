@@ -25,6 +25,8 @@ namespace _ORTools.Forms
             InitializeComponent();
             _subject = subject; // Store the subject
 
+            ApplyServerModeVisibility();
+
             itemContainers.Add(new BuffContainer(this.PotionsGP, BuffService.GetPotionsBuffs()));
             itemContainers.Add(new BuffContainer(this.ElementalsGP, BuffService.GetElementBuffs()));
             itemContainers.Add(new BuffContainer(this.BoxesGP, BuffService.GetBoxBuffs()));
@@ -32,7 +34,7 @@ namespace _ORTools.Forms
             itemContainers.Add(new BuffContainer(this.ScrollBuffsGP, BuffService.GetScrollBuffs()));
             itemContainers.Add(new BuffContainer(this.EtcGP, BuffService.GetEtcBuffs()));
 
-            if (AppConfig.ServerMode == 0)
+            if (AppConfig.SupportsFishing)
             {
                 itemContainers.Add(new BuffContainer(this.FishGP, BuffService.GetFishBuffs()));
             }
@@ -42,6 +44,16 @@ namespace _ORTools.Forms
             FormHelper.ApplyColorToButtons(this, new[] { "btnResetAutobuff" }, AppConfig.ResetButtonBackColor);
 
             subject.Attach(this);
+        }
+
+        private void ApplyServerModeVisibility()
+        {
+            // In HR, Fishing is not supported and should not appear at all (even as an empty group).
+            // Keep checks centralized via AppConfig.SupportsFishing for future server-mode changes.
+            bool showFishing = AppConfig.SupportsFishing;
+            FishGP.Visible = showFishing;
+            FishGP.Enabled = showFishing;
+            FishGP.TabStop = showFishing;
         }
 
         public void Update(ISubject subject)

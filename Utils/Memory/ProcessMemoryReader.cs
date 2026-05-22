@@ -12,6 +12,7 @@ namespace _ORTools.Utils
         private Process _process;
         private IntPtr _processHandle;
         private bool _disposed = false;
+        private bool _closingHandle = false;
 
         // Cached exit-state to avoid repeated HasExited calls
         private bool? _cachedHasExited;
@@ -27,6 +28,11 @@ namespace _ORTools.Utils
         private int _consecutiveErrors = 0;
         private const int MAX_CONSECUTIVE_ERRORS = 3;
         private DateTime _lastErrorTime = DateTime.MinValue;
+
+        // Log throttling to prevent tight-loop spam when the client is exiting/crashed
+        private DateTime _lastReadErrorLog = DateTime.MinValue;
+        private int _suppressedReadErrorLogs = 0;
+        private readonly TimeSpan _readErrorLogInterval = TimeSpan.FromMilliseconds(750);
 
         /// <summary>
         /// Gets whether the process handle is currently valid and accessible.
@@ -210,7 +216,17 @@ namespace _ORTools.Utils
             // Quick validation without expensive checks
             if (_processHandle == IntPtr.Zero)
             {
-                DebugLogger.Debug("TryReadProcessMemory: Process handle is null");
+                // Avoid spamming logs if callers keep polling after shutdown/exit.
+                // A null handle is a normal state after a client closes.
+                return false;
+            }
+
+            // If we already know the process has exited, short-circuit without attempting RPM.
+            // This prevents ERROR_PARTIAL_COPY spam while the game is terminating.
+            if (_cachedHasExited == true || HasProcessExited())
+            {
+                _cachedHandleValid = false;
+                _cachedHasExited = true;
                 return false;
             }
 
@@ -262,47 +278,102 @@ namespace _ORTools.Utils
 
             string errorDesc = GetErrorDescription(errorCode);
 
-            DebugLogger.Debug($"ReadProcessMemory failed: Error {errorCode} ({errorDesc}) " +
-                            $"at 0x{address.ToInt64():X}, trying to read {bytesToRead} bytes, " +
-                            $"PID {processId}, consecutive errors: {_consecutiveErrors}");
+            MaybeLogReadError($"ReadProcessMemory failed: Error {errorCode} ({errorDesc}) " +
+                              $"at 0x{address.ToInt64():X}, trying to read {bytesToRead} bytes, " +
+                              $"PID {processId}, consecutive errors: {_consecutiveErrors}");
 
             switch (errorCode)
             {
                 case 183: // ERROR_ALREADY_EXISTS - This shouldn't happen with ReadProcessMemory, indicates handle issues
-                    DebugLogger.Debug($"ERROR_ALREADY_EXISTS (183) - Unusual error for ReadProcessMemory, handle may be invalid");
+                    MaybeLogReadError("ERROR_ALREADY_EXISTS (183) - Unusual error for ReadProcessMemory, handle may be invalid");
                     ResetCaches();
                     _cachedHandleValid = false;
                     return false;
 
                 case 299: // ERROR_PARTIAL_COPY
-                    DebugLogger.Debug($"ERROR_PARTIAL_COPY (299) - Memory protection or access violation");
+                    MaybeLogReadError("ERROR_PARTIAL_COPY (299) - Memory protection or access violation");
                     if (_consecutiveErrors >= MAX_CONSECUTIVE_ERRORS)
                     {
-                        DebugLogger.Debug("Too many consecutive partial copy errors, invalidating process caches");
+                        MaybeLogReadError("Too many consecutive partial copy errors, invalidating process caches");
                         ResetCaches();
                         _cachedHandleValid = false;
+                        // If the target is in the middle of exiting, treat it as exited to stop tight loops.
+                        if (RefreshHasExited())
+                        {
+                            _cachedHasExited = true;
+                            CloseHandleIfOpen();
+                        }
                     }
                     return false;
 
                 case 5: // ERROR_ACCESS_DENIED
-                    DebugLogger.Debug($"Access denied (5) - Insufficient privileges or protected memory");
+                    MaybeLogReadError("Access denied (5) - Insufficient privileges or protected memory");
                     ResetCaches();
                     return false;
 
                 case 6: // ERROR_INVALID_HANDLE
-                    DebugLogger.Debug($"Invalid handle (6) - Process may have exited or handle corrupted");
+                    MaybeLogReadError("Invalid handle (6) - Process may have exited or handle corrupted");
                     ResetCaches();
                     _cachedHandleValid = false;
                     _cachedHasExited = true;
+                    CloseHandleIfOpen();
                     return false;
 
                 case 87: // ERROR_INVALID_PARAMETER
-                    DebugLogger.Debug($"Invalid parameter (87) - Check address and size parameters");
+                    MaybeLogReadError("Invalid parameter (87) - Check address and size parameters");
                     return false;
 
                 default:
-                    DebugLogger.Debug($"Unhandled error code {errorCode} ({errorDesc})");
+                    MaybeLogReadError($"Unhandled error code {errorCode} ({errorDesc})");
                     return false;
+            }
+        }
+
+        private void MaybeLogReadError(string message)
+        {
+            // Throttle repeated logs that can happen in tight polling loops when the process dies.
+            var now = DateTime.UtcNow;
+            if (now - _lastReadErrorLog < _readErrorLogInterval)
+            {
+                _suppressedReadErrorLogs++;
+                return;
+            }
+
+            _lastReadErrorLog = now;
+            if (_suppressedReadErrorLogs > 0)
+            {
+                DebugLogger.Debug($"(suppressed {_suppressedReadErrorLogs} similar ReadProcessMemory errors)");
+                _suppressedReadErrorLogs = 0;
+            }
+
+            DebugLogger.Debug(message);
+        }
+
+        private bool RefreshHasExited()
+        {
+            _cachedHasExited = null;
+            _lastExitCheck = DateTime.MinValue;
+            return HasProcessExited();
+        }
+
+        private void CloseHandleIfOpen()
+        {
+            if (_processHandle == IntPtr.Zero || _closingHandle)
+                return;
+
+            try
+            {
+                _closingHandle = true;
+                MemoryApi.CloseHandle(_processHandle);
+            }
+            catch
+            {
+                // Best-effort; ignore close errors.
+            }
+            finally
+            {
+                _processHandle = IntPtr.Zero;
+                _closingHandle = false;
             }
         }
 
@@ -416,6 +487,17 @@ namespace _ORTools.Utils
                 }
                 else
                 {
+                    // Even in non-throwing mode, avoid calling RPM if the process is gone.
+                    // Without this, background polling can tight-loop and spam logs after the game closes/crashes.
+                    // To keep the hot path as fast as possible, only do the extra IsProcessValid check
+                    // after we've seen errors (otherwise TryReadProcessMemory is the only check).
+                    if (_consecutiveErrors > 0 && !IsProcessValid)
+                    {
+                        _cachedHasExited = true;
+                        CloseHandleIfOpen();
+                        return null;
+                    }
+
                     if (TryReadProcessMemory(baseAddress, bytesToRead, buffer, out var read))
                     {
                         if (read != buffer.Length)
@@ -463,8 +545,7 @@ namespace _ORTools.Utils
             {
                 if (_processHandle != IntPtr.Zero)
                 {
-                    MemoryApi.CloseHandle(_processHandle);
-                    _processHandle = IntPtr.Zero;
+                    CloseHandleIfOpen();
                 }
 
                 _process?.Dispose();

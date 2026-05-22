@@ -2,6 +2,7 @@ using _ORTools.Model;
 using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -37,18 +38,11 @@ namespace _ORTools.Forms
         private bool _debugPanelVisible = false;
         private const int DEBUG_PANEL_HEIGHT = 200;
         public const int DEBUG_MAX_LINES = 2000;
+        private readonly ConcurrentQueue<(string message, DebugLogger.LogLevel level)> _debugQueue = new ConcurrentQueue<(string, DebugLogger.LogLevel)>();
+        private readonly Timer _debugFlushTimer = new Timer { Interval = 50 };
 
-        // Off-screen compositing: Windows draws the entire control tree to a back-buffer
-        // before blitting to screen. Eliminates flicker/lag when dragging with many child controls.
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
-                return cp;
-            }
-        }
+        // Note: WS_EX_COMPOSITED was removed because it can cause noticeably laggy window dragging/moving
+        // on some systems. Double-buffering is handled via DoubleBuffered + EnableDoubleBufferingRecursive().
 
         // Freeze all painting while the user is dragging/resizing the window.
         // WM_SETREDRAW(false) tells Windows to skip ALL paint messages for this HWND tree.
@@ -110,6 +104,8 @@ namespace _ORTools.Forms
             };
             Controls.Add(_debugConsole);
             _debugConsole.BringToFront();
+
+            _debugFlushTimer.Tick += (_, __) => FlushDebugLog();
 
             regularFont = profileCB.Font;
             italicFont = new Font(regularFont, FontStyle.Italic);
@@ -432,19 +428,51 @@ namespace _ORTools.Forms
             _debugConsole.Visible = true;
             _debugConsole.BringToFront();
             ResumeLayout(true);
-            DebugLogger.OnLogMessage += AppendDebugLog;
+            _debugFlushTimer.Start();
+            DebugLogger.OnLogMessage += EnqueueDebugLog;
         }
 
         private void HideDebugPanel()
         {
             if (!_debugPanelVisible) return;
-            DebugLogger.OnLogMessage -= AppendDebugLog;
+            DebugLogger.OnLogMessage -= EnqueueDebugLog;
+            _debugFlushTimer.Stop();
+            while (_debugQueue.TryDequeue(out _)) { }
             _debugPanelVisible = false;
             SuspendLayout();
             _debugConsole.Visible = false;
             Padding = new Padding(0);
             ClientSize = CurrentBaseSize;
             ResumeLayout(true);
+        }
+
+        private void EnqueueDebugLog(string message, DebugLogger.LogLevel level)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            _debugQueue.Enqueue((message, level));
+        }
+
+        private void FlushDebugLog()
+        {
+            if (!_debugPanelVisible || _debugConsole == null || _debugConsole.IsDisposed)
+                return;
+
+            if (_debugConsole.InvokeRequired)
+            {
+                _debugConsole.BeginInvoke((MethodInvoker)FlushDebugLog);
+                return;
+            }
+
+            if (_debugQueue.IsEmpty)
+                return;
+
+            _debugConsole.SuspendLayout();
+            while (_debugQueue.TryDequeue(out var item))
+            {
+                AppendDebugLogCore(item.message, item.level);
+            }
+            _debugConsole.ScrollToCaret();
+            _debugConsole.ResumeLayout();
         }
 
         private void PositionDebugConsole()
@@ -460,18 +488,8 @@ namespace _ORTools.Forms
                 PositionDebugConsole();
         }
 
-        private void AppendDebugLog(string message, DebugLogger.LogLevel level)
+        private void AppendDebugLogCore(string message, DebugLogger.LogLevel level)
         {
-            if (_debugConsole.InvokeRequired)
-            {
-                _debugConsole.BeginInvoke((MethodInvoker)(() => AppendDebugLog(message, level)));
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(message)) return;
-
-            _debugConsole.SuspendLayout();
-
             // Cap line count to avoid unbounded memory growth
             if (_debugConsole.Lines.Length >= DEBUG_MAX_LINES)
             {
@@ -572,8 +590,6 @@ namespace _ORTools.Forms
 
             _debugConsole.SelectionColor = _debugConsole.ForeColor;
             _debugConsole.AppendText(Environment.NewLine);
-            _debugConsole.ScrollToCaret();
-            _debugConsole.ResumeLayout();
         }
 
         public void Addform(TabPage tp, Form f)
