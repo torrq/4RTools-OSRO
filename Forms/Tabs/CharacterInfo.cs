@@ -32,9 +32,9 @@ namespace _ORTools.Forms
         // Layout constants
         private const int INFO_ROW_Y   = 13;
         private const int INFO_ROW_H   = 11;
-        private const int HP_BAR_Y     = 25;
-        private const int SP_BAR_Y     = 37;
-        private const int WT_BAR_Y     = 49;
+        private const int HP_BAR_Y     = 24;
+        private const int SP_BAR_Y     = 36;
+        private const int WT_BAR_Y     = 48;
         private const int BAR_H        = 12;
         private const int BAR_PAD      = 2;
 

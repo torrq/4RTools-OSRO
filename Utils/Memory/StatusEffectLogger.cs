@@ -1,4 +1,5 @@
-﻿using _ORTools.Utils;
+﻿using _ORTools.Model;
+using _ORTools.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ public static class StatusEffectLogger
 
     public static void LogAllStatuses(IEnumerable<(int index, uint statusId)> statuses)
     {
-        if (!AppConfig.DebugMode) return; // skip all LINQ work when not in debug mode
+        if (!ConfigGlobal.GetConfig().DebugMode) return;
         if (knownStatusIds == null)
             InitializeStatusDictionaries();
 

@@ -61,7 +61,7 @@ namespace _ORTools.Forms
             switch ((subject as Subject).Message.Code)
             {
                 case MessageCode.PROFILE_CHANGED:
-                    BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Keys>(ProfileSingleton.GetCurrent().AutobuffItem.buffMapping), this);
+                    BuffRenderer.DoUpdate(ProfileSingleton.GetCurrent().AutobuffItem.GetAllMappings(), this);
                     this.numericDelay.Value = ProfileSingleton.GetCurrent().AutobuffItem.Delay;
                     break;
                 case MessageCode.TURN_OFF:
@@ -77,7 +77,7 @@ namespace _ORTools.Forms
         {
             ProfileSingleton.GetCurrent().AutobuffItem.ClearKeyMapping();
             ProfileSingleton.SetConfiguration(ProfileSingleton.GetCurrent().AutobuffItem);
-            BuffRenderer.DoUpdate(new Dictionary<EffectStatusIDs, Keys>(ProfileSingleton.GetCurrent().AutobuffItem.buffMapping), this);
+            BuffRenderer.DoUpdate(ProfileSingleton.GetCurrent().AutobuffItem.GetAllMappings(), this);
             this.numericDelay.Value = AppConfig.AutoBuffItemsDefaultDelay;
         }
 
