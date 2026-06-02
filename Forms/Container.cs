@@ -16,7 +16,7 @@ namespace _ORTools.Forms
         private Subject subject = new Subject();
         private string currentProfile;
         private List<ClientDTO> clients = new List<ClientDTO>();
-        private StateSwitchForm frmStateSwitch = new StateSwitchForm();
+        private StateSwitchForm frmStateSwitch;
         private TrayManager trayManager;
         private bool isShuttingDown;
         private ProfilesForm profileForm;
@@ -50,18 +50,78 @@ namespace _ORTools.Forms
         //
         private const int WM_ENTERSIZEMOVE = 0x0231;
         private const int WM_EXITSIZEMOVE  = 0x0232;
+        private const int WM_SYSCOMMAND = 0x0112;
+        private const int SC_MOVE = 0xF010;
+        private const int SC_SIZE = 0xF000;
+
+        // Cache the MdiClient so we don't search for it every drag frame
+        private MdiClient _mdiClient;
+
+        private MdiClient GetMdiClient()
+        {
+            if (_mdiClient != null && !_mdiClient.IsDisposed)
+                return _mdiClient;
+            foreach (Control ctl in Controls)
+                if (ctl is MdiClient mc) { _mdiClient = mc; return mc; }
+            return null;
+        }
+
+        private const int WM_MOVING = 0x0216;
+        private long _lastMovingTick;
+
+        private bool _customDragging = false;
+        private Point _dragCursorStart;
+        private Point _dragFormStart;
+
+        private const int WM_NCLBUTTONDOWN = 0x00A1;
+        private const int WM_LBUTTONUP = 0x0202;
+        private const int WM_MOUSEMOVE = 0x0200;
+        private const int HTCAPTION = 2;
 
         protected override void WndProc(ref System.Windows.Forms.Message m)
         {
-            if (m.Msg == WM_ENTERSIZEMOVE)
+            if (m.Msg == WM_NCLBUTTONDOWN && m.WParam.ToInt32() == HTCAPTION)
             {
-                Win32Interop.SendMessage(this.Handle, 0x000B /* WM_SETREDRAW */, IntPtr.Zero, IntPtr.Zero);
+                _customDragging = true;
+                _dragCursorStart = Cursor.Position;
+                _dragFormStart = this.Location;
+                this.Capture = true;
+                _lastMovingTick = 0;
+                m.Result = IntPtr.Zero;
+                return; // never reaches DefFrameProc
             }
-            else if (m.Msg == WM_EXITSIZEMOVE)
+
+            if (_customDragging)
             {
-                Win32Interop.SendMessage(this.Handle, 0x000B /* WM_SETREDRAW */, new IntPtr(1), IntPtr.Zero);
-                this.Refresh();
+                if (m.Msg == WM_MOUSEMOVE)
+                {
+                    long now = System.Diagnostics.Stopwatch.GetTimestamp();
+                    if (_lastMovingTick != 0)
+                    {
+                        double ms = (now - _lastMovingTick) * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
+                        if (ms > 30)
+                            System.Diagnostics.Debug.WriteLine($"[DRAG LAG] WM_MOUSEMOVE gap: {ms:F1}ms");
+                    }
+                    _lastMovingTick = now;
+
+                    Point delta = new Point(
+                        Cursor.Position.X - _dragCursorStart.X,
+                        Cursor.Position.Y - _dragCursorStart.Y);
+                    this.Location = new Point(
+                        _dragFormStart.X + delta.X,
+                        _dragFormStart.Y + delta.Y);
+                    m.Result = IntPtr.Zero;
+                    return;
+                }
+
+                if (m.Msg == WM_LBUTTONUP)
+                {
+                    _customDragging = false;
+                    this.Capture = false;
+                    _lastMovingTick = 0;
+                }
             }
+
             base.WndProc(ref m);
         }
 

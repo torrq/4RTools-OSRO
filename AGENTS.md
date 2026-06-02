@@ -34,6 +34,10 @@ This repo is a Windows/.NET Framework WinForms app (“OSRO Tools”) that reads
 - The debug UI should **buffer and flush on a timer** (batch updates). Avoid per-message synchronous `Invoke`.
 - `Utils/DebugLogger.cs` should avoid holding its lock while executing UI callbacks; call event handlers **outside** the logger lock.
 
+### Why `requireAdministrator` is required
+
+- Reading game process memory (`ReadProcessMemory` / `OpenProcess` with `PROCESS_VM_READ`) requires the tool to run at a higher integrity level than a normal user process. Do **not** remove or downgrade the `requestedExecutionLevel` in `app.manifest`. The DPI awareness block (`dpiAware` / `dpiAwareness`) in the same manifest is the mitigation for the DWM compositing overhead that elevated processes pay — keep both blocks present and uncommented.
+
 ## Server mode / feature flags
 
 - `Utils/Lists/AppConfig.cs` contains server-mode settings:

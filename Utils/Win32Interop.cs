@@ -48,6 +48,10 @@ namespace _ORTools.Utils
         /// <summary>Brings the specified window to the foreground and activates it.</summary>
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr DefWindowProc(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+
         #endregion
 
         #region Mouse Operations

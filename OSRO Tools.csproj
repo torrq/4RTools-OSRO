@@ -43,6 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +56,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <PreferNativeArm64>false</PreferNativeArm64>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>applogo.ico</ApplicationIcon>
@@ -406,6 +408,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AGENTS.md" />
     <None Include="app.manifest" />
     <None Include="assets\image\logos\applogo.psd" />
     <None Include="Properties\DataSources\_ORTools.Model.ClientDTO.datasource" />
@@ -418,6 +421,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
     <None Include="Scripts\RenameExe.ps1" />
   </ItemGroup>
   <ItemGroup>

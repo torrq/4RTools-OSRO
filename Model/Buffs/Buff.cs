@@ -110,7 +110,7 @@ public static class BuffDefinitions
 
     // ITEM buffs
     public static readonly List<Buff> PotionBuffs = new List<Buff>();
-    public static readonly List<Buff> ElementBuffs = new List<Buff>();
+    public static readonly Dictionary<int, List<Buff>> ElementBuffs = new Dictionary<int, List<Buff>>();
     public static readonly List<Buff> FoodBuffs = new List<Buff>();
     public static readonly List<Buff> BoxBuffs = new List<Buff>();
     public static readonly List<Buff> ScrollBuffs = new List<Buff>();
@@ -358,7 +358,9 @@ public static class BuffDefinitions
             b.CreateBuff("Berserk Potion", "ATTHASTE_POTION3", "berserk_potion")
         });
 
-        ElementBuffs.AddRange(new[]
+        ElementBuffs.Clear();
+
+        ElementBuffs[0] = new List<Buff>
         {
             b.CreateBuff("Fire Elemental Converter", "ENDOW_FIRE", "ele_fire_converter"),
             b.CreateBuff("Wind Elemental Converter", "ENDOW_WIND", "ele_wind_converter"),
@@ -369,7 +371,20 @@ public static class BuffDefinitions
             b.CreateBuff("Coldproof Potion", "RESIST_PROPERTY_WATER", "coldproof"),
             b.CreateBuff("Thunderproof Potion", "RESIST_PROPERTY_WIND", "thunderproof"),
             b.CreateBuff("Earthproof Potion", "RESIST_PROPERTY_GROUND", "earthproof")
-        });
+        };
+
+        ElementBuffs[1] = new List<Buff>
+        {
+            b.CreateBuff("Fire Elemental Converter", "ENDOW_FIRE", "ele_fire_converter"),
+            b.CreateBuff("Wind Elemental Converter", "ENDOW_WIND", "ele_wind_converter"),
+            b.CreateBuff("Earth Elemental Converter", "ENDOW_EARTH", "ele_earth_converter"),
+            b.CreateBuff("Box of Storms / Water Converter", "SA_FROSTWEAPON", "boxofstorms"),
+            b.CreateBuff("Cursed Water", "ENDOW_DARK", "cursed_water"),
+            b.CreateBuff("Fireproof Potion", "RESIST_PROPERTY_FIRE", "fireproof"),
+            b.CreateBuff("Coldproof Potion", "RESIST_PROPERTY_WATER", "coldproof"),
+            b.CreateBuff("Thunderproof Potion", "RESIST_PROPERTY_WIND", "thunderproof"),
+            b.CreateBuff("Earthproof Potion", "RESIST_PROPERTY_GROUND", "earthproof")
+        };
 
         BoxBuffs.AddRange(new[]
         {
@@ -485,7 +500,7 @@ public static class BuffService
 
     // ITEM BUFFS
     public static List<Buff> GetPotionsBuffs() => new List<Buff>(BuffDefinitions.PotionBuffs);
-    public static List<Buff> GetElementBuffs() => new List<Buff>(BuffDefinitions.ElementBuffs);
+    public static List<Buff> GetElementBuffs() => _b.CreateServerSpecificBuffList(BuffDefinitions.ElementBuffs);
     public static List<Buff> GetFoodBuffs() => new List<Buff>(BuffDefinitions.FoodBuffs);
     public static List<Buff> GetBoxBuffs() => new List<Buff>(BuffDefinitions.BoxBuffs);
     public static List<Buff> GetScrollBuffs() => new List<Buff>(BuffDefinitions.ScrollBuffs);

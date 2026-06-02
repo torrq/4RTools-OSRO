@@ -25,7 +25,7 @@ namespace _ORTools.Utils
 
         // Set to true for pre-release versions, false for stable releases
         public static bool preRelease = true;
-        public static string preReleaseTag = "SPEEDY-20260522";
+        public static string preReleaseTag = "SPEEDY-20260529";
 
         public static string WindowTitle => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
         public static string SystemTrayText => $"{Name} {Version}/{GetRateTag()}{(preRelease ? $" ({preReleaseTag})" : "")}";
@@ -166,7 +166,7 @@ namespace _ORTools.Utils
             "ayothaya", "einbroch", "lighthalzen", "einbech", "hugel", "rachel", "veins",
             "moscovia", "mid_camp", "munak", "splendide", "brasilis", "dicastes01", "mora",
             "dewata", "malangdo", "malaya", "eclage", "marketplace", "mainhall", "quiz_00",
-            "e_tower"
+            "e_tower", "prt_in2", "mall"
         };
 
         #endregion

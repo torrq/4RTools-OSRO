@@ -139,6 +139,14 @@ namespace _ORTools.Forms
 
         // ── Refresh ───────────────────────────────────────────────────────────
 
+        public void SuspendRefresh() => _refreshTimer.Stop();
+
+        public void ResumeRefresh()
+        {
+            _refreshTimer.Start();
+            Invalidate(); // repaint once immediately after drag ends
+        }
+
         private void RefreshTick(object sender, EventArgs e)
         {
             Client client = ClientSingleton.GetClient();
