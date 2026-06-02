@@ -15,6 +15,17 @@ namespace _ORTools
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += (sender, args) =>
+            {
+                DebugLogger.Error("Unhandled UI exception:\n" + args.Exception);
+            };
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                if (args.ExceptionObject is Exception exception)
+                {
+                    DebugLogger.Error("Unhandled domain exception:\n" + exception);
+                }
+            };
 
             try
             {
@@ -25,7 +36,7 @@ namespace _ORTools
             }
             catch (Exception ex)
             {
-                DebugLogger.Error("Unhandled exception:\n" + ex.Message);
+                DebugLogger.Error("Unhandled exception:\n" + ex);
                 MessageBox.Show("An unexpected error occurred. Please check the logs.", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally

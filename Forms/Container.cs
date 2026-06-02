@@ -138,6 +138,7 @@ namespace _ORTools.Forms
             this.DoubleBuffered = true;
             EnableDoubleBufferingRecursive(this);
 
+            DebugLogger.Info("Container init: creating CharacterInfo");
             characterInfoForm = new CharacterInfo
             {
                 TopLevel = false,
@@ -146,6 +147,7 @@ namespace _ORTools.Forms
             };
             Controls.Add(characterInfoForm);
             characterInfoForm.Show();
+            DebugLogger.Info("Container init: CharacterInfo ready");
 
             // Setup for Mini-Mode Toggle
             fullModeClientSize = ClientSize;
@@ -204,24 +206,40 @@ namespace _ORTools.Forms
                 // Debug panel shown in Container_Load after the form is visible
             }
 
+            DebugLogger.Info("Container init: creating StateSwitchForm");
             frmStateSwitch = SetStateSwitchWindow();
+            DebugLogger.Info("Container init: StateSwitchForm ready");
             if(!GlobalConfig.DisableSystray)
             {
                 trayManager = frmStateSwitch.GetTrayManager();
             }
+            DebugLogger.Info("Container init: creating AutopotHPForm");
             SetAutopotHPWindow();
+            DebugLogger.Info("Container init: creating AutopotSPForm");
             SetAutopotSPWindow();
+            DebugLogger.Info("Container init: creating SkillTimerForm");
             SetSkillTimerWindow();
+            DebugLogger.Info("Container init: creating AutoOffForm");
             SetAutoOffWindow();
+            DebugLogger.Info("Container init: creating TransferHelperForm");
             SetCustomButtonsWindow();
+            DebugLogger.Info("Container init: creating SkillSpammerForm");
             SetAHKWindow();
+            DebugLogger.Info("Container init: creating DebuffsForm");
             SetAutoBuffStatusWindow();
+            DebugLogger.Info("Container init: creating ProfilesForm");
             SetProfileWindow();
+            DebugLogger.Info("Container init: creating AutobuffItemForm");
             SetAutobuffItemWindow();
+            DebugLogger.Info("Container init: creating AutobuffSkillForm");
             SetAutobuffSkillWindow();
+            DebugLogger.Info("Container init: creating SongsForm");
             SetSongMacroWindow();
+            DebugLogger.Info("Container init: creating ATKDEFForm");
             SetATKDEFWindow();
+            DebugLogger.Info("Container init: creating MacroSwitchForm");
             SetMacroSwitchWindow();
+            DebugLogger.Info("Container init: creating SettingsForm");
             SetConfigWindow();
             SetTopTabIcons();
 

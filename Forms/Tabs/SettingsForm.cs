@@ -24,6 +24,8 @@ namespace _ORTools.Forms
             this.DebugMode.Checked = cfg.DebugMode;
             this.DebugModeShowLog.CheckedChanged -= this.DebugModeShowLog_CheckedChanged;
             this.DebugModeShowLog.Checked = cfg.DebugModeShowLog;
+            this.ChkClearAutoOffTimerOnDisable.CheckedChanged -= this.ChkClearAutoOffTimerOnDisable_CheckedChanged;
+            this.ChkClearAutoOffTimerOnDisable.Checked = cfg.ClearAutoOffTimerOnDisable;
             this.ChkDisableSystray.CheckedChanged -= this.ChkDisableSystray_CheckedChanged;
             this.ChkDisableSystray.Checked = cfg.DisableSystray;
             this.PauseWhenChatting.CheckedChanged -= this.PauseWhenChatting_CheckedChanged;
@@ -67,6 +69,7 @@ namespace _ORTools.Forms
             // Reattach event handlers after setting initial state
             this.DebugMode.CheckedChanged += this.DebugMode_CheckedChanged;
             this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
+            this.ChkClearAutoOffTimerOnDisable.CheckedChanged += this.ChkClearAutoOffTimerOnDisable_CheckedChanged;
             this.ChkDisableSystray.CheckedChanged += this.ChkDisableSystray_CheckedChanged;
             this.PauseWhenChatting.CheckedChanged += this.PauseWhenChatting_CheckedChanged;
             this.PauseWhenDead.CheckedChanged += this.PauseWhenDead_CheckedChanged;
@@ -140,6 +143,7 @@ namespace _ORTools.Forms
                 this.chkSoundEnabled.CheckedChanged -= ChkSoundEnabled_CheckedChanged;
                 this.DebugMode.CheckedChanged -= DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
+                this.ChkClearAutoOffTimerOnDisable.CheckedChanged -= ChkClearAutoOffTimerOnDisable_CheckedChanged;
                 this.ChkDisableSystray.CheckedChanged -= ChkDisableSystray_CheckedChanged;
                 this.SongRows.ValueChanged -= SongRows_ValueChanged;
                 this.MacroSwitchRows.ValueChanged -= MacroSwitchRows_ValueChanged;
@@ -148,12 +152,14 @@ namespace _ORTools.Forms
                 this.chkSoundEnabled.Checked = prefs.SoundEnabled;
                 this.SongRows.Value = cfg.SongRows;
                 this.MacroSwitchRows.Value = cfg.MacroSwitchRows;
+                this.ChkClearAutoOffTimerOnDisable.Checked = cfg.ClearAutoOffTimerOnDisable;
 
                 // Reattach event handlers
                 this.chkStopBuffsOnCity.CheckedChanged += ChkStopBuffsOnCity_CheckedChanged;
                 this.chkSoundEnabled.CheckedChanged += ChkSoundEnabled_CheckedChanged;
                 this.DebugMode.CheckedChanged += DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
+                this.ChkClearAutoOffTimerOnDisable.CheckedChanged += ChkClearAutoOffTimerOnDisable_CheckedChanged;
                 this.ChkDisableSystray.CheckedChanged += ChkDisableSystray_CheckedChanged;
                 this.SongRows.ValueChanged += SongRows_ValueChanged;
                 this.MacroSwitchRows.ValueChanged += MacroSwitchRows_ValueChanged;
@@ -363,6 +369,15 @@ namespace _ORTools.Forms
             DebugLogger.Info($"PauseWhenDead changed to {cfg.PauseWhenDead}");
         }
 
+        private void ChkClearAutoOffTimerOnDisable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializing) return;
+            Config cfg = ConfigGlobal.GetConfig();
+            cfg.ClearAutoOffTimerOnDisable = ChkClearAutoOffTimerOnDisable.Checked;
+            ConfigGlobal.SaveConfig();
+            DebugLogger.Info($"ClearAutoOffTimerOnDisable changed to {cfg.ClearAutoOffTimerOnDisable}");
+        }
+
         private void ChkDisableSystray_CheckedChanged(object sender, EventArgs e)
         {
             // Prevent this logic from running during form initialization
@@ -501,6 +516,11 @@ namespace _ORTools.Forms
                 // Always clear focus regardless of success or failure
                 this.ActiveControl = null;
             }
+        }
+
+        private void groupGlobalSettings_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

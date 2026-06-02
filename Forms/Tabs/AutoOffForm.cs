@@ -53,6 +53,17 @@ namespace _ORTools.Forms
         {
             InitializeComponent();
 
+            this.frmStateSwitch = toggleStateForm;
+
+            autoOffModel = new AutoOff();
+
+            autoOffModel.TimerStarted += AutoOffModel_TimerStarted;
+            autoOffModel.TimerStopped += AutoOffModel_TimerStopped;
+            autoOffModel.TimerTick += AutoOffModel_TimerTick;
+            autoOffModel.TimerCompleted += AutoOffModel_TimerCompleted;
+
+            subject.Attach(this);
+
             this.AutoOffKey1.KeyDown += FormHelper.OnKeyDown;
             this.AutoOffKey1.KeyPress += FormHelper.OnKeyPress;
             this.AutoOffKey1.TextChanged += this.AutoOffKey1_TextChanged;
@@ -60,18 +71,6 @@ namespace _ORTools.Forms
             this.AutoOffKey2.KeyDown += FormHelper.OnKeyDown;
             this.AutoOffKey2.KeyPress += FormHelper.OnKeyPress;
             this.AutoOffKey2.TextChanged += this.AutoOffKey2_TextChanged;
-
-            subject.Attach(this);
-            this.frmStateSwitch = toggleStateForm;
-
-            // Initialize the AutoOff model
-            autoOffModel = new AutoOff();
-
-            // Subscribe to model events
-            autoOffModel.TimerStarted += AutoOffModel_TimerStarted;
-            autoOffModel.TimerStopped += AutoOffModel_TimerStopped;
-            autoOffModel.TimerTick += AutoOffModel_TimerTick;
-            autoOffModel.TimerCompleted += AutoOffModel_TimerCompleted;
 
             // Set trackbar maximum dynamically based on ServerMode
             trackBarTime.Maximum = autoOffModel.MaxMinutes;
@@ -202,6 +201,12 @@ namespace _ORTools.Forms
                         FormHelper.ApplyInputKeyStyle(txtKey2, false);
                     }
 
+                    break;
+                case MessageCode.TURN_OFF:
+                    if (autoOffModel != null && ConfigGlobal.GetConfig().ClearAutoOffTimerOnDisable && autoOffModel.IsTimerRunning)
+                    {
+                        autoOffModel.StopTimer();
+                    }
                     break;
             }
         }
