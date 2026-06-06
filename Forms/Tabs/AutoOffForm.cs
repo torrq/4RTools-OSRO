@@ -208,6 +208,12 @@ namespace _ORTools.Forms
                         autoOffModel.StopTimer();
                     }
                     break;
+                case MessageCode.TURN_ON:
+                    if (autoOffModel != null && ConfigGlobal.GetConfig().StartAutoOffTimerOnEnable && !autoOffModel.IsTimerRunning)
+                    {
+                        autoOffModel.StartTimer();
+                    }
+                    break;
             }
         }
         #endregion

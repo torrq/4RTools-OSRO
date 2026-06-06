@@ -58,12 +58,16 @@ namespace _ORTools.Forms
             this.toolTipReqRestart = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDebugModeShowLog = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipClearAutoOffTimerOnDisable = new System.Windows.Forms.ToolTip(this.components);
+            this.AutoOffGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.ChkClearAutoOffTimerOnEnable = new System.Windows.Forms.CheckBox();
+            this.toolTipStartAutoOffTimerOnEnable = new System.Windows.Forms.ToolTip(this.components);
             this.clientDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupSettings.SuspendLayout();
             this.groupGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SongRows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchRows)).BeginInit();
             this.panel1.SuspendLayout();
+            this.AutoOffGlobalSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +98,7 @@ namespace _ORTools.Forms
             this.groupSettings.Controls.Add(this.chkStopBuffsOnCity);
             this.groupSettings.Location = new System.Drawing.Point(309, 20);
             this.groupSettings.Name = "groupSettings";
-            this.groupSettings.Size = new System.Drawing.Size(300, 141);
+            this.groupSettings.Size = new System.Drawing.Size(300, 95);
             this.groupSettings.TabIndex = 0;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Profile Settings";
@@ -104,7 +108,7 @@ namespace _ORTools.Forms
             this.chkSoundEnabled.AutoSize = true;
             this.chkSoundEnabled.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkSoundEnabled.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.chkSoundEnabled.Location = new System.Drawing.Point(13, 67);
+            this.chkSoundEnabled.Location = new System.Drawing.Point(55, 62);
             this.chkSoundEnabled.Name = "chkSoundEnabled";
             this.chkSoundEnabled.Size = new System.Drawing.Size(84, 18);
             this.chkSoundEnabled.TabIndex = 317;
@@ -118,7 +122,7 @@ namespace _ORTools.Forms
             this.chkStopBuffsOnCity.AutoSize = true;
             this.chkStopBuffsOnCity.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkStopBuffsOnCity.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.chkStopBuffsOnCity.Location = new System.Drawing.Point(13, 27);
+            this.chkStopBuffsOnCity.Location = new System.Drawing.Point(55, 32);
             this.chkStopBuffsOnCity.Name = "chkStopBuffsOnCity";
             this.chkStopBuffsOnCity.Size = new System.Drawing.Size(139, 18);
             this.chkStopBuffsOnCity.TabIndex = 0;
@@ -164,20 +168,20 @@ namespace _ORTools.Forms
             // 
             // groupGlobalSettings
             // 
+            this.groupGlobalSettings.Controls.Add(this.AutoOffGlobalSettings);
             this.groupGlobalSettings.Controls.Add(this.PauseWhenDead);
             this.groupGlobalSettings.Controls.Add(this.PauseWhenChatting);
             this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKey);
             this.groupGlobalSettings.Controls.Add(this.DefaultToggleStateKeyLabel);
-            this.groupGlobalSettings.Controls.Add(this.ChkClearAutoOffTimerOnDisable);
             this.groupGlobalSettings.Controls.Add(this.ChkDisableSystray);
             this.groupGlobalSettings.Controls.Add(this.SongRows);
             this.groupGlobalSettings.Controls.Add(this.SongRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRows);
             this.groupGlobalSettings.Controls.Add(this.MacroSwitchRowsLabel);
             this.groupGlobalSettings.Controls.Add(this.panel1);
-            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 167);
+            this.groupGlobalSettings.Location = new System.Drawing.Point(309, 121);
             this.groupGlobalSettings.Name = "groupGlobalSettings";
-            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 280);
+            this.groupGlobalSettings.Size = new System.Drawing.Size(300, 326);
             this.groupGlobalSettings.TabIndex = 318;
             this.groupGlobalSettings.TabStop = false;
             this.groupGlobalSettings.Text = "Global Settings";
@@ -188,7 +192,7 @@ namespace _ORTools.Forms
             this.PauseWhenDead.AutoSize = true;
             this.PauseWhenDead.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PauseWhenDead.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.PauseWhenDead.Location = new System.Drawing.Point(55, 217);
+            this.PauseWhenDead.Location = new System.Drawing.Point(55, 208);
             this.PauseWhenDead.Name = "PauseWhenDead";
             this.PauseWhenDead.Size = new System.Drawing.Size(124, 18);
             this.PauseWhenDead.TabIndex = 330;
@@ -200,7 +204,7 @@ namespace _ORTools.Forms
             this.PauseWhenChatting.AutoSize = true;
             this.PauseWhenChatting.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PauseWhenChatting.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.PauseWhenChatting.Location = new System.Drawing.Point(55, 191);
+            this.PauseWhenChatting.Location = new System.Drawing.Point(55, 182);
             this.PauseWhenChatting.Name = "PauseWhenChatting";
             this.PauseWhenChatting.Size = new System.Drawing.Size(142, 18);
             this.PauseWhenChatting.TabIndex = 318;
@@ -211,7 +215,7 @@ namespace _ORTools.Forms
             // 
             this.DefaultToggleStateKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DefaultToggleStateKey.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.DefaultToggleStateKey.Location = new System.Drawing.Point(179, 95);
+            this.DefaultToggleStateKey.Location = new System.Drawing.Point(179, 89);
             this.DefaultToggleStateKey.Name = "DefaultToggleStateKey";
             this.DefaultToggleStateKey.Size = new System.Drawing.Size(65, 22);
             this.DefaultToggleStateKey.TabIndex = 329;
@@ -221,7 +225,7 @@ namespace _ORTools.Forms
             // DefaultToggleStateKeyLabel
             // 
             this.DefaultToggleStateKeyLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DefaultToggleStateKeyLabel.Location = new System.Drawing.Point(58, 98);
+            this.DefaultToggleStateKeyLabel.Location = new System.Drawing.Point(58, 92);
             this.DefaultToggleStateKeyLabel.Name = "DefaultToggleStateKeyLabel";
             this.DefaultToggleStateKeyLabel.Size = new System.Drawing.Size(113, 14);
             this.DefaultToggleStateKeyLabel.TabIndex = 328;
@@ -233,11 +237,11 @@ namespace _ORTools.Forms
             this.ChkClearAutoOffTimerOnDisable.AutoSize = true;
             this.ChkClearAutoOffTimerOnDisable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ChkClearAutoOffTimerOnDisable.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.ChkClearAutoOffTimerOnDisable.Location = new System.Drawing.Point(55, 241);
+            this.ChkClearAutoOffTimerOnDisable.Location = new System.Drawing.Point(18, 44);
             this.ChkClearAutoOffTimerOnDisable.Name = "ChkClearAutoOffTimerOnDisable";
-            this.ChkClearAutoOffTimerOnDisable.Size = new System.Drawing.Size(163, 18);
+            this.ChkClearAutoOffTimerOnDisable.Size = new System.Drawing.Size(142, 18);
             this.ChkClearAutoOffTimerOnDisable.TabIndex = 331;
-            this.ChkClearAutoOffTimerOnDisable.Text = "Clear AO timer on disable";
+            this.ChkClearAutoOffTimerOnDisable.Text = "Stop timer on disable";
             this.toolTipClearAutoOffTimerOnDisable.SetToolTip(this.ChkClearAutoOffTimerOnDisable, "When app is toggled off, the Auto Off timer stops with it");
             this.ChkClearAutoOffTimerOnDisable.UseVisualStyleBackColor = true;
             this.ChkClearAutoOffTimerOnDisable.CheckedChanged += new System.EventHandler(this.ChkClearAutoOffTimerOnDisable_CheckedChanged);
@@ -247,7 +251,7 @@ namespace _ORTools.Forms
             this.ChkDisableSystray.AutoSize = true;
             this.ChkDisableSystray.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ChkDisableSystray.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.ChkDisableSystray.Location = new System.Drawing.Point(55, 165);
+            this.ChkDisableSystray.Location = new System.Drawing.Point(55, 156);
             this.ChkDisableSystray.Name = "ChkDisableSystray";
             this.ChkDisableSystray.Size = new System.Drawing.Size(134, 18);
             this.ChkDisableSystray.TabIndex = 318;
@@ -259,7 +263,7 @@ namespace _ORTools.Forms
             // SongRows
             // 
             this.SongRows.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SongRows.Location = new System.Drawing.Point(179, 26);
+            this.SongRows.Location = new System.Drawing.Point(179, 22);
             this.SongRows.Minimum = new decimal(new int[] {
             1,
             0,
@@ -279,7 +283,7 @@ namespace _ORTools.Forms
             // SongRowsLabel
             // 
             this.SongRowsLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SongRowsLabel.Location = new System.Drawing.Point(58, 30);
+            this.SongRowsLabel.Location = new System.Drawing.Point(58, 26);
             this.SongRowsLabel.Name = "SongRowsLabel";
             this.SongRowsLabel.Size = new System.Drawing.Size(113, 14);
             this.SongRowsLabel.TabIndex = 326;
@@ -289,7 +293,7 @@ namespace _ORTools.Forms
             // MacroSwitchRows
             // 
             this.MacroSwitchRows.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MacroSwitchRows.Location = new System.Drawing.Point(179, 62);
+            this.MacroSwitchRows.Location = new System.Drawing.Point(179, 55);
             this.MacroSwitchRows.Minimum = new decimal(new int[] {
             1,
             0,
@@ -309,7 +313,7 @@ namespace _ORTools.Forms
             // MacroSwitchRowsLabel
             // 
             this.MacroSwitchRowsLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MacroSwitchRowsLabel.Location = new System.Drawing.Point(58, 66);
+            this.MacroSwitchRowsLabel.Location = new System.Drawing.Point(58, 59);
             this.MacroSwitchRowsLabel.Name = "MacroSwitchRowsLabel";
             this.MacroSwitchRowsLabel.Size = new System.Drawing.Size(113, 14);
             this.MacroSwitchRowsLabel.TabIndex = 324;
@@ -320,7 +324,7 @@ namespace _ORTools.Forms
             // 
             this.panel1.Controls.Add(this.DebugMode);
             this.panel1.Controls.Add(this.DebugModeShowLog);
-            this.panel1.Location = new System.Drawing.Point(52, 136);
+            this.panel1.Location = new System.Drawing.Point(52, 127);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(198, 23);
             this.panel1.TabIndex = 323;
@@ -337,6 +341,31 @@ namespace _ORTools.Forms
             this.toolTipDebugModeShowLog.ReshowDelay = 100;
             this.toolTipDebugModeShowLog.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipDebugModeShowLog.ToolTipTitle = "Show Debug Log";
+            // 
+            // AutoOffGlobalSettings
+            // 
+            this.AutoOffGlobalSettings.Controls.Add(this.ChkClearAutoOffTimerOnEnable);
+            this.AutoOffGlobalSettings.Controls.Add(this.ChkClearAutoOffTimerOnDisable);
+            this.AutoOffGlobalSettings.Location = new System.Drawing.Point(56, 237);
+            this.AutoOffGlobalSettings.Name = "AutoOffGlobalSettings";
+            this.AutoOffGlobalSettings.Size = new System.Drawing.Size(188, 73);
+            this.AutoOffGlobalSettings.TabIndex = 332;
+            this.AutoOffGlobalSettings.TabStop = false;
+            this.AutoOffGlobalSettings.Text = "Auto-Off";
+            // 
+            // ChkClearAutoOffTimerOnEnable
+            // 
+            this.ChkClearAutoOffTimerOnEnable.AutoSize = true;
+            this.ChkClearAutoOffTimerOnEnable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ChkClearAutoOffTimerOnEnable.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.ChkClearAutoOffTimerOnEnable.Location = new System.Drawing.Point(18, 20);
+            this.ChkClearAutoOffTimerOnEnable.Name = "ChkClearAutoOffTimerOnEnable";
+            this.ChkClearAutoOffTimerOnEnable.Size = new System.Drawing.Size(143, 18);
+            this.ChkClearAutoOffTimerOnEnable.TabIndex = 332;
+            this.ChkClearAutoOffTimerOnEnable.Text = "Start timer on enable";
+            this.toolTipStartAutoOffTimerOnEnable.SetToolTip(this.ChkClearAutoOffTimerOnEnable, "When app is toggled on, the Auto Off timer starts with it");
+            this.ChkClearAutoOffTimerOnEnable.UseVisualStyleBackColor = true;
+            this.ChkClearAutoOffTimerOnEnable.CheckedChanged += new System.EventHandler(this.ChkClearAutoOffTimerOnEnable_CheckedChanged);
             // 
             // clientDTOBindingSource
             // 
@@ -364,6 +393,8 @@ namespace _ORTools.Forms
             ((System.ComponentModel.ISupportInitialize)(this.MacroSwitchRows)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.AutoOffGlobalSettings.ResumeLayout(false);
+            this.AutoOffGlobalSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -398,5 +429,8 @@ namespace _ORTools.Forms
         private CheckBox ChkClearAutoOffTimerOnDisable;
         private CheckBox PauseWhenChatting;
         private CheckBox PauseWhenDead;
+        private GroupBox AutoOffGlobalSettings;
+        private CheckBox ChkClearAutoOffTimerOnEnable;
+        private ToolTip toolTipStartAutoOffTimerOnEnable;
     }
 }

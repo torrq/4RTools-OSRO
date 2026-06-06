@@ -26,6 +26,8 @@ namespace _ORTools.Forms
             this.DebugModeShowLog.Checked = cfg.DebugModeShowLog;
             this.ChkClearAutoOffTimerOnDisable.CheckedChanged -= this.ChkClearAutoOffTimerOnDisable_CheckedChanged;
             this.ChkClearAutoOffTimerOnDisable.Checked = cfg.ClearAutoOffTimerOnDisable;
+            this.ChkClearAutoOffTimerOnEnable.CheckedChanged -= this.ChkClearAutoOffTimerOnEnable_CheckedChanged;
+            this.ChkClearAutoOffTimerOnEnable.Checked = cfg.StartAutoOffTimerOnEnable;
             this.ChkDisableSystray.CheckedChanged -= this.ChkDisableSystray_CheckedChanged;
             this.ChkDisableSystray.Checked = cfg.DisableSystray;
             this.PauseWhenChatting.CheckedChanged -= this.PauseWhenChatting_CheckedChanged;
@@ -70,6 +72,7 @@ namespace _ORTools.Forms
             this.DebugMode.CheckedChanged += this.DebugMode_CheckedChanged;
             this.DebugModeShowLog.CheckedChanged += this.DebugModeShowLog_CheckedChanged;
             this.ChkClearAutoOffTimerOnDisable.CheckedChanged += this.ChkClearAutoOffTimerOnDisable_CheckedChanged;
+            this.ChkClearAutoOffTimerOnEnable.CheckedChanged += this.ChkClearAutoOffTimerOnEnable_CheckedChanged;
             this.ChkDisableSystray.CheckedChanged += this.ChkDisableSystray_CheckedChanged;
             this.PauseWhenChatting.CheckedChanged += this.PauseWhenChatting_CheckedChanged;
             this.PauseWhenDead.CheckedChanged += this.PauseWhenDead_CheckedChanged;
@@ -144,6 +147,7 @@ namespace _ORTools.Forms
                 this.DebugMode.CheckedChanged -= DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged -= DebugModeShowLog_CheckedChanged;
                 this.ChkClearAutoOffTimerOnDisable.CheckedChanged -= ChkClearAutoOffTimerOnDisable_CheckedChanged;
+                this.ChkClearAutoOffTimerOnEnable.CheckedChanged -= ChkClearAutoOffTimerOnEnable_CheckedChanged;
                 this.ChkDisableSystray.CheckedChanged -= ChkDisableSystray_CheckedChanged;
                 this.SongRows.ValueChanged -= SongRows_ValueChanged;
                 this.MacroSwitchRows.ValueChanged -= MacroSwitchRows_ValueChanged;
@@ -153,6 +157,7 @@ namespace _ORTools.Forms
                 this.SongRows.Value = cfg.SongRows;
                 this.MacroSwitchRows.Value = cfg.MacroSwitchRows;
                 this.ChkClearAutoOffTimerOnDisable.Checked = cfg.ClearAutoOffTimerOnDisable;
+                this.ChkClearAutoOffTimerOnEnable.Checked = cfg.StartAutoOffTimerOnEnable;
 
                 // Reattach event handlers
                 this.chkStopBuffsOnCity.CheckedChanged += ChkStopBuffsOnCity_CheckedChanged;
@@ -160,6 +165,7 @@ namespace _ORTools.Forms
                 this.DebugMode.CheckedChanged += DebugMode_CheckedChanged;
                 this.DebugModeShowLog.CheckedChanged += DebugModeShowLog_CheckedChanged;
                 this.ChkClearAutoOffTimerOnDisable.CheckedChanged += ChkClearAutoOffTimerOnDisable_CheckedChanged;
+                this.ChkClearAutoOffTimerOnEnable.CheckedChanged += ChkClearAutoOffTimerOnEnable_CheckedChanged;
                 this.ChkDisableSystray.CheckedChanged += ChkDisableSystray_CheckedChanged;
                 this.SongRows.ValueChanged += SongRows_ValueChanged;
                 this.MacroSwitchRows.ValueChanged += MacroSwitchRows_ValueChanged;
@@ -378,6 +384,15 @@ namespace _ORTools.Forms
             DebugLogger.Info($"ClearAutoOffTimerOnDisable changed to {cfg.ClearAutoOffTimerOnDisable}");
         }
 
+        private void ChkClearAutoOffTimerOnEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isInitializing) return;
+            Config cfg = ConfigGlobal.GetConfig();
+            cfg.StartAutoOffTimerOnEnable = ChkClearAutoOffTimerOnEnable.Checked;
+            ConfigGlobal.SaveConfig();
+            DebugLogger.Info($"StartAutoOffTimerOnEnable changed to {cfg.StartAutoOffTimerOnEnable}");
+        }
+
         private void ChkDisableSystray_CheckedChanged(object sender, EventArgs e)
         {
             // Prevent this logic from running during form initialization
@@ -522,5 +537,6 @@ namespace _ORTools.Forms
         {
 
         }
+
     }
 }
