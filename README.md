@@ -5,7 +5,7 @@
 # OSRO Tools
 
 ## Overview
-OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with [OsRO MR](https://osro.mr/) and [OsRO HR](https://osro.gg/).
+OSRO Tools is a fork of [TalesTools](https://github.com/biancaazuma/TalesTools), which was originally based on [4RTools](https://github.com/4RTools/4RTools). This project refines and adapts the tool for enhanced compatibility with [OsRO HR](https://osro.gg/).
 
 ## Key Changes
 - **Language & Adaptation:** Re-translated back into English and adjusted to align with OsRO's status set.
